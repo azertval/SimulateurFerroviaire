@@ -19,7 +19,7 @@
 #include "./Models/StraightBlock.h"
 #include "./Models/SwitchBlock.h"
 #include "./Enums/GeoParserEnums.h"
-#include "./../../Engine/Core/Logger.h"
+#include "Engine/Core/Logger/Logger.h"
 
 class DoubleSwitchDetector
 {

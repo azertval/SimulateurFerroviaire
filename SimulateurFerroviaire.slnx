@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="SimulateurFerroviaire/SimulateurFerroviaire.vcxproj" />
+  <Project Path="SimulateurFerroviaire/SimulateurFerroviaire.vcxproj" Id="3b226d9c-70f0-4a7a-8f4e-006e070adf07" />
 </Solution>

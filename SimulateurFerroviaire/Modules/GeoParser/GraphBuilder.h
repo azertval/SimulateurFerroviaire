@@ -30,8 +30,7 @@
 #include "./Enums/GeoParserEnums.h"
 #include "./Models/LatLon.h"
 #include "./Models/CoordinateXY.h"
-#include "./../../Engine/Core/Logger.h"
-
+#include "Engine/Core/Logger/Logger.h"
 
 /**
  * @brief Données de résultat de la Phase 1+2.
