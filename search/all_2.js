@@ -16,7 +16,7 @@ var searchData=
   ['coordinates_13',['coordinates',['../classStraightBlock.html#ae53ff9455e74374bd6abb4e3221f7880',1,'StraightBlock']]],
   ['coordinatexy_14',['coordinatexy',['../structCoordinateXY.html#a0e32bf57ec9cc55f2760b6bd3f62344c',1,'CoordinateXY::CoordinateXY()=default'],['../structCoordinateXY.html#a72e2c55a2df24be332a4d3e00875e35e',1,'CoordinateXY::CoordinateXY(double xValue, double yValue)'],['../structCoordinateXY.html',1,'CoordinateXY']]],
   ['coordinatexy_2eh_15',['CoordinateXY.h',['../CoordinateXY_8h.html',1,'']]],
-  ['coordonnées_16',['📍 Coordonnées',['../index.html#autotoc_md27',1,'']]],
+  ['coordonnées_16',['📍 Coordonnées',['../index.html#autotoc_md18',1,'']]],
   ['core_20—_20cœur_20applicatif_17',['🔹 Core — Cœur applicatif',['../index.html#autotoc_md4',1,'']]],
   ['create_18',['create',['../classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1',1,'WebViewPanel::create()'],['../classProgressBar.html#a608e19274cfd76f8874e4ef6e2dcb396',1,'ProgressBar::create()'],['../classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9',1,'MainWindow::create()']]],
   ['crossover_5fshared_5fbranch_5fcount_19',['CROSSOVER_SHARED_BRANCH_COUNT',['../structNodeDegreeThresholds.html#a66fe23230337d8a375491cbd4243e95d',1,'NodeDegreeThresholds']]]

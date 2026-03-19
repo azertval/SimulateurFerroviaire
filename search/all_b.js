@@ -51,8 +51,8 @@ var searchData=
   ['mergeclosenodes_48',['mergeCloseNodes',['../classTopologyGraph.html#a27cb3f78740d0cf268f2ea5f3bace6d7',1,'TopologyGraph']]],
   ['metricutmtowgs84_49',['metricUtmToWgs84',['../classGeometryUtils.html#a0dfa23ddf2d80abfeaeac186ae124fd0',1,'GeometryUtils']]],
   ['min_5fbranch_5flength_5fmeters_50',['MIN_BRANCH_LENGTH_METERS',['../structParserDefaultValues.html#a7ec1f8de6339afe710235fdcb2eb2c49',1,'ParserDefaultValues']]],
-  ['modèle_20de_20données_51',['📦 Models — Modèle de données',['../index.html#autotoc_md26',1,'']]],
-  ['models_20—_20modèle_20de_20données_52',['📦 Models — Modèle de données',['../index.html#autotoc_md26',1,'']]],
+  ['modèle_20de_20données_51',['📦 Models — Modèle de données',['../index.html#autotoc_md17',1,'']]],
+  ['models_20—_20modèle_20de_20données_52',['📦 Models — Modèle de données',['../index.html#autotoc_md17',1,'']]],
   ['modules_20—_20fonctionnalités_20métier_53',['🧩 Modules — Fonctionnalités métier',['../index.html#autotoc_md7',1,'']]],
   ['moteur_20de_20l’application_54',['🧠 Engine — Moteur de l’application',['../index.html#autotoc_md3',1,'']]]
 ];

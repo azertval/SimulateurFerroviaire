@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="textblock"><p><a class="anchor" id="md_docs_2doxygen_2mainpage"></a> </p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 📖 Description</h1>
-<p>Reconstruction et visualisation d’un réseau ferroviaire à partir de données <b>GeoJSON</b>.</p>
+<p>Reconstruction et visualisation d’un réseau ferroviaire à partir de données GeoJSON.</p>
 <p>Le projet repose sur un pipeline de parsing permettant de :</p><ul>
 <li>Charger des données géographiques</li>
 <li>Construire un graphe topologique</li>
@@ -110,21 +110,21 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 🔹 Core — Cœur applicatif</h2>
 <p>Gestion des composants fondamentaux et de la logique métier.</p>
 <ul>
-<li><b><a class="el" href="classApplication.html" title="Représente le cycle de vie complet de l&#39;application Win32.">Application</a></b> → cycle de vie de l’application <br  />
+<li><a class="el" href="classApplication.html" title="Représente le cycle de vie complet de l&#39;application Win32.">Application</a> → cycle de vie de l’application <br  />
 </li>
-<li><b><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a></b> → système de journalisation (logs, erreurs, debug)</li>
+<li><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> → système de journalisation (logs, erreurs, debug)</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md5"></a>
 🖥️ HMI — Interface utilisateur</h2>
 <p>Gestion de l’interface graphique (Win32 + WebView).</p>
 <ul>
-<li><b><a class="el" href="classMainWindow.html" title="Fenêtre principale de l&#39;application SimulateurFerroviaire.">MainWindow</a></b> → fenêtre principale <br  />
+<li><a class="el" href="classMainWindow.html" title="Fenêtre principale de l&#39;application SimulateurFerroviaire.">MainWindow</a> → fenêtre principale <br  />
 </li>
-<li><b><a class="el" href="classProgressBar.html">ProgressBar</a></b> → affichage des tâches longues <br  />
+<li><a class="el" href="classProgressBar.html">ProgressBar</a> → affichage des tâches longues <br  />
 </li>
-<li><b><a class="el" href="classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué.">WebViewPanel</a></b> → affichage de la carte (Leaflet) <br  />
+<li><a class="el" href="classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué.">WebViewPanel</a> → affichage de openstreetview (Leaflet) <br  />
 </li>
-<li><b>Dialogs</b><ul>
+<li>Dialogs<ul>
 <li><a class="el" href="classAboutDialog.html" title="Boîte de dialogue modale &quot;À propos&quot; de l&#39;application.">AboutDialog</a> <br  />
 </li>
 <li><a class="el" href="classFileOpenDialog.html" title="Sélecteur de fichier GeoJSON (ou JSON) natif Win32.">FileOpenDialog</a> <br  />
@@ -153,32 +153,23 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li>Détection des doubles aiguilles <br  />
 </li>
 </ol>
-<p>👉 Voir implémentation dans : <br  />
- <code><a class="el" href="classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet.">GeoParser::parse()</a></code> :contentReference[oaicite:0]{index=0}</p>
+<p>👉 Voir implémentation dans : <a class="el" href="classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet.">GeoParser::parse()</a></p>
 <hr  />
 <h2><a class="anchor" id="autotoc_md11"></a>
 🗺️ Parsing &amp; Construction</h2>
-<h3><a class="anchor" id="autotoc_md12"></a>
-&lt;strong&gt;GeoParser&lt;/strong&gt;</h3>
-<ul>
+<p><a class="el" href="classGeoParser.html">GeoParser</a></p><ul>
 <li>Orchestrateur du pipeline complet</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md13"></a>
-&lt;strong&gt;GeoParsingTask&lt;/strong&gt;</h3>
-<ul>
+<p><a class="el" href="classGeoParsingTask.html" title="Tâche asynchrone encapsulant l&#39;exécution du GeoParser.">GeoParsingTask</a></p><ul>
 <li>Parsing asynchrone (évite le blocage UI)</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md14"></a>
-&lt;strong&gt;GeometryUtils&lt;/strong&gt;</h3>
-<ul>
+<p><a class="el" href="classGeometryUtils.html" title="Fonctions géométriques statiques utilisées par le pipeline GeoParser.">GeometryUtils</a></p><ul>
 <li>Outils géométriques (conversion, validation, calculs)</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 🔗 Graphe topologique</h2>
-<h3><a class="anchor" id="autotoc_md17"></a>
-&lt;strong&gt;GraphBuilder&lt;/strong&gt;</h3>
-<ul>
+<p><a class="el" href="classGraphBuilder.html" title="Charge un fichier GeoJSON et construit le TopologyGraph métrique.">GraphBuilder</a></p><ul>
 <li>Construction du graphe à partir du GeoJSON <br  />
 </li>
 <li>Conversion WGS84 → UTM <br  />
@@ -186,75 +177,53 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li>Snap + fusion des nœuds <br  />
 </li>
 </ul>
-<p>👉 Voir phases 1 &amp; 2 :contentReference[oaicite:1]{index=1}</p>
-<h3><a class="anchor" id="autotoc_md18"></a>
-&lt;strong&gt;TopologyGraph&lt;/strong&gt;</h3>
-<ul>
+<p><a class="el" href="classTopologyGraph.html" title="Graphe planaire non-orienté utilisé pour la construction de la topologie ferroviaire.">TopologyGraph</a></p><ul>
 <li>Représentation du graphe (nœuds + arêtes)</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md19"></a>
-&lt;strong&gt;TopologyEdge&lt;/strong&gt;</h3>
-<ul>
+<p><a class="el" href="classTopologyEdge.html" title="Arête non-orientée entre deux nœuds du graphe topologique.">TopologyEdge</a></p><ul>
 <li>Arête entre deux nœuds avec géométrie métrique</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md21"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 🧠 Extraction ferroviaire</h2>
-<h3><a class="anchor" id="autotoc_md22"></a>
-&lt;strong&gt;TopologyExtractor&lt;/strong&gt;</h3>
-<ul>
+<p><a class="el" href="classTopologyExtractor.html" title="Extrait la topologie ferroviaire (Switch + Straight) depuis un TopologyGraph.">TopologyExtractor</a></p><ul>
 <li>Extraction des blocs à partir du graphe</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md23"></a>
-&lt;strong&gt;SwitchOrientator&lt;/strong&gt;</h3>
-<ul>
+<p><a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC).">SwitchOrientator</a></p><ul>
 <li>Orientation des aiguillages (root / normal / deviation)</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md24"></a>
-&lt;strong&gt;DoubleSwitchDetector&lt;/strong&gt;</h3>
-<ul>
+<p><a class="el" href="classDoubleSwitchDetector.html">DoubleSwitchDetector</a></p><ul>
 <li>Détection des doubles aiguilles <br  />
 </li>
 <li>Validation des contraintes métier (CDC)</li>
 </ul>
-<p>👉 Phases 7 &amp; 8 :contentReference[oaicite:2]{index=2}</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 📦 Models — Modèle de données</h1>
 <p>Représentation des entités ferroviaires manipulées par le pipeline.</p>
-<h2><a class="anchor" id="autotoc_md27"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 📍 Coordonnées</h2>
 <ul>
-<li><b><a class="el" href="structCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire).">CoordinateXY</a></b><ul>
+<li><a class="el" href="structCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire).">CoordinateXY</a><ul>
 <li>Coordonnées métriques (UTM)</li>
 </ul>
 </li>
-<li><b><a class="el" href="structLatLon.html" title="Coordonnée géographique WGS-84 exprimée en degrés décimaux.">LatLon</a></b><ul>
+<li><a class="el" href="structLatLon.html" title="Coordonnée géographique WGS-84 exprimée en degrés décimaux.">LatLon</a><ul>
 <li>Coordonnées géographiques WGS84</li>
 </ul>
 </li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md20"></a>
 🚧 Blocs ferroviaires</h2>
-<h3><a class="anchor" id="autotoc_md30"></a>
-&lt;strong&gt;StraightBlock&lt;/strong&gt;</h3>
-<ul>
+<p><a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a></p><ul>
 <li>Tronçon de voie droite</li>
 <li>Longueur calculée via Haversine</li>
 </ul>
-<p>👉 Implémentation :contentReference[oaicite:3]{index=3}</p>
-<h3><a class="anchor" id="autotoc_md31"></a>
-&lt;strong&gt;SwitchBlock&lt;/strong&gt;</h3>
-<ul>
+<p><a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a></p><ul>
 <li>Aiguillage ferroviaire (3 branches)</li>
-<li>Orientation + calculs géométriques</li>
+<li>Orientation + calculs géométriques </li>
 </ul>
-<p>👉 Implémentation :contentReference[oaicite:4]{index=4}</p>
-<hr  />
-<h1><a class="anchor" id="autotoc_md33"></a>
-🧭 Architecture globale</h1>
-<p>```text GeoJSON ↓ <a class="el" href="classGraphBuilder.html" title="Charge un fichier GeoJSON et construit le TopologyGraph métrique.">GraphBuilder</a> ↓ <a class="el" href="classTopologyGraph.html" title="Graphe planaire non-orienté utilisé pour la construction de la topologie ferroviaire.">TopologyGraph</a> ↓ <a class="el" href="classTopologyExtractor.html" title="Extrait la topologie ferroviaire (Switch + Straight) depuis un TopologyGraph.">TopologyExtractor</a> ↓ <a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC).">SwitchOrientator</a> ↓ <a class="el" href="classDoubleSwitchDetector.html">DoubleSwitchDetector</a> ↓ Models (Straight / Switch) </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

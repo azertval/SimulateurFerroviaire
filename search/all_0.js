@@ -13,6 +13,5 @@ var searchData=
   ['applicatif_10',['🔹 Core — Cœur applicatif',['../index.html#autotoc_md4',1,'']]],
   ['application_11',['application',['../classApplication.html',1,'Application'],['../classApplication.html#a719cf091afd2276d52f9a58e4962ebfb',1,'Application::Application()']]],
   ['application_2ecpp_12',['Application.cpp',['../Application_8cpp.html',1,'']]],
-  ['application_2eh_13',['Application.h',['../Application_8h.html',1,'']]],
-  ['architecture_20globale_14',['🧭 Architecture globale',['../index.html#autotoc_md33',1,'']]]
+  ['application_2eh_13',['Application.h',['../Application_8h.html',1,'']]]
 ];
