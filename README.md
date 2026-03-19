@@ -3,8 +3,8 @@
 ![C++](https://img.shields.io/badge/C%2B%2B-20-blue)
 ![Build](https://img.shields.io/badge/build-CMake-green)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
-![CI](https://github.com/azertval/SimulateurFerroviaire/actions/workflows/build.yml/badge.svg)
-[![Documentation](https://img.shields.io/badge/Docs-Doxygen-blue?style=for-the-badge)](https://azertval.github.io/SimulateurFerroviaire/)
+![CI](https://github.com/azertval/SimulateurFerroviaire/actions/workflows/ci.yml/badge.svg?branch=main)
+[![Docs](https://github.com/azertval/SimulateurFerroviaire/actions/workflows/ci.yml/badge.svg?branch=main)](https://azertval.github.io/SimulateurFerroviaire/)
 
 Projet de simulation ferroviaire basé sur un parsing GeoJSON et une reconstruction topologique du réseau ferroviaire.
 
