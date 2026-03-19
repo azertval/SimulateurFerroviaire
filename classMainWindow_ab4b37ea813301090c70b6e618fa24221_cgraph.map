@@ -1,0 +1,7 @@
+<map id="MainWindow::onParsingError" name="MainWindow::onParsingError">
+<area shape="rect" id="Node000001" title="Gère un échec de parsing (WM_PARSING_ERROR)." alt="" coords="5,31,212,56"/>
+<area shape="rect" id="Node000002" href="$classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd" title="Met à jour la progression." alt="" coords="260,5,444,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,30,246,26,247,32,212,35"/>
+<area shape="rect" id="Node000003" href="$classProgressBar.html#ac9fbcf04d7d4e8c5b3e332efcfc0d34c" title="Show or hide the ProgressBar." alt="" coords="281,55,423,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="212,51,267,56,267,62,212,56"/>
+</map>

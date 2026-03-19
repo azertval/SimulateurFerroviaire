@@ -1,0 +1,7 @@
+<map id="GeometryUtils::convertPolylineToMetric" name="GeometryUtils::convertPolylineToMetric">
+<area shape="rect" id="Node000001" title="Convertit une polyligne WGS&#45;84 en coordonnées métriques UTM." alt="" coords="5,5,232,45"/>
+<area shape="rect" id="Node000002" href="$classGeometryUtils.html#abcb43f3e49607318e07012e902febfdb" title="Convertit une coordonnée WGS&#45;84 en mètres UTM." alt="" coords="280,13,531,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,23,266,23,266,28,232,28"/>
+<area shape="rect" id="Node000003" href="$classGeometryUtils.html#a0a57b43055d32f595a7c84dbd7d098e3" title="Retourne le méridien central (degrés) d&#39;une zone UTM." alt="" coords="579,5,777,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="531,23,565,23,565,28,531,28"/>
+</map>

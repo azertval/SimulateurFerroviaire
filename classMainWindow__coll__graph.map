@@ -1,0 +1,5 @@
+<map id="MainWindow" name="MainWindow">
+<area shape="rect" id="Node000001" title="Fenêtre principale de l&#39;application SimulateurFerroviaire." alt="" coords="5,193,163,499"/>
+<area shape="rect" id="Node000002" href="$classProgressBar.html" title=" " alt="" coords="25,5,143,131"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,131,87,177,81,177,81,131"/>
+</map>

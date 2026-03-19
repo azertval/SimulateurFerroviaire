@@ -1,0 +1,36 @@
+<map id="SimulateurFerroviaire/Engine/Core/Application.h" name="SimulateurFerroviaire/Engine/Core/Application.h">
+<area shape="rect" id="Node000001" title="Gestion du cycle de vie de l&#39;application Win32." alt="" coords="576,5,769,45"/>
+<area shape="rect" id="Node000002" href="$framework_8h.html" title=" " alt="" coords="485,240,591,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="625,48,592,67,566,95,550,127,541,163,539,226,533,226,536,162,545,126,561,92,589,63,622,43"/>
+<area shape="rect" id="Node000013" href="$MainWindow_8h.html" title="Déclaration de la fenêtre principale de l&#39;application." alt="" coords="575,93,770,119"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="675,46,675,79,670,79,670,46"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="794,93,871,119"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="712,43,798,85,796,90,710,48"/>
+<area shape="rect" id="Node000003" href="$targetver_8h.html" title=" " alt="" coords="14,313,107,339"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="485,263,327,285,121,316,120,311,326,279,485,258"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="131,313,222,339"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="486,267,236,316,235,310,485,262"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="247,313,317,339"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="498,268,331,314,330,309,496,263"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="341,313,420,339"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="514,268,420,310,418,305,512,263"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="444,313,531,339"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="532,267,506,304,501,301,527,264"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="555,313,622,339"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="549,264,575,301,570,304,544,267"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="646,313,742,339"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="564,263,657,305,655,310,562,268"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="870,313,929,339"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="591,260,709,280,857,310,856,316,708,286,590,265"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="766,313,846,339"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="582,263,753,308,751,313,580,268"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,387,116,412"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="63,339,63,373,58,373,58,339"/>
+<area shape="poly" id="edge13_Node000013_Node000002" title=" " alt="" coords="653,121,622,141,591,168,568,199,551,229,546,226,564,196,587,165,619,137,650,116"/>
+<area shape="rect" id="Node000014" href="$GeoParsingTask_8h.html" title="Déclaration de la tâche de parsing GeoJSON asynchrone." alt="" coords="601,167,795,192"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="679,118,692,153,687,155,674,120"/>
+<area shape="rect" id="Node000015" href="$ProgressBar_8h.html" title="Wrapper minimaliste d&#39;une ProgressBar Win32." alt="" coords="819,167,1009,192"/>
+<area shape="poly" id="edge17_Node000013_Node000015" title=" " alt="" coords="712,116,862,160,861,165,711,121"/>
+<area shape="poly" id="edge15_Node000014_Node000002" title=" " alt="" coords="673,194,578,237,576,232,671,190"/>
+<area shape="poly" id="edge16_Node000014_Node000011" title=" " alt="" coords="716,190,874,303,871,307,713,194"/>
+</map>

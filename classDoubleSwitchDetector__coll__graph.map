@@ -1,0 +1,7 @@
+<map id="DoubleSwitchDetector" name="DoubleSwitchDetector">
+<area shape="rect" id="Node000001" title=" " alt="" coords="89,453,335,699"/>
+<area shape="rect" id="Node000002" href="$classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="5,5,187,391"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,390,172,437,167,438,153,392"/>
+<area shape="rect" id="Node000003" href="$classTopologyGraph.html" title="Graphe planaire non&#45;orienté utilisé pour la construction de la topologie ferroviaire." alt="" coords="211,5,447,391"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="272,392,257,438,252,437,267,390"/>
+</map>

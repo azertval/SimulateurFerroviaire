@@ -1,0 +1,7 @@
+<map id="MainWindow::windowProc" name="MainWindow::windowProc">
+<area shape="rect" id="Node000001" title="Procédure de fenêtre statique, point d&#39;entrée imposé par Win32." alt="" coords="483,13,673,38"/>
+<area shape="rect" id="Node000002" href="$classApplication.html#a0bda40de108938fd29374335bf4eac71" title="Enregistre la classe de fenêtre Win32 (WNDCLASSEXW)." alt="" coords="229,5,435,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="469,28,435,28,435,23,469,23"/>
+<area shape="rect" id="Node000003" href="$classApplication.html#a719cf091afd2276d52f9a58e4962ebfb" title="Construit l&#39;application et enregistre la classe de fenêtre." alt="" coords="5,13,181,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="216,28,182,28,182,23,216,23"/>
+</map>

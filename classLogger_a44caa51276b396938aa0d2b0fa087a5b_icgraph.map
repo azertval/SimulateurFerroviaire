@@ -1,0 +1,9 @@
+<map id="Logger::getCurrentTimestamp" name="Logger::getCurrentTimestamp">
+<area shape="rect" id="Node000001" title="Retourne l&#39;horodatage courant au format [HH:MM:SS]." alt="" coords="400,31,617,56"/>
+<area shape="rect" id="Node000002" href="$classLogger.html#a8f0182d5ff94d8b9585a1e75e7b02f1e" title="Formate une ligne de trace complète." alt="" coords="184,5,352,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="386,33,352,29,352,24,387,28"/>
+<area shape="rect" id="Node000004" href="$classLogger.html#ac4b04901a1897aa98ddd2c860fa9e95b" title="Construit un Logger pour le moteur spécifié." alt="" coords="209,55,327,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="387,58,328,64,327,59,386,53"/>
+<area shape="rect" id="Node000003" href="$classLogger.html#ad3f8120f97679ef581fe34b3c220fe90" title="Écrit une ligne de trace dans le fichier et la sortie de débogage." alt="" coords="5,5,136,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="170,21,136,21,136,15,170,15"/>
+</map>

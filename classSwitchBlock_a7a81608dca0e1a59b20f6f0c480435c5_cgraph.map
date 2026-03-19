@@ -1,0 +1,5 @@
+<map id="SwitchBlock::toString" name="SwitchBlock::toString">
+<area shape="rect" id="Node000001" title="Retourne une représentation textuelle pour le débogage." alt="" coords="5,5,165,31"/>
+<area shape="rect" id="Node000002" href="$classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7" title="Indique si l&#39;aiguillage a été orienté (Phase 6 complète)." alt="" coords="213,5,389,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,15,200,15,200,21,165,21"/>
+</map>

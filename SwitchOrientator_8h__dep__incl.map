@@ -1,0 +1,7 @@
+<map id="SimulateurFerroviaire/Modules/GeoParser/SwitchOrientator.h" name="SimulateurFerroviaire/Modules/GeoParser/SwitchOrientator.h">
+<area shape="rect" id="Node000001" title="Phases 6, 6b et 6c — orientation géométrique des aiguillages." alt="" coords="138,5,413,45"/>
+<area shape="rect" id="Node000002" href="$GeoParser_8cpp.html" title="Implémentation du pipeline GeoParser." alt="" coords="5,93,252,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,55,162,96,159,91,230,50"/>
+<area shape="rect" id="Node000003" href="$SwitchOrientator_8cpp.html" title="Implémentation des phases 6, 6b et 6c — orientation des aiguillages." alt="" coords="277,93,567,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="321,50,391,91,389,96,318,55"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="TopologyExtractor::walkPathUntilBoundary" name="TopologyExtractor::walkPathUntilBoundary">
+<area shape="rect" id="Node000001" title="Marche le graphe depuis startNodeId le long de incomingEdgeId jusqu&#39;au prochain nœud frontière." alt="" coords="5,69,180,109"/>
+<area shape="rect" id="Node000002" href="$classTopologyGraph.html#a07cb1a1808c40751d01dd7d43d335024" title="Retourne l&#39;arête sortante en atNodeId la plus colinéaire à incomingEdgeId." alt="" coords="228,5,469,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,67,255,46,256,51,174,72"/>
+<area shape="rect" id="Node000004" href="$classTopologyGraph.html#a7c086df2f9774459710f88d37158b745" title="Retourne le degré d&#39;un nœud (nombre d&#39;arêtes incidentes)." alt="" coords="251,69,446,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="180,87,237,87,237,92,180,92"/>
+<area shape="rect" id="Node000005" href="$classTopologyGraph.html#aada47ec2c5b5ebc4ccf72b4b4c4f5e01" title="Retourne l&#39;ID du nœud de l&#39;autre extrémité d&#39;une arête." alt="" coords="245,133,452,173"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="174,107,256,127,255,133,173,112"/>
+<area shape="rect" id="Node000003" href="$classGeometryUtils.html#aa07ef087c8f85eb14e28f69875ecf41f" title="Calcule l&#39;angle non&#45;signé (radians) entre deux vecteurs 2&#45;D." alt="" coords="517,5,739,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="469,23,504,23,504,28,469,28"/>
+</map>

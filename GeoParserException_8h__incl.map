@@ -1,0 +1,7 @@
+<map id="SimulateurFerroviaire/Modules/GeoParser/Exceptions/GeoParserException.h" name="SimulateurFerroviaire/Modules/GeoParser/Exceptions/GeoParserException.h">
+<area shape="rect" id="Node000001" title="Hiérarchie d&#39;exceptions du pipeline GeoJSON ferroviaire." alt="" coords="5,5,232,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="27,108,114,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,61,86,97,82,95,102,59"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="139,108,197,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="136,59,157,95,152,97,131,61"/>
+</map>

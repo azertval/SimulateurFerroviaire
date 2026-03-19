@@ -1,0 +1,7 @@
+<map id="Logger::formatLogLine" name="Logger::formatLogLine">
+<area shape="rect" id="Node000001" title="Formate une ligne de trace complète." alt="" coords="5,31,173,56"/>
+<area shape="rect" id="Node000002" href="$classLogger.html#a44caa51276b396938aa0d2b0fa087a5b" title="Retourne l&#39;horodatage courant au format [HH:MM:SS]." alt="" coords="221,5,439,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,32,207,28,208,34,174,37"/>
+<area shape="rect" id="Node000003" href="$classLogger.html#acfb794ab842c63396ad1c6a771f43483" title="Convertit un LogLevel en chaîne courte pour l&#39;affichage." alt="" coords="251,55,409,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,49,237,55,237,61,173,54"/>
+</map>

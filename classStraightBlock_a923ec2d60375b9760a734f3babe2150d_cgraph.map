@@ -1,0 +1,7 @@
+<map id="StraightBlock::recomputeGeodesicLength" name="StraightBlock::recomputeGeodesicLength">
+<area shape="rect" id="Node000001" title="Recalcule et met à jour lengthMeters depuis les coordonnées actuelles." alt="" coords="5,5,192,45"/>
+<area shape="rect" id="Node000002" href="$classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb" title="Calcule la longueur géodésique totale via la formule de Haversine." alt="" coords="240,5,475,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,23,226,23,226,28,192,28"/>
+<area shape="rect" id="Node000003" href="$classStraightBlock.html#aacbbde91378d4e080c3ca2cf0c4f801a" title="Calcule la distance de Haversine entre deux points WGS&#45;84." alt="" coords="523,5,704,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="475,23,509,23,509,28,475,28"/>
+</map>

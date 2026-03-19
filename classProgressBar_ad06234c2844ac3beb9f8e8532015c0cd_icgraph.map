@@ -1,0 +1,26 @@
+<map id="ProgressBar::setProgress" name="ProgressBar::setProgress">
+<area shape="rect" id="Node000001" title="Met à jour la progression." alt="" coords="1540,105,1724,131"/>
+<area shape="rect" id="Node000002" href="$classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar." alt="" coords="1299,5,1453,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1599,100,1549,71,1491,44,1453,33,1454,28,1493,40,1552,67,1602,96"/>
+<area shape="rect" id="Node000003" href="$classMainWindow.html#a889cc45fb741e12015f4af9f01acaa96" title="Ouvre le sélecteur de fichier et lance le parsing asynchrone." alt="" coords="1283,55,1469,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1553,105,1440,83,1441,77,1554,100"/>
+<area shape="rect" id="Node000009" href="$classMainWindow.html#ab4b37ea813301090c70b6e618fa24221" title="Gère un échec de parsing (WM_PARSING_ERROR)." alt="" coords="995,107,1201,132"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1526,121,1202,122,1201,116,1526,116"/>
+<area shape="rect" id="Node000010" href="$classMainWindow.html#a90cae565f67d1291d690d974547041a0" title="Gère la fin réussie du parsing (WM_PARSING_SUCCESS)." alt="" coords="984,156,1212,181"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="1527,131,1213,161,1212,155,1526,125"/>
+<area shape="rect" id="Node000011" href="$classMainWindow.html#a358c35e21b8d81e718d259a502648dd6" title="Gère la mise à jour de la progression (WM_PROGRESS_UPDATE)." alt="" coords="1260,207,1492,232"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="1598,140,1549,165,1493,190,1432,209,1430,204,1491,185,1547,160,1595,135"/>
+<area shape="rect" id="Node000004" href="$classMainWindow.html#afbecf0f64f48c5c868168884bab52356" title="Gère les commandes menu (WM_COMMAND)." alt="" coords="1000,56,1196,81"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1269,71,1196,71,1196,66,1269,65"/>
+<area shape="rect" id="Node000005" href="$classMainWindow.html#ab85682874f3ab5dfa81f782f889d8556" title="Dispatcher principal des messages de la fenêtre." alt="" coords="721,132,936,157"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1023,87,985,97,867,134,865,129,983,91,1021,82"/>
+<area shape="rect" id="Node000006" href="$classMainWindow.html#a332648d0a0caec8070b05bc27bb9a14b" title="Procédure de fenêtre statique, point d&#39;entrée imposé par Win32." alt="" coords="483,132,673,157"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="708,147,674,147,674,142,708,142"/>
+<area shape="rect" id="Node000007" href="$classApplication.html#a0bda40de108938fd29374335bf4eac71" title="Enregistre la classe de fenêtre Win32 (WNDCLASSEXW)." alt="" coords="229,125,435,165"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="469,147,435,147,435,142,469,142"/>
+<area shape="rect" id="Node000008" href="$classApplication.html#a719cf091afd2276d52f9a58e4962ebfb" title="Construit l&#39;application et enregistre la classe de fenêtre." alt="" coords="5,132,181,157"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="216,147,182,147,182,142,216,142"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="981,133,936,137,936,132,981,128"/>
+<area shape="poly" id="edge11_Node000010_Node000005" title=" " alt="" coords="970,160,936,157,937,152,971,155"/>
+<area shape="poly" id="edge13_Node000011_Node000005" title=" " alt="" coords="1246,222,1118,214,983,197,917,180,861,160,863,155,919,174,985,191,1119,209,1246,216"/>
+</map>

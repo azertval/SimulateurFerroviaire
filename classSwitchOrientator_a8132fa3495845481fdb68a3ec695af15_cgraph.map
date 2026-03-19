@@ -1,0 +1,20 @@
+<map id="SwitchOrientator::computeBranchTipPoints" name="SwitchOrientator::computeBranchTipPoints">
+<area shape="rect" id="Node000001" title="Calcule et assigne les points tip CDC sur un SwitchBlock orienté." alt="" coords="5,128,201,168"/>
+<area shape="rect" id="Node000002" href="$classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd" title="Interpole un point tip à distanceMeters depuis la jonction le long d&#39;un Straight." alt="" coords="249,99,460,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,134,235,130,236,135,202,139"/>
+<area shape="rect" id="Node000009" href="$classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7" title="Indique si l&#39;aiguillage a été orienté (Phase 6 complète)." alt="" coords="267,163,443,189"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="202,156,253,162,253,167,201,162"/>
+<area shape="rect" id="Node000003" href="$classGeometryUtils.html#a95a8eb25c216b5416111a5b2f18ebb5f" title="Calcule la longueur planaire totale d&#39;une polyligne métrique." alt="" coords="508,5,743,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="401,96,507,55,532,47,534,52,509,60,403,101"/>
+<area shape="rect" id="Node000004" href="$classGeometryUtils.html#aa06e19f5aae6fce3108b2fcfc709fc53" title="Convertit une polyligne WGS&#45;84 en coordonnées métriques UTM." alt="" coords="512,69,739,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="460,105,498,100,499,106,461,110"/>
+<area shape="rect" id="Node000007" href="$classGeometryUtils.html#a0dfa23ddf2d80abfeaeac186ae124fd0" title="Convertit une coordonnée métrique UTM en WGS&#45;84." alt="" coords="819,127,1013,167"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="461,121,805,138,804,144,460,127"/>
+<area shape="rect" id="Node000008" href="$classGeometryUtils.html#a811846a194a09c97c258825df6accb9a" title="Interpole un point à distanceMeters du premier sommet d&#39;une polyligne." alt="" coords="511,184,740,224"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="420,136,549,177,547,182,418,141"/>
+<area shape="rect" id="Node000005" href="$classGeometryUtils.html#abcb43f3e49607318e07012e902febfdb" title="Convertit une coordonnée WGS&#45;84 en mètres UTM." alt="" coords="791,77,1041,102"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="739,87,777,87,777,92,739,92"/>
+<area shape="rect" id="Node000006" href="$classGeometryUtils.html#a0a57b43055d32f595a7c84dbd7d098e3" title="Retourne le méridien central (degrés) d&#39;une zone UTM." alt="" coords="1089,99,1288,139"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1034,99,1076,104,1075,109,1034,105"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="1013,134,1076,128,1076,133,1014,139"/>
+</map>

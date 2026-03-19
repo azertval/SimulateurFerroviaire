@@ -1,0 +1,17 @@
+<map id="SimulateurFerroviaire/Modules/GeoParser/GraphBuilder.h" name="SimulateurFerroviaire/Modules/GeoParser/GraphBuilder.h">
+<area shape="rect" id="Node000001" title="Phases 1 et 2 du pipeline — chargement GeoJSON et construction du graphe métrique." alt="" coords="149,5,399,45"/>
+<area shape="rect" id="Node000002" href="$GeoParser_8cpp.html" title="Implémentation du pipeline GeoParser." alt="" coords="5,299,252,339"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,53,153,71,131,95,118,120,111,148,108,205,115,258,125,298,120,299,110,259,103,205,106,147,113,118,126,92,150,67,179,49"/>
+<area shape="rect" id="Node000003" href="$GraphBuilder_8cpp.html" title="Implémentation des phases 1 et 2 — chargement GeoJSON et construction du graphe." alt="" coords="141,101,407,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="277,59,277,101,271,101,271,59"/>
+<area shape="rect" id="Node000004" href="$TopologyExtractor_8h.html" title="Phases 3, 4, 5a et 5b — extraction de la topologie ferroviaire depuis le graphe." alt="" coords="431,93,645,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="341,47,465,91,463,96,339,52"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="418,152,313,178,250,198,217,222,187,249,144,300,140,297,183,245,214,217,247,194,311,173,417,147"/>
+<area shape="rect" id="Node000005" href="$SwitchOrientator_8h.html" title="Phases 6, 6b et 6c — orientation géométrique des aiguillages." alt="" coords="261,203,535,243"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="492,158,426,205,423,201,489,154"/>
+<area shape="rect" id="Node000007" href="$TopologyExtractor_8cpp.html" title="Implémentation des phases 3, 4, 5a et 5b du pipeline GeoParser." alt="" coords="559,196,773,251"/>
+<area shape="poly" id="edge8_Node000004_Node000007" title=" " alt="" coords="583,154,634,194,631,198,580,158"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="331,250,184,301,182,296,330,245"/>
+<area shape="rect" id="Node000006" href="$SwitchOrientator_8cpp.html" title="Implémentation des phases 6, 6b et 6c — orientation des aiguillages." alt="" coords="277,299,567,339"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="409,256,420,298,415,299,404,257"/>
+</map>

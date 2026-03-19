@@ -1,0 +1,7 @@
+<map id="Logger::sendToDebugOutput" name="Logger::sendToDebugOutput">
+<area shape="rect" id="Node000001" title="Envoie une chaîne vers la sortie de débogage Visual Studio." alt="" coords="184,31,389,56"/>
+<area shape="rect" id="Node000002" href="$classLogger.html#ac4b04901a1897aa98ddd2c860fa9e95b" title="Construit un Logger pour le moteur spécifié." alt="" coords="11,5,130,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,32,130,28,131,22,171,27"/>
+<area shape="rect" id="Node000003" href="$classLogger.html#ad3f8120f97679ef581fe34b3c220fe90" title="Écrit une ligne de trace dans le fichier et la sortie de débogage." alt="" coords="5,55,136,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="170,59,137,63,136,57,170,54"/>
+</map>

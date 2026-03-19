@@ -1,0 +1,22 @@
+<map id="SimulateurFerroviaire/Modules/GeoParser/Utils/GeometryUtils.cpp" name="SimulateurFerroviaire/Modules/GeoParser/Utils/GeometryUtils.cpp">
+<area shape="rect" id="Node000001" title="Implémentation des utilitaires géométriques — projection UTM et géométrie pure." alt="" coords="196,5,381,60"/>
+<area shape="rect" id="Node000002" href="$GeometryUtils_8h.html" title="Utilitaires géométriques métriques pour le pipeline ferroviaire." alt="" coords="159,108,288,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="271,62,243,99,238,95,267,58"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,181,68,207"/>
+<area shape="poly" id="edge9_Node000001_Node000003" title=" " alt="" coords="235,62,149,110,62,175,59,171,146,106,232,58"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="313,108,398,133"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="311,58,340,95,336,99,307,62"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="423,108,509,133"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="344,58,431,100,429,104,342,62"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="194,136,81,179,79,174,192,131"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="93,181,167,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="210,135,158,175,154,171,207,131"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="192,181,255,207"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="226,134,226,168,221,168,221,134"/>
+<area shape="rect" id="Node000006" href="$LatLon_8h.html" title="Représentation d&#39;une coordonnée géographique WGS&#45;84 (latitude, longitude)." alt="" coords="279,181,419,207"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="245,131,318,172,315,177,242,136"/>
+<area shape="rect" id="Node000007" href="$CoordinateXY_8h.html" title="Représentation d&#39;une coordonnée plane en mètres (système métrique UTM)." alt="" coords="443,181,625,207"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="274,131,471,176,470,181,273,136"/>
+<area shape="rect" id="Node000008" href="$GeoParserEnums_8h.html" title="Constantes nommées et énumérations du pipeline ferroviaire GeoParser." alt="" coords="649,181,853,207"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="289,129,301,131,649,177,648,182,300,136,288,134"/>
+</map>

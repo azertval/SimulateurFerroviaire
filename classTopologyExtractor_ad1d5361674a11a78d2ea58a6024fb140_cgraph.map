@@ -1,0 +1,16 @@
+<map id="TopologyExtractor::splitLongStraights" name="TopologyExtractor::splitLongStraights">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,69,152,109"/>
+<area shape="rect" id="Node000002" href="$classGeometryUtils.html#a95a8eb25c216b5416111a5b2f18ebb5f" title="Calcule la longueur planaire totale d&#39;une polyligne métrique." alt="" coords="200,5,435,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,67,228,46,230,52,153,72"/>
+<area shape="rect" id="Node000003" href="$classGeometryUtils.html#aa06e19f5aae6fce3108b2fcfc709fc53" title="Convertit une polyligne WGS&#45;84 en coordonnées métriques UTM." alt="" coords="204,69,431,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,87,190,87,190,92,152,92"/>
+<area shape="rect" id="Node000006" href="$classGeometryUtils.html#aba6963b2f6022f04e51fb716a11e3895" title="Convertit une polyligne métrique UTM en WGS&#45;84." alt="" coords="204,133,431,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="153,106,230,127,228,132,151,111"/>
+<area shape="rect" id="Node000004" href="$classGeometryUtils.html#abcb43f3e49607318e07012e902febfdb" title="Convertit une coordonnée WGS&#45;84 en mètres UTM." alt="" coords="483,79,733,105"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="431,88,469,88,469,93,431,93"/>
+<area shape="rect" id="Node000005" href="$classGeometryUtils.html#a0a57b43055d32f595a7c84dbd7d098e3" title="Retourne le méridien central (degrés) d&#39;une zone UTM." alt="" coords="781,103,980,143"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="721,102,768,107,767,113,721,107"/>
+<area shape="rect" id="Node000007" href="$classGeometryUtils.html#a0dfa23ddf2d80abfeaeac186ae124fd0" title="Convertit une coordonnée métrique UTM en WGS&#45;84." alt="" coords="511,131,705,171"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="431,150,496,149,496,154,431,155"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="705,138,768,132,768,137,706,143"/>
+</map>

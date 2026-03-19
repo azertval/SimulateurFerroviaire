@@ -1,0 +1,5 @@
+<map id="GraphBuilder::loadGeoJsonFile" name="GraphBuilder::loadGeoJsonFile">
+<area shape="rect" id="Node000001" title="Phase 1 — Lit le GeoJSON et extrait les polylignes brutes WGS&#45;84." alt="" coords="5,5,224,31"/>
+<area shape="rect" id="Node000002" href="$classGeometryUtils.html#a5614ece2f3da0feba6ca96ae0e9c3b0a" title="Estime le numéro de zone UTM (1–60) depuis la longitude centre." alt="" coords="272,5,516,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,15,258,15,258,21,224,21"/>
+</map>
