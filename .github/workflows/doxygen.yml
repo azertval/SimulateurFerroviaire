@@ -1,7 +1,7 @@
 name: Deploy Doxygen to GitHub Pages
 
 on:
-  push:
+  pull_request :
     branches: [ master ]
 
 permissions:
