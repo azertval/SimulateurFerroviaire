@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Engine\Core\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Engine\Core\Logger\Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Engine\HMI\Dialogs\AboutDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Engine\HMI\Dialogs\FileOpenDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Engine\HMI\MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\DoubleSwitchDetector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\GeoParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Graph\TopologyEdge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Graph\TopologyGraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\GraphBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Models\StraightBlock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Models\SwitchBlock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\SwitchOrientator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\TopologyExtractor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Utils\GeometryUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParsingTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\SimulateurFerroviaire.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Engine\Core\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Engine\Core\Logger\Logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Engine\HMI\Dialogs\AboutDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Engine\HMI\Dialogs\FileOpenDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Engine\HMI\MainWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Engine\HMI\ProgressBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\DoubleSwitchDetector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Enums\GeoParserEnums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Exceptions\GeoParserException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\GeoParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Graph\TopologyEdge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Graph\TopologyGraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\GraphBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Models\CoordinateXY.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Models\LatLon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Models\StraightBlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Models\SwitchBlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\SwitchOrientator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\TopologyExtractor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParser\Utils\GeometryUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Modules\GeoParsingTask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\SimulateurFerroviaire.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\SimulateurFerroviaire\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="D:\SimulateurFerroviaire\SimulateurFerroviaire\SimulateurFerroviaire.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{DBF8FEED-4879-3A5B-A5E3-B809C3D33E76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6849A66B-C9EB-3C70-8037-3E2A4091A58F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

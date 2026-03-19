@@ -34,7 +34,10 @@ public:
      */
     void create(HWND parent, int x, int y, int width, int height)
     {
-        InitCommonControls();
+        INITCOMMONCONTROLSEX icex{};
+        icex.dwSize = sizeof(icex);
+        icex.dwICC = ICC_PROGRESS_CLASS;
+        InitCommonControlsEx(&icex);
 
         m_hwnd = CreateWindowEx(
             0,
@@ -47,6 +50,11 @@ public:
             GetModuleHandle(nullptr),
             nullptr
         );
+
+        if (!m_hwnd)
+        {
+            throw std::runtime_error("ProgressBar creation failed");
+        }
 
         SendMessage(m_hwnd, PBM_SETRANGE, 0, MAKELPARAM(0, 100));
         SendMessage(m_hwnd, PBM_SETPOS, 0, 0);

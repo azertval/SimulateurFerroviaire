@@ -11,28 +11,29 @@
 #include <iostream>
 #include <filesystem>
 
-// ============================================================================
-// Fonctions utilitaires globales
-// ============================================================================
- /**
-  * @brief Get executable directory.
-  *
-  * @return Path of the folder containing the .exe
-  */
-std::filesystem::path getExecutableDirectory()
+ 
+static std::filesystem::path getExecutableDirectory()
 {
+#ifdef _WIN32
     char buffer[MAX_PATH];
 
     // Retrieve full path of the executable
-    GetModuleFileNameA(nullptr, buffer, MAX_PATH);
+    DWORD length = GetModuleFileNameA(nullptr, buffer, MAX_PATH);
+
+    if (length == 0)
+    {
+        return std::filesystem::current_path(); // fallback
+    }
 
     // Convert to filesystem path
     std::filesystem::path exePath(buffer);
 
-    // Return directory only
+    // Return directory containing the executable
     return exePath.parent_path();
+#else
+    return std::filesystem::current_path();
+#endif
 }
-
 
 // =============================================================================
 // Construction / destruction
@@ -51,6 +52,7 @@ Logger::Logger(const std::string& motorName)
 
     // Création du répertoire Logs/ si absent
     std::filesystem::path logsDirectory = getExecutableDirectory() / "Logs";
+
     if (!std::filesystem::exists(logsDirectory))
     {
         std::filesystem::create_directory(logsDirectory);

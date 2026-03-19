@@ -2,7 +2,7 @@
 // Fichier Include généré par Microsoft Visual C++.
 // Utilisé par SimulateurFerroviaire.rc
 
-#define IDS_APP_TITLE			103
+#define IDS_APP_TITLE			101
 
 #define IDR_MAINFRAME			128
 #define IDD_SIMULATEURFERROVIAIRE_DIALOG	102
