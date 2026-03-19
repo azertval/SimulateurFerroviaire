@@ -17,7 +17,7 @@ GeoJSON → GeoParser → Graph → Switch → Map
 - GeoParser
 - TopologyGraph
 - SwitchBlock
-- Map (WebView2 + Leaflet)
+- Map (WebViewPanel + Leaflet)
 
 ---
 
