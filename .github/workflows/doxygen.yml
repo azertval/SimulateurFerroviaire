@@ -1,8 +1,10 @@
 name: Deploy Doxygen
 
 on:
-  push:
-    branches: [ master ]
+  pull_request:
+
+permissions:
+  contents: write
 
 jobs:
   build-doc:
