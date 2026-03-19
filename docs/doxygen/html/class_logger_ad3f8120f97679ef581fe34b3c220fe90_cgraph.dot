@@ -1,0 +1,21 @@
+digraph "Logger::writeLog"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="Logger::writeLog",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Écrit une ligne de trace dans le fichier et la sortie de débogage."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Logger::extractClassName",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_logger.html#a73e58f91876b0b8c94dbef251965230b",tooltip="Extrait le nom de classe depuis la signature MSVC \"__FUNCTION__\"."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Logger::extractFunctionName",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_logger.html#aa91f92a5ffac3b66b91ba38fd0912560",tooltip="Extrait le nom de la fonction depuis la signature MSVC \"__FUNCTION__\"."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Logger::formatLogLine",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_logger.html#a8f0182d5ff94d8b9585a1e75e7b02f1e",tooltip="Formate une ligne de trace complète."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Logger::getCurrentTimestamp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_logger.html#a44caa51276b396938aa0d2b0fa087a5b",tooltip="Retourne l'horodatage courant au format [HH:MM:SS]."];
+  Node4 -> Node6 [id="edge5_Node000004_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Logger::levelToString",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_logger.html#acfb794ab842c63396ad1c6a771f43483",tooltip="Convertit un LogLevel en chaîne courte pour l'affichage."];
+  Node1 -> Node7 [id="edge6_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Logger::sendToDebugOutput",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_logger.html#aa7d10eb28cdcf56612e1604e7cd4b95b",tooltip="Envoie une chaîne vers la sortie de débogage Visual Studio."];
+}

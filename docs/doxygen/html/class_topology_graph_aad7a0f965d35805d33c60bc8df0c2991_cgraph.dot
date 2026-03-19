@@ -1,0 +1,11 @@
+digraph "TopologyGraph::getOrCreateNode"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="TopologyGraph::getOrCreateNode",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Retourne l'ID du nœud en (x, y), le créant si absent."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="GeometryUtils::snapToMetricGrid",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#a1f0bcf5c241331f56979b6d63b3412c1",tooltip="Accroche une coordonnée métrique au sommet le plus proche d'une grille."];
+}

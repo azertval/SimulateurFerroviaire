@@ -1,0 +1,22 @@
+digraph "TopologyExtractor::splitLongStraights"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="TopologyExtractor::\lsplitLongStraights",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="GeometryUtils::computePolyline\lLengthMeters",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#a95a8eb25c216b5416111a5b2f18ebb5f",tooltip="Calcule la longueur planaire totale d'une polyligne métrique."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="GeometryUtils::convertPolyline\lToMetric",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#aa06e19f5aae6fce3108b2fcfc709fc53",tooltip="Convertit une polyligne WGS-84 en coordonnées métriques UTM."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="GeometryUtils::wgs84ToMetricUtm",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#abcb43f3e49607318e07012e902febfdb",tooltip="Convertit une coordonnée WGS-84 en mètres UTM."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="GeometryUtils::utmCentral\lMeridianDegrees",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#a0a57b43055d32f595a7c84dbd7d098e3",tooltip="Retourne le méridien central (degrés) d'une zone UTM."];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="GeometryUtils::convertPolyline\lToWgs84",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#aba6963b2f6022f04e51fb716a11e3895",tooltip="Convertit une polyligne métrique UTM en WGS-84."];
+  Node6 -> Node7 [id="edge6_Node000006_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="GeometryUtils::metricUtm\lToWgs84",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#a0dfa23ddf2d80abfeaeac186ae124fd0",tooltip="Convertit une coordonnée métrique UTM en WGS-84."];
+  Node7 -> Node5 [id="edge7_Node000007_Node000005",color="steelblue1",style="solid",tooltip=" "];
+}

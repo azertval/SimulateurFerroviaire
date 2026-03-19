@@ -1,0 +1,39 @@
+digraph "GraphBuilder::build"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="GraphBuilder::build",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Exécute les phases 1 et 2 et retourne le résultat."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="GraphBuilder::buildTopology\lGraph",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_graph_builder.html#a978a9bb24411525583b8c2855db91c80",tooltip="Phase 2 — Construit le TopologyGraph depuis les polylignes métriques."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="TopologyGraph::addEdge",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_topology_graph.html#a99f720078a226f9d62b284d67194153b",tooltip="Ajoute une arête non-orientée entre les nœuds startNodeId et endNodeId."];
+  Node2 -> Node4 [id="edge3_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="GeometryUtils::convertPolyline\lToMetric",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#aa06e19f5aae6fce3108b2fcfc709fc53",tooltip="Convertit une polyligne WGS-84 en coordonnées métriques UTM."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="GeometryUtils::wgs84ToMetricUtm",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#abcb43f3e49607318e07012e902febfdb",tooltip="Convertit une coordonnée WGS-84 en mètres UTM."];
+  Node5 -> Node6 [id="edge5_Node000005_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="GeometryUtils::utmCentral\lMeridianDegrees",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#a0a57b43055d32f595a7c84dbd7d098e3",tooltip="Retourne le méridien central (degrés) d'une zone UTM."];
+  Node2 -> Node7 [id="edge6_Node000002_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="TopologyGraph::getOrCreateNode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_topology_graph.html#aad7a0f965d35805d33c60bc8df0c2991",tooltip="Retourne l'ID du nœud en (x, y), le créant si absent."];
+  Node7 -> Node8 [id="edge7_Node000007_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="GeometryUtils::snapToMetricGrid",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#a1f0bcf5c241331f56979b6d63b3412c1",tooltip="Accroche une coordonnée métrique au sommet le plus proche d'une grille."];
+  Node2 -> Node9 [id="edge8_Node000002_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="TopologyGraph::mergeClose\lNodes",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_topology_graph.html#a27cb3f78740d0cf268f2ea5f3bace6d7",tooltip="Fusionne les nœuds séparés de moins de toleranceMeters."];
+  Node9 -> Node10 [id="edge9_Node000009_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="TopologyGraph::findRootWith\lPathCompression",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_topology_graph.html#ae6743defffd4df65ccd2f59931281e7d",tooltip=" "];
+  Node9 -> Node11 [id="edge10_Node000009_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="TopologyGraph::uniteNodeSets",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_topology_graph.html#a37b8517d94af461d5d7eb42e216a38e9",tooltip=" "];
+  Node11 -> Node10 [id="edge11_Node000011_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node11 -> Node12 [id="edge12_Node000011_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="std::swap",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacestd.html#a4874fd00297ff5aef2872379cb521783",tooltip="exchanges the values of two JSON objects"];
+  Node2 -> Node8 [id="edge13_Node000002_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node13 [id="edge14_Node000001_Node000013",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="GraphBuilder::computeBoundary\lNodeIds",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_graph_builder.html#aaa371c7490baaad1002240d7dc88da9c",tooltip="Calcule et retourne l'ensemble des nœuds frontières du graphe."];
+  Node1 -> Node14 [id="edge15_Node000001_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="GraphBuilder::loadGeoJsonFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_graph_builder.html#aa6791cab236c871f53d8e7017875f7bc",tooltip="Phase 1 — Lit le GeoJSON et extrait les polylignes brutes WGS-84."];
+  Node14 -> Node15 [id="edge16_Node000014_Node000015",color="steelblue1",style="solid",tooltip=" "];
+  Node15 [id="Node000015",label="GeometryUtils::estimateUtmZone",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#a5614ece2f3da0feba6ca96ae0e9c3b0a",tooltip="Estime le numéro de zone UTM (1–60) depuis la longitude centre."];
+}

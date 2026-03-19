@@ -1,0 +1,15 @@
+digraph "detail::binary_writer::write_bson_integer"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="detail::binary_writer\l::write_bson_integer",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Writes a BSON element with key name and integer value."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="detail::binary_writer\l::write_bson_entry_header",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classdetail_1_1binary__writer.html#aec35b5420c48539db2959ef88ae296d5",tooltip="Writes the given element_type and name to the output adapter."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="detail::binary_writer\l::to_char_type",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classdetail_1_1binary__writer.html#a2822d4a58bbb0dc2198686da430e8906",tooltip=" "];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="detail::binary_writer\l::write_number",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classdetail_1_1binary__writer.html#aab9bf30c969ca7694eed2bfd39d9274a",tooltip=" "];
+}

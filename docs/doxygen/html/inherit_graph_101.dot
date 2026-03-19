@@ -1,0 +1,9 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node0 [id="Node000000",label="json_pointer\< RefStringType\l \>::string_t_helper\< NLOHMANN\l_BASIC_JSON_TPL \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$structjson__pointer_1_1string__t__helper_3_01_n_l_o_h_m_a_n_n___b_a_s_i_c___j_s_o_n___t_p_l_01_4.html",tooltip=" "];
+}

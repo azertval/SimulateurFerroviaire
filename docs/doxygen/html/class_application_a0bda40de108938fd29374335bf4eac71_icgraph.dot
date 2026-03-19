@@ -1,0 +1,11 @@
+digraph "Application::registerWindowClass"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="Application::registerWindow\lClass",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Enregistre la classe de fenêtre Win32 (WNDCLASSEXW)."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Application::Application",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_application.html#a719cf091afd2276d52f9a58e4962ebfb",tooltip="Construit l'application et enregistre la classe de fenêtre."];
+}

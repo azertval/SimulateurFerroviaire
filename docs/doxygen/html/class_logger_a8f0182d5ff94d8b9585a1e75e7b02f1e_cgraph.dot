@@ -1,0 +1,13 @@
+digraph "Logger::formatLogLine"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="Logger::formatLogLine",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Formate une ligne de trace complète."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Logger::getCurrentTimestamp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_logger.html#a44caa51276b396938aa0d2b0fa087a5b",tooltip="Retourne l'horodatage courant au format [HH:MM:SS]."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Logger::levelToString",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_logger.html#acfb794ab842c63396ad1c6a771f43483",tooltip="Convertit un LogLevel en chaîne courte pour l'affichage."];
+}
