@@ -42,6 +42,7 @@ MainWindow::MainWindow(HINSTANCE hInstance,
     , m_className(className)
     , m_title(title)
     , m_nCmdShow(nCmdShow)
+    , m_progressBar()
 {
 }
 
@@ -68,6 +69,15 @@ void MainWindow::create()
     m_progressBar.create(m_hWnd, 20, 50, 320, 24);
     m_progressBar.show(false);
     m_progressBar.setProgress(0);
+
+    // Initialisation du panneau WebView
+    m_webViewPanel.setOnInitialized([this]()
+        {
+            m_webViewPanel.navigate(L"https://www.openstreetmap.org/#map=5/51.500/-0.100"); // Carte centrée sur Londres par défaut
+            m_webViewPanel.resize();
+        });
+    m_webViewPanel.create(m_hWnd);
+
 }
 
 
@@ -124,6 +134,9 @@ LRESULT MainWindow::handleMessage(HWND hWnd, UINT message, WPARAM wParam, LPARAM
     case WM_PARSING_ERROR:
         onParsingError(hWnd, lParam);
         return 0;
+    case WM_SIZE:
+        onSizeUpdate();
+        return 0;
 
     case WM_PAINT:
     {
@@ -135,6 +148,7 @@ LRESULT MainWindow::handleMessage(HWND hWnd, UINT message, WPARAM wParam, LPARAM
     }
 
     case WM_DESTROY:
+        onDestroy();
         PostQuitMessage(0);
         return 0;
 
@@ -213,4 +227,17 @@ void MainWindow::onParsingError(HWND hWnd, LPARAM lParam)
     {
         MessageBoxA(hWnd, "Erreur inconnue.", "Erreur", MB_OK | MB_ICONERROR);
     }
+}
+
+
+void MainWindow::onSizeUpdate()
+{
+    if (m_webViewPanel.isInitialized())
+    {
+        m_webViewPanel.resize();
+    }
+}
+
+void MainWindow::onDestroy()
+{
 }

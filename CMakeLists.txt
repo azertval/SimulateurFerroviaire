@@ -39,13 +39,27 @@ target_include_directories(SimulateurFerroviaire PRIVATE
 )
 
 # -----------------------------------------------------------------------------
+# WebView2
+# -----------------------------------------------------------------------------
+
+set(WEBVIEW2_ROOT "${SOURCE_DIR}/External/WebView2")
+
+add_library(WebView2 STATIC IMPORTED)
+
+set_target_properties(WebView2 PROPERTIES
+    IMPORTED_LOCATION "${WEBVIEW2_ROOT}/lib/x64/WebView2LoaderStatic.lib"
+    INTERFACE_INCLUDE_DIRECTORIES "${WEBVIEW2_ROOT}/include"
+)
+
+target_link_libraries(SimulateurFerroviaire PRIVATE WebView2)
+# -----------------------------------------------------------------------------
 # Dépendances Windows (important pour ton projet Win32)
 # -----------------------------------------------------------------------------
 if (WIN32)
     target_link_libraries(SimulateurFerroviaire PRIVATE
         user32
         gdi32
-        comctl32   # <-- pour ta ProgressBar (InitCommonControls)
+        comctl32   # ← pour ProgressBar (InitCommonControls)
         comdlg32   # ← pour FileOpenDialog
     )
 endif()

@@ -20,6 +20,8 @@
 #include "framework.h"
 #include "Modules/GeoParsingTask.h"
 #include "Engine/HMI/ProgressBar.h"
+#include "Engine/HMI/WebViewPanel/WebViewPanel.h"
+#include "Engine/Core/Logger/Logger.h"
 
 
 /**
@@ -43,6 +45,7 @@ public:
      * @param className   Nom de la classe enregistrée par @ref Application.
      * @param title       Titre affiché dans la barre de la fenêtre.
      * @param nCmdShow    Mode d'affichage (@c SW_SHOW, @c SW_HIDE, …).
+     * @param hmiLog      Logger dédié à la couche IHM.
      */
     MainWindow(HINSTANCE hInstance,
                const WCHAR* className,
@@ -143,6 +146,18 @@ private:
      */
     void onFileOpen(HWND hWnd);
 
+    /**
+     * @brief Quand la fenêtre est redimensionnée, ajuste les éléments graphiques en conséquence.
+     *
+     * @param None
+     */
+    void onSizeUpdate();
+
+    /**
+    * @brief Nettoie les ressources avant la destruction de la fenêtre (WM_DESTROY)
+    */
+    void onDestroy();
+
     // =========================================================================
     // Membres
     // =========================================================================
@@ -164,4 +179,10 @@ private:
 
     /** Barre de progression affichée lors du parsing. */
     ProgressBar m_progressBar;
+
+    /** Logger dédié à la couche HMI, utilisé pour tracer les événements et erreurs liés à l'interface utilisateur. */
+    Logger m_hmiLogger{"HMI"};
+
+    /** Panneau WebView2 pour l'affichage de la carte ferroviaire. */
+    WebViewPanel m_webViewPanel{m_hmiLogger};
 };
