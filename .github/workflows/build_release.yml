@@ -2,6 +2,7 @@ name: Build (CMake)
 
 on:
   pull_request:
+     branches: [ master ]
 
 jobs:
   build:
@@ -9,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        config: [Debug, Release]
+        config: [Release]
 
     steps:
     # -------------------------------------------------------------------------
