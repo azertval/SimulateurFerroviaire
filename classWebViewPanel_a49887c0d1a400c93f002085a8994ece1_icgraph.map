@@ -1,0 +1,5 @@
+<map id="WebViewPanel::create" name="WebViewPanel::create">
+<area shape="rect" id="Node000001" title="Initialise WebView2 dans une fenêtre Win32 existante." alt="" coords="208,5,375,31"/>
+<area shape="rect" id="Node000002" href="$classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar." alt="" coords="5,5,160,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,21,160,21,160,15,195,15"/>
+</map>

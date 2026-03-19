@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('classMainWindow.html',''); initResizab
 <div class="dynheader">
 Collaboration diagram for MainWindow:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow__coll__graph.svg" width="198" height="504"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow__coll__graph.svg" width="475" height="1232"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -145,6 +145,12 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a889cc45fb741e12015f4af9f01acaa96" id="r_a889cc45fb741e12015f4af9f01acaa96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a889cc45fb741e12015f4af9f01acaa96">onFileOpen</a> (HWND hWnd)</td></tr>
 <tr class="memdesc:a889cc45fb741e12015f4af9f01acaa96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre le sélecteur de fichier et lance le parsing asynchrone.  <br /></td></tr>
 <tr class="separator:a889cc45fb741e12015f4af9f01acaa96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74866b6b18c52698bdb52f339ad80830" id="r_a74866b6b18c52698bdb52f339ad80830"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a74866b6b18c52698bdb52f339ad80830">onSizeUpdate</a> ()</td></tr>
+<tr class="memdesc:a74866b6b18c52698bdb52f339ad80830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quand la fenêtre est redimensionnée, ajuste les éléments graphiques en conséquence.  <br /></td></tr>
+<tr class="separator:a74866b6b18c52698bdb52f339ad80830"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71a94b472662a62e570443cff0e59ccd" id="r_a71a94b472662a62e570443cff0e59ccd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a71a94b472662a62e570443cff0e59ccd">onDestroy</a> ()</td></tr>
+<tr class="memdesc:a71a94b472662a62e570443cff0e59ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nettoie les ressources avant la destruction de la fenêtre (WM_DESTROY)  <br /></td></tr>
+<tr class="separator:a71a94b472662a62e570443cff0e59ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -160,6 +166,10 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a7851704517af5a0e647770d2d5bbbb41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7868dafb194e564e76bd19c6343aaf2" id="r_af7868dafb194e564e76bd19c6343aaf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProgressBar.html">ProgressBar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#af7868dafb194e564e76bd19c6343aaf2">m_progressBar</a></td></tr>
 <tr class="separator:af7868dafb194e564e76bd19c6343aaf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b42da6365cc3d1fe83527852bb26122" id="r_a4b42da6365cc3d1fe83527852bb26122"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogger.html">Logger</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a4b42da6365cc3d1fe83527852bb26122">m_hmiLogger</a> {&quot;HMI&quot;}</td></tr>
+<tr class="separator:a4b42da6365cc3d1fe83527852bb26122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ba8e3b9ed7402c7cc1ff2cc78db9c1c" id="r_a0ba8e3b9ed7402c7cc1ff2cc78db9c1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWebViewPanel.html">WebViewPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a0ba8e3b9ed7402c7cc1ff2cc78db9c1c">m_webViewPanel</a> {<a class="el" href="classMainWindow.html#a4b42da6365cc3d1fe83527852bb26122">m_hmiLogger</a>}</td></tr>
+<tr class="separator:a0ba8e3b9ed7402c7cc1ff2cc78db9c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Fenêtre principale de l'application SimulateurFerroviaire. </p>
@@ -215,6 +225,7 @@ Private Attributes</h2></td></tr>
     <tr><td class="paramname">className</td><td>Nom de la classe enregistrée par <a class="el" href="classApplication.html">Application</a>. </td></tr>
     <tr><td class="paramname">title</td><td>Titre affiché dans la barre de la fenêtre. </td></tr>
     <tr><td class="paramname">nCmdShow</td><td>Mode d'affichage (<code>SW_SHOW</code>, <code>SW_HIDE</code>, …). </td></tr>
+    <tr><td class="paramname">hmiLog</td><td><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> dédié à la couche IHM. </td></tr>
   </table>
   </dd>
 </dl>
@@ -247,7 +258,7 @@ Private Attributes</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a627d9feed19c3096079d91d6d38b9bf9_cgraph.svg" width="398" height="135"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a627d9feed19c3096079d91d6d38b9bf9_cgraph.svg" width="882" height="335"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -313,7 +324,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_ab85682874f3ab5dfa81f782f889d8556_cgraph.svg" width="2716" height="914"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_ab85682874f3ab5dfa81f782f889d8556_cgraph.svg" width="2418" height="839"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -375,6 +386,38 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_afbecf0f64f48c5c868168884bab52356_icgraph.svg" width="1186" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a71a94b472662a62e570443cff0e59ccd" name="a71a94b472662a62e570443cff0e59ccd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71a94b472662a62e570443cff0e59ccd">&#9670;&#160;</a></span>onDestroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::onDestroy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nettoie les ressources avant la destruction de la fenêtre (WM_DESTROY) </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a71a94b472662a62e570443cff0e59ccd_icgraph.svg" width="1170" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -570,6 +613,49 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a74866b6b18c52698bdb52f339ad80830" name="a74866b6b18c52698bdb52f339ad80830"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74866b6b18c52698bdb52f339ad80830">&#9670;&#160;</a></span>onSizeUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::onSizeUpdate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Quand la fenêtre est redimensionnée, ajuste les éléments graphiques en conséquence. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a74866b6b18c52698bdb52f339ad80830_cgraph.svg" width="462" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a74866b6b18c52698bdb52f339ad80830_icgraph.svg" width="1192" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="a332648d0a0caec8070b05bc27bb9a14b" name="a332648d0a0caec8070b05bc27bb9a14b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a332648d0a0caec8070b05bc27bb9a14b">&#9670;&#160;</a></span>windowProc()</h2>
 
@@ -631,7 +717,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a332648d0a0caec8070b05bc27bb9a14b_cgraph.svg" width="2656" height="914"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a332648d0a0caec8070b05bc27bb9a14b_cgraph.svg" width="2656" height="856"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -685,6 +771,29 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 <p>Handle de l'instance Win32 de l'application. </p>
+
+</div>
+</div>
+<a id="a4b42da6365cc3d1fe83527852bb26122" name="a4b42da6365cc3d1fe83527852bb26122"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b42da6365cc3d1fe83527852bb26122">&#9670;&#160;</a></span>m_hmiLogger</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogger.html">Logger</a> MainWindow::m_hmiLogger {&quot;HMI&quot;}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> dédié à la couche HMI, utilisé pour tracer les événements et erreurs liés à l'interface utilisateur. </p>
 
 </div>
 </div>
@@ -777,6 +886,29 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 <p>Titre de la fenêtre. </p>
+
+</div>
+</div>
+<a id="a0ba8e3b9ed7402c7cc1ff2cc78db9c1c" name="a0ba8e3b9ed7402c7cc1ff2cc78db9c1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ba8e3b9ed7402c7cc1ff2cc78db9c1c">&#9670;&#160;</a></span>m_webViewPanel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classWebViewPanel.html">WebViewPanel</a> MainWindow::m_webViewPanel {<a class="el" href="classMainWindow.html#a4b42da6365cc3d1fe83527852bb26122">m_hmiLogger</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Panneau WebView2 pour l'affichage de la carte ferroviaire. </p>
 
 </div>
 </div>

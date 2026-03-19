@@ -1,0 +1,7 @@
+<map id="MainWindow::onSizeUpdate" name="MainWindow::onSizeUpdate">
+<area shape="rect" id="Node000001" title="Quand la fenêtre est redimensionnée, ajuste les éléments graphiques en conséquence." alt="" coords="5,31,208,56"/>
+<area shape="rect" id="Node000002" href="$classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2" title="Vérifie si le WebView est prêt." alt="" coords="256,5,456,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,30,242,27,242,32,209,36"/>
+<area shape="rect" id="Node000003" href="$classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a" title="Redimensionne le WebView pour s&#39;adapter à la fenêtre." alt="" coords="274,55,438,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,50,261,55,260,61,208,56"/>
+</map>

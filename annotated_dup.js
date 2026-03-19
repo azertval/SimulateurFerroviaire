@@ -29,5 +29,6 @@ var annotated_dup =
     [ "TopologyExtractor", "classTopologyExtractor.html", "classTopologyExtractor" ],
     [ "TopologyExtractResult", "structTopologyExtractResult.html", "structTopologyExtractResult" ],
     [ "TopologyGraph", "classTopologyGraph.html", "classTopologyGraph" ],
-    [ "TopologySentinel", "structTopologySentinel.html", "structTopologySentinel" ]
+    [ "TopologySentinel", "structTopologySentinel.html", "structTopologySentinel" ],
+    [ "WebViewPanel", "classWebViewPanel.html", "classWebViewPanel" ]
 ];

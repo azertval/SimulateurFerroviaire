@@ -35,5 +35,6 @@ var hierarchy =
     [ "TopologyExtractor", "classTopologyExtractor.html", null ],
     [ "TopologyExtractResult", "structTopologyExtractResult.html", null ],
     [ "TopologyGraph", "classTopologyGraph.html", null ],
-    [ "TopologySentinel", "structTopologySentinel.html", null ]
+    [ "TopologySentinel", "structTopologySentinel.html", null ],
+    [ "WebViewPanel", "classWebViewPanel.html", null ]
 ];

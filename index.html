@@ -98,22 +98,50 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 Description</h1>
 <p>Reconstruction et visualisation d’un réseau ferroviaire depuis GeoJSON.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md3"></a>
-Pipeline</h1>
-<p>GeoJSON → <a class="el" href="classGeoParser.html">GeoParser</a> → Graph → Switch → Map</p>
-<hr  />
-<h1><a class="anchor" id="autotoc_md5"></a>
-Modules</h1>
+ <h1><a class="anchor" id="autotoc_md3"></a>
+Engine : Moteur de l’application, gestion des tâches, etc</h1>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Core : Coeur de l’application, gestion des données, logique métier, etc.</h2>
 <ul>
-<li><a class="el" href="classGeoParser.html">GeoParser</a></li>
-<li><a class="el" href="classTopologyGraph.html" title="Graphe planaire non-orienté utilisé pour la construction de la topologie ferroviaire.">TopologyGraph</a></li>
-<li><a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a></li>
-<li>Map (WebView2 + Leaflet)</li>
+<li><a class="el" href="classApplication.html" title="Représente le cycle de vie complet de l&#39;application Win32.">Application</a> : gestion de l’application, cycle de vie, etc.</li>
+<li><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> : gestion des logs, erreurs, etc.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md5"></a>
+HMI : Interface Homme-Machine, gestion de l’interface utilisateur, etc.</h2>
+<ul>
+<li><a class="el" href="classMainWindow.html" title="Fenêtre principale de l&#39;application SimulateurFerroviaire.">MainWindow</a> : fenêtre principale de l’application</li>
+<li><a class="el" href="classProgressBar.html">ProgressBar</a> : barre de progression pour les tâches longues</li>
+<li><a class="el" href="classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué.">WebViewPanel</a> : panneau pour afficher la carte interactive (Leaflet)</li>
+<li>Dialogs : gestion des dialogues (<a class="el" href="classAboutDialog.html" title="Boîte de dialogue modale &quot;À propos&quot; de l&#39;application.">AboutDialog</a>, <a class="el" href="classFileOpenDialog.html" title="Sélecteur de fichier GeoJSON (ou JSON) natif Win32.">FileOpenDialog</a>)</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md7"></a>
-Objectif</h1>
-<p>Simulateur ferroviaire interactif </p>
+ <h1><a class="anchor" id="autotoc_md7"></a>
+Modules : Block de fonctionnalités indépendante spécifiques, comme le parsing, la détection d’aiguillages, etc.</h1>
+<h2><a class="anchor" id="autotoc_md8"></a>
+GeoParser : analyse et extraction des données GeoJSON</h2>
+<ul>
+<li><a class="el" href="classGeoParsingTask.html" title="Tâche asynchrone encapsulant l&#39;exécution du GeoParser.">GeoParsingTask</a> : tâche de parsing asynchrone pour éviter de bloquer l’interface utilisateur</li>
+<li><a class="el" href="classGeoParser.html">GeoParser</a> : analyse et extraction des données GeoJSON<ul>
+<li><a class="el" href="classGeometryUtils.html" title="Fonctions géométriques statiques utilisées par le pipeline GeoParser.">GeometryUtils</a> : fonctions utilitaires pour le module <a class="el" href="classGeoParser.html">GeoParser</a> (par exemple, pour la validation des données, la conversion de coordonnées, etc.)</li>
+</ul>
+</li>
+<li><a class="el" href="classGraphBuilder.html" title="Charge un fichier GeoJSON et construit le TopologyGraph métrique.">GraphBuilder</a> : construction du graphe à partir des données extraites<ul>
+<li><a class="el" href="classTopologyGraph.html" title="Graphe planaire non-orienté utilisé pour la construction de la topologie ferroviaire.">TopologyGraph</a> : représentation du réseau ferroviaire sous forme de graphe topologique</li>
+<li><a class="el" href="classTopologyEdge.html" title="Arête non-orientée entre deux nœuds du graphe topologique.">TopologyEdge</a> : représentation d’une arête du graphe topologique (liaison entre deux nœuds)</li>
+</ul>
+</li>
+<li><a class="el" href="classTopologyExtractor.html" title="Extrait la topologie ferroviaire (Switch + Straight) depuis un TopologyGraph.">TopologyExtractor</a> : extraction de la topologie du réseau ferroviaire à partir des données extraites</li>
+<li><a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC).">SwitchOrientator</a> : orientation des aiguillages détectés pour une visualisation correcte sur la carte</li>
+<li><a class="el" href="classDoubleSwitchDetector.html">DoubleSwitchDetector</a> : détection des aiguillages doubles à partir du graphe topologique</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Models : classes représentant les models de données ferroviaires</h2>
+<ul>
+<li><a class="el" href="structCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire).">CoordinateXY</a> : classe représentant une coordonnée en X et Y</li>
+<li><a class="el" href="structLatLon.html" title="Coordonnée géographique WGS-84 exprimée en degrés décimaux.">LatLon</a> : classe représentant une coordonnée en latitude et longitude</li>
+<li><a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> : classe représentant un bloc droit du réseau ferroviaire</li>
+<li><a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> : classe représentant un bloc d’aiguillage du réseau ferroviaire </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

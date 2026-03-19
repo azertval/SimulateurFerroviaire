@@ -1,21 +1,21 @@
-<map id="SimulateurFerroviaire/Modules/GeoParser/Models/SwitchBlock.cpp" name="SimulateurFerroviaire/Modules/GeoParser/Models/SwitchBlock.cpp">
-<area shape="rect" id="Node000001" title="Implémentation du modèle d&#39;aiguillage SwitchBlock." alt="" coords="304,5,507,60"/>
-<area shape="rect" id="Node000002" href="$SwitchBlock_8h.html" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches (Switch)." alt="" coords="175,108,289,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="354,62,269,104,266,99,351,58"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="313,108,399,133"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="393,61,372,97,367,95,388,59"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="423,108,486,133"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="423,59,443,95,439,97,418,61"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="511,108,585,133"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="450,58,519,99,516,103,448,62"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,181,80,207"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="203,136,87,179,86,174,201,131"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="104,181,179,207"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="219,135,169,175,165,170,216,131"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="203,181,261,207"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="235,134,235,168,229,168,229,134"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="286,181,349,207"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="247,131,295,170,291,175,244,135"/>
-<area shape="rect" id="Node000007" href="$LatLon_8h.html" title="Représentation d&#39;une coordonnée géographique WGS&#45;84 (latitude, longitude)." alt="" coords="373,181,451,207"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="262,131,371,174,369,179,260,136"/>
+<map id="SimulateurFerroviaire/Modules/Models/SwitchBlock.cpp" name="SimulateurFerroviaire/Modules/Models/SwitchBlock.cpp">
+<area shape="rect" id="Node000001" title="Implémentation du modèle d&#39;aiguillage SwitchBlock." alt="" coords="284,5,527,45"/>
+<area shape="rect" id="Node000002" href="$SwitchBlock_8h.html" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches (Switch)." alt="" coords="175,93,289,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="365,48,271,90,269,85,363,43"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="313,93,399,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="396,47,373,83,368,80,391,44"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="423,93,486,119"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="420,44,442,80,438,83,415,47"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="511,93,585,119"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="441,43,516,84,514,89,438,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,80,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="203,121,87,164,86,159,201,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="104,167,179,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="219,121,169,160,165,156,216,117"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="203,167,261,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="235,119,235,153,229,153,229,119"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="286,167,349,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="247,117,295,156,291,160,244,121"/>
+<area shape="rect" id="Node000007" href="$LatLon_8h.html" title="Représentation d&#39;une coordonnée géographique WGS&#45;84 (latitude, longitude)." alt="" coords="373,167,451,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="262,116,371,159,369,164,260,121"/>
 </map>

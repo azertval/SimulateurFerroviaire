@@ -167,8 +167,8 @@
 <g id="Node000012" class="node">
 <title>Node12</title>
 <g id="a_Node000012"><a xlink:href="CoordinateXY_8h.html" target="_top" xlink:title="Représentation d&#39;une coordonnée plane en mètres (système métrique UTM).">
-<polygon fill="white" stroke="#666666" points="594.5,-19 457.5,-19 457.5,0 594.5,0 594.5,-19"/>
-<text text-anchor="middle" x="526" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">../Models/CoordinateXY.h</text>
+<polygon fill="white" stroke="#666666" points="630,-19 458,-19 458,0 630,0 630,-19"/>
+<text text-anchor="middle" x="544" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Modules/Models/CoordinateXY.h</text>
 </a>
 </g>
 </g>
@@ -176,8 +176,8 @@
 <g id="edge14_Node000001_Node000012" class="edge">
 <title>Node1&#45;&gt;Node12</title>
 <g id="a_edge14_Node000001_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M345.65,-109.92C372.45,-94.82 410.51,-73.47 444,-55 463.09,-44.47 484.77,-32.72 501.04,-23.93"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="502.8,-26.96 509.94,-19.13 499.48,-20.8 502.8,-26.96"/>
+<path fill="none" stroke="#63b8ff" d="M343.89,-109.96C370.53,-94.41 409.22,-72.43 444,-55 467.07,-43.44 493.8,-31.62 513.81,-23.07"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="515.22,-26.28 523.06,-19.16 512.48,-19.84 515.22,-26.28"/>
 </a>
 </g>
 </g>
@@ -257,8 +257,8 @@
 <g id="edge13_Node000009_Node000012" class="edge">
 <title>Node9&#45;&gt;Node12</title>
 <g id="a_edge13_Node000009_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M377.44,-54.98C407.28,-46.05 454.38,-31.94 487.53,-22.02"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="488.76,-25.3 497.34,-19.08 486.76,-18.6 488.76,-25.3"/>
+<path fill="none" stroke="#63b8ff" d="M380.33,-54.98C413.49,-45.97 466,-31.7 502.56,-21.76"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="503.69,-25.08 512.42,-19.08 501.86,-18.33 503.69,-25.08"/>
 </a>
 </g>
 </g>

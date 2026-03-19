@@ -1,0 +1,7 @@
+<map id="WebViewPanel::create" name="WebViewPanel::create">
+<area shape="rect" id="Node000001" title="Initialise WebView2 dans une fenêtre Win32 existante." alt="" coords="5,13,172,38"/>
+<area shape="rect" id="Node000002" href="$classWebViewPanel.html#a886fd07f1d23eec535d0b57215c6ce50" title="Initialise le runtime WebView2 et crée le controller et le webview." alt="" coords="220,5,401,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,23,207,23,207,28,172,28"/>
+<area shape="rect" id="Node000003" href="$classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a" title="Redimensionne le WebView pour s&#39;adapter à la fenêtre." alt="" coords="449,13,613,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="402,23,436,23,436,28,402,28"/>
+</map>

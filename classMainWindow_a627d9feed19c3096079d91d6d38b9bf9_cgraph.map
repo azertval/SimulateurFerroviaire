@@ -1,9 +1,20 @@
 <map id="MainWindow::create" name="MainWindow::create">
-<area shape="rect" id="Node000001" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar." alt="" coords="5,55,160,80"/>
-<area shape="rect" id="Node000002" href="$classProgressBar.html#a608e19274cfd76f8874e4ef6e2dcb396" title="Crée la ProgressBar dans une fenêtre parent." alt="" coords="225,5,375,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,52,229,31,231,36,140,57"/>
-<area shape="rect" id="Node000003" href="$classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd" title="Met à jour la progression." alt="" coords="208,55,392,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,65,194,65,194,70,160,70"/>
-<area shape="rect" id="Node000004" href="$classProgressBar.html#ac9fbcf04d7d4e8c5b3e332efcfc0d34c" title="Show or hide the ProgressBar." alt="" coords="229,104,371,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="140,77,231,98,229,104,139,83"/>
+<area shape="rect" id="Node000001" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar." alt="" coords="5,156,160,181"/>
+<area shape="rect" id="Node000002" href="$classProgressBar.html#a608e19274cfd76f8874e4ef6e2dcb396" title="Crée la ProgressBar dans une fenêtre parent." alt="" coords="247,5,396,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,154,135,98,169,66,207,40,232,29,234,34,209,44,172,70,139,102,95,158"/>
+<area shape="rect" id="Node000003" href="$classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1" title="Initialise WebView2 dans une fenêtre Win32 existante." alt="" coords="238,55,405,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="102,154,149,126,207,97,252,81,254,86,209,102,151,130,105,158"/>
+<area shape="rect" id="Node000005" href="$classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a" title="Redimensionne le WebView pour s&#39;adapter à la fenêtre." alt="" coords="712,77,876,103"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="143,153,208,142,474,111,698,93,699,99,475,117,208,147,144,159"/>
+<area shape="rect" id="Node000006" href="$classWebViewPanel.html#a17fdacaf19c8e0830ae1ea7ee1632993" title="Navigue vers une URL." alt="" coords="230,156,413,181"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="161,166,216,166,216,171,161,171"/>
+<area shape="rect" id="Node000007" href="$classWebViewPanel.html#a118dd6f6115c00ad0d01b6c4238e5caf" title="Définit un callback à appeler une fois l&#39;initialisation terminée." alt="" coords="208,205,435,231"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="145,179,246,200,245,205,144,184"/>
+<area shape="rect" id="Node000008" href="$classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd" title="Met à jour la progression." alt="" coords="229,255,413,280"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="103,179,149,210,209,241,231,248,230,254,207,246,147,215,100,184"/>
+<area shape="rect" id="Node000009" href="$classProgressBar.html#ac9fbcf04d7d4e8c5b3e332efcfc0d34c" title="Show or hide the ProgressBar." alt="" coords="250,304,393,329"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="95,180,140,234,172,265,209,290,238,302,236,307,207,295,169,269,136,238,91,183"/>
+<area shape="rect" id="Node000004" href="$classWebViewPanel.html#a886fd07f1d23eec535d0b57215c6ce50" title="Initialise le runtime WebView2 et crée le controller et le webview." alt="" coords="483,41,664,81"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="405,62,469,61,469,66,405,68"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="665,70,699,75,698,80,664,75"/>
 </map>

@@ -1,0 +1,5 @@
+<map id="WebViewPanel::~WebViewPanel" name="WebViewPanel::~WebViewPanel">
+<area shape="rect" id="Node000001" title="Destructeur — ferme proprement le WebView et libère les ressources associées." alt="" coords="5,5,236,31"/>
+<area shape="rect" id="Node000002" href="$classWebViewPanel.html#a15693211fba63be8ee8ab5a13ebf68c8" title="Ferme le WebView et libère les ressources associées." alt="" coords="284,5,443,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,15,270,15,270,21,236,21"/>
+</map>

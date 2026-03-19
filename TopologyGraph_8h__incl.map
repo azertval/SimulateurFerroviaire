@@ -16,8 +16,8 @@
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="414,61,400,109,383,169,378,167,395,107,409,60"/>
 <area shape="rect" id="Node000009" href="$TopologyEdge_8h.html" title="Arête non&#45;orientée du graphe planaire de topologie ferroviaire." alt="" coords="409,108,533,133"/>
 <area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="438,59,459,95,454,97,433,61"/>
-<area shape="rect" id="Node000012" href="$CoordinateXY_8h.html" title="Représentation d&#39;une coordonnée plane en mètres (système métrique UTM)." alt="" coords="615,181,798,207"/>
-<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="468,58,599,131,675,172,672,177,596,136,465,62"/>
+<area shape="rect" id="Node000012" href="$CoordinateXY_8h.html" title="Représentation d&#39;une coordonnée plane en mètres (système métrique UTM)." alt="" coords="616,181,845,207"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="465,58,599,131,692,173,689,178,596,136,463,62"/>
 <area shape="rect" id="Node000013" href="$GeoParserEnums_8h.html" title="Constantes nommées et énumérations du pipeline ferroviaire GeoParser." alt="" coords="841,108,1045,133"/>
 <area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="518,47,860,103,859,108,517,53"/>
 <area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="442,136,332,179,330,174,440,131"/>
@@ -26,5 +26,5 @@
 <area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="487,131,536,170,533,175,483,135"/>
 <area shape="rect" id="Node000011" title=" " alt="" coords="429,181,504,207"/>
 <area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="473,134,471,168,465,168,467,134"/>
-<area shape="poly" id="edge13_Node000009_Node000012" title=" " alt="" coords="509,131,656,175,655,180,508,136"/>
+<area shape="poly" id="edge13_Node000009_Node000012" title=" " alt="" coords="513,131,676,175,675,180,512,136"/>
 </map>

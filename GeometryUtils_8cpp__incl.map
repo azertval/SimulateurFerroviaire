@@ -13,10 +13,10 @@
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="210,135,158,175,154,171,207,131"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="192,181,255,207"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="226,134,226,168,221,168,221,134"/>
-<area shape="rect" id="Node000006" href="$LatLon_8h.html" title="Représentation d&#39;une coordonnée géographique WGS&#45;84 (latitude, longitude)." alt="" coords="279,181,419,207"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="245,131,318,172,315,177,242,136"/>
-<area shape="rect" id="Node000007" href="$CoordinateXY_8h.html" title="Représentation d&#39;une coordonnée plane en mètres (système métrique UTM)." alt="" coords="443,181,625,207"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="274,131,471,176,470,181,273,136"/>
-<area shape="rect" id="Node000008" href="$GeoParserEnums_8h.html" title="Constantes nommées et énumérations du pipeline ferroviaire GeoParser." alt="" coords="649,181,853,207"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="289,129,301,131,649,177,648,182,300,136,288,134"/>
+<area shape="rect" id="Node000006" href="$LatLon_8h.html" title="Représentation d&#39;une coordonnée géographique WGS&#45;84 (latitude, longitude)." alt="" coords="279,181,466,207"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="248,131,337,173,335,178,246,136"/>
+<area shape="rect" id="Node000007" href="$CoordinateXY_8h.html" title="Représentation d&#39;une coordonnée plane en mètres (système métrique UTM)." alt="" coords="490,181,719,207"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="285,131,530,176,529,181,284,136"/>
+<area shape="rect" id="Node000008" href="$GeoParserEnums_8h.html" title="Constantes nommées et énumérations du pipeline ferroviaire GeoParser." alt="" coords="744,181,948,207"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="289,129,301,131,731,178,730,183,300,136,288,134"/>
 </map>
