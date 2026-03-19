@@ -27,13 +27,11 @@ digraph "GraphBuilder::build"
   Node9 -> Node11 [id="edge10_Node000009_Node000011",color="steelblue1",style="solid",tooltip=" "];
   Node11 [id="Node000011",label="TopologyGraph::uniteNodeSets",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_topology_graph.html#a37b8517d94af461d5d7eb42e216a38e9",tooltip=" "];
   Node11 -> Node10 [id="edge11_Node000011_Node000010",color="steelblue1",style="solid",tooltip=" "];
-  Node11 -> Node12 [id="edge12_Node000011_Node000012",color="steelblue1",style="solid",tooltip=" "];
-  Node12 [id="Node000012",label="std::swap",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespacestd.html#a4874fd00297ff5aef2872379cb521783",tooltip="exchanges the values of two JSON objects"];
-  Node2 -> Node8 [id="edge13_Node000002_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node2 -> Node8 [id="edge12_Node000002_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node12 [id="edge13_Node000001_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="GraphBuilder::computeBoundary\lNodeIds",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_graph_builder.html#aaa371c7490baaad1002240d7dc88da9c",tooltip="Calcule et retourne l'ensemble des nœuds frontières du graphe."];
   Node1 -> Node13 [id="edge14_Node000001_Node000013",color="steelblue1",style="solid",tooltip=" "];
-  Node13 [id="Node000013",label="GraphBuilder::computeBoundary\lNodeIds",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_graph_builder.html#aaa371c7490baaad1002240d7dc88da9c",tooltip="Calcule et retourne l'ensemble des nœuds frontières du graphe."];
-  Node1 -> Node14 [id="edge15_Node000001_Node000014",color="steelblue1",style="solid",tooltip=" "];
-  Node14 [id="Node000014",label="GraphBuilder::loadGeoJsonFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_graph_builder.html#aa6791cab236c871f53d8e7017875f7bc",tooltip="Phase 1 — Lit le GeoJSON et extrait les polylignes brutes WGS-84."];
-  Node14 -> Node15 [id="edge16_Node000014_Node000015",color="steelblue1",style="solid",tooltip=" "];
-  Node15 [id="Node000015",label="GeometryUtils::estimateUtmZone",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#a5614ece2f3da0feba6ca96ae0e9c3b0a",tooltip="Estime le numéro de zone UTM (1–60) depuis la longitude centre."];
+  Node13 [id="Node000013",label="GraphBuilder::loadGeoJsonFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_graph_builder.html#aa6791cab236c871f53d8e7017875f7bc",tooltip="Phase 1 — Lit le GeoJSON et extrait les polylignes brutes WGS-84."];
+  Node13 -> Node14 [id="edge15_Node000013_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="GeometryUtils::estimateUtmZone",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_geometry_utils.html#a5614ece2f3da0feba6ca96ae0e9c3b0a",tooltip="Estime le numéro de zone UTM (1–60) depuis la longitude centre."];
 }

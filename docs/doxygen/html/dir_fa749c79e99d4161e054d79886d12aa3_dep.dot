@@ -14,6 +14,6 @@ digraph "SimulateurFerroviaire/Engine/HMI"
   }
   }
   dir_387a2147fe1fbdf0efef36368214e4d3 [label="Modules", fillcolor="#edf0f7", color="red", style="filled,dashed", URL="dir_387a2147fe1fbdf0efef36368214e4d3.html",tooltip=""];
-  dir_fa749c79e99d4161e054d79886d12aa3->dir_387a2147fe1fbdf0efef36368214e4d3 [headlabel="1", labeldistance=1.5 headhref="dir_000012_000018.html" href="dir_000012_000018.html" color="steelblue1" fontcolor="steelblue1"];
-  dir_fa749c79e99d4161e054d79886d12aa3->dir_4c1c7a346f82d27fa8dc7bdfc7d4df65 [headlabel="2", labeldistance=1.5 headhref="dir_000012_000004.html" href="dir_000012_000004.html" color="steelblue1" fontcolor="steelblue1"];
+  dir_fa749c79e99d4161e054d79886d12aa3->dir_387a2147fe1fbdf0efef36368214e4d3 [headlabel="1", labeldistance=1.5 headhref="dir_000007_000010.html" href="dir_000007_000010.html" color="steelblue1" fontcolor="steelblue1"];
+  dir_fa749c79e99d4161e054d79886d12aa3->dir_4c1c7a346f82d27fa8dc7bdfc7d4df65 [headlabel="2", labeldistance=1.5 headhref="dir_000007_000001.html" href="dir_000007_000001.html" color="steelblue1" fontcolor="steelblue1"];
 }

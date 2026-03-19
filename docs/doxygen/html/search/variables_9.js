@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['junction_5fminimum_0',['JUNCTION_MINIMUM',['../struct_node_degree_thresholds.html#a90c68fd6df24d921d2eb0b13fc5034d8',1,'NodeDegreeThresholds']]],
-  ['junctioncoordinate_1',['junctionCoordinate',['../class_switch_block.html#adc2d20ac6d2043f9d6e8f30df0e9a7e5',1,'SwitchBlock']]]
+  ['latitude_0',['latitude',['../struct_lat_lon.html#a1c898c64a3b2f7623fe8456a87052bf0',1,'LatLon']]],
+  ['lengthmeters_1',['lengthMeters',['../class_topology_edge.html#a41c94778c4ee6801728c74bc47d623c8',1,'TopologyEdge::lengthMeters'],['../class_straight_block.html#aa169e5936f6935916fd5beb51c176a2c',1,'StraightBlock::lengthMeters']]],
+  ['longitude_2',['longitude',['../struct_lat_lon.html#a1693f42fc365fc1fd5783d8aa7ff1db8',1,'LatLon']]]
 ];

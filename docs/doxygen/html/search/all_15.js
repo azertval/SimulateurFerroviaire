@@ -1,28 +1,4 @@
 var searchData=
 [
-  ['ubjson_0',['ubjson',['../namespacedetail.html#a0ab3b338d0eadc6890b72cccef0ea04fa4537f20910e85437f6d07701864084e8',1,'detail']]],
-  ['ubjson_5fprefix_1',['ubjson_prefix',['../classdetail_1_1binary__writer.html#ab4f174660b2ad22a9ac900f9e7cce278',1,'detail::binary_writer']]],
-  ['uncvref_5ft_2',['uncvref_t',['../namespacedetail.html#ac6948661b53b8db87e284313fe7415be',1,'detail']]],
-  ['undumped_5fchars_3',['undumped_chars',['../classdetail_1_1serializer.html#a44a05646a5ac7caec54f97ba17cb893b',1,'detail::serializer']]],
-  ['unescape_4',['unescape',['../namespacedetail.html#aa45018148d8569ca6f4d10a983221df1',1,'detail']]],
-  ['unexpect_5feof_5',['unexpect_eof',['../classdetail_1_1binary__reader.html#a86d19cc231aae395395030fd8ae19fd5',1,'detail::binary_reader']]],
-  ['unflatten_6',['unflatten',['../classjson__pointer.html#aa12eb391d80f7d3d9e8be26aaac45c9e',1,'json_pointer::unflatten()'],['../classbasic__json.html#abdb57996898f80522e9abbb5e1e61e46',1,'basic_json::unflatten()']]],
-  ['unget_7',['unget',['../classdetail_1_1lexer.html#af15c2d2e743728d99bb6d749a03e5555',1,'detail::lexer']]],
-  ['uninitialized_8',['uninitialized',['../classdetail_1_1lexer__base.html#add65fa7a85aa15052963809fbcc04540a42dd1a73d072bb6bf3f494f22b15db8e',1,'detail::lexer_base']]],
-  ['unitenodesets_9',['uniteNodeSets',['../class_topology_graph.html#a37b8517d94af461d5d7eb42e216a38e9',1,'TopologyGraph']]],
-  ['unknown_5fsize_10',['unknown_size',['../namespacedetail.html#a93d9378fbe8786072ec07745cbb4cc0b',1,'detail']]],
-  ['unsatisfied_20requirements_11',['Unsatisfied Requirements',['../requirements.html#missing_satisfies',1,'']]],
-  ['unsignedanglebetweenvectors_12',['unsignedAngleBetweenVectors',['../class_geometry_utils.html#aa07ef087c8f85eb14e28f69875ecf41f',1,'GeometryUtils']]],
-  ['unverified_20requirements_13',['Unverified Requirements',['../requirements.html#missing_verifies',1,'']]],
-  ['update_14',['update',['../classbasic__json.html#a3819f393e82396782ccc22785575b01d',1,'basic_json::update(const_reference j, bool merge_objects=false)'],['../classbasic__json.html#a4ea2b8cef5e4aba5b92d14e6ebe25936',1,'basic_json::update(const_iterator first, const_iterator last, bool merge_objects=false)']]],
-  ['utf8_5faccept_15',['UTF8_ACCEPT',['../classdetail_1_1serializer.html#ae438db375240b68486babdd41798d0e7',1,'detail::serializer']]],
-  ['utf8_5fbytes_16',['utf8_bytes',['../classdetail_1_1wide__string__input__adapter.html#a378353ca4f8fa6ce681863db1a2ecd30',1,'detail::wide_string_input_adapter']]],
-  ['utf8_5fbytes_5ffilled_17',['utf8_bytes_filled',['../classdetail_1_1wide__string__input__adapter.html#a529076d03d62e56ec1ec12fe2da1e0c9',1,'detail::wide_string_input_adapter']]],
-  ['utf8_5fbytes_5findex_18',['utf8_bytes_index',['../classdetail_1_1wide__string__input__adapter.html#af234031ee14448d536022847ab6bc885',1,'detail::wide_string_input_adapter']]],
-  ['utf8_5freject_19',['UTF8_REJECT',['../classdetail_1_1serializer.html#a5d2ff388d1b974d55b4032a6226d5dbe',1,'detail::serializer']]],
-  ['utm_5ffalse_5feasting_20',['UTM_FALSE_EASTING',['../struct_geographic_projection.html#a3bfb30783df19255c7f614b26088c0f4',1,'GeographicProjection::UTM_FALSE_EASTING'],['../class_geometry_utils.html#a7bdc5d3c45630a244e7f82f53afa19a5',1,'GeometryUtils::UTM_FALSE_EASTING']]],
-  ['utm_5ffalse_5fnorthing_5fsouth_21',['UTM_FALSE_NORTHING_SOUTH',['../struct_geographic_projection.html#a170119ead4ab619947f7cda1dc67521e',1,'GeographicProjection::UTM_FALSE_NORTHING_SOUTH'],['../class_geometry_utils.html#a60a1eaeaaa2ea664956e255502fc7e7d',1,'GeometryUtils::UTM_FALSE_NORTHING_SOUTH']]],
-  ['utm_5fscale_5ffactor_22',['UTM_SCALE_FACTOR',['../struct_geographic_projection.html#a213147daeed5a4d6fe82e982bea59fed',1,'GeographicProjection::UTM_SCALE_FACTOR'],['../class_geometry_utils.html#acff318b1df11d2b382346ce48c1b7abb',1,'GeometryUtils::UTM_SCALE_FACTOR']]],
-  ['utmcentralmeridiandegrees_23',['utmCentralMeridianDegrees',['../class_geometry_utils.html#a0a57b43055d32f595a7c84dbd7d098e3',1,'GeometryUtils']]],
-  ['utmzonenumber_24',['utmZoneNumber',['../struct_graph_build_result.html#a97599d471cf5311b3a4b8dcdad7ce1dc',1,'GraphBuildResult']]]
+  ['x_0',['x',['../struct_topology_graph_1_1_snapped_node_key.html#ac2cd319d717ae773288ce49bb039ee1d',1,'TopologyGraph::SnappedNodeKey::x'],['../struct_coordinate_x_y.html#a0a0eab44df93175275a4e53936dad462',1,'CoordinateXY::x']]]
 ];

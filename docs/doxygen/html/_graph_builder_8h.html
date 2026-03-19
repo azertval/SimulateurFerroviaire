@@ -130,7 +130,7 @@ Classes</h2></td></tr>
 <p>Phase 1 (loadGeoJsonFile) : Lit le fichier GeoJSON via la bibliothèque nlohmann/json. Normalise toutes les géométries en LineStrings simples (éclate les MultiLineString). Estime la zone UTM optimale pour la zone couverte.</p>
 <p>Phase 2 (buildTopologyGraph) : Construit le <a class="el" href="class_topology_graph.html" title="Graphe planaire non-orienté utilisé pour la construction de la topologie ferroviaire.">TopologyGraph</a> : une arête par paire de points consécutifs. Accroche toutes les coordonnées sur la grille de snap. Fusionne les nœuds proches via <a class="el" href="class_topology_graph.html#a27cb3f78740d0cf268f2ea5f3bace6d7" title="Fusionne les nœuds séparés de moins de toleranceMeters.">TopologyGraph::mergeCloseNodes()</a>.</p>
 <p>Résultat retourné par build() : <a class="el" href="struct_graph_build_result.html" title="Données de résultat de la Phase 1+2.">GraphBuildResult</a> contenant le graphe, la zone UTM, et les nœuds frontières.</p>
-<p>Dépendance externe : <a class="el" href="json_8hpp.html">nlohmann/json.hpp</a> — à placer dans <a class="el" href="json_8hpp.html">External/nlohmann/json.hpp</a> Télécharger : <a href="https://github.com/nlohmann/json/releases">https://github.com/nlohmann/json/releases</a> (single header) </p>
+<p>Dépendance externe : nlohmann/json.hpp — à placer dans External/nlohmann/json.hpp Télécharger : <a href="https://github.com/nlohmann/json/releases">https://github.com/nlohmann/json/releases</a> (single header) </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">

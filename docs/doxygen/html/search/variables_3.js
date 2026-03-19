@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['callback_0',['callback',['../classdetail_1_1json__sax__dom__callback__parser.html#a5ae2a61a6608491c32c0a73924c39f6a',1,'detail::json_sax_dom_callback_parser::callback'],['../classdetail_1_1parser.html#ad8f31cd8002b1c56177afcaa9726a9cf',1,'detail::parser::callback']]],
-  ['chars_5fread_1',['chars_read',['../classdetail_1_1binary__reader.html#a11a36d903606a3c05a60b0b14d10d4d5',1,'detail::binary_reader']]],
-  ['chars_5fread_5fcurrent_5fline_2',['chars_read_current_line',['../structdetail_1_1position__t.html#a6548d584bd03d1d47bfcd7cf8b1fb0c6',1,'detail::position_t']]],
-  ['chars_5fread_5ftotal_3',['chars_read_total',['../structdetail_1_1position__t.html#ac4d220d61ce61eeffbea40985727a3b0',1,'detail::position_t']]],
-  ['container_4',['container',['../classdetail_1_1iteration__proxy.html#a0ef8ad58f5be05e31f1af50092cf94c8',1,'detail::iteration_proxy']]],
-  ['coordinates_5',['coordinates',['../class_straight_block.html#ae53ff9455e74374bd6abb4e3221f7880',1,'StraightBlock']]],
-  ['crossover_5fshared_5fbranch_5fcount_6',['CROSSOVER_SHARED_BRANCH_COUNT',['../struct_node_degree_thresholds.html#a66fe23230337d8a375491cbd4243e95d',1,'NodeDegreeThresholds']]],
-  ['current_7',['current',['../classdetail_1_1binary__reader.html#ab69762a9129c44e043df8cf78bba0e14',1,'detail::binary_reader::current'],['../classdetail_1_1iterator__input__adapter.html#aabbd29e91a451bd3e950d909590c1e27',1,'detail::iterator_input_adapter::current'],['../classdetail_1_1lexer.html#a3b20c55a8266c1b4e43b396f00427e61',1,'detail::lexer::current']]]
+  ['degenerate_5fsegment_5fmeters_0',['DEGENERATE_SEGMENT_METERS',['../struct_geometric_tolerances.html#ac648184f176bac87f4894d107089f32c',1,'GeometricTolerances']]],
+  ['degrees_5fto_5fradians_1',['DEGREES_TO_RADIANS',['../class_geometry_utils.html#a4669d078d612baec92a582f2995f587b',1,'GeometryUtils']]],
+  ['deviationbranchid_2',['deviationBranchId',['../class_switch_block.html#a61b95f3cde39be57ae39b68281c47b41',1,'SwitchBlock']]],
+  ['double_5flink_5fmax_5fmeters_3',['DOUBLE_LINK_MAX_METERS',['../struct_parser_default_values.html#a8ca771fe2ea1bf9fb173af902e0b1a31',1,'ParserDefaultValues']]],
+  ['double_5fswitch_5fminimum_5fcluster_4',['DOUBLE_SWITCH_MINIMUM_CLUSTER',['../struct_node_degree_thresholds.html#a244fd32eff82e1249c7eed1d9f1cae64',1,'NodeDegreeThresholds']]],
+  ['doublelinkmidcoordinate_5',['doubleLinkMidCoordinate',['../class_switch_block.html#a40a1724c98ee80ba250166d449273c25',1,'SwitchBlock']]]
 ];

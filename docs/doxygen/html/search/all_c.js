@@ -1,14 +1,11 @@
 var searchData=
 [
-  ['k_0',['k',['../structdetail_1_1dtoa__impl_1_1cached__power.html#ae9c889d5fc4427f633ec23044e986755',1,'detail::dtoa_impl::cached_power']]],
-  ['kalpha_1',['kAlpha',['../namespacedetail_1_1dtoa__impl.html#a95c569b7627a9372686f1f77d73e8660',1,'detail::dtoa_impl']]],
-  ['keep_5fstack_2',['keep_stack',['../classdetail_1_1json__sax__dom__callback__parser.html#af86f268bb1ad50a3437e113f57e8eeb8',1,'detail::json_sax_dom_callback_parser']]],
-  ['key_3',['key',['../structjson__sax.html#a3355ecd7e3e9806dcb80b2f8842b82ce',1,'json_sax::key()'],['../classdetail_1_1json__sax__dom__parser.html#a6a8ecf215c3259c980ba025c42e56268',1,'detail::json_sax_dom_parser::key()'],['../classdetail_1_1json__sax__dom__callback__parser.html#a88845dd64b87c9e6f38a7ef8653d9237',1,'detail::json_sax_dom_callback_parser::key()'],['../classdetail_1_1json__sax__acceptor.html#ac5bd1fdedf4292062a554c96b0a857bd',1,'detail::json_sax_acceptor::key()'],['../classdetail_1_1iter__impl.html#a4064b295014b32f3cabd86f94264fc74',1,'detail::iter_impl::key()'],['../classdetail_1_1iteration__proxy__value.html#ad12633bc0d3ac7a651381b174a7914ee',1,'detail::iteration_proxy_value::key()'],['../classdetail_1_1json__reverse__iterator.html#a68d4f0c3e978afdc7509ee88e2f7b996',1,'detail::json_reverse_iterator::key()'],['../namespacedetail.html#a47b1bb0bbd3596589ed9187059c312efa3c6e0b8a9c15224a8228b9a98ca1531d',1,'detail::key']]],
-  ['key_5fcompare_4',['key_compare',['../structordered__map.html#a4bbf207217197f997a9f3da8f149368b',1,'ordered_map']]],
-  ['key_5ffunction_5ft_5',['key_function_t',['../namespacedetail.html#a42bac64306cff2ee4d713852d410238c',1,'detail']]],
-  ['key_5fkeep_5fstack_6',['key_keep_stack',['../classdetail_1_1json__sax__dom__callback__parser.html#a84b2eab2715a47c979944899f73d7015',1,'detail::json_sax_dom_callback_parser']]],
-  ['key_5ftype_7',['key_type',['../structordered__map.html#abe63d891859a3d0b156933d5b44ac85f',1,'ordered_map']]],
-  ['key_5ftype_5ft_8',['key_type_t',['../namespacedetail.html#ae16bad596b69e14a8db0e0c4924a558b',1,'detail']]],
-  ['kgamma_9',['kGamma',['../namespacedetail_1_1dtoa__impl.html#ae152a095d2dd1a6dd41ef8ad39c26e19',1,'detail::dtoa_impl']]],
-  ['kprecision_10',['kPrecision',['../structdetail_1_1dtoa__impl_1_1diyfp.html#a80cf8cc846a7bf96362d3b11886994e3',1,'detail::dtoa_impl::diyfp']]]
+  ['neighbourids_0',['neighbourIds',['../class_straight_block.html#ace5250940af85ae74685da68fc5ee4a9',1,'StraightBlock']]],
+  ['nextswitchid_1',['nextSwitchId',['../class_switch_block.html#ace5b40883c9d7a3332769b1a84f73f28',1,'SwitchBlock']]],
+  ['nlohmann_5fjson_5favailable_2',['NLOHMANN_JSON_AVAILABLE',['../_graph_builder_8cpp.html#a7208a7c4d7ebcfa34966442fb8ce0cb2',1,'GraphBuilder.cpp']]],
+  ['nodedegreethresholds_3',['NodeDegreeThresholds',['../struct_node_degree_thresholds.html',1,'']]],
+  ['nodeidtoswitchid_4',['nodeIdToSwitchId',['../struct_topology_extract_result.html#a78a0bc107f0a7aabe7f1cdffbf7f906b',1,'TopologyExtractResult']]],
+  ['nodepositions_5',['nodePositions',['../class_topology_graph.html#a2254224df52b78e67993556e46c04bb6',1,'TopologyGraph']]],
+  ['nominmax_6',['NOMINMAX',['../framework_8h.html#a9f918755b601cf4bffca775992e6fb90',1,'framework.h']]],
+  ['normalbranchid_7',['normalBranchId',['../class_switch_block.html#aea93b851aa44fe28738f3a406c2f778a',1,'SwitchBlock']]]
 ];

@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['oa_0',['oa',['../classdetail_1_1binary__writer.html#ae237dddfb00736854f4ceaee2164156b',1,'detail::binary_writer::oa'],['../classdetail_1_1output__adapter.html#a33e6e5d3527ecaf1a89ce213bbd3a367',1,'detail::output_adapter::oa']]],
-  ['object_5felement_1',['object_element',['../classdetail_1_1json__sax__dom__parser.html#a577d27768125cbc32147a9f749ac3596',1,'detail::json_sax_dom_parser::object_element'],['../classdetail_1_1json__sax__dom__callback__parser.html#a62da9b31a560a257c47a321e3c484c7c',1,'detail::json_sax_dom_callback_parser::object_element']]],
-  ['object_5fiterator_2',['object_iterator',['../structdetail_1_1internal__iterator.html#acf787101c4778e750cfdb0f44066a6ef',1,'detail::internal_iterator']]],
-  ['other_5fiter_5fimpl_3',['other_iter_impl',['../classdetail_1_1iter__impl.html#a760a53c5c654183b0ca88ff3fd46de1f',1,'detail::iter_impl']]],
-  ['owned_5fvalue_4',['owned_value',['../classdetail_1_1json__ref.html#a00088e23156bd4eca5b65419cadfb5ff',1,'detail::json_ref']]]
+  ['snap_5fgrid_5fmeters_0',['SNAP_GRID_METERS',['../struct_parser_default_values.html#ae191373daa13e7bc2e91e1676f574578',1,'ParserDefaultValues']]],
+  ['startnodeindex_1',['startNodeIndex',['../class_topology_edge.html#ac488605fe1d85cfaae05f1286ddb9213',1,'TopologyEdge']]],
+  ['straightendpointnodeids_2',['straightEndpointNodeIds',['../struct_topology_extract_result.html#af2c9a2f3b163fc162fd9048c02977581',1,'TopologyExtractResult']]],
+  ['straights_3',['straights',['../class_geo_parser.html#a99b83036288088d5ee88056d4e982728',1,'GeoParser::straights'],['../struct_topology_extract_result.html#a29d9d41cb7b938d6d33d4d4c27e54434',1,'TopologyExtractResult::straights']]],
+  ['switch_5fport_5fcount_4',['SWITCH_PORT_COUNT',['../struct_node_degree_thresholds.html#ac8b540678265fcbb6707ef93483a4890',1,'NodeDegreeThresholds']]],
+  ['switches_5',['switches',['../class_geo_parser.html#ab34819a75fdd3175b201d6ccafa1ad8e',1,'GeoParser::switches'],['../struct_topology_extract_result.html#a70e6e151e15774a6fd0c41db7a29233f',1,'TopologyExtractResult::switches']]],
+  ['switchidtonodeid_6',['switchIdToNodeId',['../struct_topology_extract_result.html#a09741b90708bf42276ba60107ae10aee',1,'TopologyExtractResult']]]
 ];

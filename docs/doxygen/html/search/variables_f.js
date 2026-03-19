@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['parent_0',['parent',['../classjson__pointer.html#a1fa1e6f1f590e0e5a22d452b2ff3b2c7',1,'json_pointer']]],
-  ['pass_5fthrough_1',['PASS_THROUGH',['../struct_node_degree_thresholds.html#a4c0d965e0db81f01f6f2668511588b6f',1,'NodeDegreeThresholds']]],
-  ['pi_2',['PI',['../class_geometry_utils.html#ac6b38319d2e8ef20763a2010dc18ddae',1,'GeometryUtils']]],
-  ['plus_3',['plus',['../structdetail_1_1dtoa__impl_1_1boundaries.html#ae2d4dbee09b23c49dac2980e8f455d08',1,'detail::dtoa_impl::boundaries']]],
-  ['position_4',['position',['../classdetail_1_1lexer.html#ad605226f572dd81c3f092650ee745225',1,'detail::lexer']]],
-  ['prevswitchid_5',['prevSwitchId',['../class_switch_block.html#a4de843d021a806f62d9657e1c1dddd23',1,'SwitchBlock']]],
-  ['primitive_5fiterator_6',['primitive_iterator',['../structdetail_1_1internal__iterator.html#a8bb8034d2d35fb129e0dd742ce024e44',1,'detail::internal_iterator']]]
+  ['terminus_0',['TERMINUS',['../struct_node_degree_thresholds.html#ad60b04e2144d28a060486328803f1963',1,'NodeDegreeThresholds']]],
+  ['tipondeviation_1',['tipOnDeviation',['../class_switch_block.html#a1a213b08e51eb1e6a966a374fe81112e',1,'SwitchBlock']]],
+  ['tiponnormal_2',['tipOnNormal',['../class_switch_block.html#ab5b60c35384cfd57e31d38348542292e',1,'SwitchBlock']]],
+  ['tiponroot_3',['tipOnRoot',['../class_switch_block.html#a4088b7968c9cf28b1e3060905082b943',1,'SwitchBlock']]],
+  ['topologygraph_4',['topologyGraph',['../struct_graph_build_result.html#a988e927be6e037464638d72873949207',1,'GraphBuildResult']]],
+  ['totallengthmeters_5',['totalLengthMeters',['../class_switch_block.html#a4c60bbaf4e7fac812de36107bb5d77ec',1,'SwitchBlock']]]
 ];

@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['last_5ftoken_0',['last_token',['../classdetail_1_1parser.html#a654297c0dc3afa4674f41d729d97bcc8',1,'detail::parser']]],
-  ['latitude_1',['latitude',['../struct_lat_lon.html#a1c898c64a3b2f7623fe8456a87052bf0',1,'LatLon']]],
-  ['lengthmeters_2',['lengthMeters',['../class_topology_edge.html#a41c94778c4ee6801728c74bc47d623c8',1,'TopologyEdge::lengthMeters'],['../class_straight_block.html#aa169e5936f6935916fd5beb51c176a2c',1,'StraightBlock::lengthMeters']]],
-  ['lines_5fread_3',['lines_read',['../structdetail_1_1position__t.html#a9ec1ac6600d1364f4d1c9f67de6a670b',1,'detail::position_t']]],
-  ['loc_4',['loc',['../classdetail_1_1serializer.html#a80ca90565eec446d377ab65a023297ab',1,'detail::serializer']]],
-  ['longitude_5',['longitude',['../struct_lat_lon.html#a1693f42fc365fc1fd5783d8aa7ff1db8',1,'LatLon']]]
+  ['neighbourids_0',['neighbourIds',['../class_straight_block.html#ace5250940af85ae74685da68fc5ee4a9',1,'StraightBlock']]],
+  ['nextswitchid_1',['nextSwitchId',['../class_switch_block.html#ace5b40883c9d7a3332769b1a84f73f28',1,'SwitchBlock']]],
+  ['nodeidtoswitchid_2',['nodeIdToSwitchId',['../struct_topology_extract_result.html#a78a0bc107f0a7aabe7f1cdffbf7f906b',1,'TopologyExtractResult']]],
+  ['nodepositions_3',['nodePositions',['../class_topology_graph.html#a2254224df52b78e67993556e46c04bb6',1,'TopologyGraph']]],
+  ['normalbranchid_4',['normalBranchId',['../class_switch_block.html#aea93b851aa44fe28738f3a406c2f778a',1,'SwitchBlock']]]
 ];

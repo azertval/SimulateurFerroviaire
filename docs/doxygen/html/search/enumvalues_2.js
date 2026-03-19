@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cbor_0',['cbor',['../namespacedetail.html#a0ab3b338d0eadc6890b72cccef0ea04faaf9de350d652f0c9055ddab514bd23ea',1,'detail']]]
+  ['failure_0',['FAILURE',['../_logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a36fc6065a3e970bc3e6b2e59da52bf2a',1,'Logger.h']]]
 ];
