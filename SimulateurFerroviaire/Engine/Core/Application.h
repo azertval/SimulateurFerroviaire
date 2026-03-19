@@ -92,4 +92,5 @@ private:
 
     /** Fenêtre principale de l'application. */
     std::unique_ptr<MainWindow> m_mainWindow;
+
 };
