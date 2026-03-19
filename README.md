@@ -1,16 +1,11 @@
 # 🚆 Simulateur Ferroviaire
 
-![C++](https://img.shields.io/badge/C%2B%2B-20-blue)
-![Build](https://img.shields.io/badge/build-CMake-green)
-![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
-![CI](https://github.com/azertval/SimulateurFerroviaire/actions/workflows/build.yml/badge.svg)
-[![Documentation](https://img.shields.io/badge/Documentation-Doxygen-blue)](https://azertval.github.io/SimulateurFerroviaire/)
-
-Projet de simulation ferroviaire basé sur un parsing GeoJSON et une reconstruction topologique du réseau ferroviaire.
+## 🎯 Overview
+Simulation ferroviaire basée sur données GeoJSON avec visualisation interactive (WebView2 + Leaflet).
 
 ---
 
-# 📊 Pipeline
+## 📊 Pipeline
 
 ```mermaid
 graph TD
@@ -18,11 +13,12 @@ graph TD
     B --> C[TopologyGraph]
     C --> D[Switch Detection]
     D --> E[SwitchOrientator]
-    E --> F[Simulation]
+    E --> F[GeoJSON Export]
+    F --> G[WebView2]
+    G --> H[Leaflet Map]
 ```
 
 ---
-
 # ⚙️ Prérequis
 
 * Windows 10/11
@@ -93,6 +89,38 @@ La documentation du projet est générée avec **Doxygen**.
 ```bash
 doxygen Doxyfile
 ```
+
+---
+
+## 🗺️ Map Rendering
+
+### Stack
+- WebView2 (C++)
+- Leaflet (JS)
+- OpenStreetMap
+
+---
+
+## 📦 Exemple JSON
+
+```json
+{
+  "straightBlocks": [
+    [[45.1, -1.0], [45.2, -1.1]]
+  ],
+  "switchBlocks": [
+    {"lat": 45.15, "lon": -1.05}
+  ]
+}
+```
+
+---
+
+## 🧠 Interaction
+
+- Click → JS → C++
+- Highlight elements
+- Future: routing / simulation
 
 ---
 
@@ -167,12 +195,29 @@ rm -rf build
 
 ---
 
-# 🤝 Contribution
+# 🤝 CONTRIBUTING
 
-1. Fork
-2. Créer une branche
-3. Pull Request
+## Workflow
 
+1. Créer issue
+2. Créer branche feature/#ID
+3. PR avec Closes #ID
+
+## Standard Issue
+
+- Planning
+- Dependencies
+- Specs
+- Steps
+- Acceptance
+
+---
+
+## 📸 Future UI
+
+- Map full screen
+- Highlight segments
+- Switch interaction
 ---
 
 # 📜 Licence
