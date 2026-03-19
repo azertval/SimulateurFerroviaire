@@ -1,0 +1,30 @@
+name: Build PR (Visual Studio)
+
+on:
+  pull_request:
+    branches: [ master ] 
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    # Checkout du repo
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Setup MSBuild (Visual Studio)
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    # Restore NuGet packages (si utilisé)
+    - name: Restore NuGet packages
+      run: nuget restore SimulateurFerroviaire.sln
+
+    # Build solution
+    - name: Build solution
+      run: |
+        msbuild SimulateurFerroviaire.sln ^
+          /p:Configuration=Release ^
+          /p:Platform="x64" ^
+          /m

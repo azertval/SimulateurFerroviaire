@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- =========================================================== -->
+  <!-- Définition des filtres (arborescence de l'Explorateur VS)   -->
+  <!-- =========================================================== -->
+  <ItemGroup>
+    <!-- Racine application -->
+    <Filter Include="Application">
+      <UniqueIdentifier>{a1b2c3d4-0001-0001-0001-000000000001}</UniqueIdentifier>
+    </Filter>
+
+    <!-- Moteur transverse -->
+    <Filter Include="Engine">
+      <UniqueIdentifier>{a1b2c3d4-0002-0001-0001-000000000002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core">
+      <UniqueIdentifier>{a1b2c3d4-0002-0002-0001-000000000003}</UniqueIdentifier>
+    </Filter>
+
+    <!-- Module GeoParser -->
+    <Filter Include="Modules">
+      <UniqueIdentifier>{a1b2c3d4-0003-0001-0001-000000000010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\GeoParser">
+      <UniqueIdentifier>{a1b2c3d4-0003-0002-0001-000000000011}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\GeoParser\Enums">
+      <UniqueIdentifier>{a1b2c3d4-0003-0003-0001-000000000012}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\GeoParser\Exceptions">
+      <UniqueIdentifier>{a1b2c3d4-0003-0004-0001-000000000013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\GeoParser\Models">
+      <UniqueIdentifier>{a1b2c3d4-0003-0005-0001-000000000014}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\GeoParser\Utils">
+      <UniqueIdentifier>{a1b2c3d4-0003-0006-0001-000000000015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\GeoParser\Graph">
+      <UniqueIdentifier>{a1b2c3d4-0003-0007-0001-000000000016}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\GeoParser\Pipeline">
+      <UniqueIdentifier>{a1b2c3d4-0003-0008-0001-000000000017}</UniqueIdentifier>
+    </Filter>
+
+    <!-- Dépendances externes -->
+    <Filter Include="External">
+      <UniqueIdentifier>{a1b2c3d4-0004-0001-0001-000000000020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\nlohmann">
+      <UniqueIdentifier>{a1b2c3d4-0004-0002-0001-000000000021}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+
+  <!-- =========================================================== -->
+  <!-- Fichiers d'en-tête                                           -->
+  <!-- =========================================================== -->
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="SimulateurFerroviaire.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+
+    <ClInclude Include="Engine\Core\Logger.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+
+    <ClInclude Include="Modules\GeoParser\Enums\GeoParserEnums.h">
+      <Filter>Modules\GeoParser\Enums</Filter>
+    </ClInclude>
+
+    <ClInclude Include="Modules\GeoParser\Exceptions\GeoParserException.h">
+      <Filter>Modules\GeoParser\Exceptions</Filter>
+    </ClInclude>
+
+    <ClInclude Include="Modules\GeoParser\Models\LatLon.h">
+      <Filter>Modules\GeoParser\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\GeoParser\Models\CoordinateXY.h">
+      <Filter>Modules\GeoParser\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\GeoParser\Models\StraightBlock.h">
+      <Filter>Modules\GeoParser\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\GeoParser\Models\SwitchBlock.h">
+      <Filter>Modules\GeoParser\Models</Filter>
+    </ClInclude>
+
+    <ClInclude Include="Modules\GeoParser\Utils\GeometryUtils.h">
+      <Filter>Modules\GeoParser\Utils</Filter>
+    </ClInclude>
+
+    <ClInclude Include="Modules\GeoParser\Graph\TopologyEdge.h">
+      <Filter>Modules\GeoParser\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\GeoParser\Graph\TopologyGraph.h">
+      <Filter>Modules\GeoParser\Graph</Filter>
+    </ClInclude>
+
+    <ClInclude Include="Modules\GeoParser\GraphBuilder.h">
+      <Filter>Modules\GeoParser\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\GeoParser\TopologyExtractor.h">
+      <Filter>Modules\GeoParser\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\GeoParser\SwitchOrientator.h">
+      <Filter>Modules\GeoParser\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\GeoParser\DoubleSwitchDetector.h">
+      <Filter>Modules\GeoParser\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\GeoParser\GeoParser.h">
+      <Filter>Modules\GeoParser\Pipeline</Filter>
+    </ClInclude>
+  </ItemGroup>
+
+  <!-- =========================================================== -->
+  <!-- Fichiers sources                                             -->
+  <!-- =========================================================== -->
+  <ItemGroup>
+    <ClCompile Include="SimulateurFerroviaire.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+
+    <ClCompile Include="Engine\Core\Logger.cpp">
+      <Filter>Engine\Core</Filter>
+    </ClCompile>
+
+    <ClCompile Include="Modules\GeoParser\Models\StraightBlock.cpp">
+      <Filter>Modules\GeoParser\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\GeoParser\Models\SwitchBlock.cpp">
+      <Filter>Modules\GeoParser\Models</Filter>
+    </ClCompile>
+
+    <ClCompile Include="Modules\GeoParser\Utils\GeometryUtils.cpp">
+      <Filter>Modules\GeoParser\Utils</Filter>
+    </ClCompile>
+
+    <ClCompile Include="Modules\GeoParser\Graph\TopologyEdge.cpp">
+      <Filter>Modules\GeoParser\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\GeoParser\Graph\TopologyGraph.cpp">
+      <Filter>Modules\GeoParser\Graph</Filter>
+    </ClCompile>
+
+    <ClCompile Include="Modules\GeoParser\GraphBuilder.cpp">
+      <Filter>Modules\GeoParser\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\GeoParser\TopologyExtractor.cpp">
+      <Filter>Modules\GeoParser\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\GeoParser\SwitchOrientator.cpp">
+      <Filter>Modules\GeoParser\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\GeoParser\DoubleSwitchDetector.cpp">
+      <Filter>Modules\GeoParser\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\GeoParser\GeoParser.cpp">
+      <Filter>Modules\GeoParser\Pipeline</Filter>
+    </ClCompile>
+  </ItemGroup>
+
+  <!-- =========================================================== -->
+  <!-- Ressources                                                    -->
+  <!-- =========================================================== -->
+  <ItemGroup>
+    <ResourceCompile Include="SimulateurFerroviaire.rc">
+      <Filter>Application</Filter>
+    </ResourceCompile>
+    <Image Include="SimulateurFerroviaire.ico">
+      <Filter>Application</Filter>
+    </Image>
+    <Image Include="small.ico">
+      <Filter>Application</Filter>
+    </Image>
+  </ItemGroup>
+
+  <!-- =========================================================== -->
+  <!-- Dépendances externes                                         -->
+  <!-- =========================================================== -->
+  <ItemGroup>
+    <None Include="External\nlohmann\json.hpp">
+      <Filter>External\nlohmann</Filter>
+    </None>
+  </ItemGroup>
+
+</Project>
