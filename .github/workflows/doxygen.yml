@@ -1,29 +1,40 @@
-name: Make docs (Doxygen)
+name: Deploy Doxygen to GitHub Pages
 
 on:
-  pull_request:
-  push:
+  pull_request :
     branches: [ master ]
 
 permissions:
   contents: write
 
 jobs:
-  doc-pr:
-    if: github.event_name == 'pull_request'
+  deploy-docs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    # -------------------------------------------------------------------------
+    # Checkout
+    # -------------------------------------------------------------------------
+    - name: Checkout
+      uses: actions/checkout@v4
 
+    # -------------------------------------------------------------------------
+    # Install Doxygen
+    # -------------------------------------------------------------------------
     - name: Install Doxygen
       run: sudo apt-get update && sudo apt-get install doxygen graphviz -y
 
+    # -------------------------------------------------------------------------
+    # Generate docs
+    # -------------------------------------------------------------------------
     - name: Generate docs
       run: doxygen Doxyfile
 
-    - name: Upload documentation
-      uses: actions/upload-artifact@v4
+    # -------------------------------------------------------------------------
+    # Deploy to gh-pages
+    # -------------------------------------------------------------------------
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        name: doxygen-doc
-        path: docs/doxygen/html
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/doxygen/html
