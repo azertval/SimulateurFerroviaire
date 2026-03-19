@@ -88,10 +88,13 @@ void GeoParser::parse(bool enableDebugDump)
     switches = std::move(topo.switches);
     straights = std::move(topo.straights);
 
-    LOG_INFO(m_logger, "=== GeoParser END ===");
-
     if (enableDebugDump)
         dumpDebugOutput();
+
+    LOG_INFO (m_logger, "Nombre de SwitchBlocks : " + std::to_string(switches.size()));
+    LOG_INFO(m_logger, "Nombre de StraightBlocks : " + std::to_string(straights.size()));
+
+    LOG_INFO(m_logger, "=== GeoParser COMPLETED ===");
 }
 
 /**

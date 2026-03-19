@@ -40,8 +40,15 @@ std::filesystem::path getExecutableDirectory()
 
 Logger::Logger(const std::string& motorName)
     : m_motorName(motorName)
-    , m_minimumLevel(LogLevel::DEBUG)
 {
+#ifdef NDEBUG
+    // Release build → moins verbeux
+    m_minimumLevel = LogLevel::INFO;
+#else
+    // Debug build → très verbeux
+    m_minimumLevel = LogLevel::DEBUG;
+#endif
+
     // Création du répertoire Logs/ si absent
     std::filesystem::path logsDirectory = getExecutableDirectory() / "Logs";
     if (!std::filesystem::exists(logsDirectory))

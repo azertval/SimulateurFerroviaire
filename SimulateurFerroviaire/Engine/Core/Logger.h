@@ -50,9 +50,9 @@
  * @brief Niveaux de sévérité des traces, du moins critique au plus critique.
  */
 enum class LogLevel : int
-{
-    INFO    = 0,  ///< Événement nominal.
-    DEBUG   = 1,  ///< Trace de débogage interne.
+{    
+    DEBUG   = 0,  ///< Trace de débogage interne.
+    INFO = 1,  ///< Événement nominal.
     WARNING = 2,  ///< Anomalie non-bloquante.
     ERR   = 3,  ///< Erreur bloquante récupérable.
     FAILURE = 4,  ///< Erreur fatale — plante l'application après journalisation.
