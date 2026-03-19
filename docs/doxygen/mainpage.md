@@ -14,22 +14,35 @@ Il s'appuie sur :
 
 ## 📊 Pipeline
 
-```mermaid
-graph TD
-    A[GeoJSON] --> B[GeoParser]
-    B --> C[TopologyGraph]
-    C --> D[Switch Detection]
-    D --> E[SwitchOrientator]
+Le pipeline de traitement est le suivant :
+
+```
+GeoJSON
+   ↓
+GeoParser
+   ↓
+TopologyGraph
+   ↓
+Switch Detection
+   ↓
+SwitchOrientator
 ```
 
 ---
 
 ## 🧱 Modules
 
-* **GeoParser** : lecture GeoJSON
-* **TopologyGraph** : graphe ferroviaire
-* **SwitchBlock** : modélisation aiguillages
-* **SwitchOrientator** : orientation
+* **GeoParser**
+  Lecture et parsing des fichiers GeoJSON.
+
+* **TopologyGraph**
+  Construction du graphe ferroviaire à partir des données géographiques.
+
+* **SwitchBlock**
+  Modélisation des aiguillages ferroviaires.
+
+* **SwitchOrientator**
+  Détermination de l’orientation des aiguillages (root, normal, deviation).
 
 ---
 
@@ -39,6 +52,33 @@ graph TD
 * Distance Haversine
 * Graphe planaire
 * Orientation géométrique
+
+---
+
+## ⚙️ Fonctionnement global
+
+1. Lecture du fichier GeoJSON
+2. Extraction des coordonnées
+3. Construction du graphe topologique
+4. Détection des nœuds complexes (aiguillages)
+5. Orientation des branches
+6. Préparation pour la simulation ferroviaire
+
+---
+
+## 📁 Structure du projet
+
+```
+SimulateurFerroviaire/
+├── Engine/
+│   ├── Core/
+│   ├── Graph/
+│   └── Utils/
+├── Modules/
+│   └── GeoParser/
+├── External/
+│   └── nlohmann/
+```
 
 ---
 
