@@ -85,7 +85,7 @@ build/Debug/SimulateurFerroviaire.exe
 ## 📚 Documentation
 
 La documentation du projet est générée avec **Doxygen**.
-👉 Ouvrir la documentation : https://<azertval>.github.io/<SimulateurFerroviaire>/
+👉 Ouvrir la documentation : https://azertval.github.io/SimulateurFerroviaire/
 
 ## Génération
 
