@@ -19,8 +19,8 @@
 #include <vector>
 #include <functional>
 
-#include "./Models/StraightBlock.h"
-#include "./Models/SwitchBlock.h"
+#include "Modules/Models/StraightBlock.h"
+#include "Modules/Models/SwitchBlock.h"
 #include "./Enums/GeoParserEnums.h"
 #include "Engine/Core/Logger/Logger.h"
 
