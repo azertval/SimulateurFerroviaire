@@ -4,6 +4,7 @@
 ![Build](https://img.shields.io/badge/build-CMake-green)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
 ![CI](https://github.com/azertval/SimulateurFerroviaire/actions/workflows/build.yml/badge.svg)
+[![Documentation](https://img.shields.io/badge/Docs-Doxygen-blue?style=for-the-badge)](https://azertval.github.io/SimulateurFerroviaire/)
 
 Projet de simulation ferroviaire basé sur un parsing GeoJSON et une reconstruction topologique du réseau ferroviaire.
 
@@ -85,7 +86,7 @@ build/Debug/SimulateurFerroviaire.exe
 ## 📚 Documentation
 
 La documentation du projet est générée avec **Doxygen**.
-👉 Ouvrir la documentation : https://<azertval>.github.io/<SimulateurFerroviaire>/
+👉 Ouvrir la documentation : https://azertval.github.io/SimulateurFerroviaire/
 
 ## Génération
 
