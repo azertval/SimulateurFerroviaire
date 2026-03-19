@@ -25,13 +25,10 @@
 var NAVTREE =
 [
   [ "Simulateur Ferroviaire", "index.html", [
-    [ "🚆 Description", "index.html#autotoc_md1", null ],
-    [ "📊 Pipeline", "index.html#autotoc_md3", null ],
-    [ "🧱 Modules", "index.html#autotoc_md5", null ],
-    [ "📐 Concepts clés", "index.html#autotoc_md7", null ],
-    [ "⚙️ Fonctionnement global", "index.html#autotoc_md9", null ],
-    [ "📁 Structure du projet", "index.html#autotoc_md11", null ],
-    [ "👨‍💻 Auteur", "index.html#autotoc_md13", null ],
+    [ "Description", "index.html#autotoc_md1", null ],
+    [ "Pipeline", "index.html#autotoc_md3", null ],
+    [ "Modules", "index.html#autotoc_md5", null ],
+    [ "Objectif", "index.html#autotoc_md7", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

@@ -43,5 +43,5 @@ var searchData=
   ['mergeclosenodes_40',['mergeCloseNodes',['../classTopologyGraph.html#a27cb3f78740d0cf268f2ea5f3bace6d7',1,'TopologyGraph']]],
   ['metricutmtowgs84_41',['metricUtmToWgs84',['../classGeometryUtils.html#a0dfa23ddf2d80abfeaeac186ae124fd0',1,'GeometryUtils']]],
   ['min_5fbranch_5flength_5fmeters_42',['MIN_BRANCH_LENGTH_METERS',['../structParserDefaultValues.html#a7ec1f8de6339afe710235fdcb2eb2c49',1,'ParserDefaultValues']]],
-  ['modules_43',['🧱 Modules',['../index.html#autotoc_md5',1,'']]]
+  ['modules_43',['Modules',['../index.html#autotoc_md5',1,'']]]
 ];

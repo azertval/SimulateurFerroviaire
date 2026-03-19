@@ -10,7 +10,6 @@ var searchData=
   ['findedgebetween_7',['findEdgeBetween',['../classTopologyGraph.html#a8901749abf5847458808e8eec8a72af6',1,'TopologyGraph']]],
   ['findmostcollinearcontinuation_8',['findMostCollinearContinuation',['../classTopologyGraph.html#a07cb1a1808c40751d01dd7d43d335024',1,'TopologyGraph']]],
   ['findrootwithpathcompression_9',['findRootWithPathCompression',['../classTopologyGraph.html#ae6743defffd4df65ccd2f59931281e7d',1,'TopologyGraph']]],
-  ['fonctionnement_20global_10',['⚙️ Fonctionnement global',['../index.html#autotoc_md9',1,'']]],
-  ['formatlogline_11',['formatLogLine',['../classLogger.html#a8f0182d5ff94d8b9585a1e75e7b02f1e',1,'Logger']]],
-  ['framework_2eh_12',['framework.h',['../framework_8h.html',1,'']]]
+  ['formatlogline_10',['formatLogLine',['../classLogger.html#a8f0182d5ff94d8b9585a1e75e7b02f1e',1,'Logger']]],
+  ['framework_2eh_11',['framework.h',['../framework_8h.html',1,'']]]
 ];
