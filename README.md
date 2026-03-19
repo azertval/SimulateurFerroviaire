@@ -1,7 +1,7 @@
 ![C++](https://img.shields.io/badge/C%2B%2B-20-blue)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
-![CI](https://github.com/azertval/SimulateurFerroviaire/actions/workflows/build.yml/badge.svg)
-[![Documentation](https://img.shields.io/badge/Documentation-Doxygen-blue)](https://azertval.github.io/SimulateurFerroviaire/)
+![CI](https://github.com/azertval/SimulateurFerroviaire/actions/workflows/build_debug.yml/badge.svg)
+![Documentation](https://img.shields.io/badge/Documentation-Doxygen-blue)](https://azertval.github.io/SimulateurFerroviaire/)
 # 🚆 Simulateur Ferroviaire
 
 ## 🎯 Overview
