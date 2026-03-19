@@ -1,20 +1,67 @@
-name: Deploy Doxygen
+name: CI Pipeline
 
 on:
   pull_request:
+  push:
+    branches: [ master ]
 
 permissions:
   contents: write
 
 jobs:
-  build-doc:
+
+# ===============================
+# 🧱 BUILD C++
+# ===============================
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup CMake
+      uses: lukka/get-cmake@latest
+
+    - name: Configure
+      run: cmake -B build -S . -A x64
+
+    - name: Build
+      run: cmake --build build --config Release
+
+# ===============================
+# 📚 DOC PR (artifact)
+# ===============================
+  doc-pr:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
 
     - name: Install Doxygen
-      run: sudo apt-get install doxygen graphviz -y
+      run: sudo apt-get update && sudo apt-get install doxygen graphviz -y
+
+    - name: Generate docs
+      run: doxygen Doxyfile
+
+    - name: Upload documentation
+      uses: actions/upload-artifact@v4
+      with:
+        name: doxygen-doc
+        path: docs/doxygen/html
+
+# ===============================
+# 🌍 DEPLOY DOC (main)
+# ===============================
+  deploy-doc:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Doxygen
+      run: sudo apt-get update && sudo apt-get install doxygen graphviz -y
 
     - name: Generate docs
       run: doxygen Doxyfile
