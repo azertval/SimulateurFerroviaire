@@ -9,25 +9,6 @@ permissions:
   contents: write
 
 jobs:
-
-# ===============================
-# 🧱 BUILD C++
-# ===============================
-  build:
-    runs-on: windows-latest
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Setup CMake
-      uses: lukka/get-cmake@latest
-
-    - name: Configure
-      run: cmake -B build -S . -A x64
-
-    - name: Build
-      run: cmake --build build --config Release
-
 # ===============================
 # 📚 DOC PR (artifact)
 # ===============================
