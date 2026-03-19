@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simulateur Ferroviaire: Main Page</title>
+<title>Simulateur Ferroviaire: Simulateur Ferroviaire</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simulateur Ferroviaire
    </div>
-   <div id="projectbrief">Simulateur Ferroviaire est un projet de simulation ferroviaire en 2D développé en C++ avec OpenGL.</div>
+   <div id="projectbrief">Simulateur Ferroviaire est un projet de simulation ferroviaire en 3D développé en C++ avec OpenGL.</div>
   </td>
  </tr>
  </tbody>
@@ -89,10 +89,79 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Simulateur Ferroviaire Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Simulateur Ferroviaire </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_docs_2doxygen_2mainpage"></a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+🚆 Description</h1>
+<p>Le projet <b>Simulateur Ferroviaire</b> permet de reconstruire un réseau ferroviaire à partir de données GeoJSON.</p>
+<p>Il s'appuie sur :</p>
+<ul>
+<li>Un parsing géographique (WGS-84)</li>
+<li>Une reconstruction topologique (graphe)</li>
+<li>Une détection et orientation des aiguillages</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md3"></a>
+📊 Pipeline</h1>
+<p>Le pipeline de traitement est le suivant :</p>
+<div class="fragment"><div class="line">GeoJSON</div>
+<div class="line">   ↓</div>
+<div class="line">GeoParser</div>
+<div class="line">   ↓</div>
+<div class="line">TopologyGraph</div>
+<div class="line">   ↓</div>
+<div class="line">Switch Detection</div>
+<div class="line">   ↓</div>
+<div class="line">SwitchOrientator</div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="autotoc_md5"></a>
+🧱 Modules</h1>
+<ul>
+<li><b><a class="el" href="classGeoParser.html">GeoParser</a></b> Lecture et parsing des fichiers GeoJSON.</li>
+<li><b><a class="el" href="classTopologyGraph.html" title="Graphe planaire non-orienté utilisé pour la construction de la topologie ferroviaire.">TopologyGraph</a></b> Construction du graphe ferroviaire à partir des données géographiques.</li>
+<li><b><a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a></b> Modélisation des aiguillages ferroviaires.</li>
+<li><b><a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC).">SwitchOrientator</a></b> Détermination de l’orientation des aiguillages (root, normal, deviation).</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md7"></a>
+📐 Concepts clés</h1>
+<ul>
+<li>Coordonnées WGS-84 (<code><a class="el" href="structLatLon.html" title="Coordonnée géographique WGS-84 exprimée en degrés décimaux.">LatLon</a></code>)</li>
+<li>Distance Haversine</li>
+<li>Graphe planaire</li>
+<li>Orientation géométrique</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md9"></a>
+⚙️ Fonctionnement global</h1>
+<ol type="1">
+<li>Lecture du fichier GeoJSON</li>
+<li>Extraction des coordonnées</li>
+<li>Construction du graphe topologique</li>
+<li>Détection des nœuds complexes (aiguillages)</li>
+<li>Orientation des branches</li>
+<li>Préparation pour la simulation ferroviaire</li>
+</ol>
+<hr  />
+<h1><a class="anchor" id="autotoc_md11"></a>
+📁 Structure du projet</h1>
+<div class="fragment"><div class="line">SimulateurFerroviaire/</div>
+<div class="line">├── Engine/</div>
+<div class="line">│   ├── Core/</div>
+<div class="line">│   ├── Graph/</div>
+<div class="line">│   └── Utils/</div>
+<div class="line">├── Modules/</div>
+<div class="line">│   └── GeoParser/</div>
+<div class="line">├── External/</div>
+<div class="line">│   └── nlohmann/</div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="autotoc_md13"></a>
+👨‍💻 Auteur</h1>
+<p>Valentin Eloy </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

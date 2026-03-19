@@ -6,5 +6,8 @@ var dir_d428d88fda432bf3dacc8225448b283a =
     [ "Resource.h", "Resource_8h.html", "Resource_8h" ],
     [ "SimulateurFerroviaire.cpp", "SimulateurFerroviaire_8cpp.html", "SimulateurFerroviaire_8cpp" ],
     [ "SimulateurFerroviaire.h", "SimulateurFerroviaire_8h.html", null ],
+    [ "SimulateurFerroviaire.ico", "SimulateurFerroviaire_8ico.html", null ],
+    [ "SimulateurFerroviaire.rc", "SimulateurFerroviaire_8rc.html", null ],
+    [ "small.ico", "small_8ico.html", null ],
     [ "targetver.h", "targetver_8h.html", null ]
 ];

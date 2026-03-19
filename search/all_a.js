@@ -16,5 +16,6 @@ var searchData=
   ['logger_2ecpp_13',['Logger.cpp',['../Logger_8cpp.html',1,'']]],
   ['logger_2eh_14',['Logger.h',['../Logger_8h.html',1,'']]],
   ['loglevel_15',['LogLevel',['../Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94',1,'Logger.h']]],
-  ['longitude_16',['longitude',['../structLatLon.html#a1693f42fc365fc1fd5783d8aa7ff1db8',1,'LatLon']]]
+  ['logo_2epng_16',['logo.png',['../logo_8png.html',1,'']]],
+  ['longitude_17',['longitude',['../structLatLon.html#a1693f42fc365fc1fd5783d8aa7ff1db8',1,'LatLon']]]
 ];

@@ -6,7 +6,7 @@ var searchData=
   ['geometryutils_3',['geometryutils',['../classGeometryUtils.html',1,'GeometryUtils'],['../classGeometryUtils.html#a65a253c538b06f2149dbabf89c21f388',1,'GeometryUtils::GeometryUtils()']]],
   ['geometryutils_2ecpp_4',['GeometryUtils.cpp',['../GeometryUtils_8cpp.html',1,'']]],
   ['geometryutils_2eh_5',['GeometryUtils.h',['../GeometryUtils_8h.html',1,'']]],
-  ['geoparser_6',['geoparser',['../classGeoParser.html#a1955e0247e89a0fbabcac75222706cb8',1,'GeoParser::GeoParser()'],['../classGeoParser.html',1,'GeoParser']]],
+  ['geoparser_6',['geoparser',['../classGeoParser.html',1,'GeoParser'],['../classGeoParser.html#a1955e0247e89a0fbabcac75222706cb8',1,'GeoParser::GeoParser()']]],
   ['geoparser_2ecpp_7',['GeoParser.cpp',['../GeoParser_8cpp.html',1,'']]],
   ['geoparser_2eh_8',['GeoParser.h',['../GeoParser_8h.html',1,'']]],
   ['geoparserenums_2eh_9',['GeoParserEnums.h',['../GeoParserEnums_8h.html',1,'']]],
@@ -20,9 +20,10 @@ var searchData=
   ['getmotorname_17',['getMotorName',['../classLogger.html#a790238f2c9572dd3d9bed84ec791f2f5',1,'Logger']]],
   ['getoppositenodeid_18',['getOppositeNodeId',['../classTopologyGraph.html#aada47ec2c5b5ebc4ccf72b4b4c4f5e01',1,'TopologyGraph']]],
   ['getorcreatenode_19',['getOrCreateNode',['../classTopologyGraph.html#aad7a0f965d35805d33c60bc8df0c2991',1,'TopologyGraph']]],
-  ['graphbuilder_20',['graphbuilder',['../classGraphBuilder.html',1,'GraphBuilder'],['../classGraphBuilder.html#a00112b1bef1d93d23f8bebef4caac1d3',1,'GraphBuilder::GraphBuilder()']]],
-  ['graphbuilder_2ecpp_21',['GraphBuilder.cpp',['../GraphBuilder_8cpp.html',1,'']]],
-  ['graphbuilder_2eh_22',['GraphBuilder.h',['../GraphBuilder_8h.html',1,'']]],
-  ['graphbuildresult_23',['GraphBuildResult',['../structGraphBuildResult.html',1,'']]],
-  ['groupchunksbybaseid_24',['groupChunksByBaseId',['../classTopologyExtractor.html#a5f368f1d09c07d020c41711ffd3eb507',1,'TopologyExtractor']]]
+  ['global_20',['⚙️ Fonctionnement global',['../index.html#autotoc_md9',1,'']]],
+  ['graphbuilder_21',['graphbuilder',['../classGraphBuilder.html',1,'GraphBuilder'],['../classGraphBuilder.html#a00112b1bef1d93d23f8bebef4caac1d3',1,'GraphBuilder::GraphBuilder()']]],
+  ['graphbuilder_2ecpp_22',['GraphBuilder.cpp',['../GraphBuilder_8cpp.html',1,'']]],
+  ['graphbuilder_2eh_23',['GraphBuilder.h',['../GraphBuilder_8h.html',1,'']]],
+  ['graphbuildresult_24',['GraphBuildResult',['../structGraphBuildResult.html',1,'']]],
+  ['groupchunksbybaseid_25',['groupChunksByBaseId',['../classTopologyExtractor.html#a5f368f1d09c07d020c41711ffd3eb507',1,'TopologyExtractor']]]
 ];

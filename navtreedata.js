@@ -25,6 +25,13 @@
 var NAVTREE =
 [
   [ "Simulateur Ferroviaire", "index.html", [
+    [ "🚆 Description", "index.html#autotoc_md1", null ],
+    [ "📊 Pipeline", "index.html#autotoc_md3", null ],
+    [ "🧱 Modules", "index.html#autotoc_md5", null ],
+    [ "📐 Concepts clés", "index.html#autotoc_md7", null ],
+    [ "⚙️ Fonctionnement global", "index.html#autotoc_md9", null ],
+    [ "📁 Structure du projet", "index.html#autotoc_md11", null ],
+    [ "👨‍💻 Auteur", "index.html#autotoc_md13", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -52,7 +59,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AboutDialog_8cpp.html",
-"classSwitchBlock.html#a7a81608dca0e1a59b20f6f0c480435c5"
+"classSwitchBlock.html#a4de843d021a806f62d9657e1c1dddd23"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
