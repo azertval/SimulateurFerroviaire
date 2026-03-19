@@ -1,39 +1,144 @@
-# Simulateur Ferroviaire
+# 🚆 Simulateur Ferroviaire
 
-## Description
+## 📖 Description
+Reconstruction et visualisation d’un réseau ferroviaire à partir de données **GeoJSON**.
 
-Reconstruction et visualisation d’un réseau ferroviaire depuis GeoJSON.
-
----
-# Engine : Moteur de l’application, gestion des tâches, etc
-
-## Core : Coeur de l’application, gestion des données, logique métier, etc.
-- Application : gestion de l’application, cycle de vie, etc.
-- Logger : gestion des logs, erreurs, etc.
-
-## HMI : Interface Homme-Machine, gestion de l’interface utilisateur, etc.
-
-- MainWindow : fenêtre principale de l’application
-- ProgressBar : barre de progression pour les tâches longues
-- WebViewPanel : panneau pour afficher la carte interactive (Leaflet)
-- Dialogs : gestion des dialogues (AboutDialog, FileOpenDialog)
+Le projet repose sur un pipeline de parsing permettant de :
+- Charger des données géographiques
+- Construire un graphe topologique
+- Extraire des blocs ferroviaires (voies + aiguillages)
+- Produire une représentation exploitable et visualisable
 
 ---
-# Modules : Block de fonctionnalités indépendante spécifiques, comme le parsing, la détection d’aiguillages, etc.
 
-## GeoParser : analyse et extraction des données GeoJSON
-- GeoParsingTask : tâche de parsing asynchrone pour éviter de bloquer l’interface utilisateur
-- GeoParser : analyse et extraction des données GeoJSON
-	- GeometryUtils : fonctions utilitaires pour le module GeoParser (par exemple, pour la validation des données, la conversion de coordonnées, etc.)
-- GraphBuilder : construction du graphe à partir des données extraites
-	- TopologyGraph : représentation du réseau ferroviaire sous forme de graphe topologique
-	- TopologyEdge : représentation d’une arête du graphe topologique (liaison entre deux nœuds)
-- TopologyExtractor : extraction de la topologie du réseau ferroviaire à partir des données extraites
-- SwitchOrientator : orientation des aiguillages détectés pour une visualisation correcte sur la carte
-- DoubleSwitchDetector : détection des aiguillages doubles à partir du graphe topologique
+# 🧠 Engine — Moteur de l’application
 
-## Models : classes représentant les models de données ferroviaires
-- CoordinateXY : classe représentant une coordonnée en X et Y
-- LatLon : classe représentant une coordonnée en latitude et longitude
-- StraightBlock : classe représentant un bloc droit du réseau ferroviaire
-- SwitchBlock : classe représentant un bloc d’aiguillage du réseau ferroviaire
+## 🔹 Core — Cœur applicatif
+Gestion des composants fondamentaux et de la logique métier.
+
+- **Application** → cycle de vie de l’application  
+- **Logger** → système de journalisation (logs, erreurs, debug)
+
+## 🖥️ HMI — Interface utilisateur
+Gestion de l’interface graphique (Win32 + WebView).
+
+- **MainWindow** → fenêtre principale  
+- **ProgressBar** → affichage des tâches longues  
+- **WebViewPanel** → affichage de la carte (Leaflet)  
+- **Dialogs**
+  - AboutDialog  
+  - FileOpenDialog  
+
+---
+
+# 🧩 Modules — Fonctionnalités métier
+
+Modules indépendants responsables du traitement ferroviaire.
+
+## 🌍 GeoParser — Pipeline principal
+
+Pipeline complet de transformation GeoJSON → modèle ferroviaire.
+
+### 🔄 Pipeline global
+1. Chargement GeoJSON  
+2. Construction du graphe  
+3. Extraction topologique  
+4. Orientation des aiguillages  
+5. Détection des doubles aiguilles  
+
+👉 Voir implémentation dans :  
+`GeoParser::parse()` :contentReference[oaicite:0]{index=0}
+
+---
+
+## 🗺️ Parsing & Construction
+
+### **GeoParser**
+- Orchestrateur du pipeline complet
+
+### **GeoParsingTask**
+- Parsing asynchrone (évite le blocage UI)
+
+### **GeometryUtils**
+- Outils géométriques (conversion, validation, calculs)
+
+---
+
+## 🔗 Graphe topologique
+
+### **GraphBuilder**
+- Construction du graphe à partir du GeoJSON  
+- Conversion WGS84 → UTM  
+- Snap + fusion des nœuds  
+
+👉 Voir phases 1 & 2 :contentReference[oaicite:1]{index=1}
+
+### **TopologyGraph**
+- Représentation du graphe (nœuds + arêtes)
+
+### **TopologyEdge**
+- Arête entre deux nœuds avec géométrie métrique
+
+---
+
+## 🧠 Extraction ferroviaire
+
+### **TopologyExtractor**
+- Extraction des blocs à partir du graphe
+
+### **SwitchOrientator**
+- Orientation des aiguillages (root / normal / deviation)
+
+### **DoubleSwitchDetector**
+- Détection des doubles aiguilles  
+- Validation des contraintes métier (CDC)
+
+👉 Phases 7 & 8 :contentReference[oaicite:2]{index=2}
+
+---
+
+# 📦 Models — Modèle de données
+
+Représentation des entités ferroviaires manipulées par le pipeline.
+
+## 📍 Coordonnées
+
+- **CoordinateXY**
+  - Coordonnées métriques (UTM)
+- **LatLon**
+  - Coordonnées géographiques WGS84
+
+---
+
+## 🚧 Blocs ferroviaires
+
+### **StraightBlock**
+- Tronçon de voie droite
+- Longueur calculée via Haversine
+
+👉 Implémentation :contentReference[oaicite:3]{index=3}
+
+### **SwitchBlock**
+- Aiguillage ferroviaire (3 branches)
+- Orientation + calculs géométriques
+
+👉 Implémentation :contentReference[oaicite:4]{index=4}
+
+---
+
+# 🧭 Architecture globale
+
+```text
+GeoJSON
+   ↓
+GraphBuilder
+   ↓
+TopologyGraph
+   ↓
+TopologyExtractor
+   ↓
+SwitchOrientator
+   ↓
+DoubleSwitchDetector
+   ↓
+Models (Straight / Switch)
