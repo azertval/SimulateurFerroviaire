@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ferroviaire_0',['Simulateur Ferroviaire',['../index.html',1,'']]]
+  ['ferroviaire_0',['🚆 Simulateur Ferroviaire',['../index.html',1,'']]]
 ];

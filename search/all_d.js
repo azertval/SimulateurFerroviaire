@@ -1,13 +1,17 @@
 var searchData=
 [
-  ['navigate_0',['navigate',['../classWebViewPanel.html#a17fdacaf19c8e0830ae1ea7ee1632993',1,'WebViewPanel']]],
-  ['navigatetostring_1',['navigateToString',['../classWebViewPanel.html#ad8facf8f40cd6cce77620c221bda1d81',1,'WebViewPanel']]],
-  ['neighbourids_2',['neighbourIds',['../classStraightBlock.html#ace5250940af85ae74685da68fc5ee4a9',1,'StraightBlock']]],
-  ['nextswitchid_3',['nextSwitchId',['../classSwitchBlock.html#ace5b40883c9d7a3332769b1a84f73f28',1,'SwitchBlock']]],
-  ['nlohmann_5fjson_5favailable_4',['NLOHMANN_JSON_AVAILABLE',['../GraphBuilder_8cpp.html#a7208a7c4d7ebcfa34966442fb8ce0cb2',1,'GraphBuilder.cpp']]],
-  ['nodedegreethresholds_5',['NodeDegreeThresholds',['../structNodeDegreeThresholds.html',1,'']]],
-  ['nodeidtoswitchid_6',['nodeIdToSwitchId',['../structTopologyExtractResult.html#a78a0bc107f0a7aabe7f1cdffbf7f906b',1,'TopologyExtractResult']]],
-  ['nodepositions_7',['nodePositions',['../classTopologyGraph.html#a2254224df52b78e67993556e46c04bb6',1,'TopologyGraph']]],
-  ['nominmax_8',['NOMINMAX',['../framework_8h.html#a9f918755b601cf4bffca775992e6fb90',1,'framework.h']]],
-  ['normalbranchid_9',['normalBranchId',['../classSwitchBlock.html#aea93b851aa44fe28738f3a406c2f778a',1,'SwitchBlock']]]
+  ['oncommand_0',['onCommand',['../classMainWindow.html#afbecf0f64f48c5c868168884bab52356',1,'MainWindow']]],
+  ['ondestroy_1',['onDestroy',['../classMainWindow.html#a71a94b472662a62e570443cff0e59ccd',1,'MainWindow']]],
+  ['onfileopen_2',['onFileOpen',['../classMainWindow.html#a889cc45fb741e12015f4af9f01acaa96',1,'MainWindow']]],
+  ['onparsingerror_3',['onParsingError',['../classMainWindow.html#ab4b37ea813301090c70b6e618fa24221',1,'MainWindow']]],
+  ['onparsingsuccess_4',['onParsingSuccess',['../classMainWindow.html#a90cae565f67d1291d690d974547041a0',1,'MainWindow']]],
+  ['onprogressupdate_5',['onProgressUpdate',['../classMainWindow.html#a358c35e21b8d81e718d259a502648dd6',1,'MainWindow']]],
+  ['onsizeupdate_6',['onSizeUpdate',['../classMainWindow.html#a74866b6b18c52698bdb52f339ad80830',1,'MainWindow']]],
+  ['open_7',['open',['../classFileOpenDialog.html#a7e0e1d33529a45cc8949757753261ceb',1,'FileOpenDialog']]],
+  ['operator_21_3d_8',['operator!=',['../structLatLon.html#ac1e8f9c00d54f2497e68909f65d0aa16',1,'LatLon::operator!=()'],['../structCoordinateXY.html#a0de09b8a7edbc8801eadf6d097646dcc',1,'CoordinateXY::operator!=()']]],
+  ['operator_28_29_9',['operator()',['../structTopologyGraph_1_1SnappedNodeKeyHasher.html#ab2eba5060b66dd740f5985b6022fbc07',1,'TopologyGraph::SnappedNodeKeyHasher']]],
+  ['operator_3d_10',['operator=',['../classLogger.html#a8c0ca770cdc91ca9fc3015286568e1ea',1,'Logger::operator=()'],['../classWebViewPanel.html#ae8b60596c89dfc5d05abf38b74857671',1,'WebViewPanel::operator=()']]],
+  ['operator_3d_3d_11',['operator==',['../structTopologyGraph_1_1SnappedNodeKey.html#a5113d6573af7e4cabcb210f2702d5cfd',1,'TopologyGraph::SnappedNodeKey::operator==()'],['../structCoordinateXY.html#aabc7b31fd27b26535f271c9e8a273532',1,'CoordinateXY::operator==()'],['../structLatLon.html#a72ddde59606bc3160a064f74654bd88b',1,'LatLon::operator==()']]],
+  ['orient_12',['orient',['../classSwitchOrientator.html#a5af1a097baad421ce01bd013be602df7',1,'SwitchOrientator']]],
+  ['orientthreeportswitch_13',['orientThreePortSwitch',['../classSwitchOrientator.html#a0ed66205a222764fb0ad914425ba0f6e',1,'SwitchOrientator']]]
 ];

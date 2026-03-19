@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_0',['y',['../structTopologyGraph_1_1SnappedNodeKey.html#a5d51b8fd9a14c69fcf848711c76b127b',1,'TopologyGraph::SnappedNodeKey::y'],['../structCoordinateXY.html#ad8cc600d7896c329e410cce0c1e45a70',1,'CoordinateXY::y']]]
+  ['zero_5fvector_5fmagnitude_0',['ZERO_VECTOR_MAGNITUDE',['../structGeometricTolerances.html#ae87db9f9f5a025345ed34dc4ccbc0673',1,'GeometricTolerances']]]
 ];
