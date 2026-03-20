@@ -78,8 +78,20 @@ void WebViewPanel::executeScript(const std::wstring& script)
         return;
     }
 
-    m_webview->ExecuteScript(script.c_str(), nullptr);
-    LOG_DEBUG(m_logger, "Script exécuté : " + std::string(script.begin(), script.end()));
+    m_webview->ExecuteScript(
+        script.c_str(),
+        Microsoft::WRL::Callback<ICoreWebView2ExecuteScriptCompletedHandler>(
+            [this, script](HRESULT errorCode, LPCWSTR resultObjectAsJson) -> HRESULT
+            {
+                if (FAILED(errorCode))
+                {
+                    LOG_ERROR(m_logger, "Échec ExecuteScript() : " + errorCode);
+                    LOG_INFO(m_logger, "Script exécuté : " + std::string(script.begin(), script.end()));
+                    return errorCode;
+                }
+                LOG_DEBUG(m_logger, "Script exécuté : " + std::string(script.begin(), script.end()));
+                return S_OK;
+            }).Get());
 }
 
 bool WebViewPanel::isInitialized() const
@@ -110,6 +122,27 @@ void WebViewPanel::close()
     LOG_INFO(m_logger, "WebView2 fermé et ressources libérées");
 }
 
+void WebViewPanel::setVirtualHostMapping(const std::wstring& hostname, const std::wstring& folderPath)
+{
+    if (!m_webview)
+    {
+        LOG_ERROR(m_logger, "setVirtualHostMapping() appelé avant initialisation");
+        return;
+    }
+
+    Microsoft::WRL::ComPtr<ICoreWebView2_3> webview3;
+    if (FAILED(m_webview.As(&webview3)))
+    {
+        LOG_ERROR(m_logger, "ICoreWebView2_3 non disponible");
+        return;
+    }
+
+    webview3->SetVirtualHostNameToFolderMapping(
+        hostname.c_str(),
+        folderPath.c_str(),
+        COREWEBVIEW2_HOST_RESOURCE_ACCESS_KIND_ALLOW
+    );
+}
 
 // =============================================================================
 // Initialisation interne

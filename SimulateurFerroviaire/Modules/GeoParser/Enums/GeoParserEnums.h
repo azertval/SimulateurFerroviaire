@@ -79,7 +79,7 @@ public :
      * Longueur maximale d'un bloc Straight avant découpe automatique (mètres).
      * Au-delà, le Straight est subdivisé en morceaux de longueur égale.
      */
-    static constexpr double MAX_STRAIGHT_LENGTH_METERS    = 2000.0;
+    static constexpr double MAX_STRAIGHT_LENGTH_METERS    = 270.0;
 
     /**
      * Longueur minimale requise pour chaque branche d'un aiguillage (mètres).

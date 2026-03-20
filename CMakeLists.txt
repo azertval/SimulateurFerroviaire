@@ -100,5 +100,20 @@ target_compile_definitions(SimulateurFerroviaire PRIVATE
 # -----------------------------------------------------------------------------
 add_custom_command(TARGET SimulateurFerroviaire POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory
-    $<TARGET_FILE_DIR:SimulateurFerroviaire>/Logs
+        $<TARGET_FILE_DIR:SimulateurFerroviaire>/Logs
+)
+
+# -----------------------------------------------------------------------------
+# Ressources HTML
+# -----------------------------------------------------------------------------
+add_custom_command(TARGET SimulateurFerroviaire POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory
+        "$<TARGET_FILE_DIR:SimulateurFerroviaire>/Resources"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${SOURCE_DIR}/Engine/HMI/WebViewPanel/Leaflet/leaflet.html"
+        "$<TARGET_FILE_DIR:SimulateurFerroviaire>/Resources/Leaflet.html"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${SOURCE_DIR}/Engine/HMI/WebViewPanel/Leaflet/leaflet_api.js"
+        "$<TARGET_FILE_DIR:SimulateurFerroviaire>/Resources/leaflet_api.js"
+    COMMENT "Copying leaflet.html to output directory"
 )
