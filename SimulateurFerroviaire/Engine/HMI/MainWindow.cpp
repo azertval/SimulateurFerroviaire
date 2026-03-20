@@ -11,7 +11,7 @@
 #include "Engine/HMI/Dialogs/FileOpenDialog.h"
 #include "SimulateurFerroviaire.h"
 
-#include "Engine/HMI/WebViewPanel/Leaflet/LeafletEnums.h"
+#include "Engine/HMI/WebViewPanel/Leaflet/Leaflet.h"
 
 #include <string>
 #include <stdexcept>
@@ -75,7 +75,7 @@ void MainWindow::create()
     // Initialisation du panneau WebView
     m_webViewPanel.setOnInitialized([this]()
         {
-            m_webViewPanel.navigateToString(leafletHtml); // Carte centrée sur Paris par défaut
+            m_webViewPanel.navigateToString(Leaflet::leafletHtml()); // Carte centrée sur Paris par défaut
             m_webViewPanel.resize();
         });
     m_webViewPanel.create(m_hWnd);
