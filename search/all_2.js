@@ -1,23 +1,9 @@
 var searchData=
 [
-  ['cœur_20applicatif_0',['🔹 Core — Cœur applicatif',['../index.html#autotoc_md4',1,'']]],
-  ['close_1',['close',['../classWebViewPanel.html#a15693211fba63be8ee8ab5a13ebf68c8',1,'WebViewPanel']]],
-  ['computeboundarynodeids_2',['computeBoundaryNodeIds',['../classGraphBuilder.html#aaa371c7490baaad1002240d7dc88da9c',1,'GraphBuilder']]],
-  ['computebranchdirectionvector_3',['computeBranchDirectionVector',['../classSwitchOrientator.html#aad2a4892eb6f9d716bd4703694813f46',1,'SwitchOrientator']]],
-  ['computebranchtippoints_4',['computeBranchTipPoints',['../classSwitchOrientator.html#a8132fa3495845481fdb68a3ec695af15',1,'SwitchOrientator']]],
-  ['computegeodesiclength_5',['computeGeodesicLength',['../classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb',1,'StraightBlock']]],
-  ['computeplanarlength_6',['computePlanarLength',['../classTopologyEdge.html#a7ea766c820d89878604352a287dc5ec9',1,'TopologyEdge']]],
-  ['computepolylinelengthmeters_7',['computePolylineLengthMeters',['../classGeometryUtils.html#a95a8eb25c216b5416111a5b2f18ebb5f',1,'GeometryUtils']]],
-  ['computereachablelength_8',['computeReachableLength',['../classTopologyGraph.html#a036a72b0ab020971fdbb2e0048960b4a',1,'TopologyGraph']]],
-  ['computetotallength_9',['computeTotalLength',['../classSwitchBlock.html#a003ca555f7f3dfd8e8057ae23dba9381',1,'SwitchBlock']]],
-  ['construction_10',['🗺️ Parsing &amp; Construction',['../index.html#autotoc_md11',1,'']]],
-  ['convertpolylinetometric_11',['convertPolylineToMetric',['../classGeometryUtils.html#aa06e19f5aae6fce3108b2fcfc709fc53',1,'GeometryUtils']]],
-  ['convertpolylinetowgs84_12',['convertPolylineToWgs84',['../classGeometryUtils.html#aba6963b2f6022f04e51fb716a11e3895',1,'GeometryUtils']]],
-  ['coordinates_13',['coordinates',['../classStraightBlock.html#ae53ff9455e74374bd6abb4e3221f7880',1,'StraightBlock']]],
-  ['coordinatexy_14',['coordinatexy',['../structCoordinateXY.html#a0e32bf57ec9cc55f2760b6bd3f62344c',1,'CoordinateXY::CoordinateXY()=default'],['../structCoordinateXY.html#a72e2c55a2df24be332a4d3e00875e35e',1,'CoordinateXY::CoordinateXY(double xValue, double yValue)'],['../structCoordinateXY.html',1,'CoordinateXY']]],
-  ['coordinatexy_2eh_15',['CoordinateXY.h',['../CoordinateXY_8h.html',1,'']]],
-  ['coordonnées_16',['📍 Coordonnées',['../index.html#autotoc_md18',1,'']]],
-  ['core_20—_20cœur_20applicatif_17',['🔹 Core — Cœur applicatif',['../index.html#autotoc_md4',1,'']]],
-  ['create_18',['create',['../classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1',1,'WebViewPanel::create()'],['../classProgressBar.html#a608e19274cfd76f8874e4ef6e2dcb396',1,'ProgressBar::create()'],['../classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9',1,'MainWindow::create()']]],
-  ['crossover_5fshared_5fbranch_5fcount_19',['CROSSOVER_SHARED_BRANCH_COUNT',['../structNodeDegreeThresholds.html#a66fe23230337d8a375491cbd4243e95d',1,'NodeDegreeThresholds']]]
+  ['blocs_20ferroviaires_0',['🚧 Blocs ferroviaires',['../index.html#autotoc_md20',1,'']]],
+  ['boundarynodeids_1',['boundaryNodeIds',['../structGraphBuildResult.html#a246acf6b66937b71fdd0df7a948cb532',1,'GraphBuildResult']]],
+  ['branch_5ftip_5fdistance_5fmeters_2',['BRANCH_TIP_DISTANCE_METERS',['../structParserDefaultValues.html#a5566a0671108872abd8f48583c4ac86e',1,'ParserDefaultValues']]],
+  ['branchids_3',['branchIds',['../classSwitchBlock.html#accb5d67518dff64ab8bcc6f1693fe2bc',1,'SwitchBlock']]],
+  ['build_4',['build',['../classGraphBuilder.html#af2d714cb20595bdc76588d2512a0102a',1,'GraphBuilder']]],
+  ['buildtopologygraph_5',['buildTopologyGraph',['../classGraphBuilder.html#a978a9bb24411525583b8c2855db91c80',1,'GraphBuilder']]]
 ];

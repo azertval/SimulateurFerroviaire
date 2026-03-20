@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['📦_20models_20—_20modèle_20de_20données_0',['📦 Models — Modèle de données',['../index.html#autotoc_md17',1,'']]]
+  ['✨_20auteur_0',['✨ Auteur',['../index.html#autotoc_md26',1,'']]]
 ];

@@ -1,10 +1,10 @@
 <map id="MainWindow" name="MainWindow">
-<area shape="rect" id="Node000001" title="Fenêtre principale de l&#39;application SimulateurFerroviaire." alt="" coords="113,881,271,1227"/>
-<area shape="rect" id="Node000002" href="$classProgressBar.html" title=" " alt="" coords="5,573,123,699"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,699,56,775,59,817,68,857,84,899,107,940,102,942,80,901,63,858,54,817,50,776,53,699"/>
+<area shape="rect" id="Node000001" title="Fenêtre principale de l&#39;application SimulateurFerroviaire." alt="" coords="113,901,271,1247"/>
+<area shape="rect" id="Node000002" href="$classProgressBar.html" title=" " alt="" coords="5,583,123,709"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,709,55,790,59,834,68,877,84,919,107,960,102,962,80,921,63,878,53,835,50,790,52,709"/>
 <area shape="rect" id="Node000003" href="$classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="161,5,343,391"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="215,391,207,454,198,559,193,666,190,865,185,865,188,666,193,559,201,453,210,391"/>
-<area shape="rect" id="Node000004" href="$classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué." alt="" coords="315,453,469,819"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="316,390,331,437,326,438,311,392"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="317,800,280,876,275,874,312,797"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="215,391,207,454,198,565,192,677,190,885,185,885,187,677,192,564,201,453,210,391"/>
+<area shape="rect" id="Node000004" href="$classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué." alt="" coords="315,453,469,839"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="315,390,329,437,324,438,310,392"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="317,814,280,892,275,889,312,811"/>
 </map>

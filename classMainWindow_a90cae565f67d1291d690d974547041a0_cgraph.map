@@ -1,7 +1,9 @@
 <map id="MainWindow::onParsingSuccess" name="MainWindow::onParsingSuccess">
-<area shape="rect" id="Node000001" title="Gère la fin réussie du parsing (WM_PARSING_SUCCESS)." alt="" coords="5,31,233,56"/>
-<area shape="rect" id="Node000002" href="$classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd" title="Met à jour la progression." alt="" coords="281,5,465,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,29,267,26,268,31,234,35"/>
-<area shape="rect" id="Node000003" href="$classProgressBar.html#ac9fbcf04d7d4e8c5b3e332efcfc0d34c" title="Show or hide the ProgressBar." alt="" coords="302,55,445,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="234,51,288,57,288,62,233,57"/>
+<area shape="rect" id="Node000001" title="Gère la fin réussie du parsing (WM_PARSING_SUCCESS)." alt="" coords="5,55,233,80"/>
+<area shape="rect" id="Node000002" href="$classWebViewPanel.html#a5890da7c431554b9e864759f293dac1f" title="Exécute un script JavaScript dans le contexte de la page chargée." alt="" coords="281,5,495,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,52,304,31,305,36,190,57"/>
+<area shape="rect" id="Node000003" href="$classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd" title="Met à jour la progression." alt="" coords="296,55,480,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="233,65,282,65,282,70,233,70"/>
+<area shape="rect" id="Node000004" href="$classProgressBar.html#ac9fbcf04d7d4e8c5b3e332efcfc0d34c" title="Show or hide the ProgressBar." alt="" coords="317,104,459,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="190,77,305,99,304,104,189,83"/>
 </map>

@@ -5,6 +5,7 @@ var classWebViewPanel =
     [ "WebViewPanel", "classWebViewPanel.html#a56167ee680bfe4b3563b5bc1e1926eab", null ],
     [ "close", "classWebViewPanel.html#a15693211fba63be8ee8ab5a13ebf68c8", null ],
     [ "create", "classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1", null ],
+    [ "executeScript", "classWebViewPanel.html#a5890da7c431554b9e864759f293dac1f", null ],
     [ "initializeWebView", "classWebViewPanel.html#a886fd07f1d23eec535d0b57215c6ce50", null ],
     [ "isInitialized", "classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2", null ],
     [ "navigate", "classWebViewPanel.html#a17fdacaf19c8e0830ae1ea7ee1632993", null ],

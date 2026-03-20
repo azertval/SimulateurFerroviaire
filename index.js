@@ -16,5 +16,10 @@ var index =
     [ "📦 Models — Modèle de données", "index.html#autotoc_md17", [
       [ "📍 Coordonnées", "index.html#autotoc_md18", null ],
       [ "🚧 Blocs ferroviaires", "index.html#autotoc_md20", null ]
-    ] ]
+    ] ],
+    [ "📜 Licence", "index.html#autotoc_md22", [
+      [ "Vous êtes autorisé à :", "index.html#autotoc_md23", null ],
+      [ "Sous les conditions suivantes :", "index.html#autotoc_md24", null ]
+    ] ],
+    [ "✨ Auteur", "index.html#autotoc_md26", null ]
 ];

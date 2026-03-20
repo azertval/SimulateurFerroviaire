@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('classWebViewPanel.html',''); initResiz
 <div class="dynheader">
 Collaboration diagram for WebViewPanel:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel__coll__graph.svg" width="192" height="824"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel__coll__graph.svg" width="192" height="844"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -138,6 +138,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abea11ffd7181d2514edb9283256aa8e2" id="r_abea11ffd7181d2514edb9283256aa8e2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2">isInitialized</a> () const</td></tr>
 <tr class="memdesc:abea11ffd7181d2514edb9283256aa8e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si le WebView est prêt.  <br /></td></tr>
 <tr class="separator:abea11ffd7181d2514edb9283256aa8e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5890da7c431554b9e864759f293dac1f" id="r_a5890da7c431554b9e864759f293dac1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#a5890da7c431554b9e864759f293dac1f">executeScript</a> (const std::wstring &amp;script)</td></tr>
+<tr class="memdesc:a5890da7c431554b9e864759f293dac1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exécute un script JavaScript dans le contexte de la page chargée.  <br /></td></tr>
+<tr class="separator:a5890da7c431554b9e864759f293dac1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a118dd6f6115c00ad0d01b6c4238e5caf" id="r_a118dd6f6115c00ad0d01b6c4238e5caf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#a118dd6f6115c00ad0d01b6c4238e5caf">setOnInitialized</a> (std::function&lt; void()&gt; callback)</td></tr>
 <tr class="memdesc:a118dd6f6115c00ad0d01b6c4238e5caf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit un callback à appeler une fois l'initialisation terminée.  <br /></td></tr>
 <tr class="separator:a118dd6f6115c00ad0d01b6c4238e5caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -338,6 +341,39 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a5890da7c431554b9e864759f293dac1f" name="a5890da7c431554b9e864759f293dac1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5890da7c431554b9e864759f293dac1f">&#9670;&#160;</a></span>executeScript()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WebViewPanel::executeScript </td>
+          <td>(</td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>script</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exécute un script JavaScript dans le contexte de la page chargée. </p>
+<p>Permet d'interagir dynamiquement avec le contenu HTML, par exemple pour manipuler la carte Leaflet ou récupérer des données depuis la page.</p>
+<p>Log erreur si le WebView n'est pas encore initialisé ou si l'exécution échoue.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">script</td><td>Code JavaScript à exécuter. Doit être une expression valide. Le résultat de l'exécution est ignoré (void). </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_a5890da7c431554b9e864759f293dac1f_icgraph.svg" width="1479" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="a886fd07f1d23eec535d0b57215c6ce50" name="a886fd07f1d23eec535d0b57215c6ce50"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a886fd07f1d23eec535d0b57215c6ce50">&#9670;&#160;</a></span>initializeWebView()</h2>
 
@@ -417,11 +453,6 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Navigue vers une URL. </p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_a17fdacaf19c8e0830ae1ea7ee1632993_icgraph.svg" width="396" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
@@ -442,6 +473,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Injecte du HTML directement. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_ad8facf8f40cd6cce77620c221bda1d81_icgraph.svg" width="410" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>

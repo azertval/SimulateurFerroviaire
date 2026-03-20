@@ -1,5 +1,28 @@
 var searchData=
 [
-  ['junction_5fminimum_0',['JUNCTION_MINIMUM',['../structNodeDegreeThresholds.html#a90c68fd6df24d921d2eb0b13fc5034d8',1,'NodeDegreeThresholds']]],
-  ['junctioncoordinate_1',['junctionCoordinate',['../classSwitchBlock.html#adc2d20ac6d2043f9d6e8f30df0e9a7e5',1,'SwitchBlock']]]
+  ['id_0',['id',['../classTopologyEdge.html#a0345573f0910118e47abb07355cfb1f1',1,'TopologyEdge::id'],['../classStraightBlock.html#ab1732af8d7ad997aa6765763514ef879',1,'StraightBlock::id'],['../classSwitchBlock.html#a05f81ee2e6dafd1f2805c85b6abb147c',1,'SwitchBlock::id']]],
+  ['idc_5fmyicon_1',['IDC_MYICON',['../Resource_8h.html#abb326bd165140b31acf04b893ef655ca',1,'Resource.h']]],
+  ['idc_5fsimulateurferroviaire_2',['IDC_SIMULATEURFERROVIAIRE',['../Resource_8h.html#ab85b2542c93de32f653bc8a14863bc72',1,'Resource.h']]],
+  ['idc_5fstatic_3',['IDC_STATIC',['../Resource_8h.html#ac93033490bc8943cfc82ec3b40e5cd74',1,'Resource.h']]],
+  ['idd_5faboutbox_4',['IDD_ABOUTBOX',['../Resource_8h.html#a77a06326b569136edbb6c766bc98c33c',1,'Resource.h']]],
+  ['idd_5fsimulateurferroviaire_5fdialog_5',['IDD_SIMULATEURFERROVIAIRE_DIALOG',['../Resource_8h.html#a8d06a4ca3811a9aa3a67c1e4f39b5c29',1,'Resource.h']]],
+  ['idi_5fsimulateurferroviaire_6',['IDI_SIMULATEURFERROVIAIRE',['../Resource_8h.html#ae3516914ff50804e0c5a9c8c6c21a7cc',1,'Resource.h']]],
+  ['idi_5fsmall_7',['IDI_SMALL',['../Resource_8h.html#a861a8cb71616b4615a5823bcf4bff6e3',1,'Resource.h']]],
+  ['idm_5fabout_8',['IDM_ABOUT',['../Resource_8h.html#a589e0105bc3e8681893dbf51210ceeec',1,'Resource.h']]],
+  ['idm_5fexit_9',['IDM_EXIT',['../Resource_8h.html#a79aeed168a959b22b32169e25f8c1f4d',1,'Resource.h']]],
+  ['idm_5ffile_5fopen_10',['IDM_FILE_OPEN',['../Resource_8h.html#a63f11a94634314702967ce111b40fa2f',1,'Resource.h']]],
+  ['idr_5fmainframe_11',['IDR_MAINFRAME',['../Resource_8h.html#a9772c84d39896ad00b9aeb34b15d324d',1,'Resource.h']]],
+  ['ids_5fapp_5ftitle_12',['IDS_APP_TITLE',['../Resource_8h.html#a636c9aea2a8d16b73e43df39b3e0e7bd',1,'Resource.h']]],
+  ['info_13',['INFO',['../Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a551b723eafd6a31d444fcb2f5920fbd3',1,'Logger.h']]],
+  ['initializewebview_14',['initializeWebView',['../classWebViewPanel.html#a886fd07f1d23eec535d0b57215c6ce50',1,'WebViewPanel']]],
+  ['interface_20utilisateur_15',['🖥️ HMI — Interface utilisateur',['../index.html#autotoc_md5',1,'']]],
+  ['internal_5fchunk_5fnode_16',['INTERNAL_CHUNK_NODE',['../structTopologySentinel.html#af074b1a019401d89a25803edec358ae6',1,'TopologySentinel']]],
+  ['interpolatetippoint_17',['interpolateTipPoint',['../classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd',1,'SwitchOrientator']]],
+  ['invalidgeojsonformatexception_18',['invalidgeojsonformatexception',['../classInvalidGeoJsonFormatException.html#a6a575f1b2ef3060938b86ad75907eb3c',1,'InvalidGeoJsonFormatException::InvalidGeoJsonFormatException()'],['../classInvalidGeoJsonFormatException.html',1,'InvalidGeoJsonFormatException']]],
+  ['invalidswitchconfigexception_19',['invalidswitchconfigexception',['../classInvalidSwitchConfigException.html',1,'InvalidSwitchConfigException'],['../classInvalidSwitchConfigException.html#abaaafef573235d7c5ea379dfeddb7359',1,'InvalidSwitchConfigException::InvalidSwitchConfigException()']]],
+  ['invalidtopologyexception_20',['invalidtopologyexception',['../classInvalidTopologyException.html#a5710b8640dbf0e049d7bd6e17ea47eb2',1,'InvalidTopologyException::InvalidTopologyException()'],['../classInvalidTopologyException.html',1,'InvalidTopologyException']]],
+  ['isdoubleswitch_21',['isDoubleSwitch',['../classSwitchBlock.html#ae4c9ab5c95d6c5e9779fcf2d948787a5',1,'SwitchBlock']]],
+  ['isinitialized_22',['isInitialized',['../classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2',1,'WebViewPanel']]],
+  ['isnorthernhemisphere_23',['isNorthernHemisphere',['../structGraphBuildResult.html#a51efb67942e95c1bd6d229e1b3fe2b62',1,'GraphBuildResult']]],
+  ['isoriented_24',['isOriented',['../classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7',1,'SwitchBlock']]]
 ];

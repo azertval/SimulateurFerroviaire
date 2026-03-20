@@ -37,6 +37,9 @@ var NAVTREEINDEX0 =
 "GraphBuilder_8h_source.html":[2,0,1,1,0,11],
 "LatLon_8h.html":[2,0,1,1,1,1],
 "LatLon_8h_source.html":[2,0,1,1,1,1],
+"LeafletEnums_8h.html":[2,0,1,0,1,1,0,0],
+"LeafletEnums_8h.html#aecbc87285e42ab882733f90df6920a22":[2,0,1,0,1,1,0,0,0],
+"LeafletEnums_8h_source.html":[2,0,1,0,1,1,0,0],
 "Logger_8cpp.html":[2,0,1,0,0,0,0],
 "Logger_8cpp.html#a1c65afe69de9e58410454399683cef61":[2,0,1,0,0,0,0,0],
 "Logger_8h.html":[2,0,1,0,0,0,1],
@@ -98,9 +101,9 @@ var NAVTREEINDEX0 =
 "TopologyGraph_8cpp.html":[2,0,1,1,0,2,2],
 "TopologyGraph_8h.html":[2,0,1,1,0,2,3],
 "TopologyGraph_8h_source.html":[2,0,1,1,0,2,3],
-"WebViewPanel_8cpp.html":[2,0,1,0,1,1,0],
-"WebViewPanel_8h.html":[2,0,1,0,1,1,1],
-"WebViewPanel_8h_source.html":[2,0,1,0,1,1,1],
+"WebViewPanel_8cpp.html":[2,0,1,0,1,1,1],
+"WebViewPanel_8h.html":[2,0,1,0,1,1,2],
+"WebViewPanel_8h_source.html":[2,0,1,0,1,1,2],
 "annotated.html":[1,0],
 "classAboutDialog.html":[1,0,0],
 "classAboutDialog.html#a2f97cbd5f2555ff136bb201f24f86525":[1,0,0,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX0 =
 "classStraightBlock.html#aa169e5936f6935916fd5beb51c176a2c":[1,0,22,8],
 "classStraightBlock.html#aacbbde91378d4e080c3ca2cf0c4f801a":[1,0,22,3],
 "classStraightBlock.html#ab1732af8d7ad997aa6765763514ef879":[1,0,22,7],
-"classStraightBlock.html#ace5250940af85ae74685da68fc5ee4a9":[1,0,22,9],
-"classStraightBlock.html#ae53ff9455e74374bd6abb4e3221f7880":[1,0,22,6],
-"classSwitchBlock.html":[1,0,23],
-"classSwitchBlock.html#a003ca555f7f3dfd8e8057ae23dba9381":[1,0,23,2]
+"classStraightBlock.html#ace5250940af85ae74685da68fc5ee4a9":[1,0,22,9]
 };

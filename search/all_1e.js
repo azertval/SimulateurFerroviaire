@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🔄_20pipeline_20global_0',['🔄 Pipeline global',['../index.html#autotoc_md9',1,'']]]
+  ['🌍_20geoparser_20—_20pipeline_20principal_0',['🌍 GeoParser — Pipeline principal',['../index.html#autotoc_md8',1,'']]]
 ];
