@@ -117,3 +117,27 @@ SwitchBlock
 - Aiguillage ferroviaire (3 branches)
 - Orientation + calculs géométriques
 
+---
+
+# 📜 Licence
+
+Ce projet est distribué sous licence :
+
+**Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**
+
+👉 https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+## Vous êtes autorisé à :
+- ✔️ Partager — copier et redistribuer le matériel
+- ✔️ Adapter — remixer, transformer et créer à partir du matériel
+
+## Sous les conditions suivantes :
+- 📝 Attribution — vous devez créditer l’auteur
+- 🚫 Non commercial — pas d’utilisation commerciale
+- 🔁 Partage dans les mêmes conditions — redistribution sous la même licence
+
+---
+
+# ✨ Auteur
+
+© 2026 Valentin Eloy
