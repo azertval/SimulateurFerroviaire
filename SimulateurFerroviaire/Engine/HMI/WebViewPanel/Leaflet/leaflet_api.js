@@ -6,44 +6,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // ===== API exposée à C++ =====
 
-/**
- * Ajoute un marqueur circulaire rouge sur la carte.
- *
- * @param {number} lat  Latitude du point.
- * @param {number} lon  Longitude du point.
-*/
-window.addMarker = function(lat, lon) {
-    L.circleMarker([lat, lon], { radius: 6, color: 'red' }).addTo(map);
-};
-
-/**
- * Dessine une polyligne bleue à partir d'un tableau de coordonnées.
- *
- * @param {Array<[number, number]>} coords  Tableau de paires[lat, lon].
- */
-window.drawLine = function(coords) {
-    L.polyline(coords, { color: 'blue' }).addTo(map);
-};
-
-/**
- * Charge et affiche une couche GeoJSON sur la carte.
- * Remplace la couche précédente si elle existe, puis zoom automatiquement.
- *
- * @param {object} geojson  Objet GeoJSON valide à afficher.
-*/
-window.loadGeoJson = function(geojson) {
-    if (window.currentLayer) {
-        map.removeLayer(window.currentLayer);
-    }
-    const layer = L.geoJSON(geojson);
-    layer.addTo(map);
-    window.currentLayer = layer;
-    const bounds = layer.getBounds();
-    if (bounds.isValid()) {
-        map.fitBounds(bounds);
-    }
-};
-
+// ================================
+// Groupe des straights
+// ================================
 /** Groupe Leaflet contenant tous les blocs straight rendus. */
 window.straightGroup = L.featureGroup().addTo(map);
 
@@ -128,4 +93,36 @@ window.zoomToStraights = function() {
     if (bounds.isValid()) {
         map.fitBounds(bounds, { padding: [20, 20], maxZoom: 18 });
     }
+};
+
+// ================================
+// Groupe des switchs
+// ================================
+/** Groupe Leaflet contenant tous les blocs switchs rendus. */
+window.switchGroup = L.featureGroup().addTo(map);
+
+/**
+ * Supprime tous les blocs switchs actuellement affichés sur la carte.
+ */
+window.clearSwitches = function() {
+    window.switchGroup.clearLayers();
+};
+
+window.renderSwitch = function(id, lat, lon, isDouble) {
+
+    const color = isDouble ? "orange" : "red";
+
+    const marker = L.circleMarker([lat, lon], {
+        radius: 0.05,
+        color: color,
+        fillColor: color,
+        fillOpacity: 1
+    });
+
+    marker.bindPopup(
+        "Switch: " + id + "<br>" +
+        "Double: " + isDouble
+    );
+
+    window.switchGroup.addLayer(marker);
 };

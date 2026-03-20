@@ -74,6 +74,27 @@ public:
      */
     static std::wstring renderAllStraightBlocks();
 
+    /**
+     * @brief Injecte un SwitchBlock dans la carte Leaflet via JavaScript.
+     *
+     * Construit et exécute un appel @c renderSwitchBlock(id, [[lat,lon], ...])
+     * dans le WebView. Sans effet si le bloc contient moins de 2 coordonnées.
+     *
+     * @param SwitchBlock  Bloc de voie droite à rendre.
+     * @return Instruction JavaScript prête à être passée à @c executeScript.
+     */
+    static std::wstring renderSwitchBlock(const SwitchBlock& SwitchBlock);
+
+    /**
+     * @brief Efface le rendu existant et redessine tous les SwitchBlocks.
+     *
+     * Appelle @c clearSwitchBlocks() dans le WebView, puis délègue chaque
+     * bloc à @ref renderSwitchBlock.
+     *
+     * @return Instruction JavaScript prête à être passée à @c executeScript.
+     */
+    static std::wstring renderAllSwitchBlocks();
+
 private : 
     /**
      * @brief Convertit un StraightBlock en feature GeoJSON LineString.  

@@ -239,10 +239,12 @@ void MainWindow::onProgressUpdate(int progressValue)
 
 void MainWindow::onParsingSuccess(HWND hWnd)
 {
-    std::wstring script = GeoJsonExporter::renderAllStraightBlocks();
-    m_progressBar.setProgress(100);
-
+    std::wstring script;
+    script = GeoJsonExporter::renderAllStraightBlocks();
     m_webViewPanel.executeScript(script);
+    script = GeoJsonExporter::renderAllSwitchBlocks();
+    m_webViewPanel.executeScript(script);
+    m_progressBar.setProgress(100);
     m_progressBar.show(false);
 }
 

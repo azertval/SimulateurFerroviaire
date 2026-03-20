@@ -228,17 +228,57 @@ std::wstring GeoJsonExporter::renderAllStraightBlocks()
     const std::vector<StraightBlock>& straights =
         TopologyRepository::instance().data().straights;
 
-    std::wstring fullScript;
+    std::wstring script;
 
     // Clear previous
-    fullScript += L"clearStraightBlocks();";
+    script += L"clearStraightBlocks();";
 
     for (const auto& straightBlock : straights)
     {
-        fullScript += renderStraightBlock(straightBlock);
+        script += renderStraightBlock(straightBlock);
     }
 
-    fullScript += L"zoomToStraights();";
+    script += L"zoomToStraights();";
 
-    return fullScript;
+    return script;
+}
+
+std::wstring GeoJsonExporter::renderSwitchBlock(const SwitchBlock& sw)
+{
+    std::wstring script = L"renderSwitch(";
+
+    // ID
+    script += L"\"";
+    script += std::wstring(sw.id.begin(), sw.id.end());
+    script += L"\",";
+
+    // Position
+    script += std::to_wstring(sw.junctionCoordinate.latitude);
+    script += L",";
+    script += std::to_wstring(sw.junctionCoordinate.longitude);
+    script += L",";
+
+    // Double switch
+    script += (sw.isDoubleSwitch ? L"true" : L"false");
+
+    script += L");";
+
+    return script;
+}
+
+std::wstring GeoJsonExporter::renderAllSwitchBlocks()
+{
+    const auto& switches =
+        TopologyRepository::instance().data().switches;
+
+    std::wstring script;
+
+    script += L"clearSwitches();";
+
+    for (const auto& sw : switches)
+    {
+        script += renderSwitchBlock(sw);
+    }
+
+    return script;
 }
