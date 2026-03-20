@@ -23,7 +23,6 @@
 #include "Engine/HMI/WebViewPanel/WebViewPanel.h"
 #include "Engine/Core/Logger/Logger.h"
 
-
 /**
  * @class MainWindow
  * @brief Fenêtre principale de l'application SimulateurFerroviaire.
@@ -145,6 +144,16 @@ private:
      * @param hWnd Handle de la fenêtre principale (propriétaire du dialogue).
      */
     void onFileOpen(HWND hWnd);
+
+    /**
+    * @brief Ouvre le dialogue d'exportation et déclenche l'export GeoJSON.
+     *
+     * Délègue la sélection à un dialogue d'exportation @ref FileOpenDialog, puis déclenche
+     * puis déclenche l'export via un module dédié @ref GeoJsonExporter
+     *
+     * @param hWnd Handle de la fenêtre principale (propriétaire du dialogue).
+    */
+    void onFileExport(HWND hWnd);
 
     /**
      * @brief Quand la fenêtre est redimensionnée, ajuste les éléments graphiques en conséquence.

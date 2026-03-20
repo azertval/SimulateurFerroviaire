@@ -19,8 +19,9 @@
 /**
  * @brief Coordonnée plane en mètres dans un système métrique (UTM ou similaire).
  */
-struct CoordinateXY
+class CoordinateXY
 {
+public:
     double x = 0.0;  ///< Abscisse en mètres (est pour UTM).
     double y = 0.0;  ///< Ordonnée en mètres (nord pour UTM).
 

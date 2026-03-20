@@ -9,6 +9,8 @@
 #include "TopologyExtractor.h"
 #include "SwitchOrientator.h"
 #include "DoubleSwitchDetector.h"
+#include "Modules/GeoJsonExporter/GeoJsonExporter.h"
+#include "Modules/Models/TopologyRepository.h"
 
  /**
   * @brief Constructeur.
@@ -54,7 +56,7 @@ void GeoParser::parse(bool enableDebugDump)
     TopologyExtractor extractor(m_logger, graphResult, m_maxStraightLengthMeters);
     TopologyExtractResult topo = extractor.extract();
 
-    reportProgress(50);
+    reportProgress(40);
 
     SwitchOrientator orientator(
         m_logger,
@@ -66,7 +68,7 @@ void GeoParser::parse(bool enableDebugDump)
 
     orientator.orient();
 
-    reportProgress(70);
+    reportProgress(60);
 
     DoubleSwitchDetector detector(
         m_logger,
@@ -79,14 +81,17 @@ void GeoParser::parse(bool enableDebugDump)
 
     detector.detectAndAbsorb();
 
-    reportProgress(90);
+    reportProgress(80);
 
     detector.validateSwitches();
 
-    reportProgress(100);
+    reportProgress(90);
 
-    switches = std::move(topo.switches);
-    straights = std::move(topo.straights);
+    TopologyRepository::instance().data().clear();
+    TopologyRepository::instance().data().switches = std::move(topo.switches);
+    TopologyRepository::instance().data().straights = std::move(topo.straights);
+
+    reportProgress(100);
 
     if (enableDebugDump)
         dumpDebugOutput();
