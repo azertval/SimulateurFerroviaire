@@ -2,25 +2,12 @@
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
 ![CI](https://github.com/azertval/SimulateurFerroviaire/actions/workflows/build_debug.yml/badge.svg)
 [![Documentation](https://img.shields.io/badge/Documentation-Doxygen-blue)](https://azertval.github.io/SimulateurFerroviaire/)
+![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/license-CC--BY--NC--SA%204.0-lightgrey.svg)
+
 # 🚆 Simulateur Ferroviaire
 
 ## 🎯 Overview
-Simulation ferroviaire basée sur données GeoJSON avec visualisation interactive (WebView2 + Leaflet).
-
----
-
-## 📊 Pipeline
-
-```mermaid
-graph TD
-    A[GeoJSON] --> B[GeoParser]
-    B --> C[TopologyGraph]
-    C --> D[Switch Detection]
-    D --> E[SwitchOrientator]
-    E --> F[GeoJSON Export]
-    F --> G[WebView2]
-    G --> H[Leaflet Map]
-```
+Simulation ferroviaire basée sur données GeoJSON avec visualisation interactive.
 
 ---
 # ⚙️ Prérequis
@@ -88,49 +75,12 @@ build/Debug/SimulateurFerroviaire.exe
 La documentation du projet est générée avec **Doxygen**.
 👉 Ouvrir la documentation : https://azertval.github.io/SimulateurFerroviaire/
 
-## Génération
-
-```bash
-doxygen Doxyfile
-```
-
----
-
-## 🗺️ Map Rendering
-
-### Stack
-- WebView2 (C++)
-- Leaflet (JS)
-- OpenStreetMap
-
----
-
-## 📦 Exemple JSON
-
-```json
-{
-  "straightBlocks": [
-    [[45.1, -1.0], [45.2, -1.1]]
-  ],
-  "switchBlocks": [
-    {"lat": 45.15, "lon": -1.05}
-  ]
-}
-```
-
----
-
-## 🧠 Interaction
-
-- Click → JS → C++
-- Highlight elements
-- Future: routing / simulation
-
----
-
-# 📁 Structure du projet
-
-TODO
+👉 Genérer la doc en local :
+    ```bash
+    doxygen -g Doxyfile
+    ```
+👉  docs/doxygen/mainpage.md : 
+La mainpage de Doxygen est configurée pour présenter une vue d’ensemble du projet, avec des sections dédiées à la description, à l’architecture, aux modules, et à l’utilisation.
 
 ---
 
@@ -140,6 +90,8 @@ Le projet utilise GitHub Actions :
 
 * Compilation automatique des Pull Requests
 * Validation du build
+* Génération de la documentation
+* Validation des issues associées
 
 ---
 
@@ -169,7 +121,7 @@ add_executable(SimulateurFerroviaire WIN32 ...)
 Vérifier le dossier :
 
 ```text
-build/Debug/
+out/build/Debug/
 ```
 
 ---
@@ -177,7 +129,7 @@ build/Debug/
 ## ❌ Erreur CMake (generator mismatch)
 
 ```bash
-rm -rf build
+rm -rf out/
 ```
 
 ---
@@ -192,10 +144,7 @@ rm -rf build
 
 # 🚀 Roadmap
 
-* [ ] Visualisation graphique du réseau
-* [ ] Simulation de circulation
-* [ ] Tests unitaires
-* [ ] Optimisation du graphe
+Voir les issues du projet pour les fonctionnalités à venir et les améliorations prévues.
 
 ---
 
@@ -217,19 +166,25 @@ rm -rf build
 
 ---
 
-## 📸 Future UI
-
-- Map full screen
-- Highlight segments
-- Switch interaction
----
-
 # 📜 Licence
 
-À définir
+Ce projet est distribué sous licence :
+
+**Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**
+
+👉 https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+## Vous êtes autorisé à :
+- ✔️ Partager — copier et redistribuer le matériel
+- ✔️ Adapter — remixer, transformer et créer à partir du matériel
+
+## Sous les conditions suivantes :
+- 📝 Attribution — vous devez créditer l’auteur
+- 🚫 Non commercial — pas d’utilisation commerciale
+- 🔁 Partage dans les mêmes conditions — redistribution sous la même licence
 
 ---
 
 # ✨ Auteur
 
-Valentin Eloy
+© 2026 Valentin Eloy

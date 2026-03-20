@@ -1,0 +1,36 @@
+name: Sync Project Issues
+
+on:
+  issues:
+    types: [opened, labeled]
+  pull_request:
+    types: [opened, closed]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Update project fields
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = "azertval";
+            const repo = "SimulateurFerroviaire";
+
+            const projectNumber = 1;
+
+            const issue = context.payload.issue || context.payload.pull_request;
+            const issueNumber = issue.number;
+
+            console.log("Processing issue:", issueNumber);
+
+            // Example logic (simplified)
+            let status = "Todo";
+
+            if (context.eventName === "pull_request") {
+              if (context.payload.action === "opened") status = "In Progress";
+              if (context.payload.action === "closed") status = "Done";
+            }
+
+            console.log("Set status:", status);
