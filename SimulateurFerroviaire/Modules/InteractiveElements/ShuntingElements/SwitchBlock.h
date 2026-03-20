@@ -9,12 +9,9 @@
  *   - La branche root  : Straight entrant dans la jonction.
  *   - La branche normal: premier Straight de sortie (continuation directe).
  *   - La branche deviation : second Straight de sortie (branche déviée).
- *
- * Cycle de vie :
- *   Phase 3 (détection)  — créé avec junctionCoord et branchIds (IDs bruts d'arêtes).
- *   Phase 5b (câblage)   — branchIds remplacés par des IDs de StraightBlock.
- *   Phase 6 (orientation)— root/normal/deviationBranchId résolus, tips CDC calculés.
- *   Phase 7 (double)     — isDoubleSwitch, nextSwitchId, prevSwitchId positionnés.
+ * 
+ * Hiérarchie :
+ *   InteractiveElement → ShuntingElement → SwitchBlock
  */
 
 #include <optional>
@@ -22,7 +19,7 @@
 #include <string>
 #include <vector>
 
-#include "LatLon.h"
+#include "Modules/Coordinates/LatLon.h"
 
 
 /**

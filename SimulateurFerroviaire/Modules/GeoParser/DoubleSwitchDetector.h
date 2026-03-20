@@ -16,8 +16,8 @@
 #include <utility>
 #include <vector>
 #include "./Graph/TopologyGraph.h"
-#include "Modules/Models/StraightBlock.h"
-#include "Modules/Models/SwitchBlock.h"
+#include "Modules/InteractiveElements/ShuntingElements/StraightBlock.h"
+#include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
 #include "./Enums/GeoParserEnums.h"
 #include "Engine/Core/Logger/Logger.h"
 

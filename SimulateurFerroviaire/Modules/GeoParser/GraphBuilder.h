@@ -28,8 +28,8 @@
 
 #include "./Graph/TopologyGraph.h"
 #include "./Enums/GeoParserEnums.h"
-#include "Modules/Models/LatLon.h"
-#include "Modules/Models/CoordinateXY.h"
+#include "Modules/Coordinates/LatLon.h"
+#include "Modules/Coordinates/CoordinateXY.h"
 #include "Engine/Core/Logger/Logger.h"
 
 /**

@@ -28,15 +28,15 @@
 #include <vector>
 
 #include "GraphBuilder.h"
-#include "Modules/Models/StraightBlock.h"
-#include "Modules/Models/SwitchBlock.h"
+#include "Modules/InteractiveElements/ShuntingElements/StraightBlock.h"
+#include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
 #include "./Enums/GeoParserEnums.h"
 #include "Engine/Core/Logger/Logger.h"
 
 
-/**
- * @brief Résultat complet de l'extraction topologique (Phases 3–5b).
- */
+ /**
+  * @brief Résultat complet de l'extraction topologique (Phases 3–5b).
+  */
 struct TopologyExtractResult
 {
     /** Liste des aiguillages détectés. */
@@ -77,10 +77,10 @@ public:
      * @param graphResult             Résultat de la Phase 1+2 (modifié en place).
      * @param maxStraightLengthMeters Longueur maximale d'un StraightBlock avant découpe.
      */
-    TopologyExtractor(Logger&           logger,
-                       GraphBuildResult& graphResult,
-                       double            maxStraightLengthMeters
-                           = ParserDefaultValues::MAX_STRAIGHT_LENGTH_METERS);
+    TopologyExtractor(Logger& logger,
+        GraphBuildResult& graphResult,
+        double            maxStraightLengthMeters
+        = ParserDefaultValues::MAX_STRAIGHT_LENGTH_METERS);
 
     // -------------------------------------------------------------------------
     // API publique
@@ -94,13 +94,13 @@ public:
 
 private:
 
-    Logger&           m_logger;
+    Logger& m_logger;
     GraphBuildResult& m_graphResult;
     double            m_maxStraightLengthMeters;
 
     std::unordered_map<int, std::string>                m_nodeIdToSwitchId;
     std::unordered_map<std::string, int>                m_switchIdToNodeId;
-    std::unordered_map<std::string, std::pair<int,int>> m_straightEndpointNodeIds;
+    std::unordered_map<std::string, std::pair<int, int>> m_straightEndpointNodeIds;
 
     // -------------------------------------------------------------------------
     // Phases internes
@@ -114,11 +114,11 @@ private:
 
     /** Phase 5a — Découpe les StraightBlock trop longs en morceaux. */
     std::vector<StraightBlock> splitLongStraights(
-        const std::vector<StraightBlock>& inputStraights);
+        std::vector<StraightBlock> inputStraights);
 
     /** Phase 5b — Câblage bidirectionnel Switch ↔ Straight. */
-    void wireTopology(std::vector<SwitchBlock>&   switches,
-                       std::vector<StraightBlock>& straights);
+    void wireTopology(std::vector<SwitchBlock>& switches,
+        std::vector<StraightBlock>& straights);
 
     /**
      * @brief Marche le graphe depuis startNodeId le long de incomingEdgeId
@@ -127,9 +127,9 @@ private:
      * @return ID du nœud d'arrivée (nœud frontière atteint).
      */
     int walkPathUntilBoundary(int                        startNodeId,
-                               const std::string&         incomingEdgeId,
-                               std::vector<CoordinateXY>& accumulatedCoords,
-                               std::set<std::string>&     visitedEdgeIds);
+        const std::string& incomingEdgeId,
+        std::vector<CoordinateXY>& accumulatedCoords,
+        std::set<std::string>& visitedEdgeIds);
 
     /**
      * @brief Regroupe les IDs de morceaux par ID de base (ex. "s/0" → ["s/0","s/0_c1"]).

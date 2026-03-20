@@ -28,8 +28,8 @@
 #include <optional>
 #include <vector>
 
-#include "Modules/Models/LatLon.h"
-#include "Modules/Models/CoordinateXY.h"
+#include "Modules/Coordinates/LatLon.h"
+#include "Modules/Coordinates/CoordinateXY.h"
 #include "../Enums/GeoParserEnums.h"
 
 
