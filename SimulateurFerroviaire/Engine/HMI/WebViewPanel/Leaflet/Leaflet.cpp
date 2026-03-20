@@ -1,4 +1,10 @@
-#pragma once
+/**
+ * @file Leaflet.cpp
+ * @brief Implémentation du générateur HTML Leaflet.
+ *
+ * @see Leaflet
+ */
+
 #include "Leaflet.h"
 
 std::wstring Leaflet::leafletHtml()
@@ -54,6 +60,29 @@ std::wstring Leaflet::leafletHtml()
                         color: 'blue'
                     }).addTo(map);
                 };
+
+                window.loadGeoJson = function(geojson) {
+                    // Supprimer ancienne couche si besoin
+                    if (window.currentLayer) {
+                        map.removeLayer(window.currentLayer);
+                    }
+
+                    // Ajouter nouvelle couche
+                    const layer = L.geoJSON(geojson);
+
+                    layer.addTo(map);
+
+                    // Sauvegarder référence
+                    window.currentLayer = layer;
+
+                    // Zoom automatique
+                    const bounds = layer.getBounds();
+
+                    if (bounds.isValid()) {
+                        map.fitBounds(bounds);
+                    }
+                };
+
             </script>
         </body>
         </html>

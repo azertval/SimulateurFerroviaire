@@ -195,17 +195,25 @@ void MainWindow::onCommand(HWND hWnd, int commandId)
 
 void MainWindow::onFileOpen(HWND hWnd)
 {
-    const std::optional<std::string> selectedPath = FileOpenDialog::open(hWnd);
+    if(m_webViewPanel.isInitialized())
+    { 
+        const std::optional<std::string> selectedPath = FileOpenDialog::open(hWnd);
 
-    if (!selectedPath.has_value())
-    {
-        return; // Annulation par l'utilisateur
+        if (!selectedPath.has_value())
+        {
+            return; // Annulation par l'utilisateur
+        }
+
+        m_progressBar.setProgress(0);
+        m_progressBar.show(true);
+
+        GeoParsingTask::launch(hWnd, selectedPath.value());
     }
-
-    m_progressBar.setProgress(0);
-    m_progressBar.show(true);
-
-    GeoParsingTask::launch(hWnd, selectedPath.value());
+    else
+    {
+        MessageBoxA(hWnd, "Le panneau WebView n'est pas encore initialisé. \
+            Veuillez réessayer dans quelques instants.", "Erreur", MB_OK | MB_ICONERROR);
+    }    
 }
 
 void MainWindow::onFileExport(HWND hWnd)
@@ -227,7 +235,10 @@ void MainWindow::onProgressUpdate(int progressValue)
 
 void MainWindow::onParsingSuccess(HWND hWnd)
 {
+    std::wstring script = GeoJsonExporter::loadGeoJsonToWebView();
     m_progressBar.setProgress(100);
+
+    m_webViewPanel.executeScript(script);
     m_progressBar.show(false);
 }
 

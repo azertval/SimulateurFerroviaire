@@ -75,7 +75,8 @@ public:
 
     /**
     * @brief Show or hide the ProgressBar
-    *  @param Show true to show, false to hide
+    * 
+    * @param visible @c true pour afficher, @c false pour masquer.
     */
     void show(bool visible)
     {

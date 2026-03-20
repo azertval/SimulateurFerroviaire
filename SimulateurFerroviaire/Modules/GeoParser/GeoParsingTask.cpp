@@ -56,6 +56,7 @@ void GeoParsingTask::launch(HWND hWnd, const std::string& geoJsonPath)
         }
         catch (const RailwayParserException& exception)
         {
+            LOG_FAILURE(Logger("GeoParsingTaskCrashFolder"), "Erreur GeoParser : %s", exception.what());
             auto* errorMessage = new std::string(
                 std::string("Erreur GeoParser : ") + exception.what());
 
@@ -63,6 +64,7 @@ void GeoParsingTask::launch(HWND hWnd, const std::string& geoJsonPath)
         }
         catch (const std::exception& exception)
         {
+            LOG_FAILURE(Logger("GeoParsingTaskCrashFolder"), "Erreur GeoParser : %s", exception.what());
             auto* errorMessage = new std::string(
                 std::string("Exception standard : ") + exception.what());
 
@@ -70,6 +72,7 @@ void GeoParsingTask::launch(HWND hWnd, const std::string& geoJsonPath)
         }
         catch (...)
         {
+            LOG_FAILURE(Logger("GeoParsingTaskCrashFolder"), "Erreur inconnue durant le parsing");
             auto* errorMessage = new std::string("Erreur inconnue durant le parsing.");
 
             PostMessage(hWnd, WM_PARSING_ERROR, 0, reinterpret_cast<LPARAM>(errorMessage));

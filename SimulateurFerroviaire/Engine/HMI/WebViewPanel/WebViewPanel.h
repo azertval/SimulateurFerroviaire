@@ -54,7 +54,7 @@ public:
     ~WebViewPanel();
 
     /**
-    * @brief interdit la copie.
+    * @brief Interdit la copie — chaque instance gère ses propres ressources COM.
      *
      * Chaque WebViewPanel est unique et gère ses propres ressources COM. La copie
      * pourrait entraîner des fuites ou des conflits de ressources. Par conséquent,
@@ -67,7 +67,7 @@ public:
     WebViewPanel(const WebViewPanel&) = delete;
 
     /**
-    * @brief Opérateur d'affectation — interdit la copie.
+    * @brief Interdit l'affectation — chaque instance gère ses propres ressources COM.
      *
      * Chaque WebViewPanel est unique et gère ses propres ressources COM. La copie
      * pourrait entraîner des fuites ou des conflits de ressources. Par conséquent,
