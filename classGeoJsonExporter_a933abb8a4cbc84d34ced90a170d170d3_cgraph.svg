@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" target="_top" xlink:title="Convertit un StraightBlock en feature GeoJSON de type LineString.">
 <polygon fill="white" stroke="#666666" points="339,-192 199,-192 199,-162 339,-162 339,-192"/>
 <text text-anchor="start" x="207" y="-180" font-family="Helvetica,sans-Serif" font-size="10.00">GeoJsonExporter::convert</text>
 <text text-anchor="middle" x="269" y="-169" font-family="Helvetica,sans-Serif" font-size="10.00">StraightToFeature</text>
@@ -39,7 +39,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" target="_top" xlink:title="Convertit un SwitchBlock en feature GeoJSON de type Point.">
 <polygon fill="white" stroke="#666666" points="339,-144 199,-144 199,-114 339,-114 339,-144"/>
 <text text-anchor="start" x="207" y="-132" font-family="Helvetica,sans-Serif" font-size="10.00">GeoJsonExporter::convert</text>
 <text text-anchor="middle" x="269" y="-121" font-family="Helvetica,sans-Serif" font-size="10.00">SwitchToFeature</text>

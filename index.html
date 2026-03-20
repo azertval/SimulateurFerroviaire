@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simulateur Ferroviaire: 🚆 Simulateur Ferroviaire</title>
+<title>Simulateur Ferroviaire: Simulateur Ferroviaire</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -90,175 +90,242 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">🚆 Simulateur Ferroviaire </div></div>
+  <div class="headertitle"><div class="title">Simulateur Ferroviaire </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_docs_2doxygen_2mainpage"></a> </p>
-<h1><a class="anchor" id="autotoc_md1"></a>
-📖 Description</h1>
-<p>Reconstruction et visualisation d’un réseau ferroviaire à partir de données GeoJSON.</p>
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#description">Description</a></li>
+<li class="level1"><a href="#engine">Engine — Moteur de l&#39;application</a><ul><li class="level2"><a href="#core">Core — Cœur applicatif</a></li>
+<li class="level2"><a href="#hmi">HMI — Interface utilisateur</a></li>
+<li class="level2"><a href="#autotoc_md2">&lt;/blockquote&gt;</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#modules">Modules — Fonctionnalités métier</a></li>
+<li class="level1"><a href="#geoparser">GeoParser — Pipeline principal</a><ul><li class="level2"><a href="#task">Tâche asynchrone</a></li>
+<li class="level2"><a href="#pipeline">Pipeline global</a></li>
+<li class="level2"><a href="#parsing">Parsing &amp; Construction</a></li>
+<li class="level2"><a href="#graph">Graphe topologique</a></li>
+<li class="level2"><a href="#extraction">Extraction ferroviaire</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#exporter">GeoJsonExporter — Exportation</a></li>
+<li class="level1"><a href="#elements">Eléments interactifs</a><ul><li class="level2"><a href="#hierarchy">Hiérarchie des éléments interactifs</a></li>
+<li class="level2"><a href="#enums">Énumérations clés</a></li>
+<li class="level2"><a href="#storage">Stockages</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#coords">Coordonnées</a></li>
+<li class="level1"><a href="#licence">Licence</a></li>
+<li class="level1"><a href="#auteur">Auteur</a></li>
+</ul>
+</div>
+<div class="textblock"><hr  />
+<h1><a class="anchor" id="description"></a>
+Description</h1>
+<p>Reconstruction et visualisation d'un réseau ferroviaire à partir de données GeoJSON.</p>
 <p>Le projet repose sur un pipeline de parsing permettant de :</p><ul>
-<li>Charger des données géographiques</li>
-<li>Construire un graphe topologique</li>
-<li>Extraire des blocs ferroviaires (voies + aiguillages)</li>
-<li>Produire une représentation exploitable et visualisable</li>
+<li>Charger des données géographiques (WGS-84 / GeoJSON)</li>
+<li>Construire un graphe topologique métrique (UTM)</li>
+<li>Extraire les blocs ferroviaires (voies droites + aiguillages)</li>
+<li>Orienter et valider les aiguillages (root / normal / deviation)</li>
+<li>Détecter les doubles aiguilles et absorber les segments de liaison</li>
+<li>Stocker le modèle dans un singleton partagé et le visualiser dans un WebView</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md3"></a>
-🧠 Engine — Moteur de l’application</h1>
-<h2><a class="anchor" id="autotoc_md4"></a>
-🔹 Core — Cœur applicatif</h2>
-<p>Gestion des composants fondamentaux et de la logique métier.</p>
-<ul>
-<li><a class="el" href="classApplication.html" title="Représente le cycle de vie complet de l&#39;application Win32.">Application</a> → cycle de vie de l’application <br  />
-</li>
-<li><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> → système de journalisation (logs, erreurs, debug)</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
-🖥️ HMI — Interface utilisateur</h2>
-<p>Gestion de l’interface graphique (Win32 + WebView).</p>
-<ul>
-<li><a class="el" href="classMainWindow.html" title="Fenêtre principale de l&#39;application SimulateurFerroviaire.">MainWindow</a> → fenêtre principale <br  />
-</li>
-<li><a class="el" href="classProgressBar.html">ProgressBar</a> → affichage des tâches longues <br  />
-</li>
-<li><a class="el" href="classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué.">WebViewPanel</a> → affichage de openstreetview (<a class="el" href="classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>) <br  />
-<ul>
-<li><a class="el" href="leaflet__api_8js.html">leaflet_api.js</a> décrit l'ensemble des scripts d'injections <br  />
-</li>
-</ul>
-</li>
-<li>Dialogs<ul>
-<li><a class="el" href="classAboutDialog.html" title="Boîte de dialogue modale &quot;À propos&quot; de l&#39;application.">AboutDialog</a> <br  />
-</li>
-<li><a class="el" href="classFileOpenDialog.html" title="Sélecteur de fichier GeoJSON (ou JSON) natif Win32.">FileOpenDialog</a> <br  />
-</li>
-<li><a class="el" href="classFileSaveDialog.html" title="Sauvegarde de fichier GeoJSON (ou JSON) natif Win32.">FileSaveDialog</a></li>
-</ul>
-</li>
+<h1><a class="anchor" id="engine"></a>
+Engine — Moteur de l'application</h1>
+<h2><a class="anchor" id="core"></a>
+Core — Cœur applicatif</h2>
+<p>Gestion des composants fondamentaux et de la logique applicative transverse.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classApplication.html" title="Représente le cycle de vie complet de l&#39;application Win32.">Application</a>   </td><td class="markdownTableBodyNone">Cycle de vie Win32 (enregistrement de classe, boucle de messages)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a>   </td><td class="markdownTableBodyNone">Journalisation structurée (INFO / DEBUG / WARNING / ERROR / FAILURE)   </td></tr>
+</table>
+<h2><a class="anchor" id="hmi"></a>
+HMI — Interface utilisateur</h2>
+<p>Couche graphique Win32 + WebView2.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classMainWindow.html" title="Fenêtre principale de l&#39;application SimulateurFerroviaire.">MainWindow</a>   </td><td class="markdownTableBodyNone">Fenêtre principale, routage des messages Win32, coordination UI ↔ métier    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="classProgressBar.html">ProgressBar</a>   </td><td class="markdownTableBodyNone">Wrapper du contrôle natif <code>PROGRESS_CLASS</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué.">WebViewPanel</a>   </td><td class="markdownTableBodyNone">Affichage cartographique <a class="el" href="classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> embarqué via WebView2    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="classAboutDialog.html" title="Boîte de dialogue modale &quot;À propos&quot; de l&#39;application.">AboutDialog</a>   </td><td class="markdownTableBodyNone">Boîte de dialogue modale "À propos"    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classFileOpenDialog.html" title="Sélecteur de fichier GeoJSON (ou JSON) natif Win32.">FileOpenDialog</a>   </td><td class="markdownTableBodyNone">Sélecteur de fichier GeoJSON (GetOpenFileNameA)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="classFileSaveDialog.html" title="Sauvegarde de fichier GeoJSON (ou JSON) natif Win32.">FileSaveDialog</a>   </td><td class="markdownTableBodyNone">Dialogue de sauvegarde GeoJSON (GetSaveFileNameA)   </td></tr>
+</table>
+<blockquote class="doxtable">
+<p>&zwj;<b>WebView</b> : <code><a class="el" href="leaflet__api_8js.html">leaflet_api.js</a></code> décrit l'ensemble des scripts d'injection JavaScript exécutés via <code><a class="el" href="classWebViewPanel.html#a5890da7c431554b9e864759f293dac1f" title="Exécute un script JavaScript dans le contexte de la page chargée.">WebViewPanel::executeScript()</a></code>. </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md2"></a>
+&lt;/blockquote&gt;</h2>
+<h1><a class="anchor" id="modules"></a>
+Modules — Fonctionnalités métier</h1>
+<hr  />
+<h1><a class="anchor" id="geoparser"></a>
+GeoParser — Pipeline principal</h1>
+<p>Pipeline complet de transformation <b>GeoJSON → modèle ferroviaire</b>.</p>
+<h2><a class="anchor" id="task"></a>
+Tâche asynchrone</h2>
+<p><a class="el" href="classGeoParsingTask.html">GeoParsingTask</a> lance <a class="el" href="classGeoParser.html">GeoParser</a> dans un thread détaché. La communication vers l'UI passe exclusivement par <code>PostMessage</code> :</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Message   </th><th class="markdownTableHeadNone">Contenu    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>WM_PROGRESS_UPDATE</code>   </td><td class="markdownTableBodyNone">Avancement 0–100    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>WM_PARSING_SUCCESS</code>   </td><td class="markdownTableBodyNone">Parsing terminé    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>WM_PARSING_ERROR</code>   </td><td class="markdownTableBodyNone">Pointeur <code>std::string*</code> (à libérer par le destinataire)   </td></tr>
+</table>
+<h2><a class="anchor" id="pipeline"></a>
+Pipeline global</h2>
+<p>Voir <a class="el" href="classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133">GeoParser::parse()</a> pour l'implémentation complète.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Phase   </th><th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1–2   </td><td class="markdownTableBodyNone"><a class="el" href="classGraphBuilder.html" title="Charge un fichier GeoJSON et construit le TopologyGraph métrique.">GraphBuilder</a>   </td><td class="markdownTableBodyNone">Chargement GeoJSON, projection WGS-84 → UTM, snap + fusion des nœuds    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">3–5   </td><td class="markdownTableBodyNone"><a class="el" href="classTopologyExtractor.html" title="Extrait la topologie ferroviaire (Switch + Straight) depuis un TopologyGraph.">TopologyExtractor</a>   </td><td class="markdownTableBodyNone">Détection des aiguillages, extraction des <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>, câblage    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone"><a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC) et supprime les chevauche...">SwitchOrientator</a>   </td><td class="markdownTableBodyNone">Orientation root / normal / deviation, calcul des tips CDC    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">7–8   </td><td class="markdownTableBodyNone"><a class="el" href="classDoubleSwitchDetector.html">DoubleSwitchDetector</a>   </td><td class="markdownTableBodyNone">Détection des doubles aiguilles, validation CDC (longueurs min.)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">9   </td><td class="markdownTableBodyNone"><a class="el" href="classGeoParser.html">GeoParser</a>   </td><td class="markdownTableBodyNone">Clear + transfert vers <a class="el" href="classTopologyRepository.html">TopologyRepository</a>   </td></tr>
+</table>
+<h2><a class="anchor" id="parsing"></a>
+Parsing &amp; Construction</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classGeoParser.html">GeoParser</a>   </td><td class="markdownTableBodyNone">Orchestrateur du pipeline    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="classGeoParsingTask.html">GeoParsingTask</a>   </td><td class="markdownTableBodyNone">Exécution asynchrone (évite le blocage UI)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classGeometryUtils.html">GeometryUtils</a>   </td><td class="markdownTableBodyNone">Projection UTM, interpolation, angles, snap de grille   </td></tr>
+</table>
+<h2><a class="anchor" id="graph"></a>
+Graphe topologique</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classGraphBuilder.html">GraphBuilder</a>   </td><td class="markdownTableBodyNone">Construction du graphe depuis le GeoJSON    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="classTopologyGraph.html">TopologyGraph</a>   </td><td class="markdownTableBodyNone">Graphe planaire non-orienté (nœuds + arêtes), union-find    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classTopologyEdge.html">TopologyEdge</a>   </td><td class="markdownTableBodyNone">Arête avec géométrie polyligne métrique et longueur planaire   </td></tr>
+</table>
+<h2><a class="anchor" id="extraction"></a>
+Extraction ferroviaire</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classTopologyExtractor.html">TopologyExtractor</a>   </td><td class="markdownTableBodyNone">Extraction des blocs depuis le graphe    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="classSwitchOrientator.html">SwitchOrientator</a>   </td><td class="markdownTableBodyNone">Orientation géométrique (phases 6, 6b, 6c, 6d)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classDoubleSwitchDetector.html">DoubleSwitchDetector</a>   </td><td class="markdownTableBodyNone">Détection des doubles aiguilles et validation CDC   </td></tr>
+</table>
+<hr  />
+<h1><a class="anchor" id="exporter"></a>
+GeoJsonExporter — Exportation</h1>
+<p><a class="el" href="classGeoJsonExporter.html">GeoJsonExporter</a> est une classe statique qui :</p><ul>
+<li>Sérialise <a class="el" href="classStraightBlock.html">StraightBlock</a> → feature GeoJSON <code>LineString</code></li>
+<li>Sérialise <a class="el" href="classSwitchBlock.html">SwitchBlock</a> → feature GeoJSON <code>Point</code></li>
+<li>Génère les scripts JavaScript d'injection pour le WebView <a class="el" href="classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a></li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md7"></a>
-🧩 Modules — Fonctionnalités métier</h1>
-<p>Modules indépendants responsables du traitement ferroviaire.</p>
+<h1><a class="anchor" id="elements"></a>
+Eléments interactifs</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classInteractiveElement.html">InteractiveElement</a>   </td><td class="markdownTableBodyNone">Interface abstraite commune (id, type). Copie interdite, déplacement autorisé    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="classShuntingElement.html">ShuntingElement</a>   </td><td class="markdownTableBodyNone">Étend avec un état opérationnel + helpers <code>isFree()</code> / <code>isOccupied()</code> / <code>isInactive()</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classStraightBlock.html">StraightBlock</a>   </td><td class="markdownTableBodyNone">Tronçon de voie droite. Longueur géodésique calculée via Haversine    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="classSwitchBlock.html">SwitchBlock</a>   </td><td class="markdownTableBodyNone">Aiguillage 3 branches. Orientation + tips CDC + support double aiguille   </td></tr>
+</table>
+<h2><a class="anchor" id="hierarchy"></a>
+Hiérarchie des éléments interactifs</h2>
+<p>Tous les éléments ferroviaires interactifs s'inscrivent dans la hiérarchie suivante :</p>
+<div class="fragment"><div class="line">InteractiveElement          getId(), getType()</div>
+<div class="line">    └── ShuntingElement     getState()  [FREE / OCCUPIED / INACTIVE]</div>
+<div class="line">            ├── StraightBlock</div>
+<div class="line">            └── SwitchBlock</div>
+</div><!-- fragment --><h2><a class="anchor" id="enums"></a>
+Énumérations clés</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Enum   </th><th class="markdownTableHeadNone">Valeurs   </th><th class="markdownTableHeadNone">Usage    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>InteractiveElementType</code>   </td><td class="markdownTableBodyNone"><code>SWITCH</code>, <code>STRAIGHT</code>   </td><td class="markdownTableBodyNone">Typage sans RTTI    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>ShuntingState</code>   </td><td class="markdownTableBodyNone"><code>FREE</code>, <code>OCCUPIED</code>, <code>INACTIVE</code>   </td><td class="markdownTableBodyNone">État opérationnel temps réel   </td></tr>
+</table>
 <hr  />
-<h1><a class="anchor" id="autotoc_md9"></a>
-🌍 GeoParser — Pipeline principal</h1>
-<p>Pipeline complet de transformation GeoJSON → modèle ferroviaire.</p>
-<p><a class="el" href="classGeoParsingTask.html" title="Tâche asynchrone encapsulant l&#39;exécution du GeoParser.">GeoParsingTask</a></p><ul>
-<li>Tâche asynchrone de parsing</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md10"></a>
-🔄 Pipeline global</h2>
-<ol type="1">
-<li>Chargement GeoJSON <br  />
-</li>
-<li>Construction du graphe <br  />
-</li>
-<li>Extraction topologique <br  />
-</li>
-<li>Orientation des aiguillages <br  />
-</li>
-<li>Détection des doubles aiguilles <br  />
-</li>
-<li>Clear + Sauvegarde du modèle ferroviaire dans le singleton <a class="el" href="classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a></li>
-</ol>
-<p>👉 Voir implémentation dans : <a class="el" href="classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet.">GeoParser::parse()</a></p>
-<hr  />
-<h2><a class="anchor" id="autotoc_md12"></a>
-🗺️ Parsing &amp; Construction</h2>
-<p><a class="el" href="classGeoParser.html">GeoParser</a></p><ul>
-<li>Orchestrateur du pipeline complet</li>
-</ul>
-<p><a class="el" href="classGeoParsingTask.html" title="Tâche asynchrone encapsulant l&#39;exécution du GeoParser.">GeoParsingTask</a></p><ul>
-<li>Parsing asynchrone (évite le blocage UI)</li>
-</ul>
-<p><a class="el" href="classGeometryUtils.html" title="Fonctions géométriques statiques utilisées par le pipeline GeoParser.">GeometryUtils</a></p><ul>
-<li>Outils géométriques (conversion, validation, calculs)</li>
-</ul>
-<hr  />
-<h2><a class="anchor" id="autotoc_md14"></a>
-🔗 Graphe topologique</h2>
-<p><a class="el" href="classGraphBuilder.html" title="Charge un fichier GeoJSON et construit le TopologyGraph métrique.">GraphBuilder</a></p><ul>
-<li>Construction du graphe à partir du GeoJSON <br  />
-</li>
-<li>Conversion WGS84 → UTM <br  />
-</li>
-<li>Snap + fusion des nœuds <br  />
-</li>
-</ul>
-<p><a class="el" href="classTopologyGraph.html" title="Graphe planaire non-orienté utilisé pour la construction de la topologie ferroviaire.">TopologyGraph</a></p><ul>
-<li>Représentation du graphe (nœuds + arêtes)</li>
-</ul>
-<p><a class="el" href="classTopologyEdge.html" title="Arête non-orientée entre deux nœuds du graphe topologique.">TopologyEdge</a></p><ul>
-<li>Arête entre deux nœuds avec géométrie métrique</li>
+<h2><a class="anchor" id="storage"></a>
+Stockages</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classTopologyData.html">TopologyData</a>   </td><td class="markdownTableBodyNone">Conteneur <code>unique_ptr&lt;<a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>&gt;</code> + <code>unique_ptr&lt;<a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a>&gt;</code>. Garantit le polymorphisme sans slicing    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="classTopologyRepository.html">TopologyRepository</a>   </td><td class="markdownTableBodyNone">Singleton (Meyers). Accès global à <a class="el" href="classTopologyData.html">TopologyData</a> via <code>instance().data()</code>   </td></tr>
+</table>
+<blockquote class="doxtable">
+<p>&zwj;<b>Pourquoi <code>unique_ptr</code> ?</b> Les blocs sont polymorphes (<code>ShuntingElement*</code>). Le stockage par valeur entraînerait du slicing et interdirait le déplacement. Le stockage par <code>unique_ptr</code> garantit :</p><ul>
+<li>polymorphisme correct (destructeur virtuel respecté),</li>
+<li>propriété exclusive et cycle de vie déterministe,</li>
+<li>interdiction de copie accidentelle.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md16"></a>
-🧠 Extraction ferroviaire</h2>
-<p><a class="el" href="classTopologyExtractor.html" title="Extrait la topologie ferroviaire (Switch + Straight) depuis un TopologyGraph.">TopologyExtractor</a></p><ul>
-<li>Extraction des blocs à partir du graphe</li>
-</ul>
-<p><a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC) et supprime les chevauche...">SwitchOrientator</a></p><ul>
-<li>Orientation des aiguillages (root / normal / deviation)</li>
-</ul>
-<p><a class="el" href="classDoubleSwitchDetector.html">DoubleSwitchDetector</a></p><ul>
-<li>Détection des doubles aiguilles <br  />
-</li>
-<li>Validation des contraintes métier (CDC)</li>
-</ul>
+ </blockquote>
+<h1><a class="anchor" id="coords"></a>
+Coordonnées</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Système    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classLatLon.html">LatLon</a>   </td><td class="markdownTableBodyNone">Géographique WGS-84 (latitude, longitude)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="classCoordinateXY.html">CoordinateXY</a>   </td><td class="markdownTableBodyNone">Métrique UTM (x = est, y = nord)   </td></tr>
+</table>
 <hr  />
-<h1><a class="anchor" id="autotoc_md18"></a>
-🌍 GeoJsonExporter — Exportation des données</h1>
-<p><a class="el" href="classGeoJsonExporter.html" title="Utilitaire statique d&#39;export de la topologie ferroviaire en GeoJSON.">GeoJsonExporter</a></p><ul>
-<li>Exportation du modèle ferroviaire en GeoJSON</li>
-</ul>
-<hr  />
-<h1><a class="anchor" id="autotoc_md20"></a>
-📦 Models — Modèle de données</h1>
-<p>Représentation des entités ferroviaires manipulées par le pipeline.</p>
-<h2><a class="anchor" id="autotoc_md21"></a>
-📍 Coordonnées</h2>
-<p><a class="el" href="classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire).">CoordinateXY</a></p><ul>
-<li>Coordonnées métriques (UTM) <a class="el" href="classLatLon.html" title="Coordonnée géographique WGS-84 exprimée en degrés décimaux.">LatLon</a></li>
-<li>Coordonnées géographiques WGS84</li>
-</ul>
-<hr  />
-<h2><a class="anchor" id="autotoc_md23"></a>
-🚧 Blocs ferroviaires</h2>
-<p><a class="el" href="classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a></p><ul>
-<li>Stockage des données topologiques (<a class="el" href="classTopologyData.html" title="Conteneur partagé entre tous les modules métier et la couche HMI.">TopologyData</a>) en singleton</li>
-</ul>
-<p><a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a></p><ul>
-<li>Tronçon de voie droite</li>
-<li>Longueur calculée via Haversine</li>
-</ul>
-<p><a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a></p><ul>
-<li>Aiguillage ferroviaire (3 branches)</li>
-<li>Orientation + calculs géométriques</li>
-</ul>
-<hr  />
-<h1><a class="anchor" id="autotoc_md25"></a>
-📜 Licence</h1>
+<h1><a class="anchor" id="licence"></a>
+Licence</h1>
 <p>Ce projet est distribué sous licence :</p>
 <p><b>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</b></p>
-<p>👉 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
-<h2><a class="anchor" id="autotoc_md26"></a>
-Vous êtes autorisé à :</h2>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
 <ul>
 <li>✔️ Partager — copier et redistribuer le matériel</li>
 <li>✔️ Adapter — remixer, transformer et créer à partir du matériel</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md27"></a>
-Sous les conditions suivantes :</h2>
-<ul>
-<li>📝 Attribution — vous devez créditer l’auteur</li>
-<li>🚫 Non commercial — pas d’utilisation commerciale</li>
-<li>🔁 Partage dans les mêmes conditions — redistribution sous la même licence</li>
+<li>📝 Attribution requise</li>
+<li>🚫 Usage commercial interdit</li>
+<li>🔁 Redistribution sous la même licence</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md29"></a>
-✨ Auteur</h1>
+<h1><a class="anchor" id="auteur"></a>
+Auteur</h1>
 <p>© 2026 Valentin Eloy </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->

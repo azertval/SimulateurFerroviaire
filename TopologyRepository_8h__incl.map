@@ -1,24 +1,31 @@
-<map id="SimulateurFerroviaire/Modules/Models/TopologyRepository.h" name="SimulateurFerroviaire/Modules/Models/TopologyRepository.h">
-<area shape="rect" id="Node000001" title="Singleton de stockage des données topologiques ferroviaires." alt="" coords="5,5,280,45"/>
-<area shape="rect" id="Node000002" href="$TopologyData_8h.html" title="Conteneur central des données topologiques ferroviaires." alt="" coords="81,93,204,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,46,145,79,140,79,140,46"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="15,240,78,265"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="124,121,96,141,72,168,58,197,52,227,47,226,53,196,67,165,93,137,121,117"/>
-<area shape="rect" id="Node000004" href="$StraightBlock_8h.html" title="Modèle de domaine d&#39;un bloc de voie droite (Straight)." alt="" coords="82,167,203,192"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="145,119,145,153,140,153,140,119"/>
-<area shape="rect" id="Node000008" href="$SwitchBlock_8h.html" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches (Switch)." alt="" coords="227,167,341,192"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="167,116,250,158,248,163,164,121"/>
-<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="129,194,75,234,72,229,126,190"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="103,240,177,265"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="145,192,144,227,138,226,140,192"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="201,240,260,265"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="158,190,207,229,204,233,155,194"/>
-<area shape="rect" id="Node000007" href="$LatLon_8h.html" title="Représentation d&#39;une coordonnée géographique WGS&#45;84 (latitude, longitude)." alt="" coords="284,240,361,265"/>
-<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="173,190,282,232,280,237,171,195"/>
-<area shape="poly" id="edge12_Node000008_Node000003" title=" " alt="" coords="247,195,92,241,91,235,245,189"/>
-<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="262,194,177,236,175,231,260,190"/>
-<area shape="poly" id="edge11_Node000008_Node000006" title=" " alt="" coords="277,194,250,231,245,228,273,191"/>
-<area shape="poly" id="edge13_Node000008_Node000007" title=" " alt="" coords="293,191,312,227,308,229,288,194"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="385,240,460,265"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="307,190,389,231,387,236,305,194"/>
+<map id="SimulateurFerroviaire/Modules/Stockages/TopologyRepository.h" name="SimulateurFerroviaire/Modules/Stockages/TopologyRepository.h">
+<area shape="rect" id="Node000001" title="Singleton de stockage des données topologiques ferroviaires." alt="" coords="93,5,307,60"/>
+<area shape="rect" id="Node000002" href="$TopologyData_8h.html" title="Conteneur central des données topologiques ferroviaires." alt="" coords="139,108,261,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,60,203,94,197,94,197,60"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,189,83,214"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="179,136,80,185,78,180,176,131"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="69,277,131,302"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="189,136,168,157,148,183,126,225,110,264,105,262,121,223,143,180,164,153,185,132"/>
+<area shape="rect" id="Node000005" href="$StraightBlock_8h.html" title="Modèle de domaine d&#39;un bloc de voie droite (Straight)." alt="" coords="157,181,403,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="214,132,253,170,249,173,210,135"/>
+<area shape="rect" id="Node000011" href="$SwitchBlock_8h.html" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches (Switch)." alt="" coords="433,181,671,221"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="252,131,455,176,454,181,251,136"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="242,224,137,273,135,269,239,219"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="377,277,452,302"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="311,219,386,267,384,271,308,224"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="283,445,341,471"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="245,224,219,244,198,271,184,305,177,334,181,363,197,396,211,413,230,427,271,445,268,450,227,431,208,417,192,399,176,365,172,334,178,303,194,268,215,240,242,219"/>
+<area shape="rect" id="Node000008" href="$ShuntingElement_8h.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="207,277,353,302"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="283,222,283,263,277,263,277,222"/>
+<area shape="rect" id="Node000010" href="$LatLon_8h.html" title="Représentation d&#39;une coordonnée géographique WGS&#45;84 (latitude, longitude)." alt="" coords="477,269,635,309"/>
+<area shape="poly" id="edge11_Node000005_Node000010" title=" " alt="" coords="341,219,484,263,482,268,340,224"/>
+<area shape="rect" id="Node000009" href="$InteractiveElement_8h.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="206,357,418,397"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="287,301,303,343,298,345,282,303"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="315,398,315,431,309,431,309,398"/>
+<area shape="poly" id="edge16_Node000011_Node000004" title=" " alt="" coords="452,224,196,272,146,282,145,277,196,267,451,219"/>
+<area shape="poly" id="edge14_Node000011_Node000006" title=" " alt="" coords="523,224,446,272,443,267,520,219"/>
+<area shape="poly" id="edge15_Node000011_Node000007" title=" " alt="" coords="655,219,700,233,737,253,750,265,757,279,757,294,749,311,709,354,661,389,607,414,551,433,495,446,442,454,355,460,355,454,441,449,494,441,549,428,605,410,658,384,705,350,744,308,752,293,752,280,746,268,734,257,698,238,654,224"/>
+<area shape="poly" id="edge17_Node000011_Node000010" title=" " alt="" coords="556,221,557,255,552,256,550,222"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="660,277,735,302"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="585,219,668,267,665,272,583,224"/>
 </map>

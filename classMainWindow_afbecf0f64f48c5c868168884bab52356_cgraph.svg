@@ -110,7 +110,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" target="_top" xlink:title=" ">
+<g id="a_Node000004"><a xlink:href="classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" target="_top" xlink:title="Convertit un StraightBlock en feature GeoJSON de type LineString.">
 <polygon fill="white" stroke="#666666" points="1110,-855 970,-855 970,-825 1110,-825 1110,-855"/>
 <text text-anchor="start" x="978" y="-843" font-family="Helvetica,sans-Serif" font-size="10.00">GeoJsonExporter::convert</text>
 <text text-anchor="middle" x="1040" y="-832" font-family="Helvetica,sans-Serif" font-size="10.00">StraightToFeature</text>
@@ -129,7 +129,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" target="_top" xlink:title=" ">
+<g id="a_Node000005"><a xlink:href="classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" target="_top" xlink:title="Convertit un SwitchBlock en feature GeoJSON de type Point.">
 <polygon fill="white" stroke="#666666" points="1110,-807 970,-807 970,-777 1110,-777 1110,-807"/>
 <text text-anchor="start" x="978" y="-795" font-family="Helvetica,sans-Serif" font-size="10.00">GeoJsonExporter::convert</text>
 <text text-anchor="middle" x="1040" y="-784" font-family="Helvetica,sans-Serif" font-size="10.00">SwitchToFeature</text>
@@ -755,7 +755,7 @@
 <!-- Node42 -->
 <g id="Node000042" class="node">
 <title>Node42</title>
-<g id="a_Node000042"><a xlink:href="classTopologyExtractor.html#ad1d5361674a11a78d2ea58a6024fb140" target="_top" xlink:title=" ">
+<g id="a_Node000042"><a xlink:href="classTopologyExtractor.html#a8fe29fd6ba117f652d0e545869a99c61" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1095,-414 985,-414 985,-384 1095,-384 1095,-414"/>
 <text text-anchor="start" x="993" y="-402" font-family="Helvetica,sans-Serif" font-size="10.00">TopologyExtractor::</text>
 <text text-anchor="middle" x="1040" y="-391" font-family="Helvetica,sans-Serif" font-size="10.00">splitLongStraights</text>

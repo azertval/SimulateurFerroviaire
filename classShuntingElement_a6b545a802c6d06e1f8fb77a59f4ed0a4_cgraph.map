@@ -1,0 +1,5 @@
+<map id="ShuntingElement::isOccupied" name="ShuntingElement::isOccupied">
+<area shape="rect" id="Node000001" title="Retourne true si l&#39;élément est occupé." alt="" coords="5,5,217,31"/>
+<area shape="rect" id="Node000002" href="$classShuntingElement.html#a815975347422b2ed5b65f72c80ce701d" title="Retourne l&#39;état opérationnel courant de l&#39;élément." alt="" coords="265,5,461,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,15,251,15,251,21,218,21"/>
+</map>

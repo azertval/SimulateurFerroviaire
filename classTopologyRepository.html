@@ -142,8 +142,8 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Singleton fournissant un accès global unique à <a class="el" href="classTopologyData.html">TopologyData</a>. </p>
 <p>Garantit qu'il n'existe qu'une seule instance de <a class="el" href="classTopologyData.html">TopologyData</a> partagée entre tous les modules du pipeline et la couche HMI.</p>
-<p>Usage : </p><div class="fragment"><div class="line"><a class="code hl_function" href="classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509">TopologyRepository::instance</a>().<a class="code hl_function" href="classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027">data</a>().<a class="code hl_variable" href="classTopologyData.html#a672e5736c9466cbc7c22fbd3d0c9cbe0">straights</a>;</div>
-<div class="ttc" id="aclassTopologyData_html_a672e5736c9466cbc7c22fbd3d0c9cbe0"><div class="ttname"><a href="classTopologyData.html#a672e5736c9466cbc7c22fbd3d0c9cbe0">TopologyData::straights</a></div><div class="ttdeci">std::vector&lt; StraightBlock &gt; straights</div><div class="ttdef"><b>Definition</b> TopologyData.h:25</div></div>
+<p>Usage : </p><div class="fragment"><div class="line"><a class="code hl_function" href="classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509">TopologyRepository::instance</a>().<a class="code hl_function" href="classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027">data</a>().<a class="code hl_variable" href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">straights</a>;</div>
+<div class="ttc" id="aclassTopologyData_html_acc5bc8a5b0b2f0a137a0fcc7045e8eda"><div class="ttname"><a href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">TopologyData::straights</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; StraightBlock &gt; &gt; straights</div><div class="ttdef"><b>Definition</b> TopologyData.h:31</div></div>
 <div class="ttc" id="aclassTopologyRepository_html_a0179f504f5d22ea5b16926511a9cb027"><div class="ttname"><a href="classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027">TopologyRepository::data</a></div><div class="ttdeci">TopologyData &amp; data()</div><div class="ttdoc">Retourne une référence mutable aux données topologiques.</div><div class="ttdef"><b>Definition</b> TopologyRepository.h:40</div></div>
 <div class="ttc" id="aclassTopologyRepository_html_adb001f817a74b4b81e05d0d22517f509"><div class="ttname"><a href="classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509">TopologyRepository::instance</a></div><div class="ttdeci">static TopologyRepository &amp; instance()</div><div class="ttdoc">Retourne l'instance unique du repository (création paresseuse).</div><div class="ttdef"><b>Definition</b> TopologyRepository.h:30</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -327,7 +327,7 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>SimulateurFerroviaire/Modules/Models/<a class="el" href="TopologyRepository_8h_source.html">TopologyRepository.h</a></li>
+<li>SimulateurFerroviaire/Modules/Stockages/<a class="el" href="TopologyRepository_8h_source.html">TopologyRepository.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -116,14 +116,19 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a672e5736c9466cbc7c22fbd3d0c9cbe0" id="r_a672e5736c9466cbc7c22fbd3d0c9cbe0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyData.html#a672e5736c9466cbc7c22fbd3d0c9cbe0">straights</a></td></tr>
-<tr class="separator:a672e5736c9466cbc7c22fbd3d0c9cbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7d6166e658d17ad7ef79aa5093ac1c1" id="r_ac7d6166e658d17ad7ef79aa5093ac1c1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classSwitchBlock.html">SwitchBlock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyData.html#ac7d6166e658d17ad7ef79aa5093ac1c1">switches</a></td></tr>
-<tr class="separator:ac7d6166e658d17ad7ef79aa5093ac1c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc5bc8a5b0b2f0a137a0fcc7045e8eda" id="r_acc5bc8a5b0b2f0a137a0fcc7045e8eda"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">straights</a></td></tr>
+<tr class="separator:acc5bc8a5b0b2f0a137a0fcc7045e8eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eedc9d9675f2138bbc64c4fafea14f9" id="r_a6eedc9d9675f2138bbc64c4fafea14f9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classSwitchBlock.html">SwitchBlock</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">switches</a></td></tr>
+<tr class="separator:a6eedc9d9675f2138bbc64c4fafea14f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Conteneur partagé entre tous les modules métier et la couche HMI. </p>
-<p>Sert de point de vérité unique pour les listes de blocs extraites du parsing GeoJSON. </p>
+<p>Sert de point de vérité unique pour les listes de blocs extraites du parsing GeoJSON.</p>
+<p>Les blocs sont détenus par unique_ptr afin de :</p><ul>
+<li>garantir un polymorphisme correct (pas de slicing),</li>
+<li>autoriser le delete sur pointeur de base (destructeur virtuel),</li>
+<li>interdire la copie accidentelle des éléments. </li>
+</ul>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7b9b3e5cfb26df1cb199ac4d859a7a1f" name="a7b9b3e5cfb26df1cb199ac4d859a7a1f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7b9b3e5cfb26df1cb199ac4d859a7a1f">&#9670;&#160;</a></span>clear()</h2>
@@ -158,14 +163,14 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a672e5736c9466cbc7c22fbd3d0c9cbe0" name="a672e5736c9466cbc7c22fbd3d0c9cbe0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a672e5736c9466cbc7c22fbd3d0c9cbe0">&#9670;&#160;</a></span>straights</h2>
+<a id="acc5bc8a5b0b2f0a137a0fcc7045e8eda" name="acc5bc8a5b0b2f0a137a0fcc7045e8eda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc5bc8a5b0b2f0a137a0fcc7045e8eda">&#9670;&#160;</a></span>straights</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="classStraightBlock.html">StraightBlock</a>&gt; TopologyData::straights</td>
+          <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="el" href="classStraightBlock.html">StraightBlock</a>&gt; &gt; TopologyData::straights</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -173,14 +178,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ac7d6166e658d17ad7ef79aa5093ac1c1" name="ac7d6166e658d17ad7ef79aa5093ac1c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7d6166e658d17ad7ef79aa5093ac1c1">&#9670;&#160;</a></span>switches</h2>
+<a id="a6eedc9d9675f2138bbc64c4fafea14f9" name="a6eedc9d9675f2138bbc64c4fafea14f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6eedc9d9675f2138bbc64c4fafea14f9">&#9670;&#160;</a></span>switches</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="classSwitchBlock.html">SwitchBlock</a>&gt; TopologyData::switches</td>
+          <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="el" href="classSwitchBlock.html">SwitchBlock</a>&gt; &gt; TopologyData::switches</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -189,7 +194,7 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>SimulateurFerroviaire/Modules/Models/<a class="el" href="TopologyData_8h_source.html">TopologyData.h</a></li>
+<li>SimulateurFerroviaire/Modules/Stockages/<a class="el" href="TopologyData_8h_source.html">TopologyData.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

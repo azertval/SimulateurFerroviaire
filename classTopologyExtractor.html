@@ -124,8 +124,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:abfb30b40b7194303e6c828d802dd1175"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8003022ac7f09c074969ec22d3305429" id="r_a8003022ac7f09c074969ec22d3305429"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#a8003022ac7f09c074969ec22d3305429">extractStraights</a> ()</td></tr>
 <tr class="separator:a8003022ac7f09c074969ec22d3305429"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1d5361674a11a78d2ea58a6024fb140" id="r_ad1d5361674a11a78d2ea58a6024fb140"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#ad1d5361674a11a78d2ea58a6024fb140">splitLongStraights</a> (const std::vector&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt; &amp;inputStraights)</td></tr>
-<tr class="separator:ad1d5361674a11a78d2ea58a6024fb140"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fe29fd6ba117f652d0e545869a99c61" id="r_a8fe29fd6ba117f652d0e545869a99c61"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#a8fe29fd6ba117f652d0e545869a99c61">splitLongStraights</a> (std::vector&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt; inputStraights)</td></tr>
+<tr class="separator:a8fe29fd6ba117f652d0e545869a99c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad16f6760ca59d58d9e37dee7404071d6" id="r_ad16f6760ca59d58d9e37dee7404071d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#ad16f6760ca59d58d9e37dee7404071d6">wireTopology</a> (std::vector&lt; <a class="el" href="classSwitchBlock.html">SwitchBlock</a> &gt; &amp;switches, std::vector&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt; &amp;straights)</td></tr>
 <tr class="separator:ad16f6760ca59d58d9e37dee7404071d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27bf51ac35232011f385f6d426b4ee89" id="r_a27bf51ac35232011f385f6d426b4ee89"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#a27bf51ac35232011f385f6d426b4ee89">walkPathUntilBoundary</a> (int startNodeId, const std::string &amp;incomingEdgeId, std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt; &amp;accumulatedCoords, std::set&lt; std::string &gt; &amp;visitedEdgeIds)</td></tr>
@@ -147,8 +147,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:aa74c8a659903974aaa94dfce38db781a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa87c51891a2f1ca9fcc4c41954d996af" id="r_aa87c51891a2f1ca9fcc4c41954d996af"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#aa87c51891a2f1ca9fcc4c41954d996af">m_switchIdToNodeId</a></td></tr>
 <tr class="separator:aa87c51891a2f1ca9fcc4c41954d996af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0ab663604e976df8a132ac2c9a2c50a" id="r_af0ab663604e976df8a132ac2c9a2c50a"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#af0ab663604e976df8a132ac2c9a2c50a">m_straightEndpointNodeIds</a></td></tr>
-<tr class="separator:af0ab663604e976df8a132ac2c9a2c50a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f2d2d12a490229c20e300712403f3e9" id="r_a3f2d2d12a490229c20e300712403f3e9"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#a3f2d2d12a490229c20e300712403f3e9">m_straightEndpointNodeIds</a></td></tr>
+<tr class="separator:a3f2d2d12a490229c20e300712403f3e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Extrait la topologie ferroviaire (Switch + Straight) depuis un <a class="el" href="classTopologyGraph.html" title="Graphe planaire non-orienté utilisé pour la construction de la topologie ferroviaire.">TopologyGraph</a>. </p>
@@ -332,8 +332,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ad1d5361674a11a78d2ea58a6024fb140" name="ad1d5361674a11a78d2ea58a6024fb140"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1d5361674a11a78d2ea58a6024fb140">&#9670;&#160;</a></span>splitLongStraights()</h2>
+<a id="a8fe29fd6ba117f652d0e545869a99c61" name="a8fe29fd6ba117f652d0e545869a99c61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fe29fd6ba117f652d0e545869a99c61">&#9670;&#160;</a></span>splitLongStraights()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -344,7 +344,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">std::vector&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt; TopologyExtractor::splitLongStraights </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt;&#160;</td>
           <td class="paramname"><em>inputStraights</em></td><td>)</td>
           <td></td>
         </tr>
@@ -359,12 +359,12 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classTopologyExtractor_ad1d5361674a11a78d2ea58a6024fb140_cgraph.svg" width="986" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classTopologyExtractor_a8fe29fd6ba117f652d0e545869a99c61_cgraph.svg" width="986" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classTopologyExtractor_ad1d5361674a11a78d2ea58a6024fb140_icgraph.svg" width="2212" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classTopologyExtractor_a8fe29fd6ba117f652d0e545869a99c61_icgraph.svg" width="2212" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -566,8 +566,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="af0ab663604e976df8a132ac2c9a2c50a" name="af0ab663604e976df8a132ac2c9a2c50a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0ab663604e976df8a132ac2c9a2c50a">&#9670;&#160;</a></span>m_straightEndpointNodeIds</h2>
+<a id="a3f2d2d12a490229c20e300712403f3e9" name="a3f2d2d12a490229c20e300712403f3e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f2d2d12a490229c20e300712403f3e9">&#9670;&#160;</a></span>m_straightEndpointNodeIds</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -576,7 +576,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt;std::string, std::pair&lt;int,int&gt; &gt; TopologyExtractor::m_straightEndpointNodeIds</td>
+          <td class="memname">std::unordered_map&lt;std::string, std::pair&lt;int, int&gt; &gt; TopologyExtractor::m_straightEndpointNodeIds</td>
         </tr>
       </table>
   </td>

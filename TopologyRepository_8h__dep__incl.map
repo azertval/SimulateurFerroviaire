@@ -1,7 +1,7 @@
-<map id="SimulateurFerroviaire/Modules/Models/TopologyRepository.h" name="SimulateurFerroviaire/Modules/Models/TopologyRepository.h">
-<area shape="rect" id="Node000001" title="Singleton de stockage des données topologiques ferroviaires." alt="" coords="86,5,361,45"/>
-<area shape="rect" id="Node000002" href="$GeoJsonExporter_8cpp.html" title="Implémentation de l&#39;exporteur GeoJSON." alt="" coords="5,93,199,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,56,138,95,135,91,186,52"/>
-<area shape="rect" id="Node000003" href="$GeoParser_8cpp.html" title="Implémentation du pipeline GeoParser." alt="" coords="223,101,469,141"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="261,52,323,98,320,103,258,56"/>
+<map id="SimulateurFerroviaire/Modules/Stockages/TopologyRepository.h" name="SimulateurFerroviaire/Modules/Stockages/TopologyRepository.h">
+<area shape="rect" id="Node000001" title="Singleton de stockage des données topologiques ferroviaires." alt="" coords="117,5,330,60"/>
+<area shape="rect" id="Node000002" href="$GeoJsonExporter_8cpp.html" title="Implémentation de l&#39;exporteur GeoJSON." alt="" coords="5,108,199,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,71,135,110,132,106,179,67"/>
+<area shape="rect" id="Node000003" href="$GeoParser_8cpp.html" title="Implémentation du pipeline GeoParser." alt="" coords="223,115,469,155"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="268,67,325,113,321,117,265,71"/>
 </map>

@@ -12,7 +12,7 @@
 <area shape="poly" id="edge20_Node000002_Node000018" title=" " alt="" coords="2889,191,2873,182,2857,167,2848,152,2840,137,2825,124,2758,89,2686,64,2614,47,2549,36,2549,31,2615,42,2687,59,2760,84,2828,119,2844,134,2853,149,2861,164,2876,178,2892,187"/>
 <area shape="rect" id="Node000004" href="$classTopologyExtractor.html#a8003022ac7f09c074969ec22d3305429" title=" " alt="" coords="2370,261,2517,301"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="2616,243,2518,267,2516,261,2614,238"/>
-<area shape="rect" id="Node000014" href="$classTopologyExtractor.html#ad1d5361674a11a78d2ea58a6024fb140" title=" " alt="" coords="2370,197,2517,237"/>
+<area shape="rect" id="Node000014" href="$classTopologyExtractor.html#a8fe29fd6ba117f652d0e545869a99c61" title=" " alt="" coords="2370,197,2517,237"/>
 <area shape="poly" id="edge13_Node000003_Node000014" title=" " alt="" coords="2586,220,2517,220,2517,215,2586,215"/>
 <area shape="rect" id="Node000015" href="$classSwitchOrientator.html#ac80814892c9baea379f2b4e9f22b966e" title="Retaille chaque StraightBlock adjacent à une jonction pour qu&#39;il commence (ou se termine) exactement ..." alt="" coords="2335,133,2552,173"/>
 <area shape="poly" id="edge15_Node000003_Node000015" title=" " alt="" coords="2614,197,2528,176,2529,171,2615,191"/>

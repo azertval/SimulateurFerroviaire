@@ -144,10 +144,13 @@ Private Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
 <tr class="memitem:ae40aed3745c83a9e089cade7067ec11a" id="r_ae40aed3745c83a9e089cade7067ec11a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="GeoJsonExporter_8h.html#a11fe7834bd4272782c3b19235c96bad4">JsonDocument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a">convertStraightToFeature</a> (const <a class="el" href="classStraightBlock.html">StraightBlock</a> &amp;straight)</td></tr>
+<tr class="memdesc:ae40aed3745c83a9e089cade7067ec11a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit un <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> en feature GeoJSON de type LineString.  <br /></td></tr>
 <tr class="separator:ae40aed3745c83a9e089cade7067ec11a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4edb715ecc8bee30c4eb00e7dcb98e93" id="r_a4edb715ecc8bee30c4eb00e7dcb98e93"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="GeoJsonExporter_8h.html#a11fe7834bd4272782c3b19235c96bad4">JsonDocument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93">convertSwitchToFeature</a> (const <a class="el" href="classSwitchBlock.html">SwitchBlock</a> &amp;switchBlock)</td></tr>
+<tr class="memdesc:a4edb715ecc8bee30c4eb00e7dcb98e93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit un <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> en feature GeoJSON de type Point.  <br /></td></tr>
 <tr class="separator:a4edb715ecc8bee30c4eb00e7dcb98e93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01038435d85225bf7f417711680ffdbe" id="r_a01038435d85225bf7f417711680ffdbe"><td class="memItemLeft" align="right" valign="top">static std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoJsonExporter.html#a01038435d85225bf7f417711680ffdbe">escapeForJavaScript</a> (const std::string &amp;input)</td></tr>
+<tr class="memdesc:a01038435d85225bf7f417711680ffdbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Échappe une chaîne JSON pour l'injection dans JavaScript.  <br /></td></tr>
 <tr class="separator:a01038435d85225bf7f417711680ffdbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -157,7 +160,7 @@ Static Private Member Functions</h2></td></tr>
 <li><a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> → feature GeoJSON de type Point.</li>
 </ul>
 <p>Usage : </p><div class="fragment"><div class="line"><a class="code hl_function" href="classGeoJsonExporter.html#a933abb8a4cbc84d34ced90a170d170d3">GeoJsonExporter::exportToFile</a>(<span class="stringliteral">&quot;output.geojson&quot;</span>);</div>
-<div class="ttc" id="aclassGeoJsonExporter_html_a933abb8a4cbc84d34ced90a170d170d3"><div class="ttname"><a href="classGeoJsonExporter.html#a933abb8a4cbc84d34ced90a170d170d3">GeoJsonExporter::exportToFile</a></div><div class="ttdeci">static void exportToFile(const std::string &amp;outputPath)</div><div class="ttdoc">Exporte la topologie ferroviaire dans un fichier GeoJSON.</div><div class="ttdef"><b>Definition</b> GeoJsonExporter.cpp:87</div></div>
+<div class="ttc" id="aclassGeoJsonExporter_html_a933abb8a4cbc84d34ced90a170d170d3"><div class="ttname"><a href="classGeoJsonExporter.html#a933abb8a4cbc84d34ced90a170d170d3">GeoJsonExporter::exportToFile</a></div><div class="ttdeci">static void exportToFile(const std::string &amp;outputPath)</div><div class="ttdoc">Exporte la topologie ferroviaire dans un fichier GeoJSON.</div><div class="ttdef"><b>Definition</b> GeoJsonExporter.cpp:84</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ace4096f5c5d68edbe51b4ff15fe2f177" name="ace4096f5c5d68edbe51b4ff15fe2f177"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ace4096f5c5d68edbe51b4ff15fe2f177">&#9670;&#160;</a></span>GeoJsonExporter()</h2>
@@ -208,6 +211,15 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Convertit un <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> en feature GeoJSON de type LineString. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">straight</td><td>Bloc à convertir. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Objet JSON représentant la feature GeoJSON. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -239,6 +251,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Convertit un <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> en feature GeoJSON de type Point. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">switchBlock</td><td>Bloc à convertir. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Objet JSON représentant la feature GeoJSON. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -270,6 +291,23 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Échappe une chaîne JSON pour l'injection dans JavaScript. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Chaîne JSON brute. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Chaîne échappée prête à être insérée dans un string JS.</dd></dl>
+<p>Caractères échappés :</p><ul>
+<li>" → \"</li>
+<li>\ → \</li>
+<li><br  />
+ → \n</li>
+<li>\r → \r</li>
+<li>\t → \t </li>
+</ul>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -455,7 +493,6 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Efface puis redessine les branches de tous les switches. </p>
-<p>Appelle <code>clearSwitchBranches()</code> dans le WebView, puis délègue chaque switch orienté à <a class="el" href="classGeoJsonExporter.html#a125ac684007e9e1e93b6d11d695d7e9b">renderSwitchBranches</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>Instruction JavaScript. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>

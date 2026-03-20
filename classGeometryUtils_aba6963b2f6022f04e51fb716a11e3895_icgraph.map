@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Convertit une polyligne métrique UTM en WGS&#45;84." alt="" coords="2356,69,2583,109"/>
 <area shape="rect" id="Node000002" href="$classTopologyExtractor.html#a8003022ac7f09c074969ec22d3305429" title=" " alt="" coords="2126,5,2273,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2370,69,2272,45,2274,40,2372,64"/>
-<area shape="rect" id="Node000012" href="$classTopologyExtractor.html#ad1d5361674a11a78d2ea58a6024fb140" title=" " alt="" coords="2126,69,2273,109"/>
+<area shape="rect" id="Node000012" href="$classTopologyExtractor.html#a8fe29fd6ba117f652d0e545869a99c61" title=" " alt="" coords="2126,69,2273,109"/>
 <area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="2342,92,2273,92,2273,87,2342,87"/>
 <area shape="rect" id="Node000013" href="$classSwitchOrientator.html#ac80814892c9baea379f2b4e9f22b966e" title="Retaille chaque StraightBlock adjacent à une jonction pour qu&#39;il commence (ou se termine) exactement ..." alt="" coords="2091,133,2308,173"/>
 <area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="2371,115,2285,136,2284,131,2370,110"/>

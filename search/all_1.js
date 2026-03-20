@@ -1,19 +1,9 @@
 var searchData=
 [
-  ['aboutdialog_0',['aboutdialog',['../classAboutDialog.html',1,'AboutDialog'],['../classAboutDialog.html#a2f97cbd5f2555ff136bb201f24f86525',1,'AboutDialog::AboutDialog()']]],
-  ['aboutdialog_2ecpp_1',['AboutDialog.cpp',['../AboutDialog_8cpp.html',1,'']]],
-  ['aboutdialog_2eh_2',['AboutDialog.h',['../AboutDialog_8h.html',1,'']]],
-  ['absent_5fneighbour_3',['ABSENT_NEIGHBOUR',['../classTopologySentinel.html#a72c4246d507d15feec0da2f594c408ea',1,'TopologySentinel']]],
-  ['absorblinksegment_4',['absorbLinkSegment',['../classDoubleSwitchDetector.html#a3be8598fec31308ef13ff0ccd942d319',1,'DoubleSwitchDetector']]],
-  ['addedge_5',['addEdge',['../classTopologyGraph.html#a99f720078a226f9d62b284d67194153b',1,'TopologyGraph']]],
-  ['adjacency_6',['adjacency',['../classTopologyGraph.html#a32d45f877383238871e9522eb306b20f',1,'TopologyGraph']]],
-  ['adjacencylist_7',['AdjacencyList',['../classTopologyGraph.html#ac53af35f8fd414da3bf4eb54422455d5',1,'TopologyGraph']]],
-  ['aligndoubleswitchroles_8',['alignDoubleSwitchRoles',['../classSwitchOrientator.html#a2786825e04cc0836549bb23a2b6242b4',1,'SwitchOrientator']]],
-  ['anglebetweenvectorspifallback_9',['angleBetweenVectorsPiFallback',['../classGeometryUtils.html#a7fb1d9f796278db394fc82257347f514',1,'GeometryUtils']]],
-  ['applicatif_10',['🔹 Core — Cœur applicatif',['../index.html#autotoc_md4',1,'']]],
-  ['application_11',['application',['../classApplication.html',1,'Application'],['../classApplication.html#a719cf091afd2276d52f9a58e4962ebfb',1,'Application::Application()']]],
-  ['application_2ecpp_12',['Application.cpp',['../Application_8cpp.html',1,'']]],
-  ['application_2eh_13',['Application.h',['../Application_8h.html',1,'']]],
-  ['auteur_14',['✨ Auteur',['../index.html#autotoc_md29',1,'']]],
-  ['autorisé_20à_20_3a_15',['Vous êtes autorisé à :',['../index.html#autotoc_md26',1,'']]]
+  ['blockquote_0',['&lt;/blockquote&gt;',['../index.html#autotoc_md2',1,'']]],
+  ['boundarynodeids_1',['boundaryNodeIds',['../structGraphBuildResult.html#a246acf6b66937b71fdd0df7a948cb532',1,'GraphBuildResult']]],
+  ['branch_5ftip_5fdistance_5fmeters_2',['BRANCH_TIP_DISTANCE_METERS',['../classParserDefaultValues.html#a5566a0671108872abd8f48583c4ac86e',1,'ParserDefaultValues']]],
+  ['branchids_3',['branchIds',['../classSwitchBlock.html#accb5d67518dff64ab8bcc6f1693fe2bc',1,'SwitchBlock']]],
+  ['build_4',['build',['../classGraphBuilder.html#af2d714cb20595bdc76588d2512a0102a',1,'GraphBuilder']]],
+  ['buildtopologygraph_5',['buildTopologyGraph',['../classGraphBuilder.html#a978a9bb24411525583b8c2855db91c80',1,'GraphBuilder']]]
 ];

@@ -26,9 +26,9 @@
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1768,340,1873,358,1872,363,1767,345"/>
 <area shape="rect" id="Node000011" href="$classFileSaveDialog.html#ab97de3eb250a4a24fb620a8a50161bfd" title="Affiche le sélecteur de fichier natif Windows." alt="" coords="1883,212,2042,237"/>
 <area shape="poly" id="edge11_Node000005_Node000011" title=" " alt="" coords="1717,315,1778,286,1852,254,1899,239,1901,244,1854,259,1780,291,1719,320"/>
-<area shape="rect" id="Node000007" href="$classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" title=" " alt="" coords="2144,427,2331,467"/>
+<area shape="rect" id="Node000007" href="$classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" title="Convertit un StraightBlock en feature GeoJSON de type LineString." alt="" coords="2144,427,2331,467"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="2022,386,2073,398,2121,413,2150,421,2149,426,2119,418,2071,403,2021,391"/>
-<area shape="rect" id="Node000008" href="$classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" title=" " alt="" coords="2144,363,2331,403"/>
+<area shape="rect" id="Node000008" href="$classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" title="Convertit un SwitchBlock en feature GeoJSON de type Point." alt="" coords="2144,363,2331,403"/>
 <area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="2072,376,2130,378,2130,383,2071,381"/>
 <area shape="rect" id="Node000009" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="2162,211,2313,251"/>
 <area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="2048,360,2070,348,2087,328,2094,306,2100,284,2118,261,2148,245,2150,249,2122,266,2105,286,2099,308,2092,331,2074,352,2051,365"/>

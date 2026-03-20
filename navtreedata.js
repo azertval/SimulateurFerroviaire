@@ -25,7 +25,29 @@
 var NAVTREE =
 [
   [ "Simulateur Ferroviaire", "index.html", [
-    [ "🚆 Simulateur Ferroviaire", "index.html", "index" ],
+    [ "Description", "index.html#description", null ],
+    [ "Engine — Moteur de l'application", "index.html#engine", [
+      [ "Core — Cœur applicatif", "index.html#core", null ],
+      [ "HMI — Interface utilisateur", "index.html#hmi", null ],
+      [ "</blockquote>", "index.html#autotoc_md2", null ]
+    ] ],
+    [ "Modules — Fonctionnalités métier", "index.html#modules", null ],
+    [ "GeoParser — Pipeline principal", "index.html#geoparser", [
+      [ "Tâche asynchrone", "index.html#task", null ],
+      [ "Pipeline global", "index.html#pipeline", null ],
+      [ "Parsing & Construction", "index.html#parsing", null ],
+      [ "Graphe topologique", "index.html#graph", null ],
+      [ "Extraction ferroviaire", "index.html#extraction", null ]
+    ] ],
+    [ "GeoJsonExporter — Exportation", "index.html#exporter", null ],
+    [ "Eléments interactifs", "index.html#elements", [
+      [ "Hiérarchie des éléments interactifs", "index.html#hierarchy", null ],
+      [ "Énumérations clés", "index.html#enums", null ],
+      [ "Stockages", "index.html#storage", null ]
+    ] ],
+    [ "Coordonnées", "index.html#coords", null ],
+    [ "Licence", "index.html#licence", null ],
+    [ "Auteur", "index.html#auteur", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -54,8 +76,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AboutDialog_8cpp.html",
-"classLeaflet.html#a95dfb4b8fdd34043048c784a0b3e1d36",
-"globals_defs.html"
+"classInteractiveElement.html#a731ea8f6e5caddfff044ae50feefdbf7",
+"dir_e39501a7ab3dda7517b13769a04f0f3d.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

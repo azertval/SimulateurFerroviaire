@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loglevel_0',['LogLevel',['../Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94',1,'Logger.h']]]
+  ['interactiveelementtype_0',['InteractiveElementType',['../InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731',1,'InteractiveElement.h']]]
 ];

@@ -1,0 +1,7 @@
+<map id="InteractiveElement" name="InteractiveElement">
+<area shape="rect" id="Node000001" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="25,5,199,211"/>
+<area shape="rect" id="Node000002" href="$classShuntingElement.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="31,259,193,464"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,225,115,258,109,258,109,225"/>
+<area shape="rect" id="Node000003" href="$classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON." alt="" coords="5,512,219,837"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="115,478,115,512,109,512,109,478"/>
+</map>

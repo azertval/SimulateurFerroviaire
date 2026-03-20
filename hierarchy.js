@@ -14,6 +14,11 @@ var hierarchy =
     [ "GeoParsingTask", "classGeoParsingTask.html", null ],
     [ "GraphBuilder", "classGraphBuilder.html", null ],
     [ "GraphBuildResult", "structGraphBuildResult.html", null ],
+    [ "InteractiveElement", "classInteractiveElement.html", [
+      [ "ShuntingElement", "classShuntingElement.html", [
+        [ "StraightBlock", "classStraightBlock.html", null ]
+      ] ]
+    ] ],
     [ "LatLon", "classLatLon.html", null ],
     [ "Leaflet", "classLeaflet.html", null ],
     [ "Logger", "classLogger.html", null ],
@@ -31,7 +36,6 @@ var hierarchy =
     ] ],
     [ "TopologyGraph::SnappedNodeKey", "structTopologyGraph_1_1SnappedNodeKey.html", null ],
     [ "TopologyGraph::SnappedNodeKeyHasher", "structTopologyGraph_1_1SnappedNodeKeyHasher.html", null ],
-    [ "StraightBlock", "classStraightBlock.html", null ],
     [ "SwitchBlock", "classSwitchBlock.html", null ],
     [ "SwitchOrientator", "classSwitchOrientator.html", null ],
     [ "TopologyData", "classTopologyData.html", null ],

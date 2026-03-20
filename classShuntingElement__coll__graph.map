@@ -1,0 +1,5 @@
+<map id="ShuntingElement" name="ShuntingElement">
+<area shape="rect" id="Node000001" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="11,259,173,464"/>
+<area shape="rect" id="Node000002" href="$classInteractiveElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="5,5,179,211"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,225,95,258,89,258,89,225"/>
+</map>

@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Calcule la longueur planaire totale d&#39;une polyligne métrique." alt="" coords="2593,37,2828,77"/>
 <area shape="rect" id="Node000002" href="$classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd" title="Interpole un point tip à distanceMeters depuis la jonction le long d&#39;un Straight." alt="" coords="2335,5,2545,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2579,44,2545,40,2546,35,2580,39"/>
-<area shape="rect" id="Node000013" href="$classTopologyExtractor.html#ad1d5361674a11a78d2ea58a6024fb140" title=" " alt="" coords="2367,69,2513,109"/>
+<area shape="rect" id="Node000013" href="$classTopologyExtractor.html#a8fe29fd6ba117f652d0e545869a99c61" title=" " alt="" coords="2367,69,2513,109"/>
 <area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="2580,75,2514,83,2513,78,2579,70"/>
 <area shape="rect" id="Node000003" href="$classSwitchOrientator.html#a8132fa3495845481fdb68a3ec695af15" title="Calcule et assigne les points tip CDC sur un SwitchBlock orienté." alt="" coords="2091,8,2287,48"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2321,29,2287,30,2287,24,2321,24"/>

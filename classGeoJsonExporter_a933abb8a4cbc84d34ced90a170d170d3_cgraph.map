@@ -1,8 +1,8 @@
 <map id="GeoJsonExporter::exportToFile" name="GeoJsonExporter::exportToFile">
 <area shape="rect" id="Node000001" title="Exporte la topologie ferroviaire dans un fichier GeoJSON." alt="" coords="5,109,223,134"/>
-<area shape="rect" id="Node000002" href="$classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" title=" " alt="" coords="271,5,457,45"/>
+<area shape="rect" id="Node000002" href="$classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" title="Convertit un StraightBlock en feature GeoJSON de type LineString." alt="" coords="271,5,457,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,106,270,55,289,48,291,53,272,60,146,111"/>
-<area shape="rect" id="Node000003" href="$classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" title=" " alt="" coords="271,69,457,109"/>
+<area shape="rect" id="Node000003" href="$classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" title="Convertit un SwitchBlock en feature GeoJSON de type Point." alt="" coords="271,69,457,109"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="213,106,256,100,257,106,214,111"/>
 <area shape="rect" id="Node000004" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="289,133,439,173"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="214,131,275,139,274,145,213,137"/>

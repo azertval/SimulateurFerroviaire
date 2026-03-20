@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" target="_top" xlink:title="Convertit un StraightBlock en feature GeoJSON de type LineString.">
 <polygon fill="white" stroke="#666666" points="326.5,-240 186.5,-240 186.5,-210 326.5,-210 326.5,-240"/>
 <text text-anchor="start" x="194.5" y="-228" font-family="Helvetica,sans-Serif" font-size="10.00">GeoJsonExporter::convert</text>
 <text text-anchor="middle" x="256.5" y="-217" font-family="Helvetica,sans-Serif" font-size="10.00">StraightToFeature</text>
@@ -40,7 +40,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" target="_top" xlink:title="Convertit un SwitchBlock en feature GeoJSON de type Point.">
 <polygon fill="white" stroke="#666666" points="326.5,-192 186.5,-192 186.5,-162 326.5,-162 326.5,-192"/>
 <text text-anchor="start" x="194.5" y="-180" font-family="Helvetica,sans-Serif" font-size="10.00">GeoJsonExporter::convert</text>
 <text text-anchor="middle" x="256.5" y="-169" font-family="Helvetica,sans-Serif" font-size="10.00">SwitchToFeature</text>
@@ -78,7 +78,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="classGeoJsonExporter.html#a01038435d85225bf7f417711680ffdbe" target="_top" xlink:title=" ">
+<g id="a_Node000005"><a xlink:href="classGeoJsonExporter.html#a01038435d85225bf7f417711680ffdbe" target="_top" xlink:title="Échappe une chaîne JSON pour l&#39;injection dans JavaScript.">
 <polygon fill="white" stroke="#666666" points="333,-96 180,-96 180,-66 333,-66 333,-96"/>
 <text text-anchor="start" x="188" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">GeoJsonExporter::escapeFor</text>
 <text text-anchor="middle" x="256.5" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">JavaScript</text>
