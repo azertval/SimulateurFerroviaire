@@ -1,14 +1,19 @@
-#include "GeoParser.h"
-
 /**
- * @file GeoParser.cpp
+ * @file  GeoParser.cpp
  * @brief Implémentation du pipeline GeoParser.
+ *
+ * @see GeoParser
  */
+
+#include "GeoParser.h"
 
 #include "GraphBuilder.h"
 #include "TopologyExtractor.h"
 #include "SwitchOrientator.h"
 #include "DoubleSwitchDetector.h"
+#include "Modules/GeoJsonExporter/GeoJsonExporter.h"
+#include "Modules/Models/TopologyRepository.h"
+#include "Modules/GeoJsonExporter/GeoJsonExporter.h"
 
  /**
   * @brief Constructeur.
@@ -37,9 +42,6 @@ GeoParser::GeoParser(Logger& logger,
  */
 void GeoParser::parse(bool enableDebugDump)
 {
-    switches.clear();
-    straights.clear();
-
     LOG_INFO(m_logger, "=== GeoParser START ===");
 
     reportProgress(5);
@@ -49,12 +51,12 @@ void GeoParser::parse(bool enableDebugDump)
 
     GraphBuildResult graphResult = graphBuilder.build();
 
-    reportProgress(20);
+    reportProgress(10);
 
     TopologyExtractor extractor(m_logger, graphResult, m_maxStraightLengthMeters);
     TopologyExtractResult topo = extractor.extract();
 
-    reportProgress(50);
+    reportProgress(30);
 
     SwitchOrientator orientator(
         m_logger,
@@ -66,7 +68,7 @@ void GeoParser::parse(bool enableDebugDump)
 
     orientator.orient();
 
-    reportProgress(70);
+    reportProgress(40);
 
     DoubleSwitchDetector detector(
         m_logger,
@@ -79,20 +81,26 @@ void GeoParser::parse(bool enableDebugDump)
 
     detector.detectAndAbsorb();
 
-    reportProgress(90);
+    reportProgress(60);
 
     detector.validateSwitches();
 
-    reportProgress(100);
+    reportProgress(80);
 
-    switches = std::move(topo.switches);
-    straights = std::move(topo.straights);
+    // Nettoyage du repository avant d'y stocker les nouveaux résultats
+    TopologyRepository::instance().data().clear();
+
+    // Transfert des résultats dans le repository global
+    TopologyRepository::instance().data().switches = std::move(topo.switches);
+    TopologyRepository::instance().data().straights = std::move(topo.straights);
 
     if (enableDebugDump)
         dumpDebugOutput();
 
-    LOG_INFO (m_logger, "Nombre de SwitchBlocks : " + std::to_string(switches.size()));
-    LOG_INFO(m_logger, "Nombre de StraightBlocks : " + std::to_string(straights.size()));
+    reportProgress(85);
+
+    LOG_INFO (m_logger, "Nombre de SwitchBlocks : " + std::to_string(TopologyRepository::instance().data().switches.size()));
+    LOG_INFO(m_logger, "Nombre de StraightBlocks : " + std::to_string(TopologyRepository::instance().data().straights.size()));
 
     LOG_INFO(m_logger, "=== GeoParser COMPLETED ===");
 }
@@ -103,10 +111,10 @@ void GeoParser::parse(bool enableDebugDump)
 void GeoParser::dumpDebugOutput() const
 {
     LOG_DEBUG(m_logger, "===== SWITCHES =====");
-    for (const auto& sw : switches)
+    for (const auto& sw : TopologyRepository::instance().data().switches)
         LOG_DEBUG(m_logger, sw.toString());
 
     LOG_DEBUG(m_logger, "===== STRAIGHTS =====");
-    for (const auto& st : straights)
+    for (const auto& st : TopologyRepository::instance().data().straights)
         LOG_DEBUG(m_logger, st.toString());
 }

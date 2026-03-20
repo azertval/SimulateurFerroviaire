@@ -25,9 +25,11 @@ Gestion de l’interface graphique (Win32 + WebView).
 - MainWindow → fenêtre principale  
 - ProgressBar → affichage des tâches longues  
 - WebViewPanel → affichage de openstreetview (Leaflet)  
+    - leaflet.js décrit l'ensemble des scripts d'injections      
 - Dialogs
-  - AboutDialog  
-  - FileOpenDialog  
+    - AboutDialog  
+  	- FileOpenDialog  
+    - FileSaveDialog
 
 ---
 
@@ -35,16 +37,23 @@ Gestion de l’interface graphique (Win32 + WebView).
 
 Modules indépendants responsables du traitement ferroviaire.
 
-## 🌍 GeoParser — Pipeline principal
+---
+
+# 🌍 GeoParser — Pipeline principal
 
 Pipeline complet de transformation GeoJSON → modèle ferroviaire.
 
-### 🔄 Pipeline global
+GeoParsingTask
+- Tâche asynchrone de parsing
+
+## 🔄 Pipeline global
+
 1. Chargement GeoJSON  
 2. Construction du graphe  
 3. Extraction topologique  
 4. Orientation des aiguillages  
 5. Détection des doubles aiguilles  
+6. Clear + Sauvegarde du modèle ferroviaire dans le singleton TopologyRepository
 
 👉 Voir implémentation dans : GeoParser::parse()
 
@@ -70,7 +79,6 @@ GraphBuilder
 - Conversion WGS84 → UTM  
 - Snap + fusion des nœuds  
 
-
 TopologyGraph
 - Représentation du graphe (nœuds + arêtes)
 
@@ -93,20 +101,30 @@ DoubleSwitchDetector
 
 ---
 
+# 🌍 GeoJsonExporter — Exportation des données
+
+GeoJsonExporter
+- Exportation du modèle ferroviaire en GeoJSON
+
+---
+
 # 📦 Models — Modèle de données
 
 Représentation des entités ferroviaires manipulées par le pipeline.
 
 ## 📍 Coordonnées
 
-- CoordinateXY
-  - Coordonnées métriques (UTM)
-- LatLon
-  - Coordonnées géographiques WGS84
+CoordinateXY
+- Coordonnées métriques (UTM)
+LatLon
+- Coordonnées géographiques WGS84
 
 ---
 
 ## 🚧 Blocs ferroviaires
+
+TopologyRepository
+- Stockage des données topologiques (TopologyData) en singleton
 
 StraightBlock
 - Tronçon de voie droite
