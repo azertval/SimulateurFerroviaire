@@ -24,8 +24,9 @@
  *
  * Le degré d'un nœud est le nombre d'arêtes qui lui sont incidentes.
  */
-struct NodeDegreeThresholds
+class NodeDegreeThresholds
 {
+public:
     /** Degré 1 — extrémité de voie sans continuation (terminus). */
     static constexpr int TERMINUS                     = 1;
 
@@ -59,8 +60,9 @@ struct NodeDegreeThresholds
  * Calibrées pour un réseau ferroviaire typique en projection WGS-84.
  * Représentent un compromis entre robustesse au bruit GPS et précision topologique.
  */
-struct ParserDefaultValues
+class ParserDefaultValues
 {
+public :
     /**
      * Pas de grille d'accrochage des coordonnées brutes (mètres).
      * Élimine le bruit flottant entre segments quasi-coïncidents.
@@ -109,8 +111,9 @@ struct ParserDefaultValues
 /**
  * @brief Codes de projection géographique utilisés dans le pipeline.
  */
-struct GeographicProjection
+class GeographicProjection
 {
+public :
     /** Code EPSG du système WGS-84 (coordonnées géographiques lat/lon). */
     static constexpr int  WGS84_EPSG_CODE     = 4326;
 
@@ -138,8 +141,9 @@ struct GeographicProjection
 /**
  * @brief Valeurs sentinelles utilisées dans les structures topologiques.
  */
-struct TopologySentinel
+class TopologySentinel
 {
+public :
     /**
      * Index de nœud sentinelle pour les joints internes entre morceaux
      * (chunks) d'un Straight découpé. Pas de nœud réel dans le graphe.
@@ -161,8 +165,9 @@ struct TopologySentinel
  * Évitent les divisions par zéro et les artefacts de précision lors des
  * calculs géométriques et vectoriels.
  */
-struct GeometricTolerances
+class GeometricTolerances
 {
+public :
     /**
      * Longueur en dessous de laquelle un segment est considéré dégénéré (quasi-point).
      * Utilisé dans pointAtDistance pour ignorer les segments nuls.

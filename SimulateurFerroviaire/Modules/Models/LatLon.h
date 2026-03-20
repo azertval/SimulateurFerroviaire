@@ -18,8 +18,9 @@
 /**
  * @brief Coordonnée géographique WGS-84 exprimée en degrés décimaux.
  */
-struct LatLon
+class LatLon
 {
+public:
     double latitude  = 0.0;  ///< Latitude en degrés décimaux (positif = nord).
     double longitude = 0.0;  ///< Longitude en degrés décimaux (positif = est).
 
