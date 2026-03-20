@@ -1,161 +1,188 @@
-# 🚆 Simulateur Ferroviaire
+@mainpage Simulateur Ferroviaire
 
-## 📖 Description
-Reconstruction et visualisation d’un réseau ferroviaire à partir de données GeoJSON.
+@tableofcontents
+
+---
+
+# Description {#description}
+
+Reconstruction et visualisation d'un réseau ferroviaire à partir de données GeoJSON.
 
 Le projet repose sur un pipeline de parsing permettant de :
-- Charger des données géographiques
-- Construire un graphe topologique
-- Extraire des blocs ferroviaires (voies + aiguillages)
-- Produire une représentation exploitable et visualisable
+- Charger des données géographiques (WGS-84 / GeoJSON)
+- Construire un graphe topologique métrique (UTM)
+- Extraire les blocs ferroviaires (voies droites + aiguillages)
+- Orienter et valider les aiguillages (root / normal / deviation)
+- Détecter les doubles aiguilles et absorber les segments de liaison
+- Stocker le modèle dans un singleton partagé et le visualiser dans un WebView
 
 ---
 
-# 🧠 Engine — Moteur de l’application
+# Engine — Moteur de l'application {#engine}
 
-## 🔹 Core — Cœur applicatif
-Gestion des composants fondamentaux et de la logique métier.
+## Core — Cœur applicatif {#core}
 
-- Application → cycle de vie de l’application  
-- Logger → système de journalisation (logs, erreurs, debug)
+Gestion des composants fondamentaux et de la logique applicative transverse.
 
-## 🖥️ HMI — Interface utilisateur
-Gestion de l’interface graphique (Win32 + WebView).
+| Classe | Rôle |
+|--------|------|
+| Application | Cycle de vie Win32 (enregistrement de classe, boucle de messages) |
+| Logger | Journalisation structurée (INFO / DEBUG / WARNING / ERROR / FAILURE) |
 
-- MainWindow → fenêtre principale  
-- ProgressBar → affichage des tâches longues  
-- WebViewPanel → affichage de openstreetview (Leaflet)  
-    - leaflet_api.js décrit l'ensemble des scripts d'injections      
-- Dialogs
-    - AboutDialog  
-  	- FileOpenDialog  
-    - FileSaveDialog
+## HMI — Interface utilisateur {#hmi}
 
----
+Couche graphique Win32 + WebView2.
 
-# 🧩 Modules — Fonctionnalités métier
+| Classe | Rôle |
+|--------|------|
+| MainWindow | Fenêtre principale, routage des messages Win32, coordination UI ↔ métier |
+| ProgressBar | Wrapper du contrôle natif `PROGRESS_CLASS` |
+| WebViewPanel | Affichage cartographique Leaflet embarqué via WebView2 |
+| AboutDialog | Boîte de dialogue modale "À propos" |
+| FileOpenDialog | Sélecteur de fichier GeoJSON (GetOpenFileNameA) |
+| FileSaveDialog | Dialogue de sauvegarde GeoJSON (GetSaveFileNameA) |
 
-Modules indépendants responsables du traitement ferroviaire.
-
----
-
-# 🌍 GeoParser — Pipeline principal
-
-Pipeline complet de transformation GeoJSON → modèle ferroviaire.
-
-GeoParsingTask
-- Tâche asynchrone de parsing
-
-## 🔄 Pipeline global
-
-1. Chargement GeoJSON  
-2. Construction du graphe  
-3. Extraction topologique  
-4. Orientation des aiguillages  
-5. Détection des doubles aiguilles  
-6. Clear + Sauvegarde du modèle ferroviaire dans le singleton TopologyRepository
-
-👉 Voir implémentation dans : GeoParser::parse()
+> **WebView** : `leaflet_api.js` décrit l'ensemble des scripts d'injection JavaScript
+> exécutés via `WebViewPanel::executeScript()`.
 
 ---
 
-## 🗺️ Parsing & Construction
-
-GeoParser
-- Orchestrateur du pipeline complet
-
-GeoParsingTask
-- Parsing asynchrone (évite le blocage UI)
-
-GeometryUtils
-- Outils géométriques (conversion, validation, calculs)
+# Modules — Fonctionnalités métier {#modules}
 
 ---
 
-## 🔗 Graphe topologique
+# GeoParser — Pipeline principal {#geoparser}
 
-GraphBuilder
-- Construction du graphe à partir du GeoJSON  
-- Conversion WGS84 → UTM  
-- Snap + fusion des nœuds  
+Pipeline complet de transformation **GeoJSON → modèle ferroviaire**.
 
-TopologyGraph
-- Représentation du graphe (nœuds + arêtes)
+## Tâche asynchrone {#task}
 
-TopologyEdge
-- Arête entre deux nœuds avec géométrie métrique
+@ref GeoParsingTask lance @ref GeoParser dans un thread détaché.
+La communication vers l'UI passe exclusivement par `PostMessage` :
 
----
+| Message | Contenu |
+|---------|---------|
+| `WM_PROGRESS_UPDATE` | Avancement 0–100 |
+| `WM_PARSING_SUCCESS` | Parsing terminé |
+| `WM_PARSING_ERROR` | Pointeur `std::string*` (à libérer par le destinataire) |
 
-## 🧠 Extraction ferroviaire
+## Pipeline global {#pipeline}
 
-TopologyExtractor
-- Extraction des blocs à partir du graphe
+Voir @ref GeoParser::parse() pour l'implémentation complète.
 
-SwitchOrientator
-- Orientation des aiguillages (root / normal / deviation)
+| Phase | Classe | Description |
+|-------|--------|-------------|
+| 1–2 | GraphBuilder | Chargement GeoJSON, projection WGS-84 → UTM, snap + fusion des nœuds |
+| 3–5 | TopologyExtractor | Détection des aiguillages, extraction des StraightBlock, câblage |
+| 6 | SwitchOrientator | Orientation root / normal / deviation, calcul des tips CDC |
+| 7–8 | DoubleSwitchDetector | Détection des doubles aiguilles, validation CDC (longueurs min.) |
+| 9 | GeoParser | Clear + transfert vers @ref TopologyRepository |
 
-DoubleSwitchDetector
-- Détection des doubles aiguilles  
-- Validation des contraintes métier (CDC)
+## Parsing & Construction {#parsing}
 
----
+| Classe | Rôle |
+|--------|------|
+| @ref GeoParser | Orchestrateur du pipeline |
+| @ref GeoParsingTask | Exécution asynchrone (évite le blocage UI) |
+| @ref GeometryUtils | Projection UTM, interpolation, angles, snap de grille |
 
-# 🌍 GeoJsonExporter — Exportation des données
+## Graphe topologique {#graph}
 
-GeoJsonExporter
-- Exportation du modèle ferroviaire en GeoJSON
+| Classe | Rôle |
+|--------|------|
+| @ref GraphBuilder | Construction du graphe depuis le GeoJSON |
+| @ref TopologyGraph | Graphe planaire non-orienté (nœuds + arêtes), union-find |
+| @ref TopologyEdge | Arête avec géométrie polyligne métrique et longueur planaire |
 
----
+## Extraction ferroviaire {#extraction}
 
-# 📦 Models — Modèle de données
-
-Représentation des entités ferroviaires manipulées par le pipeline.
-
-## 📍 Coordonnées
-
-CoordinateXY
-- Coordonnées métriques (UTM)
-LatLon
-- Coordonnées géographiques WGS84
-
----
-
-## 🚧 Blocs ferroviaires
-
-TopologyRepository
-- Stockage des données topologiques (TopologyData) en singleton
-
-StraightBlock
-- Tronçon de voie droite
-- Longueur calculée via Haversine
-
-
-SwitchBlock
-- Aiguillage ferroviaire (3 branches)
-- Orientation + calculs géométriques
+| Classe | Rôle |
+|--------|------|
+| @ref TopologyExtractor | Extraction des blocs depuis le graphe |
+| @ref SwitchOrientator | Orientation géométrique (phases 6, 6b, 6c, 6d) |
+| @ref DoubleSwitchDetector | Détection des doubles aiguilles et validation CDC |
 
 ---
 
-# 📜 Licence
+# GeoJsonExporter — Exportation {#exporter}
+
+@ref GeoJsonExporter est une classe statique qui :
+- Sérialise @ref StraightBlock → feature GeoJSON `LineString`
+- Sérialise @ref SwitchBlock → feature GeoJSON `Point`
+- Génère les scripts JavaScript d'injection pour le WebView Leaflet
+
+---
+
+# Eléments interactifs {#elements}
+
+| Classe | Rôle |
+|--------|------|
+| @ref InteractiveElement | Interface abstraite commune (id, type). Copie interdite, déplacement autorisé |
+| @ref ShuntingElement | Étend avec un état opérationnel + helpers `isFree()` / `isOccupied()` / `isInactive()` |
+| @ref StraightBlock | Tronçon de voie droite. Longueur géodésique calculée via Haversine |
+| @ref SwitchBlock | Aiguillage 3 branches. Orientation + tips CDC + support double aiguille |
+
+## Hiérarchie des éléments interactifs {#hierarchy}
+
+Tous les éléments ferroviaires interactifs s'inscrivent dans la hiérarchie suivante :
+
+```
+InteractiveElement          getId(), getType()
+    └── ShuntingElement     getState()  [FREE / OCCUPIED / INACTIVE]
+            ├── StraightBlock
+            └── SwitchBlock
+```
+
+## Énumérations clés {#enums}
+
+| Enum | Valeurs | Usage |
+|------|---------|-------|
+| `InteractiveElementType` | `SWITCH`, `STRAIGHT` | Typage sans RTTI |
+| `ShuntingState` | `FREE`, `OCCUPIED`, `INACTIVE` | État opérationnel temps réel |
+
+---
+
+## Stockages {#storage}
+
+| Classe | Rôle |
+|--------|------|
+| @ref TopologyData | Conteneur `unique_ptr<StraightBlock>` + `unique_ptr<SwitchBlock>`. Garantit le polymorphisme sans slicing |
+| @ref TopologyRepository | Singleton (Meyers). Accès global à @ref TopologyData via `instance().data()` |
+
+> **Pourquoi `unique_ptr` ?**
+> Les blocs sont polymorphes (`ShuntingElement*`). Le stockage par valeur entraînerait
+> du slicing et interdirait le déplacement. Le stockage par `unique_ptr` garantit :
+> - polymorphisme correct (destructeur virtuel respecté),
+> - propriété exclusive et cycle de vie déterministe,
+> - interdiction de copie accidentelle.
+ 
+ ---
+
+# Coordonnées {#coords}
+
+| Classe | Système |
+|--------|---------|
+| @ref LatLon | Géographique WGS-84 (latitude, longitude) |
+| @ref CoordinateXY | Métrique UTM (x = est, y = nord) |
+
+---
+
+# Licence {#licence}
 
 Ce projet est distribué sous licence :
 
 **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**
 
-👉 https://creativecommons.org/licenses/by-nc-sa/4.0/
+https://creativecommons.org/licenses/by-nc-sa/4.0/
 
-## Vous êtes autorisé à :
 - ✔️ Partager — copier et redistribuer le matériel
 - ✔️ Adapter — remixer, transformer et créer à partir du matériel
-
-## Sous les conditions suivantes :
-- 📝 Attribution — vous devez créditer l’auteur
-- 🚫 Non commercial — pas d’utilisation commerciale
-- 🔁 Partage dans les mêmes conditions — redistribution sous la même licence
+- 📝 Attribution requise
+- 🚫 Usage commercial interdit
+- 🔁 Redistribution sous la même licence
 
 ---
 
-# ✨ Auteur
+# Auteur {#auteur}
 
 © 2026 Valentin Eloy

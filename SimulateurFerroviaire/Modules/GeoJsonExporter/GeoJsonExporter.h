@@ -5,11 +5,12 @@
  * @see GeoJsonExporter
  */
 #pragma once
+
 #include <string>
 #include <vector>
 
-#include "Modules/Models/StraightBlock.h"
-#include "Modules/Models/SwitchBlock.h"
+#include "Modules/InteractiveElements/ShuntingElements/StraightBlock.h"
+#include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
 #include "Engine/Core/Logger/Logger.h"
 #include "External/nlohmann/json.hpp"
 
@@ -98,18 +99,37 @@ public:
 
     /**
      * @brief Efface puis redessine les branches de tous les switches.
-     *
-     * Appelle @c clearSwitchBranches() dans le WebView, puis délègue chaque
-     * switch orienté à @ref renderSwitchBranches.
-     *
      * @return Instruction JavaScript.
      */
     static std::wstring renderAllSwitchBranches();
 
 private:
-
+    /**
+    * @brief Convertit un StraightBlock en feature GeoJSON de type LineString.
+     * @param straight  Bloc à convertir.
+     * @return Objet JSON représentant la feature GeoJSON.
+    */
     static JsonDocument convertStraightToFeature(const StraightBlock& straight);
+
+    /**
+    * @brief Convertit un SwitchBlock en feature GeoJSON de type Point.
+     * @param switchBlock  Bloc à convertir.
+     * @return Objet JSON représentant la feature GeoJSON.
+    */
     static JsonDocument convertSwitchToFeature(const SwitchBlock& switchBlock);
+
+    /**
+    * @brief Échappe une chaîne JSON pour l'injection dans JavaScript.
+     * @param input Chaîne JSON brute.
+     * @return Chaîne échappée prête à être insérée dans un string JS.
+     *
+     * Caractères échappés :
+     *   - " → \"
+     *   - \ → \\
+     *   - \n → \\n
+     *   - \r → \\r
+     *   - \t → \\t
+    */
     static std::wstring escapeForJavaScript(const std::string& input);
 
     GeoJsonExporter() = delete;

@@ -7,7 +7,7 @@
 
 #include "GeoJsonExporter.h"
 
-#include "Modules/Models/TopologyRepository.h"
+#include "Modules/Stockages/TopologyRepository.h"
 
 #include <fstream>
 #include <iomanip>
@@ -22,9 +22,9 @@ JsonDocument GeoJsonExporter::convertStraightToFeature(const StraightBlock& stra
     // Properties
     // ---------------------------------------------------------------------
     feature["properties"] = {
-        { "id", straight.id },
-        { "feature_type", "straight" },
-        { "length_m", straight.lengthMeters }
+        { "id",           straight.id          },
+        { "feature_type", "straight"            },
+        { "length_m",     straight.lengthMeters }
     };
 
     // ---------------------------------------------------------------------
@@ -34,16 +34,13 @@ JsonDocument GeoJsonExporter::convertStraightToFeature(const StraightBlock& stra
 
     for (const auto& coordinate : straight.coordinates)
     {
-        // GeoJSON requires [longitude, latitude]
-        coordinates.push_back({
-            coordinate.longitude,
-            coordinate.latitude
-            });
+        // GeoJSON : [longitude, latitude]
+        coordinates.push_back({ coordinate.longitude, coordinate.latitude });
     }
 
     feature["geometry"] = {
-        { "type", "LineString" },
-        { "coordinates", coordinates }
+        { "type",        "LineString" },
+        { "coordinates", coordinates  }
     };
 
     feature["properties"]["neighbour_count"] = static_cast<int>(straight.neighbourIds.size());
@@ -61,8 +58,8 @@ JsonDocument GeoJsonExporter::convertSwitchToFeature(const SwitchBlock& switchBl
     // Properties
     // ---------------------------------------------------------------------
     feature["properties"] = {
-        { "id", switchBlock.id },
-        { "feature_type", "switch" },
+        { "id",               switchBlock.id             },
+        { "feature_type",     "switch"                   },
         { "is_double_switch", switchBlock.isDoubleSwitch }
     };
 
@@ -86,18 +83,18 @@ JsonDocument GeoJsonExporter::convertSwitchToFeature(const SwitchBlock& switchBl
 
 void GeoJsonExporter::exportToFile(const std::string& outputPath)
 {
-    const std::vector<StraightBlock>& straights = TopologyRepository::instance().data().straights;
-    const std::vector<SwitchBlock>& switches = TopologyRepository::instance().data().switches;
+    const auto& straights = TopologyRepository::instance().data().straights;
+    const auto& switches = TopologyRepository::instance().data().switches;
 
     JsonDocument root;
     root["type"] = "FeatureCollection";
     root["features"] = JsonDocument::array();
 
     for (const auto& straight : straights)
-        root["features"].push_back(convertStraightToFeature(straight));
+        root["features"].push_back(convertStraightToFeature(*straight));
 
     for (const auto& sw : switches)
-        root["features"].push_back(convertSwitchToFeature(sw));
+        root["features"].push_back(convertSwitchToFeature(*sw));
 
     std::ofstream outputFile(outputPath);
     if (!outputFile.is_open()) return;
@@ -107,18 +104,18 @@ void GeoJsonExporter::exportToFile(const std::string& outputPath)
 
 std::wstring GeoJsonExporter::loadGeoJsonToWebView()
 {
-    const std::vector<StraightBlock>& straights = TopologyRepository::instance().data().straights;
-    const std::vector<SwitchBlock>& switches = TopologyRepository::instance().data().switches;
+    const auto& straights = TopologyRepository::instance().data().straights;
+    const auto& switches = TopologyRepository::instance().data().switches;
 
     JsonDocument root;
     root["type"] = "FeatureCollection";
     root["features"] = JsonDocument::array();
 
     for (const auto& straight : straights)
-        root["features"].push_back(convertStraightToFeature(straight));
+        root["features"].push_back(convertStraightToFeature(*straight));
 
     for (const auto& sw : switches)
-        root["features"].push_back(convertSwitchToFeature(sw));
+        root["features"].push_back(convertSwitchToFeature(*sw));
 
     std::string  jsonString = root.dump();
     std::wstring escaped = escapeForJavaScript(jsonString);
@@ -178,14 +175,13 @@ std::wstring GeoJsonExporter::renderStraightBlock(const StraightBlock& straightB
 
 std::wstring GeoJsonExporter::renderAllStraightBlocks()
 {
-    const std::vector<StraightBlock>& straights =
-        TopologyRepository::instance().data().straights;
+    const auto& straights = TopologyRepository::instance().data().straights;
 
     std::wstring script;
     script += L"clearStraightBlocks();";
 
-    for (const auto& straightBlock : straights)
-        script += renderStraightBlock(straightBlock);
+    for (const auto& straight : straights)
+        script += renderStraightBlock(*straight);
 
     script += L"zoomToStraights();";
     return script;
@@ -218,10 +214,11 @@ std::wstring GeoJsonExporter::renderAllSwitchBlocksJunctions()
     script += L"clearSwitches();";
 
     for (const auto& sw : switches)
-        script += renderSwitchBlock(sw);
+        script += renderSwitchBlock(*sw);
 
     return script;
 }
+
 
 // =============================================================================
 // Branches d'aiguillage (root / normal / deviation)
@@ -245,26 +242,17 @@ std::wstring GeoJsonExporter::renderSwitchBranches(const SwitchBlock& sw)
 
     std::wstring script = L"renderSwitchBranches(";
 
-    // id
     script += L"\"";
     script += std::wstring(sw.id.begin(), sw.id.end());
     script += L"\",";
 
-    // junction
     script += std::to_wstring(sw.junctionCoordinate.latitude);
     script += L",";
     script += std::to_wstring(sw.junctionCoordinate.longitude);
     script += L",";
 
-    // root tip
-    script += encodeTip(sw.tipOnRoot);
-    script += L",";
-
-    // normal tip
-    script += encodeTip(sw.tipOnNormal);
-    script += L",";
-
-    // deviation tip
+    script += encodeTip(sw.tipOnRoot);      script += L",";
+    script += encodeTip(sw.tipOnNormal);    script += L",";
     script += encodeTip(sw.tipOnDeviation);
 
     script += L");";
@@ -279,7 +267,7 @@ std::wstring GeoJsonExporter::renderAllSwitchBranches()
     script += L"clearSwitchBranches();";
 
     for (const auto& sw : switches)
-        script += renderSwitchBranches(sw);
+        script += renderSwitchBranches(*sw);
 
     return script;
 }

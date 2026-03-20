@@ -11,26 +11,23 @@
  *   - Format standard :   "s/0", "s/1", …
  *   - Format morceau :    "s/0_c1", "s/0_c2", … (après découpe Phase 5a)
  *
- * La longueur géodésique est calculée automatiquement à la construction
- * via la formule de Haversine sur les coordonnées WGS-84.
+ * Hiérarchie :
+ *   InteractiveElement → ShuntingElement → StraightBlock
  */
 
 #include <sstream>
 #include <string>
 #include <vector>
 
-#include "LatLon.h"
+#include "ShuntingElement.h"
+#include "Modules/Coordinates/LatLon.h"
 
 
-/**
- * @brief Bloc de voie droite produit par le parseur GeoJSON.
- *
- * Cycle de vie :
- *   Phase 4 (extraction) — créé avec coordonnées WGS-84 et longueur calculée.
- *   Phase 5a (découpe)   — peut être subdivisé ; les morceaux héritent du suffixe _cN.
- *   Phase 5b (câblage)   — neighbours peuplé avec les IDs adjacents.
- */
-class StraightBlock
+ /**
+  * @brief Bloc de voie droite produit par le parseur GeoJSON.
+  *
+  */
+class StraightBlock : public ShuntingElement
 {
 public:
 
@@ -73,13 +70,40 @@ public:
      * La longueur géodésique est calculée immédiatement à partir de
      * l'ensemble des coordonnées fournies.
      *
-     * @param blockId      Identifiant unique du bloc.
-     * @param blockCoords  Polyligne WGS-84 ordonnée (≥ 2 points pour une longueur non nulle).
-     * @param initialNeighbourIds  Identifiants des voisins connus à la construction (optionnel).
+     * @param blockId             Identifiant unique du bloc.
+     * @param blockCoords         Polyligne WGS-84 ordonnée (≥ 2 points pour une longueur non nulle).
+     * @param initialNeighbourIds Identifiants des voisins connus à la construction (optionnel).
      */
-    StraightBlock(std::string                blockId,
-                  std::vector<LatLon>        blockCoords,
-                  std::vector<std::string>   initialNeighbourIds = {});
+    StraightBlock(std::string              blockId,
+        std::vector<LatLon>      blockCoords,
+        std::vector<std::string> initialNeighbourIds = {});
+
+
+    // -------------------------------------------------------------------------
+    // Interface ShuntingElement — implémentation
+    // -------------------------------------------------------------------------
+
+    /** @brief Retourne l'identifiant unique du bloc (ex. "s/0"). */
+    [[nodiscard]] std::string getId() const override { return id; }
+
+    /** @brief Retourne le type STRAIGHT. */
+    [[nodiscard]] InteractiveElementType getType() const override
+    {
+        return InteractiveElementType::STRAIGHT;
+    }
+
+    /**
+     * @brief Retourne l'état opérationnel courant du bloc.
+     * @return m_state (FREE par défaut).
+     */
+    [[nodiscard]] ShuntingState getState() const override { return m_state; }
+
+    /**
+     * @brief Met à jour l'état opérationnel du bloc.
+     * @param state Nouvel état.
+     */
+    void setState(ShuntingState state) { m_state = state; }
+
 
     // -------------------------------------------------------------------------
     // Méthodes publiques
@@ -103,22 +127,17 @@ public:
 
 private:
 
+    /** État opérationnel courant (FREE par défaut). */
+    ShuntingState m_state = ShuntingState::FREE;
+
     /**
      * @brief Calcule la longueur géodésique totale via la formule de Haversine.
-     *
-     * Somme des distances Haversine entre chaque paire de points consécutifs
-     * de la polyligne.
-     *
      * @return Longueur en mètres.
      */
     double computeGeodesicLength() const;
 
     /**
      * @brief Calcule la distance de Haversine entre deux points WGS-84.
-     *
-     * Précision sub-métrique pour les distances inférieures à quelques centaines
-     * de kilomètres — largement suffisant pour un réseau ferroviaire.
-     *
      * @param pointA  Premier point WGS-84.
      * @param pointB  Second point WGS-84.
      * @return Distance en mètres.
