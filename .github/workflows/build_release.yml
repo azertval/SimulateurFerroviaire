@@ -151,7 +151,7 @@ jobs:
             git push origin release --force-with-lease
             Write-Host "Pushed to release branch"
         } else {
-            Write-Host "Nothing changed — skipping push"
+            Write-Host "Nothing changed - skipping push"
         }
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
