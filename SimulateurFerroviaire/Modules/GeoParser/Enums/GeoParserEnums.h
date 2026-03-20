@@ -78,14 +78,15 @@ public :
     /**
      * Longueur maximale d'un bloc Straight avant découpe automatique (mètres).
      * Au-delà, le Straight est subdivisé en morceaux de longueur égale.
+     * Default value : 850 m, CdV de type UM71 (Universel Modulé développé en 1971)
      */
-    static constexpr double MAX_STRAIGHT_LENGTH_METERS    = 270.0;
+    static constexpr double MAX_STRAIGHT_LENGTH_METERS    = 850.0;
 
     /**
      * Longueur minimale requise pour chaque branche d'un aiguillage (mètres).
      * En dessous, la branche est signalée comme invalide par la validation CDC.
      */
-    static constexpr double MIN_BRANCH_LENGTH_METERS      = 15.0;
+    static constexpr double MIN_BRANCH_LENGTH_METERS      = 100.0;
 
     /**
      * Longueur maximale du segment de liaison interne d'un double aiguille (mètres).
@@ -97,7 +98,7 @@ public :
      * Distance depuis la jonction pour interpoler les points tip CDC (mètres).
      * Ces points servent aux vérifications d'écartement de voies.
      */
-    static constexpr double BRANCH_TIP_DISTANCE_METERS    = 15.0;
+    static constexpr double BRANCH_TIP_DISTANCE_METERS    = 25.0;
 
     /** Si true, le parseur écrit des traces DEBUG détaillées en fin de pipeline. */
     static constexpr bool   ENABLE_FULL_DEBUG_MODE         = false;
