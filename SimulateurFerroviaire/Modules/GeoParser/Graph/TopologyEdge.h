@@ -16,7 +16,7 @@
 #include <string>
 #include <vector>
 
-#include "Modules/Models/CoordinateXY.h"
+#include "Modules/Coordinates/CoordinateXY.h"
 
 
 /**

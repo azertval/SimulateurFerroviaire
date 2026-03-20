@@ -12,17 +12,18 @@
 #include "./Utils/GeometryUtils.h"
 
 
-// =============================================================================
-// Construction
-// =============================================================================
+ // =============================================================================
+ // Construction
+ // =============================================================================
 
-TopologyExtractor::TopologyExtractor(Logger&           logger,
-                                      GraphBuildResult& graphResult,
-                                      double            maxStraightLengthMeters)
+TopologyExtractor::TopologyExtractor(Logger& logger,
+    GraphBuildResult& graphResult,
+    double            maxStraightLengthMeters)
     : m_logger(logger)
     , m_graphResult(graphResult)
     , m_maxStraightLengthMeters(maxStraightLengthMeters)
-{}
+{
+}
 
 
 // =============================================================================
@@ -40,7 +41,7 @@ TopologyExtractResult TopologyExtractor::extract()
     LOG_INFO(m_logger, std::to_string(straights.size()) + " StraightBlock(s) extraits");
 
     LOG_INFO(m_logger, "Démarrage Phase 5a — découpe des Straight longs");
-    straights = splitLongStraights(straights);
+    straights = splitLongStraights(std::move(straights));
     LOG_INFO(m_logger,
         std::to_string(straights.size()) + " StraightBlock(s) après découpe");
 
@@ -48,10 +49,10 @@ TopologyExtractResult TopologyExtractor::extract()
     wireTopology(switches, straights);
 
     TopologyExtractResult result;
-    result.switches               = std::move(switches);
-    result.straights              = std::move(straights);
-    result.nodeIdToSwitchId       = m_nodeIdToSwitchId;
-    result.switchIdToNodeId       = m_switchIdToNodeId;
+    result.switches = std::move(switches);
+    result.straights = std::move(straights);
+    result.nodeIdToSwitchId = m_nodeIdToSwitchId;
+    result.switchIdToNodeId = m_switchIdToNodeId;
     result.straightEndpointNodeIds = m_straightEndpointNodeIds;
     return result;
 }
@@ -83,8 +84,8 @@ std::vector<SwitchBlock> TopologyExtractor::detectSwitches()
         const CoordinateXY& metricPosition = graph.nodePositions[nodeId];
         const LatLon junctionCoordinate =
             GeometryUtils::metricUtmToWgs84(metricPosition,
-                                             m_graphResult.utmZoneNumber,
-                                             m_graphResult.isNorthernHemisphere);
+                m_graphResult.utmZoneNumber,
+                m_graphResult.isNorthernHemisphere);
 
         const std::string switchId = "sw/" + std::to_string(switchIndex++);
         SwitchBlock switchBlock(switchId, junctionCoordinate);
@@ -104,11 +105,11 @@ std::vector<SwitchBlock> TopologyExtractor::detectSwitches()
 
 std::vector<StraightBlock> TopologyExtractor::extractStraights()
 {
-    TopologyGraph& graph          = m_graphResult.topologyGraph;
+    TopologyGraph& graph = m_graphResult.topologyGraph;
     const std::set<int>& boundary = m_graphResult.boundaryNodeIds;
 
     std::set<std::string>  visitedEdgeIds;
-    std::set<std::tuple<int,int,int>> seenGeometryHashes;  // hash grossier pour dédup
+    std::set<std::tuple<int, int, int>> seenGeometryHashes;  // hash grossier pour dédup
     std::vector<StraightBlock> straights;
     int straightIndex = 0;
 
@@ -131,7 +132,7 @@ std::vector<StraightBlock> TopologyExtractor::extractStraights()
             std::set<std::string>     pathEdges;
 
             const int endNodeId = walkPathUntilBoundary(startNodeId, edgeId,
-                                                         accumulatedCoords, pathEdges);
+                accumulatedCoords, pathEdges);
 
             if (accumulatedCoords.size() < 2)
             {
@@ -141,7 +142,7 @@ std::vector<StraightBlock> TopologyExtractor::extractStraights()
 
             // Empreinte géométrique pour déduplication (premiers/derniers points)
             const auto& front = accumulatedCoords.front();
-            const auto& back  = accumulatedCoords.back();
+            const auto& back = accumulatedCoords.back();
             auto hashKey = std::make_tuple(
                 static_cast<int>(std::round(front.x)),
                 static_cast<int>(std::round(front.y)),
@@ -157,8 +158,8 @@ std::vector<StraightBlock> TopologyExtractor::extractStraights()
             // Conversion métrique → WGS-84
             std::vector<LatLon> wgs84Coords =
                 GeometryUtils::convertPolylineToWgs84(accumulatedCoords,
-                                                       m_graphResult.utmZoneNumber,
-                                                       m_graphResult.isNorthernHemisphere);
+                    m_graphResult.utmZoneNumber,
+                    m_graphResult.isNorthernHemisphere);
 
             const std::string straightId = "s/" + std::to_string(straightIndex++);
             StraightBlock straight(straightId, std::move(wgs84Coords));
@@ -174,15 +175,15 @@ std::vector<StraightBlock> TopologyExtractor::extractStraights()
 }
 
 int TopologyExtractor::walkPathUntilBoundary(int                        startNodeId,
-                                              const std::string&         incomingEdgeId,
-                                              std::vector<CoordinateXY>& accumulatedCoords,
-                                              std::set<std::string>&     visitedEdgeIds)
+    const std::string& incomingEdgeId,
+    std::vector<CoordinateXY>& accumulatedCoords,
+    std::set<std::string>& visitedEdgeIds)
 {
-    TopologyGraph& graph          = m_graphResult.topologyGraph;
+    TopologyGraph& graph = m_graphResult.topologyGraph;
     const std::set<int>& boundary = m_graphResult.boundaryNodeIds;
 
-    int         currentNodeId  = startNodeId;
-    std::string currentEdgeId  = incomingEdgeId;
+    int         currentNodeId = startNodeId;
+    std::string currentEdgeId = incomingEdgeId;
     bool        firstIteration = true;
 
     while (true)
@@ -207,14 +208,14 @@ int TopologyExtractor::walkPathUntilBoundary(int                        startNod
         if (firstIteration)
         {
             accumulatedCoords.insert(accumulatedCoords.end(),
-                                      edgeCoords.begin(), edgeCoords.end());
+                edgeCoords.begin(), edgeCoords.end());
             firstIteration = false;
         }
         else
         {
             // Éviter le doublon du point de jonction
             accumulatedCoords.insert(accumulatedCoords.end(),
-                                      edgeCoords.begin() + 1, edgeCoords.end());
+                edgeCoords.begin() + 1, edgeCoords.end());
         }
 
         const int nextNodeId = graph.getOppositeNodeId(currentEdgeId, currentNodeId);
@@ -252,7 +253,7 @@ int TopologyExtractor::walkPathUntilBoundary(int                        startNod
 // =============================================================================
 
 std::vector<StraightBlock> TopologyExtractor::splitLongStraights(
-    const std::vector<StraightBlock>& inputStraights)
+    std::vector<StraightBlock> inputStraights)
 {
     if (m_maxStraightLengthMeters <= 0.0)
     {
@@ -260,20 +261,22 @@ std::vector<StraightBlock> TopologyExtractor::splitLongStraights(
     }
 
     std::vector<StraightBlock>                         outputStraights;
-    std::unordered_map<std::string, std::pair<int,int>> newEndpoints;
+    std::unordered_map<std::string, std::pair<int, int>> newEndpoints;
 
-    for (const StraightBlock& straight : inputStraights)
+    for (StraightBlock& straight : inputStraights)
     {
         const auto endpointIterator = m_straightEndpointNodeIds.find(straight.id);
         const int startNodeId = (endpointIterator != m_straightEndpointNodeIds.end())
-                                    ? endpointIterator->second.first  : -1;
-        const int endNodeId   = (endpointIterator != m_straightEndpointNodeIds.end())
-                                    ? endpointIterator->second.second : -1;
+            ? endpointIterator->second.first : -1;
+        const int endNodeId = (endpointIterator != m_straightEndpointNodeIds.end())
+            ? endpointIterator->second.second : -1;
 
         if (straight.lengthMeters <= m_maxStraightLengthMeters)
         {
-            outputStraights.push_back(straight);
-            newEndpoints[straight.id] = { startNodeId, endNodeId };
+            // Sauvegarder l'ID avant le move — straight.id est invalide après.
+            const std::string savedId = straight.id;
+            newEndpoints[savedId] = { startNodeId, endNodeId };
+            outputStraights.push_back(std::move(straight));
             continue;
         }
 
@@ -288,24 +291,25 @@ std::vector<StraightBlock> TopologyExtractor::splitLongStraights(
         // Projection de la polyligne en métrique pour la découpe
         std::vector<CoordinateXY> metricCoords =
             GeometryUtils::convertPolylineToMetric(straight.coordinates,
-                                                    m_graphResult.utmZoneNumber,
-                                                    m_graphResult.isNorthernHemisphere);
+                m_graphResult.utmZoneNumber,
+                m_graphResult.isNorthernHemisphere);
 
         const double totalMetricLength =
             GeometryUtils::computePolylineLengthMeters(metricCoords);
 
         if (totalMetricLength <= 0.0)
         {
-            outputStraights.push_back(straight);
-            newEndpoints[straight.id] = { startNodeId, endNodeId };
+            const std::string savedId = straight.id;
+            newEndpoints[savedId] = { startNodeId, endNodeId };
+            outputStraights.push_back(std::move(straight));
             continue;
         }
 
         const double chunkLengthMeters = totalMetricLength / static_cast<double>(chunkCount);
 
         // Subdivision de la polyligne en morceaux de longueur égale
-        std::size_t coordIndex     = 0;
-        double      accumulated    = 0.0;
+        std::size_t coordIndex = 0;
+        double      accumulated = 0.0;
         std::vector<CoordinateXY> currentChunkCoords;
 
         if (!metricCoords.empty())
@@ -316,8 +320,8 @@ std::vector<StraightBlock> TopologyExtractor::splitLongStraights(
         int chunkIndex = 0;
         while (coordIndex + 1 < metricCoords.size() && chunkIndex < chunkCount)
         {
-            const double deltaX    = metricCoords[coordIndex + 1].x - metricCoords[coordIndex].x;
-            const double deltaY    = metricCoords[coordIndex + 1].y - metricCoords[coordIndex].y;
+            const double deltaX = metricCoords[coordIndex + 1].x - metricCoords[coordIndex].x;
+            const double deltaY = metricCoords[coordIndex + 1].y - metricCoords[coordIndex].y;
             const double segLength = std::hypot(deltaX, deltaY);
 
             const double targetLength = (chunkIndex + 1) * chunkLengthMeters;
@@ -354,8 +358,8 @@ std::vector<StraightBlock> TopologyExtractor::splitLongStraights(
 
                     outputStraights.emplace_back(chunkId, std::move(chunkWgs84));
                     newEndpoints[chunkId] = {
-                        (chunkIndex == 0)              ? startNodeId : TopologySentinel::INTERNAL_CHUNK_NODE,
-                        (chunkIndex == chunkCount - 1) ? endNodeId   : TopologySentinel::INTERNAL_CHUNK_NODE
+                        (chunkIndex == 0) ? startNodeId : TopologySentinel::INTERNAL_CHUNK_NODE,
+                        (chunkIndex == chunkCount - 1) ? endNodeId : TopologySentinel::INTERNAL_CHUNK_NODE
                     };
                 }
 
@@ -397,13 +401,13 @@ std::vector<StraightBlock> TopologyExtractor::splitLongStraights(
 // Phase 5b — Câblage topologique
 // =============================================================================
 
-void TopologyExtractor::wireTopology(std::vector<SwitchBlock>&   switches,
-                                      std::vector<StraightBlock>& straights)
+void TopologyExtractor::wireTopology(std::vector<SwitchBlock>& switches,
+    std::vector<StraightBlock>& straights)
 {
     // Index rapide par ID
     std::unordered_map<std::string, SwitchBlock*>   switchById;
     std::unordered_map<std::string, StraightBlock*> straightById;
-    for (auto& sw : switches)   switchById[sw.id]   = &sw;
+    for (auto& sw : switches)   switchById[sw.id] = &sw;
     for (auto& st : straights)  straightById[st.id] = &st;
 
     // Map nodeId → liste de StraightBlock IDs touchant ce nœud
@@ -412,7 +416,7 @@ void TopologyExtractor::wireTopology(std::vector<SwitchBlock>&   switches,
     {
         const auto [startNode, endNode] = endpoints;
         if (startNode >= 0) nodeToStraightIds[startNode].push_back(straightId);
-        if (endNode   >= 0) nodeToStraightIds[endNode  ].push_back(straightId);
+        if (endNode >= 0) nodeToStraightIds[endNode].push_back(straightId);
     }
 
     // Peuplement des branchIds des Switch
@@ -478,7 +482,7 @@ void TopologyExtractor::wireTopology(std::vector<SwitchBlock>&   switches,
         if (setIterator == neighbourSets.end()) continue;
 
         straight.neighbourIds.assign(setIterator->second.begin(),
-                                      setIterator->second.end());
+            setIterator->second.end());
         std::sort(straight.neighbourIds.begin(), straight.neighbourIds.end());
     }
 }

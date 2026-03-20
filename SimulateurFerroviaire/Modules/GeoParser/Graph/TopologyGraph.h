@@ -23,7 +23,7 @@
 #include <vector>
 
 #include "TopologyEdge.h"
-#include "Modules/Models/CoordinateXY.h"
+#include "Modules/Coordinates/CoordinateXY.h"
 #include "../Enums/GeoParserEnums.h"
 
 
