@@ -86,19 +86,19 @@ public :
      * Longueur minimale requise pour chaque branche d'un aiguillage (mètres).
      * En dessous, la branche est signalée comme invalide par la validation CDC.
      */
-    static constexpr double MIN_BRANCH_LENGTH_METERS      = 50.0;
+    static constexpr double MIN_BRANCH_LENGTH_METERS      = 100.0;
 
     /**
      * Longueur maximale du segment de liaison interne d'un double aiguille (mètres).
      * Au-delà, deux aiguillages adjacents sont considérés indépendants.
      */
-    static constexpr double DOUBLE_LINK_MAX_METERS        = 150.0;
+    static constexpr double DOUBLE_LINK_MAX_METERS        = 50.0;
 
     /**
      * Distance depuis la jonction pour interpoler les points tip CDC (mètres).
      * Ces points servent aux vérifications d'écartement de voies.
      */
-    static constexpr double BRANCH_TIP_DISTANCE_METERS    = 15.0;
+    static constexpr double BRANCH_TIP_DISTANCE_METERS    = 25.0;
 
     /** Si true, le parseur écrit des traces DEBUG détaillées en fin de pipeline. */
     static constexpr bool   ENABLE_FULL_DEBUG_MODE         = false;

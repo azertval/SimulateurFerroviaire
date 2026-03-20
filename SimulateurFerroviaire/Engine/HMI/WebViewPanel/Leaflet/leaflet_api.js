@@ -20,73 +20,19 @@ window.clearStraightBlocks = function() {
 };
 
 /**
- * Réduit une polyligne en coupant une fraction de sa longueur à chaque extrémité.
- * Le découpage suit la géométrie réelle des segments (pas un simple déplacement
- * des points extrêmes), ce qui évite les plis sur les polylignes multi-segments.
- *
- * @param {Array<[number, number]>} coords  Tableau de paires[lat, lon].
- * @param {number}                  ratio   Fraction de la longueur totale à couper
- *                                          de chaque côté (défaut: 0.1 = 10 %).
- * @returns {Array<[number, number]>}        Nouveau tableau de coordonnées réduit.
-*/
-function shrinkLine(coords, ratio = 0.1) {
-    if (coords.length < 2) return coords;
-
-    let totalLength = 0;
-    for (let i = 0; i < coords.length - 1; i++) {
-        const dx = coords[i + 1][0] - coords[i][0];
-        const dy = coords[i + 1][1] - coords[i][1];
-        totalLength += Math.sqrt(dx * dx + dy * dy);
-    }
-
-    const trim = totalLength * ratio;
-
-    /**
-    * Avance le long des segments et insère un nouveau point de départ
-    * à exactement `distance` unités du début.
-    *
-    * @param {Array<[number, number]>} pts       Tableau de coordonnées.
-    * @param {number}                  distance  Distance à parcourir depuis le début.
-    * @returns {Array<[number, number]>}
-    */
-    function trimStart(pts, distance) {
-        let remaining = distance;
-        for (let i = 0; i < pts.length - 1; i++) {
-            const dx = pts[i + 1][0] - pts[i][0];
-            const dy = pts[i + 1][1] - pts[i][1];
-            const segLen = Math.sqrt(dx * dx + dy * dy);
-            if (remaining <= segLen) {
-                const t = remaining / segLen;
-                const newStart = [pts[i][0] + dx * t, pts[i][1] + dy * t];
-                return [newStart, ...pts.slice(i + 1)];
-            }
-            remaining -= segLen;
-        }
-        return pts;
-    }
-
-    const trimmed = trimStart(coords, trim);
-    const reversed = trimStart([...trimmed].reverse(), trim);
-    return reversed.reverse();
-}
-
-/**
  * Affiche un bloc straight sous forme de polyligne sur la carte.
- * Les extrémités sont légèrement tronquées pour visualiser les jonctions
- * entre blocs adjacents.
  *
- * @param {string}                  id      Identifiant du bloc straight (affiché dans le popup).
- * @param {Array<[number, number]>} coords  Tableau de paires[lat, lon]définissant la polyligne.
+ * @param {string}                  id      Identifiant du bloc.
+ * @param {Array<[number, number]>} coords  Tableau de paires [lat, lon].
  */
 window.renderStraightBlock = function(id, coords) {
-    const polyline = L.polyline(shrinkLine(coords, 0.01), { color: 'LightSlateGray', weight: 4 });
+    const polyline = L.polyline(coords, { color: 'LightSlateGray', weight: 4 });
     polyline.bindPopup("Straight: " + id);
     window.straightGroup.addLayer(polyline);
 };
 
 /**
  * Ajuste la vue de la carte pour englober tous les blocs straight visibles.
- * Sans effet si aucun bloc n'est affiché.
  */
 window.zoomToStraights = function() {
     const bounds = window.straightGroup.getBounds();
@@ -98,31 +44,99 @@ window.zoomToStraights = function() {
 // ================================
 // Groupe des switchs
 // ================================
-/** Groupe Leaflet contenant tous les blocs switchs rendus. */
+/** Groupe Leaflet contenant les marqueurs de jonction. */
 window.switchGroup = L.featureGroup().addTo(map);
 
+/** Groupe Leaflet contenant les branches des switchs (root / normal / deviation). */
+window.switchBranchGroup = L.featureGroup().addTo(map);
+
 /**
- * Supprime tous les blocs switchs actuellement affichés sur la carte.
+ * Supprime tous les marqueurs de switch affichés.
  */
 window.clearSwitches = function() {
     window.switchGroup.clearLayers();
 };
 
-window.renderSwitch = function(id, lat, lon, isDouble) {
+/**
+ * Supprime toutes les branches de switch affichées.
+ */
+window.clearSwitchBranches = function() {
+    window.switchBranchGroup.clearLayers();
+};
 
-    const color = isDouble ? "orange" : "red";
+/**
+ * Affiche le point de jonction d'un switch.
+ *
+ * @param {string}  id       Identifiant du switch.
+ * @param {number}  lat      Latitude de la jonction.
+ * @param {number}  lon      Longitude de la jonction.
+ * @param {boolean} isDouble True si double aiguille.
+ */
+window.renderSwitch = function(id, lat, lon, isDouble) {
+    const color = "orange";
 
     const marker = L.circleMarker([lat, lon], {
-        radius: 0.05,
+        radius: 1,
         color: color,
+        weight: 4,
         fillColor: color,
         fillOpacity: 1
     });
 
     marker.bindPopup(
-        "Switch: " + id + "<br>" +
-        "Double: " + isDouble
+        "<b>Switch:</b> " + id + "<br>" +
+        "<b>Double:</b> " + isDouble
     );
 
     window.switchGroup.addLayer(marker);
+};
+
+/**
+ * Affiche les trois branches d'un switch (root / normal / deviation)
+ * sous forme de segments colorés depuis la jonction vers chaque tip CDC.
+ *
+ *
+ * Un tip absent (coordonnées nulles) est silencieusement ignoré.
+ *
+ * @param {string} id          Identifiant du switch.
+ * @param {number} jLat        Latitude  de la jonction.
+ * @param {number} jLon        Longitude de la jonction.
+ * @param {number} rootLat     Latitude  du tip root    (NaN si absent).
+ * @param {number} rootLon     Longitude du tip root    (NaN si absent).
+ * @param {number} normalLat   Latitude  du tip normal  (NaN si absent).
+ * @param {number} normalLon   Longitude du tip normal  (NaN si absent).
+ * @param {number} devLat      Latitude  du tip deviation (NaN si absent).
+ * @param {number} devLon      Longitude du tip deviation (NaN si absent).
+ */
+window.renderSwitchBranches = function(
+    id,
+    jLat, jLon,
+    rootLat, rootLon,
+    normalLat, normalLon,
+    devLat, devLon)
+{
+    const junction = [jLat, jLon];
+
+    const branches = [
+        { role: "deviation", lat: devLat, lon: devLon, color: "Gainsboro" },
+        { role: "root", lat: rootLat, lon: rootLon, color: "LightSlateGray"  },
+        { role: "normal", lat: normalLat, lon: normalLon, color: "LightSlateGray"  }      
+    ];
+
+    for (const branch of branches) {
+        if (isNaN(branch.lat) || isNaN(branch.lon)) continue;
+
+        const tip = [branch.lat, branch.lon];
+        const options = {
+            color:     branch.color,
+            weight:    4
+        };
+
+        const segment = L.polyline([junction, tip], options);
+        segment.bindPopup(
+            "<b>Switch:</b> " + id + "<br>" +
+            "<b>Branch:</b> " + branch.role
+        );
+        window.switchBranchGroup.addLayer(segment);
+    }
 };

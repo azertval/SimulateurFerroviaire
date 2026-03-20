@@ -23,9 +23,6 @@ using JsonDocument = nlohmann::json;
  *  - StraightBlock → feature GeoJSON de type LineString.
  *  - SwitchBlock   → feature GeoJSON de type Point.
  *
- * Le fichier résultant est une FeatureCollection GeoJSON valide, lisible
- * par Leaflet, geojson.io ou QGIS.
- *
  * Usage :
  * @code
  *   GeoJsonExporter::exportToFile("output.geojson");
@@ -34,96 +31,86 @@ using JsonDocument = nlohmann::json;
 class GeoJsonExporter
 {
 public:
+
     /**
-    * @brief Exporte la topologie ferroviaire dans un fichier GeoJSON.
-    *
-    * Lit les données depuis @ref TopologyRepository.
-    *
-    * @param outputPath  Chemin du fichier de sortie (ex. "output.geojson").
-    */
+     * @brief Exporte la topologie ferroviaire dans un fichier GeoJSON.
+     * @param outputPath  Chemin du fichier de sortie.
+     */
     static void exportToFile(const std::string& outputPath);
 
     /**
-   * @brief Génère le script JavaScript d'injection GeoJSON dans le WebView.
-   *
-   *  Lit les données depuis @ref TopologyRepository.
-   * 
-   * @return Instruction @c window.loadGeoJson(...) prête à être passée à
-   *         @c executeScript.
-   */
+     * @brief Génère le script JavaScript d'injection GeoJSON dans le WebView.
+     * @return Instruction @c window.loadGeoJson(...) prête pour @c executeScript.
+     */
     static std::wstring loadGeoJsonToWebView();
 
+    // -------------------------------------------------------------------------
+    // Straights
+    // -------------------------------------------------------------------------
+
     /**
-     * @brief Injecte un StraightBlock dans la carte Leaflet via JavaScript.
-     *
-     * Construit et exécute un appel @c renderStraightBlock(id, [[lat,lon], ...])
-     * dans le WebView. Sans effet si le bloc contient moins de 2 coordonnées.
-     *
-     * @param straightBlock  Bloc de voie droite à rendre.
-     * @return Instruction JavaScript prête à être passée à @c executeScript.
+     * @brief Construit l'appel JS @c renderStraightBlock(id, coords) pour un bloc.
+     * @param straightBlock  Bloc à rendre (ignoré si < 2 coordonnées).
+     * @return Instruction JavaScript.
      */
     static std::wstring renderStraightBlock(const StraightBlock& straightBlock);
 
     /**
-     * @brief Efface le rendu existant et redessine tous les StraightBlocks.
-     *
-     * Appelle @c clearStraightBlocks() dans le WebView, puis délègue chaque
-     * bloc à @ref renderStraightBlock.
-     *
-     * @return Instruction JavaScript prête à être passée à @c executeScript.
+     * @brief Efface puis redessine tous les StraightBlocks.
+     * @return Instruction JavaScript.
      */
     static std::wstring renderAllStraightBlocks();
 
-    /**
-     * @brief Injecte un SwitchBlock dans la carte Leaflet via JavaScript.
-     *
-     * Construit et exécute un appel @c renderSwitchBlock(id, [[lat,lon], ...])
-     * dans le WebView. Sans effet si le bloc contient moins de 2 coordonnées.
-     *
-     * @param SwitchBlock  Bloc de voie droite à rendre.
-     * @return Instruction JavaScript prête à être passée à @c executeScript.
-     */
-    static std::wstring renderSwitchBlock(const SwitchBlock& SwitchBlock);
+    // -------------------------------------------------------------------------
+    // Switches — jonction
+    // -------------------------------------------------------------------------
 
     /**
-     * @brief Efface le rendu existant et redessine tous les SwitchBlocks.
-     *
-     * Appelle @c clearSwitchBlocks() dans le WebView, puis délègue chaque
-     * bloc à @ref renderSwitchBlock.
-     *
-     * @return Instruction JavaScript prête à être passée à @c executeScript.
+     * @brief Construit l'appel JS @c renderSwitch(id, lat, lon, isDouble).
+     * @param sw  SwitchBlock à rendre.
+     * @return Instruction JavaScript.
      */
-    static std::wstring renderAllSwitchBlocks();
+    static std::wstring renderSwitchBlock(const SwitchBlock& sw);
 
-private : 
     /**
-     * @brief Convertit un StraightBlock en feature GeoJSON LineString.  
-     *
-     * Les coordonnées sont émises au format GeoJSON [longitude, latitude].
-     *
-     * @param straight  StraightBlock à convertir.
-     * @return Feature GeoJSON sérialisable.
+     * @brief Efface puis redessine tous les marqueurs de jonction.
+     * @return Instruction JavaScript.
      */
-     static JsonDocument convertStraightToFeature(const StraightBlock& straight);
+    static std::wstring renderAllSwitchBlocksJunctions();
 
-     /**
-     * @brief Convertit un SwitchBlock en feature GeoJSON Point.
+    // -------------------------------------------------------------------------
+    // Switches — branches (root / normal / deviation)
+    // -------------------------------------------------------------------------
+
+    /**
+     * @brief Construit l'appel JS @c renderSwitchBranches(...) pour un switch.
      *
-     * Les coordonnées sont émises au format GeoJSON [longitude, latitude].
+     * Émet les coordonnées de la jonction et des trois tips CDC.
+     * Un tip absent (nullopt) est encodé comme @c NaN,NaN et silencieusement
+     * ignoré côté JavaScript.
      *
-     * @param switchBlock  SwitchBlock à convertir.                   // ← espace parasite supprimé
-     * @return Feature GeoJSON sérialisable.
+     * Retourne une chaîne vide si le switch n'est pas orienté.
+     *
+     * @param sw  SwitchBlock orienté.
+     * @return Instruction JavaScript.
      */
-     static JsonDocument convertSwitchToFeature(const SwitchBlock& switchBlock);
+    static std::wstring renderSwitchBranches(const SwitchBlock& sw);
 
-     /**
-     * @brief Échappe une chaîne pour injection sécurisée dans du JavaScript.
+    /**
+     * @brief Efface puis redessine les branches de tous les switches.
      *
-     * @param input  Chaîne à échapper.
-     * @return Chaîne échappée prête pour @c executeScript.
+     * Appelle @c clearSwitchBranches() dans le WebView, puis délègue chaque
+     * switch orienté à @ref renderSwitchBranches.
+     *
+     * @return Instruction JavaScript.
      */
-     static std::wstring escapeForJavaScript(const std::string& input);
+    static std::wstring renderAllSwitchBranches();
 
-    /** @brief Classe non instanciable — constructeur supprimé. */
+private:
+
+    static JsonDocument convertStraightToFeature(const StraightBlock& straight);
+    static JsonDocument convertSwitchToFeature(const SwitchBlock& switchBlock);
+    static std::wstring escapeForJavaScript(const std::string& input);
+
     GeoJsonExporter() = delete;
 };

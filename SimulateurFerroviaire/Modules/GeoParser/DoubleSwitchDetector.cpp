@@ -14,7 +14,8 @@ DoubleSwitchDetector::DoubleSwitchDetector(
     : m_logger(logger), m_switches(switches), m_straights(straights)
     , m_switchIdToNodeId(switchIdToNodeId), m_topologyGraph(topologyGraph)
     , m_doubleLinkMaxMeters(doubleLinkMaxMeters), m_minBranchLengthMeters(minBranchLengthMeters)
-{}
+{
+}
 
 void DoubleSwitchDetector::detectAndAbsorb()
 {
@@ -22,8 +23,8 @@ void DoubleSwitchDetector::detectAndAbsorb()
 
     std::unordered_map<std::string, SwitchBlock*>   switchIndex;
     std::unordered_map<std::string, StraightBlock*> straightIndex;
-    for (auto& sw : m_switches)     switchIndex[sw.id]       = &sw;
-    for (auto& st : m_straights)    straightIndex[st.id]     = &st;
+    for (auto& sw : m_switches)     switchIndex[sw.id] = &sw;
+    for (auto& st : m_straights)    straightIndex[st.id] = &st;
 
     auto clusters = findDoubleSwitchClusters(switchIndex, straightIndex);
     if (clusters.empty()) { LOG_INFO(m_logger, "Aucun double aiguille détecté"); return; }
@@ -34,16 +35,16 @@ void DoubleSwitchDetector::detectAndAbsorb()
     for (auto& cluster : clusters)
     {
         std::sort(cluster.begin(), cluster.end(), [&](const std::string& a, const std::string& b)
-        {
-            auto* swA = switchIndex.count(a) ? switchIndex.at(a) : nullptr;
-            auto* swB = switchIndex.count(b) ? switchIndex.at(b) : nullptr;
-            if (!swA || !swB) return a < b;
-            int nA = m_switchIdToNodeId.count(a) ? m_switchIdToNodeId.at(a) : -1;
-            int nB = m_switchIdToNodeId.count(b) ? m_switchIdToNodeId.at(b) : -1;
-            double lA = (swA->rootBranchId && nA >= 0) ? estimateAccessibleChainLength(*swA->rootBranchId, nA, straightIndex) : 0.0;
-            double lB = (swB->rootBranchId && nB >= 0) ? estimateAccessibleChainLength(*swB->rootBranchId, nB, straightIndex) : 0.0;
-            return (std::abs(lA - lB) > 1e-3) ? (lA > lB) : (a < b);
-        });
+            {
+                auto* swA = switchIndex.count(a) ? switchIndex.at(a) : nullptr;
+                auto* swB = switchIndex.count(b) ? switchIndex.at(b) : nullptr;
+                if (!swA || !swB) return a < b;
+                int nA = m_switchIdToNodeId.count(a) ? m_switchIdToNodeId.at(a) : -1;
+                int nB = m_switchIdToNodeId.count(b) ? m_switchIdToNodeId.at(b) : -1;
+                double lA = (swA->rootBranchId && nA >= 0) ? estimateAccessibleChainLength(*swA->rootBranchId, nA, straightIndex) : 0.0;
+                double lB = (swB->rootBranchId && nB >= 0) ? estimateAccessibleChainLength(*swB->rootBranchId, nB, straightIndex) : 0.0;
+                return (std::abs(lA - lB) > 1e-3) ? (lA > lB) : (a < b);
+            });
 
         for (const auto& switchId : cluster)
             if (switchIndex.count(switchId)) switchIndex.at(switchId)->isDoubleSwitch = true;
@@ -58,7 +59,7 @@ void DoubleSwitchDetector::detectAndAbsorb()
 
         for (std::size_t i = 0; i + 1 < cluster.size(); ++i)
         {
-            auto* swA = switchIndex.count(cluster[i])     ? switchIndex.at(cluster[i])     : nullptr;
+            auto* swA = switchIndex.count(cluster[i]) ? switchIndex.at(cluster[i]) : nullptr;
             auto* swB = switchIndex.count(cluster[i + 1]) ? switchIndex.at(cluster[i + 1]) : nullptr;
             if (!swA || !swB) continue;
             std::string linkId;
@@ -176,8 +177,8 @@ void DoubleSwitchDetector::absorbLinkSegment(
     std::set<std::string>& segmentsToRemove)
 {
     auto* link = straightIndex.count(linkSegmentId) ? straightIndex.at(linkSegmentId) : nullptr;
-    auto* swA  = switchIndex.count(switchIdA)       ? switchIndex.at(switchIdA)       : nullptr;
-    auto* swB  = switchIndex.count(switchIdB)       ? switchIndex.at(switchIdB)       : nullptr;
+    auto* swA = switchIndex.count(switchIdA) ? switchIndex.at(switchIdA) : nullptr;
+    auto* swB = switchIndex.count(switchIdB) ? switchIndex.at(switchIdB) : nullptr;
     if (!link || !swA || !swB) return;
 
     segmentsToRemove.insert(linkSegmentId);
@@ -188,12 +189,24 @@ void DoubleSwitchDetector::absorbLinkSegment(
         swB->doubleLinkMidCoordinate = mid;
     }
 
+    // Replace the link segment ID with the partner switch ID in branchIds / roles,
+    // then extend the corresponding tip to the midpoint of the absorbed straight
+    // so both half-switches visually meet at the centre of the link.
     auto replaceInSwitch = [&](SwitchBlock* sw, const std::string& replacement)
-    {
-        for (auto& bid : sw->branchIds) if (bid == linkSegmentId) bid = replacement;
-        if (sw->normalBranchId    == linkSegmentId) sw->normalBranchId    = replacement;
-        if (sw->deviationBranchId == linkSegmentId) sw->deviationBranchId = replacement;
-    };
+        {
+            for (auto& bid : sw->branchIds) if (bid == linkSegmentId) bid = replacement;
+
+            if (sw->normalBranchId == linkSegmentId)
+            {
+                sw->normalBranchId = replacement;
+                sw->tipOnNormal = sw->doubleLinkMidCoordinate;   // set just above
+            }
+            if (sw->deviationBranchId == linkSegmentId)
+            {
+                sw->deviationBranchId = replacement;
+                sw->tipOnDeviation = sw->doubleLinkMidCoordinate;
+            }
+        };
     replaceInSwitch(swA, switchIdB);
     replaceInSwitch(swB, switchIdA);
 
@@ -247,8 +260,8 @@ void DoubleSwitchDetector::validateSwitches()
             if (it->second->lengthMeters < m_minBranchLengthMeters)
             {
                 LOG_WARNING(m_logger, sw.id + " : branche " + bid + " trop courte ("
-                            + std::to_string((int)it->second->lengthMeters) + " m < "
-                            + std::to_string((int)m_minBranchLengthMeters) + " m min)");
+                    + std::to_string((int)it->second->lengthMeters) + " m < "
+                    + std::to_string((int)m_minBranchLengthMeters) + " m min)");
                 ++warnings;
             }
         }
