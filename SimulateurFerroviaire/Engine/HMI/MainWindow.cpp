@@ -9,9 +9,12 @@
 #include "MainWindow.h"
 #include "Engine/HMI/Dialogs/AboutDialog.h"
 #include "Engine/HMI/Dialogs/FileOpenDialog.h"
+#include "Engine/HMI/Dialogs/FileSaveDialog.h"
 #include "SimulateurFerroviaire.h"
 
 #include "Engine/HMI/WebViewPanel/Leaflet/Leaflet.h"
+
+#include "Modules/GeoJsonExporter/GeoJsonExporter.h"
 
 #include <string>
 #include <stdexcept>
@@ -172,6 +175,10 @@ void MainWindow::onCommand(HWND hWnd, int commandId)
         onFileOpen(hWnd);
         break;
 
+    case IDM_FILE_EXPORT:
+        onFileExport(hWnd);
+        break; // TODO: Implémenter l'export GeoJSON
+
     case IDM_ABOUT:
         AboutDialog::show(hWnd, m_hInstance);
         break;
@@ -201,6 +208,18 @@ void MainWindow::onFileOpen(HWND hWnd)
     GeoParsingTask::launch(hWnd, selectedPath.value());
 }
 
+void MainWindow::onFileExport(HWND hWnd)
+{
+   const std::optional<std::string> selectedPath = FileSaveDialog::save(hWnd);
+
+    if (!selectedPath.has_value())
+    {
+        return; // Annulation par l'utilisateur
+    }
+
+    GeoJsonExporter::exportToFile(selectedPath.value());
+}
+
 void MainWindow::onProgressUpdate(int progressValue)
 {
     m_progressBar.setProgress(progressValue);
@@ -210,11 +229,6 @@ void MainWindow::onParsingSuccess(HWND hWnd)
 {
     m_progressBar.setProgress(100);
     m_progressBar.show(false);
-
-    // 🔥 TEST LEAFLET
-    m_webViewPanel.executeScript(
-        L"addMarker(48.8566, 2.3522);"
-    );
 }
 
 void MainWindow::onParsingError(HWND hWnd, LPARAM lParam)
