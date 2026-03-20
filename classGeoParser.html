@@ -92,7 +92,6 @@ $(document).ready(function(){initNavTree('classGeoParser.html',''); initResizabl
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classGeoParser-members.html">List of all members</a>  </div>
@@ -104,56 +103,58 @@ $(document).ready(function(){initNavTree('classGeoParser.html',''); initResizabl
 <div class="dynheader">
 Collaboration diagram for GeoParser:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoParser__coll__graph.svg" width="228" height="784"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoParser__coll__graph.svg" width="228" height="744"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1955e0247e89a0fbabcac75222706cb8" id="r_a1955e0247e89a0fbabcac75222706cb8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#a1955e0247e89a0fbabcac75222706cb8">GeoParser</a> (<a class="el" href="classLogger.html">Logger</a> &amp;logger, const std::string &amp;geoJsonFilePath, double snapGridMeters, double endpointSnapMeters, double maxStraightLengthMeters, double minBranchLengthMeters, double doubleLinkMaxMeters, double branchTipDistanceMeters)</td></tr>
-<tr class="memdesc:a1955e0247e89a0fbabcac75222706cb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur.  <br /></td></tr>
+<tr class="memdesc:a1955e0247e89a0fbabcac75222706cb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit le parseur avec ses paramètres de pipeline.  <br /></td></tr>
 <tr class="separator:a1955e0247e89a0fbabcac75222706cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4acc69a49444b9aa06b2c028b2c1133" id="r_aa4acc69a49444b9aa06b2c028b2c1133"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133">parse</a> (bool enableDebugDump=<a class="el" href="structParserDefaultValues.html#ac0dfa99e3e0661e9b0f098c456bbae40">ParserDefaultValues::ENABLE_FULL_DEBUG_MODE</a>)</td></tr>
+<tr class="memitem:aa4acc69a49444b9aa06b2c028b2c1133" id="r_aa4acc69a49444b9aa06b2c028b2c1133"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133">parse</a> (bool enableDebugDump=<a class="el" href="classParserDefaultValues.html#ac0dfa99e3e0661e9b0f098c456bbae40">ParserDefaultValues::ENABLE_FULL_DEBUG_MODE</a>)</td></tr>
 <tr class="memdesc:aa4acc69a49444b9aa06b2c028b2c1133"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance le pipeline complet.  <br /></td></tr>
 <tr class="separator:aa4acc69a49444b9aa06b2c028b2c1133"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b046fb217dd2d7240cde1aea4c9a5ec" id="r_a6b046fb217dd2d7240cde1aea4c9a5ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#a6b046fb217dd2d7240cde1aea4c9a5ec">dumpDebugOutput</a> () const</td></tr>
-<tr class="memdesc:a6b046fb217dd2d7240cde1aea4c9a5ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump debug.  <br /></td></tr>
+<tr class="memdesc:a6b046fb217dd2d7240cde1aea4c9a5ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump détaillé des résultats dans les traces DEBUG.  <br /></td></tr>
 <tr class="separator:a6b046fb217dd2d7240cde1aea4c9a5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1de83bdbc1cffe02352c092041df74ff" id="r_a1de83bdbc1cffe02352c092041df74ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#a1de83bdbc1cffe02352c092041df74ff">setProgressCallback</a> (std::function&lt; void(int)&gt; callback)</td></tr>
-<tr class="memdesc:a1de83bdbc1cffe02352c092041df74ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit le callback de progression.  <br /></td></tr>
+<tr class="memdesc:a1de83bdbc1cffe02352c092041df74ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre le callback de progression UI.  <br /></td></tr>
 <tr class="separator:a1de83bdbc1cffe02352c092041df74ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a99b83036288088d5ee88056d4e982728" id="r_a99b83036288088d5ee88056d4e982728"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#a99b83036288088d5ee88056d4e982728">straights</a></td></tr>
-<tr class="separator:a99b83036288088d5ee88056d4e982728"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab34819a75fdd3175b201d6ccafa1ad8e" id="r_ab34819a75fdd3175b201d6ccafa1ad8e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classSwitchBlock.html">SwitchBlock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#ab34819a75fdd3175b201d6ccafa1ad8e">switches</a></td></tr>
-<tr class="separator:ab34819a75fdd3175b201d6ccafa1ad8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ac1bf91960abbe3c2b4a2090f5cb84c82" id="r_ac1bf91960abbe3c2b4a2090f5cb84c82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#ac1bf91960abbe3c2b4a2090f5cb84c82">reportProgress</a> (int value) const</td></tr>
-<tr class="memdesc:ac1bf91960abbe3c2b4a2090f5cb84c82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notifie la progression.  <br /></td></tr>
+<tr class="memdesc:ac1bf91960abbe3c2b4a2090f5cb84c82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notifie la progression via le callback UI si défini.  <br /></td></tr>
 <tr class="separator:ac1bf91960abbe3c2b4a2090f5cb84c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a5af276a4826f44a16878035acea14743" id="r_a5af276a4826f44a16878035acea14743"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogger.html">Logger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#a5af276a4826f44a16878035acea14743">m_logger</a></td></tr>
+<tr class="memdesc:a5af276a4826f44a16878035acea14743"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> du moteur <a class="el" href="classGeoParser.html">GeoParser</a>.  <br /></td></tr>
 <tr class="separator:a5af276a4826f44a16878035acea14743"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f4623e16ed5606593b147f04da9da4e" id="r_a0f4623e16ed5606593b147f04da9da4e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#a0f4623e16ed5606593b147f04da9da4e">m_geoJsonFilePath</a></td></tr>
+<tr class="memdesc:a0f4623e16ed5606593b147f04da9da4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chemin du fichier GeoJSON source.  <br /></td></tr>
 <tr class="separator:a0f4623e16ed5606593b147f04da9da4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3c02d56a26efe354c7dd491ec05c736" id="r_aa3c02d56a26efe354c7dd491ec05c736"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#aa3c02d56a26efe354c7dd491ec05c736">m_snapGridMeters</a></td></tr>
+<tr class="memdesc:aa3c02d56a26efe354c7dd491ec05c736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pas de la grille d'accrochage (mètres).  <br /></td></tr>
 <tr class="separator:aa3c02d56a26efe354c7dd491ec05c736"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c36f1f99aca6d0018c330265208e453" id="r_a4c36f1f99aca6d0018c330265208e453"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#a4c36f1f99aca6d0018c330265208e453">m_endpointSnapMeters</a></td></tr>
+<tr class="memdesc:a4c36f1f99aca6d0018c330265208e453"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tolérance de fusion des extrémités (mètres).  <br /></td></tr>
 <tr class="separator:a4c36f1f99aca6d0018c330265208e453"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adaa93b9b257e2722521ad9c7dd11890b" id="r_adaa93b9b257e2722521ad9c7dd11890b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#adaa93b9b257e2722521ad9c7dd11890b">m_maxStraightLengthMeters</a></td></tr>
+<tr class="memdesc:adaa93b9b257e2722521ad9c7dd11890b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur maximale avant découpe (mètres).  <br /></td></tr>
 <tr class="separator:adaa93b9b257e2722521ad9c7dd11890b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9efda0e0eaf8241a2e5209712fb0624e" id="r_a9efda0e0eaf8241a2e5209712fb0624e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#a9efda0e0eaf8241a2e5209712fb0624e">m_minBranchLengthMeters</a></td></tr>
+<tr class="memdesc:a9efda0e0eaf8241a2e5209712fb0624e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur minimale de branche (mètres).  <br /></td></tr>
 <tr class="separator:a9efda0e0eaf8241a2e5209712fb0624e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec43b3c6c9ba3f216854bbaccbb6b272" id="r_aec43b3c6c9ba3f216854bbaccbb6b272"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#aec43b3c6c9ba3f216854bbaccbb6b272">m_doubleLinkMaxMeters</a></td></tr>
+<tr class="memdesc:aec43b3c6c9ba3f216854bbaccbb6b272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Distance max du lien double aiguille (mètres).  <br /></td></tr>
 <tr class="separator:aec43b3c6c9ba3f216854bbaccbb6b272"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ca6d2970ba7beb6e6499adcca52e59b" id="r_a6ca6d2970ba7beb6e6499adcca52e59b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#a6ca6d2970ba7beb6e6499adcca52e59b">m_branchTipDistanceMeters</a></td></tr>
+<tr class="memdesc:a6ca6d2970ba7beb6e6499adcca52e59b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Distance d'interpolation des tips CDC (mètres).  <br /></td></tr>
 <tr class="separator:a6ca6d2970ba7beb6e6499adcca52e59b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fcf3e65cfbe108920339b1960ae356a" id="r_a9fcf3e65cfbe108920339b1960ae356a"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(int)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoParser.html#a9fcf3e65cfbe108920339b1960ae356a">m_progressCallback</a></td></tr>
+<tr class="memdesc:a9fcf3e65cfbe108920339b1960ae356a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback de progression UI (optionnel).  <br /></td></tr>
 <tr class="separator:a9fcf3e65cfbe108920339b1960ae356a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -219,7 +220,21 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructeur. </p>
+<p>Construit le parseur avec ses paramètres de pipeline. </p>
+<p>Constructeur.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logger</td><td><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> associé au moteur <a class="el" href="classGeoParser.html">GeoParser</a>. </td></tr>
+    <tr><td class="paramname">geoJsonFilePath</td><td>Chemin du fichier GeoJSON source. </td></tr>
+    <tr><td class="paramname">snapGridMeters</td><td>Pas de la grille d'accrochage (mètres). </td></tr>
+    <tr><td class="paramname">endpointSnapMeters</td><td>Tolérance de fusion des extrémités (mètres). </td></tr>
+    <tr><td class="paramname">maxStraightLengthMeters</td><td>Longueur maximale d'un Straight avant découpe (mètres). </td></tr>
+    <tr><td class="paramname">minBranchLengthMeters</td><td>Longueur minimale d'une branche d'aiguillage (mètres). </td></tr>
+    <tr><td class="paramname">doubleLinkMaxMeters</td><td>Distance maximale du lien interne d'un double aiguille (mètres). </td></tr>
+    <tr><td class="paramname">branchTipDistanceMeters</td><td>Distance d'interpolation des points tip CDC (mètres). </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -239,8 +254,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Dump debug. </p>
+<p>Dump détaillé des résultats dans les traces DEBUG. </p>
 <p>Dump détaillé des résultats. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoParser_a6b046fb217dd2d7240cde1aea4c9a5ec_cgraph.svg" width="428" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -259,7 +279,7 @@ Here is the caller graph for this function:</div>
           <td class="memname">void GeoParser::parse </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>enableDebugDump</em> = <code><a class="el" href="structParserDefaultValues.html#ac0dfa99e3e0661e9b0f098c456bbae40">ParserDefaultValues::ENABLE_FULL_DEBUG_MODE</a></code></td><td>)</td>
+          <td class="paramname"><em>enableDebugDump</em> = <code><a class="el" href="classParserDefaultValues.html#ac0dfa99e3e0661e9b0f098c456bbae40">ParserDefaultValues::ENABLE_FULL_DEBUG_MODE</a></code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -270,7 +290,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoParser_aa4acc69a49444b9aa06b2c028b2c1133_cgraph.svg" width="1839" height="787"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoParser_aa4acc69a49444b9aa06b2c028b2c1133_cgraph.svg" width="1816" height="860"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -304,7 +324,13 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Notifie la progression. </p>
+<p>Notifie la progression via le callback UI si défini. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Valeur de progression (0–100). </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -337,7 +363,13 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Définit le callback de progression. </p>
+<p>Enregistre le callback de progression UI. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Fonction appelée avec une valeur [0–100] à chaque étape. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -367,6 +399,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Distance d'interpolation des tips CDC (mètres). </p>
+
 </div>
 </div>
 <a id="aec43b3c6c9ba3f216854bbaccbb6b272" name="aec43b3c6c9ba3f216854bbaccbb6b272"></a>
@@ -388,6 +422,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Distance max du lien double aiguille (mètres). </p>
 
 </div>
 </div>
@@ -411,6 +447,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Tolérance de fusion des extrémités (mètres). </p>
+
 </div>
 </div>
 <a id="a0f4623e16ed5606593b147f04da9da4e" name="a0f4623e16ed5606593b147f04da9da4e"></a>
@@ -432,6 +470,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Chemin du fichier GeoJSON source. </p>
 
 </div>
 </div>
@@ -455,6 +495,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> du moteur <a class="el" href="classGeoParser.html">GeoParser</a>. </p>
+
 </div>
 </div>
 <a id="adaa93b9b257e2722521ad9c7dd11890b" name="adaa93b9b257e2722521ad9c7dd11890b"></a>
@@ -476,6 +518,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Longueur maximale avant découpe (mètres). </p>
 
 </div>
 </div>
@@ -499,6 +543,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Longueur minimale de branche (mètres). </p>
+
 </div>
 </div>
 <a id="a9fcf3e65cfbe108920339b1960ae356a" name="a9fcf3e65cfbe108920339b1960ae356a"></a>
@@ -520,6 +566,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Callback de progression UI (optionnel). </p>
 
 </div>
 </div>
@@ -543,35 +591,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a99b83036288088d5ee88056d4e982728" name="a99b83036288088d5ee88056d4e982728"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99b83036288088d5ee88056d4e982728">&#9670;&#160;</a></span>straights</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="classStraightBlock.html">StraightBlock</a>&gt; GeoParser::straights</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Résultat final : voies droites </p>
-
-</div>
-</div>
-<a id="ab34819a75fdd3175b201d6ccafa1ad8e" name="ab34819a75fdd3175b201d6ccafa1ad8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab34819a75fdd3175b201d6ccafa1ad8e">&#9670;&#160;</a></span>switches</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="classSwitchBlock.html">SwitchBlock</a>&gt; GeoParser::switches</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Résultat final : aiguillages </p>
+<p>Pas de la grille d'accrochage (mètres). </p>
 
 </div>
 </div>

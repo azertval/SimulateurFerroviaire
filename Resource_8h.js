@@ -9,6 +9,7 @@ var Resource_8h =
     [ "IDI_SMALL", "Resource_8h.html#a861a8cb71616b4615a5823bcf4bff6e3", null ],
     [ "IDM_ABOUT", "Resource_8h.html#a589e0105bc3e8681893dbf51210ceeec", null ],
     [ "IDM_EXIT", "Resource_8h.html#a79aeed168a959b22b32169e25f8c1f4d", null ],
+    [ "IDM_FILE_EXPORT", "Resource_8h.html#a10cd94d5a021115bc9939074e7999ba9", null ],
     [ "IDM_FILE_OPEN", "Resource_8h.html#a63f11a94634314702967ce111b40fa2f", null ],
     [ "IDR_MAINFRAME", "Resource_8h.html#a9772c84d39896ad00b9aeb34b15d324d", null ],
     [ "IDS_APP_TITLE", "Resource_8h.html#a636c9aea2a8d16b73e43df39b3e0e7bd", null ]

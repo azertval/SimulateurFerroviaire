@@ -6,7 +6,7 @@
 <area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="2580,75,2514,83,2513,78,2579,70"/>
 <area shape="rect" id="Node000003" href="$classSwitchOrientator.html#a8132fa3495845481fdb68a3ec695af15" title="Calcule et assigne les points tip CDC sur un SwitchBlock orienté." alt="" coords="2091,8,2287,48"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2321,29,2287,30,2287,24,2321,24"/>
-<area shape="rect" id="Node000004" href="$classSwitchOrientator.html#a5af1a097baad421ce01bd013be602df7" title="Exécute les phases 6, 6b et 6c en place sur topoResult.switches." alt="" coords="1865,17,2043,42"/>
+<area shape="rect" id="Node000004" href="$classSwitchOrientator.html#a5af1a097baad421ce01bd013be602df7" title="Exécute les phases 6, 6b, 6c et 6d en place sur topoResult." alt="" coords="1865,17,2043,42"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="2077,31,2043,31,2043,26,2077,26"/>
 <area shape="rect" id="Node000005" href="$classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet." alt="" coords="1685,46,1817,71"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1853,47,1818,52,1817,46,1852,41"/>

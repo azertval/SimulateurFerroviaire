@@ -8,6 +8,7 @@ var classSwitchOrientator =
     [ "interpolateTipPoint", "classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd", null ],
     [ "orient", "classSwitchOrientator.html#a5af1a097baad421ce01bd013be602df7", null ],
     [ "orientThreePortSwitch", "classSwitchOrientator.html#a0ed66205a222764fb0ad914425ba0f6e", null ],
+    [ "trimStraightOverlaps", "classSwitchOrientator.html#ac80814892c9baea379f2b4e9f22b966e", null ],
     [ "m_branchTipDistanceMeters", "classSwitchOrientator.html#a8b4cccb7f56d525cdea27c7cb1683fa2", null ],
     [ "m_doubleLinkMaxMeters", "classSwitchOrientator.html#a617ead000cab82e87423e97cb36a1522", null ],
     [ "m_isNorthernHemisphere", "classSwitchOrientator.html#a74e519fe1137132d26f98edef6f40fa0", null ],

@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="554,52,393,78,213,111,201,113,200,108,211,105,392,72,553,47"/>
 <area shape="rect" id="Node000003" href="$GraphBuilder_8cpp.html" title="Implémentation des phases 1 et 2 — chargement GeoJSON et construction du graphe." alt="" coords="224,115,491,155"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="569,67,415,118,413,113,567,62"/>
-<area shape="rect" id="Node000004" href="$SwitchOrientator_8cpp.html" title="Implémentation des phases 6, 6b et 6c — orientation des aiguillages." alt="" coords="515,115,805,155"/>
+<area shape="rect" id="Node000004" href="$SwitchOrientator_8cpp.html" title="Implémentation des phases 6, 6b, 6c et 6d — orientation des aiguillages." alt="" coords="515,115,805,155"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="663,74,663,115,657,115,657,74"/>
 <area shape="rect" id="Node000005" href="$TopologyExtractor_8cpp.html" title="Implémentation des phases 3, 4, 5a et 5b du pipeline GeoParser." alt="" coords="829,108,1043,163"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="745,62,865,105,863,110,744,67"/>

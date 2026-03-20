@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nodedegreethresholds_0',['NodeDegreeThresholds',['../structNodeDegreeThresholds.html',1,'']]]
+  ['nodedegreethresholds_0',['NodeDegreeThresholds',['../classNodeDegreeThresholds.html',1,'']]]
 ];

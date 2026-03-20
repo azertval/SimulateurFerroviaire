@@ -16,11 +16,11 @@
 <area shape="rect" id="Node000008" href="$TopologyExtractor_8h.html" title="Phases 3, 4, 5a et 5b — extraction de la topologie ferroviaire depuis le graphe." alt="" coords="747,211,961,265"/>
 <area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="676,158,793,208,791,213,674,163"/>
 <area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="734,269,547,316,513,339,482,366,435,418,431,414,478,362,509,335,545,311,733,264"/>
-<area shape="rect" id="Node000009" href="$SwitchOrientator_8h.html" title="Phases 6, 6b et 6c — orientation géométrique des aiguillages." alt="" coords="558,321,833,361"/>
+<area shape="rect" id="Node000009" href="$SwitchOrientator_8h.html" title="Phases 6, 6b, 6c et 6d — orientation géométrique des aiguillages." alt="" coords="558,321,833,361"/>
 <area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="803,275,727,323,724,318,800,270"/>
 <area shape="rect" id="Node000011" href="$TopologyExtractor_8cpp.html" title="Implémentation des phases 3, 4, 5a et 5b du pipeline GeoParser." alt="" coords="857,313,1070,368"/>
 <area shape="poly" id="edge13_Node000008_Node000011" title=" " alt="" coords="895,273,937,311,933,315,891,277"/>
 <area shape="poly" id="edge11_Node000009_Node000004" title=" " alt="" coords="628,368,476,418,474,413,626,363"/>
-<area shape="rect" id="Node000010" href="$SwitchOrientator_8cpp.html" title="Implémentation des phases 6, 6b et 6c — orientation des aiguillages." alt="" coords="567,416,858,456"/>
+<area shape="rect" id="Node000010" href="$SwitchOrientator_8cpp.html" title="Implémentation des phases 6, 6b, 6c et 6d — orientation des aiguillages." alt="" coords="567,416,858,456"/>
 <area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="704,373,712,415,707,416,699,374"/>
 </map>

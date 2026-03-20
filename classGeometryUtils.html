@@ -122,31 +122,31 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a0a57b43055d32f595a7c84dbd7d098e3" id="r_a0a57b43055d32f595a7c84dbd7d098e3"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#a0a57b43055d32f595a7c84dbd7d098e3">utmCentralMeridianDegrees</a> (int utmZoneNumber)</td></tr>
 <tr class="memdesc:a0a57b43055d32f595a7c84dbd7d098e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le méridien central (degrés) d'une zone UTM.  <br /></td></tr>
 <tr class="separator:a0a57b43055d32f595a7c84dbd7d098e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abcb43f3e49607318e07012e902febfdb" id="r_abcb43f3e49607318e07012e902febfdb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCoordinateXY.html">CoordinateXY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#abcb43f3e49607318e07012e902febfdb">wgs84ToMetricUtm</a> (const <a class="el" href="structLatLon.html">LatLon</a> &amp;geographicCoord, int utmZoneNumber, bool isNorthernHemisphere=true)</td></tr>
+<tr class="memitem:abcb43f3e49607318e07012e902febfdb" id="r_abcb43f3e49607318e07012e902febfdb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classCoordinateXY.html">CoordinateXY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#abcb43f3e49607318e07012e902febfdb">wgs84ToMetricUtm</a> (const <a class="el" href="classLatLon.html">LatLon</a> &amp;geographicCoord, int utmZoneNumber, bool isNorthernHemisphere=true)</td></tr>
 <tr class="memdesc:abcb43f3e49607318e07012e902febfdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit une coordonnée WGS-84 en mètres UTM.  <br /></td></tr>
 <tr class="separator:abcb43f3e49607318e07012e902febfdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0dfa23ddf2d80abfeaeac186ae124fd0" id="r_a0dfa23ddf2d80abfeaeac186ae124fd0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structLatLon.html">LatLon</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#a0dfa23ddf2d80abfeaeac186ae124fd0">metricUtmToWgs84</a> (const <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &amp;metricCoord, int utmZoneNumber, bool isNorthernHemisphere=true)</td></tr>
+<tr class="memitem:a0dfa23ddf2d80abfeaeac186ae124fd0" id="r_a0dfa23ddf2d80abfeaeac186ae124fd0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classLatLon.html">LatLon</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#a0dfa23ddf2d80abfeaeac186ae124fd0">metricUtmToWgs84</a> (const <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &amp;metricCoord, int utmZoneNumber, bool isNorthernHemisphere=true)</td></tr>
 <tr class="memdesc:a0dfa23ddf2d80abfeaeac186ae124fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit une coordonnée métrique UTM en WGS-84.  <br /></td></tr>
 <tr class="separator:a0dfa23ddf2d80abfeaeac186ae124fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa06e19f5aae6fce3108b2fcfc709fc53" id="r_aa06e19f5aae6fce3108b2fcfc709fc53"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#aa06e19f5aae6fce3108b2fcfc709fc53">convertPolylineToMetric</a> (const std::vector&lt; <a class="el" href="structLatLon.html">LatLon</a> &gt; &amp;geographicPolyline, int utmZoneNumber, bool isNorthernHemisphere=true)</td></tr>
+<tr class="memitem:aa06e19f5aae6fce3108b2fcfc709fc53" id="r_aa06e19f5aae6fce3108b2fcfc709fc53"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#aa06e19f5aae6fce3108b2fcfc709fc53">convertPolylineToMetric</a> (const std::vector&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt; &amp;geographicPolyline, int utmZoneNumber, bool isNorthernHemisphere=true)</td></tr>
 <tr class="memdesc:aa06e19f5aae6fce3108b2fcfc709fc53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit une polyligne WGS-84 en coordonnées métriques UTM.  <br /></td></tr>
 <tr class="separator:aa06e19f5aae6fce3108b2fcfc709fc53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba6963b2f6022f04e51fb716a11e3895" id="r_aba6963b2f6022f04e51fb716a11e3895"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="structLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#aba6963b2f6022f04e51fb716a11e3895">convertPolylineToWgs84</a> (const std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt; &amp;metricPolyline, int utmZoneNumber, bool isNorthernHemisphere=true)</td></tr>
+<tr class="memitem:aba6963b2f6022f04e51fb716a11e3895" id="r_aba6963b2f6022f04e51fb716a11e3895"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#aba6963b2f6022f04e51fb716a11e3895">convertPolylineToWgs84</a> (const std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt; &amp;metricPolyline, int utmZoneNumber, bool isNorthernHemisphere=true)</td></tr>
 <tr class="memdesc:aba6963b2f6022f04e51fb716a11e3895"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit une polyligne métrique UTM en WGS-84.  <br /></td></tr>
 <tr class="separator:aba6963b2f6022f04e51fb716a11e3895"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f0bcf5c241331f56979b6d63b3412c1" id="r_a1f0bcf5c241331f56979b6d63b3412c1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCoordinateXY.html">CoordinateXY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#a1f0bcf5c241331f56979b6d63b3412c1">snapToMetricGrid</a> (double x, double y, double gridSizeMeters)</td></tr>
+<tr class="memitem:a1f0bcf5c241331f56979b6d63b3412c1" id="r_a1f0bcf5c241331f56979b6d63b3412c1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classCoordinateXY.html">CoordinateXY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#a1f0bcf5c241331f56979b6d63b3412c1">snapToMetricGrid</a> (double x, double y, double gridSizeMeters)</td></tr>
 <tr class="memdesc:a1f0bcf5c241331f56979b6d63b3412c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accroche une coordonnée métrique au sommet le plus proche d'une grille.  <br /></td></tr>
 <tr class="separator:a1f0bcf5c241331f56979b6d63b3412c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a811846a194a09c97c258825df6accb9a" id="r_a811846a194a09c97c258825df6accb9a"><td class="memItemLeft" align="right" valign="top">static std::optional&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#a811846a194a09c97c258825df6accb9a">pointAtDistanceAlongLine</a> (const std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt; &amp;polylineVertices, double distanceMeters)</td></tr>
+<tr class="memitem:a811846a194a09c97c258825df6accb9a" id="r_a811846a194a09c97c258825df6accb9a"><td class="memItemLeft" align="right" valign="top">static std::optional&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#a811846a194a09c97c258825df6accb9a">pointAtDistanceAlongLine</a> (const std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt; &amp;polylineVertices, double distanceMeters)</td></tr>
 <tr class="memdesc:a811846a194a09c97c258825df6accb9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpole un point à distanceMeters du premier sommet d'une polyligne.  <br /></td></tr>
 <tr class="separator:a811846a194a09c97c258825df6accb9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95a8eb25c216b5416111a5b2f18ebb5f" id="r_a95a8eb25c216b5416111a5b2f18ebb5f"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#a95a8eb25c216b5416111a5b2f18ebb5f">computePolylineLengthMeters</a> (const std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt; &amp;polylineVertices)</td></tr>
+<tr class="memitem:a95a8eb25c216b5416111a5b2f18ebb5f" id="r_a95a8eb25c216b5416111a5b2f18ebb5f"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#a95a8eb25c216b5416111a5b2f18ebb5f">computePolylineLengthMeters</a> (const std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt; &amp;polylineVertices)</td></tr>
 <tr class="memdesc:a95a8eb25c216b5416111a5b2f18ebb5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la longueur planaire totale d'une polyligne métrique.  <br /></td></tr>
 <tr class="separator:a95a8eb25c216b5416111a5b2f18ebb5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa07ef087c8f85eb14e28f69875ecf41f" id="r_aa07ef087c8f85eb14e28f69875ecf41f"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#aa07ef087c8f85eb14e28f69875ecf41f">unsignedAngleBetweenVectors</a> (const <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &amp;firstVector, const <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &amp;secondVector)</td></tr>
+<tr class="memitem:aa07ef087c8f85eb14e28f69875ecf41f" id="r_aa07ef087c8f85eb14e28f69875ecf41f"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#aa07ef087c8f85eb14e28f69875ecf41f">unsignedAngleBetweenVectors</a> (const <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &amp;firstVector, const <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &amp;secondVector)</td></tr>
 <tr class="memdesc:aa07ef087c8f85eb14e28f69875ecf41f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule l'angle non-signé (radians) entre deux vecteurs 2-D.  <br /></td></tr>
 <tr class="separator:aa07ef087c8f85eb14e28f69875ecf41f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fb1d9f796278db394fc82257347f514" id="r_a7fb1d9f796278db394fc82257347f514"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#a7fb1d9f796278db394fc82257347f514">angleBetweenVectorsPiFallback</a> (const <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &amp;firstVector, const <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &amp;secondVector)</td></tr>
+<tr class="memitem:a7fb1d9f796278db394fc82257347f514" id="r_a7fb1d9f796278db394fc82257347f514"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeometryUtils.html#a7fb1d9f796278db394fc82257347f514">angleBetweenVectorsPiFallback</a> (const <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &amp;firstVector, const <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &amp;secondVector)</td></tr>
 <tr class="memdesc:a7fb1d9f796278db394fc82257347f514"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variante "pire cas" de l'angle entre deux vecteurs 2-D.  <br /></td></tr>
 <tr class="separator:a7fb1d9f796278db394fc82257347f514"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -212,13 +212,13 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">double GeometryUtils::angleBetweenVectorsPiFallback </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &amp;&#160;</td>
           <td class="paramname"><em>firstVector</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &amp;&#160;</td>
           <td class="paramname"><em>secondVector</em>&#160;</td>
         </tr>
         <tr>
@@ -265,7 +265,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">double GeometryUtils::computePolylineLengthMeters </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>polylineVertices</em></td><td>)</td>
           <td></td>
         </tr>
@@ -304,9 +304,9 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt; GeometryUtils::convertPolylineToMetric </td>
+          <td class="memname">std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt; GeometryUtils::convertPolylineToMetric </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="structLatLon.html">LatLon</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>geographicPolyline</em>, </td>
         </tr>
         <tr>
@@ -352,7 +352,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeometryUtils_aa06e19f5aae6fce3108b2fcfc709fc53_icgraph.svg" width="2826" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeometryUtils_aa06e19f5aae6fce3108b2fcfc709fc53_icgraph.svg" width="2847" height="235"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -367,9 +367,9 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="structLatLon.html">LatLon</a> &gt; GeometryUtils::convertPolylineToWgs84 </td>
+          <td class="memname">std::vector&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt; GeometryUtils::convertPolylineToWgs84 </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>metricPolyline</em>, </td>
         </tr>
         <tr>
@@ -415,7 +415,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeometryUtils_aba6963b2f6022f04e51fb716a11e3895_icgraph.svg" width="2487" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeometryUtils_aba6963b2f6022f04e51fb716a11e3895_icgraph.svg" width="2588" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -470,9 +470,9 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structLatLon.html">LatLon</a> GeometryUtils::metricUtmToWgs84 </td>
+          <td class="memname"><a class="el" href="classLatLon.html">LatLon</a> GeometryUtils::metricUtmToWgs84 </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &amp;&#160;</td>
           <td class="paramname"><em>metricCoord</em>, </td>
         </tr>
         <tr>
@@ -519,7 +519,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeometryUtils_a0dfa23ddf2d80abfeaeac186ae124fd0_icgraph.svg" width="2810" height="234"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeometryUtils_a0dfa23ddf2d80abfeaeac186ae124fd0_icgraph.svg" width="2831" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -534,9 +534,9 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt; GeometryUtils::pointAtDistanceAlongLine </td>
+          <td class="memname">std::optional&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt; GeometryUtils::pointAtDistanceAlongLine </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>polylineVertices</em>, </td>
         </tr>
         <tr>
@@ -590,7 +590,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structCoordinateXY.html">CoordinateXY</a> GeometryUtils::snapToMetricGrid </td>
+          <td class="memname"><a class="el" href="classCoordinateXY.html">CoordinateXY</a> GeometryUtils::snapToMetricGrid </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -651,13 +651,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">double GeometryUtils::unsignedAngleBetweenVectors </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &amp;&#160;</td>
           <td class="paramname"><em>firstVector</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &amp;&#160;</td>
           <td class="paramname"><em>secondVector</em>&#160;</td>
         </tr>
         <tr>
@@ -726,7 +726,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeometryUtils_a0a57b43055d32f595a7c84dbd7d098e3_icgraph.svg" width="3371" height="296"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeometryUtils_a0a57b43055d32f595a7c84dbd7d098e3_icgraph.svg" width="3378" height="335"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -741,9 +741,9 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structCoordinateXY.html">CoordinateXY</a> GeometryUtils::wgs84ToMetricUtm </td>
+          <td class="memname"><a class="el" href="classCoordinateXY.html">CoordinateXY</a> GeometryUtils::wgs84ToMetricUtm </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structLatLon.html">LatLon</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classLatLon.html">LatLon</a> &amp;&#160;</td>
           <td class="paramname"><em>geographicCoord</em>, </td>
         </tr>
         <tr>
@@ -790,7 +790,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeometryUtils_abcb43f3e49607318e07012e902febfdb_icgraph.svg" width="3124" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeometryUtils_abcb43f3e49607318e07012e902febfdb_icgraph.svg" width="3146" height="235"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -948,9 +948,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">        2.0 * <a class="code hl_variable" href="structGeographicProjection.html#a13b981277cc53897e12aad0d9940d017">GeographicProjection::WGS84_FLATTENING</a></div>
-<div class="line">        - <a class="code hl_variable" href="structGeographicProjection.html#a13b981277cc53897e12aad0d9940d017">GeographicProjection::WGS84_FLATTENING</a> * <a class="code hl_variable" href="structGeographicProjection.html#a13b981277cc53897e12aad0d9940d017">GeographicProjection::WGS84_FLATTENING</a></div>
-<div class="ttc" id="astructGeographicProjection_html_a13b981277cc53897e12aad0d9940d017"><div class="ttname"><a href="structGeographicProjection.html#a13b981277cc53897e12aad0d9940d017">GeographicProjection::WGS84_FLATTENING</a></div><div class="ttdeci">static constexpr double WGS84_FLATTENING</div><div class="ttdef"><b>Definition</b> GeoParserEnums.h:130</div></div>
+<div class="line">        2.0 * <a class="code hl_variable" href="classGeographicProjection.html#a13b981277cc53897e12aad0d9940d017">GeographicProjection::WGS84_FLATTENING</a></div>
+<div class="line">        - <a class="code hl_variable" href="classGeographicProjection.html#a13b981277cc53897e12aad0d9940d017">GeographicProjection::WGS84_FLATTENING</a> * <a class="code hl_variable" href="classGeographicProjection.html#a13b981277cc53897e12aad0d9940d017">GeographicProjection::WGS84_FLATTENING</a></div>
+<div class="ttc" id="aclassGeographicProjection_html_a13b981277cc53897e12aad0d9940d017"><div class="ttname"><a href="classGeographicProjection.html#a13b981277cc53897e12aad0d9940d017">GeographicProjection::WGS84_FLATTENING</a></div><div class="ttdeci">static constexpr double WGS84_FLATTENING</div><div class="ttdef"><b>Definition</b> GeoParserEnums.h:134</div></div>
 </div><!-- fragment -->
 </div>
 </div>

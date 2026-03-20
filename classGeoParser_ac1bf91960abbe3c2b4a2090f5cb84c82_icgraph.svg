@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Notifie la progression.">
+<g id="a_Node000001"><a xlink:title="Notifie la progression via le callback UI si défini.">
 <polygon fill="#999999" stroke="#666666" points="1538,-24.5 1395,-24.5 1395,-5.5 1538,-5.5 1538,-24.5"/>
 <text text-anchor="middle" x="1466.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">GeoParser::reportProgress</text>
 </a>

@@ -1,32 +1,44 @@
 <map id="SwitchOrientator::orient" name="SwitchOrientator::orient">
-<area shape="rect" id="Node000001" title="Exécute les phases 6, 6b et 6c en place sur topoResult.switches." alt="" coords="5,179,183,205"/>
-<area shape="rect" id="Node000002" href="$classSwitchOrientator.html#a2786825e04cc0836549bb23a2b6242b4" title="Échange normal↔deviation sur l&#39;aiguillage non&#45;référence si les rôles diffèrent." alt="" coords="231,76,448,116"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,177,169,152,230,126,251,118,253,123,232,130,171,157,120,182"/>
-<area shape="rect" id="Node000003" href="$classSwitchOrientator.html#a8132fa3495845481fdb68a3ec695af15" title="Calcule et assigne les points tip CDC sur un SwitchBlock orienté." alt="" coords="241,140,437,180"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,178,227,172,228,177,183,183"/>
-<area shape="rect" id="Node000012" href="$classSwitchOrientator.html#acdcd6a442cb52bed611a302b1358c8bb" title="Force la branche partagée au rôle DEVIATION sur les deux aiguillages formant un croisement mécanique ..." alt="" coords="245,204,433,244"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="183,201,232,207,231,213,183,206"/>
-<area shape="rect" id="Node000013" href="$classSwitchOrientator.html#a0ed66205a222764fb0ad914425ba0f6e" title="Oriente un SwitchBlock à 3 branches en place." alt="" coords="251,268,428,308"/>
-<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="120,202,171,227,232,254,253,261,251,266,230,258,169,232,118,207"/>
-<area shape="rect" id="Node000004" href="$classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd" title="Interpole un point tip à distanceMeters depuis la jonction le long d&#39;un Straight." alt="" coords="500,99,711,139"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="437,142,486,135,487,140,438,147"/>
-<area shape="rect" id="Node000011" href="$classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7" title="Indique si l&#39;aiguillage a été orienté (Phase 6 complète)." alt="" coords="517,163,693,189"/>
-<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="438,163,504,167,504,173,437,169"/>
-<area shape="rect" id="Node000005" href="$classGeometryUtils.html#a95a8eb25c216b5416111a5b2f18ebb5f" title="Calcule la longueur planaire totale d&#39;une polyligne métrique." alt="" coords="763,5,997,45"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="653,96,762,55,788,47,789,52,764,60,655,101"/>
-<area shape="rect" id="Node000006" href="$classGeometryUtils.html#aa06e19f5aae6fce3108b2fcfc709fc53" title="Convertit une polyligne WGS&#45;84 en coordonnées métriques UTM." alt="" coords="767,69,993,109"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="711,105,753,100,753,106,711,110"/>
-<area shape="rect" id="Node000009" href="$classGeometryUtils.html#a0dfa23ddf2d80abfeaeac186ae124fd0" title="Convertit une coordonnée métrique UTM en WGS&#45;84." alt="" coords="1073,127,1268,167"/>
-<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="711,121,1059,139,1059,144,711,127"/>
-<area shape="rect" id="Node000010" href="$classGeometryUtils.html#a811846a194a09c97c258825df6accb9a" title="Interpole un point à distanceMeters du premier sommet d&#39;une polyligne." alt="" coords="765,184,995,224"/>
-<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="673,136,715,149,804,177,802,182,714,155,671,141"/>
-<area shape="rect" id="Node000007" href="$classGeometryUtils.html#abcb43f3e49607318e07012e902febfdb" title="Convertit une coordonnée WGS&#45;84 en mètres UTM." alt="" coords="1045,77,1296,102"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="994,87,1031,87,1031,92,994,92"/>
-<area shape="rect" id="Node000008" href="$classGeometryUtils.html#a0a57b43055d32f595a7c84dbd7d098e3" title="Retourne le méridien central (degrés) d&#39;une zone UTM." alt="" coords="1344,99,1543,139"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1289,99,1331,104,1330,109,1289,105"/>
-<area shape="poly" id="edge9_Node000009_Node000008" title=" " alt="" coords="1268,134,1330,128,1331,133,1269,139"/>
-<area shape="rect" id="Node000014" href="$classGeometryUtils.html#a7fb1d9f796278db394fc82257347f514" title="Variante &quot;pire cas&quot; de l&#39;angle entre deux vecteurs 2&#45;D." alt="" coords="496,229,715,269"/>
-<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="428,272,482,265,483,270,429,278"/>
-<area shape="rect" id="Node000015" href="$classSwitchOrientator.html#aad2a4892eb6f9d716bd4703694813f46" title="Retourne la direction (vecteur lat/lon) depuis junctionCoord vers l&#39;extrémité distale du StraightBloc..." alt="" coords="507,293,703,333"/>
-<area shape="poly" id="edge15_Node000013_Node000015" title=" " alt="" coords="429,294,494,300,493,305,428,299"/>
+<area shape="rect" id="Node000001" title="Exécute les phases 6, 6b, 6c et 6d en place sur topoResult." alt="" coords="5,211,183,237"/>
+<area shape="rect" id="Node000002" href="$classSwitchOrientator.html#a2786825e04cc0836549bb23a2b6242b4" title="Échange normal↔deviation sur l&#39;aiguillage non&#45;référence si les rôles diffèrent." alt="" coords="231,65,448,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,209,157,164,192,138,229,115,244,108,247,113,232,120,195,142,161,168,110,213"/>
+<area shape="rect" id="Node000003" href="$classSwitchOrientator.html#a8132fa3495845481fdb68a3ec695af15" title="Calcule et assigne les points tip CDC sur un SwitchBlock orienté." alt="" coords="241,129,437,169"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="136,209,259,171,260,176,138,214"/>
+<area shape="rect" id="Node000012" href="$classSwitchOrientator.html#acdcd6a442cb52bed611a302b1358c8bb" title="Force la branche partagée au rôle DEVIATION sur les deux aiguillages formant un croisement mécanique ..." alt="" coords="245,268,433,308"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="145,234,249,262,248,267,143,239"/>
+<area shape="rect" id="Node000013" href="$classSwitchOrientator.html#a0ed66205a222764fb0ad914425ba0f6e" title="Oriente un SwitchBlock à 3 branches en place." alt="" coords="251,353,428,393"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="113,235,165,273,232,318,283,345,280,350,229,322,162,278,110,239"/>
+<area shape="rect" id="Node000016" href="$classSwitchOrientator.html#ac80814892c9baea379f2b4e9f22b966e" title="Retaille chaque StraightBlock adjacent à une jonction pour qu&#39;il commence (ou se termine) exactement ..." alt="" coords="231,204,448,244"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="183,221,217,221,217,227,183,227"/>
+<area shape="rect" id="Node000004" href="$classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd" title="Interpole un point tip à distanceMeters depuis la jonction le long d&#39;un Straight." alt="" coords="504,60,715,100"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="417,127,517,101,518,106,419,132"/>
+<area shape="rect" id="Node000011" href="$classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7" title="Indique si l&#39;aiguillage a été orienté (Phase 6 complète)." alt="" coords="521,125,697,150"/>
+<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="437,142,508,139,508,144,438,148"/>
+<area shape="rect" id="Node000005" href="$classGeometryUtils.html#a95a8eb25c216b5416111a5b2f18ebb5f" title="Calcule la longueur planaire totale d&#39;une polyligne métrique." alt="" coords="771,5,1005,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="711,57,771,45,772,51,712,63"/>
+<area shape="rect" id="Node000006" href="$classGeometryUtils.html#aa06e19f5aae6fce3108b2fcfc709fc53" title="Convertit une polyligne WGS&#45;84 en coordonnées métriques UTM." alt="" coords="775,207,1001,247"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="705,98,724,110,742,131,749,153,756,173,772,193,780,198,777,202,769,197,751,176,744,154,737,134,721,114,702,102"/>
+<area shape="rect" id="Node000009" href="$classGeometryUtils.html#a0dfa23ddf2d80abfeaeac186ae124fd0" title="Convertit une coordonnée métrique UTM en WGS&#45;84." alt="" coords="791,143,985,183"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="683,98,723,109,811,136,809,141,722,115,681,103"/>
+<area shape="rect" id="Node000010" href="$classGeometryUtils.html#a811846a194a09c97c258825df6accb9a" title="Interpole un point à distanceMeters du premier sommet d&#39;une polyligne." alt="" coords="773,69,1003,109"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="715,81,759,82,759,88,715,86"/>
+<area shape="rect" id="Node000007" href="$classGeometryUtils.html#abcb43f3e49607318e07012e902febfdb" title="Convertit une coordonnée WGS&#45;84 en mètres UTM." alt="" coords="1053,211,1304,237"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1001,223,1039,223,1039,228,1002,228"/>
+<area shape="rect" id="Node000008" href="$classGeometryUtils.html#a0a57b43055d32f595a7c84dbd7d098e3" title="Retourne le méridien central (degrés) d&#39;une zone UTM." alt="" coords="1352,176,1551,216"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1302,209,1338,205,1339,210,1303,214"/>
+<area shape="poly" id="edge9_Node000009_Node000008" title=" " alt="" coords="986,166,1338,187,1338,192,986,171"/>
+<area shape="rect" id="Node000014" href="$classGeometryUtils.html#a7fb1d9f796278db394fc82257347f514" title="Variante &quot;pire cas&quot; de l&#39;angle entre deux vecteurs 2&#45;D." alt="" coords="500,353,719,393"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="428,371,486,371,486,376,428,376"/>
+<area shape="rect" id="Node000015" href="$classSwitchOrientator.html#aad2a4892eb6f9d716bd4703694813f46" title="Retourne la direction (vecteur lat/lon) depuis junctionCoord vers l&#39;extrémité distale du StraightBloc..." alt="" coords="511,417,707,457"/>
+<area shape="poly" id="edge15_Node000013_Node000015" title=" " alt="" coords="425,391,512,412,511,417,424,396"/>
+<area shape="poly" id="edge17_Node000016_Node000006" title=" " alt="" coords="448,223,496,224,761,225,761,230,496,229,448,229"/>
+<area shape="rect" id="Node000017" href="$classGeometryUtils.html#aba6963b2f6022f04e51fb716a11e3895" title="Convertit une polyligne métrique UTM en WGS&#45;84." alt="" coords="496,175,723,215"/>
+<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="448,210,482,206,483,211,449,215"/>
+<area shape="rect" id="Node000018" href="$classStraightBlock.html#a923ec2d60375b9760a734f3babe2150d" title="Recalcule et met à jour lengthMeters depuis les coordonnées actuelles." alt="" coords="516,289,703,329"/>
+<area shape="poly" id="edge20_Node000016_Node000018" title=" " alt="" coords="410,242,449,253,537,282,536,287,447,259,409,247"/>
+<area shape="poly" id="edge19_Node000017_Node000009" title=" " alt="" coords="723,179,777,173,777,178,723,184"/>
+<area shape="rect" id="Node000019" href="$classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb" title="Calcule la longueur géodésique totale via la formule de Haversine." alt="" coords="771,289,1005,329"/>
+<area shape="poly" id="edge21_Node000018_Node000019" title=" " alt="" coords="703,307,757,307,757,312,703,312"/>
+<area shape="rect" id="Node000020" href="$classStraightBlock.html#aacbbde91378d4e080c3ca2cf0c4f801a" title="Calcule la distance de Haversine entre deux points WGS&#45;84." alt="" coords="1088,289,1269,329"/>
+<area shape="poly" id="edge22_Node000019_Node000020" title=" " alt="" coords="1006,307,1074,307,1074,312,1006,312"/>
 </map>

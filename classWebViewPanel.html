@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('classWebViewPanel.html',''); initResiz
 <div class="dynheader">
 Collaboration diagram for WebViewPanel:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel__coll__graph.svg" width="192" height="844"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel__coll__graph.svg" width="199" height="864"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -118,10 +118,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a334dd20cd177ebf50c3cda4fae8563ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur — ferme proprement le WebView et libère les ressources associées.  <br /></td></tr>
 <tr class="separator:a334dd20cd177ebf50c3cda4fae8563ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56167ee680bfe4b3563b5bc1e1926eab" id="r_a56167ee680bfe4b3563b5bc1e1926eab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#a56167ee680bfe4b3563b5bc1e1926eab">WebViewPanel</a> (const <a class="el" href="classWebViewPanel.html">WebViewPanel</a> &amp;)=delete</td></tr>
-<tr class="memdesc:a56167ee680bfe4b3563b5bc1e1926eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">interdit la copie.  <br /></td></tr>
+<tr class="memdesc:a56167ee680bfe4b3563b5bc1e1926eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interdit la copie — chaque instance gère ses propres ressources COM.  <br /></td></tr>
 <tr class="separator:a56167ee680bfe4b3563b5bc1e1926eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8b60596c89dfc5d05abf38b74857671" id="r_ae8b60596c89dfc5d05abf38b74857671"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWebViewPanel.html">WebViewPanel</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#ae8b60596c89dfc5d05abf38b74857671">operator=</a> (const <a class="el" href="classWebViewPanel.html">WebViewPanel</a> &amp;)=delete</td></tr>
-<tr class="memdesc:ae8b60596c89dfc5d05abf38b74857671"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opérateur d'affectation — interdit la copie.  <br /></td></tr>
+<tr class="memdesc:ae8b60596c89dfc5d05abf38b74857671"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interdit l'affectation — chaque instance gère ses propres ressources COM.  <br /></td></tr>
 <tr class="separator:ae8b60596c89dfc5d05abf38b74857671"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49887c0d1a400c93f002085a8994ece1" id="r_a49887c0d1a400c93f002085a8994ece1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1">create</a> (HWND parentHwnd)</td></tr>
 <tr class="memdesc:a49887c0d1a400c93f002085a8994ece1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise WebView2 dans une fenêtre Win32 existante.  <br /></td></tr>
@@ -147,6 +147,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a15693211fba63be8ee8ab5a13ebf68c8" id="r_a15693211fba63be8ee8ab5a13ebf68c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#a15693211fba63be8ee8ab5a13ebf68c8">close</a> ()</td></tr>
 <tr class="memdesc:a15693211fba63be8ee8ab5a13ebf68c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ferme le WebView et libère les ressources associées.  <br /></td></tr>
 <tr class="separator:a15693211fba63be8ee8ab5a13ebf68c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d18421b35ea7ad55ff884ce299ac53c" id="r_a3d18421b35ea7ad55ff884ce299ac53c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#a3d18421b35ea7ad55ff884ce299ac53c">setVirtualHostMapping</a> (const std::wstring &amp;hostname, const std::wstring &amp;folderPath)</td></tr>
+<tr class="memdesc:a3d18421b35ea7ad55ff884ce299ac53c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mappe un nom d'hôte virtuel vers un dossier local. Permet de servir des fichiers locaux via <a href="https://hostname/..">https://hostname/..</a>.  <br /></td></tr>
+<tr class="separator:a3d18421b35ea7ad55ff884ce299ac53c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -267,7 +270,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>interdit la copie. </p>
+<p>Interdit la copie — chaque instance gère ses propres ressources COM. </p>
 <p>Chaque <a class="el" href="classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué.">WebViewPanel</a> est unique et gère ses propres ressources COM. La copie pourrait entraîner des fuites ou des conflits de ressources. Par conséquent, l'opérateur d'affectation est supprimé pour garantir que chaque instance est non copiable.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -358,7 +361,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Exécute un script JavaScript dans le contexte de la page chargée. </p>
-<p>Permet d'interagir dynamiquement avec le contenu HTML, par exemple pour manipuler la carte Leaflet ou récupérer des données depuis la page.</p>
+<p>Permet d'interagir dynamiquement avec le contenu HTML, par exemple pour manipuler la carte <a class="el" href="classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> ou récupérer des données depuis la page.</p>
 <p>Log erreur si le WebView n'est pas encore initialisé ou si l'exécution échoue.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -431,7 +434,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_abea11ffd7181d2514edb9283256aa8e2_icgraph.svg" width="1440" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_abea11ffd7181d2514edb9283256aa8e2_icgraph.svg" width="1675" height="87"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -453,6 +456,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Navigue vers une URL. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_a17fdacaf19c8e0830ae1ea7ee1632993_icgraph.svg" width="396" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -473,11 +481,6 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Injecte du HTML directement. </p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_ad8facf8f40cd6cce77620c221bda1d81_icgraph.svg" width="410" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
@@ -505,7 +508,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Opérateur d'affectation — interdit la copie. </p>
+<p>Interdit l'affectation — chaque instance gère ses propres ressources COM. </p>
 <p>Chaque <a class="el" href="classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué.">WebViewPanel</a> est unique et gère ses propres ressources COM. La copie pourrait entraîner des fuites ou des conflits de ressources. Par conséquent, l'opérateur d'affectation est supprimé pour garantir que chaque instance est non copiable.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -568,6 +571,41 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_a118dd6f6115c00ad0d01b6c4238e5caf_icgraph.svg" width="440" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a3d18421b35ea7ad55ff884ce299ac53c" name="a3d18421b35ea7ad55ff884ce299ac53c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d18421b35ea7ad55ff884ce299ac53c">&#9670;&#160;</a></span>setVirtualHostMapping()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WebViewPanel::setVirtualHostMapping </td>
+          <td>(</td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>hostname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>folderPath</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mappe un nom d'hôte virtuel vers un dossier local. Permet de servir des fichiers locaux via <a href="https://hostname/..">https://hostname/..</a>. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_a3d18421b35ea7ad55ff884ce299ac53c_icgraph.svg" width="402" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

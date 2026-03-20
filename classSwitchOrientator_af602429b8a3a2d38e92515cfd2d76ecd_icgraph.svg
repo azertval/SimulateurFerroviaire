@@ -40,7 +40,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classSwitchOrientator.html#a5af1a097baad421ce01bd013be602df7" target="_top" xlink:title="Exécute les phases 6, 6b et 6c en place sur topoResult.switches.">
+<g id="a_Node000003"><a xlink:href="classSwitchOrientator.html#a5af1a097baad421ce01bd013be602df7" target="_top" xlink:title="Exécute les phases 6, 6b, 6c et 6d en place sur topoResult.">
 <polygon fill="white" stroke="#666666" points="1528,-24.5 1395,-24.5 1395,-5.5 1528,-5.5 1528,-24.5"/>
 <text text-anchor="middle" x="1461.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">SwitchOrientator::orient</text>
 </a>

@@ -1,0 +1,14 @@
+<map id="GeoJsonExporter::renderAllSwitchBranches" name="GeoJsonExporter::renderAllSwitchBranches">
+<area shape="rect" id="Node000001" title="Efface puis redessine les branches de tous les switches." alt="" coords="5,93,203,133"/>
+<area shape="rect" id="Node000002" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="287,5,437,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,91,250,55,274,47,276,52,252,60,156,96"/>
+<area shape="rect" id="Node000003" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="287,93,437,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,111,273,111,273,116,203,116"/>
+<area shape="rect" id="Node000004" href="$classGeoJsonExporter.html#a125ac684007e9e1e93b6d11d695d7e9b" title="Construit l&#39;appel JS renderSwitchBranches(...) pour un switch." alt="" coords="251,157,473,197"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="186,131,268,151,267,157,185,136"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="316,94,314,84,321,74,337,69,362,67,391,70,406,77,404,82,389,75,362,72,338,74,324,79,319,85,321,92"/>
+<area shape="rect" id="Node000005" href="$GeoJsonExporter_8cpp.html#a804a0b5a3a71a7a209dfe8f50e2da7fc" title=" " alt="" coords="565,139,654,165"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="473,163,550,155,551,161,474,169"/>
+<area shape="rect" id="Node000006" href="$classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7" title="Indique si l&#39;aiguillage a été orienté (Phase 6 complète)." alt="" coords="521,189,697,214"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="474,185,508,189,507,194,473,191"/>
+</map>

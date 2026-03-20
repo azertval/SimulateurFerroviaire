@@ -1,35 +1,38 @@
 <map id="GeometryUtils::convertPolylineToMetric" name="GeometryUtils::convertPolylineToMetric">
-<area shape="rect" id="Node000001" title="Convertit une polyligne WGS&#45;84 en coordonnées métriques UTM." alt="" coords="2593,69,2820,109"/>
-<area shape="rect" id="Node000002" href="$classGraphBuilder.html#a978a9bb24411525583b8c2855db91c80" title="Phase 2 — Construit le TopologyGraph depuis les polylignes métriques." alt="" coords="2337,5,2543,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2609,69,2523,48,2524,43,2610,63"/>
-<area shape="rect" id="Node000012" href="$classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd" title="Interpole un point tip à distanceMeters depuis la jonction le long d&#39;un Straight." alt="" coords="2335,69,2545,109"/>
-<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="2579,92,2546,92,2546,87,2579,87"/>
-<area shape="rect" id="Node000015" href="$classTopologyExtractor.html#ad1d5361674a11a78d2ea58a6024fb140" title=" " alt="" coords="2367,133,2513,173"/>
-<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="2610,115,2514,138,2513,133,2609,110"/>
-<area shape="rect" id="Node000003" href="$classGraphBuilder.html#af2d714cb20595bdc76588d2512a0102a" title="Exécute les phases 1 et 2 et retourne le résultat." alt="" coords="1881,23,2027,49"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2323,31,2028,37,2028,32,2323,25"/>
-<area shape="rect" id="Node000004" href="$classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet." alt="" coords="1685,77,1817,102"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1892,55,1801,79,1799,74,1891,50"/>
-<area shape="rect" id="Node000005" href="$classGeoParsingTask.html#affe9d461e96e029708ced380b63da972" title="Lance le parsing GeoJSON dans un thread séparé et détaché." alt="" coords="1463,77,1637,102"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1672,92,1637,92,1637,87,1672,87"/>
-<area shape="rect" id="Node000006" href="$classMainWindow.html#a889cc45fb741e12015f4af9f01acaa96" title="Ouvre le sélecteur de fichier et lance le parsing asynchrone." alt="" coords="1228,77,1415,102"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1449,92,1415,92,1415,87,1449,87"/>
-<area shape="rect" id="Node000007" href="$classMainWindow.html#afbecf0f64f48c5c868168884bab52356" title="Gère les commandes menu (WM_COMMAND)." alt="" coords="984,77,1180,102"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1214,92,1180,92,1180,87,1214,87"/>
-<area shape="rect" id="Node000008" href="$classMainWindow.html#ab85682874f3ab5dfa81f782f889d8556" title="Dispatcher principal des messages de la fenêtre." alt="" coords="721,77,936,102"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="970,92,936,92,936,87,970,87"/>
-<area shape="rect" id="Node000009" href="$classMainWindow.html#a332648d0a0caec8070b05bc27bb9a14b" title="Procédure de fenêtre statique, point d&#39;entrée imposé par Win32." alt="" coords="483,77,673,102"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="708,92,674,92,674,87,708,87"/>
-<area shape="rect" id="Node000010" href="$classApplication.html#a0bda40de108938fd29374335bf4eac71" title="Enregistre la classe de fenêtre Win32 (WNDCLASSEXW)." alt="" coords="229,69,435,109"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="469,92,435,92,435,87,469,87"/>
-<area shape="rect" id="Node000011" href="$classApplication.html#a719cf091afd2276d52f9a58e4962ebfb" title="Construit l&#39;application et enregistre la classe de fenêtre." alt="" coords="5,77,181,102"/>
-<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="216,92,182,92,182,87,216,87"/>
-<area shape="rect" id="Node000013" href="$classSwitchOrientator.html#a8132fa3495845481fdb68a3ec695af15" title="Calcule et assigne les points tip CDC sur un SwitchBlock orienté." alt="" coords="2091,69,2287,109"/>
-<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="2321,92,2287,92,2287,87,2321,87"/>
-<area shape="rect" id="Node000014" href="$classSwitchOrientator.html#a5af1a097baad421ce01bd013be602df7" title="Exécute les phases 6, 6b et 6c en place sur topoResult.switches." alt="" coords="1865,77,2043,102"/>
-<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="2077,92,2043,92,2043,87,2077,87"/>
-<area shape="poly" id="edge14_Node000014_Node000004" title=" " alt="" coords="1851,92,1817,92,1817,87,1851,87"/>
-<area shape="rect" id="Node000016" href="$classTopologyExtractor.html#a356459ec218bf270f643460da781bd0d" title="Exécute les phases 3, 4, 5a et 5b et retourne le résultat." alt="" coords="2115,133,2262,173"/>
-<area shape="poly" id="edge16_Node000015_Node000016" title=" " alt="" coords="2353,156,2262,156,2262,151,2353,151"/>
-<area shape="poly" id="edge17_Node000016_Node000004" title=" " alt="" coords="2101,148,1988,135,1865,117,1804,105,1805,99,1866,112,1989,130,2102,143"/>
+<area shape="rect" id="Node000001" title="Convertit une polyligne WGS&#45;84 en coordonnées métriques UTM." alt="" coords="2615,99,2841,139"/>
+<area shape="rect" id="Node000002" href="$classGraphBuilder.html#a978a9bb24411525583b8c2855db91c80" title="Phase 2 — Construit le TopologyGraph depuis les polylignes métriques." alt="" coords="2359,5,2564,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2663,96,2566,60,2530,48,2531,43,2568,55,2665,91"/>
+<area shape="rect" id="Node000012" href="$classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd" title="Interpole un point tip à distanceMeters depuis la jonction le long d&#39;un Straight." alt="" coords="2356,185,2567,225"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="2653,146,2525,188,2523,183,2652,140"/>
+<area shape="rect" id="Node000015" href="$classTopologyExtractor.html#ad1d5361674a11a78d2ea58a6024fb140" title=" " alt="" coords="2388,69,2535,109"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="2601,107,2534,100,2535,95,2601,102"/>
+<area shape="rect" id="Node000017" href="$classSwitchOrientator.html#ac80814892c9baea379f2b4e9f22b966e" title="Retaille chaque StraightBlock adjacent à une jonction pour qu&#39;il commence (ou se termine) exactement ..." alt="" coords="2091,125,2308,165"/>
+<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="2601,128,2308,143,2308,137,2601,122"/>
+<area shape="rect" id="Node000003" href="$classGraphBuilder.html#af2d714cb20595bdc76588d2512a0102a" title="Exécute les phases 1 et 2 et retourne le résultat." alt="" coords="1881,17,2027,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2345,29,2027,31,2027,26,2345,24"/>
+<area shape="rect" id="Node000004" href="$classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet." alt="" coords="1685,75,1817,101"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1897,48,1797,78,1795,73,1895,43"/>
+<area shape="rect" id="Node000005" href="$classGeoParsingTask.html#affe9d461e96e029708ced380b63da972" title="Lance le parsing GeoJSON dans un thread séparé et détaché." alt="" coords="1463,75,1637,101"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1672,91,1637,91,1637,85,1672,85"/>
+<area shape="rect" id="Node000006" href="$classMainWindow.html#a889cc45fb741e12015f4af9f01acaa96" title="Ouvre le sélecteur de fichier et lance le parsing asynchrone." alt="" coords="1228,75,1415,101"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1449,91,1415,91,1415,85,1449,85"/>
+<area shape="rect" id="Node000007" href="$classMainWindow.html#afbecf0f64f48c5c868168884bab52356" title="Gère les commandes menu (WM_COMMAND)." alt="" coords="984,75,1180,101"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1214,91,1180,91,1180,85,1214,85"/>
+<area shape="rect" id="Node000008" href="$classMainWindow.html#ab85682874f3ab5dfa81f782f889d8556" title="Dispatcher principal des messages de la fenêtre." alt="" coords="721,75,936,101"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="970,91,936,91,936,85,970,85"/>
+<area shape="rect" id="Node000009" href="$classMainWindow.html#a332648d0a0caec8070b05bc27bb9a14b" title="Procédure de fenêtre statique, point d&#39;entrée imposé par Win32." alt="" coords="483,75,673,101"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="708,91,674,91,674,85,708,85"/>
+<area shape="rect" id="Node000010" href="$classApplication.html#a0bda40de108938fd29374335bf4eac71" title="Enregistre la classe de fenêtre Win32 (WNDCLASSEXW)." alt="" coords="229,68,435,108"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="469,91,435,91,435,85,469,85"/>
+<area shape="rect" id="Node000011" href="$classApplication.html#a719cf091afd2276d52f9a58e4962ebfb" title="Construit l&#39;application et enregistre la classe de fenêtre." alt="" coords="5,75,181,101"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="216,91,182,91,182,85,216,85"/>
+<area shape="rect" id="Node000013" href="$classSwitchOrientator.html#a8132fa3495845481fdb68a3ec695af15" title="Calcule et assigne les points tip CDC sur un SwitchBlock orienté." alt="" coords="2101,189,2297,229"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="2342,210,2298,211,2298,205,2342,204"/>
+<area shape="rect" id="Node000014" href="$classSwitchOrientator.html#a5af1a097baad421ce01bd013be602df7" title="Exécute les phases 6, 6b, 6c et 6d en place sur topoResult." alt="" coords="1865,133,2043,158"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="2108,188,2003,161,2004,156,2110,183"/>
+<area shape="poly" id="edge14_Node000014_Node000004" title=" " alt="" coords="1895,131,1796,103,1798,98,1896,126"/>
+<area shape="rect" id="Node000016" href="$classTopologyExtractor.html#a356459ec218bf270f643460da781bd0d" title="Exécute les phases 3, 4, 5a et 5b et retourne le résultat." alt="" coords="1881,68,2027,108"/>
+<area shape="poly" id="edge16_Node000015_Node000016" title=" " alt="" coords="2374,92,2027,91,2028,86,2374,86"/>
+<area shape="poly" id="edge17_Node000016_Node000004" title=" " alt="" coords="1867,91,1817,91,1817,85,1867,85"/>
+<area shape="poly" id="edge19_Node000017_Node000014" title=" " alt="" coords="2077,148,2043,148,2043,143,2077,143"/>
 </map>

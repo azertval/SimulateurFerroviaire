@@ -61,7 +61,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="SwitchOrientator_8cpp.html" target="_top" xlink:title="Implémentation des phases 6, 6b et 6c — orientation des aiguillages.">
+<g id="a_Node000004"><a xlink:href="SwitchOrientator_8cpp.html" target="_top" xlink:title="Implémentation des phases 6, 6b, 6c et 6d — orientation des aiguillages.">
 <polygon fill="white" stroke="#666666" points="600,-35.5 382,-35.5 382,-5.5 600,-5.5 600,-35.5"/>
 <text text-anchor="start" x="390" y="-23.5" font-family="Helvetica,sans-Serif" font-size="10.00">SimulateurFerroviaire</text>
 <text text-anchor="middle" x="491" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">/Modules/GeoParser/SwitchOrientator.cpp</text>

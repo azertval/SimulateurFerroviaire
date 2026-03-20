@@ -113,7 +113,7 @@ Collaboration diagram for TopologyEdge:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:adf14230c2b7c9969af546d7eb1f94224" id="r_adf14230c2b7c9969af546d7eb1f94224"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyEdge.html#adf14230c2b7c9969af546d7eb1f94224">TopologyEdge</a> ()=default</td></tr>
 <tr class="separator:adf14230c2b7c9969af546d7eb1f94224"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a675200794b0a30e7fbe353cd494121a6" id="r_a675200794b0a30e7fbe353cd494121a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyEdge.html#a675200794b0a30e7fbe353cd494121a6">TopologyEdge</a> (std::string edgeId, int startIndex, int endIndex, std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt; edgeGeometry)</td></tr>
+<tr class="memitem:a675200794b0a30e7fbe353cd494121a6" id="r_a675200794b0a30e7fbe353cd494121a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyEdge.html#a675200794b0a30e7fbe353cd494121a6">TopologyEdge</a> (std::string edgeId, int startIndex, int endIndex, std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt; edgeGeometry)</td></tr>
 <tr class="memdesc:a675200794b0a30e7fbe353cd494121a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit une arête complète avec calcul automatique de longueur.  <br /></td></tr>
 <tr class="separator:a675200794b0a30e7fbe353cd494121a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae630380ed8206e650b0221cb8bd1b35f" id="r_ae630380ed8206e650b0221cb8bd1b35f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyEdge.html#ae630380ed8206e650b0221cb8bd1b35f">recomputeLength</a> ()</td></tr>
@@ -131,7 +131,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ac488605fe1d85cfaae05f1286ddb9213"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44cdb5de5f6e9444ed28dd83297205e4" id="r_a44cdb5de5f6e9444ed28dd83297205e4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyEdge.html#a44cdb5de5f6e9444ed28dd83297205e4">endNodeIndex</a> = -1</td></tr>
 <tr class="separator:a44cdb5de5f6e9444ed28dd83297205e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ce7b0105dc2867f070ed7768d0f6616" id="r_a2ce7b0105dc2867f070ed7768d0f6616"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyEdge.html#a2ce7b0105dc2867f070ed7768d0f6616">geometry</a></td></tr>
+<tr class="memitem:a2ce7b0105dc2867f070ed7768d0f6616" id="r_a2ce7b0105dc2867f070ed7768d0f6616"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyEdge.html#a2ce7b0105dc2867f070ed7768d0f6616">geometry</a></td></tr>
 <tr class="separator:a2ce7b0105dc2867f070ed7768d0f6616"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41c94778c4ee6801728c74bc47d623c8" id="r_a41c94778c4ee6801728c74bc47d623c8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyEdge.html#a41c94778c4ee6801728c74bc47d623c8">lengthMeters</a> = 0.0</td></tr>
 <tr class="separator:a41c94778c4ee6801728c74bc47d623c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -198,7 +198,7 @@ Private Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td>
           <td class="paramname"><em>edgeGeometry</em>&#160;</td>
         </tr>
         <tr>
@@ -330,11 +330,11 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="structCoordinateXY.html">CoordinateXY</a>&gt; TopologyEdge::geometry</td>
+          <td class="memname">std::vector&lt;<a class="el" href="classCoordinateXY.html">CoordinateXY</a>&gt; TopologyEdge::geometry</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Polyligne métrique de l'arête (au moins 2 points). Exprimée en coordonnées UTM (<a class="el" href="structCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire).">CoordinateXY</a>). </p>
+<p>Polyligne métrique de l'arête (au moins 2 points). Exprimée en coordonnées UTM (<a class="el" href="classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire).">CoordinateXY</a>). </p>
 
 </div>
 </div>

@@ -13,7 +13,5 @@ var classGeoParser =
     [ "m_maxStraightLengthMeters", "classGeoParser.html#adaa93b9b257e2722521ad9c7dd11890b", null ],
     [ "m_minBranchLengthMeters", "classGeoParser.html#a9efda0e0eaf8241a2e5209712fb0624e", null ],
     [ "m_progressCallback", "classGeoParser.html#a9fcf3e65cfbe108920339b1960ae356a", null ],
-    [ "m_snapGridMeters", "classGeoParser.html#aa3c02d56a26efe354c7dd491ec05c736", null ],
-    [ "straights", "classGeoParser.html#a99b83036288088d5ee88056d4e982728", null ],
-    [ "switches", "classGeoParser.html#ab34819a75fdd3175b201d6ccafa1ad8e", null ]
+    [ "m_snapGridMeters", "classGeoParser.html#aa3c02d56a26efe354c7dd491ec05c736", null ]
 ];

@@ -1,35 +1,41 @@
 <map id="SimulateurFerroviaire/framework.h" name="SimulateurFerroviaire/framework.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="649,5,812,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="725,5,888,45"/>
 <area shape="rect" id="Node000002" href="$Application_8cpp.html" title="Implémentation du cycle de vie de l&#39;application Win32." alt="" coords="5,387,213,427"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="636,36,542,44,440,57,348,74,312,84,285,96,221,136,178,178,146,229,116,300,110,322,107,345,109,386,104,387,102,345,105,321,111,298,141,227,174,175,218,132,283,91,310,79,347,69,439,51,541,39,635,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="712,33,600,40,476,52,363,70,318,82,285,96,221,136,178,178,146,229,116,300,110,322,107,345,109,386,104,387,102,345,105,321,111,298,141,227,173,174,218,132,283,91,317,77,362,65,475,47,600,35,711,28"/>
 <area shape="rect" id="Node000003" href="$Application_8h.html" title="Gestion du cycle de vie de l&#39;application Win32." alt="" coords="126,299,319,339"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="635,36,553,44,467,56,391,74,362,84,340,96,316,117,295,143,262,200,241,256,229,299,224,298,236,255,257,198,290,140,312,113,337,91,359,79,390,68,466,51,553,39,635,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="712,33,612,39,503,51,405,69,368,81,340,96,315,117,294,142,261,200,240,256,229,299,224,298,235,254,257,197,290,139,312,113,337,91,366,77,404,64,502,46,611,34,712,27"/>
 <area shape="rect" id="Node000004" href="$SimulateurFerroviaire_8cpp.html" title="Point d&#39;entrée unique de l&#39;application Win32." alt="" coords="248,387,443,427"/>
-<area shape="poly" id="edge21_Node000001_Node000004" title=" " alt="" coords="636,31,587,38,535,50,485,68,439,95,408,126,385,163,368,204,357,246,347,327,347,386,341,386,341,327,351,245,363,202,380,160,404,123,436,91,482,63,534,44,586,32,635,26"/>
-<area shape="rect" id="Node000005" href="$AboutDialog_8cpp.html" title="Implémentation de la boîte de dialogue &quot;À propos&quot;." alt="" coords="920,203,1184,243"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="826,34,946,55,998,71,1031,91,1048,118,1056,148,1058,178,1057,203,1052,203,1053,178,1051,149,1043,120,1027,95,995,76,945,60,825,39"/>
-<area shape="rect" id="Node000006" href="$AboutDialog_8h.html" title="Déclaration de la boîte de dialogue &quot;À propos&quot;." alt="" coords="767,101,1017,141"/>
-<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="776,50,861,98,858,103,774,54"/>
-<area shape="rect" id="Node000007" href="$MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="945,299,1159,339"/>
-<area shape="poly" id="edge13_Node000001_Node000007" title=" " alt="" coords="826,24,924,34,977,45,1030,61,1081,83,1128,112,1168,149,1198,195,1208,224,1206,237,1198,252,1185,268,1169,282,1133,301,1131,296,1166,277,1181,265,1194,249,1201,236,1202,224,1194,197,1164,153,1125,117,1079,88,1029,66,976,51,923,40,826,29"/>
-<area shape="rect" id="Node000008" href="$FileOpenDialog_8cpp.html" title="Implémentation du sélecteur de fichier GeoJSON natif Win32." alt="" coords="1369,196,1583,251"/>
-<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="826,26,999,32,1198,44,1371,63,1431,76,1464,91,1480,115,1487,143,1487,171,1485,196,1479,195,1482,171,1482,144,1475,117,1461,95,1429,81,1370,68,1198,49,998,37,826,31"/>
-<area shape="rect" id="Node000009" href="$FileOpenDialog_8h.html" title="Déclaration du sélecteur de fichier GeoJSON." alt="" coords="1235,93,1450,148"/>
-<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="826,35,1007,59,1216,91,1236,94,1235,99,1216,96,1006,64,825,40"/>
-<area shape="rect" id="Node000010" href="$MainWindow_8h.html" title="Déclaration de la fenêtre principale de l&#39;application." alt="" coords="394,203,593,243"/>
-<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="636,40,580,48,526,61,481,76,465,85,454,95,447,107,445,121,450,150,463,178,480,202,475,205,459,180,445,151,439,121,442,106,450,92,462,81,479,71,525,55,579,43,635,34"/>
-<area shape="rect" id="Node000011" href="$GeoParsingTask_8cpp.html" title="Implémentation de la tâche de parsing GeoJSON asynchrone." alt="" coords="617,196,845,251"/>
-<area shape="poly" id="edge17_Node000001_Node000011" title=" " alt="" coords="733,59,733,196,728,196,728,59"/>
-<area shape="rect" id="Node000012" href="$GeoParsingTask_8h.html" title="Déclaration de la tâche de parsing GeoJSON asynchrone." alt="" coords="465,93,693,148"/>
-<area shape="poly" id="edge18_Node000001_Node000012" title=" " alt="" coords="690,55,623,96,620,91,687,50"/>
+<area shape="poly" id="edge25_Node000001_Node000004" title=" " alt="" coords="712,30,652,35,587,47,522,66,461,96,427,124,400,160,381,200,366,243,351,326,348,387,342,386,346,325,361,242,376,198,396,157,423,120,459,91,520,61,586,42,652,30,711,24"/>
+<area shape="rect" id="Node000005" href="$AboutDialog_8cpp.html" title="Implémentation de la boîte de dialogue &quot;À propos&quot;." alt="" coords="971,203,1235,243"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="902,32,963,41,1024,53,1075,70,1094,80,1107,92,1121,119,1123,150,1119,179,1112,204,1107,202,1114,178,1118,150,1115,121,1103,95,1091,84,1073,75,1023,58,962,46,901,38"/>
+<area shape="rect" id="Node000006" href="$AboutDialog_8h.html" title="Déclaration de la boîte de dialogue &quot;À propos&quot;." alt="" coords="843,101,1093,141"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="852,50,937,98,934,103,850,54"/>
+<area shape="rect" id="Node000007" href="$MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="826,299,1041,339"/>
+<area shape="poly" id="edge17_Node000001_Node000007" title=" " alt="" coords="813,59,821,101,834,147,872,212,924,297,919,300,867,215,830,149,816,103,808,60"/>
+<area shape="rect" id="Node000008" href="$FileOpenDialog_8cpp.html" title="Implémentation du sélecteur de fichier GeoJSON natif Win32." alt="" coords="1310,196,1525,251"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="902,29,1040,37,1194,50,1325,68,1371,79,1396,91,1413,115,1422,143,1424,171,1424,196,1418,195,1419,171,1417,144,1408,117,1393,95,1369,84,1324,74,1194,56,1040,43,901,34"/>
+<area shape="rect" id="Node000009" href="$FileOpenDialog_8h.html" title="Déclaration du sélecteur de fichier GeoJSON." alt="" coords="1167,93,1382,148"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="902,42,1149,91,1168,95,1167,100,1147,96,901,48"/>
+<area shape="rect" id="Node000010" href="$FileSaveDialog_8cpp.html" title="Implémentation du sélecteur de fichier GeoJSON natif Win32." alt="" coords="1599,196,1811,251"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="902,25,1106,29,1351,40,1467,48,1566,59,1641,73,1667,82,1683,91,1700,115,1709,143,1712,171,1712,196,1706,196,1707,171,1704,144,1696,117,1680,95,1664,87,1640,79,1565,64,1466,53,1351,45,1106,34,902,30"/>
+<area shape="rect" id="Node000011" href="$FileSaveDialog_8h.html" title="Déclaration du sélecteur de sauvegarde de fichier GeoJSON." alt="" coords="1457,93,1669,148"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="902,31,1146,53,1293,70,1439,91,1457,94,1456,99,1438,96,1292,75,1145,59,902,36"/>
+<area shape="rect" id="Node000012" href="$MainWindow_8h.html" title="Déclaration de la fenêtre principale de l&#39;application." alt="" coords="394,203,593,243"/>
+<area shape="poly" id="edge18_Node000001_Node000012" title=" " alt="" coords="712,35,643,43,574,55,515,72,494,83,479,95,472,107,468,120,468,149,476,178,486,202,481,204,471,180,463,150,463,119,467,105,475,92,491,79,513,67,572,50,642,38,711,30"/>
+<area shape="rect" id="Node000013" href="$GeoParsingTask_8cpp.html" title="Implémentation de la tâche de parsing GeoJSON asynchrone." alt="" coords="617,196,845,251"/>
+<area shape="poly" id="edge21_Node000001_Node000013" title=" " alt="" coords="797,59,743,197,738,195,792,57"/>
+<area shape="rect" id="Node000014" href="$GeoParsingTask_8h.html" title="Déclaration de la tâche de parsing GeoJSON asynchrone." alt="" coords="490,93,718,148"/>
+<area shape="poly" id="edge22_Node000001_Node000014" title=" " alt="" coords="755,53,662,96,660,91,752,49"/>
 <area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="188,349,136,389,133,384,185,345"/>
 <area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="262,344,320,384,317,389,259,349"/>
-<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="935,146,1023,201,1021,206,932,150"/>
-<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="890,154,892,202,899,227,910,249,940,277,978,296,975,301,937,282,906,252,894,229,887,203,885,155"/>
-<area shape="poly" id="edge12_Node000009_Node000007" title=" " alt="" coords="1323,161,1288,209,1266,232,1242,253,1190,281,1136,301,1135,296,1188,277,1238,248,1262,228,1284,205,1318,158"/>
-<area shape="poly" id="edge11_Node000009_Node000008" title=" " alt="" coords="1390,154,1443,194,1439,198,1387,158"/>
-<area shape="poly" id="edge15_Node000010_Node000003" title=" " alt="" coords="426,250,278,301,276,296,425,245"/>
-<area shape="poly" id="edge16_Node000010_Node000007" title=" " alt="" coords="584,244,606,248,785,278,945,301,944,306,784,284,605,253,583,249"/>
-<area shape="poly" id="edge19_Node000012_Node000010" title=" " alt="" coords="549,161,512,205,508,201,545,157"/>
-<area shape="poly" id="edge20_Node000012_Node000011" title=" " alt="" coords="631,153,692,194,689,198,628,158"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="1006,147,1079,201,1076,205,1003,151"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="965,154,939,299,934,298,960,153"/>
+<area shape="poly" id="edge12_Node000009_Node000007" title=" " alt="" coords="1279,162,1273,209,1263,232,1248,253,1215,273,1163,288,1041,310,1040,304,1162,283,1212,268,1245,249,1259,230,1267,208,1274,161"/>
+<area shape="poly" id="edge11_Node000009_Node000008" title=" " alt="" coords="1325,154,1381,194,1378,198,1321,158"/>
+<area shape="poly" id="edge16_Node000011_Node000007" title=" " alt="" coords="1569,162,1563,209,1554,233,1539,253,1513,265,1468,276,1338,293,1183,306,1041,315,1041,310,1183,301,1337,288,1467,270,1512,260,1536,249,1550,230,1558,208,1564,162"/>
+<area shape="poly" id="edge15_Node000011_Node000010" title=" " alt="" coords="1613,154,1669,194,1666,198,1609,158"/>
+<area shape="poly" id="edge19_Node000012_Node000003" title=" " alt="" coords="426,250,278,301,276,296,425,245"/>
+<area shape="poly" id="edge20_Node000012_Node000007" title=" " alt="" coords="587,244,606,248,838,296,837,301,605,253,586,249"/>
+<area shape="poly" id="edge23_Node000014_Node000012" title=" " alt="" coords="566,160,516,205,512,201,563,156"/>
+<area shape="poly" id="edge24_Node000014_Node000013" title=" " alt="" coords="650,155,699,194,696,198,647,159"/>
 </map>

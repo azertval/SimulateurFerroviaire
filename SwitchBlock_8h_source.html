@@ -119,7 +119,7 @@ $(document).ready(function(){initNavTree('SwitchBlock_8h_source.html',''); initR
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classSwitchBlock.html#a05f81ee2e6dafd1f2805c85b6abb147c">   40</a></span>    std::string <a class="code hl_variable" href="classSwitchBlock.html#a05f81ee2e6dafd1f2805c85b6abb147c">id</a>;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classSwitchBlock.html#adc2d20ac6d2043f9d6e8f30df0e9a7e5">   43</a></span>    <a class="code hl_struct" href="structLatLon.html">LatLon</a> <a class="code hl_variable" href="classSwitchBlock.html#adc2d20ac6d2043f9d6e8f30df0e9a7e5">junctionCoordinate</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classSwitchBlock.html#adc2d20ac6d2043f9d6e8f30df0e9a7e5">   43</a></span>    <a class="code hl_class" href="classLatLon.html">LatLon</a> <a class="code hl_variable" href="classSwitchBlock.html#adc2d20ac6d2043f9d6e8f30df0e9a7e5">junctionCoordinate</a>;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classSwitchBlock.html#accb5d67518dff64ab8bcc6f1693fe2bc">   51</a></span>    std::vector&lt;std::string&gt; <a class="code hl_variable" href="classSwitchBlock.html#accb5d67518dff64ab8bcc6f1693fe2bc">branchIds</a>;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
@@ -163,7 +163,7 @@ $(document).ready(function(){initNavTree('SwitchBlock_8h_source.html',''); initR
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classSwitchBlock.html#ad6536f8891b40359de7e09db486294ba">  108</a></span>    <a class="code hl_function" href="classSwitchBlock.html#ad6536f8891b40359de7e09db486294ba">SwitchBlock</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <a class="code hl_function" href="classSwitchBlock.html#ad6536f8891b40359de7e09db486294ba">SwitchBlock</a>(std::string              switchId,</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                <a class="code hl_struct" href="structLatLon.html">LatLon</a>                   junctionCoord,</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                <a class="code hl_class" href="classLatLon.html">LatLon</a>                   junctionCoord,</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                std::vector&lt;std::string&gt; initialBranchIds = {});</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
@@ -179,10 +179,11 @@ $(document).ready(function(){initNavTree('SwitchBlock_8h_source.html',''); initR
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code hl_function" href="classSwitchBlock.html#a0b9a043a28a15101cafc39ec28f2057e">haversineDistanceMeters</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structLatLon.html">LatLon</a>&amp; pointA, <span class="keyword">const</span> <a class="code hl_struct" href="structLatLon.html">LatLon</a>&amp; pointB);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code hl_function" href="classSwitchBlock.html#a0b9a043a28a15101cafc39ec28f2057e">haversineDistanceMeters</a>(<span class="keyword">const</span> <a class="code hl_class" href="classLatLon.html">LatLon</a>&amp; pointA, <span class="keyword">const</span> <a class="code hl_class" href="classLatLon.html">LatLon</a>&amp; pointB);</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>};</div>
 </div>
 <div class="ttc" id="aLatLon_8h_html"><div class="ttname"><a href="LatLon_8h.html">LatLon.h</a></div><div class="ttdoc">Représentation d'une coordonnée géographique WGS-84 (latitude, longitude).</div></div>
+<div class="ttc" id="aclassLatLon_html"><div class="ttname"><a href="classLatLon.html">LatLon</a></div><div class="ttdoc">Coordonnée géographique WGS-84 exprimée en degrés décimaux.</div><div class="ttdef"><b>Definition</b> LatLon.h:22</div></div>
 <div class="ttc" id="aclassSwitchBlock_html"><div class="ttname"><a href="classSwitchBlock.html">SwitchBlock</a></div><div class="ttdoc">Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.</div><div class="ttdef"><b>Definition</b> SwitchBlock.h:32</div></div>
 <div class="ttc" id="aclassSwitchBlock_html_a003ca555f7f3dfd8e8057ae23dba9381"><div class="ttname"><a href="classSwitchBlock.html#a003ca555f7f3dfd8e8057ae23dba9381">SwitchBlock::computeTotalLength</a></div><div class="ttdeci">void computeTotalLength()</div><div class="ttdoc">Calcule et mémorise totalLengthMeters.</div><div class="ttdef"><b>Definition</b> SwitchBlock.cpp:46</div></div>
 <div class="ttc" id="aclassSwitchBlock_html_a05f81ee2e6dafd1f2805c85b6abb147c"><div class="ttname"><a href="classSwitchBlock.html#a05f81ee2e6dafd1f2805c85b6abb147c">SwitchBlock::id</a></div><div class="ttdeci">std::string id</div><div class="ttdef"><b>Definition</b> SwitchBlock.h:40</div></div>
@@ -203,7 +204,6 @@ $(document).ready(function(){initNavTree('SwitchBlock_8h_source.html',''); initR
 <div class="ttc" id="aclassSwitchBlock_html_adc2d20ac6d2043f9d6e8f30df0e9a7e5"><div class="ttname"><a href="classSwitchBlock.html#adc2d20ac6d2043f9d6e8f30df0e9a7e5">SwitchBlock::junctionCoordinate</a></div><div class="ttdeci">LatLon junctionCoordinate</div><div class="ttdef"><b>Definition</b> SwitchBlock.h:43</div></div>
 <div class="ttc" id="aclassSwitchBlock_html_ae4c9ab5c95d6c5e9779fcf2d948787a5"><div class="ttname"><a href="classSwitchBlock.html#ae4c9ab5c95d6c5e9779fcf2d948787a5">SwitchBlock::isDoubleSwitch</a></div><div class="ttdeci">bool isDoubleSwitch</div><div class="ttdef"><b>Definition</b> SwitchBlock.h:85</div></div>
 <div class="ttc" id="aclassSwitchBlock_html_aea93b851aa44fe28738f3a406c2f778a"><div class="ttname"><a href="classSwitchBlock.html#aea93b851aa44fe28738f3a406c2f778a">SwitchBlock::normalBranchId</a></div><div class="ttdeci">std::optional&lt; std::string &gt; normalBranchId</div><div class="ttdef"><b>Definition</b> SwitchBlock.h:62</div></div>
-<div class="ttc" id="astructLatLon_html"><div class="ttname"><a href="structLatLon.html">LatLon</a></div><div class="ttdoc">Coordonnée géographique WGS-84 exprimée en degrés décimaux.</div><div class="ttdef"><b>Definition</b> LatLon.h:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

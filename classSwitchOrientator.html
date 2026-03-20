@@ -99,23 +99,23 @@ $(document).ready(function(){initNavTree('classSwitchOrientator.html',''); initR
 </div><!--header-->
 <div class="contents">
 
-<p>Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC).  
+<p>Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC) et supprime les chevauchements junction/straight.  
  <a href="classSwitchOrientator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="SwitchOrientator_8h_source.html">SwitchOrientator.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for SwitchOrientator:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator__coll__graph.svg" width="406" height="724"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator__coll__graph.svg" width="406" height="744"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a46a28c6219eff3633abd7e111321a877" id="r_a46a28c6219eff3633abd7e111321a877"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#a46a28c6219eff3633abd7e111321a877">SwitchOrientator</a> (<a class="el" href="classLogger.html">Logger</a> &amp;logger, <a class="el" href="structTopologyExtractResult.html">TopologyExtractResult</a> &amp;topoResult, int utmZoneNumber, bool isNorthernHemisphere, double doubleLinkMaxMeters=<a class="el" href="structParserDefaultValues.html#a8ca771fe2ea1bf9fb173af902e0b1a31">ParserDefaultValues::DOUBLE_LINK_MAX_METERS</a>, double branchTipDistanceMeters=<a class="el" href="structParserDefaultValues.html#a5566a0671108872abd8f48583c4ac86e">ParserDefaultValues::BRANCH_TIP_DISTANCE_METERS</a>)</td></tr>
-<tr class="memdesc:a46a28c6219eff3633abd7e111321a877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit le <a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC).">SwitchOrientator</a>.  <br /></td></tr>
+<tr class="memitem:a46a28c6219eff3633abd7e111321a877" id="r_a46a28c6219eff3633abd7e111321a877"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#a46a28c6219eff3633abd7e111321a877">SwitchOrientator</a> (<a class="el" href="classLogger.html">Logger</a> &amp;logger, <a class="el" href="structTopologyExtractResult.html">TopologyExtractResult</a> &amp;topoResult, int utmZoneNumber, bool isNorthernHemisphere, double doubleLinkMaxMeters=<a class="el" href="classParserDefaultValues.html#a8ca771fe2ea1bf9fb173af902e0b1a31">ParserDefaultValues::DOUBLE_LINK_MAX_METERS</a>, double branchTipDistanceMeters=<a class="el" href="classParserDefaultValues.html#a5566a0671108872abd8f48583c4ac86e">ParserDefaultValues::BRANCH_TIP_DISTANCE_METERS</a>)</td></tr>
+<tr class="memdesc:a46a28c6219eff3633abd7e111321a877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit le <a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC) et supprime les chevauche...">SwitchOrientator</a>.  <br /></td></tr>
 <tr class="separator:a46a28c6219eff3633abd7e111321a877"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5af1a097baad421ce01bd013be602df7" id="r_a5af1a097baad421ce01bd013be602df7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#a5af1a097baad421ce01bd013be602df7">orient</a> ()</td></tr>
-<tr class="memdesc:a5af1a097baad421ce01bd013be602df7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exécute les phases 6, 6b et 6c en place sur topoResult.switches.  <br /></td></tr>
+<tr class="memdesc:a5af1a097baad421ce01bd013be602df7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exécute les phases 6, 6b, 6c et 6d en place sur topoResult.  <br /></td></tr>
 <tr class="separator:a5af1a097baad421ce01bd013be602df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
@@ -126,7 +126,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a8132fa3495845481fdb68a3ec695af15" id="r_a8132fa3495845481fdb68a3ec695af15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#a8132fa3495845481fdb68a3ec695af15">computeBranchTipPoints</a> (<a class="el" href="classSwitchBlock.html">SwitchBlock</a> &amp;switchBlock, const std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;straightById)</td></tr>
 <tr class="memdesc:a8132fa3495845481fdb68a3ec695af15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule et assigne les points tip CDC sur un <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> orienté.  <br /></td></tr>
 <tr class="separator:a8132fa3495845481fdb68a3ec695af15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af602429b8a3a2d38e92515cfd2d76ecd" id="r_af602429b8a3a2d38e92515cfd2d76ecd"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd">interpolateTipPoint</a> (const std::string &amp;straightId, const <a class="el" href="structLatLon.html">LatLon</a> &amp;junctionCoord, double distanceMeters, const std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;straightById)</td></tr>
+<tr class="memitem:af602429b8a3a2d38e92515cfd2d76ecd" id="r_af602429b8a3a2d38e92515cfd2d76ecd"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd">interpolateTipPoint</a> (const std::string &amp;straightId, const <a class="el" href="classLatLon.html">LatLon</a> &amp;junctionCoord, double distanceMeters, const std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;straightById)</td></tr>
 <tr class="memdesc:af602429b8a3a2d38e92515cfd2d76ecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpole un point tip à distanceMeters depuis la jonction le long d'un Straight.  <br /></td></tr>
 <tr class="separator:af602429b8a3a2d38e92515cfd2d76ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2786825e04cc0836549bb23a2b6242b4" id="r_a2786825e04cc0836549bb23a2b6242b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#a2786825e04cc0836549bb23a2b6242b4">alignDoubleSwitchRoles</a> (const std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;straightById)</td></tr>
@@ -135,7 +135,10 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:acdcd6a442cb52bed611a302b1358c8bb" id="r_acdcd6a442cb52bed611a302b1358c8bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#acdcd6a442cb52bed611a302b1358c8bb">enforceCrossoverConsistency</a> ()</td></tr>
 <tr class="memdesc:acdcd6a442cb52bed611a302b1358c8bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force la branche partagée au rôle DEVIATION sur les deux aiguillages formant un croisement mécanique (2 branches partagées).  <br /></td></tr>
 <tr class="separator:acdcd6a442cb52bed611a302b1358c8bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad2a4892eb6f9d716bd4703694813f46" id="r_aad2a4892eb6f9d716bd4703694813f46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCoordinateXY.html">CoordinateXY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#aad2a4892eb6f9d716bd4703694813f46">computeBranchDirectionVector</a> (const std::string &amp;straightId, const <a class="el" href="structLatLon.html">LatLon</a> &amp;junctionCoord, const std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;straightById) const</td></tr>
+<tr class="memitem:ac80814892c9baea379f2b4e9f22b966e" id="r_ac80814892c9baea379f2b4e9f22b966e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#ac80814892c9baea379f2b4e9f22b966e">trimStraightOverlaps</a> (std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;straightById)</td></tr>
+<tr class="memdesc:ac80814892c9baea379f2b4e9f22b966e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retaille chaque <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> adjacent à une jonction pour qu'il commence (ou se termine) exactement au point tip CDC.  <br /></td></tr>
+<tr class="separator:ac80814892c9baea379f2b4e9f22b966e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad2a4892eb6f9d716bd4703694813f46" id="r_aad2a4892eb6f9d716bd4703694813f46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCoordinateXY.html">CoordinateXY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#aad2a4892eb6f9d716bd4703694813f46">computeBranchDirectionVector</a> (const std::string &amp;straightId, const <a class="el" href="classLatLon.html">LatLon</a> &amp;junctionCoord, const std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;straightById) const</td></tr>
 <tr class="memdesc:aad2a4892eb6f9d716bd4703694813f46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la direction (vecteur lat/lon) depuis junctionCoord vers l'extrémité distale du <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>.  <br /></td></tr>
 <tr class="separator:aad2a4892eb6f9d716bd4703694813f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -155,7 +158,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a8b4cccb7f56d525cdea27c7cb1683fa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC). </p>
+<div class="textblock"><p>Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC) et supprime les chevauchements junction/straight. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a46a28c6219eff3633abd7e111321a877" name="a46a28c6219eff3633abd7e111321a877"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a46a28c6219eff3633abd7e111321a877">&#9670;&#160;</a></span>SwitchOrientator()</h2>
@@ -191,13 +194,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>doubleLinkMaxMeters</em> = <code><a class="el" href="structParserDefaultValues.html#a8ca771fe2ea1bf9fb173af902e0b1a31">ParserDefaultValues::DOUBLE_LINK_MAX_METERS</a></code>, </td>
+          <td class="paramname"><em>doubleLinkMaxMeters</em> = <code><a class="el" href="classParserDefaultValues.html#a8ca771fe2ea1bf9fb173af902e0b1a31">ParserDefaultValues::DOUBLE_LINK_MAX_METERS</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>branchTipDistanceMeters</em> = <code><a class="el" href="structParserDefaultValues.html#a5566a0671108872abd8f48583c4ac86e">ParserDefaultValues::BRANCH_TIP_DISTANCE_METERS</a></code>&#160;</td>
+          <td class="paramname"><em>branchTipDistanceMeters</em> = <code><a class="el" href="classParserDefaultValues.html#a5566a0671108872abd8f48583c4ac86e">ParserDefaultValues::BRANCH_TIP_DISTANCE_METERS</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -207,7 +210,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construit le <a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC).">SwitchOrientator</a>. </p>
+<p>Construit le <a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC) et supprime les chevauche...">SwitchOrientator</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">logger</td><td>Référence au logger du moteur <a class="el" href="classGeoParser.html">GeoParser</a>. </td></tr>
@@ -215,7 +218,7 @@ Private Attributes</h2></td></tr>
     <tr><td class="paramname">utmZoneNumber</td><td>Zone UTM pour la reprojection des tips. </td></tr>
     <tr><td class="paramname">isNorthernHemisphere</td><td>True pour l'hémisphère nord. </td></tr>
     <tr><td class="paramname">doubleLinkMaxMeters</td><td>Longueur max du segment de liaison d'un double aiguille. </td></tr>
-    <tr><td class="paramname">branchTipDistanceMeters</td><td>Distance tip CDC depuis la jonction. </td></tr>
+    <tr><td class="paramname">branchTipDistanceMeters</td><td>Distance tip CDC depuis la jonction. Détermine aussi la longueur des branches du switch et la quantité retaillée sur les Straights adjacents. </td></tr>
   </table>
   </dd>
 </dl>
@@ -272,7 +275,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structCoordinateXY.html">CoordinateXY</a> SwitchOrientator::computeBranchDirectionVector </td>
+          <td class="memname"><a class="el" href="classCoordinateXY.html">CoordinateXY</a> SwitchOrientator::computeBranchDirectionVector </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>straightId</em>, </td>
@@ -280,7 +283,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structLatLon.html">LatLon</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classLatLon.html">LatLon</a> &amp;&#160;</td>
           <td class="paramname"><em>junctionCoord</em>, </td>
         </tr>
         <tr>
@@ -311,7 +314,7 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vecteur direction <a class="el" href="structCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire).">CoordinateXY</a> (composantes lat/lon normalisées). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vecteur direction <a class="el" href="classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire).">CoordinateXY</a> (composantes lat/lon). </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -417,7 +420,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt; <a class="el" href="structLatLon.html">LatLon</a> &gt; SwitchOrientator::interpolateTipPoint </td>
+          <td class="memname">std::optional&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt; SwitchOrientator::interpolateTipPoint </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>straightId</em>, </td>
@@ -425,7 +428,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structLatLon.html">LatLon</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classLatLon.html">LatLon</a> &amp;&#160;</td>
           <td class="paramname"><em>junctionCoord</em>, </td>
         </tr>
         <tr>
@@ -492,11 +495,15 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Exécute les phases 6, 6b et 6c en place sur topoResult.switches. </p>
+<p>Exécute les phases 6, 6b, 6c et 6d en place sur topoResult. </p>
+<p>Après cet appel :</p><ul>
+<li>Chaque <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> orienté dispose de junctionCoordinate + 3 tips CDC.</li>
+<li>Chaque <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> adjacent à une jonction débute (ou se termine) au point tip CDC — aucun chevauchement avec les branches du switch. </li>
+</ul>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_a5af1a097baad421ce01bd013be602df7_cgraph.svg" width="1548" height="339"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_a5af1a097baad421ce01bd013be602df7_cgraph.svg" width="1556" height="463"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -557,6 +564,58 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_a0ed66205a222764fb0ad914425ba0f6e_icgraph.svg" width="2274" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ac80814892c9baea379f2b4e9f22b966e" name="ac80814892c9baea379f2b4e9f22b966e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac80814892c9baea379f2b4e9f22b966e">&#9670;&#160;</a></span>trimStraightOverlaps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchOrientator::trimStraightOverlaps </td>
+          <td>(</td>
+          <td class="paramtype">std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>straightById</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retaille chaque <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> adjacent à une jonction pour qu'il commence (ou se termine) exactement au point tip CDC. </p>
+<p>Algorithme : Pour chaque switch orienté, pour chaque branche (root / normal / deviation) :</p><ol type="1">
+<li>Identifier quel bout du Straight est côté jonction.</li>
+<li>Convertir la polyligne en métrique UTM, jonction en tête.</li>
+<li>Parcourir les segments jusqu'à cumuler branchTipDistanceMeters ; interpoler le point de coupure exact.</li>
+<li>Reconstituer la polyligne à partir de ce point, reconvertir en WGS-84.</li>
+<li>Recalculer <a class="el" href="classStraightBlock.html#aa169e5936f6935916fd5beb51c176a2c">StraightBlock::lengthMeters</a>.</li>
+</ol>
+<p>Un ensemble (straightId, junctionAtFront) garantit qu'un même bout n'est jamais retaillé deux fois (croisements mécaniques, doubles aiguilles).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">straightById</td><td>Index mutable des <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_ac80814892c9baea379f2b4e9f22b966e_cgraph.svg" width="1048" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_ac80814892c9baea379f2b4e9f22b966e_icgraph.svg" width="2314" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

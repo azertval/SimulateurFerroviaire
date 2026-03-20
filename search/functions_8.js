@@ -1,10 +1,11 @@
 var searchData=
 [
   ['initializewebview_0',['initializeWebView',['../classWebViewPanel.html#a886fd07f1d23eec535d0b57215c6ce50',1,'WebViewPanel']]],
-  ['interpolatetippoint_1',['interpolateTipPoint',['../classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd',1,'SwitchOrientator']]],
-  ['invalidgeojsonformatexception_2',['InvalidGeoJsonFormatException',['../classInvalidGeoJsonFormatException.html#a6a575f1b2ef3060938b86ad75907eb3c',1,'InvalidGeoJsonFormatException']]],
-  ['invalidswitchconfigexception_3',['InvalidSwitchConfigException',['../classInvalidSwitchConfigException.html#abaaafef573235d7c5ea379dfeddb7359',1,'InvalidSwitchConfigException']]],
-  ['invalidtopologyexception_4',['InvalidTopologyException',['../classInvalidTopologyException.html#a5710b8640dbf0e049d7bd6e17ea47eb2',1,'InvalidTopologyException']]],
-  ['isinitialized_5',['isInitialized',['../classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2',1,'WebViewPanel']]],
-  ['isoriented_6',['isOriented',['../classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7',1,'SwitchBlock']]]
+  ['instance_1',['instance',['../classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509',1,'TopologyRepository']]],
+  ['interpolatetippoint_2',['interpolateTipPoint',['../classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd',1,'SwitchOrientator']]],
+  ['invalidgeojsonformatexception_3',['InvalidGeoJsonFormatException',['../classInvalidGeoJsonFormatException.html#a6a575f1b2ef3060938b86ad75907eb3c',1,'InvalidGeoJsonFormatException']]],
+  ['invalidswitchconfigexception_4',['InvalidSwitchConfigException',['../classInvalidSwitchConfigException.html#abaaafef573235d7c5ea379dfeddb7359',1,'InvalidSwitchConfigException']]],
+  ['invalidtopologyexception_5',['InvalidTopologyException',['../classInvalidTopologyException.html#a5710b8640dbf0e049d7bd6e17ea47eb2',1,'InvalidTopologyException']]],
+  ['isinitialized_6',['isInitialized',['../classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2',1,'WebViewPanel']]],
+  ['isoriented_7',['isOriented',['../classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7',1,'SwitchBlock']]]
 ];

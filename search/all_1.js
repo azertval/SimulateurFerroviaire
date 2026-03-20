@@ -3,7 +3,7 @@ var searchData=
   ['aboutdialog_0',['aboutdialog',['../classAboutDialog.html',1,'AboutDialog'],['../classAboutDialog.html#a2f97cbd5f2555ff136bb201f24f86525',1,'AboutDialog::AboutDialog()']]],
   ['aboutdialog_2ecpp_1',['AboutDialog.cpp',['../AboutDialog_8cpp.html',1,'']]],
   ['aboutdialog_2eh_2',['AboutDialog.h',['../AboutDialog_8h.html',1,'']]],
-  ['absent_5fneighbour_3',['ABSENT_NEIGHBOUR',['../structTopologySentinel.html#a72c4246d507d15feec0da2f594c408ea',1,'TopologySentinel']]],
+  ['absent_5fneighbour_3',['ABSENT_NEIGHBOUR',['../classTopologySentinel.html#a72c4246d507d15feec0da2f594c408ea',1,'TopologySentinel']]],
   ['absorblinksegment_4',['absorbLinkSegment',['../classDoubleSwitchDetector.html#a3be8598fec31308ef13ff0ccd942d319',1,'DoubleSwitchDetector']]],
   ['addedge_5',['addEdge',['../classTopologyGraph.html#a99f720078a226f9d62b284d67194153b',1,'TopologyGraph']]],
   ['adjacency_6',['adjacency',['../classTopologyGraph.html#a32d45f877383238871e9522eb306b20f',1,'TopologyGraph']]],
@@ -14,6 +14,6 @@ var searchData=
   ['application_11',['application',['../classApplication.html',1,'Application'],['../classApplication.html#a719cf091afd2276d52f9a58e4962ebfb',1,'Application::Application()']]],
   ['application_2ecpp_12',['Application.cpp',['../Application_8cpp.html',1,'']]],
   ['application_2eh_13',['Application.h',['../Application_8h.html',1,'']]],
-  ['auteur_14',['✨ Auteur',['../index.html#autotoc_md26',1,'']]],
-  ['autorisé_20à_20_3a_15',['Vous êtes autorisé à :',['../index.html#autotoc_md23',1,'']]]
+  ['auteur_14',['✨ Auteur',['../index.html#autotoc_md29',1,'']]],
+  ['autorisé_20à_20_3a_15',['Vous êtes autorisé à :',['../index.html#autotoc_md26',1,'']]]
 ];

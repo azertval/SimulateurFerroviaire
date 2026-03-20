@@ -122,13 +122,18 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </li>
 <li><a class="el" href="classProgressBar.html">ProgressBar</a> → affichage des tâches longues <br  />
 </li>
-<li><a class="el" href="classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué.">WebViewPanel</a> → affichage de openstreetview (Leaflet) <br  />
+<li><a class="el" href="classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué.">WebViewPanel</a> → affichage de openstreetview (<a class="el" href="classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>) <br  />
+<ul>
+<li>leaflet.js décrit l'ensemble des scripts d'injections <br  />
+</li>
+</ul>
 </li>
 <li>Dialogs<ul>
 <li><a class="el" href="classAboutDialog.html" title="Boîte de dialogue modale &quot;À propos&quot; de l&#39;application.">AboutDialog</a> <br  />
 </li>
 <li><a class="el" href="classFileOpenDialog.html" title="Sélecteur de fichier GeoJSON (ou JSON) natif Win32.">FileOpenDialog</a> <br  />
 </li>
+<li><a class="el" href="classFileSaveDialog.html" title="Sauvegarde de fichier GeoJSON (ou JSON) natif Win32.">FileSaveDialog</a></li>
 </ul>
 </li>
 </ul>
@@ -136,11 +141,15 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <h1><a class="anchor" id="autotoc_md7"></a>
 🧩 Modules — Fonctionnalités métier</h1>
 <p>Modules indépendants responsables du traitement ferroviaire.</p>
-<h2><a class="anchor" id="autotoc_md8"></a>
-🌍 GeoParser — Pipeline principal</h2>
+<hr  />
+<h1><a class="anchor" id="autotoc_md9"></a>
+🌍 GeoParser — Pipeline principal</h1>
 <p>Pipeline complet de transformation GeoJSON → modèle ferroviaire.</p>
-<h3><a class="anchor" id="autotoc_md9"></a>
-🔄 Pipeline global</h3>
+<p><a class="el" href="classGeoParsingTask.html" title="Tâche asynchrone encapsulant l&#39;exécution du GeoParser.">GeoParsingTask</a></p><ul>
+<li>Tâche asynchrone de parsing</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md10"></a>
+🔄 Pipeline global</h2>
 <ol type="1">
 <li>Chargement GeoJSON <br  />
 </li>
@@ -152,10 +161,11 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </li>
 <li>Détection des doubles aiguilles <br  />
 </li>
+<li>Clear + Sauvegarde du modèle ferroviaire dans le singleton <a class="el" href="classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a></li>
 </ol>
 <p>👉 Voir implémentation dans : <a class="el" href="classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet.">GeoParser::parse()</a></p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 🗺️ Parsing &amp; Construction</h2>
 <p><a class="el" href="classGeoParser.html">GeoParser</a></p><ul>
 <li>Orchestrateur du pipeline complet</li>
@@ -167,7 +177,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li>Outils géométriques (conversion, validation, calculs)</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 🔗 Graphe topologique</h2>
 <p><a class="el" href="classGraphBuilder.html" title="Charge un fichier GeoJSON et construit le TopologyGraph métrique.">GraphBuilder</a></p><ul>
 <li>Construction du graphe à partir du GeoJSON <br  />
@@ -184,12 +194,12 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li>Arête entre deux nœuds avec géométrie métrique</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 🧠 Extraction ferroviaire</h2>
 <p><a class="el" href="classTopologyExtractor.html" title="Extrait la topologie ferroviaire (Switch + Straight) depuis un TopologyGraph.">TopologyExtractor</a></p><ul>
 <li>Extraction des blocs à partir du graphe</li>
 </ul>
-<p><a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC).">SwitchOrientator</a></p><ul>
+<p><a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC) et supprime les chevauche...">SwitchOrientator</a></p><ul>
 <li>Orientation des aiguillages (root / normal / deviation)</li>
 </ul>
 <p><a class="el" href="classDoubleSwitchDetector.html">DoubleSwitchDetector</a></p><ul>
@@ -198,24 +208,27 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li>Validation des contraintes métier (CDC)</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md17"></a>
-📦 Models — Modèle de données</h1>
-<p>Représentation des entités ferroviaires manipulées par le pipeline.</p>
-<h2><a class="anchor" id="autotoc_md18"></a>
-📍 Coordonnées</h2>
-<ul>
-<li><a class="el" href="structCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire).">CoordinateXY</a><ul>
-<li>Coordonnées métriques (UTM)</li>
-</ul>
-</li>
-<li><a class="el" href="structLatLon.html" title="Coordonnée géographique WGS-84 exprimée en degrés décimaux.">LatLon</a><ul>
-<li>Coordonnées géographiques WGS84</li>
-</ul>
-</li>
+<h1><a class="anchor" id="autotoc_md18"></a>
+🌍 GeoJsonExporter — Exportation des données</h1>
+<p><a class="el" href="classGeoJsonExporter.html" title="Utilitaire statique d&#39;export de la topologie ferroviaire en GeoJSON.">GeoJsonExporter</a></p><ul>
+<li>Exportation du modèle ferroviaire en GeoJSON</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h1><a class="anchor" id="autotoc_md20"></a>
+📦 Models — Modèle de données</h1>
+<p>Représentation des entités ferroviaires manipulées par le pipeline.</p>
+<h2><a class="anchor" id="autotoc_md21"></a>
+📍 Coordonnées</h2>
+<p><a class="el" href="classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire).">CoordinateXY</a></p><ul>
+<li>Coordonnées métriques (UTM) <a class="el" href="classLatLon.html" title="Coordonnée géographique WGS-84 exprimée en degrés décimaux.">LatLon</a></li>
+<li>Coordonnées géographiques WGS84</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md23"></a>
 🚧 Blocs ferroviaires</h2>
+<p><a class="el" href="classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a></p><ul>
+<li>Stockage des données topologiques (<a class="el" href="classTopologyData.html" title="Conteneur partagé entre tous les modules métier et la couche HMI.">TopologyData</a>) en singleton</li>
+</ul>
 <p><a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a></p><ul>
 <li>Tronçon de voie droite</li>
 <li>Longueur calculée via Haversine</li>
@@ -225,18 +238,18 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li>Orientation + calculs géométriques</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md25"></a>
 📜 Licence</h1>
 <p>Ce projet est distribué sous licence :</p>
 <p><b>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</b></p>
 <p>👉 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 Vous êtes autorisé à :</h2>
 <ul>
 <li>✔️ Partager — copier et redistribuer le matériel</li>
 <li>✔️ Adapter — remixer, transformer et créer à partir du matériel</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 Sous les conditions suivantes :</h2>
 <ul>
 <li>📝 Attribution — vous devez créditer l’auteur</li>
@@ -244,7 +257,7 @@ Sous les conditions suivantes :</h2>
 <li>🔁 Partage dans les mêmes conditions — redistribution sous la même licence</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md29"></a>
 ✨ Auteur</h1>
 <p>© 2026 Valentin Eloy </p>
 </div></div><!-- PageDoc -->

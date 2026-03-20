@@ -1,0 +1,16 @@
+<map id="MainWindow::onFileExport" name="MainWindow::onFileExport">
+<area shape="rect" id="Node000001" title="Ouvre le dialogue d&#39;exportation et déclenche l&#39;export GeoJSON." alt="" coords="5,134,200,159"/>
+<area shape="rect" id="Node000002" href="$classGeoJsonExporter.html#a933abb8a4cbc84d34ced90a170d170d3" title="Exporte la topologie ferroviaire dans un fichier GeoJSON." alt="" coords="248,109,465,134"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,134,234,131,235,136,200,140"/>
+<area shape="rect" id="Node000007" href="$classFileSaveDialog.html#ab97de3eb250a4a24fb620a8a50161bfd" title="Affiche le sélecteur de fichier natif Windows." alt="" coords="277,158,436,183"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="200,153,264,159,264,165,200,158"/>
+<area shape="rect" id="Node000003" href="$classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" title=" " alt="" coords="513,5,700,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="387,106,512,55,532,48,534,53,514,60,389,111"/>
+<area shape="rect" id="Node000004" href="$classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" title=" " alt="" coords="513,69,700,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="456,106,499,100,500,106,456,111"/>
+<area shape="rect" id="Node000005" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="531,133,682,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="456,131,518,139,517,145,456,137"/>
+<area shape="rect" id="Node000006" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="531,221,682,261"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="437,132,467,143,492,162,515,183,559,212,556,216,512,187,488,166,464,148,435,137"/>
+<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="561,222,558,212,565,202,582,197,607,195,635,198,651,205,649,210,634,203,607,200,583,202,568,207,563,213,566,220"/>
+</map>

@@ -1,0 +1,24 @@
+<map id="SimulateurFerroviaire/Modules/Models/TopologyRepository.h" name="SimulateurFerroviaire/Modules/Models/TopologyRepository.h">
+<area shape="rect" id="Node000001" title="Singleton de stockage des données topologiques ferroviaires." alt="" coords="5,5,280,45"/>
+<area shape="rect" id="Node000002" href="$TopologyData_8h.html" title="Conteneur central des données topologiques ferroviaires." alt="" coords="81,93,204,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,46,145,79,140,79,140,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="15,240,78,265"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="124,121,96,141,72,168,58,197,52,227,47,226,53,196,67,165,93,137,121,117"/>
+<area shape="rect" id="Node000004" href="$StraightBlock_8h.html" title="Modèle de domaine d&#39;un bloc de voie droite (Straight)." alt="" coords="82,167,203,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="145,119,145,153,140,153,140,119"/>
+<area shape="rect" id="Node000008" href="$SwitchBlock_8h.html" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches (Switch)." alt="" coords="227,167,341,192"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="167,116,250,158,248,163,164,121"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="129,194,75,234,72,229,126,190"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="103,240,177,265"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="145,192,144,227,138,226,140,192"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="201,240,260,265"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="158,190,207,229,204,233,155,194"/>
+<area shape="rect" id="Node000007" href="$LatLon_8h.html" title="Représentation d&#39;une coordonnée géographique WGS&#45;84 (latitude, longitude)." alt="" coords="284,240,361,265"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="173,190,282,232,280,237,171,195"/>
+<area shape="poly" id="edge12_Node000008_Node000003" title=" " alt="" coords="247,195,92,241,91,235,245,189"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="262,194,177,236,175,231,260,190"/>
+<area shape="poly" id="edge11_Node000008_Node000006" title=" " alt="" coords="277,194,250,231,245,228,273,191"/>
+<area shape="poly" id="edge13_Node000008_Node000007" title=" " alt="" coords="293,191,312,227,308,229,288,194"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="385,240,460,265"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="307,190,389,231,387,236,305,194"/>
+</map>

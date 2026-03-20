@@ -111,7 +111,7 @@ Collaboration diagram for TopologyExtractor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7eb124f212df492958e9a9b4db5e261a" id="r_a7eb124f212df492958e9a9b4db5e261a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#a7eb124f212df492958e9a9b4db5e261a">TopologyExtractor</a> (<a class="el" href="classLogger.html">Logger</a> &amp;logger, <a class="el" href="structGraphBuildResult.html">GraphBuildResult</a> &amp;graphResult, double maxStraightLengthMeters=<a class="el" href="structParserDefaultValues.html#a2ae1336e58de01ef9699be86e5996a64">ParserDefaultValues::MAX_STRAIGHT_LENGTH_METERS</a>)</td></tr>
+<tr class="memitem:a7eb124f212df492958e9a9b4db5e261a" id="r_a7eb124f212df492958e9a9b4db5e261a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#a7eb124f212df492958e9a9b4db5e261a">TopologyExtractor</a> (<a class="el" href="classLogger.html">Logger</a> &amp;logger, <a class="el" href="structGraphBuildResult.html">GraphBuildResult</a> &amp;graphResult, double maxStraightLengthMeters=<a class="el" href="classParserDefaultValues.html#a2ae1336e58de01ef9699be86e5996a64">ParserDefaultValues::MAX_STRAIGHT_LENGTH_METERS</a>)</td></tr>
 <tr class="memdesc:a7eb124f212df492958e9a9b4db5e261a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit le <a class="el" href="classTopologyExtractor.html" title="Extrait la topologie ferroviaire (Switch + Straight) depuis un TopologyGraph.">TopologyExtractor</a> avec les données issues de <a class="el" href="classGraphBuilder.html" title="Charge un fichier GeoJSON et construit le TopologyGraph métrique.">GraphBuilder</a>.  <br /></td></tr>
 <tr class="separator:a7eb124f212df492958e9a9b4db5e261a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a356459ec218bf270f643460da781bd0d" id="r_a356459ec218bf270f643460da781bd0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTopologyExtractResult.html">TopologyExtractResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#a356459ec218bf270f643460da781bd0d">extract</a> ()</td></tr>
@@ -128,7 +128,7 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:ad1d5361674a11a78d2ea58a6024fb140"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad16f6760ca59d58d9e37dee7404071d6" id="r_ad16f6760ca59d58d9e37dee7404071d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#ad16f6760ca59d58d9e37dee7404071d6">wireTopology</a> (std::vector&lt; <a class="el" href="classSwitchBlock.html">SwitchBlock</a> &gt; &amp;switches, std::vector&lt; <a class="el" href="classStraightBlock.html">StraightBlock</a> &gt; &amp;straights)</td></tr>
 <tr class="separator:ad16f6760ca59d58d9e37dee7404071d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27bf51ac35232011f385f6d426b4ee89" id="r_a27bf51ac35232011f385f6d426b4ee89"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#a27bf51ac35232011f385f6d426b4ee89">walkPathUntilBoundary</a> (int startNodeId, const std::string &amp;incomingEdgeId, std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt; &amp;accumulatedCoords, std::set&lt; std::string &gt; &amp;visitedEdgeIds)</td></tr>
+<tr class="memitem:a27bf51ac35232011f385f6d426b4ee89" id="r_a27bf51ac35232011f385f6d426b4ee89"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#a27bf51ac35232011f385f6d426b4ee89">walkPathUntilBoundary</a> (int startNodeId, const std::string &amp;incomingEdgeId, std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt; &amp;accumulatedCoords, std::set&lt; std::string &gt; &amp;visitedEdgeIds)</td></tr>
 <tr class="memdesc:a27bf51ac35232011f385f6d426b4ee89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marche le graphe depuis startNodeId le long de incomingEdgeId jusqu'au prochain nœud frontière.  <br /></td></tr>
 <tr class="separator:a27bf51ac35232011f385f6d426b4ee89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f368f1d09c07d020c41711ffd3eb507" id="r_a5f368f1d09c07d020c41711ffd3eb507"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyExtractor.html#a5f368f1d09c07d020c41711ffd3eb507">groupChunksByBaseId</a> () const</td></tr>
@@ -175,7 +175,7 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>maxStraightLengthMeters</em> = <code><a class="el" href="structParserDefaultValues.html#a2ae1336e58de01ef9699be86e5996a64">ParserDefaultValues::MAX_STRAIGHT_LENGTH_METERS</a></code>&#160;</td>
+          <td class="paramname"><em>maxStraightLengthMeters</em> = <code><a class="el" href="classParserDefaultValues.html#a2ae1336e58de01ef9699be86e5996a64">ParserDefaultValues::MAX_STRAIGHT_LENGTH_METERS</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -393,7 +393,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="structCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>accumulatedCoords</em>, </td>
         </tr>
         <tr>

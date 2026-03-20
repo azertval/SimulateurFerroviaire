@@ -1,4 +1,4 @@
 var CoordinateXY_8h =
 [
-    [ "CoordinateXY", "structCoordinateXY.html", "structCoordinateXY" ]
+    [ "CoordinateXY", "classCoordinateXY.html", "classCoordinateXY" ]
 ];

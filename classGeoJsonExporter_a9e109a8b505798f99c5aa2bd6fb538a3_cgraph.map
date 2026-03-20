@@ -1,0 +1,10 @@
+<map id="GeoJsonExporter::renderAllStraightBlocks" name="GeoJsonExporter::renderAllStraightBlocks">
+<area shape="rect" id="Node000001" title="Efface puis redessine tous les StraightBlocks." alt="" coords="5,93,203,133"/>
+<area shape="rect" id="Node000002" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="291,5,441,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,91,250,55,276,46,278,52,252,60,155,96"/>
+<area shape="rect" id="Node000003" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="291,93,441,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,111,277,111,277,116,203,116"/>
+<area shape="rect" id="Node000004" href="$classGeoJsonExporter.html#aceb585d865614f5183a3fd00dbf9a55d" title="Construit l&#39;appel JS renderStraightBlock(id, coords) pour un bloc." alt="" coords="251,157,481,197"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="187,131,271,151,270,157,186,136"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="318,94,315,84,322,74,340,69,366,67,396,70,413,77,411,82,395,75,366,72,341,74,325,79,320,85,323,92"/>
+</map>

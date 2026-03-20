@@ -9,7 +9,8 @@ var searchData=
   ['idi_5fsmall_6',['IDI_SMALL',['../Resource_8h.html#a861a8cb71616b4615a5823bcf4bff6e3',1,'Resource.h']]],
   ['idm_5fabout_7',['IDM_ABOUT',['../Resource_8h.html#a589e0105bc3e8681893dbf51210ceeec',1,'Resource.h']]],
   ['idm_5fexit_8',['IDM_EXIT',['../Resource_8h.html#a79aeed168a959b22b32169e25f8c1f4d',1,'Resource.h']]],
-  ['idm_5ffile_5fopen_9',['IDM_FILE_OPEN',['../Resource_8h.html#a63f11a94634314702967ce111b40fa2f',1,'Resource.h']]],
-  ['idr_5fmainframe_10',['IDR_MAINFRAME',['../Resource_8h.html#a9772c84d39896ad00b9aeb34b15d324d',1,'Resource.h']]],
-  ['ids_5fapp_5ftitle_11',['IDS_APP_TITLE',['../Resource_8h.html#a636c9aea2a8d16b73e43df39b3e0e7bd',1,'Resource.h']]]
+  ['idm_5ffile_5fexport_9',['IDM_FILE_EXPORT',['../Resource_8h.html#a10cd94d5a021115bc9939074e7999ba9',1,'Resource.h']]],
+  ['idm_5ffile_5fopen_10',['IDM_FILE_OPEN',['../Resource_8h.html#a63f11a94634314702967ce111b40fa2f',1,'Resource.h']]],
+  ['idr_5fmainframe_11',['IDR_MAINFRAME',['../Resource_8h.html#a9772c84d39896ad00b9aeb34b15d324d',1,'Resource.h']]],
+  ['ids_5fapp_5ftitle_12',['IDS_APP_TITLE',['../Resource_8h.html#a636c9aea2a8d16b73e43df39b3e0e7bd',1,'Resource.h']]]
 ];

@@ -5,6 +5,7 @@ var classMainWindow =
     [ "handleMessage", "classMainWindow.html#ab85682874f3ab5dfa81f782f889d8556", null ],
     [ "onCommand", "classMainWindow.html#afbecf0f64f48c5c868168884bab52356", null ],
     [ "onDestroy", "classMainWindow.html#a71a94b472662a62e570443cff0e59ccd", null ],
+    [ "onFileExport", "classMainWindow.html#a4429f521642e48894e0efce5b41bd0ae", null ],
     [ "onFileOpen", "classMainWindow.html#a889cc45fb741e12015f4af9f01acaa96", null ],
     [ "onParsingError", "classMainWindow.html#ab4b37ea813301090c70b6e618fa24221", null ],
     [ "onParsingSuccess", "classMainWindow.html#a90cae565f67d1291d690d974547041a0", null ],

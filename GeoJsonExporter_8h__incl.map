@@ -1,0 +1,37 @@
+<map id="SimulateurFerroviaire/Modules/GeoJsonExporter/GeoJsonExporter.h" name="SimulateurFerroviaire/Modules/GeoJsonExporter/GeoJsonExporter.h">
+<area shape="rect" id="Node000001" title="Exporteur de topologie ferroviaire au format GeoJSON." alt="" coords="367,5,561,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="451,196,509,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="490,59,505,81,517,107,521,128,517,149,499,186,495,184,512,147,516,128,512,109,501,84,485,62"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="25,196,87,221"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="367,38,268,44,163,57,114,66,72,78,38,92,15,110,8,127,12,146,23,166,36,184,32,187,18,169,7,148,3,126,11,106,35,88,70,73,113,61,162,51,268,39,367,33"/>
+<area shape="rect" id="Node000004" href="$StraightBlock_8h.html" title="Modèle de domaine d&#39;un bloc de voie droite (Straight)." alt="" coords="273,115,503,141"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="444,62,408,106,404,103,440,59"/>
+<area shape="rect" id="Node000007" href="$SwitchBlock_8h.html" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches (Switch)." alt="" coords="26,115,249,141"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="373,63,191,114,190,109,371,57"/>
+<area shape="rect" id="Node000009" href="$Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur." alt="" coords="579,108,727,148"/>
+<area shape="poly" id="edge14_Node000001_Node000009" title=" " alt="" coords="518,58,604,100,602,104,516,62"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="751,115,955,141"/>
+<area shape="poly" id="edge21_Node000001_Node000014" title=" " alt="" coords="561,54,793,110,792,115,560,60"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="403,139,458,185,454,189,400,143"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="338,143,102,198,100,193,336,138"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="351,196,425,221"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="391,141,391,182,385,182,385,141"/>
+<area shape="rect" id="Node000006" href="$LatLon_8h.html" title="Représentation d&#39;une coordonnée géographique WGS&#45;84 (latitude, longitude)." alt="" coords="224,196,301,221"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="371,143,294,191,291,186,368,139"/>
+<area shape="poly" id="edge11_Node000007_Node000002" title=" " alt="" coords="192,138,438,193,438,194,437,199,437,199,191,143"/>
+<area shape="poly" id="edge12_Node000007_Node000003" title=" " alt="" coords="127,143,80,188,76,185,123,139"/>
+<area shape="poly" id="edge10_Node000007_Node000005" title=" " alt="" coords="175,138,339,189,338,194,173,143"/>
+<area shape="poly" id="edge13_Node000007_Node000006" title=" " alt="" coords="157,139,234,186,231,191,154,143"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="112,196,187,221"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="142,140,148,182,143,183,136,141"/>
+<area shape="poly" id="edge20_Node000009_Node000002" title=" " alt="" coords="613,150,519,193,517,188,611,146"/>
+<area shape="poly" id="edge19_Node000009_Node000005" title=" " alt="" coords="591,151,440,195,438,190,589,145"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="623,196,681,221"/>
+<area shape="poly" id="edge15_Node000009_Node000010" title=" " alt="" coords="656,148,655,182,650,182,650,148"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="705,196,796,221"/>
+<area shape="poly" id="edge16_Node000009_Node000011" title=" " alt="" coords="679,146,727,185,724,189,675,150"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="821,196,894,221"/>
+<area shape="poly" id="edge17_Node000009_Node000012" title=" " alt="" coords="703,146,815,188,813,193,701,151"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="535,196,599,221"/>
+<area shape="poly" id="edge18_Node000009_Node000013" title=" " alt="" coords="634,150,592,188,588,184,631,146"/>
+</map>

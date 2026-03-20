@@ -1,110 +1,113 @@
 <map id="MainWindow::onFileOpen" name="MainWindow::onFileOpen">
-<area shape="rect" id="Node000001" title="Ouvre le sélecteur de fichier et lance le parsing asynchrone." alt="" coords="5,560,192,585"/>
-<area shape="rect" id="Node000002" href="$classGeoParsingTask.html#affe9d461e96e029708ced380b63da972" title="Lance le parsing GeoJSON dans un thread séparé et détaché." alt="" coords="245,485,419,511"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,557,239,521,269,512,271,517,241,526,135,562"/>
-<area shape="rect" id="Node000049" href="$classFileOpenDialog.html#a7e0e1d33529a45cc8949757753261ceb" title="Affiche le sélecteur de fichier natif Windows." alt="" coords="251,535,413,560"/>
-<area shape="poly" id="edge56_Node000001_Node000049" title=" " alt="" coords="192,560,237,555,238,560,193,565"/>
-<area shape="rect" id="Node000050" href="$classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd" title="Met à jour la progression." alt="" coords="240,584,424,609"/>
-<area shape="poly" id="edge57_Node000001_Node000050" title=" " alt="" coords="193,580,226,583,226,588,192,585"/>
-<area shape="rect" id="Node000051" href="$classProgressBar.html#ac9fbcf04d7d4e8c5b3e332efcfc0d34c" title="Show or hide the ProgressBar." alt="" coords="261,633,403,659"/>
-<area shape="poly" id="edge58_Node000001_Node000051" title=" " alt="" coords="135,583,241,619,267,627,266,632,239,625,133,588"/>
-<area shape="rect" id="Node000003" href="$classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet." alt="" coords="520,460,652,485"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="419,487,506,478,506,483,420,492"/>
-<area shape="rect" id="Node000048" href="$classGeoParser.html#a1de83bdbc1cffe02352c092041df74ff" title="Définit le callback de progression." alt="" coords="472,509,700,535"/>
-<area shape="poly" id="edge55_Node000002_Node000048" title=" " alt="" coords="420,504,459,507,458,513,419,509"/>
-<area shape="rect" id="Node000004" href="$classGraphBuilder.html#af2d714cb20595bdc76588d2512a0102a" title="Exécute les phases 1 et 2 et retourne le résultat." alt="" coords="784,199,931,224"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="599,458,831,232,835,236,603,462"/>
-<area shape="rect" id="Node000018" href="$classDoubleSwitchDetector.html#a73ddfcab07564847dccd93c3c3b500e4" title=" " alt="" coords="774,345,941,385"/>
-<area shape="poly" id="edge19_Node000003_Node000018" title=" " alt="" coords="611,458,672,428,747,396,772,387,774,392,749,400,674,433,613,462"/>
-<area shape="rect" id="Node000021" href="$classGeoParser.html#a6b046fb217dd2d7240cde1aea4c9a5ec" title="Dump debug." alt="" coords="748,409,967,435"/>
-<area shape="poly" id="edge22_Node000003_Node000021" title=" " alt="" coords="652,458,775,435,775,440,653,463"/>
-<area shape="rect" id="Node000022" href="$classTopologyExtractor.html#a356459ec218bf270f643460da781bd0d" title="Exécute les phases 3, 4, 5a et 5b et retourne le résultat." alt="" coords="1059,415,1205,455"/>
-<area shape="poly" id="edge23_Node000003_Node000022" title=" " alt="" coords="652,466,966,445,1045,439,1045,444,967,450,652,471"/>
-<area shape="rect" id="Node000036" href="$classSwitchOrientator.html#a5af1a097baad421ce01bd013be602df7" title="Exécute les phases 6, 6b et 6c en place sur topoResult.switches." alt="" coords="769,511,946,536"/>
-<area shape="poly" id="edge40_Node000003_Node000036" title=" " alt="" coords="653,482,775,505,775,511,652,487"/>
-<area shape="rect" id="Node000046" href="$classGeoParser.html#ac1bf91960abbe3c2b4a2090f5cb84c82" title="Notifie la progression." alt="" coords="762,560,953,585"/>
-<area shape="poly" id="edge53_Node000003_Node000046" title=" " alt="" coords="653,478,678,485,701,496,717,508,726,522,735,535,749,546,763,553,760,558,747,551,731,538,722,525,713,512,699,500,676,490,652,483"/>
-<area shape="rect" id="Node000047" href="$classDoubleSwitchDetector.html#aafcb2f1f89baf21706072a58a8f5b5f7" title=" " alt="" coords="774,610,941,650"/>
-<area shape="poly" id="edge54_Node000003_Node000047" title=" " alt="" coords="653,475,679,483,702,496,714,508,721,521,727,547,733,572,739,584,750,596,763,605,760,610,746,600,735,587,728,574,722,548,716,523,709,511,698,500,676,487,652,480"/>
-<area shape="rect" id="Node000005" href="$classGraphBuilder.html#a978a9bb24411525583b8c2855db91c80" title="Phase 2 — Construit le TopologyGraph depuis les polylignes métriques." alt="" coords="1029,159,1235,199"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="931,200,1015,190,1016,196,931,205"/>
-<area shape="rect" id="Node000015" href="$classGraphBuilder.html#aaa371c7490baaad1002240d7dc88da9c" title="Calcule et retourne l&#39;ensemble des nœuds frontières du graphe." alt="" coords="1015,223,1249,263"/>
-<area shape="poly" id="edge16_Node000004_Node000015" title=" " alt="" coords="931,217,1001,225,1001,231,931,222"/>
-<area shape="rect" id="Node000016" href="$classGraphBuilder.html#aa6791cab236c871f53d8e7017875f7bc" title="Phase 1 — Lit le GeoJSON et extrait les polylignes brutes WGS&#45;84." alt="" coords="1023,56,1241,81"/>
-<area shape="poly" id="edge17_Node000004_Node000016" title=" " alt="" coords="882,196,1093,85,1096,90,885,201"/>
-<area shape="rect" id="Node000006" href="$classTopologyGraph.html#a99f720078a226f9d62b284d67194153b" title="Ajoute une arête non&#45;orientée entre les nœuds startNodeId et endNodeId." alt="" coords="1328,220,1511,245"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1235,196,1338,215,1337,220,1234,201"/>
-<area shape="rect" id="Node000007" href="$classGeometryUtils.html#aa06e19f5aae6fce3108b2fcfc709fc53" title="Convertit une polyligne WGS&#45;84 en coordonnées métriques UTM." alt="" coords="1595,519,1822,559"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="1237,197,1251,210,1271,238,1279,267,1279,297,1275,325,1271,353,1272,381,1280,408,1299,435,1327,458,1355,470,1381,476,1409,476,1470,474,1504,476,1542,485,1590,505,1615,513,1613,518,1588,510,1541,490,1503,482,1470,479,1409,482,1381,481,1353,475,1325,462,1295,439,1275,410,1266,382,1266,353,1270,325,1274,296,1274,268,1266,241,1247,213,1233,202"/>
-<area shape="rect" id="Node000010" href="$classTopologyGraph.html#aad7a0f965d35805d33c60bc8df0c2991" title="Retourne l&#39;ID du nœud en (x, y), le créant si absent." alt="" coords="1299,171,1539,196"/>
-<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="1235,178,1285,179,1285,184,1235,183"/>
-<area shape="rect" id="Node000011" href="$classGeometryUtils.html#a1f0bcf5c241331f56979b6d63b3412c1" title="Accroche une coordonnée métrique au sommet le plus proche d&#39;une grille." alt="" coords="1589,168,1828,193"/>
-<area shape="poly" id="edge15_Node000005_Node000011" title=" " alt="" coords="1235,161,1297,155,1419,150,1542,155,1618,163,1617,169,1541,161,1419,155,1298,161,1235,167"/>
-<area shape="rect" id="Node000012" href="$classTopologyGraph.html#a27cb3f78740d0cf268f2ea5f3bace6d7" title="Fusionne les nœuds séparés de moins de toleranceMeters." alt="" coords="1317,55,1522,95"/>
-<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="1180,157,1296,111,1339,97,1341,102,1298,117,1182,162"/>
-<area shape="rect" id="Node000008" href="$classGeometryUtils.html#abcb43f3e49607318e07012e902febfdb" title="Convertit une coordonnée WGS&#45;84 en mètres UTM." alt="" coords="1876,524,2127,549"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1822,536,1862,535,1862,541,1822,541"/>
-<area shape="rect" id="Node000009" href="$classGeometryUtils.html#a0a57b43055d32f595a7c84dbd7d098e3" title="Retourne le méridien central (degrés) d&#39;une zone UTM." alt="" coords="2175,489,2373,529"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="2125,521,2161,518,2162,523,2125,527"/>
-<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="1539,180,1576,179,1576,185,1539,185"/>
-<area shape="rect" id="Node000013" href="$classTopologyGraph.html#ae6743defffd4df65ccd2f59931281e7d" title=" " alt="" coords="1896,55,2107,95"/>
-<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="1522,73,1882,73,1882,78,1522,78"/>
-<area shape="rect" id="Node000014" href="$classTopologyGraph.html#a37b8517d94af461d5d7eb42e216a38e9" title=" " alt="" coords="1597,37,1820,63"/>
-<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="1522,64,1584,58,1584,64,1522,69"/>
-<area shape="poly" id="edge14_Node000014_Node000013" title=" " alt="" coords="1820,57,1883,62,1882,68,1820,62"/>
-<area shape="rect" id="Node000017" href="$classGeometryUtils.html#a5614ece2f3da0feba6ca96ae0e9c3b0a" title="Estime le numéro de zone UTM (1–60) depuis la longitude centre." alt="" coords="1297,5,1541,31"/>
-<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="1204,53,1332,31,1333,36,1205,59"/>
-<area shape="rect" id="Node000019" href="$classDoubleSwitchDetector.html#a3be8598fec31308ef13ff0ccd942d319" title=" " alt="" coords="1049,287,1215,327"/>
-<area shape="poly" id="edge20_Node000018_Node000019" title=" " alt="" coords="940,345,1035,325,1036,330,942,350"/>
-<area shape="rect" id="Node000020" href="$classDoubleSwitchDetector.html#a910540ff55f2d3523deab88d77fa185a" title=" " alt="" coords="1034,351,1230,391"/>
-<area shape="poly" id="edge21_Node000018_Node000020" title=" " alt="" coords="941,364,1020,366,1020,371,941,369"/>
-<area shape="rect" id="Node000023" href="$classTopologyExtractor.html#abfb30b40b7194303e6c828d802dd1175" title=" " alt="" coords="1635,391,1782,431"/>
-<area shape="poly" id="edge24_Node000022_Node000023" title=" " alt="" coords="1205,416,1248,401,1271,385,1281,377,1297,370,1364,355,1418,354,1542,370,1625,385,1624,391,1541,375,1418,359,1365,361,1298,375,1284,381,1274,389,1251,406,1207,421"/>
-<area shape="rect" id="Node000025" href="$classTopologyExtractor.html#a8003022ac7f09c074969ec22d3305429" title=" " alt="" coords="1346,385,1493,425"/>
-<area shape="poly" id="edge27_Node000022_Node000025" title=" " alt="" coords="1205,425,1332,411,1333,417,1206,430"/>
-<area shape="rect" id="Node000032" href="$classTopologyExtractor.html#ad1d5361674a11a78d2ea58a6024fb140" title=" " alt="" coords="1346,499,1493,539"/>
-<area shape="poly" id="edge34_Node000022_Node000032" title=" " alt="" coords="1202,453,1338,493,1336,498,1200,458"/>
-<area shape="rect" id="Node000034" href="$classTopologyExtractor.html#ad16f6760ca59d58d9e37dee7404071d6" title=" " alt="" coords="1346,270,1493,310"/>
-<area shape="poly" id="edge38_Node000022_Node000034" title=" " alt="" coords="1205,422,1227,413,1248,401,1264,384,1271,365,1279,346,1296,327,1332,307,1334,311,1299,331,1283,349,1276,367,1268,387,1251,405,1230,418,1207,427"/>
-<area shape="rect" id="Node000024" href="$classGeometryUtils.html#a0dfa23ddf2d80abfeaeac186ae124fd0" title="Convertit une coordonnée métrique UTM en WGS&#45;84." alt="" coords="1904,457,2099,497"/>
-<area shape="poly" id="edge25_Node000023_Node000024" title=" " alt="" coords="1783,425,1898,451,1897,456,1781,430"/>
-<area shape="poly" id="edge26_Node000024_Node000009" title=" " alt="" coords="2099,485,2161,493,2161,498,2099,491"/>
-<area shape="rect" id="Node000026" href="$classGeometryUtils.html#aba6963b2f6022f04e51fb716a11e3895" title="Convertit une polyligne métrique UTM en WGS&#45;84." alt="" coords="1595,455,1822,495"/>
-<area shape="poly" id="edge28_Node000025_Node000026" title=" " alt="" coords="1494,420,1614,449,1612,455,1492,425"/>
-<area shape="rect" id="Node000027" href="$classTopologyExtractor.html#a27bf51ac35232011f385f6d426b4ee89" title="Marche le graphe depuis startNodeId le long de incomingEdgeId jusqu&#39;au prochain nœud frontière." alt="" coords="1621,327,1796,367"/>
-<area shape="poly" id="edge30_Node000025_Node000027" title=" " alt="" coords="1492,388,1608,365,1609,370,1494,393"/>
-<area shape="poly" id="edge29_Node000026_Node000024" title=" " alt="" coords="1822,473,1890,473,1890,479,1822,479"/>
-<area shape="rect" id="Node000028" href="$classTopologyGraph.html#a07cb1a1808c40751d01dd7d43d335024" title="Retourne l&#39;arête sortante en atNodeId la plus colinéaire à incomingEdgeId." alt="" coords="1881,263,2122,303"/>
-<area shape="poly" id="edge31_Node000027_Node000028" title=" " alt="" coords="1796,326,1895,304,1896,309,1797,331"/>
-<area shape="rect" id="Node000030" href="$classTopologyGraph.html#a7c086df2f9774459710f88d37158b745" title="Retourne le degré d&#39;un nœud (nombre d&#39;arêtes incidentes)." alt="" coords="1904,327,2099,367"/>
-<area shape="poly" id="edge32_Node000027_Node000030" title=" " alt="" coords="1796,345,1890,345,1890,350,1796,350"/>
-<area shape="rect" id="Node000031" href="$classTopologyGraph.html#aada47ec2c5b5ebc4ccf72b4b4c4f5e01" title="Retourne l&#39;ID du nœud de l&#39;autre extrémité d&#39;une arête." alt="" coords="1898,391,2105,431"/>
-<area shape="poly" id="edge33_Node000027_Node000031" title=" " alt="" coords="1797,364,1896,386,1895,391,1796,369"/>
-<area shape="poly" id="edge36_Node000032_Node000007" title=" " alt="" coords="1493,522,1582,528,1581,533,1493,527"/>
-<area shape="poly" id="edge37_Node000032_Node000026" title=" " alt="" coords="1493,506,1581,492,1582,497,1493,511"/>
-<area shape="rect" id="Node000033" href="$classGeometryUtils.html#a95a8eb25c216b5416111a5b2f18ebb5f" title="Calcule la longueur planaire totale d&#39;une polyligne métrique." alt="" coords="1591,583,1826,623"/>
-<area shape="poly" id="edge35_Node000032_Node000033" title=" " alt="" coords="1494,534,1542,549,1590,569,1615,577,1613,582,1588,574,1540,554,1492,539"/>
-<area shape="rect" id="Node000035" href="$classTopologyExtractor.html#a5f368f1d09c07d020c41711ffd3eb507" title="Regroupe les IDs de morceaux par ID de base (ex. &quot;s/0&quot; → [&quot;s/0&quot;,&quot;s/0_c1&quot;])." alt="" coords="1625,263,1793,303"/>
-<area shape="poly" id="edge39_Node000034_Node000035" title=" " alt="" coords="1493,286,1611,283,1611,288,1493,291"/>
-<area shape="rect" id="Node000037" href="$classSwitchOrientator.html#a2786825e04cc0836549bb23a2b6242b4" title="Échange normal↔deviation sur l&#39;aiguillage non&#45;référence si les rôles diffèrent." alt="" coords="1023,627,1241,667"/>
-<area shape="poly" id="edge41_Node000036_Node000037" title=" " alt="" coords="943,534,968,546,985,563,993,581,1001,597,1016,613,1025,619,1022,623,1013,617,997,600,988,583,981,566,965,551,940,539"/>
-<area shape="rect" id="Node000038" href="$classSwitchOrientator.html#a8132fa3495845481fdb68a3ec695af15" title="Calcule et assigne les points tip CDC sur un SwitchBlock orienté." alt="" coords="1034,691,1230,731"/>
-<area shape="poly" id="edge42_Node000036_Node000038" title=" " alt="" coords="948,533,968,547,982,563,990,580,994,613,997,646,1004,662,1017,677,1024,683,1020,687,1013,681,999,665,992,648,988,614,985,581,978,566,965,551,945,538"/>
-<area shape="rect" id="Node000042" href="$classSwitchOrientator.html#acdcd6a442cb52bed611a302b1358c8bb" title="Force la branche partagée au rôle DEVIATION sur les deux aiguillages formant un croisement mécanique ..." alt="" coords="1038,499,1226,539"/>
-<area shape="poly" id="edge49_Node000036_Node000042" title=" " alt="" coords="946,519,1024,518,1024,524,946,525"/>
-<area shape="rect" id="Node000043" href="$classSwitchOrientator.html#a0ed66205a222764fb0ad914425ba0f6e" title="Oriente un SwitchBlock à 3 branches en place." alt="" coords="1043,563,1221,603"/>
-<area shape="poly" id="edge50_Node000036_Node000043" title=" " alt="" coords="917,533,1030,558,1029,564,916,539"/>
-<area shape="rect" id="Node000039" href="$classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd" title="Interpole un point tip à distanceMeters depuis la jonction le long d&#39;un Straight." alt="" coords="1314,691,1525,731"/>
-<area shape="poly" id="edge43_Node000038_Node000039" title=" " alt="" coords="1230,709,1300,709,1300,714,1230,714"/>
-<area shape="rect" id="Node000041" href="$classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7" title="Indique si l&#39;aiguillage a été orienté (Phase 6 complète)." alt="" coords="1331,756,1507,781"/>
-<area shape="poly" id="edge48_Node000038_Node000041" title=" " alt="" coords="1231,728,1342,751,1341,756,1230,733"/>
-<area shape="poly" id="edge45_Node000039_Node000007" title=" " alt="" coords="1523,689,1540,677,1551,665,1558,652,1563,625,1568,597,1575,583,1588,569,1593,565,1597,569,1591,573,1580,586,1573,599,1568,626,1563,654,1555,668,1543,681,1526,693"/>
-<area shape="poly" id="edge46_Node000039_Node000024" title=" " alt="" coords="1524,692,1715,659,1791,643,1827,633,1839,619,1846,605,1850,574,1854,543,1861,526,1874,511,1890,499,1893,503,1878,515,1866,529,1859,544,1855,575,1851,607,1843,622,1829,638,1793,649,1716,664,1525,697"/>
-<area shape="poly" id="edge44_Node000039_Node000033" title=" " alt="" coords="1511,689,1540,677,1564,659,1588,640,1619,626,1621,631,1591,644,1567,663,1543,682,1513,694"/>
-<area shape="rect" id="Node000040" href="$classGeometryUtils.html#a811846a194a09c97c258825df6accb9a" title="Interpole un point à distanceMeters du premier sommet d&#39;une polyligne." alt="" coords="1594,698,1823,738"/>
-<area shape="poly" id="edge47_Node000039_Node000040" title=" " alt="" coords="1525,711,1581,712,1580,718,1525,716"/>
-<area shape="rect" id="Node000044" href="$classGeometryUtils.html#a7fb1d9f796278db394fc82257347f514" title="Variante &quot;pire cas&quot; de l&#39;angle entre deux vecteurs 2&#45;D." alt="" coords="1310,563,1529,603"/>
-<area shape="poly" id="edge51_Node000043_Node000044" title=" " alt="" coords="1221,581,1296,581,1296,586,1221,586"/>
-<area shape="rect" id="Node000045" href="$classSwitchOrientator.html#aad2a4892eb6f9d716bd4703694813f46" title="Retourne la direction (vecteur lat/lon) depuis junctionCoord vers l&#39;extrémité distale du StraightBloc..." alt="" coords="1321,627,1517,667"/>
-<area shape="poly" id="edge52_Node000043_Node000045" title=" " alt="" coords="1221,600,1316,622,1315,627,1220,606"/>
+<area shape="rect" id="Node000001" title="Ouvre le sélecteur de fichier et lance le parsing asynchrone." alt="" coords="5,519,192,544"/>
+<area shape="rect" id="Node000002" href="$classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2" title="Vérifie si le WebView est prêt." alt="" coords="240,420,440,445"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,516,172,486,239,456,266,447,268,452,241,460,175,491,122,521"/>
+<area shape="rect" id="Node000003" href="$classGeoParsingTask.html#affe9d461e96e029708ced380b63da972" title="Lance le parsing GeoJSON dans un thread séparé et détaché." alt="" coords="253,469,427,495"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,516,263,495,264,500,162,521"/>
+<area shape="rect" id="Node000057" href="$classFileOpenDialog.html#a7e0e1d33529a45cc8949757753261ceb" title="Affiche le sélecteur de fichier natif Windows." alt="" coords="259,519,421,544"/>
+<area shape="poly" id="edge59_Node000001_Node000057" title=" " alt="" coords="192,529,245,529,245,534,192,534"/>
+<area shape="rect" id="Node000058" href="$classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd" title="Met à jour la progression." alt="" coords="248,568,432,593"/>
+<area shape="poly" id="edge60_Node000001_Node000058" title=" " alt="" coords="162,541,264,563,263,568,161,547"/>
+<area shape="rect" id="Node000059" href="$classProgressBar.html#ac9fbcf04d7d4e8c5b3e332efcfc0d34c" title="Show or hide the ProgressBar." alt="" coords="269,617,411,643"/>
+<area shape="poly" id="edge61_Node000001_Node000059" title=" " alt="" coords="121,542,174,572,241,604,264,611,262,616,239,608,172,577,119,546"/>
+<area shape="rect" id="Node000004" href="$classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet." alt="" coords="536,444,668,469"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="427,471,522,462,522,467,428,476"/>
+<area shape="rect" id="Node000056" href="$classGeoParser.html#a1de83bdbc1cffe02352c092041df74ff" title="Enregistre le callback de progression UI." alt="" coords="488,493,716,519"/>
+<area shape="poly" id="edge58_Node000003_Node000056" title=" " alt="" coords="428,487,475,492,474,497,427,493"/>
+<area shape="rect" id="Node000005" href="$classGraphBuilder.html#af2d714cb20595bdc76588d2512a0102a" title="Exécute les phases 1 et 2 et retourne le résultat." alt="" coords="800,144,947,169"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="609,442,667,351,712,292,762,235,800,202,838,175,841,179,803,206,766,239,716,295,672,355,613,445"/>
+<area shape="rect" id="Node000019" href="$classTopologyData.html#a7b9b3e5cfb26df1cb199ac4d859a7a1f" title="Vide les deux listes (remise à zéro entre deux parsings)." alt="" coords="798,249,949,275"/>
+<area shape="poly" id="edge17_Node000004_Node000019" title=" " alt="" coords="609,442,632,410,667,367,711,323,763,285,784,275,786,280,765,290,715,327,671,371,636,413,614,445"/>
+<area shape="rect" id="Node000020" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="1073,361,1223,401"/>
+<area shape="poly" id="edge18_Node000004_Node000020" title=" " alt="" coords="636,441,695,422,763,405,841,393,919,385,1059,378,1059,384,920,391,842,398,765,410,696,427,637,447"/>
+<area shape="rect" id="Node000021" href="$classDoubleSwitchDetector.html#a73ddfcab07564847dccd93c3c3b500e4" title=" " alt="" coords="790,299,957,339"/>
+<area shape="poly" id="edge19_Node000004_Node000021" title=" " alt="" coords="621,442,683,403,763,360,803,342,805,347,765,364,686,408,624,446"/>
+<area shape="rect" id="Node000024" href="$classGeoParser.html#a6b046fb217dd2d7240cde1aea4c9a5ec" title="Dump détaillé des résultats dans les traces DEBUG." alt="" coords="764,419,983,444"/>
+<area shape="poly" id="edge22_Node000004_Node000024" title=" " alt="" coords="668,448,750,440,751,445,668,453"/>
+<area shape="rect" id="Node000025" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="1073,449,1223,489"/>
+<area shape="poly" id="edge39_Node000004_Node000025" title=" " alt="" coords="668,455,1059,464,1059,469,668,461"/>
+<area shape="rect" id="Node000026" href="$classTopologyExtractor.html#a356459ec218bf270f643460da781bd0d" title="Exécute les phases 3, 4, 5a et 5b et retourne le résultat." alt="" coords="800,563,947,603"/>
+<area shape="poly" id="edge26_Node000004_Node000026" title=" " alt="" coords="669,465,717,480,783,515,838,553,835,557,780,519,715,484,668,470"/>
+<area shape="rect" id="Node000040" href="$classSwitchOrientator.html#a5af1a097baad421ce01bd013be602df7" title="Exécute les phases 6, 6b, 6c et 6d en place sur topoResult." alt="" coords="785,795,962,820"/>
+<area shape="poly" id="edge40_Node000004_Node000040" title=" " alt="" coords="669,457,695,466,718,480,733,496,742,511,750,542,755,576,766,614,815,708,859,781,854,784,810,710,762,616,749,577,745,543,737,513,728,499,714,484,692,470,667,463"/>
+<area shape="rect" id="Node000054" href="$classGeoParser.html#ac1bf91960abbe3c2b4a2090f5cb84c82" title="Notifie la progression via le callback UI si défini." alt="" coords="778,844,969,869"/>
+<area shape="poly" id="edge56_Node000004_Node000054" title=" " alt="" coords="669,455,695,464,718,480,735,502,747,525,753,547,756,569,752,614,743,658,733,702,729,745,732,767,738,788,749,809,766,831,769,834,765,837,762,834,745,812,733,790,727,768,724,745,727,701,737,657,747,613,751,569,748,548,742,527,731,505,714,484,693,469,667,460"/>
+<area shape="rect" id="Node000055" href="$classDoubleSwitchDetector.html#aafcb2f1f89baf21706072a58a8f5b5f7" title=" " alt="" coords="790,894,957,934"/>
+<area shape="poly" id="edge57_Node000004_Node000055" title=" " alt="" coords="669,455,695,464,718,480,737,505,750,531,758,556,761,581,756,631,744,681,732,731,727,780,730,805,736,830,748,855,766,880,780,892,776,896,762,884,743,858,731,832,724,806,722,780,727,730,739,680,751,630,755,581,752,557,745,533,733,508,714,484,693,469,667,460"/>
+<area shape="rect" id="Node000006" href="$classGraphBuilder.html#a978a9bb24411525583b8c2855db91c80" title="Phase 2 — Construit le TopologyGraph depuis les polylignes métriques." alt="" coords="1045,105,1251,145"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="947,146,1031,136,1032,141,947,151"/>
+<area shape="rect" id="Node000016" href="$classGraphBuilder.html#aaa371c7490baaad1002240d7dc88da9c" title="Calcule et retourne l&#39;ensemble des nœuds frontières du graphe." alt="" coords="1031,169,1265,209"/>
+<area shape="poly" id="edge14_Node000005_Node000016" title=" " alt="" coords="947,163,1017,171,1017,176,947,168"/>
+<area shape="rect" id="Node000017" href="$classGraphBuilder.html#aa6791cab236c871f53d8e7017875f7bc" title="Phase 1 — Lit le GeoJSON et extrait les polylignes brutes WGS&#45;84." alt="" coords="1039,31,1257,56"/>
+<area shape="poly" id="edge15_Node000005_Node000017" title=" " alt="" coords="904,141,1103,59,1105,64,906,146"/>
+<area shape="rect" id="Node000007" href="$classTopologyGraph.html#a99f720078a226f9d62b284d67194153b" title="Ajoute une arête non&#45;orientée entre les nœuds startNodeId et endNodeId." alt="" coords="1344,55,1527,80"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1248,102,1357,80,1358,85,1249,107"/>
+<area shape="rect" id="Node000008" href="$classGeometryUtils.html#aa06e19f5aae6fce3108b2fcfc709fc53" title="Convertit une polyligne WGS&#45;84 en coordonnées métriques UTM." alt="" coords="1611,754,1838,794"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="1248,143,1267,155,1286,175,1295,196,1302,218,1315,242,1349,278,1381,306,1444,346,1474,366,1504,389,1532,420,1560,462,1575,499,1581,533,1579,595,1577,625,1578,655,1588,685,1607,718,1623,733,1641,746,1638,750,1619,737,1603,721,1583,687,1573,655,1571,625,1573,595,1576,533,1570,500,1555,465,1528,424,1500,393,1471,370,1441,351,1378,310,1345,282,1311,245,1297,220,1290,198,1281,178,1264,159,1245,147"/>
+<area shape="rect" id="Node000011" href="$classTopologyGraph.html#aad7a0f965d35805d33c60bc8df0c2991" title="Retourne l&#39;ID du nœud en (x, y), le créant si absent." alt="" coords="1315,169,1555,195"/>
+<area shape="poly" id="edge9_Node000006_Node000011" title=" " alt="" coords="1249,142,1358,164,1357,169,1248,147"/>
+<area shape="rect" id="Node000012" href="$classGeometryUtils.html#a1f0bcf5c241331f56979b6d63b3412c1" title="Accroche une coordonnée métrique au sommet le plus proche d&#39;une grille." alt="" coords="1605,195,1844,220"/>
+<area shape="poly" id="edge13_Node000006_Node000012" title=" " alt="" coords="1242,142,1267,154,1282,168,1291,181,1300,194,1315,204,1358,218,1403,228,1495,235,1582,231,1655,220,1656,225,1583,236,1495,241,1402,234,1356,224,1312,208,1296,197,1286,184,1278,171,1264,159,1239,147"/>
+<area shape="rect" id="Node000013" href="$classTopologyGraph.html#a27cb3f78740d0cf268f2ea5f3bace6d7" title="Fusionne les nœuds séparés de moins de toleranceMeters." alt="" coords="1333,105,1538,145"/>
+<area shape="poly" id="edge11_Node000006_Node000013" title=" " alt="" coords="1251,122,1319,122,1319,127,1251,127"/>
+<area shape="rect" id="Node000009" href="$classGeometryUtils.html#abcb43f3e49607318e07012e902febfdb" title="Convertit une coordonnée WGS&#45;84 en mètres UTM." alt="" coords="1892,761,2143,787"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1838,771,1878,771,1878,777,1838,777"/>
+<area shape="poly" id="edge10_Node000011_Node000012" title=" " alt="" coords="1556,190,1592,193,1591,198,1555,195"/>
+<area shape="rect" id="Node000014" href="$classTopologyGraph.html#ae6743defffd4df65ccd2f59931281e7d" title=" " alt="" coords="1619,105,1830,145"/>
+<area shape="poly" id="edge12_Node000013_Node000014" title=" " alt="" coords="1538,122,1605,122,1605,127,1538,127"/>
+<area shape="rect" id="Node000018" href="$classGeometryUtils.html#a5614ece2f3da0feba6ca96ae0e9c3b0a" title="Estime le numéro de zone UTM (1–60) depuis la longitude centre." alt="" coords="1313,5,1557,31"/>
+<area shape="poly" id="edge16_Node000017_Node000018" title=" " alt="" coords="1257,31,1299,27,1300,33,1258,36"/>
+<area shape="rect" id="Node000022" href="$classDoubleSwitchDetector.html#a3be8598fec31308ef13ff0ccd942d319" title=" " alt="" coords="1065,297,1231,337"/>
+<area shape="poly" id="edge20_Node000021_Node000022" title=" " alt="" coords="957,316,1051,315,1051,320,957,321"/>
+<area shape="rect" id="Node000023" href="$classDoubleSwitchDetector.html#a910540ff55f2d3523deab88d77fa185a" title=" " alt="" coords="1050,233,1246,273"/>
+<area shape="poly" id="edge21_Node000021_Node000023" title=" " alt="" coords="956,297,1051,273,1052,279,957,302"/>
+<area shape="poly" id="edge23_Node000024_Node000020" title=" " alt="" coords="942,416,1059,394,1060,400,943,421"/>
+<area shape="poly" id="edge24_Node000024_Node000025" title=" " alt="" coords="967,441,1060,454,1059,459,967,447"/>
+<area shape="poly" id="edge25_Node000025_Node000025" title=" " alt="" coords="1097,449,1094,439,1102,430,1120,424,1148,422,1180,425,1197,432,1195,437,1178,430,1148,427,1121,429,1105,434,1099,440,1102,447"/>
+<area shape="rect" id="Node000027" href="$classTopologyExtractor.html#abfb30b40b7194303e6c828d802dd1175" title=" " alt="" coords="1362,475,1509,515"/>
+<area shape="poly" id="edge27_Node000026_Node000027" title=" " alt="" coords="946,565,1030,549,1199,523,1348,503,1349,508,1200,528,1031,554,947,570"/>
+<area shape="rect" id="Node000029" href="$classTopologyExtractor.html#a8003022ac7f09c074969ec22d3305429" title=" " alt="" coords="1075,627,1221,667"/>
+<area shape="poly" id="edge29_Node000026_Node000029" title=" " alt="" coords="947,598,1062,625,1061,630,946,603"/>
+<area shape="rect" id="Node000036" href="$classTopologyExtractor.html#ad1d5361674a11a78d2ea58a6024fb140" title=" " alt="" coords="1075,691,1221,731"/>
+<area shape="poly" id="edge33_Node000026_Node000036" title=" " alt="" coords="904,601,961,639,1032,677,1062,688,1061,693,1030,682,958,644,901,606"/>
+<area shape="rect" id="Node000038" href="$classTopologyExtractor.html#ad16f6760ca59d58d9e37dee7404071d6" title=" " alt="" coords="1075,563,1221,603"/>
+<area shape="poly" id="edge37_Node000026_Node000038" title=" " alt="" coords="947,581,1061,581,1061,586,947,586"/>
+<area shape="rect" id="Node000028" href="$classGeometryUtils.html#a0dfa23ddf2d80abfeaeac186ae124fd0" title="Convertit une coordonnée métrique UTM en WGS&#45;84." alt="" coords="1627,667,1822,707"/>
+<area shape="poly" id="edge28_Node000027_Node000028" title=" " alt="" coords="1510,506,1559,525,1602,554,1642,589,1702,655,1698,659,1638,593,1599,559,1556,530,1508,511"/>
+<area shape="rect" id="Node000030" href="$classGeometryUtils.html#aba6963b2f6022f04e51fb716a11e3895" title="Convertit une polyligne métrique UTM en WGS&#45;84." alt="" coords="1322,667,1549,707"/>
+<area shape="poly" id="edge30_Node000029_Node000030" title=" " alt="" coords="1222,655,1309,667,1308,672,1221,660"/>
+<area shape="rect" id="Node000031" href="$classTopologyExtractor.html#a27bf51ac35232011f385f6d426b4ee89" title="Marche le graphe depuis startNodeId le long de incomingEdgeId jusqu&#39;au prochain nœud frontière." alt="" coords="1348,603,1523,643"/>
+<area shape="poly" id="edge32_Node000029_Node000031" title=" " alt="" coords="1221,639,1334,629,1334,634,1222,644"/>
+<area shape="poly" id="edge31_Node000030_Node000028" title=" " alt="" coords="1549,685,1613,685,1613,690,1549,690"/>
+<area shape="poly" id="edge35_Node000036_Node000008" title=" " alt="" coords="1222,717,1598,758,1597,763,1221,722"/>
+<area shape="poly" id="edge36_Node000036_Node000030" title=" " alt="" coords="1221,703,1308,695,1309,701,1222,708"/>
+<area shape="rect" id="Node000037" href="$classGeometryUtils.html#a95a8eb25c216b5416111a5b2f18ebb5f" title="Calcule la longueur planaire totale d&#39;une polyligne métrique." alt="" coords="1607,871,1842,911"/>
+<area shape="poly" id="edge34_Node000036_Node000037" title=" " alt="" coords="1222,728,1266,741,1314,758,1646,865,1644,870,1312,763,1265,746,1221,733"/>
+<area shape="rect" id="Node000039" href="$classTopologyExtractor.html#a5f368f1d09c07d020c41711ffd3eb507" title="Regroupe les IDs de morceaux par ID de base (ex. &quot;s/0&quot; → [&quot;s/0&quot;,&quot;s/0_c1&quot;])." alt="" coords="1351,539,1519,579"/>
+<area shape="poly" id="edge38_Node000038_Node000039" title=" " alt="" coords="1221,575,1337,565,1338,570,1222,580"/>
+<area shape="rect" id="Node000041" href="$classSwitchOrientator.html#a2786825e04cc0836549bb23a2b6242b4" title="Échange normal↔deviation sur l&#39;aiguillage non&#45;référence si les rôles diffèrent." alt="" coords="1039,755,1257,795"/>
+<area shape="poly" id="edge41_Node000040_Node000041" title=" " alt="" coords="962,794,1026,787,1026,792,963,800"/>
+<area shape="rect" id="Node000042" href="$classSwitchOrientator.html#a8132fa3495845481fdb68a3ec695af15" title="Calcule et assigne les points tip CDC sur un SwitchBlock orienté." alt="" coords="1050,947,1246,987"/>
+<area shape="poly" id="edge42_Node000040_Node000042" title=" " alt="" coords="963,818,984,831,997,843,1004,857,1010,883,1015,909,1021,921,1032,933,1040,939,1036,943,1029,937,1017,924,1010,911,1004,884,999,858,992,846,981,835,960,822"/>
+<area shape="rect" id="Node000046" href="$classSwitchOrientator.html#acdcd6a442cb52bed611a302b1358c8bb" title="Force la branche partagée au rôle DEVIATION sur les deux aiguillages formant un croisement mécanique ..." alt="" coords="1054,819,1242,859"/>
+<area shape="poly" id="edge48_Node000040_Node000046" title=" " alt="" coords="963,815,1041,824,1040,829,962,820"/>
+<area shape="rect" id="Node000047" href="$classSwitchOrientator.html#a0ed66205a222764fb0ad914425ba0f6e" title="Oriente un SwitchBlock à 3 branches en place." alt="" coords="1059,1062,1237,1102"/>
+<area shape="poly" id="edge49_Node000040_Node000047" title=" " alt="" coords="964,817,984,831,1001,851,1010,872,1014,912,1015,954,1021,975,1033,998,1062,1029,1096,1053,1093,1057,1058,1033,1029,1001,1016,977,1010,955,1008,912,1005,873,997,854,981,835,961,821"/>
+<area shape="rect" id="Node000050" href="$classSwitchOrientator.html#ac80814892c9baea379f2b4e9f22b966e" title="Retaille chaque StraightBlock adjacent à une jonction pour qu&#39;il commence (ou se termine) exactement ..." alt="" coords="1039,883,1257,923"/>
+<area shape="poly" id="edge52_Node000040_Node000050" title=" " alt="" coords="950,818,984,830,999,840,1009,850,1018,860,1032,869,1047,876,1045,881,1029,874,1015,864,1005,854,995,844,981,835,948,823"/>
+<area shape="rect" id="Node000043" href="$classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd" title="Interpole un point tip à distanceMeters depuis la jonction le long d&#39;un Straight." alt="" coords="1330,947,1541,987"/>
+<area shape="poly" id="edge43_Node000042_Node000043" title=" " alt="" coords="1246,965,1316,965,1316,970,1246,970"/>
+<area shape="rect" id="Node000045" href="$classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7" title="Indique si l&#39;aiguillage a été orienté (Phase 6 complète)." alt="" coords="1347,1012,1523,1037"/>
+<area shape="poly" id="edge47_Node000042_Node000045" title=" " alt="" coords="1247,984,1358,1007,1357,1012,1246,989"/>
+<area shape="poly" id="edge45_Node000043_Node000008" title=" " alt="" coords="1536,945,1556,933,1572,916,1581,898,1588,879,1603,858,1639,826,1675,799,1678,804,1642,830,1607,861,1593,881,1586,900,1577,919,1559,937,1538,950"/>
+<area shape="poly" id="edge46_Node000043_Node000028" title=" " alt="" coords="1539,946,1555,933,1573,910,1580,888,1582,864,1581,841,1580,792,1587,766,1603,740,1620,724,1640,711,1643,716,1624,728,1607,744,1592,768,1585,792,1586,841,1588,864,1586,889,1577,913,1559,937,1543,950"/>
+<area shape="poly" id="edge44_Node000043_Node000037" title=" " alt="" coords="1512,945,1634,912,1635,917,1513,950"/>
+<area shape="rect" id="Node000048" href="$classGeometryUtils.html#a7fb1d9f796278db394fc82257347f514" title="Variante &quot;pire cas&quot; de l&#39;angle entre deux vecteurs 2&#45;D." alt="" coords="1326,1062,1545,1102"/>
+<area shape="poly" id="edge50_Node000047_Node000048" title=" " alt="" coords="1237,1079,1312,1079,1312,1085,1237,1085"/>
+<area shape="rect" id="Node000049" href="$classSwitchOrientator.html#aad2a4892eb6f9d716bd4703694813f46" title="Retourne la direction (vecteur lat/lon) depuis junctionCoord vers l&#39;extrémité distale du StraightBloc..." alt="" coords="1337,1126,1533,1166"/>
+<area shape="poly" id="edge51_Node000047_Node000049" title=" " alt="" coords="1237,1099,1332,1120,1331,1126,1236,1104"/>
+<area shape="poly" id="edge53_Node000050_Node000008" title=" " alt="" coords="1238,881,1620,794,1622,800,1239,886"/>
+<area shape="poly" id="edge54_Node000050_Node000030" title=" " alt="" coords="1245,881,1264,869,1282,848,1289,826,1296,801,1311,775,1347,740,1385,713,1388,717,1350,745,1315,778,1301,804,1294,827,1286,850,1267,873,1248,886"/>
+<area shape="rect" id="Node000051" href="$classStraightBlock.html#a923ec2d60375b9760a734f3babe2150d" title="Recalcule et met à jour lengthMeters depuis les coordonnées actuelles." alt="" coords="1342,883,1529,923"/>
+<area shape="poly" id="edge55_Node000050_Node000051" title=" " alt="" coords="1257,901,1328,901,1328,906,1257,906"/>
 </map>
