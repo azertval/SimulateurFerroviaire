@@ -52,7 +52,7 @@ void WebViewPanel::navigate(const std::wstring& url)
 {
     if (!m_webview)
     {
-        LOG_WARNING(m_logger, "navigate() appelé avant initialisation");
+        LOG_ERROR(m_logger, "navigate() appelé avant initialisation");
         return;
     }
 
@@ -63,11 +63,23 @@ void WebViewPanel::navigateToString(const std::wstring& htmlContent)
 {
     if (!m_webview)
     {
-        LOG_WARNING(m_logger, "navigateToString() appelé avant initialisation");
+        LOG_ERROR(m_logger, "navigateToString() appelé avant initialisation");
         return;
     }
 
     m_webview->NavigateToString(htmlContent.c_str());
+}
+
+void WebViewPanel::executeScript(const std::wstring& script)
+{
+    if (!m_webview)
+    {
+        LOG_ERROR(m_logger, "executeScript appelé avant initialisation");
+        return;
+    }
+
+    m_webview->ExecuteScript(script.c_str(), nullptr);
+    LOG_DEBUG(m_logger, "Script exécuté : " + std::string(script.begin(), script.end()));
 }
 
 bool WebViewPanel::isInitialized() const

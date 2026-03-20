@@ -110,6 +110,19 @@ public:
     bool isInitialized() const;
 
     /**
+    * @brief Exécute un script JavaScript dans le contexte de la page chargée.
+     *
+     * Permet d'interagir dynamiquement avec le contenu HTML, par exemple pour
+     * manipuler la carte Leaflet ou récupérer des données depuis la page.
+     * 
+     * Log erreur si le WebView n'est pas encore initialisé ou si l'exécution échoue.
+     *
+     * @param script  Code JavaScript à exécuter. Doit être une expression valide.
+     *                Le résultat de l'exécution est ignoré (void).
+    */
+    void executeScript(const std::wstring& script);
+
+    /**
     * @brief Définit un callback à appeler une fois l'initialisation terminée.
      * @param callback Fonction à appeler après initialisation.
     */

@@ -7,9 +7,11 @@
 
 #include "framework.h"
 #include "MainWindow.h"
-#include "Dialogs/AboutDialog.h"
-#include "Dialogs/FileOpenDialog.h"
+#include "Engine/HMI/Dialogs/AboutDialog.h"
+#include "Engine/HMI/Dialogs/FileOpenDialog.h"
 #include "SimulateurFerroviaire.h"
+
+#include "Engine/HMI/WebViewPanel/Leaflet/LeafletEnums.h"
 
 #include <string>
 #include <stdexcept>
@@ -66,14 +68,14 @@ void MainWindow::create()
     UpdateWindow(m_hWnd);
 
     // Barre de progression positionnée sous la barre de menu, masquée par défaut.
-    m_progressBar.create(m_hWnd, 20, 50, 320, 24);
+    m_progressBar.create(m_hWnd, 50, 10, 320, 24);
     m_progressBar.show(false);
     m_progressBar.setProgress(0);
 
     // Initialisation du panneau WebView
     m_webViewPanel.setOnInitialized([this]()
         {
-            m_webViewPanel.navigate(L"https://www.openstreetmap.org/#map=5/51.500/-0.100"); // Carte centrée sur Londres par défaut
+            m_webViewPanel.navigateToString(leafletHtml); // Carte centrée sur Paris par défaut
             m_webViewPanel.resize();
         });
     m_webViewPanel.create(m_hWnd);
@@ -207,8 +209,12 @@ void MainWindow::onProgressUpdate(int progressValue)
 void MainWindow::onParsingSuccess(HWND hWnd)
 {
     m_progressBar.setProgress(100);
-    MessageBoxA(hWnd, "Parsing terminé avec succès.", "Succès", MB_OK | MB_ICONINFORMATION);
     m_progressBar.show(false);
+
+    // 🔥 TEST LEAFLET
+    m_webViewPanel.executeScript(
+        L"addMarker(48.8566, 2.3522);"
+    );
 }
 
 void MainWindow::onParsingError(HWND hWnd, LPARAM lParam)

@@ -1,4 +1,4 @@
-name: Sync Project Fields
+name: Sync Project Issues
 
 on:
   issues:

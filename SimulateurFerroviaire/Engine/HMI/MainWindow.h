@@ -18,7 +18,7 @@
 #pragma once
 
 #include "framework.h"
-#include "Modules/GeoParsingTask.h"
+#include "Modules/GeoParser/GeoParsingTask.h"
 #include "Engine/HMI/ProgressBar.h"
 #include "Engine/HMI/WebViewPanel/WebViewPanel.h"
 #include "Engine/Core/Logger/Logger.h"
