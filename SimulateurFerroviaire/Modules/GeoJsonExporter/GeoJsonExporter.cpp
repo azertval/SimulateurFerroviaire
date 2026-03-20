@@ -178,3 +178,67 @@ std::wstring GeoJsonExporter::escapeForJavaScript(const std::string& input)
 
     return output;
 }
+
+std::wstring GeoJsonExporter::renderStraightBlock(const StraightBlock& straightBlock)
+{
+    // A straight with fewer than 2 points cannot be rendered
+    if (straightBlock.coordinates.size() < 2)
+    {
+        return L"";
+    }
+
+    std::wstring script = L"renderStraightBlock(";
+
+    // -------------------------
+    // ID
+    // -------------------------
+    script += L"\"";
+    script += std::wstring(straightBlock.id.begin(), straightBlock.id.end());
+    script += L"\",";
+
+    // -------------------------
+    // Coordinates
+    // -------------------------
+    script += L"[";
+
+    for (std::size_t i = 0; i < straightBlock.coordinates.size(); ++i)
+    {
+        const LatLon& coord = straightBlock.coordinates[i];
+
+        script += L"[";
+        script += std::to_wstring(coord.latitude);
+        script += L",";
+        script += std::to_wstring(coord.longitude);
+        script += L"]";
+
+        if (i + 1 < straightBlock.coordinates.size())
+        {
+            script += L",";
+        }
+    }
+
+    script += L"]";
+    script += L");";
+
+    return script;
+}
+
+std::wstring GeoJsonExporter::renderAllStraightBlocks()
+{
+    const std::vector<StraightBlock>& straights =
+        TopologyRepository::instance().data().straights;
+
+    std::wstring fullScript;
+
+    // Clear previous
+    fullScript += L"clearStraightBlocks();";
+
+    for (const auto& straightBlock : straights)
+    {
+        fullScript += renderStraightBlock(straightBlock);
+    }
+
+    fullScript += L"zoomToStraights();";
+
+    return fullScript;
+}

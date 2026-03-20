@@ -56,7 +56,7 @@ void GeoParsingTask::launch(HWND hWnd, const std::string& geoJsonPath)
         }
         catch (const RailwayParserException& exception)
         {
-            LOG_FAILURE(Logger("GeoParsingTaskCrashFolder"), "Erreur GeoParser : %s", exception.what());
+            LOG_FAILURE(Logger("GeoParsingTaskCrashFolder"), "Erreur GeoParser : %s",  exception.what());
             auto* errorMessage = new std::string(
                 std::string("Erreur GeoParser : ") + exception.what());
 

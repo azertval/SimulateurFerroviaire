@@ -13,7 +13,7 @@
 #include "SimulateurFerroviaire.h"
 
 #include "Engine/HMI/WebViewPanel/Leaflet/Leaflet.h"
-
+#include "Engine/HMI/Utils/PathUtils.h"
 #include "Modules/GeoJsonExporter/GeoJsonExporter.h"
 
 #include <string>
@@ -78,7 +78,11 @@ void MainWindow::create()
     // Initialisation du panneau WebView
     m_webViewPanel.setOnInitialized([this]()
         {
-            m_webViewPanel.navigateToString(Leaflet::leafletHtml()); // Carte centrée sur Paris par défaut
+            m_webViewPanel.setVirtualHostMapping(
+                L"app.local",
+                (executableDirectory() / "Resources").wstring()
+            );
+            m_webViewPanel.navigate(L"https://app.local/leaflet.html");
             m_webViewPanel.resize();
         });
     m_webViewPanel.create(m_hWnd);
@@ -235,7 +239,7 @@ void MainWindow::onProgressUpdate(int progressValue)
 
 void MainWindow::onParsingSuccess(HWND hWnd)
 {
-    std::wstring script = GeoJsonExporter::loadGeoJsonToWebView();
+    std::wstring script = GeoJsonExporter::renderAllStraightBlocks();
     m_progressBar.setProgress(100);
 
     m_webViewPanel.executeScript(script);

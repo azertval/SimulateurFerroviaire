@@ -6,23 +6,13 @@
  */
 
 #include "Leaflet.h"
+#include "Engine/HMI/Utils/PathUtils.h"
 
 #include <windows.h>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
-
- // -----------------------------------------------------------------------------
- // Internal helpers
- // -----------------------------------------------------------------------------
-
-static std::filesystem::path executableDirectory()
-{
-    wchar_t path[MAX_PATH];
-    GetModuleFileNameW(nullptr, path, MAX_PATH);
-    return std::filesystem::path(path).parent_path();
-}
 
 // -----------------------------------------------------------------------------
 // Leaflet
@@ -31,7 +21,7 @@ static std::filesystem::path executableDirectory()
 std::wstring Leaflet::leafletHtml()
 {
     std::filesystem::path htmlPath =
-        executableDirectory() / "Resources" / "Leaflet.html";
+        executableDirectory() / "Resources" / "leaflet.html";
 
     std::wifstream file(htmlPath);
     if (!file.is_open())

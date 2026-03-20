@@ -136,7 +136,11 @@ public:
     */
     void close(); // Ferme proprement le WebView et libère les ressources
 
-
+    /**
+     * @brief Mappe un nom d'hôte virtuel vers un dossier local.
+     * Permet de servir des fichiers locaux via https://hostname/...
+     */
+    void setVirtualHostMapping(const std::wstring& hostname, const std::wstring& folderPath);
 private:
     // -------------------------------------------------------------------------
     // Méthodes privées

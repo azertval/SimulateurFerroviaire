@@ -25,10 +25,11 @@ Gestion de l’interface graphique (Win32 + WebView).
 - MainWindow → fenêtre principale  
 - ProgressBar → affichage des tâches longues  
 - WebViewPanel → affichage de openstreetview (Leaflet)  
+    - leaflet.js décrit l'ensemble des scripts d'injections      
 - Dialogs
     - AboutDialog  
   	- FileOpenDialog  
-    - File SaveDialog
+    - FileSaveDialog
 
 ---
 
