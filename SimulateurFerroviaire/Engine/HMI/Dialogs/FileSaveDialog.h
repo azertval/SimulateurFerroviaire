@@ -2,7 +2,7 @@
  * @file FileSaveDialog.h
  * @brief Déclaration du sélecteur de sauvegarde de fichier GeoJSON.
  *
- * La classe @ref FileSaveDialog encapsule l'appel à @c GetExporteFileNameA
+ * La classe @ref FileSaveDialog encapsule l'appel à @c GetSaveFileNameA
  * derrière une interface moderne retournant un @c std::optional.
  * Cela évite de mélanger la logique de sélection de fichier avec le
  * gestionnaire de commandes de @ref MainWindow.

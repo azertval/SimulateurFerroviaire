@@ -1,3 +1,10 @@
+/**
+ * @file  GeoJsonExporter.cpp
+ * @brief Implémentation de l'exporteur GeoJSON.
+ *
+ * @see GeoJsonExporter
+ */
+
 #include "GeoJsonExporter.h"
 
 #include "Modules/Models/TopologyRepository.h"
@@ -112,4 +119,62 @@ void GeoJsonExporter::exportToFile(
     }
 
     outputFile << std::setw(2) << root;
+}
+
+std::wstring GeoJsonExporter::loadGeoJsonToWebView()
+{
+    // Récupérer les données de topologie ferroviaire depuis le repository
+    const std::vector<StraightBlock>& straights = TopologyRepository::instance().data().straights;
+    const std::vector<SwitchBlock>& switches = TopologyRepository::instance().data().switches;
+
+    // Build GeoJSON FeatureCollection
+    JsonDocument root;
+    root["type"] = "FeatureCollection";
+    root["features"] = JsonDocument::array();
+
+    // -------------------------------------------------------------------------
+    // Export all straight blocks
+    // -------------------------------------------------------------------------
+    for (const auto& straight : straights)
+    {
+        root["features"].push_back(convertStraightToFeature(straight));
+    }
+
+    // -------------------------------------------------------------------------
+    // Export all switch blocks
+    // -------------------------------------------------------------------------
+    for (const auto& switchBlock : switches)
+    {
+        root["features"].push_back(convertSwitchToFeature(switchBlock));
+    }
+    // serialize to string and escape for JavaScript injection
+    std::string jsonString = root.dump();
+    std::wstring escaped = escapeForJavaScript(jsonString);
+
+    // Build JS script
+    std::wstring script =
+        L"window.loadGeoJson(JSON.parse(\"" + escaped + L"\"));";
+
+    return script;
+}
+
+std::wstring GeoJsonExporter::escapeForJavaScript(const std::string& input)
+{
+    std::wstring output;
+    output.reserve(input.size());
+
+    for (char c : input)
+    {
+        switch (c)
+        {
+        case '\"': output += L"\\\""; break;
+        case '\\': output += L"\\\\"; break;
+        case '\n': output += L"\\n"; break;
+        case '\r': output += L"\\r"; break;
+        case '\t': output += L"\\t"; break;
+        default: output += static_cast<wchar_t>(c);
+        }
+    }
+
+    return output;
 }

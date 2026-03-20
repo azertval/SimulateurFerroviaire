@@ -44,7 +44,6 @@ public:
      * @param className   Nom de la classe enregistrée par @ref Application.
      * @param title       Titre affiché dans la barre de la fenêtre.
      * @param nCmdShow    Mode d'affichage (@c SW_SHOW, @c SW_HIDE, …).
-     * @param hmiLog      Logger dédié à la couche IHM.
      */
     MainWindow(HINSTANCE hInstance,
                const WCHAR* className,
@@ -117,7 +116,8 @@ private:
     /**
      * @brief Gère la fin réussie du parsing (@c WM_PARSING_SUCCESS).
      *
-     * Affiche un message de succès et masque la barre de progression.
+     * Génère le script d'injection GeoJSON @ref GeoJsonExporter 
+     * et l'exécute dans le WebView pour afficher la carte. 
      *
      * @param hWnd Handle de la fenêtre parente pour la boîte de dialogue.
      */
@@ -140,7 +140,7 @@ private:
      *
      * Délègue la sélection à @ref FileOpenDialog, puis déclenche
      * @ref GeoParsingTask si un fichier est sélectionné.
-     *
+     * 
      * @param hWnd Handle de la fenêtre principale (propriétaire du dialogue).
      */
     void onFileOpen(HWND hWnd);

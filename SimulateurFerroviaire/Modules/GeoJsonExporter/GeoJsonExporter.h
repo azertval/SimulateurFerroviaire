@@ -1,3 +1,9 @@
+/**
+ * @file  GeoJsonExporter.h
+ * @brief Exporteur de topologie ferroviaire au format GeoJSON.
+ *
+ * @see GeoJsonExporter
+ */
 #pragma once
 #include <string>
 #include <vector>
@@ -10,45 +16,72 @@
 using JsonDocument = nlohmann::json;
 
 /**
-* @brief Utility class utilisée pour exporter la topologie ferroviaire parsée en GeoJSON
-* 
-* L'exporteur convertit :
-*  - StraightBlock en des features GeoJSON de type LineString
-*  - SwitchBlock en des features GeoJSON de type Point
-* 
-* Le fichier résultant est une FeatureCollection GeoJSON valide qui peut être ouverte 
-* dans des outils tels que Leaflet, geojson.io ou QGIS.
-*/
-
+ * @class GeoJsonExporter
+ * @brief Utilitaire statique d'export de la topologie ferroviaire en GeoJSON.
+ *
+ * Convertit :
+ *  - StraightBlock → feature GeoJSON de type LineString.
+ *  - SwitchBlock   → feature GeoJSON de type Point.
+ *
+ * Le fichier résultant est une FeatureCollection GeoJSON valide, lisible
+ * par Leaflet, geojson.io ou QGIS.
+ *
+ * Usage :
+ * @code
+ *   GeoJsonExporter::exportToFile("output.geojson");
+ * @endcode
+ */
 class GeoJsonExporter
 {
 public:
     /**
-    * @brief Exporte les données de topologie ferroviaire en format GeoJSON
-    * 
-    * @param straights  Liste des StraightBlock à exporter
-    * @param switches   Liste des SwitchBlock à exporter
-    * @param outputPath Chemin du fichier de sortie (ex: "output.geojson")
-    * @param logger  Fonction de logging pour les messages d'information et d'erreur
+    * @brief Exporte la topologie ferroviaire dans un fichier GeoJSON.
+    *
+    * Lit les données depuis @ref TopologyRepository.
+    *
+    * @param outputPath  Chemin du fichier de sortie (ex. "output.geojson").
     */
     static void exportToFile(const std::string& outputPath);
 
+    /**
+   * @brief Génère le script JavaScript d'injection GeoJSON dans le WebView.
+   *
+   *  Lit les données depuis @ref TopologyRepository.
+   * 
+   * @return Instruction @c window.loadGeoJson(...) prête à être passée à
+   *         @c executeScript.
+   */
+    static std::wstring loadGeoJsonToWebView();
+
 private : 
     /**
-    * @brief Convertit un SwitchBlock en une feature GeoJSON de type Point
-    * GeoJSON format [longitude, latitude].
-    * 
-    * @param straight StraightBlock à convertir
-    * @return JsonDocument Représentation GeoJSON de la feature correspondante
-    */
+     * @brief Convertit un StraightBlock en feature GeoJSON LineString.  
+     *
+     * Les coordonnées sont émises au format GeoJSON [longitude, latitude].
+     *
+     * @param straight  StraightBlock à convertir.
+     * @return Feature GeoJSON sérialisable.
+     */
      static JsonDocument convertStraightToFeature(const StraightBlock& straight);
 
-     /** 
-     * @brieft Convertit un SwitchBlock en une feature GeoJSON de type Point
-     * GeoJSON format [longitude, latitude].
-     * 
-     * @param switch SwitchBlock à convertir
-     * @ return JsonDocument Représentation GeoJSON de la feature correspondante
+     /**
+     * @brief Convertit un SwitchBlock en feature GeoJSON Point.
+     *
+     * Les coordonnées sont émises au format GeoJSON [longitude, latitude].
+     *
+     * @param switchBlock  SwitchBlock à convertir.                   // ← espace parasite supprimé
+     * @return Feature GeoJSON sérialisable.
      */
      static JsonDocument convertSwitchToFeature(const SwitchBlock& switchBlock);
+
+     /**
+     * @brief Échappe une chaîne pour injection sécurisée dans du JavaScript.
+     *
+     * @param input  Chaîne à échapper.
+     * @return Chaîne échappée prête pour @c executeScript.
+     */
+     static std::wstring escapeForJavaScript(const std::string& input);
+
+    /** @brief Classe non instanciable — constructeur supprimé. */
+    GeoJsonExporter() = delete;
 };
