@@ -1,8 +1,10 @@
 name: Build (CMake)
 
 on:
+  push:
+    branches: [ master ]
   pull_request:
-     branches: [ master ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -14,10 +16,12 @@ jobs:
 
     steps:
     # -------------------------------------------------------------------------
-    # Checkout
+    # Checkout (full history required for the release branch push)
     # -------------------------------------------------------------------------
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     # -------------------------------------------------------------------------
     # Setup CMake
@@ -59,7 +63,7 @@ jobs:
         Write-Host "WebView2 installed"
 
     # -------------------------------------------------------------------------
-    # Verify files (debug step)
+    # Verify WebView2
     # -------------------------------------------------------------------------
     - name: Verify WebView2
       shell: powershell
@@ -89,7 +93,7 @@ jobs:
       run: cmake --build build --config ${{ matrix.config }}
 
     # -------------------------------------------------------------------------
-    # Upload artifact
+    # Upload artifact (toujours disponible, y compris sur les PR)
     # -------------------------------------------------------------------------
     - name: Upload EXE
       uses: actions/upload-artifact@v4
@@ -97,3 +101,57 @@ jobs:
         name: SimulateurFerroviaire-${{ matrix.config }}
         path: |
           build/${{ matrix.config }}/SimulateurFerroviaire.exe
+          build/${{ matrix.config }}/Resources/
+
+    # -------------------------------------------------------------------------
+    # Push du dossier de sortie sur la branche `release`
+    # Uniquement sur push vers master (pas sur PR)
+    # -------------------------------------------------------------------------
+    - name: Publish to release branch
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      shell: powershell
+      run: |
+        # --- Préparer le dossier de sortie à publier ---
+        $outDir = "build/${{ matrix.config }}"
+
+        # --- Configurer git ---
+        git config user.name  "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+        # --- Basculer sur la branche release (orpheline si elle n'existe pas) ---
+        $branchExists = git ls-remote --heads origin release
+        if ($branchExists) {
+            git fetch origin release
+            git checkout release
+        } else {
+            Write-Host "Creating orphan branch 'release'..."
+            git checkout --orphan release
+            git rm -rf . | Out-Null
+        }
+
+        # --- Copier l'exe ---
+        Copy-Item "$outDir/SimulateurFerroviaire.exe" "SimulateurFerroviaire.exe" -Force
+
+        # --- Copier les ressources si elles existent ---
+        if (Test-Path "$outDir/Resources") {
+            if (Test-Path "Resources") { Remove-Item "Resources" -Recurse -Force }
+            Copy-Item "$outDir/Resources" "Resources" -Recurse -Force
+        }
+
+        # --- Commit et push ---
+        $sha = "${{ github.sha }}".Substring(0, 7)
+        $msg = "release: build from $sha"
+
+        git add SimulateurFerroviaire.exe
+        if (Test-Path "Resources") { git add Resources/ }
+
+        $status = git status --porcelain
+        if ($status) {
+            git commit -m $msg
+            git push origin release --force-with-lease
+            Write-Host "Pushed to release branch"
+        } else {
+            Write-Host "Nothing changed - skipping push"
+        }
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
