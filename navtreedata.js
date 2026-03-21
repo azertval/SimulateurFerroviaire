@@ -28,13 +28,13 @@ var NAVTREE =
     [ "Description", "index.html#description", null ],
     [ "Engine — Moteur de l'application", "index.html#engine", [
       [ "Core — Cœur applicatif", "index.html#core", [
-        [ "TopologyData", "index.html#autotoc_md2", null ],
+        [ "TopologyData", "index.html#data", null ],
         [ "TopologyRenderer — Rendu et exportation", "index.html#renderer", null ]
       ] ],
       [ "HMI — Interface utilisateur", "index.html#hmi", [
         [ "Binding bidirectionnel Leaflet ↔ C++", "index.html#binding", null ]
       ] ],
-      [ "</blockquote>", "index.html#autotoc_md4", null ]
+      [ "</blockquote>", "index.html#autotoc_md3", null ]
     ] ],
     [ "Modules — Fonctionnalités métier", "index.html#modules", null ],
     [ "GeoParser — Pipeline principal", "index.html#geoparser", [
