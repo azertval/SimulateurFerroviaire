@@ -1,5 +1,7 @@
 <map id="TopologyExtractor::wireTopology" name="TopologyExtractor::wireTopology">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,152,45"/>
-<area shape="rect" id="Node000002" href="$classTopologyExtractor.html#a5f368f1d09c07d020c41711ffd3eb507" title="Regroupe les IDs de morceaux par ID de base (ex. &quot;s/0&quot; → [&quot;s/0&quot;,&quot;s/0_c1&quot;])." alt="" coords="200,5,368,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,23,186,23,186,28,152,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,27,152,67"/>
+<area shape="rect" id="Node000002" href="$classStraightBlock.html#a31992cb0d660a2be22d99615c4be8c23" title="Ajoute un voisin en maintenant l&#39;ordre lexicographique. Pas de doublon." alt="" coords="200,5,420,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,35,196,30,196,35,153,41"/>
+<area shape="rect" id="Node000003" href="$classTopologyExtractor.html#a5f368f1d09c07d020c41711ffd3eb507" title="Regroupe les IDs de morceaux par ID de base (ex. &quot;s/0&quot; → [&quot;s/0&quot;,&quot;s/0_c1&quot;])." alt="" coords="226,55,394,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,54,212,61,212,66,152,59"/>
 </map>

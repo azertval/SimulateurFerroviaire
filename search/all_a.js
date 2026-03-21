@@ -10,7 +10,7 @@ var searchData=
   ['leaflet_2eh_7',['Leaflet.h',['../Leaflet_8h.html',1,'']]],
   ['leaflet_5fapi_2ejs_8',['leaflet_api.js',['../leaflet__api_8js.html',1,'']]],
   ['leaflethtml_9',['leafletHtml',['../classLeaflet.html#a9046365be11f3d57341c8162ceb1fd88',1,'Leaflet']]],
-  ['lengthmeters_10',['lengthmeters',['../classTopologyEdge.html#a41c94778c4ee6801728c74bc47d623c8',1,'TopologyEdge::lengthMeters'],['../classStraightBlock.html#aa169e5936f6935916fd5beb51c176a2c',1,'StraightBlock::lengthMeters']]],
+  ['lengthmeters_10',['lengthMeters',['../classTopologyEdge.html#a41c94778c4ee6801728c74bc47d623c8',1,'TopologyEdge']]],
   ['leveltostring_11',['levelToString',['../classLogger.html#acfb794ab842c63396ad1c6a771f43483',1,'Logger']]],
   ['licence_12',['Licence',['../index.html#licence',1,'']]],
   ['loadgeojsonfile_13',['loadGeoJsonFile',['../classGraphBuilder.html#aa6791cab236c871f53d8e7017875f7bc',1,'GraphBuilder']]],

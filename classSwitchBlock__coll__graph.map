@@ -1,5 +1,5 @@
 <map id="SwitchBlock" name="SwitchBlock">
-<area shape="rect" id="Node000001" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON." alt="" coords="5,213,211,619"/>
-<area shape="rect" id="Node000002" href="$classLatLon.html" title="Coordonnée géographique WGS&#45;84 exprimée en degrés décimaux." alt="" coords="50,5,166,151"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,151,111,197,105,197,105,151"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,213,235,1039"/>
+<area shape="rect" id="Node000002" href="$classLatLon.html" title="Coordonnée géographique WGS&#45;84 exprimée en degrés décimaux." alt="" coords="62,5,178,151"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,151,123,197,117,197,117,151"/>
 </map>

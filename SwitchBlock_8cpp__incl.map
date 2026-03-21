@@ -1,13 +1,15 @@
 <map id="SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/SwitchBlock.cpp" name="SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/SwitchBlock.cpp">
-<area shape="rect" id="Node000001" title="Implémentation du modèle d&#39;aiguillage SwitchBlock." alt="" coords="278,5,533,60"/>
-<area shape="rect" id="Node000002" href="$SwitchBlock_8h.html" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches (Switch)." alt="" coords="175,108,289,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="354,62,269,104,266,99,351,58"/>
+<area shape="rect" id="Node000001" title="Implémentation du modèle d&#39;aiguillage SwitchBlock." alt="" coords="327,5,582,60"/>
+<area shape="rect" id="Node000002" href="$SwitchBlock_8h.html" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches." alt="" coords="175,108,289,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="388,63,276,105,274,100,386,58"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="313,108,399,133"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="393,61,372,97,367,95,388,59"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="426,62,382,101,378,97,423,58"/>
 <area shape="rect" id="Node000009" title=" " alt="" coords="423,108,486,133"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="423,59,443,95,439,97,418,61"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="457,60,457,94,452,94,452,60"/>
 <area shape="rect" id="Node000010" title=" " alt="" coords="511,108,585,133"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="450,58,519,99,516,103,448,62"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="485,58,527,96,523,100,481,62"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="610,108,697,133"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="516,58,615,100,613,105,514,63"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="5,189,80,214"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="205,136,84,186,82,181,203,131"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="104,189,179,214"/>

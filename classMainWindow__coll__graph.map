@@ -1,10 +1,10 @@
 <map id="MainWindow" name="MainWindow">
-<area shape="rect" id="Node000001" title="Fenêtre principale de l&#39;application SimulateurFerroviaire." alt="" coords="113,921,271,1287"/>
-<area shape="rect" id="Node000002" href="$classProgressBar.html" title=" " alt="" coords="5,593,123,719"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,719,55,804,59,851,68,897,85,941,107,984,102,987,80,944,63,898,53,852,50,805,53,719"/>
+<area shape="rect" id="Node000001" title="Fenêtre principale de l&#39;application SimulateurFerroviaire." alt="" coords="113,981,271,1347"/>
+<area shape="rect" id="Node000002" href="$classProgressBar.html" title=" " alt="" coords="5,623,123,749"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,749,53,848,57,903,68,957,85,1001,107,1044,102,1047,80,1004,63,958,52,904,48,848,52,749"/>
 <area shape="rect" id="Node000003" href="$classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="123,5,304,391"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,391,207,453,197,905,192,905,201,453,203,391"/>
-<area shape="rect" id="Node000004" href="$classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué." alt="" coords="315,453,503,859"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="298,390,319,437,314,439,293,392"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="318,851,280,928,276,925,313,849"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,391,207,453,197,965,192,965,201,453,203,391"/>
+<area shape="rect" id="Node000004" href="$classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué." alt="" coords="315,453,517,919"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="296,390,315,437,310,439,291,392"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="318,902,280,982,275,980,313,900"/>
 </map>

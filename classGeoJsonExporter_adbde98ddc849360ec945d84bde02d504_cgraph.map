@@ -1,10 +1,24 @@
 <map id="GeoJsonExporter::renderAllSwitchBlocksJunctions" name="GeoJsonExporter::renderAllSwitchBlocksJunctions">
-<area shape="rect" id="Node000001" title="Efface puis redessine tous les marqueurs de jonction." alt="" coords="5,93,203,133"/>
-<area shape="rect" id="Node000002" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="287,5,437,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,91,250,55,274,47,276,52,252,60,156,96"/>
-<area shape="rect" id="Node000003" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="287,93,437,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,111,273,111,273,116,203,116"/>
-<area shape="rect" id="Node000004" href="$classGeoJsonExporter.html#a94a0a86bf9fb71861ffd691bda77fd47" title="Construit l&#39;appel JS renderSwitch(id, lat, lon, isDouble)." alt="" coords="251,157,473,197"/>
-<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="186,131,268,151,267,157,185,136"/>
-<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="314,94,312,84,319,74,336,69,362,67,392,70,408,77,406,82,390,75,362,72,337,74,322,79,317,85,320,92"/>
+<area shape="rect" id="Node000001" title="Efface puis redessine tous les marqueurs de jonction." alt="" coords="5,98,203,138"/>
+<area shape="rect" id="Node000002" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="287,10,437,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,95,250,59,274,52,276,57,252,65,156,100"/>
+<area shape="rect" id="Node000003" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="287,98,437,138"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,115,273,115,273,121,203,121"/>
+<area shape="rect" id="Node000004" href="$classGeoJsonExporter.html#a94a0a86bf9fb71861ffd691bda77fd47" title="Construit l&#39;appel JS renderSwitch(id, lat, lon, isDouble)." alt="" coords="251,162,473,202"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="186,135,268,156,267,161,185,141"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="314,98,312,88,319,79,336,73,362,71,392,74,408,81,406,86,390,79,362,77,337,79,322,83,317,89,320,97"/>
+<area shape="rect" id="Node000005" href="$classGeoJsonExporter.html#a88e1a923193554c2b66962199a770ace" title="Calcule le bearing en degrés entre deux points géographiques." alt="" coords="530,5,743,31"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="454,160,472,148,483,135,489,122,494,95,500,67,507,53,520,40,526,35,529,39,523,44,511,56,505,69,499,96,494,124,487,138,475,152,458,164"/>
+<area shape="rect" id="Node000006" href="$classSwitchBlock.html#a4389341dc43ddfc247c34a160f1bbc7a" title=" " alt="" coords="565,55,708,80"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="450,160,472,148,486,134,495,120,504,105,520,90,551,77,553,82,523,95,508,108,499,122,491,137,475,152,452,164"/>
+<area shape="rect" id="Node000007" href="$classSwitchBlock.html#a17420e8225a0637a6d38b73bee7d2526" title=" " alt="" coords="545,105,728,145"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="458,159,531,144,533,149,459,165"/>
+<area shape="rect" id="Node000008" href="$classSwitchBlock.html#a7bc2dc6a569f28c662ce4071977569b3" title="Retourne l&#39;ID du partenaire (peu importe la branche). Nullopt si pas un double." alt="" coords="543,169,731,195"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="474,179,529,179,529,185,474,185"/>
+<area shape="rect" id="Node000009" href="$classSwitchBlock.html#a6b66c9a47909473ed1952a1f6dfb7183" title=" " alt="" coords="521,219,752,244"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="474,199,552,214,551,219,473,205"/>
+<area shape="rect" id="Node000010" href="$classSwitchBlock.html#ad6735b53a83425ebf379eb210a5237ba" title=" " alt="" coords="529,268,745,293"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="402,200,458,227,522,253,554,262,553,267,520,258,456,232,400,205"/>
+<area shape="rect" id="Node000011" href="$classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e" title=" " alt="" coords="553,317,720,343"/>
+<area shape="poly" id="edge11_Node000004_Node000011" title=" " alt="" coords="385,200,444,252,482,279,522,302,545,311,543,316,520,307,479,284,440,256,382,204"/>
 </map>

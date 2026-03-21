@@ -121,10 +121,10 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a0ed66205a222764fb0ad914425ba0f6e" id="r_a0ed66205a222764fb0ad914425ba0f6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#a0ed66205a222764fb0ad914425ba0f6e">orientThreePortSwitch</a> (<a class="el" href="classSwitchBlock.html">SwitchBlock</a> &amp;switchBlock, const std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;straightById)</td></tr>
-<tr class="memdesc:a0ed66205a222764fb0ad914425ba0f6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oriente un <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> à 3 branches en place.  <br /></td></tr>
+<tr class="memdesc:a0ed66205a222764fb0ad914425ba0f6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oriente un <a class="el" href="classSwitchBlock.html">SwitchBlock</a> à 3 branches en place.  <br /></td></tr>
 <tr class="separator:a0ed66205a222764fb0ad914425ba0f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8132fa3495845481fdb68a3ec695af15" id="r_a8132fa3495845481fdb68a3ec695af15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#a8132fa3495845481fdb68a3ec695af15">computeBranchTipPoints</a> (<a class="el" href="classSwitchBlock.html">SwitchBlock</a> &amp;switchBlock, const std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;straightById)</td></tr>
-<tr class="memdesc:a8132fa3495845481fdb68a3ec695af15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule et assigne les points tip CDC sur un <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> orienté.  <br /></td></tr>
+<tr class="memdesc:a8132fa3495845481fdb68a3ec695af15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule et assigne les points tip CDC sur un <a class="el" href="classSwitchBlock.html">SwitchBlock</a> orienté.  <br /></td></tr>
 <tr class="separator:a8132fa3495845481fdb68a3ec695af15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af602429b8a3a2d38e92515cfd2d76ecd" id="r_af602429b8a3a2d38e92515cfd2d76ecd"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#af602429b8a3a2d38e92515cfd2d76ecd">interpolateTipPoint</a> (const std::string &amp;straightId, const <a class="el" href="classLatLon.html">LatLon</a> &amp;junctionCoord, double distanceMeters, const std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;straightById)</td></tr>
 <tr class="memdesc:af602429b8a3a2d38e92515cfd2d76ecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpole un point tip à distanceMeters depuis la jonction le long d'un Straight.  <br /></td></tr>
@@ -136,10 +136,10 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:acdcd6a442cb52bed611a302b1358c8bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force la branche partagée au rôle DEVIATION sur les deux aiguillages formant un croisement mécanique (2 branches partagées).  <br /></td></tr>
 <tr class="separator:acdcd6a442cb52bed611a302b1358c8bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac80814892c9baea379f2b4e9f22b966e" id="r_ac80814892c9baea379f2b4e9f22b966e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#ac80814892c9baea379f2b4e9f22b966e">trimStraightOverlaps</a> (std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;straightById)</td></tr>
-<tr class="memdesc:ac80814892c9baea379f2b4e9f22b966e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retaille chaque <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> adjacent à une jonction pour qu'il commence (ou se termine) exactement au point tip CDC.  <br /></td></tr>
+<tr class="memdesc:ac80814892c9baea379f2b4e9f22b966e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retaille chaque <a class="el" href="classStraightBlock.html">StraightBlock</a> adjacent à une jonction pour qu'il commence (ou se termine) exactement au point tip CDC.  <br /></td></tr>
 <tr class="separator:ac80814892c9baea379f2b4e9f22b966e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad2a4892eb6f9d716bd4703694813f46" id="r_aad2a4892eb6f9d716bd4703694813f46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCoordinateXY.html">CoordinateXY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchOrientator.html#aad2a4892eb6f9d716bd4703694813f46">computeBranchDirectionVector</a> (const std::string &amp;straightId, const <a class="el" href="classLatLon.html">LatLon</a> &amp;junctionCoord, const std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt; &amp;straightById) const</td></tr>
-<tr class="memdesc:aad2a4892eb6f9d716bd4703694813f46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la direction (vecteur lat/lon) depuis junctionCoord vers l'extrémité distale du <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>.  <br /></td></tr>
+<tr class="memdesc:aad2a4892eb6f9d716bd4703694813f46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la direction (vecteur lat/lon) depuis junctionCoord vers l'extrémité distale du <a class="el" href="classStraightBlock.html">StraightBlock</a>.  <br /></td></tr>
 <tr class="separator:aad2a4892eb6f9d716bd4703694813f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -253,10 +253,15 @@ Private Attributes</h2></td></tr>
 <p>Échange normal↔deviation sur l'aiguillage non-référence si les rôles diffèrent. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">straightById</td><td>Index des <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>. </td></tr>
+    <tr><td class="paramname">straightById</td><td>Index des <a class="el" href="classStraightBlock.html">StraightBlock</a>. </td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_a2786825e04cc0836549bb23a2b6242b4_cgraph.svg" width="531" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -305,12 +310,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Retourne la direction (vecteur lat/lon) depuis junctionCoord vers l'extrémité distale du <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>. </p>
+<p>Retourne la direction (vecteur lat/lon) depuis junctionCoord vers l'extrémité distale du <a class="el" href="classStraightBlock.html">StraightBlock</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">straightId</td><td>Identifiant du <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>. </td></tr>
+    <tr><td class="paramname">straightId</td><td>Identifiant du <a class="el" href="classStraightBlock.html">StraightBlock</a>. </td></tr>
     <tr><td class="paramname">junctionCoord</td><td>Coordonnée de la jonction WGS-84. </td></tr>
-    <tr><td class="paramname">straightById</td><td>Index des <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>. </td></tr>
+    <tr><td class="paramname">straightById</td><td>Index des <a class="el" href="classStraightBlock.html">StraightBlock</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -357,18 +362,18 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Calcule et assigne les points tip CDC sur un <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> orienté. </p>
+<p>Calcule et assigne les points tip CDC sur un <a class="el" href="classSwitchBlock.html">SwitchBlock</a> orienté. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">switchBlock</td><td>Aiguillage orienté (root/normal/deviation déjà assignés). </td></tr>
-    <tr><td class="paramname">straightById</td><td>Index des <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>. </td></tr>
+    <tr><td class="paramname">straightById</td><td>Index des <a class="el" href="classStraightBlock.html">StraightBlock</a>. </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_a8132fa3495845481fdb68a3ec695af15_cgraph.svg" width="1294" height="230"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_a8132fa3495845481fdb68a3ec695af15_cgraph.svg" width="1318" height="387"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -402,6 +407,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Force la branche partagée au rôle DEVIATION sur les deux aiguillages formant un croisement mécanique (2 branches partagées). </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_acdcd6a442cb52bed611a302b1358c8bb_cgraph.svg" width="502" height="234"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -459,10 +469,10 @@ Here is the caller graph for this function:</div>
 <p>Interpole un point tip à distanceMeters depuis la jonction le long d'un Straight. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">straightId</td><td>Identifiant du <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>. </td></tr>
+    <tr><td class="paramname">straightId</td><td>Identifiant du <a class="el" href="classStraightBlock.html">StraightBlock</a>. </td></tr>
     <tr><td class="paramname">junctionCoord</td><td>Coordonnée WGS-84 de la jonction. </td></tr>
     <tr><td class="paramname">distanceMeters</td><td>Distance depuis la jonction. </td></tr>
-    <tr><td class="paramname">straightById</td><td>Index des <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>. </td></tr>
+    <tr><td class="paramname">straightById</td><td>Index des <a class="el" href="classStraightBlock.html">StraightBlock</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -470,7 +480,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_af602429b8a3a2d38e92515cfd2d76ecd_cgraph.svg" width="1050" height="230"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_af602429b8a3a2d38e92515cfd2d76ecd_cgraph.svg" width="1050" height="280"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -497,13 +507,13 @@ Here is the caller graph for this function:</div>
 
 <p>Exécute les phases 6, 6b, 6c et 6d en place sur topoResult. </p>
 <p>Après cet appel :</p><ul>
-<li>Chaque <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> orienté dispose de junctionCoordinate + 3 tips CDC.</li>
-<li>Chaque <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> adjacent à une jonction débute (ou se termine) au point tip CDC — aucun chevauchement avec les branches du switch. </li>
+<li>Chaque <a class="el" href="classSwitchBlock.html">SwitchBlock</a> orienté dispose de junctionCoordinate + 3 tips CDC.</li>
+<li>Chaque <a class="el" href="classStraightBlock.html">StraightBlock</a> adjacent à une jonction débute (ou se termine) au point tip CDC — aucun chevauchement avec les branches du switch. </li>
 </ul>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_a5af1a097baad421ce01bd013be602df7_cgraph.svg" width="1556" height="463"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_a5af1a097baad421ce01bd013be602df7_cgraph.svg" width="1584" height="691"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -547,18 +557,18 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Oriente un <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> à 3 branches en place. </p>
+<p>Oriente un <a class="el" href="classSwitchBlock.html">SwitchBlock</a> à 3 branches en place. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">switchBlock</td><td>Aiguillage à orienter. </td></tr>
-    <tr><td class="paramname">straightById</td><td>Index des <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> pour accès par ID. </td></tr>
+    <tr><td class="paramname">straightById</td><td>Index des <a class="el" href="classStraightBlock.html">StraightBlock</a> pour accès par ID. </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_a0ed66205a222764fb0ad914425ba0f6e_cgraph.svg" width="455" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_a0ed66205a222764fb0ad914425ba0f6e_cgraph.svg" width="432" height="166"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -592,25 +602,25 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Retaille chaque <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> adjacent à une jonction pour qu'il commence (ou se termine) exactement au point tip CDC. </p>
+<p>Retaille chaque <a class="el" href="classStraightBlock.html">StraightBlock</a> adjacent à une jonction pour qu'il commence (ou se termine) exactement au point tip CDC. </p>
 <p>Algorithme : Pour chaque switch orienté, pour chaque branche (root / normal / deviation) :</p><ol type="1">
 <li>Identifier quel bout du Straight est côté jonction.</li>
 <li>Convertir la polyligne en métrique UTM, jonction en tête.</li>
 <li>Parcourir les segments jusqu'à cumuler branchTipDistanceMeters ; interpoler le point de coupure exact.</li>
 <li>Reconstituer la polyligne à partir de ce point, reconvertir en WGS-84.</li>
-<li>Recalculer <a class="el" href="classStraightBlock.html#aa169e5936f6935916fd5beb51c176a2c">StraightBlock::lengthMeters</a>.</li>
+<li>Recalculer StraightBlock::lengthMeters.</li>
 </ol>
 <p>Un ensemble (straightId, junctionAtFront) garantit qu'un même bout n'est jamais retaillé deux fois (croisements mécaniques, doubles aiguilles).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">straightById</td><td>Index mutable des <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>. </td></tr>
+    <tr><td class="paramname">straightById</td><td>Index mutable des <a class="el" href="classStraightBlock.html">StraightBlock</a>. </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_ac80814892c9baea379f2b4e9f22b966e_cgraph.svg" width="1048" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classSwitchOrientator_ac80814892c9baea379f2b4e9f22b966e_cgraph.svg" width="1048" height="287"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>

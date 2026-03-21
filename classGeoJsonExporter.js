@@ -1,6 +1,7 @@
 var classGeoJsonExporter =
 [
     [ "GeoJsonExporter", "classGeoJsonExporter.html#ace4096f5c5d68edbe51b4ff15fe2f177", null ],
+    [ "bearingDeg", "classGeoJsonExporter.html#a88e1a923193554c2b66962199a770ace", null ],
     [ "convertStraightToFeature", "classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a", null ],
     [ "convertSwitchToFeature", "classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93", null ],
     [ "escapeForJavaScript", "classGeoJsonExporter.html#a01038435d85225bf7f417711680ffdbe", null ],

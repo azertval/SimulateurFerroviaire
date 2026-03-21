@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Initialise le runtime WebView2 et crée le controller et le webview.">
+<g id="a_Node000001"><a xlink:title="Initialise l&#39;environnement WebView2 de manière asynchrone.">
 <polygon fill="#999999" stroke="#666666" points="449,-30 313,-30 313,0 449,0 449,-30"/>
 <text text-anchor="start" x="321" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">WebViewPanel::initialize</text>
 <text text-anchor="middle" x="381" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">WebView</text>

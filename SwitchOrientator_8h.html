@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('SwitchOrientator_8h.html',''); initRes
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for SwitchOrientator.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="SwitchOrientator_8h__incl.svg" width="2382" height="476"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="SwitchOrientator_8h__incl.svg" width="2391" height="476"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -129,11 +129,11 @@ Classes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Phases 6, 6b, 6c et 6d — orientation géométrique des aiguillages. </p>
-<p>Phase 6 (orientAllSwitches) : Pour chaque <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> à 3 branches, assigne root / normal / deviation. Règle : la paire de branches avec l'angle mutuel le plus faible = sorties. La branche restante = root. Normal = sortie la plus alignée avec l'anti-root. Calcule les points tip CDC à branchTipDistanceMeters depuis la jonction.</p>
+<p>Phase 6 (orientAllSwitches) : Pour chaque <a class="el" href="classSwitchBlock.html">SwitchBlock</a> à 3 branches, assigne root / normal / deviation. Règle : la paire de branches avec l'angle mutuel le plus faible = sorties. La branche restante = root. Normal = sortie la plus alignée avec l'anti-root. Calcule les points tip CDC à branchTipDistanceMeters depuis la jonction.</p>
 <p>Phase 6b (alignDoubleSwitchRoles) : Garantit que le segment de liaison entre deux futurs demi-doubles porte le même rôle (normal ou deviation) des deux côtés. L'aiguillage de référence est celui dont l'ID est le plus petit.</p>
 <p>Phase 6c (enforceCrossoverConsistency) : Si deux aiguillages partagent exactement 2 branches (croisement mécanique), force la branche partagée au rôle DEVIATION sur les deux.</p>
-<p>Phase 6d (trimStraightOverlaps) : Supprime le chevauchement géométrique entre les branches de l'aiguillage et les <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> adjacents. Après cette phase :</p><ul>
-<li><a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> possède 4 coordonnées : junctionCoordinate, tipOnRoot, tipOnNormal, tipOnDeviation (à branchTipDistanceMeters depuis la jonction).</li>
+<p>Phase 6d (trimStraightOverlaps) : Supprime le chevauchement géométrique entre les branches de l'aiguillage et les <a class="el" href="classStraightBlock.html">StraightBlock</a> adjacents. Après cette phase :</p><ul>
+<li><a class="el" href="classSwitchBlock.html">SwitchBlock</a> possède 4 coordonnées : junctionCoordinate, tipOnRoot, tipOnNormal, tipOnDeviation (à branchTipDistanceMeters depuis la jonction).</li>
 <li>StraightBlock.coordinates.front() (côté jonction) = tip CDC correspondant. Un même bout de Straight n'est jamais retaillé deux fois (garde via un ensemble (straightId, junctionAtFront)). </li>
 </ul>
 </div></div><!-- contents -->

@@ -7,9 +7,10 @@ var searchData=
   ['invalidgeojsonformatexception_4',['InvalidGeoJsonFormatException',['../classInvalidGeoJsonFormatException.html#a6a575f1b2ef3060938b86ad75907eb3c',1,'InvalidGeoJsonFormatException']]],
   ['invalidswitchconfigexception_5',['InvalidSwitchConfigException',['../classInvalidSwitchConfigException.html#abaaafef573235d7c5ea379dfeddb7359',1,'InvalidSwitchConfigException']]],
   ['invalidtopologyexception_6',['InvalidTopologyException',['../classInvalidTopologyException.html#a5710b8640dbf0e049d7bd6e17ea47eb2',1,'InvalidTopologyException']]],
-  ['isfree_7',['isFree',['../classShuntingElement.html#a679c294d3ca6d857e7ffa69eaed76c92',1,'ShuntingElement']]],
-  ['isinactive_8',['isInactive',['../classShuntingElement.html#ac236019e6961a887732237cc5f1da697',1,'ShuntingElement']]],
-  ['isinitialized_9',['isInitialized',['../classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2',1,'WebViewPanel']]],
-  ['isoccupied_10',['isOccupied',['../classShuntingElement.html#a6b545a802c6d06e1f8fb77a59f4ed0a4',1,'ShuntingElement']]],
-  ['isoriented_11',['isOriented',['../classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7',1,'SwitchBlock']]]
+  ['isdouble_7',['isDouble',['../classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e',1,'SwitchBlock']]],
+  ['isfree_8',['isFree',['../classShuntingElement.html#a679c294d3ca6d857e7ffa69eaed76c92',1,'ShuntingElement']]],
+  ['isinactive_9',['isInactive',['../classShuntingElement.html#ac236019e6961a887732237cc5f1da697',1,'ShuntingElement']]],
+  ['isinitialized_10',['isInitialized',['../classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2',1,'WebViewPanel']]],
+  ['isoccupied_11',['isOccupied',['../classShuntingElement.html#a6b545a802c6d06e1f8fb77a59f4ed0a4',1,'ShuntingElement']]],
+  ['isoriented_12',['isOriented',['../classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7',1,'SwitchBlock']]]
 ];

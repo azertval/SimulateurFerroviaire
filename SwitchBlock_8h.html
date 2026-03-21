@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('SwitchBlock_8h.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 
-<p>Modèle de domaine d'un aiguillage ferroviaire à 3 branches (Switch).  
+<p>Modèle de domaine d'un aiguillage ferroviaire à 3 branches.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
@@ -119,17 +119,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchBlock.html">SwitchBlock</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.  <a href="classSwitchBlock.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Modèle de domaine d'un aiguillage ferroviaire à 3 branches (Switch). </p>
-<p>Un <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> représente une jonction topologique de degré ≥ 3 dans le graphe ferroviaire. Après orientation (Phase 6), il expose :</p><ul>
-<li>La branche root : Straight entrant dans la jonction.</li>
-<li>La branche normal: premier Straight de sortie (continuation directe).</li>
-<li>La branche deviation : second Straight de sortie (branche déviée).</li>
-</ul>
-<p>Hiérarchie : <a class="el" href="classInteractiveElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires.">InteractiveElement</a> → <a class="el" href="classShuntingElement.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire.">ShuntingElement</a> → <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> </p>
+<div class="textblock"><p>Modèle de domaine d'un aiguillage ferroviaire à 3 branches. </p>
+<p>Encapsulation : tous les champs sont privés. Les mutations passent par des méthodes à intent explicite, appelées uniquement par la phase du pipeline qui en a la charge : Phase 3 → constructeur Phase 5b → addBranchId Phase 6 → orient / setTips / swapNormalDeviation / computeTotalLength Phase 7 → absorbLink</p>
+<p>Double aiguille : Un aiguillage peut absorber le segment de liaison côté branche normale (doubleOnNormal) ou côté branche déviée (doubleOnDeviation). Un seul des deux est renseigné à la fois.</p>
+<p>absorbLink() stocke la polyligne COMPLÈTE du segment absorbé, orientée depuis la jonction de ce switch vers celle du partenaire. Cette polyligne est utilisée par le rendu WebView pour tracer la branche fusionnée avec fidélité géométrique. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

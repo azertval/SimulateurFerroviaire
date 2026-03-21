@@ -197,7 +197,7 @@ Pipeline global</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">1–2   </td><td class="markdownTableBodyNone"><a class="el" href="classGraphBuilder.html" title="Charge un fichier GeoJSON et construit le TopologyGraph métrique.">GraphBuilder</a>   </td><td class="markdownTableBodyNone">Chargement GeoJSON, projection WGS-84 → UTM, snap + fusion des nœuds    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">3–5   </td><td class="markdownTableBodyNone"><a class="el" href="classTopologyExtractor.html" title="Extrait la topologie ferroviaire (Switch + Straight) depuis un TopologyGraph.">TopologyExtractor</a>   </td><td class="markdownTableBodyNone">Détection des aiguillages, extraction des <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>, câblage    </td></tr>
+<td class="markdownTableBodyNone">3–5   </td><td class="markdownTableBodyNone"><a class="el" href="classTopologyExtractor.html" title="Extrait la topologie ferroviaire (Switch + Straight) depuis un TopologyGraph.">TopologyExtractor</a>   </td><td class="markdownTableBodyNone">Détection des aiguillages, extraction des <a class="el" href="classStraightBlock.html">StraightBlock</a>, câblage    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone"><a class="el" href="classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC) et supprime les chevauche...">SwitchOrientator</a>   </td><td class="markdownTableBodyNone">Orientation root / normal / deviation, calcul des tips CDC    </td></tr>
 <tr class="markdownTableRowEven">
@@ -288,7 +288,7 @@ Stockages</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="classTopologyData.html">TopologyData</a>   </td><td class="markdownTableBodyNone">Conteneur <code>unique_ptr&lt;<a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a>&gt;</code> + <code>unique_ptr&lt;<a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a>&gt;</code>. Garantit le polymorphisme sans slicing    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="classTopologyData.html">TopologyData</a>   </td><td class="markdownTableBodyNone">Conteneur <code>unique_ptr&lt;<a class="el" href="classStraightBlock.html">StraightBlock</a>&gt;</code> + <code>unique_ptr&lt;<a class="el" href="classSwitchBlock.html">SwitchBlock</a>&gt;</code>. Garantit le polymorphisme sans slicing    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a class="el" href="classTopologyRepository.html">TopologyRepository</a>   </td><td class="markdownTableBodyNone">Singleton (Meyers). Accès global à <a class="el" href="classTopologyData.html">TopologyData</a> via <code>instance().data()</code>   </td></tr>
 </table>

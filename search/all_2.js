@@ -17,11 +17,10 @@ var searchData=
   ['convertpolylinetowgs84_14',['convertPolylineToWgs84',['../classGeometryUtils.html#aba6963b2f6022f04e51fb716a11e3895',1,'GeometryUtils']]],
   ['convertstraighttofeature_15',['convertStraightToFeature',['../classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a',1,'GeoJsonExporter']]],
   ['convertswitchtofeature_16',['convertSwitchToFeature',['../classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93',1,'GeoJsonExporter']]],
-  ['coordinates_17',['coordinates',['../classStraightBlock.html#ae53ff9455e74374bd6abb4e3221f7880',1,'StraightBlock']]],
-  ['coordinatexy_18',['coordinatexy',['../classCoordinateXY.html#a0e32bf57ec9cc55f2760b6bd3f62344c',1,'CoordinateXY::CoordinateXY()=default'],['../classCoordinateXY.html#a72e2c55a2df24be332a4d3e00875e35e',1,'CoordinateXY::CoordinateXY(double xValue, double yValue)'],['../classCoordinateXY.html',1,'CoordinateXY']]],
-  ['coordinatexy_2eh_19',['CoordinateXY.h',['../CoordinateXY_8h.html',1,'']]],
-  ['coordonnées_20',['Coordonnées',['../index.html#coords',1,'']]],
-  ['core_20—_20cœur_20applicatif_21',['Core — Cœur applicatif',['../index.html#core',1,'']]],
-  ['create_22',['create',['../classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1',1,'WebViewPanel::create()'],['../classProgressBar.html#a608e19274cfd76f8874e4ef6e2dcb396',1,'ProgressBar::create()'],['../classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9',1,'MainWindow::create()']]],
-  ['crossover_5fshared_5fbranch_5fcount_23',['CROSSOVER_SHARED_BRANCH_COUNT',['../classNodeDegreeThresholds.html#a66fe23230337d8a375491cbd4243e95d',1,'NodeDegreeThresholds']]]
+  ['coordinatexy_17',['coordinatexy',['../classCoordinateXY.html#a0e32bf57ec9cc55f2760b6bd3f62344c',1,'CoordinateXY::CoordinateXY()=default'],['../classCoordinateXY.html#a72e2c55a2df24be332a4d3e00875e35e',1,'CoordinateXY::CoordinateXY(double xValue, double yValue)'],['../classCoordinateXY.html',1,'CoordinateXY']]],
+  ['coordinatexy_2eh_18',['CoordinateXY.h',['../CoordinateXY_8h.html',1,'']]],
+  ['coordonnées_19',['Coordonnées',['../index.html#coords',1,'']]],
+  ['core_20—_20cœur_20applicatif_20',['Core — Cœur applicatif',['../index.html#core',1,'']]],
+  ['create_21',['create',['../classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1',1,'WebViewPanel::create()'],['../classProgressBar.html#a608e19274cfd76f8874e4ef6e2dcb396',1,'ProgressBar::create()'],['../classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9',1,'MainWindow::create()']]],
+  ['crossover_5fshared_5fbranch_5fcount_22',['CROSSOVER_SHARED_BRANCH_COUNT',['../classNodeDegreeThresholds.html#a66fe23230337d8a375491cbd4243e95d',1,'NodeDegreeThresholds']]]
 ];

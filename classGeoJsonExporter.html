@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('classGeoJsonExporter.html',''); initRe
 <div class="dynheader">
 Collaboration diagram for GeoJsonExporter:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter__coll__graph.svg" width="254" height="296"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter__coll__graph.svg" width="254" height="316"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -144,23 +144,26 @@ Private Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
 <tr class="memitem:ae40aed3745c83a9e089cade7067ec11a" id="r_ae40aed3745c83a9e089cade7067ec11a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="GeoJsonExporter_8h.html#a11fe7834bd4272782c3b19235c96bad4">JsonDocument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a">convertStraightToFeature</a> (const <a class="el" href="classStraightBlock.html">StraightBlock</a> &amp;straight)</td></tr>
-<tr class="memdesc:ae40aed3745c83a9e089cade7067ec11a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit un <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> en feature GeoJSON de type LineString.  <br /></td></tr>
+<tr class="memdesc:ae40aed3745c83a9e089cade7067ec11a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit un <a class="el" href="classStraightBlock.html">StraightBlock</a> en feature GeoJSON de type LineString.  <br /></td></tr>
 <tr class="separator:ae40aed3745c83a9e089cade7067ec11a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4edb715ecc8bee30c4eb00e7dcb98e93" id="r_a4edb715ecc8bee30c4eb00e7dcb98e93"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="GeoJsonExporter_8h.html#a11fe7834bd4272782c3b19235c96bad4">JsonDocument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93">convertSwitchToFeature</a> (const <a class="el" href="classSwitchBlock.html">SwitchBlock</a> &amp;switchBlock)</td></tr>
-<tr class="memdesc:a4edb715ecc8bee30c4eb00e7dcb98e93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit un <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> en feature GeoJSON de type Point.  <br /></td></tr>
+<tr class="memdesc:a4edb715ecc8bee30c4eb00e7dcb98e93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit un <a class="el" href="classSwitchBlock.html">SwitchBlock</a> en feature GeoJSON de type Point.  <br /></td></tr>
 <tr class="separator:a4edb715ecc8bee30c4eb00e7dcb98e93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01038435d85225bf7f417711680ffdbe" id="r_a01038435d85225bf7f417711680ffdbe"><td class="memItemLeft" align="right" valign="top">static std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoJsonExporter.html#a01038435d85225bf7f417711680ffdbe">escapeForJavaScript</a> (const std::string &amp;input)</td></tr>
 <tr class="memdesc:a01038435d85225bf7f417711680ffdbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Échappe une chaîne JSON pour l'injection dans JavaScript.  <br /></td></tr>
 <tr class="separator:a01038435d85225bf7f417711680ffdbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88e1a923193554c2b66962199a770ace" id="r_a88e1a923193554c2b66962199a770ace"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoJsonExporter.html#a88e1a923193554c2b66962199a770ace">bearingDeg</a> (const <a class="el" href="classLatLon.html">LatLon</a> &amp;a, const <a class="el" href="classLatLon.html">LatLon</a> &amp;b)</td></tr>
+<tr class="memdesc:a88e1a923193554c2b66962199a770ace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule le bearing en degrés entre deux points géographiques.  <br /></td></tr>
+<tr class="separator:a88e1a923193554c2b66962199a770ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utilitaire statique d'export de la topologie ferroviaire en GeoJSON. </p>
 <p>Convertit :</p><ul>
-<li><a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> → feature GeoJSON de type LineString.</li>
-<li><a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> → feature GeoJSON de type Point.</li>
+<li><a class="el" href="classStraightBlock.html">StraightBlock</a> → feature GeoJSON de type LineString.</li>
+<li><a class="el" href="classSwitchBlock.html">SwitchBlock</a> → feature GeoJSON de type Point.</li>
 </ul>
 <p>Usage : </p><div class="fragment"><div class="line"><a class="code hl_function" href="classGeoJsonExporter.html#a933abb8a4cbc84d34ced90a170d170d3">GeoJsonExporter::exportToFile</a>(<span class="stringliteral">&quot;output.geojson&quot;</span>);</div>
-<div class="ttc" id="aclassGeoJsonExporter_html_a933abb8a4cbc84d34ced90a170d170d3"><div class="ttname"><a href="classGeoJsonExporter.html#a933abb8a4cbc84d34ced90a170d170d3">GeoJsonExporter::exportToFile</a></div><div class="ttdeci">static void exportToFile(const std::string &amp;outputPath)</div><div class="ttdoc">Exporte la topologie ferroviaire dans un fichier GeoJSON.</div><div class="ttdef"><b>Definition</b> GeoJsonExporter.cpp:84</div></div>
+<div class="ttc" id="aclassGeoJsonExporter_html_a933abb8a4cbc84d34ced90a170d170d3"><div class="ttname"><a href="classGeoJsonExporter.html#a933abb8a4cbc84d34ced90a170d170d3">GeoJsonExporter::exportToFile</a></div><div class="ttdeci">static void exportToFile(const std::string &amp;outputPath)</div><div class="ttdoc">Exporte la topologie ferroviaire dans un fichier GeoJSON.</div><div class="ttdef"><b>Definition</b> GeoJsonExporter.cpp:126</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ace4096f5c5d68edbe51b4ff15fe2f177" name="ace4096f5c5d68edbe51b4ff15fe2f177"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ace4096f5c5d68edbe51b4ff15fe2f177">&#9670;&#160;</a></span>GeoJsonExporter()</h2>
@@ -188,6 +191,59 @@ Static Private Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a88e1a923193554c2b66962199a770ace" name="a88e1a923193554c2b66962199a770ace"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88e1a923193554c2b66962199a770ace">&#9670;&#160;</a></span>bearingDeg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double GeoJsonExporter::bearingDeg </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classLatLon.html">LatLon</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classLatLon.html">LatLon</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calcule le bearing en degrés entre deux points géographiques. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Point de départ (latitude, longitude). </td></tr>
+    <tr><td class="paramname">b</td><td>Point d'arrivée (latitude, longitude). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Bearing en degrés (0° = nord, 90° = est, 180° = sud, 270° = ouest).</dd></dl>
+<p>Utilise la formule de l'azimut géodésique pour calculer le bearing entre les deux points sur la sphère terrestre.</p>
+<p>Retourne 0 si les coordonnées sont invalides ou identiques. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a88e1a923193554c2b66962199a770ace_icgraph.svg" width="1995" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="ae40aed3745c83a9e089cade7067ec11a" name="ae40aed3745c83a9e089cade7067ec11a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae40aed3745c83a9e089cade7067ec11a">&#9670;&#160;</a></span>convertStraightToFeature()</h2>
 
@@ -212,7 +268,7 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Convertit un <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> en feature GeoJSON de type LineString. </p>
+<p>Convertit un <a class="el" href="classStraightBlock.html">StraightBlock</a> en feature GeoJSON de type LineString. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">straight</td><td>Bloc à convertir. </td></tr>
@@ -220,6 +276,11 @@ Static Private Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Objet JSON représentant la feature GeoJSON. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_ae40aed3745c83a9e089cade7067ec11a_cgraph.svg" width="462" height="151"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -252,7 +313,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Convertit un <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> en feature GeoJSON de type Point. </p>
+<p>Convertit un <a class="el" href="classSwitchBlock.html">SwitchBlock</a> en feature GeoJSON de type Point. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">switchBlock</td><td>Bloc à convertir. </td></tr>
@@ -260,6 +321,11 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Objet JSON représentant la feature GeoJSON. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a4edb715ecc8bee30c4eb00e7dcb98e93_cgraph.svg" width="480" height="315"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -350,7 +416,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a933abb8a4cbc84d34ced90a170d170d3_cgraph.svg" width="463" height="267"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a933abb8a4cbc84d34ced90a170d170d3_cgraph.svg" width="746" height="482"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -388,7 +454,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a7f60c7ba7d8578832e4461fe50de931d_cgraph.svg" width="455" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a7f60c7ba7d8578832e4461fe50de931d_cgraph.svg" width="738" height="546"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -421,7 +487,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a9e109a8b505798f99c5aa2bd6fb538a3_cgraph.svg" width="487" height="203"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a9e109a8b505798f99c5aa2bd6fb538a3_cgraph.svg" width="751" height="220"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -459,7 +525,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_adbde98ddc849360ec945d84bde02d504_cgraph.svg" width="479" height="203"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_adbde98ddc849360ec945d84bde02d504_cgraph.svg" width="758" height="348"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -497,7 +563,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a75d6c6a4354d06d04a700b58d69e869f_cgraph.svg" width="703" height="220"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a75d6c6a4354d06d04a700b58d69e869f_cgraph.svg" width="758" height="428"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -540,6 +606,11 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Instruction JavaScript. </dd></dl>
 <div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_aceb585d865614f5183a3fd00dbf9a55d_cgraph.svg" width="506" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_aceb585d865614f5183a3fd00dbf9a55d_icgraph.svg" width="1742" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
@@ -574,11 +645,16 @@ Here is the caller graph for this function:</div>
 <p>Construit l'appel JS <code>renderSwitch(id, lat, lon, isDouble)</code>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sw</td><td><a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> à rendre. </td></tr>
+    <tr><td class="paramname">sw</td><td><a class="el" href="classSwitchBlock.html">SwitchBlock</a> à rendre. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Instruction JavaScript. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a94a0a86bf9fb71861ffd691bda77fd47_cgraph.svg" width="512" height="348"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -616,15 +692,18 @@ Here is the caller graph for this function:</div>
 <p>Retourne une chaîne vide si le switch n'est pas orienté.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sw</td><td><a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a> orienté. </td></tr>
+    <tr><td class="paramname">sw</td><td><a class="el" href="classSwitchBlock.html">SwitchBlock</a> orienté. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Instruction JavaScript. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Instruction JavaScript.</dd></dl>
+<p>Génère l'appel JS renderSwitchBranches pour un <a class="el" href="classSwitchBlock.html">SwitchBlock</a>.</p>
+<p>Signature JS : renderSwitchBranches(id, jLat, jLon, rootCoords, // [[lat,lon],...] ou null normalCoords, // [[lat,lon],...] ou null devCoords) // [[lat,lon],...] ou null</p>
+<p>Pour les branches simples (non absorbées) : tableau à 1 point [tip]. Pour les branches absorbées (double switch) : polyligne complète. null si le tip est absent. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a125ac684007e9e1e93b6d11d695d7e9b_cgraph.svg" width="458" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGeoJsonExporter_a125ac684007e9e1e93b6d11d695d7e9b_cgraph.svg" width="512" height="428"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>

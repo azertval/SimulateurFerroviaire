@@ -9,13 +9,11 @@ var searchData=
   ['description_6',['Description',['../index.html#description',1,'']]],
   ['detectandabsorb_7',['detectAndAbsorb',['../classDoubleSwitchDetector.html#a73ddfcab07564847dccd93c3c3b500e4',1,'DoubleSwitchDetector']]],
   ['detectswitches_8',['detectSwitches',['../classTopologyExtractor.html#abfb30b40b7194303e6c828d802dd1175',1,'TopologyExtractor']]],
-  ['deviationbranchid_9',['deviationBranchId',['../classSwitchBlock.html#a61b95f3cde39be57ae39b68281c47b41',1,'SwitchBlock']]],
-  ['dialogproc_10',['dialogProc',['../classAboutDialog.html#ac66cccf4f3997d3ae5755646782f2d48',1,'AboutDialog']]],
-  ['double_5flink_5fmax_5fmeters_11',['DOUBLE_LINK_MAX_METERS',['../classParserDefaultValues.html#a8ca771fe2ea1bf9fb173af902e0b1a31',1,'ParserDefaultValues']]],
-  ['double_5fswitch_5fminimum_5fcluster_12',['DOUBLE_SWITCH_MINIMUM_CLUSTER',['../classNodeDegreeThresholds.html#a244fd32eff82e1249c7eed1d9f1cae64',1,'NodeDegreeThresholds']]],
-  ['doublelinkmidcoordinate_13',['doubleLinkMidCoordinate',['../classSwitchBlock.html#a40a1724c98ee80ba250166d449273c25',1,'SwitchBlock']]],
-  ['doubleswitchdetector_14',['doubleswitchdetector',['../classDoubleSwitchDetector.html#a11c7dc515bb732150671362ed36fa083',1,'DoubleSwitchDetector::DoubleSwitchDetector()'],['../classDoubleSwitchDetector.html',1,'DoubleSwitchDetector']]],
-  ['doubleswitchdetector_2ecpp_15',['DoubleSwitchDetector.cpp',['../DoubleSwitchDetector_8cpp.html',1,'']]],
-  ['doubleswitchdetector_2eh_16',['DoubleSwitchDetector.h',['../DoubleSwitchDetector_8h.html',1,'']]],
-  ['dumpdebugoutput_17',['dumpDebugOutput',['../classGeoParser.html#a6b046fb217dd2d7240cde1aea4c9a5ec',1,'GeoParser']]]
+  ['dialogproc_9',['dialogProc',['../classAboutDialog.html#ac66cccf4f3997d3ae5755646782f2d48',1,'AboutDialog']]],
+  ['double_5flink_5fmax_5fmeters_10',['DOUBLE_LINK_MAX_METERS',['../classParserDefaultValues.html#a8ca771fe2ea1bf9fb173af902e0b1a31',1,'ParserDefaultValues']]],
+  ['double_5fswitch_5fminimum_5fcluster_11',['DOUBLE_SWITCH_MINIMUM_CLUSTER',['../classNodeDegreeThresholds.html#a244fd32eff82e1249c7eed1d9f1cae64',1,'NodeDegreeThresholds']]],
+  ['doubleswitchdetector_12',['doubleswitchdetector',['../classDoubleSwitchDetector.html#a11c7dc515bb732150671362ed36fa083',1,'DoubleSwitchDetector::DoubleSwitchDetector()'],['../classDoubleSwitchDetector.html',1,'DoubleSwitchDetector']]],
+  ['doubleswitchdetector_2ecpp_13',['DoubleSwitchDetector.cpp',['../DoubleSwitchDetector_8cpp.html',1,'']]],
+  ['doubleswitchdetector_2eh_14',['DoubleSwitchDetector.h',['../DoubleSwitchDetector_8h.html',1,'']]],
+  ['dumpdebugoutput_15',['dumpDebugOutput',['../classGeoParser.html#a6b046fb217dd2d7240cde1aea4c9a5ec',1,'GeoParser']]]
 ];

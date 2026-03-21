@@ -1,7 +1,0 @@
-<map id="StraightBlock::StraightBlock" name="StraightBlock::StraightBlock">
-<area shape="rect" id="Node000001" title="Construit un StraightBlock avec ses coordonnées." alt="" coords="5,13,209,38"/>
-<area shape="rect" id="Node000002" href="$classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb" title="Calcule la longueur géodésique totale via la formule de Haversine." alt="" coords="257,5,492,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="209,23,244,23,244,28,209,28"/>
-<area shape="rect" id="Node000003" href="$classStraightBlock.html#aacbbde91378d4e080c3ca2cf0c4f801a" title="Calcule la distance de Haversine entre deux points WGS&#45;84." alt="" coords="540,5,721,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="492,23,526,23,526,28,492,28"/>
-</map>

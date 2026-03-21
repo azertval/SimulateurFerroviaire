@@ -1,5 +1,5 @@
 <map id="SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/SwitchBlock.h" name="SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/SwitchBlock.h">
-<area shape="rect" id="Node000001" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches (Switch)." alt="" coords="836,5,1075,60"/>
+<area shape="rect" id="Node000001" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches." alt="" coords="836,5,1075,60"/>
 <area shape="rect" id="Node000002" href="$GeoJsonExporter_8h.html" title="Exporteur de topologie ferroviaire au format GeoJSON." alt="" coords="16,211,209,265"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="822,44,684,54,533,68,395,87,340,98,298,110,252,132,210,159,142,212,139,208,207,154,250,127,296,106,339,93,395,82,533,63,684,48,822,39"/>
 <area shape="rect" id="Node000006" href="$DoubleSwitchDetector_8h.html" title="Phases 7 et 8 — détection des doubles aiguilles et validation CDC." alt="" coords="571,108,815,163"/>

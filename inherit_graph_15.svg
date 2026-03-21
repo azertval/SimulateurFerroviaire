@@ -38,7 +38,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classStraightBlock.html" target="_top" xlink:title="Bloc de voie droite produit par le parseur GeoJSON.">
+<g id="a_Node000002"><a xlink:href="classStraightBlock.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="364,-19 282,-19 282,0 364,0 364,-19"/>
 <text text-anchor="middle" x="323" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">StraightBlock</text>
 </a>

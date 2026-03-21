@@ -4,21 +4,27 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,204,102,170,128,125,162,79,183,58,207,40,232,27,234,32,209,44,187,62,166,82,132,128,107,173,92,206"/>
 <area shape="rect" id="Node000003" href="$classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1" title="Initialise WebView2 dans une fenêtre Win32 existante." alt="" coords="238,55,405,80"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="92,203,137,152,170,122,207,97,241,82,243,87,209,102,173,127,141,156,96,207"/>
-<area shape="rect" id="Node000005" href="$classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a" title="Redimensionne le WebView pour s&#39;adapter à la fenêtre." alt="" coords="712,77,876,103"/>
-<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="99,203,145,171,175,155,207,142,302,123,433,108,698,91,698,96,433,114,302,128,209,147,178,160,148,176,102,207"/>
-<area shape="rect" id="Node000006" href="$PathUtils_8h.html#ad3c857d595cfed1f004777b9307b8aa5" title=" " alt="" coords="245,156,398,181"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="144,203,245,182,246,187,145,208"/>
-<area shape="rect" id="Node000007" href="$classWebViewPanel.html#a17fdacaf19c8e0830ae1ea7ee1632993" title="Navigue vers une URL." alt="" coords="230,205,413,231"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="161,215,216,215,216,221,161,221"/>
-<area shape="rect" id="Node000008" href="$classWebViewPanel.html#a118dd6f6115c00ad0d01b6c4238e5caf" title="Définit un callback à appeler une fois l&#39;initialisation terminée." alt="" coords="208,255,435,280"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="145,228,246,249,245,254,144,233"/>
-<area shape="rect" id="Node000009" href="$classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd" title="Met à jour la progression." alt="" coords="229,304,413,329"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="103,229,149,260,209,290,231,298,230,303,207,295,147,264,100,233"/>
-<area shape="rect" id="Node000010" href="$classWebViewPanel.html#a3d18421b35ea7ad55ff884ce299ac53c" title="Mappe un nom d&#39;hôte virtuel vers un dossier local. Permet de servir des fichiers locaux via https://h..." alt="" coords="227,354,415,394"/>
-<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="95,229,141,283,173,314,209,340,221,346,219,351,207,344,170,318,137,287,91,233"/>
-<area shape="rect" id="Node000011" href="$classProgressBar.html#ac9fbcf04d7d4e8c5b3e332efcfc0d34c" title="Show or hide the ProgressBar." alt="" coords="250,419,393,444"/>
-<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="91,230,106,265,130,313,165,362,186,385,209,404,238,418,235,422,207,408,182,389,161,366,126,316,101,268,86,232"/>
-<area shape="rect" id="Node000004" href="$classWebViewPanel.html#a886fd07f1d23eec535d0b57215c6ce50" title="Initialise le runtime WebView2 et crée le controller et le webview." alt="" coords="483,41,664,81"/>
+<area shape="rect" id="Node000008" href="$classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a" title="Redimensionne le WebView pour s&#39;adapter à la fenêtre." alt="" coords="1269,105,1433,131"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="99,203,145,171,175,155,207,142,307,117,387,110,572,115,825,115,1255,115,1255,121,825,121,572,121,387,116,308,123,209,147,178,160,148,176,102,207"/>
+<area shape="rect" id="Node000009" href="$PathUtils_8h.html#ad3c857d595cfed1f004777b9307b8aa5" title=" " alt="" coords="245,156,398,181"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="144,203,245,182,246,187,145,208"/>
+<area shape="rect" id="Node000010" href="$classWebViewPanel.html#a17fdacaf19c8e0830ae1ea7ee1632993" title="Navigue vers une URL." alt="" coords="230,205,413,231"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="161,215,216,215,216,221,161,221"/>
+<area shape="rect" id="Node000011" href="$classWebViewPanel.html#a118dd6f6115c00ad0d01b6c4238e5caf" title="Définit un callback à appeler une fois l&#39;initialisation terminée." alt="" coords="208,255,435,280"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="145,228,246,249,245,254,144,233"/>
+<area shape="rect" id="Node000012" href="$classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd" title="Met à jour la progression." alt="" coords="229,304,413,329"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="103,229,149,260,209,290,231,298,230,303,207,295,147,264,100,233"/>
+<area shape="rect" id="Node000013" href="$classWebViewPanel.html#a3d18421b35ea7ad55ff884ce299ac53c" title="Mappe un nom d&#39;hôte virtuel vers un dossier local. Permet de servir des fichiers locaux via https://h..." alt="" coords="227,354,415,394"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="95,229,141,283,173,314,209,340,221,346,219,351,207,344,170,318,137,287,91,233"/>
+<area shape="rect" id="Node000014" href="$classProgressBar.html#ac9fbcf04d7d4e8c5b3e332efcfc0d34c" title="Show or hide the ProgressBar." alt="" coords="250,419,393,444"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="91,230,106,265,130,313,165,362,186,385,209,404,238,418,235,422,207,408,182,389,161,366,126,316,101,268,86,232"/>
+<area shape="rect" id="Node000004" href="$classWebViewPanel.html#a886fd07f1d23eec535d0b57215c6ce50" title="Initialise l&#39;environnement WebView2 de manière asynchrone." alt="" coords="483,41,664,81"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="405,62,469,61,469,66,405,68"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="665,70,699,75,698,80,664,75"/>
+<area shape="rect" id="Node000005" href="$classWebViewPanel.html#a49d047e945df840f4c48dbf0a3264b16" title="Callback déclenché à la fin de la création de l&#39;environnement WebView2." alt="" coords="712,41,936,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="664,58,698,58,698,63,664,63"/>
+<area shape="rect" id="Node000006" href="$classWebViewPanel.html#a2098e8aa83f6ab5b825514deda7fd846" title="Callback déclenché à la fin de la création du contrôleur WebView2." alt="" coords="984,41,1189,81"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="936,58,970,58,970,63,936,63"/>
+<area shape="rect" id="Node000007" href="$classWebViewPanel.html#ac77338c39cc87b2fb7b7bde9da2004b1" title="Callback statique déclenché à la réception d&#39;un message JavaScript." alt="" coords="1237,41,1464,81"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1189,58,1224,58,1224,63,1189,63"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="1180,78,1279,100,1278,105,1179,83"/>
 </map>

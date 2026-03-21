@@ -92,7 +92,6 @@ $(document).ready(function(){initNavTree('classStraightBlock.html',''); initResi
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
@@ -101,19 +100,16 @@ $(document).ready(function(){initNavTree('classStraightBlock.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
-<p>Bloc de voie droite produit par le parseur GeoJSON.  
- <a href="classStraightBlock.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="StraightBlock_8h_source.html">StraightBlock.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for StraightBlock:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock__inherit__graph.svg" width="224" height="843"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock__inherit__graph.svg" width="216" height="943"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for StraightBlock:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock__coll__graph.svg" width="224" height="843"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock__coll__graph.svg" width="216" height="943"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -121,26 +117,37 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8efe465dfa6a2c5a6afc2125246194fd" id="r_a8efe465dfa6a2c5a6afc2125246194fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a8efe465dfa6a2c5a6afc2125246194fd">StraightBlock</a> ()=default</td></tr>
 <tr class="separator:a8efe465dfa6a2c5a6afc2125246194fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b5d2078a32199b21c8ab3117fc6c01f" id="r_a6b5d2078a32199b21c8ab3117fc6c01f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a6b5d2078a32199b21c8ab3117fc6c01f">StraightBlock</a> (std::string blockId, std::vector&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt; blockCoords, std::vector&lt; std::string &gt; initialNeighbourIds={})</td></tr>
-<tr class="memdesc:a6b5d2078a32199b21c8ab3117fc6c01f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> avec ses coordonnées.  <br /></td></tr>
+<tr class="memdesc:a6b5d2078a32199b21c8ab3117fc6c01f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un <a class="el" href="classStraightBlock.html">StraightBlock</a> et calcule immédiatement sa longueur géodésique.  <br /></td></tr>
 <tr class="separator:a6b5d2078a32199b21c8ab3117fc6c01f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a295060fddd0675834ce4755ae4787780" id="r_a295060fddd0675834ce4755ae4787780"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a295060fddd0675834ce4755ae4787780">getId</a> () const override</td></tr>
-<tr class="memdesc:a295060fddd0675834ce4755ae4787780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'identifiant unique du bloc (ex. "s/0").  <br /></td></tr>
+<tr class="memdesc:a295060fddd0675834ce4755ae4787780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'identifiant unique de l'élément (ex. "sw/3", "s/12").  <br /></td></tr>
 <tr class="separator:a295060fddd0675834ce4755ae4787780"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94738c34cc95d85601f50d1cec5b35cc" id="r_a94738c34cc95d85601f50d1cec5b35cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731">InteractiveElementType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a94738c34cc95d85601f50d1cec5b35cc">getType</a> () const override</td></tr>
-<tr class="memdesc:a94738c34cc95d85601f50d1cec5b35cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le type STRAIGHT.  <br /></td></tr>
+<tr class="memdesc:a94738c34cc95d85601f50d1cec5b35cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le type de l'élément.  <br /></td></tr>
 <tr class="separator:a94738c34cc95d85601f50d1cec5b35cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd0966525c8cea98f39099a1a04df0f6" id="r_afd0966525c8cea98f39099a1a04df0f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#afd0966525c8cea98f39099a1a04df0f6">getState</a> () const override</td></tr>
-<tr class="memdesc:afd0966525c8cea98f39099a1a04df0f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'état opérationnel courant du bloc.  <br /></td></tr>
+<tr class="memdesc:afd0966525c8cea98f39099a1a04df0f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'état opérationnel courant de l'élément.  <br /></td></tr>
 <tr class="separator:afd0966525c8cea98f39099a1a04df0f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a183acded75c8cde4f38aa904d5f868f1" id="r_a183acded75c8cde4f38aa904d5f868f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a183acded75c8cde4f38aa904d5f868f1">setState</a> (<a class="el" href="ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a> state)</td></tr>
-<tr class="memdesc:a183acded75c8cde4f38aa904d5f868f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour l'état opérationnel du bloc.  <br /></td></tr>
 <tr class="separator:a183acded75c8cde4f38aa904d5f868f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a923ec2d60375b9760a734f3babe2150d" id="r_a923ec2d60375b9760a734f3babe2150d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a923ec2d60375b9760a734f3babe2150d">recomputeGeodesicLength</a> ()</td></tr>
-<tr class="memdesc:a923ec2d60375b9760a734f3babe2150d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recalcule et met à jour lengthMeters depuis les coordonnées actuelles.  <br /></td></tr>
-<tr class="separator:a923ec2d60375b9760a734f3babe2150d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a646d3135d365dcb832ff66b1304c6850" id="r_a646d3135d365dcb832ff66b1304c6850"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a646d3135d365dcb832ff66b1304c6850">getCoordinates</a> () const</td></tr>
+<tr class="separator:a646d3135d365dcb832ff66b1304c6850"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafa70f4c9291e8a16aac2145dca90497" id="r_aafa70f4c9291e8a16aac2145dca90497"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#aafa70f4c9291e8a16aac2145dca90497">getNeighbourIds</a> () const</td></tr>
+<tr class="separator:aafa70f4c9291e8a16aac2145dca90497"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebdce1e1b66d6b39376ae1a66c2d2d9e" id="r_aebdce1e1b66d6b39376ae1a66c2d2d9e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#aebdce1e1b66d6b39376ae1a66c2d2d9e">getLengthMeters</a> () const</td></tr>
+<tr class="separator:aebdce1e1b66d6b39376ae1a66c2d2d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a174fe1fb5ff751a0bcb97fd537cfbac9" id="r_a174fe1fb5ff751a0bcb97fd537cfbac9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a174fe1fb5ff751a0bcb97fd537cfbac9">toString</a> () const</td></tr>
-<tr class="memdesc:a174fe1fb5ff751a0bcb97fd537cfbac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne une représentation textuelle du bloc pour le débogage.  <br /></td></tr>
+<tr class="memdesc:a174fe1fb5ff751a0bcb97fd537cfbac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Représentation textuelle pour le débogage. Format : Straight(id=s/0, len=342.5m, coords=7, neighbours=[sw/0, sw/1])  <br /></td></tr>
 <tr class="separator:a174fe1fb5ff751a0bcb97fd537cfbac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31992cb0d660a2be22d99615c4be8c23" id="r_a31992cb0d660a2be22d99615c4be8c23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a31992cb0d660a2be22d99615c4be8c23">addNeighbourId</a> (const std::string &amp;id)</td></tr>
+<tr class="memdesc:a31992cb0d660a2be22d99615c4be8c23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un voisin en maintenant l'ordre lexicographique. Pas de doublon.  <br /></td></tr>
+<tr class="separator:a31992cb0d660a2be22d99615c4be8c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb372797f7bc0e80b8dd97c781197772" id="r_afb372797f7bc0e80b8dd97c781197772"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#afb372797f7bc0e80b8dd97c781197772">replaceNeighbourId</a> (const std::string &amp;oldId, const std::string &amp;newId)</td></tr>
+<tr class="memdesc:afb372797f7bc0e80b8dd97c781197772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace un ID de voisin par un autre. Utilisé en Phase 7 lors de l'absorption du segment de liaison.  <br /></td></tr>
+<tr class="separator:afb372797f7bc0e80b8dd97c781197772"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1516c424b471658598a77daaf1e55ce6" id="r_a1516c424b471658598a77daaf1e55ce6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a1516c424b471658598a77daaf1e55ce6">setCoordinates</a> (std::vector&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt; coords)</td></tr>
+<tr class="memdesc:a1516c424b471658598a77daaf1e55ce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace la polyligne et recalcule la longueur géodésique.  <br /></td></tr>
+<tr class="separator:a1516c424b471658598a77daaf1e55ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classShuntingElement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classShuntingElement')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classShuntingElement.html">ShuntingElement</a></td></tr>
 <tr class="memitem:acb088c612e8db99dbd162ba65743c4ff inherit pub_methods_classShuntingElement" id="r_acb088c612e8db99dbd162ba65743c4ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classShuntingElement.html#acb088c612e8db99dbd162ba65743c4ff">ShuntingElement</a> ()=default</td></tr>
 <tr class="separator:acb088c612e8db99dbd162ba65743c4ff inherit pub_methods_classShuntingElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,37 +182,31 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a351db854d008d418dd6a4825ac822bc2 inherit pub_methods_classInteractiveElement" id="r_a351db854d008d418dd6a4825ac822bc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classInteractiveElement.html">InteractiveElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInteractiveElement.html#a351db854d008d418dd6a4825ac822bc2">operator=</a> (<a class="el" href="classInteractiveElement.html">InteractiveElement</a> &amp;&amp;)=default</td></tr>
 <tr class="separator:a351db854d008d418dd6a4825ac822bc2 inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:ab1732af8d7ad997aa6765763514ef879" id="r_ab1732af8d7ad997aa6765763514ef879"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#ab1732af8d7ad997aa6765763514ef879">id</a></td></tr>
-<tr class="separator:ab1732af8d7ad997aa6765763514ef879"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae53ff9455e74374bd6abb4e3221f7880" id="r_ae53ff9455e74374bd6abb4e3221f7880"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#ae53ff9455e74374bd6abb4e3221f7880">coordinates</a></td></tr>
-<tr class="separator:ae53ff9455e74374bd6abb4e3221f7880"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace5250940af85ae74685da68fc5ee4a9" id="r_ace5250940af85ae74685da68fc5ee4a9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#ace5250940af85ae74685da68fc5ee4a9">neighbourIds</a></td></tr>
-<tr class="separator:ace5250940af85ae74685da68fc5ee4a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa169e5936f6935916fd5beb51c176a2c" id="r_aa169e5936f6935916fd5beb51c176a2c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#aa169e5936f6935916fd5beb51c176a2c">lengthMeters</a> = 0.0</td></tr>
-<tr class="separator:aa169e5936f6935916fd5beb51c176a2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a2c39df55b662a55c1de75659619bbacb" id="r_a2c39df55b662a55c1de75659619bbacb"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb">computeGeodesicLength</a> () const</td></tr>
-<tr class="memdesc:a2c39df55b662a55c1de75659619bbacb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la longueur géodésique totale via la formule de Haversine.  <br /></td></tr>
 <tr class="separator:a2c39df55b662a55c1de75659619bbacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
-<tr class="memitem:aacbbde91378d4e080c3ca2cf0c4f801a" id="r_aacbbde91378d4e080c3ca2cf0c4f801a"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#aacbbde91378d4e080c3ca2cf0c4f801a">haversineDistanceMeters</a> (const <a class="el" href="classLatLon.html">LatLon</a> &amp;pointA, const <a class="el" href="classLatLon.html">LatLon</a> &amp;pointB)</td></tr>
-<tr class="memdesc:aacbbde91378d4e080c3ca2cf0c4f801a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la distance de Haversine entre deux points WGS-84.  <br /></td></tr>
-<tr class="separator:aacbbde91378d4e080c3ca2cf0c4f801a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ea1987662d295db433b819aceaa67cd" id="r_a6ea1987662d295db433b819aceaa67cd"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a6ea1987662d295db433b819aceaa67cd">haversineDistanceMeters</a> (const <a class="el" href="classLatLon.html">LatLon</a> &amp;a, const <a class="el" href="classLatLon.html">LatLon</a> &amp;b)</td></tr>
+<tr class="separator:a6ea1987662d295db433b819aceaa67cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:aa3254f96880bdac0fc03f2b93cc24b2a" id="r_aa3254f96880bdac0fc03f2b93cc24b2a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#aa3254f96880bdac0fc03f2b93cc24b2a">m_id</a></td></tr>
+<tr class="separator:aa3254f96880bdac0fc03f2b93cc24b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e0ddf2a4dfdd7b44d685f843d4c368d" id="r_a7e0ddf2a4dfdd7b44d685f843d4c368d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a7e0ddf2a4dfdd7b44d685f843d4c368d">m_coordinates</a></td></tr>
+<tr class="separator:a7e0ddf2a4dfdd7b44d685f843d4c368d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b14748902c7b5f4fad5936d0249817e" id="r_a9b14748902c7b5f4fad5936d0249817e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a9b14748902c7b5f4fad5936d0249817e">m_neighbourIds</a></td></tr>
+<tr class="memdesc:a9b14748902c7b5f4fad5936d0249817e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toujours trié.  <br /></td></tr>
+<tr class="separator:a9b14748902c7b5f4fad5936d0249817e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a236b3c910803c6fab940a196829becb4" id="r_a236b3c910803c6fab940a196829becb4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a236b3c910803c6fab940a196829becb4">m_lengthMeters</a> = 0.0</td></tr>
+<tr class="separator:a236b3c910803c6fab940a196829becb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29110a32db90ebb2e84b932e32f0f40c" id="r_a29110a32db90ebb2e84b932e32f0f40c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStraightBlock.html#a29110a32db90ebb2e84b932e32f0f40c">m_state</a> = <a class="el" href="ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da88c189a42c87aa49d667fc8ab76bc323">ShuntingState::FREE</a></td></tr>
 <tr class="separator:a29110a32db90ebb2e84b932e32f0f40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Bloc de voie droite produit par le parseur GeoJSON. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8efe465dfa6a2c5a6afc2125246194fd" name="a8efe465dfa6a2c5a6afc2125246194fd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8efe465dfa6a2c5a6afc2125246194fd">&#9670;&#160;</a></span>StraightBlock() <span class="overload">[1/2]</span></h2>
 
@@ -228,7 +229,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructeur par défaut. </p>
 
 </div>
 </div>
@@ -264,25 +264,44 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construit un <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> avec ses coordonnées. </p>
-<p>La longueur géodésique est calculée immédiatement à partir de l'ensemble des coordonnées fournies.</p>
+<p>Construit un <a class="el" href="classStraightBlock.html">StraightBlock</a> et calcule immédiatement sa longueur géodésique. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">blockId</td><td>Identifiant unique du bloc. </td></tr>
-    <tr><td class="paramname">blockCoords</td><td>Polyligne WGS-84 ordonnée (≥ 2 points pour une longueur non nulle). </td></tr>
-    <tr><td class="paramname">initialNeighbourIds</td><td>Identifiants des voisins connus à la construction (optionnel). </td></tr>
+    <tr><td class="paramname">blockId</td><td>Identifiant unique (ex. "s/0"). </td></tr>
+    <tr><td class="paramname">blockCoords</td><td>Polyligne WGS-84 ordonnée (≥ 2 points). </td></tr>
+    <tr><td class="paramname">initialNeighbourIds</td><td>Voisins connus à la construction (optionnel). </td></tr>
   </table>
   </dd>
 </dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_a6b5d2078a32199b21c8ab3117fc6c01f_cgraph.svg" width="727" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a31992cb0d660a2be22d99615c4be8c23" name="a31992cb0d660a2be22d99615c4be8c23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31992cb0d660a2be22d99615c4be8c23">&#9670;&#160;</a></span>addNeighbourId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StraightBlock::addNeighbourId </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute un voisin en maintenant l'ordre lexicographique. Pas de doublon. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_a31992cb0d660a2be22d99615c4be8c23_icgraph.svg" width="2578" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="a2c39df55b662a55c1de75659619bbacb" name="a2c39df55b662a55c1de75659619bbacb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c39df55b662a55c1de75659619bbacb">&#9670;&#160;</a></span>computeGeodesicLength()</h2>
 
@@ -305,9 +324,6 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Calcule la longueur géodésique totale via la formule de Haversine. </p>
-<dl class="section return"><dt>Returns</dt><dd>Longueur en mètres. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -316,7 +332,38 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_a2c39df55b662a55c1de75659619bbacb_icgraph.svg" width="2848" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_a2c39df55b662a55c1de75659619bbacb_icgraph.svg" width="2859" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a646d3135d365dcb832ff66b1304c6850" name="a646d3135d365dcb832ff66b1304c6850"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a646d3135d365dcb832ff66b1304c6850">&#9670;&#160;</a></span>getCoordinates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt; &amp; StraightBlock::getCoordinates </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Polyligne WGS-84 ordonnée. Premier point : extrémité A. Dernier : extrémité B. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_a646d3135d365dcb832ff66b1304c6850_icgraph.svg" width="2972" height="287"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -344,9 +391,71 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Retourne l'identifiant unique du bloc (ex. "s/0"). </p>
+<p>Retourne l'identifiant unique de l'élément (ex. "sw/3", "s/12"). </p>
 
 <p>Implements <a class="el" href="classInteractiveElement.html#a6e4de24603c935ed0c9151c738239c9b">InteractiveElement</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_a295060fddd0675834ce4755ae4787780_icgraph.svg" width="2203" height="166"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aebdce1e1b66d6b39376ae1a66c2d2d9e" name="aebdce1e1b66d6b39376ae1a66c2d2d9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebdce1e1b66d6b39376ae1a66c2d2d9e">&#9670;&#160;</a></span>getLengthMeters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double StraightBlock::getLengthMeters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Longueur géodésique en mètres (Haversine), mise à jour par <a class="el" href="classStraightBlock.html#a1516c424b471658598a77daaf1e55ce6" title="Remplace la polyligne et recalcule la longueur géodésique.">setCoordinates()</a>. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_aebdce1e1b66d6b39376ae1a66c2d2d9e_icgraph.svg" width="2604" height="159"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aafa70f4c9291e8a16aac2145dca90497" name="aafa70f4c9291e8a16aac2145dca90497"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafa70f4c9291e8a16aac2145dca90497">&#9670;&#160;</a></span>getNeighbourIds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::string &gt; &amp; StraightBlock::getNeighbourIds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Identifiants des blocs adjacents (<a class="el" href="classStraightBlock.html">StraightBlock</a> ou <a class="el" href="classSwitchBlock.html">SwitchBlock</a>). Toujours triés lexicographiquement — addNeighbourId maintient l'ordre. </p>
 
 </div>
 </div>
@@ -373,8 +482,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Retourne l'état opérationnel courant du bloc. </p>
-<dl class="section return"><dt>Returns</dt><dd>m_state (FREE par défaut). </dd></dl>
+<p>Retourne l'état opérationnel courant de l'élément. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da88c189a42c87aa49d667fc8ab76bc323">ShuntingState::FREE</a> – libre, opérationnel. <a class="el" href="ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da95bb06a35b7ae1afcf75777bb28ea62c">ShuntingState::OCCUPIED</a> – occupé par un véhicule. <a class="el" href="ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da6b273343c454f9c53dcfc9c4ccf171d2">ShuntingState::INACTIVE</a> – hors service (panne / maintenance). </dd></dl>
 
 <p>Implements <a class="el" href="classShuntingElement.html#a815975347422b2ed5b65f72c80ce701d">ShuntingElement</a>.</p>
 
@@ -403,14 +512,15 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Retourne le type STRAIGHT. </p>
+<p>Retourne le type de l'élément. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731a4239f063a3d4fb9d38a0182be6e39e76">InteractiveElementType::SWITCH</a> ou <a class="el" href="InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731a8c5e50fab3748e9c53a6863b3dce1401">InteractiveElementType::STRAIGHT</a>. </dd></dl>
 
 <p>Implements <a class="el" href="classInteractiveElement.html#a8ff2705adce5c5c4d9a056dbf80cc79e">InteractiveElement</a>.</p>
 
 </div>
 </div>
-<a id="aacbbde91378d4e080c3ca2cf0c4f801a" name="aacbbde91378d4e080c3ca2cf0c4f801a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aacbbde91378d4e080c3ca2cf0c4f801a">&#9670;&#160;</a></span>haversineDistanceMeters()</h2>
+<a id="a6ea1987662d295db433b819aceaa67cd" name="a6ea1987662d295db433b819aceaa67cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ea1987662d295db433b819aceaa67cd">&#9670;&#160;</a></span>haversineDistanceMeters()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -422,13 +532,13 @@ Here is the caller graph for this function:</div>
           <td class="memname">double StraightBlock::haversineDistanceMeters </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classLatLon.html">LatLon</a> &amp;&#160;</td>
-          <td class="paramname"><em>pointA</em>, </td>
+          <td class="paramname"><em>a</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="classLatLon.html">LatLon</a> &amp;&#160;</td>
-          <td class="paramname"><em>pointB</em>&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -442,50 +552,76 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Calcule la distance de Haversine entre deux points WGS-84. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pointA</td><td>Premier point WGS-84. </td></tr>
-    <tr><td class="paramname">pointB</td><td>Second point WGS-84. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Distance en mètres. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_aacbbde91378d4e080c3ca2cf0c4f801a_icgraph.svg" width="3078" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_a6ea1987662d295db433b819aceaa67cd_icgraph.svg" width="3088" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="a923ec2d60375b9760a734f3babe2150d" name="a923ec2d60375b9760a734f3babe2150d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a923ec2d60375b9760a734f3babe2150d">&#9670;&#160;</a></span>recomputeGeodesicLength()</h2>
+<a id="afb372797f7bc0e80b8dd97c781197772" name="afb372797f7bc0e80b8dd97c781197772"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb372797f7bc0e80b8dd97c781197772">&#9670;&#160;</a></span>replaceNeighbourId()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void StraightBlock::recomputeGeodesicLength </td>
+          <td class="memname">void StraightBlock::replaceNeighbourId </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>oldId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>newId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remplace un ID de voisin par un autre. Utilisé en Phase 7 lors de l'absorption du segment de liaison. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_afb372797f7bc0e80b8dd97c781197772_cgraph.svg" width="523" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a1516c424b471658598a77daaf1e55ce6" name="a1516c424b471658598a77daaf1e55ce6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1516c424b471658598a77daaf1e55ce6">&#9670;&#160;</a></span>setCoordinates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StraightBlock::setCoordinates </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classLatLon.html">LatLon</a> &gt;&#160;</td>
+          <td class="paramname"><em>coords</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Recalcule et met à jour lengthMeters depuis les coordonnées actuelles. </p>
-<p>À appeler si coordinates est modifié après construction. </p>
+<p>Remplace la polyligne et recalcule la longueur géodésique. </p>
+<p>Appelé par trimStraightOverlaps() pour retirer le chevauchement entre la branche du switch et le début (ou la fin) du Straight. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_a923ec2d60375b9760a734f3babe2150d_cgraph.svg" width="710" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_a1516c424b471658598a77daaf1e55ce6_cgraph.svg" width="738" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_a923ec2d60375b9760a734f3babe2150d_icgraph.svg" width="2548" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStraightBlock_a1516c424b471658598a77daaf1e55ce6_icgraph.svg" width="2576" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -514,14 +650,6 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Met à jour l'état opérationnel du bloc. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">state</td><td>Nouvel état. </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
 <a id="a174fe1fb5ff751a0bcb97fd537cfbac9" name="a174fe1fb5ff751a0bcb97fd537cfbac9"></a>
@@ -539,55 +667,98 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Retourne une représentation textuelle du bloc pour le débogage. </p>
-<p>Format : Straight(id=s/0, len=342.5m, coords=7, neighbours=[sw/0, sw/1])</p>
-<dl class="section return"><dt>Returns</dt><dd>Chaîne de représentation. </dd></dl>
+<p>Représentation textuelle pour le débogage. Format : Straight(id=s/0, len=342.5m, coords=7, neighbours=[sw/0, sw/1]) </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae53ff9455e74374bd6abb4e3221f7880" name="ae53ff9455e74374bd6abb4e3221f7880"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae53ff9455e74374bd6abb4e3221f7880">&#9670;&#160;</a></span>coordinates</h2>
+<a id="a7e0ddf2a4dfdd7b44d685f843d4c368d" name="a7e0ddf2a4dfdd7b44d685f843d4c368d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e0ddf2a4dfdd7b44d685f843d4c368d">&#9670;&#160;</a></span>m_coordinates</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="classLatLon.html">LatLon</a>&gt; StraightBlock::coordinates</td>
+          <td class="memname">std::vector&lt;<a class="el" href="classLatLon.html">LatLon</a>&gt; StraightBlock::m_coordinates</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Polyligne WGS-84 ordonnée du bloc. Premier point : extrémité de départ. Dernier point : extrémité d'arrivée. </p>
 
 </div>
 </div>
-<a id="ab1732af8d7ad997aa6765763514ef879" name="ab1732af8d7ad997aa6765763514ef879"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1732af8d7ad997aa6765763514ef879">&#9670;&#160;</a></span>id</h2>
+<a id="aa3254f96880bdac0fc03f2b93cc24b2a" name="aa3254f96880bdac0fc03f2b93cc24b2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3254f96880bdac0fc03f2b93cc24b2a">&#9670;&#160;</a></span>m_id</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string StraightBlock::id</td>
+          <td class="memname">std::string StraightBlock::m_id</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Identifiant unique (ex. "s/0", "s/0_c1" pour les morceaux). </p>
 
 </div>
 </div>
-<a id="aa169e5936f6935916fd5beb51c176a2c" name="aa169e5936f6935916fd5beb51c176a2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa169e5936f6935916fd5beb51c176a2c">&#9670;&#160;</a></span>lengthMeters</h2>
+<a id="a236b3c910803c6fab940a196829becb4" name="a236b3c910803c6fab940a196829becb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a236b3c910803c6fab940a196829becb4">&#9670;&#160;</a></span>m_lengthMeters</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double StraightBlock::lengthMeters = 0.0</td>
+          <td class="memname">double StraightBlock::m_lengthMeters = 0.0</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Longueur géodésique en mètres. Calculée automatiquement à la construction via la formule de Haversine. </p>
+
+</div>
+</div>
+<a id="a9b14748902c7b5f4fad5936d0249817e" name="a9b14748902c7b5f4fad5936d0249817e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b14748902c7b5f4fad5936d0249817e">&#9670;&#160;</a></span>m_neighbourIds</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; StraightBlock::m_neighbourIds</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Toujours trié. </p>
 
 </div>
 </div>
@@ -610,22 +781,6 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>État opérationnel courant (FREE par défaut). </p>
-
-</div>
-</div>
-<a id="ace5250940af85ae74685da68fc5ee4a9" name="ace5250940af85ae74685da68fc5ee4a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace5250940af85ae74685da68fc5ee4a9">&#9670;&#160;</a></span>neighbourIds</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;std::string&gt; StraightBlock::neighbourIds</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Identifiants des blocs adjacents (autres <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> ou <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a>). Peuplé par la Phase 5b (câblage topologique). </p>
 
 </div>
 </div>

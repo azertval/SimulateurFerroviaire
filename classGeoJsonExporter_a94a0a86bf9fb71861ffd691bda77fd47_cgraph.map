@@ -1,0 +1,17 @@
+<map id="GeoJsonExporter::renderSwitchBlock" name="GeoJsonExporter::renderSwitchBlock">
+<area shape="rect" id="Node000001" title="Construit l&#39;appel JS renderSwitch(id, lat, lon, isDouble)." alt="" coords="5,162,228,202"/>
+<area shape="rect" id="Node000002" href="$classGeoJsonExporter.html#a88e1a923193554c2b66962199a770ace" title="Calcule le bearing en degrés entre deux points géographiques." alt="" coords="285,5,498,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,160,191,100,231,67,275,40,291,33,293,38,277,44,234,71,195,104,137,164"/>
+<area shape="rect" id="Node000003" href="$classSwitchBlock.html#a4389341dc43ddfc247c34a160f1bbc7a" title=" " alt="" coords="320,55,463,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,159,204,124,275,90,306,80,307,85,277,95,207,129,149,164"/>
+<area shape="rect" id="Node000004" href="$classSwitchBlock.html#a17420e8225a0637a6d38b73bee7d2526" title=" " alt="" coords="300,105,483,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="213,159,286,144,287,149,214,165"/>
+<area shape="rect" id="Node000005" href="$classSwitchBlock.html#a7bc2dc6a569f28c662ce4071977569b3" title="Retourne l&#39;ID du partenaire (peu importe la branche). Nullopt si pas un double." alt="" coords="297,169,485,195"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="228,179,283,179,283,185,228,185"/>
+<area shape="rect" id="Node000006" href="$classSwitchBlock.html#a6b66c9a47909473ed1952a1f6dfb7183" title=" " alt="" coords="276,219,507,244"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="229,199,307,214,306,219,228,205"/>
+<area shape="rect" id="Node000007" href="$classSwitchBlock.html#ad6735b53a83425ebf379eb210a5237ba" title=" " alt="" coords="283,268,499,293"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="157,200,213,227,277,253,309,262,307,267,275,258,210,232,154,205"/>
+<area shape="rect" id="Node000008" href="$classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e" title=" " alt="" coords="308,317,475,343"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="140,200,198,252,236,279,277,302,299,311,297,316,275,307,233,284,195,256,136,204"/>
+</map>

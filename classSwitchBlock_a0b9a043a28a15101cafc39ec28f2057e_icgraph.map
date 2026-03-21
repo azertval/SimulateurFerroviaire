@@ -1,5 +1,0 @@
-<map id="SwitchBlock::haversineDistanceMeters" name="SwitchBlock::haversineDistanceMeters">
-<area shape="rect" id="Node000001" title="Calcule la distance de Haversine entre deux points WGS&#45;84." alt="" coords="251,5,481,45"/>
-<area shape="rect" id="Node000002" href="$classSwitchBlock.html#a003ca555f7f3dfd8e8057ae23dba9381" title="Calcule et mémorise totalLengthMeters." alt="" coords="5,5,203,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,28,203,28,203,23,237,23"/>
-</map>

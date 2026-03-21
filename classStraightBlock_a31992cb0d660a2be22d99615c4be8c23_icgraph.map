@@ -1,0 +1,25 @@
+<map id="StraightBlock::addNeighbourId" name="StraightBlock::addNeighbourId">
+<area shape="rect" id="Node000001" title="Ajoute un voisin en maintenant l&#39;ordre lexicographique. Pas de doublon." alt="" coords="2352,35,2572,60"/>
+<area shape="rect" id="Node000002" href="$classStraightBlock.html#afb372797f7bc0e80b8dd97c781197772" title="Remplace un ID de voisin par un autre. Utilisé en Phase 7 lors de l&#39;absorption du segment de liaison." alt="" coords="2060,5,2304,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2338,37,2303,33,2304,28,2339,32"/>
+<area shape="rect" id="Node000003" href="$classTopologyExtractor.html#ad16f6760ca59d58d9e37dee7404071d6" title=" " alt="" coords="2109,55,2255,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="2339,62,2256,71,2255,65,2338,57"/>
+<area shape="rect" id="Node000004" href="$classTopologyExtractor.html#a356459ec218bf270f643460da781bd0d" title="Exécute les phases 3, 4, 5a et 5b et retourne le résultat." alt="" coords="1865,55,2012,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="2095,78,2012,78,2012,73,2095,73"/>
+<area shape="rect" id="Node000005" href="$classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet." alt="" coords="1685,63,1817,88"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1851,78,1818,78,1818,73,1851,73"/>
+<area shape="rect" id="Node000006" href="$classGeoParsingTask.html#affe9d461e96e029708ced380b63da972" title="Lance le parsing GeoJSON dans un thread séparé et détaché." alt="" coords="1463,63,1637,88"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1672,78,1637,78,1637,73,1672,73"/>
+<area shape="rect" id="Node000007" href="$classMainWindow.html#a889cc45fb741e12015f4af9f01acaa96" title="Ouvre le sélecteur de fichier et lance le parsing asynchrone." alt="" coords="1228,63,1415,88"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1449,78,1415,78,1415,73,1449,73"/>
+<area shape="rect" id="Node000008" href="$classMainWindow.html#afbecf0f64f48c5c868168884bab52356" title="Gère les commandes menu (WM_COMMAND)." alt="" coords="984,63,1180,88"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1214,78,1180,78,1180,73,1214,73"/>
+<area shape="rect" id="Node000009" href="$classMainWindow.html#ab85682874f3ab5dfa81f782f889d8556" title="Dispatcher principal des messages de la fenêtre." alt="" coords="721,63,936,88"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="970,78,936,78,936,73,970,73"/>
+<area shape="rect" id="Node000010" href="$classMainWindow.html#a332648d0a0caec8070b05bc27bb9a14b" title="Procédure de fenêtre statique, point d&#39;entrée imposé par Win32." alt="" coords="483,63,673,88"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="708,78,674,78,674,73,708,73"/>
+<area shape="rect" id="Node000011" href="$classApplication.html#a0bda40de108938fd29374335bf4eac71" title="Enregistre la classe de fenêtre Win32 (WNDCLASSEXW)." alt="" coords="229,55,435,95"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="469,78,435,78,435,73,469,73"/>
+<area shape="rect" id="Node000012" href="$classApplication.html#a719cf091afd2276d52f9a58e4962ebfb" title="Construit l&#39;application et enregistre la classe de fenêtre." alt="" coords="5,63,181,88"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="216,78,182,78,182,73,216,73"/>
+</map>

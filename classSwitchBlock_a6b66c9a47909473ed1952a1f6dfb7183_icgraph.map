@@ -1,0 +1,22 @@
+<map id="SwitchBlock::getTipOnDeviation" name="SwitchBlock::getTipOnDeviation">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1776,45,2007,70"/>
+<area shape="rect" id="Node000002" href="$classGeoJsonExporter.html#a94a0a86bf9fb71861ffd691bda77fd47" title="Construit l&#39;appel JS renderSwitch(id, lat, lon, isDouble)." alt="" coords="1505,5,1728,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1768,46,1728,41,1729,36,1769,40"/>
+<area shape="rect" id="Node000009" href="$classGeoJsonExporter.html#a125ac684007e9e1e93b6d11d695d7e9b" title="Construit l&#39;appel JS renderSwitchBranches(...) pour un switch." alt="" coords="1505,69,1728,109"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1769,74,1729,79,1728,74,1768,69"/>
+<area shape="rect" id="Node000003" href="$classGeoJsonExporter.html#adbde98ddc849360ec945d84bde02d504" title="Efface puis redessine tous les marqueurs de jonction." alt="" coords="1260,5,1457,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1492,28,1458,28,1458,23,1492,23"/>
+<area shape="rect" id="Node000004" href="$classMainWindow.html#a90cae565f67d1291d690d974547041a0" title="Gère la fin réussie du parsing (WM_PARSING_SUCCESS)." alt="" coords="984,45,1212,70"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1247,42,1202,47,1201,42,1246,36"/>
+<area shape="rect" id="Node000005" href="$classMainWindow.html#ab85682874f3ab5dfa81f782f889d8556" title="Dispatcher principal des messages de la fenêtre." alt="" coords="721,45,936,70"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="971,60,936,60,936,55,971,55"/>
+<area shape="rect" id="Node000006" href="$classMainWindow.html#a332648d0a0caec8070b05bc27bb9a14b" title="Procédure de fenêtre statique, point d&#39;entrée imposé par Win32." alt="" coords="483,45,673,70"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="708,60,674,60,674,55,708,55"/>
+<area shape="rect" id="Node000007" href="$classApplication.html#a0bda40de108938fd29374335bf4eac71" title="Enregistre la classe de fenêtre Win32 (WNDCLASSEXW)." alt="" coords="229,37,435,77"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="469,60,435,60,435,55,469,55"/>
+<area shape="rect" id="Node000008" href="$classApplication.html#a719cf091afd2276d52f9a58e4962ebfb" title="Construit l&#39;application et enregistre la classe de fenêtre." alt="" coords="5,45,181,70"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="216,60,182,60,182,55,216,55"/>
+<area shape="rect" id="Node000010" href="$classGeoJsonExporter.html#a75d6c6a4354d06d04a700b58d69e869f" title="Efface puis redessine les branches de tous les switches." alt="" coords="1260,69,1457,109"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="1492,92,1458,92,1458,87,1492,87"/>
+<area shape="poly" id="edge10_Node000010_Node000004" title=" " alt="" coords="1246,78,1201,73,1202,67,1247,73"/>
+</map>

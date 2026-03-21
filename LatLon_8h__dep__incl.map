@@ -6,7 +6,7 @@
 <area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="1022,50,503,124,503,118,1021,45"/>
 <area shape="rect" id="Node000012" href="$StraightBlock_8h.html" title="Modèle de domaine d&#39;un bloc de voie droite (Straight)." alt="" coords="1179,108,1426,163"/>
 <area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="1178,64,1255,105,1252,110,1176,69"/>
-<area shape="rect" id="Node000023" href="$SwitchBlock_8h.html" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches (Switch)." alt="" coords="1608,108,1847,163"/>
+<area shape="rect" id="Node000023" href="$SwitchBlock_8h.html" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches." alt="" coords="1608,108,1847,163"/>
 <area shape="poly" id="edge34_Node000001_Node000023" title=" " alt="" coords="1212,47,1608,112,1608,117,1211,52"/>
 <area shape="rect" id="Node000003" href="$GeoParser_8cpp.html" title="Implémentation du pipeline GeoParser." alt="" coords="1322,423,1568,463"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="869,168,843,212,821,265,815,292,815,319,821,344,835,366,857,378,899,390,1026,409,1178,423,1322,433,1321,438,1178,429,1025,414,898,395,855,383,831,370,816,346,809,319,810,292,816,263,838,209,864,165"/>

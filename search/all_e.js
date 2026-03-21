@@ -9,8 +9,7 @@ var searchData=
   ['pipeline_20global_6',['Pipeline global',['../index.html#pipeline',1,'']]],
   ['pipeline_20principal_7',['GeoParser — Pipeline principal',['../index.html#geoparser',1,'']]],
   ['pointatdistancealongline_8',['pointAtDistanceAlongLine',['../classGeometryUtils.html#a811846a194a09c97c258825df6accb9a',1,'GeometryUtils']]],
-  ['prevswitchid_9',['prevSwitchId',['../classSwitchBlock.html#a4de843d021a806f62d9657e1c1dddd23',1,'SwitchBlock']]],
-  ['principal_10',['GeoParser — Pipeline principal',['../index.html#geoparser',1,'']]],
-  ['progressbar_11',['progressbar',['../classProgressBar.html',1,'ProgressBar'],['../classProgressBar.html#aabdebc9823af01c7567e7546d9f0016f',1,'ProgressBar::ProgressBar()']]],
-  ['progressbar_2eh_12',['ProgressBar.h',['../ProgressBar_8h.html',1,'']]]
+  ['principal_9',['GeoParser — Pipeline principal',['../index.html#geoparser',1,'']]],
+  ['progressbar_10',['progressbar',['../classProgressBar.html',1,'ProgressBar'],['../classProgressBar.html#aabdebc9823af01c7567e7546d9f0016f',1,'ProgressBar::ProgressBar()']]],
+  ['progressbar_2eh_11',['ProgressBar.h',['../ProgressBar_8h.html',1,'']]]
 ];

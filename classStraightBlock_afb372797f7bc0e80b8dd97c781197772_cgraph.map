@@ -1,0 +1,5 @@
+<map id="StraightBlock::replaceNeighbourId" name="StraightBlock::replaceNeighbourId">
+<area shape="rect" id="Node000001" title="Remplace un ID de voisin par un autre. Utilisé en Phase 7 lors de l&#39;absorption du segment de liaison." alt="" coords="5,5,249,31"/>
+<area shape="rect" id="Node000002" href="$classStraightBlock.html#a31992cb0d660a2be22d99615c4be8c23" title="Ajoute un voisin en maintenant l&#39;ordre lexicographique. Pas de doublon." alt="" coords="297,5,517,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="250,15,284,15,284,21,250,21"/>
+</map>

@@ -1,16 +1,34 @@
 <map id="MainWindow::onFileExport" name="MainWindow::onFileExport">
-<area shape="rect" id="Node000001" title="Ouvre le dialogue d&#39;exportation et déclenche l&#39;export GeoJSON." alt="" coords="5,134,200,159"/>
-<area shape="rect" id="Node000002" href="$classGeoJsonExporter.html#a933abb8a4cbc84d34ced90a170d170d3" title="Exporte la topologie ferroviaire dans un fichier GeoJSON." alt="" coords="248,109,465,134"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,134,234,131,235,136,200,140"/>
-<area shape="rect" id="Node000007" href="$classFileSaveDialog.html#ab97de3eb250a4a24fb620a8a50161bfd" title="Affiche le sélecteur de fichier natif Windows." alt="" coords="277,158,436,183"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="200,153,264,159,264,165,200,158"/>
-<area shape="rect" id="Node000003" href="$classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" title="Convertit un StraightBlock en feature GeoJSON de type LineString." alt="" coords="513,5,700,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="387,106,512,55,532,48,534,53,514,60,389,111"/>
-<area shape="rect" id="Node000004" href="$classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" title="Convertit un SwitchBlock en feature GeoJSON de type Point." alt="" coords="513,69,700,109"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="456,106,499,100,500,106,456,111"/>
-<area shape="rect" id="Node000005" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="531,133,682,173"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="456,131,518,139,517,145,456,137"/>
-<area shape="rect" id="Node000006" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="531,221,682,261"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="437,132,467,143,492,162,515,183,559,212,556,216,512,187,488,166,464,148,435,137"/>
-<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="561,222,558,212,565,202,582,197,607,195,635,198,651,205,649,210,634,203,607,200,583,202,568,207,563,213,566,220"/>
+<area shape="rect" id="Node000001" title="Ouvre le dialogue d&#39;exportation et déclenche l&#39;export GeoJSON." alt="" coords="5,348,200,373"/>
+<area shape="rect" id="Node000002" href="$classGeoJsonExporter.html#a933abb8a4cbc84d34ced90a170d170d3" title="Exporte la topologie ferroviaire dans un fichier GeoJSON." alt="" coords="248,323,465,348"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,348,234,345,235,350,200,354"/>
+<area shape="rect" id="Node000016" href="$classFileSaveDialog.html#ab97de3eb250a4a24fb620a8a50161bfd" title="Affiche le sélecteur de fichier natif Windows." alt="" coords="277,372,436,397"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="200,367,264,373,264,379,200,372"/>
+<area shape="rect" id="Node000003" href="$classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a" title="Convertit un StraightBlock en feature GeoJSON de type LineString." alt="" coords="513,77,700,117"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="369,321,573,125,576,128,373,324"/>
+<area shape="rect" id="Node000007" href="$classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93" title="Convertit un SwitchBlock en feature GeoJSON de type Point." alt="" coords="513,283,700,323"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="456,320,499,314,500,320,456,325"/>
+<area shape="rect" id="Node000014" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="531,347,682,387"/>
+<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="456,345,518,353,517,359,456,351"/>
+<area shape="rect" id="Node000015" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="531,435,682,475"/>
+<area shape="poly" id="edge14_Node000002_Node000015" title=" " alt="" coords="437,346,467,357,492,376,515,397,559,426,556,430,512,401,488,380,464,362,435,351"/>
+<area shape="rect" id="Node000004" href="$classStraightBlock.html#a646d3135d365dcb832ff66b1304c6850" title=" " alt="" coords="757,5,973,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="653,74,747,39,779,31,781,36,749,45,655,79"/>
+<area shape="rect" id="Node000005" href="$classStraightBlock.html#a295060fddd0675834ce4755ae4787780" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="790,55,941,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="700,83,776,75,777,80,700,89"/>
+<area shape="rect" id="Node000006" href="$classStraightBlock.html#aebdce1e1b66d6b39376ae1a66c2d2d9e" title=" " alt="" coords="774,105,957,145"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="700,104,760,111,760,116,700,109"/>
+<area shape="rect" id="Node000008" href="$classSwitchBlock.html#a6ed34ef4ccea6e43e2c0d456f5eb29c0" title=" " alt="" coords="769,169,962,209"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="635,281,686,249,747,218,767,211,769,216,749,223,689,254,638,285"/>
+<area shape="rect" id="Node000009" href="$classSwitchBlock.html#a4389341dc43ddfc247c34a160f1bbc7a" title=" " alt="" coords="794,233,937,259"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="694,281,747,269,791,259,792,264,749,274,696,286"/>
+<area shape="rect" id="Node000010" href="$classSwitchBlock.html#a17420e8225a0637a6d38b73bee7d2526" title=" " alt="" coords="774,283,957,323"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="700,301,760,301,760,306,700,306"/>
+<area shape="rect" id="Node000011" href="$classSwitchBlock.html#a6838d033ec39e85a94c98a9559fcc532" title=" " alt="" coords="748,348,983,373"/>
+<area shape="poly" id="edge10_Node000007_Node000011" title=" " alt="" coords="696,321,749,333,792,342,791,348,747,338,694,326"/>
+<area shape="rect" id="Node000012" href="$classSwitchBlock.html#a55d04c13a5fba252ba2b840f6835a2a4" title=" " alt="" coords="757,397,974,423"/>
+<area shape="poly" id="edge11_Node000007_Node000012" title=" " alt="" coords="679,321,701,333,717,346,726,359,735,371,749,382,767,390,764,395,747,387,731,375,721,362,713,350,699,338,676,326"/>
+<area shape="rect" id="Node000013" href="$classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e" title=" " alt="" coords="782,447,949,472"/>
+<area shape="poly" id="edge12_Node000007_Node000013" title=" " alt="" coords="684,321,702,333,713,346,720,360,726,386,732,411,738,422,750,433,770,445,768,450,746,437,734,425,727,413,721,387,715,361,709,349,698,337,681,326"/>
+<area shape="poly" id="edge15_Node000015_Node000015" title=" " alt="" coords="561,436,558,426,565,416,582,411,607,409,635,412,651,419,649,424,634,417,607,414,583,416,568,421,563,427,566,434"/>
 </map>

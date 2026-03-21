@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('TopologyExtractor_8h.html',''); initRe
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for TopologyExtractor.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="TopologyExtractor_8h__incl.svg" width="2431" height="418"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="TopologyExtractor_8h__incl.svg" width="2407" height="418"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -132,10 +132,10 @@ Classes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Phases 3, 4, 5a et 5b — extraction de la topologie ferroviaire depuis le graphe. </p>
-<p>Phase 3 (detectSwitches) : Identifie les nœuds de jonction (degré ≥ 3) et crée les objets <a class="el" href="classSwitchBlock.html" title="Aiguillage ferroviaire à 3 branches produit par le parseur GeoJSON.">SwitchBlock</a>.</p>
+<p>Phase 3 (detectSwitches) : Identifie les nœuds de jonction (degré ≥ 3) et crée les objets <a class="el" href="classSwitchBlock.html">SwitchBlock</a>.</p>
 <p>Phase 4 (extractStraights) : Marche le graphe depuis chaque nœud frontière. Collecte les chemins droits maximaux entre nœuds frontières. Déduplique les chemins par empreinte géométrique.</p>
-<p>Phase 5a (splitLongStraights) : Subdivise tout <a class="el" href="classStraightBlock.html" title="Bloc de voie droite produit par le parseur GeoJSON.">StraightBlock</a> dépassant maxStraightLengthMeters. Les morceaux sont nommés "s/N_c1", "s/N_c2", etc.</p>
-<p>Phase 5b (wireTopology) : Peuple <a class="el" href="classSwitchBlock.html#accb5d67518dff64ab8bcc6f1693fe2bc">SwitchBlock::branchIds</a> avec les IDs des StraightBlocks adjacents. Peuple <a class="el" href="classStraightBlock.html#ace5250940af85ae74685da68fc5ee4a9">StraightBlock::neighbourIds</a> avec les IDs des voisins (Switch ou Straight). </p>
+<p>Phase 5a (splitLongStraights) : Subdivise tout <a class="el" href="classStraightBlock.html">StraightBlock</a> dépassant maxStraightLengthMeters. Les morceaux sont nommés "s/N_c1", "s/N_c2", etc.</p>
+<p>Phase 5b (wireTopology) : Peuple SwitchBlock::branchIds avec les IDs des StraightBlocks adjacents. Peuple StraightBlock::neighbourIds avec les IDs des voisins (Switch ou Straight). </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

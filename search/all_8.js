@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['id_0',['id',['../classTopologyEdge.html#a0345573f0910118e47abb07355cfb1f1',1,'TopologyEdge::id'],['../classStraightBlock.html#ab1732af8d7ad997aa6765763514ef879',1,'StraightBlock::id'],['../classSwitchBlock.html#a05f81ee2e6dafd1f2805c85b6abb147c',1,'SwitchBlock::id']]],
+  ['id_0',['id',['../classTopologyEdge.html#a0345573f0910118e47abb07355cfb1f1',1,'TopologyEdge']]],
   ['idc_5fmyicon_1',['IDC_MYICON',['../Resource_8h.html#abb326bd165140b31acf04b893ef655ca',1,'Resource.h']]],
   ['idc_5fsimulateurferroviaire_2',['IDC_SIMULATEURFERROVIAIRE',['../Resource_8h.html#ab85b2542c93de32f653bc8a14863bc72',1,'Resource.h']]],
   ['idc_5fstatic_3',['IDC_STATIC',['../Resource_8h.html#ac93033490bc8943cfc82ec3b40e5cd74',1,'Resource.h']]],
@@ -19,7 +19,7 @@ var searchData=
   ['initializewebview_16',['initializeWebView',['../classWebViewPanel.html#a886fd07f1d23eec535d0b57215c6ce50',1,'WebViewPanel']]],
   ['instance_17',['instance',['../classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509',1,'TopologyRepository']]],
   ['interactifs_18',['interactifs',['../index.html#elements',1,'Eléments interactifs'],['../index.html#hierarchy',1,'Hiérarchie des éléments interactifs']]],
-  ['interactiveelement_19',['interactiveelement',['../classInteractiveElement.html',1,'InteractiveElement'],['../classInteractiveElement.html#a9a8f196ea573c4fdf1983ce154aa193a',1,'InteractiveElement::InteractiveElement(InteractiveElement &amp;&amp;)=default'],['../classInteractiveElement.html#a534f8d7be8cfe37ddbec1c134b68898c',1,'InteractiveElement::InteractiveElement(const InteractiveElement &amp;)=delete'],['../classInteractiveElement.html#a731ea8f6e5caddfff044ae50feefdbf7',1,'InteractiveElement::InteractiveElement()=default']]],
+  ['interactiveelement_19',['interactiveelement',['../classInteractiveElement.html#a9a8f196ea573c4fdf1983ce154aa193a',1,'InteractiveElement::InteractiveElement(InteractiveElement &amp;&amp;)=default'],['../classInteractiveElement.html#a534f8d7be8cfe37ddbec1c134b68898c',1,'InteractiveElement::InteractiveElement(const InteractiveElement &amp;)=delete'],['../classInteractiveElement.html#a731ea8f6e5caddfff044ae50feefdbf7',1,'InteractiveElement::InteractiveElement()=default'],['../classInteractiveElement.html',1,'InteractiveElement']]],
   ['interactiveelement_2eh_20',['InteractiveElement.h',['../InteractiveElement_8h.html',1,'']]],
   ['interactiveelementtype_21',['InteractiveElementType',['../InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731',1,'InteractiveElement.h']]],
   ['interface_20utilisateur_22',['HMI — Interface utilisateur',['../index.html#hmi',1,'']]],
@@ -28,7 +28,7 @@ var searchData=
   ['invalidgeojsonformatexception_25',['invalidgeojsonformatexception',['../classInvalidGeoJsonFormatException.html',1,'InvalidGeoJsonFormatException'],['../classInvalidGeoJsonFormatException.html#a6a575f1b2ef3060938b86ad75907eb3c',1,'InvalidGeoJsonFormatException::InvalidGeoJsonFormatException()']]],
   ['invalidswitchconfigexception_26',['invalidswitchconfigexception',['../classInvalidSwitchConfigException.html#abaaafef573235d7c5ea379dfeddb7359',1,'InvalidSwitchConfigException::InvalidSwitchConfigException()'],['../classInvalidSwitchConfigException.html',1,'InvalidSwitchConfigException']]],
   ['invalidtopologyexception_27',['invalidtopologyexception',['../classInvalidTopologyException.html#a5710b8640dbf0e049d7bd6e17ea47eb2',1,'InvalidTopologyException::InvalidTopologyException()'],['../classInvalidTopologyException.html',1,'InvalidTopologyException']]],
-  ['isdoubleswitch_28',['isDoubleSwitch',['../classSwitchBlock.html#ae4c9ab5c95d6c5e9779fcf2d948787a5',1,'SwitchBlock']]],
+  ['isdouble_28',['isDouble',['../classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e',1,'SwitchBlock']]],
   ['isfree_29',['isFree',['../classShuntingElement.html#a679c294d3ca6d857e7ffa69eaed76c92',1,'ShuntingElement']]],
   ['isinactive_30',['isInactive',['../classShuntingElement.html#ac236019e6961a887732237cc5f1da697',1,'ShuntingElement']]],
   ['isinitialized_31',['isInitialized',['../classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2',1,'WebViewPanel']]],

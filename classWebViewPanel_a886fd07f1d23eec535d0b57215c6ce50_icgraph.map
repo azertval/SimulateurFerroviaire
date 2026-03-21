@@ -1,5 +1,5 @@
 <map id="WebViewPanel::initializeWebView" name="WebViewPanel::initializeWebView">
-<area shape="rect" id="Node000001" title="Initialise le runtime WebView2 et crée le controller et le webview." alt="" coords="423,5,604,45"/>
+<area shape="rect" id="Node000001" title="Initialise l&#39;environnement WebView2 de manière asynchrone." alt="" coords="423,5,604,45"/>
 <area shape="rect" id="Node000002" href="$classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1" title="Initialise WebView2 dans une fenêtre Win32 existante." alt="" coords="208,13,375,38"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="409,28,375,28,375,23,409,23"/>
 <area shape="rect" id="Node000003" href="$classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar." alt="" coords="5,13,160,38"/>

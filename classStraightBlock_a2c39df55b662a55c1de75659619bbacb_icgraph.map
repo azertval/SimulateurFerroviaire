@@ -1,11 +1,9 @@
 <map id="StraightBlock::computeGeodesicLength" name="StraightBlock::computeGeodesicLength">
-<area shape="rect" id="Node000001" title="Calcule la longueur géodésique totale via la formule de Haversine." alt="" coords="2608,35,2843,75"/>
-<area shape="rect" id="Node000002" href="$classStraightBlock.html#a923ec2d60375b9760a734f3babe2150d" title="Recalcule et met à jour lengthMeters depuis les coordonnées actuelles." alt="" coords="2365,5,2551,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2594,43,2551,38,2552,33,2595,38"/>
-<area shape="rect" id="Node000013" href="$classStraightBlock.html#a6b5d2078a32199b21c8ab3117fc6c01f" title="Construit un StraightBlock avec ses coordonnées." alt="" coords="2356,70,2560,95"/>
-<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="2595,71,2561,75,2560,69,2594,66"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="2619,5,2853,45"/>
+<area shape="rect" id="Node000002" href="$classStraightBlock.html#a1516c424b471658598a77daaf1e55ce6" title="Remplace la polyligne et recalcule la longueur géodésique." alt="" coords="2356,13,2571,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2605,28,2571,28,2571,23,2605,23"/>
 <area shape="rect" id="Node000003" href="$classSwitchOrientator.html#ac80814892c9baea379f2b4e9f22b966e" title="Retaille chaque StraightBlock adjacent à une jonction pour qu&#39;il commence (ou se termine) exactement ..." alt="" coords="2091,5,2308,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2351,28,2308,28,2308,23,2351,23"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2342,28,2308,28,2308,23,2342,23"/>
 <area shape="rect" id="Node000004" href="$classSwitchOrientator.html#a5af1a097baad421ce01bd013be602df7" title="Exécute les phases 6, 6b, 6c et 6d en place sur topoResult." alt="" coords="1865,13,2043,38"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="2077,28,2043,28,2043,23,2077,23"/>
 <area shape="rect" id="Node000005" href="$classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet." alt="" coords="1685,13,1817,38"/>

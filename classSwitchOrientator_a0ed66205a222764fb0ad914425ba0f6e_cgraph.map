@@ -1,7 +1,9 @@
 <map id="SwitchOrientator::orientThreePortSwitch" name="SwitchOrientator::orientThreePortSwitch">
-<area shape="rect" id="Node000001" title="Oriente un SwitchBlock à 3 branches en place." alt="" coords="5,37,183,77"/>
-<area shape="rect" id="Node000002" href="$classGeometryUtils.html#a7fb1d9f796278db394fc82257347f514" title="Variante &quot;pire cas&quot; de l&#39;angle entre deux vecteurs 2&#45;D." alt="" coords="231,5,449,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,43,217,39,217,44,183,48"/>
-<area shape="rect" id="Node000003" href="$classSwitchOrientator.html#aad2a4892eb6f9d716bd4703694813f46" title="Retourne la direction (vecteur lat/lon) depuis junctionCoord vers l&#39;extrémité distale du StraightBloc..." alt="" coords="242,69,438,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,66,229,72,228,77,182,71"/>
+<area shape="rect" id="Node000001" title="Oriente un SwitchBlock à 3 branches en place." alt="" coords="5,63,183,103"/>
+<area shape="rect" id="Node000002" href="$classSwitchOrientator.html#aad2a4892eb6f9d716bd4703694813f46" title="Retourne la direction (vecteur lat/lon) depuis junctionCoord vers l&#39;extrémité distale du StraightBloc..." alt="" coords="231,5,427,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,60,232,46,233,51,177,65"/>
+<area shape="rect" id="Node000003" href="$classSwitchBlock.html#a3df4225adcb5d9121388c7b90fcd1af2" title=" " alt="" coords="231,70,426,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,80,217,80,217,85,183,85"/>
+<area shape="rect" id="Node000004" href="$classSwitchBlock.html#a17420e8225a0637a6d38b73bee7d2526" title=" " alt="" coords="237,120,420,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="177,100,233,114,232,119,176,105"/>
 </map>
