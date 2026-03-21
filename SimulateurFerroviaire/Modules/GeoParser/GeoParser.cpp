@@ -12,7 +12,7 @@
 #include "SwitchOrientator.h"
 #include "DoubleSwitchDetector.h"
 #include "Modules/GeoJsonExporter/GeoJsonExporter.h"
-#include "Modules/Stockages/TopologyRepository.h"
+#include "Engine/Core/Topology/TopologyRepository.h"
 
  /**
   * @brief Constructeur.

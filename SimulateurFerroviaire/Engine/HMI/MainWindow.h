@@ -167,6 +167,33 @@ private:
     */
     void onDestroy();
 
+    /**
+    * @brief Dispatcher principal des messages JSON reçus depuis Leaflet.
+    *
+    * Branché sur WebViewPanel via setOnMessageReceived() dans create().
+    * Parse le JSON, identifie le champ "type", et délègue au handler
+    * spécialisé. Un JSON malformé est loggé et ignoré — jamais de crash.
+    *
+    * @param jsonMessage  Contenu brut du postMessage (UTF-8).
+    */
+    void onWebMessage(const std::string& jsonMessage);
+
+    /**
+    * @brief Met à jour l'état opérationnel d'un SwitchBlock après un clic.
+    *
+    * Localise le switch par ID dans TopologyRepository, convertit la chaîne
+    * JS "normal"/"deviation" en ActiveBranch, et appelle setActiveBranch().
+    *
+    * Le visuel Leaflet est déjà à jour (mise à jour optimiste côté JS).
+    * Si à l'avenir une validation C++ peut rejeter le changement, envoyer
+    * ici un script de correction via executeScript().
+    *
+    * @param switchId  Identifiant du switch (ex. "sw/0").
+    * @param active    "normal" ou "deviation".
+    */
+    void onSwitchClick(const std::string& switchId);
+
+
     // =========================================================================
     // Membres
     // =========================================================================
@@ -190,8 +217,8 @@ private:
     ProgressBar m_progressBar;
 
     /** Logger dédié à la couche HMI, utilisé pour tracer les événements et erreurs liés à l'interface utilisateur. */
-    Logger m_hmiLogger{"HMI"};
+    Logger m_logger{"HMI"};
 
     /** Panneau WebView2 pour l'affichage de la carte ferroviaire. */
-    WebViewPanel m_webViewPanel{m_hmiLogger};
+    WebViewPanel m_webViewPanel{m_logger};
 };

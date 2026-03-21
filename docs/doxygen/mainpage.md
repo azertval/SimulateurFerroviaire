@@ -28,6 +28,19 @@ Gestion des composants fondamentaux et de la logique applicative transverse.
 |--------|------|
 | Application | Cycle de vie Win32 (enregistrement de classe, boucle de messages) |
 | Logger | Journalisation structurée (INFO / DEBUG / WARNING / ERROR / FAILURE) |
+| @ref TopologyData | Conteneur `unique_ptr<StraightBlock>` + `unique_ptr<SwitchBlock>`. Garantit le polymorphisme sans slicing |
+| @ref TopologyRepository | Singleton (Meyers). Accès global à @ref TopologyData via `instance().data()` |
+
+### Topology 
+
+> **Pourquoi `unique_ptr` ?**
+> Les blocs sont polymorphes (`InteractiveElement*`). Le stockage par valeur entraînerait
+> du slicing et interdirait le déplacement. Le stockage par `unique_ptr` garantit :
+> - polymorphisme correct (destructeur virtuel respecté),
+> - propriété exclusive et cycle de vie déterministe,
+> - interdiction de copie accidentelle.
+
+----
 
 ## HMI — Interface utilisateur {#hmi}
 
@@ -140,22 +153,6 @@ InteractiveElement          getId(), getType()
 | `InteractiveElementType` | `SWITCH`, `STRAIGHT` | Typage sans RTTI |
 | `ShuntingState` | `FREE`, `OCCUPIED`, `INACTIVE` | État opérationnel temps réel |
 
----
-
-## Stockages {#storage}
-
-| Classe | Rôle |
-|--------|------|
-| @ref TopologyData | Conteneur `unique_ptr<StraightBlock>` + `unique_ptr<SwitchBlock>`. Garantit le polymorphisme sans slicing |
-| @ref TopologyRepository | Singleton (Meyers). Accès global à @ref TopologyData via `instance().data()` |
-
-> **Pourquoi `unique_ptr` ?**
-> Les blocs sont polymorphes (`ShuntingElement*`). Le stockage par valeur entraînerait
-> du slicing et interdirait le déplacement. Le stockage par `unique_ptr` garantit :
-> - polymorphisme correct (destructeur virtuel respecté),
-> - propriété exclusive et cycle de vie déterministe,
-> - interdiction de copie accidentelle.
- 
  ---
 
 # Coordonnées {#coords}

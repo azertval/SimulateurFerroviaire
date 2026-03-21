@@ -115,7 +115,13 @@ window.renderSwitch = function(id, lat, lon, isDouble, bearingNormal, bearingDev
 
         if (isDouble && partnerId && window.switchToggleMap[partnerId])
             window.switchToggleMap[partnerId](pointingToDeviation);
-    });
+
+        window.chrome.webview.postMessage(JSON.stringify({
+            type: "switch_click",
+            id: id,
+            partnerId: partnerId //Empty for single switch
+        }));
+    });  
 };
 
 /**

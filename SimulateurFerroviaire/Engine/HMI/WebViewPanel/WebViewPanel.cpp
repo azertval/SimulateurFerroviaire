@@ -110,6 +110,7 @@ void WebViewPanel::close()
 {
     // Clear any stored callback before tearing down the WebView.
     m_onInitialized = nullptr;
+    m_onMessageReceived = nullptr; 
 
     if (m_controller)
     {
@@ -144,6 +145,11 @@ void WebViewPanel::setVirtualHostMapping(const std::wstring& hostname, const std
         folderPath.c_str(),
         COREWEBVIEW2_HOST_RESOURCE_ACCESS_KIND_ALLOW
     );
+}
+
+void WebViewPanel::setOnMessageReceived(std::function<void(const std::string&)> callback)
+{
+    m_onMessageReceived = std::move(callback);
 }
 
 // =============================================================================
@@ -198,10 +204,14 @@ void WebViewPanel::onControllerCreated(HRESULT result, ICoreWebView2Controller* 
     m_controller = controller;
     m_controller->get_CoreWebView2(&m_webview);
 
+    // Enregistrement du handler via lambda — permet la méthode non-statique
     m_webview->add_WebMessageReceived(
         Microsoft::WRL::Callback<ICoreWebView2WebMessageReceivedEventHandler>(
-            &WebViewPanel::onWebMessageReceived).Get(),
-        nullptr);
+            [this](ICoreWebView2* sender,
+                ICoreWebView2WebMessageReceivedEventArgs* args) -> HRESULT
+            {
+                return onWebMessageReceived(sender, args);
+            }).Get(), nullptr);
 
     resize();
 
@@ -215,25 +225,29 @@ void WebViewPanel::onControllerCreated(HRESULT result, ICoreWebView2Controller* 
 }
 
 
-HRESULT WebViewPanel::onWebMessageReceived(ICoreWebView2* sender,
+HRESULT WebViewPanel::onWebMessageReceived(
+    ICoreWebView2*,
     ICoreWebView2WebMessageReceivedEventArgs* args)
 {
     LPWSTR rawMessage = nullptr;
-
-    HRESULT hr = args->TryGetWebMessageAsString(&rawMessage);
-    if (FAILED(hr) || !rawMessage)
-    {
+    if (FAILED(args->TryGetWebMessageAsString(&rawMessage)) || !rawMessage)
         return S_OK;
+
+    // Conversion UTF-8 correcte.
+    const int byteCount = WideCharToMultiByte(CP_UTF8, 0, rawMessage, -1, nullptr, 0, nullptr, nullptr);
+    std::string utf8Message;
+    if (byteCount > 0)
+    {
+        utf8Message.resize(byteCount - 1);
+        WideCharToMultiByte(CP_UTF8, 0, rawMessage, -1, utf8Message.data(), byteCount, nullptr, nullptr);
     }
+    CoTaskMemFree(rawMessage);
 
-    std::wstring wideMessage(rawMessage);
-    CoTaskMemFree(rawMessage); // libération obligatoire de la mémoire allouée par WebView2
+    LOG_DEBUG(m_logger, "Message JS reçu : " + utf8Message);
 
-    // Conversion naïve UTF-16 → char (ASCII uniquement)
-    // Remplacer par WideCharToMultiByte pour supporter l'Unicode complet
-    std::string message(wideMessage.begin(), wideMessage.end());
-
-    MessageBoxA(nullptr, message.c_str(), "JS MESSAGE", MB_OK);
+    // Dispatch vers MainWindow — aucun couplage direct.
+    if (m_onMessageReceived)
+        m_onMessageReceived(utf8Message);
 
     return S_OK;
 }

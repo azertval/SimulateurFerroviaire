@@ -25,10 +25,10 @@ namespace
 SwitchBlock::SwitchBlock(std::string              switchId,
     LatLon                   junctionCoord,
     std::vector<std::string> initialBranchIds)
-    : m_id(std::move(switchId))
-    , m_junctionCoordinate(junctionCoord)
+    : m_junctionCoordinate(junctionCoord)
     , m_branchIds(std::move(initialBranchIds))
 {
+    m_id = std::move(switchId);
 }
 
 
@@ -87,7 +87,7 @@ void SwitchBlock::computeTotalLength()
     const double normalLeg = haversineDistanceMeters(m_junctionCoordinate, *m_tipOnNormal);
     const double deviationLeg = haversineDistanceMeters(m_junctionCoordinate, *m_tipOnDeviation);
 
-    m_totalLengthMeters = rootLeg + std::max(normalLeg, deviationLeg);
+    m_totalLengthMeters = rootLeg + (((normalLeg) > (deviationLeg)) ? (normalLeg) : (deviationLeg));
 }
 
 
@@ -120,6 +120,19 @@ void SwitchBlock::absorbLink(const std::string& linkId,
         m_doubleOnDeviation = partnerId;
         m_absorbedDeviationCoords = std::move(linkCoords);
     }
+}
+
+void SwitchBlock::setActiveBranch(ActiveBranch branch)
+{
+   m_activeBranch = branch;
+   LOG_DEBUG(m_logger, "Switch " + m_id + " set active branch to " + activeBranchToString());
+}
+
+void SwitchBlock::toggleActiveBranch()
+{
+    m_activeBranch = (m_activeBranch == ActiveBranch::NORMAL)
+        ? ActiveBranch::DEVIATION : ActiveBranch::NORMAL;
+    LOG_DEBUG(m_logger, "Switch " + m_id + " toggle active branch to " + activeBranchToString());
 }
 
 

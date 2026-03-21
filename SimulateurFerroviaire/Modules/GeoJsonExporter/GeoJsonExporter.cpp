@@ -7,7 +7,7 @@
 
 #include "GeoJsonExporter.h"
 
-#include "Modules/Stockages/TopologyRepository.h"
+#include "Engine/Core/Topology/TopologyRepository.h"
 
 #include <fstream>
 #include <iomanip>
