@@ -30,28 +30,28 @@ Gestion des composants fondamentaux et de la logique applicative transverse.
 |--------|------|
 | Application | Cycle de vie Win32 (enregistrement de classe, boucle de messages) |
 | Logger | Journalisation structurée (INFO / DEBUG / WARNING / ERROR / FAILURE) |
-| @ref TopologyData | Conteneur `unique_ptr<StraightBlock>` + `unique_ptr<SwitchBlock>` + index de lookup |
-| @ref TopologyRepository | Singleton (Meyers). Accès global à @ref TopologyData via `instance().data()` |
-| @ref TopologyRenderer | classe statique génére le rendu JS|
+| @ref TopologyData | Conteneur `std::unique_ptr<StraightBlock>` + `std::unique_ptr<SwitchBlock>` + index de lookup |
+| @ref TopologyRepository | Singleton (Meyers). Accès global à @ref TopologyData via `TopologyRepository::instance().data()` |
+| @ref TopologyRenderer | Statique génére le rendu JS|
 
-### TopologyData
+### TopologyData {#data}
 
-> **Pourquoi `unique_ptr` ?**
+> **Pourquoi `std::unique_ptr` ?**
 > Les blocs sont polymorphes (`InteractiveElement*`). Le stockage par valeur entraînerait
-> du slicing et interdirait le déplacement. Le stockage par `unique_ptr` garantit :
+> du slicing et interdirait le déplacement. Le stockage par `std::unique_ptr` garantit :
 > - polymorphisme correct (destructeur virtuel respecté),
 > - propriété exclusive et cycle de vie déterministe,
 > - interdiction de copie accidentelle.
 
-`TopologyData` expose deux index construits en fin de pipeline via `buildIndex()` :
+`TopologyData` expose deux index construits en fin de pipeline via `TopologyData::buildIndex()` :
 
 | Index | Type | Usage |
 |-------|------|-------|
-| `switchIndex` | `unordered_map<string, SwitchBlock*>` | Lookup O(1) par ID pour `onSwitchClick` |
-| `straightIndex` | `unordered_map<string, StraightBlock*>` | Lookup O(1) par ID |
+| `TopologyData::switchIndex` | `std::unordered_map<string, SwitchBlock *>` | Lookup O(1) par ID |
+| `TopologyData::straightIndex` | `std::unordered_map<string, StraightBlock *>` | Lookup O(1) par ID |
 
-> `buildIndex()` doit être appelé après que toutes les adresses sont stables
-> (transfert `unique_ptr` + résolution des pointeurs terminés). `clear()` vide
+> `TopologyData::buildIndex()` doit être appelé après que toutes les adresses sont stables
+> (transfert `std::unique_ptr` + résolution des pointeurs terminés). `TopologyData::clear()` vide
 > également les index.
 
 ### TopologyRenderer — Rendu et exportation {#renderer}
@@ -60,15 +60,15 @@ Gestion des composants fondamentaux et de la logique applicative transverse.
 - Sérialise @ref StraightBlock → feature GeoJSON `LineString`
 - Sérialise @ref SwitchBlock → feature GeoJSON `Point`
 - Génère les scripts JavaScript d'injection pour le WebView Leaflet
-- Met à jour le rendu d'un switch et de ses partenaires via `updateSwitchBlocks(sw)`
+- Met à jour le rendu d'un switch et de ses partenaires via `TopologyRenderer::updateSwitchBlocks(sw)`
 
 | Méthode | Rôle |
 |---------|------|
-| `renderAllStraightBlocks()` | Efface et redessine tous les StraightBlocks |
-| `renderAllSwitchBranches()` | Efface et redessine toutes les branches de switch |
-| `renderAllSwitchBlocksJunctions()` | Efface et redessine tous les marqueurs de jonction |
-| `updateSwitchBlocks(sw)` | Met à jour visuellement un switch et ses partenaires double |
-| `exportToFile(path)` | Export GeoJSON complet vers un fichier |
+| `TopologyRenderer::renderAllStraightBlocks()` | Efface et redessine tous les StraightBlocks |
+| `TopologyRenderer::renderAllSwitchBranches()` | Efface et redessine toutes les branches de switch |
+| `TopologyRenderer::renderAllSwitchBlocksJunctions()` | Efface et redessine tous les marqueurs de jonction |
+| `TopologyRenderer::updateSwitchBlocks()` | Met à jour visuellement un switch et ses partenaires double |
+| `TopologyRenderer::exportToFile()` | Export GeoJSON complet vers un fichier |
 
 ----
 
@@ -90,13 +90,14 @@ Couche graphique Win32 + WebView2.
 Le binding repose sur deux canaux :
 
 **C++ → Leaflet** : `WebViewPanel::executeScript()` injecte des appels JS
-(`window.switchApplyState`, `window.renderSwitchBlock`, etc.) générés par `TopologyRenderer`.
+(`leaflet_api::window.switchApplyState`, `leaflet_api::window.renderSwitchBlock`, etc.) générés par `TopologyRenderer`.
 
-**Leaflet → C++** : `window.chrome.webview.postMessage()` envoie un JSON vers
+**Leaflet → C++** : `leaflet_api::window.chrome.webview.postMessage()` envoie un JSON vers
 `WebViewPanel::onWebMessageReceived()`, qui dispatche vers `MainWindow::onWebMessage()`.
 
 ```
-Clic Leaflet
+Exemple :
+Clique on switch junction 
   → postMessage({type:"switch_click", id:"sw/0"})
   → WebViewPanel::onWebMessageReceived()     [UTF-16 → UTF-8]
   → MainWindow::onWebMessage()               [parse JSON, dispatch]
@@ -116,7 +117,7 @@ Messages JS supportés :
 > **Conception** : Leaflet ne gère aucun état — il notifie C++ au clic et attend
 > une instruction de rendu. C++ est l'autorité sur `ActiveBranch`.
 
-> **WebViewPanel** : `setOnMessageReceived()` permet à MainWindow de brancher
+> **WebViewPanel** : `WebViewPanel::setOnMessageReceived()` permet à MainWindow de brancher
 > sa logique sans couplage. La conversion UTF-16 → UTF-8 utilise `WideCharToMultiByte`.
 
 ---
@@ -211,7 +212,7 @@ InteractiveElement          getId(), getType(), m_logger (static)
 
 ## Pointeurs résolus post-parsing {#pointers}
 
-Après `buildIndex()`, chaque bloc dispose de pointeurs directs vers ses voisins :
+Après `TopologyData::buildIndex()`, chaque bloc dispose de pointeurs directs vers ses voisins :
 
 **`StraightBlock::StraightNeighbours`**
 
@@ -225,8 +226,8 @@ Après `buildIndex()`, chaque bloc dispose de pointeurs directs vers ses voisins
 | Champ | Type | Description |
 |-------|------|-------------|
 | `root` | `ShuntingElement*` | Bloc sur la branche root |
-| `normal` | `ShuntingElement*` | Bloc sur la branche normale (ou partenaire double) |
-| `deviation` | `ShuntingElement*` | Bloc sur la branche déviée (ou partenaire double) |
+| `normal` | `ShuntingElement*` | Bloc sur la branche normale |
+| `deviation` | `ShuntingElement*` | Bloc sur la branche déviée |
 
 ## État opérationnel des aiguillages {#activestate}
 
@@ -234,14 +235,13 @@ Après `buildIndex()`, chaque bloc dispose de pointeurs directs vers ses voisins
 
 | Méthode | Description |
 |---------|-------------|
-| `getActiveBranch()` | Retourne `ActiveBranch::NORMAL` ou `DEVIATION` |
-| `isDeviationActive()` | Raccourci booléen |
-| `setActiveBranch(branch)` | Assigne l'état + propage aux partenaires |
-| `toggleActiveBranch()` | Alterne + propage + retourne le nouvel état |
+| `SwitchBlock::getActiveBranch()` | Retourne `ActiveBranch::NORMAL` ou `DEVIATION` |
+| `SwitchBlock::isDeviationActive()` | Raccourci booléen |
+| `SwitchBlock::setActiveBranch(branch)` | Assigne l'état + propage aux partenaires |
+| `SwitchBlock::toggleActiveBranch()` | Alterne + propage + retourne le nouvel état |
 
 La propagation aux partenaires est gérée directement par `SwitchBlock` via
-`getPartnerOnNormal()` / `getPartnerOnDeviation()` (pointeurs résolus en Phase 10).
-`MainWindow` n'a plus à gérer la logique de propagation.
+`SwitchBlock::getPartnerOnNormal()` / `SwitchBlock::getPartnerOnDeviation()` (pointeurs résolus en Phase 10)
 
 ## Énumérations clés {#enums}
 
