@@ -16,11 +16,13 @@ var classWebViewPanel =
     [ "operator=", "classWebViewPanel.html#ae8b60596c89dfc5d05abf38b74857671", null ],
     [ "resize", "classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a", null ],
     [ "setOnInitialized", "classWebViewPanel.html#a118dd6f6115c00ad0d01b6c4238e5caf", null ],
+    [ "setOnMessageReceived", "classWebViewPanel.html#a71afad8b186e38cd35fded12d736b0c6", null ],
     [ "setVirtualHostMapping", "classWebViewPanel.html#a3d18421b35ea7ad55ff884ce299ac53c", null ],
     [ "m_controller", "classWebViewPanel.html#a0502d7743f363c74fac415dc24903790", null ],
     [ "m_isInitialized", "classWebViewPanel.html#afd54ccfc6e2c1bafa050749b800c53aa", null ],
     [ "m_logger", "classWebViewPanel.html#aa1d7e7038e7d8d8b0633a4bc4c76fa4c", null ],
     [ "m_onInitialized", "classWebViewPanel.html#aca54061a5f4f9e4538e2ec2c45188085", null ],
+    [ "m_onMessageReceived", "classWebViewPanel.html#ab284dc7e96cdebc9594ce1465994079d", null ],
     [ "m_parentHwnd", "classWebViewPanel.html#a013d1380c55923f3e23bfc522b8a4e1b", null ],
     [ "m_webview", "classWebViewPanel.html#af67a1de7386bf4da5742e8327053b191", null ]
 ];

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Vide les deux listes (remise à zéro entre deux parsings).">
+<g id="a_Node000001"><a xlink:title="Vide les listes et les index (remise à zéro entre deux parsings).">
 <polygon fill="#999999" stroke="#666666" points="1508,-24.5 1395,-24.5 1395,-5.5 1508,-5.5 1508,-24.5"/>
 <text text-anchor="middle" x="1451.5" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">TopologyData::clear</text>
 </a>

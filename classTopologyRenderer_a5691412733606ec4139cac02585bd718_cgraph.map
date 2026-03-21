@@ -1,0 +1,30 @@
+<map id="TopologyRenderer::exportToFile" name="TopologyRenderer::exportToFile">
+<area shape="rect" id="Node000001" title="Exporte la topologie ferroviaire dans un fichier GeoJSON." alt="" coords="5,315,195,355"/>
+<area shape="rect" id="Node000002" href="$classTopologyRenderer.html#a39b4c82693790d5886076d62998362bc" title="Convertit un StraightBlock en feature GeoJSON de type LineString." alt="" coords="243,77,439,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,313,307,125,311,129,124,317"/>
+<area shape="rect" id="Node000006" href="$classTopologyRenderer.html#ab35534539fde31c290ce7e531fce86fe" title="Convertit un SwitchBlock en feature GeoJSON de type Point." alt="" coords="243,283,439,323"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="194,320,229,316,229,321,195,325"/>
+<area shape="rect" id="Node000013" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="265,347,416,387"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="195,345,252,353,251,358,194,351"/>
+<area shape="rect" id="Node000014" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="265,435,416,475"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="142,353,288,427,286,431,140,358"/>
+<area shape="rect" id="Node000003" href="$classStraightBlock.html#a646d3135d365dcb832ff66b1304c6850" title=" " alt="" coords="496,5,712,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="389,74,486,39,518,31,520,36,487,45,390,79"/>
+<area shape="rect" id="Node000004" href="$classStraightBlock.html#a295060fddd0675834ce4755ae4787780" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="529,55,679,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="438,83,515,75,515,80,439,88"/>
+<area shape="rect" id="Node000005" href="$classStraightBlock.html#aebdce1e1b66d6b39376ae1a66c2d2d9e" title=" " alt="" coords="513,105,695,145"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="439,104,499,111,499,116,438,110"/>
+<area shape="rect" id="Node000007" href="$classSwitchBlock.html#a6ed34ef4ccea6e43e2c0d456f5eb29c0" title=" " alt="" coords="507,169,701,209"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="371,281,423,249,486,218,506,210,508,215,488,223,426,254,373,286"/>
+<area shape="rect" id="Node000008" href="$classSwitchBlock.html#adbf269599ac24cd670976368ae00b39f" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="533,233,675,259"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="432,281,486,269,530,259,532,264,487,274,433,286"/>
+<area shape="rect" id="Node000009" href="$classSwitchBlock.html#a17420e8225a0637a6d38b73bee7d2526" title=" " alt="" coords="513,283,695,323"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="439,301,499,301,499,306,439,306"/>
+<area shape="rect" id="Node000010" href="$classSwitchBlock.html#a6838d033ec39e85a94c98a9559fcc532" title=" " alt="" coords="487,348,721,373"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="433,321,487,333,532,342,530,348,486,338,432,326"/>
+<area shape="rect" id="Node000011" href="$classSwitchBlock.html#a55d04c13a5fba252ba2b840f6835a2a4" title=" " alt="" coords="495,397,713,423"/>
+<area shape="poly" id="edge10_Node000006_Node000011" title=" " alt="" coords="417,321,440,333,455,346,465,359,473,371,488,382,505,390,503,395,485,387,470,375,460,362,451,350,437,338,414,326"/>
+<area shape="rect" id="Node000012" href="$classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e" title=" " alt="" coords="521,447,687,472"/>
+<area shape="poly" id="edge11_Node000006_Node000012" title=" " alt="" coords="423,321,440,333,452,346,459,360,465,386,470,410,477,422,488,433,509,445,506,450,485,437,473,425,466,412,459,387,454,361,448,349,437,337,420,326"/>
+<area shape="poly" id="edge14_Node000014_Node000014" title=" " alt="" coords="296,436,293,426,300,416,316,411,341,409,369,412,384,419,382,424,367,417,341,414,317,416,304,421,298,427,301,434"/>
+</map>

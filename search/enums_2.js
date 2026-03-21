@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['shuntingstate_0',['ShuntingState',['../ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d',1,'ShuntingElement.h']]]
+  ['loglevel_0',['LogLevel',['../Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94',1,'Logger.h']]]
 ];

@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Force la branche partagée au rôle DEVIATION sur les deux aiguillages formant un croisement mécanique ..." alt="" coords="5,97,193,137"/>
 <area shape="rect" id="Node000002" href="$classSwitchBlock.html#a3df4225adcb5d9121388c7b90fcd1af2" title=" " alt="" coords="271,5,466,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,94,181,66,240,39,267,31,269,36,242,45,183,71,133,99"/>
-<area shape="rect" id="Node000003" href="$classSwitchBlock.html#a4389341dc43ddfc247c34a160f1bbc7a" title=" " alt="" coords="297,55,440,80"/>
+<area shape="rect" id="Node000003" href="$classSwitchBlock.html#adbf269599ac24cd670976368ae00b39f" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="297,55,440,80"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="193,97,285,80,286,85,194,102"/>
 <area shape="rect" id="Node000004" href="$classSwitchBlock.html#a6838d033ec39e85a94c98a9559fcc532" title=" " alt="" coords="251,104,486,129"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="194,114,238,114,238,119,194,119"/>

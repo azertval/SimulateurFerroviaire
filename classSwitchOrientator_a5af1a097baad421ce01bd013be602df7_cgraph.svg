@@ -115,7 +115,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classSwitchBlock.html#a4389341dc43ddfc247c34a160f1bbc7a" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="classSwitchBlock.html#adbf269599ac24cd670976368ae00b39f" target="_top" xlink:title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;).">
 <polygon fill="white" stroke="#666666" points="517,-472.5 410,-472.5 410,-453.5 517,-453.5 517,-472.5"/>
 <text text-anchor="middle" x="463.5" y="-460.5" font-family="Helvetica,sans-Serif" font-size="10.00">SwitchBlock::getId</text>
 </a>
@@ -594,7 +594,7 @@
 <!-- Node27 -->
 <g id="Node000027" class="node">
 <title>Node27</title>
-<g id="a_Node000027"><a xlink:href="classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb" target="_top" xlink:title=" ">
+<g id="a_Node000027"><a xlink:href="classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb" target="_top" xlink:title="Calcule la longueur géodésique totale depuis m_coordinates.">
 <polygon fill="white" stroke="#666666" points="989,-30 813,-30 813,0 989,0 989,-30"/>
 <text text-anchor="start" x="821" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">StraightBlock::computeGeodesic</text>
 <text text-anchor="middle" x="901" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Length</text>
@@ -613,7 +613,7 @@
 <!-- Node28 -->
 <g id="Node000028" class="node">
 <title>Node28</title>
-<g id="a_Node000028"><a xlink:href="classStraightBlock.html#a6ea1987662d295db433b819aceaa67cd" target="_top" xlink:title=" ">
+<g id="a_Node000028"><a xlink:href="classStraightBlock.html#a6ea1987662d295db433b819aceaa67cd" target="_top" xlink:title="Calcule la distance de Haversine entre deux points WGS&#45;84.">
 <polygon fill="white" stroke="#666666" points="1173.5,-30 1037.5,-30 1037.5,0 1173.5,0 1173.5,-30"/>
 <text text-anchor="start" x="1045.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">StraightBlock::haversine</text>
 <text text-anchor="middle" x="1105.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">DistanceMeters</text>

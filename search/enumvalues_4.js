@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['occupied_0',['OCCUPIED',['../ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da95bb06a35b7ae1afcf75777bb28ea62c',1,'ShuntingElement.h']]]
+  ['normal_0',['NORMAL',['../SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89a1e23852820b9154316c7c06e2b7ba051',1,'SwitchBlock.h']]]
 ];

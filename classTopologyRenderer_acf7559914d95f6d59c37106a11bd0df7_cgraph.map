@@ -1,0 +1,11 @@
+<map id="TopologyRenderer::updateSwitchBlocks" name="TopologyRenderer::updateSwitchBlocks">
+<area shape="rect" id="Node000001" title="Génère le script JS de mise à jour visuelle d&#39;un switch et ses partenaires." alt="" coords="5,87,197,127"/>
+<area shape="rect" id="Node000002" href="$classSwitchBlock.html#adbf269599ac24cd670976368ae00b39f" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="271,5,414,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,85,244,41,273,32,275,37,246,46,144,90"/>
+<area shape="rect" id="Node000003" href="$classSwitchBlock.html#af65a62f314ce4544ce687eacc13786e8" title="Retourne le switch partenaire côté deviation, ou nullptr." alt="" coords="245,55,440,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,92,231,87,232,93,198,97"/>
+<area shape="rect" id="Node000004" href="$classSwitchBlock.html#a72cf7392935372bed47bccc9c1feb096" title="Retourne le switch partenaire côté normal, ou nullptr. Cast valide uniquement si isDouble() &amp;&amp; getDou..." alt="" coords="245,119,440,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="198,117,232,122,231,127,197,123"/>
+<area shape="rect" id="Node000005" href="$classSwitchBlock.html#ada66b97802d45a8b3dfbbb05011ae9b6" title=" " alt="" coords="251,183,434,223"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="146,125,246,169,266,176,264,181,244,174,144,130"/>
+</map>

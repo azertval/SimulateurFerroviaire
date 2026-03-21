@@ -1,9 +1,0 @@
-<map id="GeoJsonExporter::convertStraightToFeature" name="GeoJsonExporter::convertStraightToFeature">
-<area shape="rect" id="Node000001" title="Convertit un StraightBlock en feature GeoJSON de type LineString." alt="" coords="5,47,192,87"/>
-<area shape="rect" id="Node000002" href="$classStraightBlock.html#a646d3135d365dcb832ff66b1304c6850" title=" " alt="" coords="240,5,456,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,46,269,31,270,36,193,52"/>
-<area shape="rect" id="Node000003" href="$classStraightBlock.html#a295060fddd0675834ce4755ae4787780" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="273,55,423,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,65,259,65,259,70,192,70"/>
-<area shape="rect" id="Node000004" href="$classStraightBlock.html#aebdce1e1b66d6b39376ae1a66c2d2d9e" title=" " alt="" coords="257,105,439,145"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="187,85,248,99,247,104,186,90"/>
-</map>

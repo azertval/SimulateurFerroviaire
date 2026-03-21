@@ -27,9 +27,14 @@ var NAVTREE =
   [ "Simulateur Ferroviaire", "index.html", [
     [ "Description", "index.html#description", null ],
     [ "Engine — Moteur de l'application", "index.html#engine", [
-      [ "Core — Cœur applicatif", "index.html#core", null ],
-      [ "HMI — Interface utilisateur", "index.html#hmi", null ],
-      [ "</blockquote>", "index.html#autotoc_md2", null ]
+      [ "Core — Cœur applicatif", "index.html#core", [
+        [ "TopologyData", "index.html#autotoc_md2", null ],
+        [ "TopologyRenderer — Rendu et exportation", "index.html#renderer", null ]
+      ] ],
+      [ "HMI — Interface utilisateur", "index.html#hmi", [
+        [ "Binding bidirectionnel Leaflet ↔ C++", "index.html#binding", null ]
+      ] ],
+      [ "</blockquote>", "index.html#autotoc_md4", null ]
     ] ],
     [ "Modules — Fonctionnalités métier", "index.html#modules", null ],
     [ "GeoParser — Pipeline principal", "index.html#geoparser", [
@@ -39,11 +44,11 @@ var NAVTREE =
       [ "Graphe topologique", "index.html#graph", null ],
       [ "Extraction ferroviaire", "index.html#extraction", null ]
     ] ],
-    [ "GeoJsonExporter — Exportation", "index.html#exporter", null ],
     [ "Eléments interactifs", "index.html#elements", [
       [ "Hiérarchie des éléments interactifs", "index.html#hierarchy", null ],
-      [ "Énumérations clés", "index.html#enums", null ],
-      [ "Stockages", "index.html#storage", null ]
+      [ "Pointeurs résolus post-parsing", "index.html#pointers", null ],
+      [ "État opérationnel des aiguillages", "index.html#activestate", null ],
+      [ "Énumérations clés", "index.html#enums", null ]
     ] ],
     [ "Coordonnées", "index.html#coords", null ],
     [ "Licence", "index.html#licence", null ],
@@ -76,8 +81,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AboutDialog_8cpp.html",
-"classInteractiveElement.html#a731ea8f6e5caddfff044ae50feefdbf7",
-"classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2"
+"classInvalidSwitchConfigException.html#abaaafef573235d7c5ea379dfeddb7359",
+"classTopologyRepository.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

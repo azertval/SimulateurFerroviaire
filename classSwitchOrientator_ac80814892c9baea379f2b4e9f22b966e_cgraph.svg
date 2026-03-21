@@ -179,7 +179,7 @@
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
-<g id="a_Node000010"><a xlink:href="classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb" target="_top" xlink:title=" ">
+<g id="a_Node000010"><a xlink:href="classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb" target="_top" xlink:title="Calcule la longueur géodésique totale depuis m_coordinates.">
 <polygon fill="white" stroke="#666666" points="587,-30 411,-30 411,0 587,0 587,-30"/>
 <text text-anchor="start" x="419" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">StraightBlock::computeGeodesic</text>
 <text text-anchor="middle" x="499" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Length</text>
@@ -198,7 +198,7 @@
 <!-- Node11 -->
 <g id="Node000011" class="node">
 <title>Node11</title>
-<g id="a_Node000011"><a xlink:href="classStraightBlock.html#a6ea1987662d295db433b819aceaa67cd" target="_top" xlink:title=" ">
+<g id="a_Node000011"><a xlink:href="classStraightBlock.html#a6ea1987662d295db433b819aceaa67cd" target="_top" xlink:title="Calcule la distance de Haversine entre deux points WGS&#45;84.">
 <polygon fill="white" stroke="#666666" points="771.5,-30 635.5,-30 635.5,0 771.5,0 771.5,-30"/>
 <text text-anchor="start" x="643.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">StraightBlock::haversine</text>
 <text text-anchor="middle" x="703.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">DistanceMeters</text>

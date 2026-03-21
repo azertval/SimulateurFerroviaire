@@ -1,40 +1,41 @@
 <map id="SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/SwitchBlock.h" name="SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/SwitchBlock.h">
-<area shape="rect" id="Node000001" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches." alt="" coords="836,5,1075,60"/>
-<area shape="rect" id="Node000002" href="$GeoJsonExporter_8h.html" title="Exporteur de topologie ferroviaire au format GeoJSON." alt="" coords="16,211,209,265"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="822,44,684,54,533,68,395,87,340,98,298,110,252,132,210,159,142,212,139,208,207,154,250,127,296,106,339,93,395,82,533,63,684,48,822,39"/>
-<area shape="rect" id="Node000006" href="$DoubleSwitchDetector_8h.html" title="Phases 7 et 8 — détection des doubles aiguilles et validation CDC." alt="" coords="571,108,815,163"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="875,67,762,110,760,105,873,62"/>
-<area shape="rect" id="Node000008" href="$GeoParser_8h.html" title="Orchestrateur principal du pipeline GeoJSON ferroviaire." alt="" coords="839,115,1071,155"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="958,74,958,115,953,115,953,74"/>
-<area shape="rect" id="Node000010" href="$SwitchOrientator_8h.html" title="Phases 6, 6b, 6c et 6d — orientation géométrique des aiguillages." alt="" coords="1383,218,1658,258"/>
-<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="1088,39,1145,47,1206,61,1265,80,1322,106,1339,119,1350,132,1359,146,1374,161,1424,192,1474,215,1472,220,1422,196,1371,165,1355,150,1345,136,1336,122,1319,110,1264,85,1204,66,1144,53,1088,44"/>
-<area shape="rect" id="Node000012" href="$TopologyExtractor_8h.html" title="Phases 3, 4, 5a et 5b — extraction de la topologie ferroviaire depuis le graphe." alt="" coords="1095,108,1309,163"/>
-<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="1033,63,1139,105,1137,110,1031,68"/>
-<area shape="rect" id="Node000014" href="$SwitchBlock_8cpp.html" title="Implémentation du modèle d&#39;aiguillage SwitchBlock." alt="" coords="1384,108,1639,163"/>
-<area shape="poly" id="edge18_Node000001_Node000014" title=" " alt="" coords="1089,55,1384,108,1383,114,1088,61"/>
-<area shape="rect" id="Node000015" href="$TopologyData_8h.html" title="Conteneur central des données topologiques ferroviaires." alt="" coords="309,108,522,163"/>
-<area shape="poly" id="edge19_Node000001_Node000015" title=" " alt="" coords="823,61,523,117,522,112,822,56"/>
-<area shape="rect" id="Node000003" href="$MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="5,321,220,361"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="115,279,115,320,110,320,110,279"/>
-<area shape="rect" id="Node000004" href="$GeoJsonExporter_8cpp.html" title="Implémentation de l&#39;exporteur GeoJSON." alt="" coords="244,313,437,368"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="186,268,282,311,280,316,183,273"/>
-<area shape="rect" id="Node000005" href="$GeoParser_8cpp.html" title="Implémentation du pipeline GeoParser." alt="" coords="783,321,1029,361"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="223,263,378,286,529,304,783,328,782,333,528,310,377,291,223,268"/>
-<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="715,173,744,219,782,263,823,294,865,318,863,323,820,299,779,267,740,222,710,176"/>
-<area shape="rect" id="Node000007" href="$DoubleSwitchDetector_8cpp.html" title="Implémentation phases 7 et 8 — doubles aiguilles et validation CDC." alt="" coords="472,211,716,265"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="659,175,622,212,618,209,655,171"/>
-<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="997,162,1019,183,1035,210,1043,238,1042,252,1035,267,1021,285,1004,300,966,323,963,318,1001,296,1017,281,1030,264,1037,250,1038,239,1030,212,1014,187,993,166"/>
-<area shape="rect" id="Node000009" href="$GeoParsingTask_8cpp.html" title="Implémentation de la tâche de parsing GeoJSON asynchrone." alt="" coords="792,211,1020,265"/>
-<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="942,169,921,212,917,209,938,167"/>
-<area shape="poly" id="edge12_Node000010_Node000005" title=" " alt="" coords="1401,263,1372,268,1027,323,1026,318,1371,263,1401,258"/>
-<area shape="rect" id="Node000011" href="$SwitchOrientator_8cpp.html" title="Implémentation des phases 6, 6b, 6c et 6d — orientation des aiguillages." alt="" coords="1375,321,1666,361"/>
-<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="1523,272,1523,321,1518,321,1518,272"/>
-<area shape="poly" id="edge15_Node000012_Node000005" title=" " alt="" coords="1168,175,1117,221,1057,268,1004,298,953,323,950,318,1001,294,1054,263,1114,217,1165,171"/>
-<area shape="poly" id="edge16_Node000012_Node000010" title=" " alt="" coords="1299,164,1462,215,1460,220,1297,169"/>
-<area shape="rect" id="Node000013" href="$TopologyExtractor_8cpp.html" title="Implémentation des phases 3, 4, 5a et 5b du pipeline GeoParser." alt="" coords="1146,211,1359,265"/>
-<area shape="poly" id="edge17_Node000012_Node000013" title=" " alt="" coords="1224,174,1242,209,1237,212,1219,176"/>
-<area shape="rect" id="Node000016" href="$TopologyRepository_8h.html" title="Singleton de stockage des données topologiques ferroviaires." alt="" coords="234,211,447,265"/>
-<area shape="poly" id="edge20_Node000015_Node000016" title=" " alt="" coords="390,175,362,212,358,209,385,172"/>
-<area shape="poly" id="edge21_Node000016_Node000004" title=" " alt="" coords="343,279,343,313,338,313,338,279"/>
-<area shape="poly" id="edge22_Node000016_Node000005" title=" " alt="" coords="461,263,783,318,782,323,460,268"/>
+<area shape="rect" id="Node000001" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches." alt="" coords="764,5,1003,60"/>
+<area shape="rect" id="Node000002" href="$TopologyData_8h.html" title="Conteneur central des données topologiques ferroviaires." alt="" coords="284,108,451,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="751,60,487,111,451,118,450,113,485,105,750,55"/>
+<area shape="rect" id="Node000007" href="$TopologyRenderer_8h.html" title="Exporteur de topologie ferroviaire au format GeoJSON." alt="" coords="19,211,185,265"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="750,45,623,55,485,69,361,87,310,98,272,110,230,132,191,159,129,212,126,208,188,154,227,127,270,106,309,93,360,82,484,64,622,49,750,39"/>
+<area shape="rect" id="Node000008" href="$DoubleSwitchDetector_8h.html" title="Phases 7 et 8 — détection des doubles aiguilles et validation CDC." alt="" coords="499,108,743,163"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="803,67,690,110,688,105,801,62"/>
+<area shape="rect" id="Node000010" href="$GeoParser_8h.html" title="Orchestrateur principal du pipeline GeoJSON ferroviaire." alt="" coords="767,115,999,155"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="886,74,886,115,881,115,881,74"/>
+<area shape="rect" id="Node000012" href="$SwitchOrientator_8h.html" title="Phases 6, 6b, 6c et 6d — orientation géométrique des aiguillages." alt="" coords="1311,218,1586,258"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="1016,39,1073,47,1134,61,1193,80,1250,106,1267,119,1278,132,1287,146,1302,161,1352,192,1402,215,1400,220,1350,196,1299,165,1283,150,1273,136,1264,122,1247,110,1192,85,1132,66,1072,53,1016,44"/>
+<area shape="rect" id="Node000014" href="$TopologyExtractor_8h.html" title="Phases 3, 4, 5a et 5b — extraction de la topologie ferroviaire depuis le graphe." alt="" coords="1023,108,1237,163"/>
+<area shape="poly" id="edge19_Node000001_Node000014" title=" " alt="" coords="961,63,1067,105,1065,110,959,68"/>
+<area shape="rect" id="Node000016" href="$SwitchBlock_8cpp.html" title="Implémentation du modèle d&#39;aiguillage SwitchBlock." alt="" coords="1312,108,1567,163"/>
+<area shape="poly" id="edge23_Node000001_Node000016" title=" " alt="" coords="1017,55,1312,108,1311,114,1016,61"/>
+<area shape="rect" id="Node000003" href="$TopologyRepository_8h.html" title="Singleton de stockage des données topologiques ferroviaires." alt="" coords="209,211,376,265"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="342,175,314,212,310,209,337,172"/>
+<area shape="rect" id="Node000004" href="$TopologyRenderer_8cpp.html" title="Implémentation de l&#39;exporteur GeoJSON." alt="" coords="5,313,175,368"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="229,274,144,316,142,311,226,269"/>
+<area shape="rect" id="Node000005" href="$MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="199,321,413,361"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="301,279,306,320,301,321,295,280"/>
+<area shape="rect" id="Node000006" href="$GeoParser_8cpp.html" title="Implémentation du pipeline GeoParser." alt="" coords="711,321,957,361"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="390,263,561,296,711,320,710,325,560,301,389,268"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="100,279,96,314,90,313,95,279"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="169,269,269,318,266,323,166,274"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="199,263,339,286,477,305,711,328,710,333,476,310,338,292,198,268"/>
+<area shape="poly" id="edge12_Node000008_Node000006" title=" " alt="" coords="643,173,672,219,710,263,751,294,793,318,791,323,748,299,707,267,668,222,638,176"/>
+<area shape="rect" id="Node000009" href="$DoubleSwitchDetector_8cpp.html" title="Implémentation phases 7 et 8 — doubles aiguilles et validation CDC." alt="" coords="400,211,644,265"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="587,175,550,212,546,209,583,171"/>
+<area shape="poly" id="edge14_Node000010_Node000006" title=" " alt="" coords="925,162,947,183,963,210,971,238,970,252,963,267,949,285,932,300,894,323,891,318,929,296,945,281,958,264,965,250,966,239,958,212,942,187,921,166"/>
+<area shape="rect" id="Node000011" href="$GeoParsingTask_8cpp.html" title="Implémentation de la tâche de parsing GeoJSON asynchrone." alt="" coords="720,211,948,265"/>
+<area shape="poly" id="edge15_Node000010_Node000011" title=" " alt="" coords="870,169,849,212,845,209,866,167"/>
+<area shape="poly" id="edge17_Node000012_Node000006" title=" " alt="" coords="1329,263,1300,268,955,323,954,318,1299,263,1329,258"/>
+<area shape="rect" id="Node000013" href="$SwitchOrientator_8cpp.html" title="Implémentation des phases 6, 6b, 6c et 6d — orientation des aiguillages." alt="" coords="1303,321,1594,361"/>
+<area shape="poly" id="edge18_Node000012_Node000013" title=" " alt="" coords="1451,272,1451,321,1446,321,1446,272"/>
+<area shape="poly" id="edge20_Node000014_Node000006" title=" " alt="" coords="1096,175,1045,221,985,268,932,298,881,323,878,318,929,294,982,263,1042,217,1093,171"/>
+<area shape="poly" id="edge21_Node000014_Node000012" title=" " alt="" coords="1227,164,1390,215,1388,220,1225,169"/>
+<area shape="rect" id="Node000015" href="$TopologyExtractor_8cpp.html" title="Implémentation des phases 3, 4, 5a et 5b du pipeline GeoParser." alt="" coords="1074,211,1287,265"/>
+<area shape="poly" id="edge22_Node000014_Node000015" title=" " alt="" coords="1152,174,1170,209,1165,212,1147,176"/>
 </map>

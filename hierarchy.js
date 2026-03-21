@@ -7,7 +7,6 @@ var hierarchy =
     [ "FileOpenDialog", "classFileOpenDialog.html", null ],
     [ "FileSaveDialog", "classFileSaveDialog.html", null ],
     [ "GeographicProjection", "classGeographicProjection.html", null ],
-    [ "GeoJsonExporter", "classGeoJsonExporter.html", null ],
     [ "GeometricTolerances", "classGeometricTolerances.html", null ],
     [ "GeometryUtils", "classGeometryUtils.html", null ],
     [ "GeoParser", "classGeoParser.html", null ],
@@ -16,7 +15,8 @@ var hierarchy =
     [ "GraphBuildResult", "structGraphBuildResult.html", null ],
     [ "InteractiveElement", "classInteractiveElement.html", [
       [ "ShuntingElement", "classShuntingElement.html", [
-        [ "StraightBlock", "classStraightBlock.html", null ]
+        [ "StraightBlock", "classStraightBlock.html", null ],
+        [ "SwitchBlock", "classSwitchBlock.html", null ]
       ] ]
     ] ],
     [ "LatLon", "classLatLon.html", null ],
@@ -36,13 +36,15 @@ var hierarchy =
     ] ],
     [ "TopologyGraph::SnappedNodeKey", "structTopologyGraph_1_1SnappedNodeKey.html", null ],
     [ "TopologyGraph::SnappedNodeKeyHasher", "structTopologyGraph_1_1SnappedNodeKeyHasher.html", null ],
-    [ "SwitchBlock", "classSwitchBlock.html", null ],
+    [ "StraightBlock::StraightNeighbours", "structStraightBlock_1_1StraightNeighbours.html", null ],
+    [ "SwitchBlock::SwitchBranches", "structSwitchBlock_1_1SwitchBranches.html", null ],
     [ "SwitchOrientator", "classSwitchOrientator.html", null ],
     [ "TopologyData", "classTopologyData.html", null ],
     [ "TopologyEdge", "classTopologyEdge.html", null ],
     [ "TopologyExtractor", "classTopologyExtractor.html", null ],
     [ "TopologyExtractResult", "structTopologyExtractResult.html", null ],
     [ "TopologyGraph", "classTopologyGraph.html", null ],
+    [ "TopologyRenderer", "classTopologyRenderer.html", null ],
     [ "TopologyRepository", "classTopologyRepository.html", null ],
     [ "TopologySentinel", "classTopologySentinel.html", null ],
     [ "WebViewPanel", "classWebViewPanel.html", null ]

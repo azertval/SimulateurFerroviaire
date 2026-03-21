@@ -1,6 +1,6 @@
 <map id="SwitchBlock::computeTotalLength" name="SwitchBlock::computeTotalLength">
 <area shape="rect" id="Node000001" title="Calcule et mémorise totalLengthMeters. Formule : root_leg + max(normal_leg, deviation_leg)...." alt="" coords="5,35,203,75"/>
-<area shape="rect" id="Node000002" href="$classSwitchBlock.html#ab77747c7b8747d9909c9ee2233fa7ba5" title=" " alt="" coords="251,5,481,45"/>
+<area shape="rect" id="Node000002" href="$classSwitchBlock.html#ab77747c7b8747d9909c9ee2233fa7ba5" title="Calcule la distance de Haversine entre deux points WGS&#45;84." alt="" coords="251,5,481,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,41,237,37,237,42,203,46"/>
 <area shape="rect" id="Node000003" href="$classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7" title=" " alt="" coords="278,70,454,95"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,63,264,69,264,74,203,68"/>

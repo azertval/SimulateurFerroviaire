@@ -91,7 +91,8 @@ $(document).ready(function(){initNavTree('SwitchBlock_8h.html',''); initResizabl
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">SwitchBlock.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -103,15 +104,16 @@ $(document).ready(function(){initNavTree('SwitchBlock_8h.html',''); initResizabl
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="LatLon_8h_source.html">Modules/Coordinates/LatLon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ShuntingElement_8h_source.html">ShuntingElement.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for SwitchBlock.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="SwitchBlock_8h__incl.svg" width="538" height="154"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="SwitchBlock_8h__incl.svg" width="627" height="403"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="SwitchBlock_8h__dep__incl.svg" width="1672" height="374"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="SwitchBlock_8h__dep__incl.svg" width="1600" height="374"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="SwitchBlock_8h_source.html">Go to the source code of this file.</a></p>
@@ -120,13 +122,55 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwitchBlock.html">SwitchBlock</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSwitchBlock_1_1SwitchBranches.html">SwitchBlock::SwitchBranches</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branches topologiques d'un <a class="el" href="classSwitchBlock.html">SwitchBlock</a>.  <a href="structSwitchBlock_1_1SwitchBranches.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a7c3e8d7f97ae99a61ed27254391abc89" id="r_a7c3e8d7f97ae99a61ed27254391abc89"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">ActiveBranch</a> { <a class="el" href="SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89a1e23852820b9154316c7c06e2b7ba051">NORMAL</a>
+, <a class="el" href="SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89a8ec95e82a6c348f798243a58891e546c">DEVIATION</a>
+ }</td></tr>
+<tr class="memdesc:a7c3e8d7f97ae99a61ed27254391abc89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branche active d'un aiguillage.  <a href="SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">More...</a><br /></td></tr>
+<tr class="separator:a7c3e8d7f97ae99a61ed27254391abc89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Modèle de domaine d'un aiguillage ferroviaire à 3 branches. </p>
 <p>Encapsulation : tous les champs sont privés. Les mutations passent par des méthodes à intent explicite, appelées uniquement par la phase du pipeline qui en a la charge : Phase 3 → constructeur Phase 5b → addBranchId Phase 6 → orient / setTips / swapNormalDeviation / computeTotalLength Phase 7 → absorbLink</p>
 <p>Double aiguille : Un aiguillage peut absorber le segment de liaison côté branche normale (doubleOnNormal) ou côté branche déviée (doubleOnDeviation). Un seul des deux est renseigné à la fois.</p>
 <p>absorbLink() stocke la polyligne COMPLÈTE du segment absorbé, orientée depuis la jonction de ce switch vers celle du partenaire. Cette polyligne est utilisée par le rendu WebView pour tracer la branche fusionnée avec fidélité géométrique. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a7c3e8d7f97ae99a61ed27254391abc89" name="a7c3e8d7f97ae99a61ed27254391abc89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c3e8d7f97ae99a61ed27254391abc89">&#9670;&#160;</a></span>ActiveBranch</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">ActiveBranch</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Branche active d'un aiguillage. </p>
+<p>NORMAL : le train emprunte la voie directe (position repos). DEVIATION : le train emprunte la voie déviée (position basculée).</p>
+<p>Modifié en runtime par l'opérateur via clic <a class="el" href="classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>. N'est pas persisté entre deux parsings. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7c3e8d7f97ae99a61ed27254391abc89a1e23852820b9154316c7c06e2b7ba051" name="a7c3e8d7f97ae99a61ed27254391abc89a1e23852820b9154316c7c06e2b7ba051"></a>NORMAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7c3e8d7f97ae99a61ed27254391abc89a8ec95e82a6c348f798243a58891e546c" name="a7c3e8d7f97ae99a61ed27254391abc89a8ec95e82a6c348f798243a58891e546c"></a>DEVIATION&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

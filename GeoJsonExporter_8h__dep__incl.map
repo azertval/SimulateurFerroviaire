@@ -1,9 +1,0 @@
-<map id="SimulateurFerroviaire/Modules/GeoJsonExporter/GeoJsonExporter.h" name="SimulateurFerroviaire/Modules/GeoJsonExporter/GeoJsonExporter.h">
-<area shape="rect" id="Node000001" title="Exporteur de topologie ferroviaire au format GeoJSON." alt="" coords="244,5,437,60"/>
-<area shape="rect" id="Node000002" href="$MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="5,115,220,155"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="270,68,157,118,154,113,268,63"/>
-<area shape="rect" id="Node000003" href="$GeoJsonExporter_8cpp.html" title="Implémentation de l&#39;exporteur GeoJSON." alt="" coords="244,108,437,163"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="343,74,343,108,338,108,338,74"/>
-<area shape="rect" id="Node000004" href="$GeoParser_8cpp.html" title="Implémentation du pipeline GeoParser." alt="" coords="461,115,708,155"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="418,63,540,113,538,118,416,68"/>
-</map>

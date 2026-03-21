@@ -1,0 +1,14 @@
+<map id="TopologyRenderer::renderAllSwitchBlocksJunctions" name="TopologyRenderer::renderAllSwitchBlocksJunctions">
+<area shape="rect" id="Node000001" title="Efface puis redessine tous les marqueurs de jonction." alt="" coords="5,93,195,133"/>
+<area shape="rect" id="Node000002" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="262,5,413,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,91,242,55,263,47,264,52,244,60,151,96"/>
+<area shape="rect" id="Node000003" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="262,93,413,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,111,248,111,248,116,195,116"/>
+<area shape="rect" id="Node000004" href="$classTopologyRenderer.html#a1641df30af7ec14097c50b8cfc4a9824" title="Construit l&#39;appel JS renderSwitch(id, lat, lon, isDouble)." alt="" coords="243,157,432,197"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="176,131,250,151,249,156,174,136"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="294,94,291,84,298,74,314,69,337,67,364,70,379,77,377,82,363,75,337,72,315,74,302,79,297,85,299,92"/>
+<area shape="rect" id="Node000005" href="$classSwitchBlock.html#adbf269599ac24cd670976368ae00b39f" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="500,135,643,161"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="432,163,486,156,487,161,432,168"/>
+<area shape="rect" id="Node000006" href="$classSwitchBlock.html#a17420e8225a0637a6d38b73bee7d2526" title=" " alt="" coords="480,185,663,225"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="432,186,467,190,466,195,432,191"/>
+</map>

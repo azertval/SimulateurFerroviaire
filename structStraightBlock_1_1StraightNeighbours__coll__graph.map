@@ -1,0 +1,9 @@
+<map id="StraightBlock::StraightNeighbours" name="StraightBlock::StraightNeighbours">
+<area shape="rect" id="Node000001" title="Voisins topologiques d&#39;un StraightBlock." alt="" coords="5,991,240,1056"/>
+<area shape="rect" id="Node000002" href="$classShuntingElement.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="42,708,203,913"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,914,125,974,120,974,120,914"/>
+<area shape="rect" id="Node000003" href="$classInteractiveElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="36,453,209,659"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="125,672,125,708,120,708,120,672"/>
+<area shape="rect" id="Node000004" href="$classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="32,5,213,391"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="125,391,125,437,120,437,120,391"/>
+</map>

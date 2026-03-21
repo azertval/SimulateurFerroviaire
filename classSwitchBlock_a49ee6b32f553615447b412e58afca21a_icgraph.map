@@ -1,0 +1,9 @@
+<map id="SwitchBlock::toggleActiveBranch" name="SwitchBlock::toggleActiveBranch">
+<area shape="rect" id="Node000001" title="Alterne entre NORMAL et DEVIATION. Équivalent à setActiveBranch(!current)." alt="" coords="723,5,913,45"/>
+<area shape="rect" id="Node000002" href="$classMainWindow.html#a242d9acf230544637908fc2cf31f1284" title="Met à jour l&#39;état opérationnel d&#39;un SwitchBlock après un clic." alt="" coords="471,13,675,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="709,28,675,28,675,23,709,23"/>
+<area shape="rect" id="Node000003" href="$classMainWindow.html#a6e84464d583e27d6f978385b22a5945f" title="Dispatcher principal des messages JSON reçus depuis Leaflet." alt="" coords="208,13,423,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="457,28,423,28,423,23,457,23"/>
+<area shape="rect" id="Node000004" href="$classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar." alt="" coords="5,13,160,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="194,28,160,28,160,23,194,23"/>
+</map>

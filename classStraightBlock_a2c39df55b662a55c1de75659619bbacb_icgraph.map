@@ -1,5 +1,5 @@
 <map id="StraightBlock::computeGeodesicLength" name="StraightBlock::computeGeodesicLength">
-<area shape="rect" id="Node000001" title=" " alt="" coords="2619,5,2853,45"/>
+<area shape="rect" id="Node000001" title="Calcule la longueur géodésique totale depuis m_coordinates." alt="" coords="2619,5,2853,45"/>
 <area shape="rect" id="Node000002" href="$classStraightBlock.html#a1516c424b471658598a77daaf1e55ce6" title="Remplace la polyligne et recalcule la longueur géodésique." alt="" coords="2356,13,2571,38"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2605,28,2571,28,2571,23,2605,23"/>
 <area shape="rect" id="Node000003" href="$classSwitchOrientator.html#ac80814892c9baea379f2b4e9f22b966e" title="Retaille chaque StraightBlock adjacent à une jonction pour qu&#39;il commence (ou se termine) exactement ..." alt="" coords="2091,5,2308,45"/>

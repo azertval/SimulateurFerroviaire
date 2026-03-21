@@ -12,8 +12,8 @@ var searchData=
   ['computetotallength_9',['computeTotalLength',['../classSwitchBlock.html#a003ca555f7f3dfd8e8057ae23dba9381',1,'SwitchBlock']]],
   ['convertpolylinetometric_10',['convertPolylineToMetric',['../classGeometryUtils.html#aa06e19f5aae6fce3108b2fcfc709fc53',1,'GeometryUtils']]],
   ['convertpolylinetowgs84_11',['convertPolylineToWgs84',['../classGeometryUtils.html#aba6963b2f6022f04e51fb716a11e3895',1,'GeometryUtils']]],
-  ['convertstraighttofeature_12',['convertStraightToFeature',['../classGeoJsonExporter.html#ae40aed3745c83a9e089cade7067ec11a',1,'GeoJsonExporter']]],
-  ['convertswitchtofeature_13',['convertSwitchToFeature',['../classGeoJsonExporter.html#a4edb715ecc8bee30c4eb00e7dcb98e93',1,'GeoJsonExporter']]],
+  ['convertstraighttofeature_12',['convertStraightToFeature',['../classTopologyRenderer.html#a39b4c82693790d5886076d62998362bc',1,'TopologyRenderer']]],
+  ['convertswitchtofeature_13',['convertSwitchToFeature',['../classTopologyRenderer.html#ab35534539fde31c290ce7e531fce86fe',1,'TopologyRenderer']]],
   ['coordinatexy_14',['coordinatexy',['../classCoordinateXY.html#a0e32bf57ec9cc55f2760b6bd3f62344c',1,'CoordinateXY::CoordinateXY()=default'],['../classCoordinateXY.html#a72e2c55a2df24be332a4d3e00875e35e',1,'CoordinateXY::CoordinateXY(double xValue, double yValue)']]],
   ['create_15',['create',['../classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9',1,'MainWindow::create()'],['../classProgressBar.html#a608e19274cfd76f8874e4ef6e2dcb396',1,'ProgressBar::create()'],['../classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1',1,'WebViewPanel::create()']]]
 ];

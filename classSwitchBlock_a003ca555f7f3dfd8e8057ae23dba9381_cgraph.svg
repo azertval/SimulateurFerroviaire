@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classSwitchBlock.html#ab77747c7b8747d9909c9ee2233fa7ba5" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="classSwitchBlock.html#ab77747c7b8747d9909c9ee2233fa7ba5" target="_top" xlink:title="Calcule la distance de Haversine entre deux points WGS&#45;84.">
 <polygon fill="white" stroke="#666666" points="357,-67.5 184,-67.5 184,-37.5 357,-37.5 357,-67.5"/>
 <text text-anchor="start" x="192" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00">SwitchBlock::haversineDistance</text>
 <text text-anchor="middle" x="270.5" y="-44.5" font-family="Helvetica,sans-Serif" font-size="10.00">Meters</text>

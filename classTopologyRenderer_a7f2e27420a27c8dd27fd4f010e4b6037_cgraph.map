@@ -1,0 +1,7 @@
+<map id="TopologyRenderer::renderStraightBlock" name="TopologyRenderer::renderStraightBlock">
+<area shape="rect" id="Node000001" title="Construit l&#39;appel JS renderStraightBlock(id, coords) pour un bloc." alt="" coords="5,23,195,63"/>
+<area shape="rect" id="Node000002" href="$classStraightBlock.html#a646d3135d365dcb832ff66b1304c6850" title=" " alt="" coords="243,5,459,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,31,229,28,229,33,195,36"/>
+<area shape="rect" id="Node000003" href="$classStraightBlock.html#a295060fddd0675834ce4755ae4787780" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="275,55,426,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,50,262,56,262,62,194,55"/>
+</map>

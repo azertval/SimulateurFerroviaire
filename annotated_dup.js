@@ -7,7 +7,6 @@ var annotated_dup =
     [ "FileOpenDialog", "classFileOpenDialog.html", "classFileOpenDialog" ],
     [ "FileSaveDialog", "classFileSaveDialog.html", "classFileSaveDialog" ],
     [ "GeographicProjection", "classGeographicProjection.html", "classGeographicProjection" ],
-    [ "GeoJsonExporter", "classGeoJsonExporter.html", "classGeoJsonExporter" ],
     [ "GeometricTolerances", "classGeometricTolerances.html", "classGeometricTolerances" ],
     [ "GeometryUtils", "classGeometryUtils.html", "classGeometryUtils" ],
     [ "GeoParser", "classGeoParser.html", "classGeoParser" ],
@@ -35,6 +34,7 @@ var annotated_dup =
     [ "TopologyExtractor", "classTopologyExtractor.html", "classTopologyExtractor" ],
     [ "TopologyExtractResult", "structTopologyExtractResult.html", "structTopologyExtractResult" ],
     [ "TopologyGraph", "classTopologyGraph.html", "classTopologyGraph" ],
+    [ "TopologyRenderer", "classTopologyRenderer.html", "classTopologyRenderer" ],
     [ "TopologyRepository", "classTopologyRepository.html", "classTopologyRepository" ],
     [ "TopologySentinel", "classTopologySentinel.html", "classTopologySentinel" ],
     [ "WebViewPanel", "classWebViewPanel.html", "classWebViewPanel" ]

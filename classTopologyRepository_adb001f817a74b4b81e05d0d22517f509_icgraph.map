@@ -1,41 +1,47 @@
 <map id="TopologyRepository::instance" name="TopologyRepository::instance">
-<area shape="rect" id="Node000001" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="2248,157,2399,197"/>
-<area shape="poly" id="edge13_Node000001_Node000001" title=" " alt="" coords="2363,145,2349,138,2323,135,2301,137,2288,142,2283,148,2285,156,2280,157,2277,147,2284,138,2300,132,2323,130,2350,133,2365,140"/>
-<area shape="rect" id="Node000002" href="$classGeoParser.html#a6b046fb217dd2d7240cde1aea4c9a5ec" title="Dump détaillé des résultats dans les traces DEBUG." alt="" coords="1981,5,2200,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2298,147,2255,98,2228,73,2199,52,2154,33,2156,28,2201,48,2231,69,2259,95,2302,144"/>
-<area shape="rect" id="Node000003" href="$classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet." alt="" coords="1753,56,1885,81"/>
-<area shape="poly" id="edge15_Node000001_Node000003" title=" " alt="" coords="2288,150,2247,120,2199,97,2117,76,2032,66,1952,63,1886,66,1885,60,1952,58,2032,60,2118,71,2201,91,2250,116,2291,145"/>
-<area shape="rect" id="Node000011" href="$classGeoJsonExporter.html#a933abb8a4cbc84d34ced90a170d170d3" title="Exporte la topologie ferroviaire dans un fichier GeoJSON." alt="" coords="1982,107,2199,132"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="2234,156,2199,147,2147,135,2148,129,2201,142,2235,151"/>
-<area shape="rect" id="Node000013" href="$classGeoJsonExporter.html#a7f60c7ba7d8578832e4461fe50de931d" title="Génère le script JavaScript d&#39;injection GeoJSON dans le WebView." alt="" coords="1995,157,2187,197"/>
-<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="2235,179,2187,179,2187,174,2235,174"/>
-<area shape="rect" id="Node000014" href="$classGeoJsonExporter.html#a9e109a8b505798f99c5aa2bd6fb538a3" title="Efface puis redessine tous les StraightBlocks." alt="" coords="1992,221,2189,261"/>
-<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="2237,203,2165,223,2163,218,2236,198"/>
-<area shape="rect" id="Node000016" href="$classGeoJsonExporter.html#adbde98ddc849360ec945d84bde02d504" title="Efface puis redessine tous les marqueurs de jonction." alt="" coords="1992,285,2189,325"/>
-<area shape="poly" id="edge19_Node000001_Node000016" title=" " alt="" coords="2293,208,2252,243,2201,275,2173,287,2171,282,2199,270,2248,238,2290,204"/>
-<area shape="rect" id="Node000017" href="$classGeoJsonExporter.html#a75d6c6a4354d06d04a700b58d69e869f" title="Efface puis redessine les branches de tous les switches." alt="" coords="1992,349,2189,389"/>
-<area shape="poly" id="edge21_Node000001_Node000017" title=" " alt="" coords="2308,211,2265,276,2236,310,2202,339,2180,351,2177,346,2198,334,2232,306,2261,272,2303,208"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2009,36,1886,59,1885,54,2008,31"/>
-<area shape="rect" id="Node000004" href="$classGeoParsingTask.html#affe9d461e96e029708ced380b63da972" title="Lance le parsing GeoJSON dans un thread séparé et détaché." alt="" coords="1473,56,1647,81"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1740,71,1647,71,1647,66,1740,66"/>
-<area shape="rect" id="Node000005" href="$classMainWindow.html#a889cc45fb741e12015f4af9f01acaa96" title="Ouvre le sélecteur de fichier et lance le parsing asynchrone." alt="" coords="1228,56,1415,81"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1459,71,1415,71,1415,66,1459,66"/>
-<area shape="rect" id="Node000006" href="$classMainWindow.html#afbecf0f64f48c5c868168884bab52356" title="Gère les commandes menu (WM_COMMAND)." alt="" coords="984,107,1180,132"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1247,87,1143,109,1142,104,1246,82"/>
-<area shape="rect" id="Node000007" href="$classMainWindow.html#ab85682874f3ab5dfa81f782f889d8556" title="Dispatcher principal des messages de la fenêtre." alt="" coords="721,183,936,208"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1026,139,873,185,871,180,1025,133"/>
-<area shape="rect" id="Node000008" href="$classMainWindow.html#a332648d0a0caec8070b05bc27bb9a14b" title="Procédure de fenêtre statique, point d&#39;entrée imposé par Win32." alt="" coords="483,183,673,208"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="708,198,674,198,674,193,708,193"/>
-<area shape="rect" id="Node000009" href="$classApplication.html#a0bda40de108938fd29374335bf4eac71" title="Enregistre la classe de fenêtre Win32 (WNDCLASSEXW)." alt="" coords="229,175,435,215"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="469,198,435,198,435,193,469,193"/>
-<area shape="rect" id="Node000010" href="$classApplication.html#a719cf091afd2276d52f9a58e4962ebfb" title="Construit l&#39;application et enregistre la classe de fenêtre." alt="" coords="5,183,181,208"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="216,198,182,198,182,193,216,193"/>
-<area shape="rect" id="Node000012" href="$classMainWindow.html#a4429f521642e48894e0efce5b41bd0ae" title="Ouvre le dialogue d&#39;exportation et déclenche l&#39;export GeoJSON." alt="" coords="1463,107,1657,132"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="1968,122,1658,122,1658,117,1968,117"/>
-<area shape="poly" id="edge12_Node000012_Node000006" title=" " alt="" coords="1449,122,1180,122,1180,117,1449,117"/>
-<area shape="rect" id="Node000015" href="$classMainWindow.html#a90cae565f67d1291d690d974547041a0" title="Gère la fin réussie du parsing (WM_PARSING_SUCCESS)." alt="" coords="1705,260,1933,285"/>
-<area shape="poly" id="edge17_Node000014_Node000015" title=" " alt="" coords="1979,257,1928,263,1927,257,1978,251"/>
-<area shape="poly" id="edge18_Node000015_Node000007" title=" " alt="" coords="1691,265,936,206,936,201,1692,260"/>
-<area shape="poly" id="edge20_Node000016_Node000015" title=" " alt="" coords="1978,294,1927,288,1928,283,1979,289"/>
-<area shape="poly" id="edge22_Node000017_Node000015" title=" " alt="" coords="2005,347,1980,339,1850,288,1852,283,1982,334,2006,342"/>
+<area shape="rect" id="Node000001" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="2236,199,2387,239"/>
+<area shape="poly" id="edge13_Node000001_Node000001" title=" " alt="" coords="2351,188,2337,181,2311,178,2289,180,2276,185,2271,191,2273,198,2268,200,2265,190,2272,180,2288,175,2311,173,2338,176,2353,183"/>
+<area shape="rect" id="Node000002" href="$classGeoParser.html#a6b046fb217dd2d7240cde1aea4c9a5ec" title="Dump détaillé des résultats dans les traces DEBUG." alt="" coords="1969,5,2188,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2293,188,2251,119,2221,83,2187,52,2147,33,2149,28,2189,48,2225,79,2255,116,2297,186"/>
+<area shape="rect" id="Node000003" href="$classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133" title="Lance le pipeline complet." alt="" coords="1741,56,1873,81"/>
+<area shape="poly" id="edge18_Node000001_Node000003" title=" " alt="" coords="2288,190,2246,139,2218,115,2187,96,2148,81,2106,70,2022,59,1941,57,1874,62,1873,57,1941,52,2022,53,2107,65,2149,76,2189,92,2221,111,2249,136,2292,186"/>
+<area shape="rect" id="Node000011" href="$classTopologyRenderer.html#a5691412733606ec4139cac02585bd718" title="Exporte la topologie ferroviaire dans un fichier GeoJSON." alt="" coords="1984,106,2173,146"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="2261,195,2187,160,2153,149,2155,144,2189,156,2263,190"/>
+<area shape="rect" id="Node000013" href="$classTopologyRenderer.html#a53552ac3e53137c8510496ae2de4a4d8" title="Génère le script JavaScript d&#39;injection GeoJSON dans le WebView." alt="" coords="1978,170,2179,210"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="2222,211,2179,205,2180,200,2223,206"/>
+<area shape="rect" id="Node000014" href="$classMainWindow.html#a242d9acf230544637908fc2cf31f1284" title="Met à jour l&#39;état opérationnel d&#39;un SwitchBlock après un clic." alt="" coords="1977,235,2181,260"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="2223,233,2181,238,2180,232,2222,227"/>
+<area shape="rect" id="Node000017" href="$classTopologyRenderer.html#ad8b9e3a9eddc5ee5835f1b6028fd2633" title="Efface puis redessine tous les StraightBlocks." alt="" coords="1984,285,2173,325"/>
+<area shape="poly" id="edge19_Node000001_Node000017" title=" " alt="" coords="2256,248,2189,275,2153,287,2152,282,2187,270,2254,243"/>
+<area shape="rect" id="Node000019" href="$classTopologyRenderer.html#adc1a75eb69d37d7b15c7dc013fa32f0d" title="Efface puis redessine tous les marqueurs de jonction." alt="" coords="1984,349,2173,389"/>
+<area shape="poly" id="edge22_Node000001_Node000019" title=" " alt="" coords="2288,251,2245,297,2218,319,2189,339,2164,351,2162,346,2187,334,2215,315,2241,293,2284,248"/>
+<area shape="rect" id="Node000020" href="$classTopologyRenderer.html#a82bdf3d4be07c75f7ff3e637b17d5f67" title="Efface puis redessine les branches de tous les switches." alt="" coords="1984,413,2173,453"/>
+<area shape="poly" id="edge24_Node000001_Node000020" title=" " alt="" coords="2299,253,2281,288,2257,329,2227,369,2190,403,2169,415,2166,410,2186,399,2223,365,2253,326,2277,286,2294,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1997,36,1874,59,1873,54,1996,31"/>
+<area shape="rect" id="Node000004" href="$classGeoParsingTask.html#affe9d461e96e029708ced380b63da972" title="Lance le parsing GeoJSON dans un thread séparé et détaché." alt="" coords="1471,57,1645,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1728,72,1646,72,1645,67,1728,66"/>
+<area shape="rect" id="Node000005" href="$classMainWindow.html#a889cc45fb741e12015f4af9f01acaa96" title="Ouvre le sélecteur de fichier et lance le parsing asynchrone." alt="" coords="1232,60,1419,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1457,74,1419,74,1419,69,1457,68"/>
+<area shape="rect" id="Node000006" href="$classMainWindow.html#afbecf0f64f48c5c868168884bab52356" title="Gère les commandes menu (WM_COMMAND)." alt="" coords="984,113,1180,139"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1254,91,1141,116,1140,111,1252,86"/>
+<area shape="rect" id="Node000007" href="$classMainWindow.html#ab85682874f3ab5dfa81f782f889d8556" title="Dispatcher principal des messages de la fenêtre." alt="" coords="721,235,936,260"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1043,147,858,237,855,232,1041,142"/>
+<area shape="rect" id="Node000008" href="$classMainWindow.html#a332648d0a0caec8070b05bc27bb9a14b" title="Procédure de fenêtre statique, point d&#39;entrée imposé par Win32." alt="" coords="483,235,673,260"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="708,250,674,250,674,245,708,245"/>
+<area shape="rect" id="Node000009" href="$classApplication.html#a0bda40de108938fd29374335bf4eac71" title="Enregistre la classe de fenêtre Win32 (WNDCLASSEXW)." alt="" coords="229,227,435,267"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="469,250,435,250,435,245,469,245"/>
+<area shape="rect" id="Node000010" href="$classApplication.html#a719cf091afd2276d52f9a58e4962ebfb" title="Construit l&#39;application et enregistre la classe de fenêtre." alt="" coords="5,235,181,260"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="216,250,182,250,182,245,216,245"/>
+<area shape="rect" id="Node000012" href="$classMainWindow.html#a4429f521642e48894e0efce5b41bd0ae" title="Ouvre le dialogue d&#39;exportation et déclenche l&#39;export GeoJSON." alt="" coords="1228,113,1423,139"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="1970,129,1423,129,1423,123,1970,123"/>
+<area shape="poly" id="edge12_Node000012_Node000006" title=" " alt="" coords="1214,129,1180,129,1180,123,1214,123"/>
+<area shape="rect" id="Node000015" href="$classMainWindow.html#a6e84464d583e27d6f978385b22a5945f" title="Dispatcher principal des messages JSON reçus depuis Leaflet." alt="" coords="1700,235,1915,260"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="1963,250,1915,250,1915,245,1963,245"/>
+<area shape="rect" id="Node000016" href="$classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar." alt="" coords="1481,235,1635,260"/>
+<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="1686,250,1636,250,1636,245,1686,245"/>
+<area shape="rect" id="Node000018" href="$classMainWindow.html#a90cae565f67d1291d690d974547041a0" title="Gère la fin réussie du parsing (WM_PARSING_SUCCESS)." alt="" coords="1693,339,1921,364"/>
+<area shape="poly" id="edge20_Node000017_Node000018" title=" " alt="" coords="1971,326,1882,341,1881,336,1970,321"/>
+<area shape="poly" id="edge21_Node000018_Node000007" title=" " alt="" coords="1679,340,936,261,937,256,1680,335"/>
+<area shape="poly" id="edge23_Node000019_Node000018" title=" " alt="" coords="1970,364,1922,361,1922,356,1970,359"/>
+<area shape="poly" id="edge25_Node000020_Node000018" title=" " alt="" coords="1995,411,1969,403,1849,367,1850,361,1970,398,1997,406"/>
 </map>

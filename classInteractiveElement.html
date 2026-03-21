@@ -92,6 +92,8 @@ $(document).ready(function(){initNavTree('classInteractiveElement.html',''); ini
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="classInteractiveElement-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">InteractiveElement Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
@@ -104,12 +106,12 @@ $(document).ready(function(){initNavTree('classInteractiveElement.html',''); ini
 <div class="dynheader">
 Inheritance diagram for InteractiveElement:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classInteractiveElement__inherit__graph.svg" width="216" height="943"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classInteractiveElement__inherit__graph.svg" width="470" height="1643"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for InteractiveElement:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classInteractiveElement__coll__graph.svg" width="184" height="216"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classInteractiveElement__coll__graph.svg" width="192" height="664"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -134,6 +136,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8ff2705adce5c5c4d9a056dbf80cc79e" id="r_a8ff2705adce5c5c4d9a056dbf80cc79e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731">InteractiveElementType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInteractiveElement.html#a8ff2705adce5c5c4d9a056dbf80cc79e">getType</a> () const =0</td></tr>
 <tr class="memdesc:a8ff2705adce5c5c4d9a056dbf80cc79e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le type de l'élément.  <br /></td></tr>
 <tr class="separator:a8ff2705adce5c5c4d9a056dbf80cc79e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a3fa6f7a3b734f17c31de52c8d3183221" id="r_a3fa6f7a3b734f17c31de52c8d3183221"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInteractiveElement.html#a3fa6f7a3b734f17c31de52c8d3183221">m_id</a></td></tr>
+<tr class="memdesc:a3fa6f7a3b734f17c31de52c8d3183221"><td class="mdescLeft">&#160;</td><td class="mdescRight">id de l'element  <br /></td></tr>
+<tr class="separator:a3fa6f7a3b734f17c31de52c8d3183221"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a92de0811b888277b54be4a6dae22c08b" id="r_a92de0811b888277b54be4a6dae22c08b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classLogger.html">Logger</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInteractiveElement.html#a92de0811b888277b54be4a6dae22c08b">m_logger</a></td></tr>
+<tr class="memdesc:a92de0811b888277b54be4a6dae22c08b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> statique partagé par TOUS les éléments interactifs.  <br /></td></tr>
+<tr class="separator:a92de0811b888277b54be4a6dae22c08b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classe de base abstraite pour tous les éléments interactifs ferroviaires. </p>
@@ -275,7 +289,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Retourne l'identifiant unique de l'élément (ex. "sw/3", "s/12"). </p>
 
-<p>Implemented in <a class="el" href="classStraightBlock.html#a295060fddd0675834ce4755ae4787780">StraightBlock</a>.</p>
+<p>Implemented in <a class="el" href="classStraightBlock.html#a295060fddd0675834ce4755ae4787780">StraightBlock</a>, and <a class="el" href="classSwitchBlock.html#adbf269599ac24cd670976368ae00b39f">SwitchBlock</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classInteractiveElement_a6e4de24603c935ed0c9151c738239c9b_icgraph.svg" width="432" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -305,7 +324,7 @@ Public Member Functions</h2></td></tr>
 <p>Retourne le type de l'élément. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731a4239f063a3d4fb9d38a0182be6e39e76">InteractiveElementType::SWITCH</a> ou <a class="el" href="InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731a8c5e50fab3748e9c53a6863b3dce1401">InteractiveElementType::STRAIGHT</a>. </dd></dl>
 
-<p>Implemented in <a class="el" href="classStraightBlock.html#a94738c34cc95d85601f50d1cec5b35cc">StraightBlock</a>.</p>
+<p>Implemented in <a class="el" href="classStraightBlock.html#a94738c34cc95d85601f50d1cec5b35cc">StraightBlock</a>, and <a class="el" href="classSwitchBlock.html#ac56312a01711bfd3d16adef8310c799c">SwitchBlock</a>.</p>
 
 </div>
 </div>
@@ -361,8 +380,65 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3fa6f7a3b734f17c31de52c8d3183221" name="a3fa6f7a3b734f17c31de52c8d3183221"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fa6f7a3b734f17c31de52c8d3183221">&#9670;&#160;</a></span>m_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string InteractiveElement::m_id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>id de l'element </p>
+
+</div>
+</div>
+<a id="a92de0811b888277b54be4a6dae22c08b" name="a92de0811b888277b54be4a6dae22c08b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92de0811b888277b54be4a6dae22c08b">&#9670;&#160;</a></span>m_logger</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogger.html">Logger</a> InteractiveElement::m_logger</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> statique partagé par TOUS les éléments interactifs. </p>
+<p>Une seule instance pour l'ensemble des <a class="el" href="classSwitchBlock.html">SwitchBlock</a> et <a class="el" href="classStraightBlock.html">StraightBlock</a> → un seul fichier "Logs/InteractiveElements.log".</p>
+<p>Statique : initialisé une seule fois au démarrage, partagé par toutes les instances de toutes les classes dérivées. Le mutex interne du <a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> garantit la thread-safety des écritures concurrentes.</p>
+<p>Utilisation dans les classes dérivées : </p><div class="fragment"><div class="line"><a class="code hl_define" href="Logger_8h.html#a0c30634de010bc24deacc2cb5a123bec">LOG_INFO</a>(<a class="code hl_variable" href="classInteractiveElement.html#a92de0811b888277b54be4a6dae22c08b">m_logger</a>, <a class="code hl_variable" href="classInteractiveElement.html#a3fa6f7a3b734f17c31de52c8d3183221">m_id</a> + <span class="stringliteral">&quot; orienté&quot;</span>);</div>
+<div class="ttc" id="aLogger_8h_html_a0c30634de010bc24deacc2cb5a123bec"><div class="ttname"><a href="Logger_8h.html#a0c30634de010bc24deacc2cb5a123bec">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:71</div></div>
+<div class="ttc" id="aclassInteractiveElement_html_a3fa6f7a3b734f17c31de52c8d3183221"><div class="ttname"><a href="classInteractiveElement.html#a3fa6f7a3b734f17c31de52c8d3183221">InteractiveElement::m_id</a></div><div class="ttdeci">std::string m_id</div><div class="ttdoc">id de l'element</div><div class="ttdef"><b>Definition</b> InteractiveElement.h:71</div></div>
+<div class="ttc" id="aclassInteractiveElement_html_a92de0811b888277b54be4a6dae22c08b"><div class="ttname"><a href="classInteractiveElement.html#a92de0811b888277b54be4a6dae22c08b">InteractiveElement::m_logger</a></div><div class="ttdeci">static Logger m_logger</div><div class="ttdoc">Logger statique partagé par TOUS les éléments interactifs.</div><div class="ttdef"><b>Definition</b> InteractiveElement.h:88</div></div>
+</div><!-- fragment --><p>Définition de l'unique instance du logger partagé. Produit le fichier "Logs/InteractiveElements.log". </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>SimulateurFerroviaire/Modules/InteractiveElements/<a class="el" href="InteractiveElement_8h_source.html">InteractiveElement.h</a></li>
+<li>SimulateurFerroviaire/Modules/InteractiveElements/<a class="el" href="InteractiveElement_8cpp.html">InteractiveElement.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

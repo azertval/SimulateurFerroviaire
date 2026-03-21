@@ -1,7 +1,0 @@
-<map id="GeoJsonExporter::renderStraightBlock" name="GeoJsonExporter::renderStraightBlock">
-<area shape="rect" id="Node000001" title="Construit l&#39;appel JS renderStraightBlock(id, coords) pour un bloc." alt="" coords="5,23,236,63"/>
-<area shape="rect" id="Node000002" href="$classStraightBlock.html#a646d3135d365dcb832ff66b1304c6850" title=" " alt="" coords="284,5,500,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,30,270,27,270,32,237,35"/>
-<area shape="rect" id="Node000003" href="$classStraightBlock.html#a295060fddd0675834ce4755ae4787780" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="317,55,467,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="237,51,303,57,303,62,236,56"/>
-</map>

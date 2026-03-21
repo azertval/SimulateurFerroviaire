@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simulateur Ferroviaire: SimulateurFerroviaire/Modules/Stockages/TopologyData.h Source File</title>
+<title>Simulateur Ferroviaire: SimulateurFerroviaire/Engine/Core/Topology/TopologyData.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -111,31 +111,54 @@ $(document).ready(function(){initNavTree('TopologyData_8h_source.html',''); init
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classTopologyData.html">   27</a></span><span class="keyword">class </span><a class="code hl_class" href="classTopologyData.html">TopologyData</a></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">   31</a></span>    std::vector&lt;std::unique_ptr&lt;StraightBlock&gt;&gt; <a class="code hl_variable" href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">straights</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">   30</a></span>    std::vector&lt;std::unique_ptr&lt;StraightBlock&gt;&gt; <a class="code hl_variable" href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">straights</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">   31</a></span>    std::vector&lt;std::unique_ptr&lt;SwitchBlock&gt;&gt;   <a class="code hl_variable" href="classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">switches</a>;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">   34</a></span>    std::vector&lt;std::unique_ptr&lt;SwitchBlock&gt;&gt; <a class="code hl_variable" href="classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">switches</a>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classTopologyData.html#a7b9b3e5cfb26df1cb199ac4d859a7a1f">   37</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTopologyData.html#a7b9b3e5cfb26df1cb199ac4d859a7a1f">clear</a>()</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <a class="code hl_variable" href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">straights</a>.clear();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_variable" href="classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">switches</a>.clear();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440">   37</a></span>    std::unordered_map&lt;std::string, SwitchBlock*&gt;   <a class="code hl_variable" href="classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440">switchIndex</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de">   38</a></span>    std::unordered_map&lt;std::string, StraightBlock*&gt; <a class="code hl_variable" href="classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de">straightIndex</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classTopologyData.html#a7b9b3e5cfb26df1cb199ac4d859a7a1f">   43</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTopologyData.html#a7b9b3e5cfb26df1cb199ac4d859a7a1f">clear</a>()</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <a class="code hl_variable" href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">straights</a>.clear();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_variable" href="classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">switches</a>.clear();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_variable" href="classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440">switchIndex</a>.clear();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_variable" href="classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de">straightIndex</a>.clear();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
 </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00059" data-start="{" data-end="}">
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classTopologyData.html#a041d3a1f56a467d32ade5f30e8536692">   59</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTopologyData.html#a041d3a1f56a467d32ade5f30e8536692">buildIndex</a>()</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <a class="code hl_variable" href="classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440">switchIndex</a>.clear();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <a class="code hl_variable" href="classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de">straightIndex</a>.clear();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <a class="code hl_variable" href="classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440">switchIndex</a>.reserve(<a class="code hl_variable" href="classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">switches</a>.size());</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; sw : <a class="code hl_variable" href="classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">switches</a>)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <a class="code hl_variable" href="classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440">switchIndex</a>[sw-&gt;getId()] = sw.get();</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <a class="code hl_variable" href="classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de">straightIndex</a>.reserve(<a class="code hl_variable" href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">straights</a>.size());</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; st : <a class="code hl_variable" href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">straights</a>)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <a class="code hl_variable" href="classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de">straightIndex</a>[st-&gt;getId()] = st.get();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>};</div>
 </div>
 <div class="ttc" id="aStraightBlock_8h_html"><div class="ttname"><a href="StraightBlock_8h.html">StraightBlock.h</a></div><div class="ttdoc">Modèle de domaine d'un bloc de voie droite (Straight).</div></div>
 <div class="ttc" id="aSwitchBlock_8h_html"><div class="ttname"><a href="SwitchBlock_8h.html">SwitchBlock.h</a></div><div class="ttdoc">Modèle de domaine d'un aiguillage ferroviaire à 3 branches.</div></div>
 <div class="ttc" id="aclassTopologyData_html"><div class="ttname"><a href="classTopologyData.html">TopologyData</a></div><div class="ttdoc">Conteneur partagé entre tous les modules métier et la couche HMI.</div><div class="ttdef"><b>Definition</b> TopologyData.h:28</div></div>
-<div class="ttc" id="aclassTopologyData_html_a6eedc9d9675f2138bbc64c4fafea14f9"><div class="ttname"><a href="classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">TopologyData::switches</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; SwitchBlock &gt; &gt; switches</div><div class="ttdef"><b>Definition</b> TopologyData.h:34</div></div>
-<div class="ttc" id="aclassTopologyData_html_a7b9b3e5cfb26df1cb199ac4d859a7a1f"><div class="ttname"><a href="classTopologyData.html#a7b9b3e5cfb26df1cb199ac4d859a7a1f">TopologyData::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Vide les deux listes (remise à zéro entre deux parsings).</div><div class="ttdef"><b>Definition</b> TopologyData.h:37</div></div>
-<div class="ttc" id="aclassTopologyData_html_acc5bc8a5b0b2f0a137a0fcc7045e8eda"><div class="ttname"><a href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">TopologyData::straights</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; StraightBlock &gt; &gt; straights</div><div class="ttdef"><b>Definition</b> TopologyData.h:31</div></div>
+<div class="ttc" id="aclassTopologyData_html_a041d3a1f56a467d32ade5f30e8536692"><div class="ttname"><a href="classTopologyData.html#a041d3a1f56a467d32ade5f30e8536692">TopologyData::buildIndex</a></div><div class="ttdeci">void buildIndex()</div><div class="ttdoc">Construit les index id→ptr depuis les vecteurs.</div><div class="ttdef"><b>Definition</b> TopologyData.h:59</div></div>
+<div class="ttc" id="aclassTopologyData_html_a6711e20e90cd67e3adfa2e4a3fbc1440"><div class="ttname"><a href="classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440">TopologyData::switchIndex</a></div><div class="ttdeci">std::unordered_map&lt; std::string, SwitchBlock * &gt; switchIndex</div><div class="ttdef"><b>Definition</b> TopologyData.h:37</div></div>
+<div class="ttc" id="aclassTopologyData_html_a6eedc9d9675f2138bbc64c4fafea14f9"><div class="ttname"><a href="classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">TopologyData::switches</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; SwitchBlock &gt; &gt; switches</div><div class="ttdef"><b>Definition</b> TopologyData.h:31</div></div>
+<div class="ttc" id="aclassTopologyData_html_a7b9b3e5cfb26df1cb199ac4d859a7a1f"><div class="ttname"><a href="classTopologyData.html#a7b9b3e5cfb26df1cb199ac4d859a7a1f">TopologyData::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Vide les listes et les index (remise à zéro entre deux parsings).</div><div class="ttdef"><b>Definition</b> TopologyData.h:43</div></div>
+<div class="ttc" id="aclassTopologyData_html_a80b183b2d8dcdfc2df1d5d4b879356de"><div class="ttname"><a href="classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de">TopologyData::straightIndex</a></div><div class="ttdeci">std::unordered_map&lt; std::string, StraightBlock * &gt; straightIndex</div><div class="ttdef"><b>Definition</b> TopologyData.h:38</div></div>
+<div class="ttc" id="aclassTopologyData_html_acc5bc8a5b0b2f0a137a0fcc7045e8eda"><div class="ttname"><a href="classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">TopologyData::straights</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; StraightBlock &gt; &gt; straights</div><div class="ttdef"><b>Definition</b> TopologyData.h:30</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="dir_6e1d0d3082df2819c7ad86acd4aac596.html">Stockages</a></li><li class="navelem"><a class="el" href="TopologyData_8h.html">TopologyData.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="dir_b70de4a9b2a9f967d011983a1fdf80d1.html">Engine</a></li><li class="navelem"><a class="el" href="dir_db532fcf2b7ab198586d05907cd2a60c.html">Core</a></li><li class="navelem"><a class="el" href="dir_3c09c4ecaddaad0e804819338e05924f.html">Topology</a></li><li class="navelem"><a class="el" href="TopologyData_8h.html">TopologyData.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

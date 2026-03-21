@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['warning_0',['WARNING',['../Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a059e9861e0400dfbe05c98a841f3f96b',1,'Logger.h']]]
+  ['straight_0',['STRAIGHT',['../InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731a8c5e50fab3748e9c53a6863b3dce1401',1,'InteractiveElement.h']]],
+  ['switch_1',['SWITCH',['../InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731a4239f063a3d4fb9d38a0182be6e39e76',1,'InteractiveElement.h']]]
 ];

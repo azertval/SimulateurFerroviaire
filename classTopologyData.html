@@ -105,14 +105,17 @@ $(document).ready(function(){initNavTree('classTopologyData.html',''); initResiz
 <div class="dynheader">
 Collaboration diagram for TopologyData:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classTopologyData__coll__graph.svg" width="114" height="96"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classTopologyData__coll__graph.svg" width="126" height="156"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7b9b3e5cfb26df1cb199ac4d859a7a1f" id="r_a7b9b3e5cfb26df1cb199ac4d859a7a1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyData.html#a7b9b3e5cfb26df1cb199ac4d859a7a1f">clear</a> ()</td></tr>
-<tr class="memdesc:a7b9b3e5cfb26df1cb199ac4d859a7a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vide les deux listes (remise à zéro entre deux parsings).  <br /></td></tr>
+<tr class="memdesc:a7b9b3e5cfb26df1cb199ac4d859a7a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vide les listes et les index (remise à zéro entre deux parsings).  <br /></td></tr>
 <tr class="separator:a7b9b3e5cfb26df1cb199ac4d859a7a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a041d3a1f56a467d32ade5f30e8536692" id="r_a041d3a1f56a467d32ade5f30e8536692"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyData.html#a041d3a1f56a467d32ade5f30e8536692">buildIndex</a> ()</td></tr>
+<tr class="memdesc:a041d3a1f56a467d32ade5f30e8536692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit les index id→ptr depuis les vecteurs.  <br /></td></tr>
+<tr class="separator:a041d3a1f56a467d32ade5f30e8536692"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -120,6 +123,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:acc5bc8a5b0b2f0a137a0fcc7045e8eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6eedc9d9675f2138bbc64c4fafea14f9" id="r_a6eedc9d9675f2138bbc64c4fafea14f9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classSwitchBlock.html">SwitchBlock</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">switches</a></td></tr>
 <tr class="separator:a6eedc9d9675f2138bbc64c4fafea14f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6711e20e90cd67e3adfa2e4a3fbc1440" id="r_a6711e20e90cd67e3adfa2e4a3fbc1440"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="classSwitchBlock.html">SwitchBlock</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440">switchIndex</a></td></tr>
+<tr class="separator:a6711e20e90cd67e3adfa2e4a3fbc1440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80b183b2d8dcdfc2df1d5d4b879356de" id="r_a80b183b2d8dcdfc2df1d5d4b879356de"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de">straightIndex</a></td></tr>
+<tr class="separator:a80b183b2d8dcdfc2df1d5d4b879356de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Conteneur partagé entre tous les modules métier et la couche HMI. </p>
@@ -130,6 +137,39 @@ Public Attributes</h2></td></tr>
 <li>interdire la copie accidentelle des éléments. </li>
 </ul>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a041d3a1f56a467d32ade5f30e8536692" name="a041d3a1f56a467d32ade5f30e8536692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a041d3a1f56a467d32ade5f30e8536692">&#9670;&#160;</a></span>buildIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TopologyData::buildIndex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construit les index id→ptr depuis les vecteurs. </p>
+<p>Appeler en fin de pipeline <a class="el" href="classGeoParser.html">GeoParser</a>, après transfert en unique_ptr et résolution de tous les pointeurs (partenaires, branches, voisins). Les adresses des objets doivent être stables — aucune réallocation de vecteur ne doit survenir après cet appel. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classTopologyData_a041d3a1f56a467d32ade5f30e8536692_icgraph.svg" width="2058" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="a7b9b3e5cfb26df1cb199ac4d859a7a1f" name="a7b9b3e5cfb26df1cb199ac4d859a7a1f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7b9b3e5cfb26df1cb199ac4d859a7a1f">&#9670;&#160;</a></span>clear()</h2>
 
@@ -153,7 +193,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Vide les deux listes (remise à zéro entre deux parsings). </p>
+<p>Vide les listes et les index (remise à zéro entre deux parsings). </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -163,6 +203,20 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a80b183b2d8dcdfc2df1d5d4b879356de" name="a80b183b2d8dcdfc2df1d5d4b879356de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80b183b2d8dcdfc2df1d5d4b879356de">&#9670;&#160;</a></span>straightIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::string, <a class="el" href="classStraightBlock.html">StraightBlock</a>*&gt; TopologyData::straightIndex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="acc5bc8a5b0b2f0a137a0fcc7045e8eda" name="acc5bc8a5b0b2f0a137a0fcc7045e8eda"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc5bc8a5b0b2f0a137a0fcc7045e8eda">&#9670;&#160;</a></span>straights</h2>
 
@@ -174,7 +228,6 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Liste des blocs de voie droite extraits du parsing. </p>
 
 </div>
 </div>
@@ -189,12 +242,26 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Liste des aiguillages extraits du parsing. </p>
+
+</div>
+</div>
+<a id="a6711e20e90cd67e3adfa2e4a3fbc1440" name="a6711e20e90cd67e3adfa2e4a3fbc1440"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6711e20e90cd67e3adfa2e4a3fbc1440">&#9670;&#160;</a></span>switchIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::string, <a class="el" href="classSwitchBlock.html">SwitchBlock</a>*&gt; TopologyData::switchIndex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Index de lookup rapide id → ptr, construit après résolution des pointeurs. Permet un accès O(1) par ID sans find_if sur les vecteurs. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>SimulateurFerroviaire/Modules/Stockages/<a class="el" href="TopologyData_8h_source.html">TopologyData.h</a></li>
+<li>SimulateurFerroviaire/Engine/Core/Topology/<a class="el" href="TopologyData_8h_source.html">TopologyData.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

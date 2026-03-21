@@ -17,8 +17,8 @@
 <area shape="rect" id="Node000006" href="$classGeometryUtils.html#a0dfa23ddf2d80abfeaeac186ae124fd0" title="Convertit une coordonnée métrique UTM en WGS&#45;84." alt="" coords="573,68,768,108"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="498,86,559,86,559,91,498,91"/>
 <area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="768,75,830,69,831,74,769,81"/>
-<area shape="rect" id="Node000010" href="$classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb" title=" " alt="" coords="553,241,788,281"/>
+<area shape="rect" id="Node000010" href="$classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb" title="Calcule la longueur géodésique totale depuis m_coordinates." alt="" coords="553,241,788,281"/>
 <area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="491,259,540,259,540,264,491,264"/>
-<area shape="rect" id="Node000011" href="$classStraightBlock.html#a6ea1987662d295db433b819aceaa67cd" title=" " alt="" coords="853,241,1034,281"/>
+<area shape="rect" id="Node000011" href="$classStraightBlock.html#a6ea1987662d295db433b819aceaa67cd" title="Calcule la distance de Haversine entre deux points WGS&#45;84." alt="" coords="853,241,1034,281"/>
 <area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="788,259,839,259,839,264,788,264"/>
 </map>

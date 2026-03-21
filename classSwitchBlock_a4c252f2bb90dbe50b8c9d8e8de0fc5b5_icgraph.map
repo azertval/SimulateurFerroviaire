@@ -1,0 +1,13 @@
+<map id="SwitchBlock::activeBranchToString" name="SwitchBlock::activeBranchToString">
+<area shape="rect" id="Node000001" title="Convertit l&#39;état ActiveBranch courant en chaîne lisible. Utilisé exclusivement par les appels de log." alt="" coords="985,27,1180,67"/>
+<area shape="rect" id="Node000002" href="$classSwitchBlock.html#a33f10f3d58cb4802c2a45583cb9e216c" title="Assigne la branche active." alt="" coords="723,5,937,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="971,37,937,33,938,28,972,32"/>
+<area shape="rect" id="Node000003" href="$classSwitchBlock.html#a49ee6b32f553615447b412e58afca21a" title="Alterne entre NORMAL et DEVIATION. Équivalent à setActiveBranch(!current)." alt="" coords="735,55,925,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="972,62,926,67,925,62,971,57"/>
+<area shape="rect" id="Node000004" href="$classMainWindow.html#a242d9acf230544637908fc2cf31f1284" title="Met à jour l&#39;état opérationnel d&#39;un SwitchBlock après un clic." alt="" coords="471,63,675,88"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="721,78,675,78,675,73,721,73"/>
+<area shape="rect" id="Node000005" href="$classMainWindow.html#a6e84464d583e27d6f978385b22a5945f" title="Dispatcher principal des messages JSON reçus depuis Leaflet." alt="" coords="208,63,423,88"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="457,78,423,78,423,73,457,73"/>
+<area shape="rect" id="Node000006" href="$classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar." alt="" coords="5,63,160,88"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="194,78,160,78,160,73,194,73"/>
+</map>

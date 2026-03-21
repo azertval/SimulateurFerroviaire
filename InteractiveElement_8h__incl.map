@@ -1,5 +1,18 @@
 <map id="SimulateurFerroviaire/Modules/InteractiveElements/InteractiveElement.h" name="SimulateurFerroviaire/Modules/InteractiveElements/InteractiveElement.h">
-<area shape="rect" id="Node000001" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="5,5,221,60"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="84,108,143,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,60,116,94,111,94,111,60"/>
+<area shape="rect" id="Node000001" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="17,5,233,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,196,64,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,62,49,185,45,183,109,59"/>
+<area shape="rect" id="Node000003" href="$Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur." alt="" coords="142,108,290,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,58,190,96,186,100,149,62"/>
+<area shape="poly" id="edge8_Node000003_Node000002" title=" " alt="" coords="174,150,75,193,73,188,172,146"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="88,196,147,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="194,150,144,189,141,185,190,146"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="171,196,261,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="219,148,219,182,213,182,213,148"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="286,196,359,221"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="243,146,297,185,294,190,240,150"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="384,196,448,221"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="265,146,375,188,373,193,263,151"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="472,196,547,221"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="287,145,459,191,458,196,286,151"/>
 </map>

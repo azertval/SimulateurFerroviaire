@@ -1,5 +1,5 @@
 <map id="WebViewPanel" name="WebViewPanel">
-<area shape="rect" id="Node000001" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué." alt="" coords="5,453,207,919"/>
+<area shape="rect" id="Node000001" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué." alt="" coords="5,453,207,959"/>
 <area shape="rect" id="Node000002" href="$classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="15,5,197,391"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,391,109,437,103,437,103,391"/>
 </map>

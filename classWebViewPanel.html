@@ -93,7 +93,6 @@ $(document).ready(function(){initNavTree('classWebViewPanel.html',''); initResiz
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classWebViewPanel-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">WebViewPanel Class Reference</div></div>
@@ -107,7 +106,7 @@ $(document).ready(function(){initNavTree('classWebViewPanel.html',''); initResiz
 <div class="dynheader">
 Collaboration diagram for WebViewPanel:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel__coll__graph.svg" width="212" height="924"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel__coll__graph.svg" width="212" height="964"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -151,6 +150,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3d18421b35ea7ad55ff884ce299ac53c" id="r_a3d18421b35ea7ad55ff884ce299ac53c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#a3d18421b35ea7ad55ff884ce299ac53c">setVirtualHostMapping</a> (const std::wstring &amp;hostname, const std::wstring &amp;folderPath)</td></tr>
 <tr class="memdesc:a3d18421b35ea7ad55ff884ce299ac53c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mappe un nom d'hôte virtuel vers un dossier local. Permet de servir des fichiers locaux via <a href="https://hostname/..">https://hostname/..</a>.  <br /></td></tr>
 <tr class="separator:a3d18421b35ea7ad55ff884ce299ac53c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71afad8b186e38cd35fded12d736b0c6" id="r_a71afad8b186e38cd35fded12d736b0c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#a71afad8b186e38cd35fded12d736b0c6">setOnMessageReceived</a> (std::function&lt; void(const std::string &amp;)&gt; callback)</td></tr>
+<tr class="memdesc:a71afad8b186e38cd35fded12d736b0c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre le handler des messages JS entrants.  <br /></td></tr>
+<tr class="separator:a71afad8b186e38cd35fded12d736b0c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -163,10 +165,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a2098e8aa83f6ab5b825514deda7fd846" id="r_a2098e8aa83f6ab5b825514deda7fd846"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#a2098e8aa83f6ab5b825514deda7fd846">onControllerCreated</a> (HRESULT result, ICoreWebView2Controller *controller)</td></tr>
 <tr class="memdesc:a2098e8aa83f6ab5b825514deda7fd846"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback déclenché à la fin de la création du contrôleur WebView2.  <br /></td></tr>
 <tr class="separator:a2098e8aa83f6ab5b825514deda7fd846"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:ac77338c39cc87b2fb7b7bde9da2004b1" id="r_ac77338c39cc87b2fb7b7bde9da2004b1"><td class="memItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#ac77338c39cc87b2fb7b7bde9da2004b1">onWebMessageReceived</a> (ICoreWebView2 *sender, ICoreWebView2WebMessageReceivedEventArgs *args)</td></tr>
+<tr class="memitem:ac77338c39cc87b2fb7b7bde9da2004b1" id="r_ac77338c39cc87b2fb7b7bde9da2004b1"><td class="memItemLeft" align="right" valign="top">HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#ac77338c39cc87b2fb7b7bde9da2004b1">onWebMessageReceived</a> (ICoreWebView2 *sender, ICoreWebView2WebMessageReceivedEventArgs *args)</td></tr>
 <tr class="memdesc:ac77338c39cc87b2fb7b7bde9da2004b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback statique déclenché à la réception d'un message JavaScript.  <br /></td></tr>
 <tr class="separator:ac77338c39cc87b2fb7b7bde9da2004b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -184,6 +183,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:afd54ccfc6e2c1bafa050749b800c53aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca54061a5f4f9e4538e2ec2c45188085" id="r_aca54061a5f4f9e4538e2ec2c45188085"><td class="memItemLeft" align="right" valign="top">std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#aca54061a5f4f9e4538e2ec2c45188085">m_onInitialized</a></td></tr>
 <tr class="separator:aca54061a5f4f9e4538e2ec2c45188085"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab284dc7e96cdebc9594ce1465994079d" id="r_ab284dc7e96cdebc9594ce1465994079d"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const std::string &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWebViewPanel.html#ab284dc7e96cdebc9594ce1465994079d">m_onMessageReceived</a></td></tr>
+<tr class="separator:ab284dc7e96cdebc9594ce1465994079d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Wrapper Win32 autour de WebView2 pour affichage HTML embarqué. </p>
@@ -385,7 +386,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_a5890da7c431554b9e864759f293dac1f_icgraph.svg" width="1479" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_a5890da7c431554b9e864759f293dac1f_icgraph.svg" width="1479" height="94"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -638,7 +639,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -749,6 +750,39 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_a118dd6f6115c00ad0d01b6c4238e5caf_icgraph.svg" width="440" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a71afad8b186e38cd35fded12d736b0c6" name="a71afad8b186e38cd35fded12d736b0c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71afad8b186e38cd35fded12d736b0c6">&#9670;&#160;</a></span>setOnMessageReceived()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WebViewPanel::setOnMessageReceived </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(const std::string &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enregistre le handler des messages JS entrants. </p>
+<p>Appelé par <a class="el" href="classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar.">MainWindow::create()</a> AVANT l'initialisation du WebView. Le callback reçoit le message brut UTF-8 envoyé depuis <a class="el" href="classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> via : window.chrome.webview.postMessage(JSON.stringify({...}))</p>
+<p>Exécuté sur le thread UI — accès aux objets Win32 et au modèle sûr. Si non enregistré, les messages JS sont ignorés silencieusement.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Handler à appeler avec le message JSON en paramètre. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classWebViewPanel_a71afad8b186e38cd35fded12d736b0c6_icgraph.svg" width="435" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -874,6 +908,29 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab284dc7e96cdebc9594ce1465994079d" name="ab284dc7e96cdebc9594ce1465994079d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab284dc7e96cdebc9594ce1465994079d">&#9670;&#160;</a></span>m_onMessageReceived</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;void(const std::string&amp;)&gt; WebViewPanel::m_onMessageReceived</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Handler des messages JS. Nullptr si non enregistré. </p>
 
 </div>
 </div>
