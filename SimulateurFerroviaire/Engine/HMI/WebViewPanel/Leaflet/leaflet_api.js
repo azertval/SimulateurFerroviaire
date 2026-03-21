@@ -10,29 +10,23 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Couleurs
 // ================================
 
-const COLOR_ACTIVE   = "LightSlateGray";  // branche active   (normal par défaut)
-const COLOR_INACTIVE = "Gainsboro";       // branche inactive (deviation par défaut)
-const COLOR_SWITCH    = "orange";       // cercle au repos
+const COLOR_ACTIVE   = "LightSlateGray";
+const COLOR_BRANCH_INACTIVE = "Gainsboro";
+const COLOR_SWITCH_JUNCTION    = "orange";
 
 
 // ================================
 // Groupe des straights
 // ================================
 
-/** Groupe Leaflet contenant tous les blocs straight rendus. */
 window.straightGroup = L.featureGroup().addTo(map);
 
-/**
- * Supprime tous les blocs straight actuellement affichés sur la carte.
- */
 window.clearStraightBlocks = function() {
     window.straightGroup.clearLayers();
 };
 
 /**
- * Affiche un bloc straight sous forme de polyligne sur la carte.
- *
- * @param {string}                  id      Identifiant du bloc.
+ * @param {string}                  id
  * @param {Array<[number, number]>} coords  Tableau de paires [lat, lon].
  */
 window.renderStraightBlock = function(id, coords) {
@@ -41,14 +35,10 @@ window.renderStraightBlock = function(id, coords) {
     window.straightGroup.addLayer(polyline);
 };
 
-/**
- * Ajuste la vue de la carte pour englober tous les blocs straight visibles.
- */
 window.zoomToStraights = function() {
     const bounds = window.straightGroup.getBounds();
-    if (bounds.isValid()) {
+    if (bounds.isValid())
         map.fitBounds(bounds, { padding: [20, 20], maxZoom: 18 });
-    }
 };
 
 
@@ -56,91 +46,64 @@ window.zoomToStraights = function() {
 // Groupe des switchs
 // ================================
 
-/** Groupe Leaflet contenant les marqueurs de jonction. */
-window.switchGroup = L.featureGroup().addTo(map);
-
-/** Groupe Leaflet contenant les branches des switchs (root / normal / deviation). */
+window.switchGroup       = L.featureGroup().addTo(map);
 window.switchBranchGroup = L.featureGroup().addTo(map);
 
-/** Registre des polylines de branches par switch id : { normal, deviation } */
+/** id → { normal: polyline|null, deviation: polyline|null } */
 window.switchBranchMap = {};
 
-/**
- * Registre des fonctions d'application d'état par switch id.
- * Signature : applyStateFn(toDeviation: boolean)
- * Permet la synchronisation entre partenaires d'un double switch.
- */
+/** id → applyStateFn(toDeviation: boolean) */
 window.switchToggleMap = {};
 
-/**
- * Supprime tous les marqueurs de switch affichés.
- */
 window.clearSwitches = function() {
     window.switchGroup.clearLayers();
     window.switchToggleMap = {};
 };
 
-/**
- * Supprime toutes les branches de switch affichées.
- */
 window.clearSwitchBranches = function() {
     window.switchBranchGroup.clearLayers();
     window.switchBranchMap = {};
 };
 
 /**
- * Affiche le point de jonction d'un switch sous forme de cercle.
+ * Affiche le point de jonction d'un switch sous forme de cercle cliquable.
  *
- * Couleur au repos  : orange  (branche normale active)
- * Couleur basculée  : bleu    (branche déviée active)
- *
- * Au clic :
- *  - inverse l'état du switch (normal ↔ deviation)
- *  - met à jour la couleur du cercle
- *  - met à jour les couleurs des branches (normal ↔ deviation)
- *  - si double switch, applique le même état au partenaire
- *
- * @param {string}  id               Identifiant du switch.
- * @param {number}  lat              Latitude de la jonction.
- * @param {number}  lon              Longitude de la jonction.
- * @param {boolean} isDouble         True si double aiguille.
- * @param {number}  bearingNormal    Réservé (non utilisé — cercle sans direction).
- * @param {number}  bearingDeviation Réservé (non utilisé — cercle sans direction).
- * @param {string}  partnerId        ID du switch partenaire (double switch), "" sinon.
+ * @param {string}  id
+ * @param {number}  lat
+ * @param {number}  lon
+ * @param {boolean} isDouble
+ * @param {number}  bearingNormal     (réservé, non utilisé — cercle sans direction)
+ * @param {number}  bearingDeviation  (réservé, non utilisé)
+ * @param {string}  partnerId         ID du partenaire, "" si pas un double.
  */
 window.renderSwitch = function(id, lat, lon, isDouble, bearingNormal, bearingDeviation, partnerId) {
 
-    // État interne : false = normal actif, true = deviation active
     let pointingToDeviation = false;
 
     const circle = L.circleMarker([lat, lon], {
         radius:      3,
         color:       "white",
         weight:      1.5,
-        fillColor:   COLOR_SWITCH,
+        fillColor:   COLOR_SWITCH_JUNCTION,
         fillOpacity: 1
     });
 
     window.switchGroup.addLayer(circle);
 
-    /**
-     * Applique un état visuel sur CE switch uniquement.
-     * Appelé directement au clic, ou par le partenaire pour synchronisation.
-     *
-     * @param {boolean} toDeviation  True = deviation active.
-     */
     function applyState(toDeviation) {
-        // Couleurs des branches
+        circle.setStyle({
+            fillColor: COLOR_SWITCH_JUNCTION
+        });
+
         const branches = window.switchBranchMap[id];
         if (branches) {
             if (branches.normal)
-                branches.normal.setStyle({ color: toDeviation ? COLOR_INACTIVE : COLOR_ACTIVE });
+                branches.normal.setStyle({ color: toDeviation ? COLOR_BRANCH_INACTIVE : COLOR_ACTIVE });
             if (branches.deviation)
-                branches.deviation.setStyle({ color: toDeviation ? COLOR_ACTIVE : COLOR_INACTIVE });
+                branches.deviation.setStyle({ color: toDeviation ? COLOR_ACTIVE : COLOR_BRANCH_INACTIVE });
         }
     }
 
-    // Enregistrement dans le registre global pour synchronisation inter-switches
     window.switchToggleMap[id] = function(toDeviation) {
         pointingToDeviation = toDeviation;
         applyState(toDeviation);
@@ -148,72 +111,54 @@ window.renderSwitch = function(id, lat, lon, isDouble, bearingNormal, bearingDev
 
     circle.on("click", function() {
         pointingToDeviation = !pointingToDeviation;
-
         applyState(pointingToDeviation);
 
-        // Synchronisation du partenaire (double switch)
-        if (isDouble && partnerId && window.switchToggleMap[partnerId]) {
+        if (isDouble && partnerId && window.switchToggleMap[partnerId])
             window.switchToggleMap[partnerId](pointingToDeviation);
-        }
     });
 };
 
 /**
- * Affiche les trois branches d'un switch (root / normal / deviation)
- * sous forme de segments colorés depuis la jonction vers chaque tip CDC.
+ * Affiche les branches d'un switch depuis la jonction.
  *
- * État initial :
- *   normal    → COLOR_ACTIVE   (LightSlateGray)
- *   deviation → COLOR_INACTIVE (Gainsboro)
- *   root      → COLOR_ACTIVE
+ * Chaque branche est transmise comme une polyligne de points intermédiaires
+ * à ajouter APRÈS la jonction :
+ *   - Switch simple : [[tipLat, tipLon]]  (un seul point)
+ *   - Double switch : [[pt1Lat,pt1Lon], [pt2Lat,pt2Lon], …, [junctionPartenaireLat, lon]]
+ *   - Absent        : null
  *
- * Un tip absent (NaN) est silencieusement ignoré.
+ * La jonction ([jLat, jLon]) est toujours le premier point de chaque segment.
  *
- * @param {string} id        Identifiant du switch.
- * @param {number} jLat      Latitude  de la jonction.
- * @param {number} jLon      Longitude de la jonction.
- * @param {number} rootLat   Latitude  du tip root      (NaN si absent).
- * @param {number} rootLon   Longitude du tip root      (NaN si absent).
- * @param {number} normalLat Latitude  du tip normal    (NaN si absent).
- * @param {number} normalLon Longitude du tip normal    (NaN si absent).
- * @param {number} devLat    Latitude  du tip deviation (NaN si absent).
- * @param {number} devLon    Longitude du tip deviation (NaN si absent).
+ * @param {string}               id
+ * @param {number}               jLat
+ * @param {number}               jLon
+ * @param {Array|null}           rootCoords     Polyligne après junction, null si absent.
+ * @param {Array|null}           normalCoords   Idem.
+ * @param {Array|null}           devCoords      Idem.
  */
-window.renderSwitchBranches = function(
-    id,
-    jLat, jLon,
-    rootLat, rootLon,
-    normalLat, normalLon,
-    devLat, devLon)
+window.renderSwitchBranches = function(id, jLat, jLon, rootCoords, normalCoords, devCoords)
 {
     const junction = [jLat, jLon];
 
-    const branches = [
-        { role: "root",      lat: rootLat,   lon: rootLon,   color: COLOR_ACTIVE   },
-        { role: "normal",    lat: normalLat, lon: normalLon, color: COLOR_ACTIVE   },
-        { role: "deviation", lat: devLat,    lon: devLon,    color: COLOR_INACTIVE }
+    window.switchBranchMap[id] = { normal: null, deviation: null };
+
+    const defs = [
+        { role: "root",      coords: rootCoords,   color: COLOR_ACTIVE   },
+        { role: "normal",    coords: normalCoords, color: COLOR_ACTIVE   },
+        { role: "deviation", coords: devCoords,    color: COLOR_BRANCH_INACTIVE }
     ];
 
-    window.switchBranchMap[id] = {};
+    for (const def of defs) {
+        if (!def.coords || def.coords.length === 0) continue;
 
-    for (const branch of branches) {
-        if (isNaN(branch.lat) || isNaN(branch.lon)) continue;
+        // Construit la polyligne complète : jonction + tous les points transmis
+        const fullLine = [junction, ...def.coords];
 
-        const segment = L.polyline([[jLat, jLon], [branch.lat, branch.lon]], {
-            color:  branch.color,
-            weight: 4
-        });
-
-        segment.bindPopup(
-            "<b>Switch:</b> " + id + "<br>" +
-            "<b>Branch:</b> " + branch.role
-        );
-
+        const segment = L.polyline(fullLine, { color: def.color, weight: 4 });
+        segment.bindPopup("<b>Switch:</b> " + id + "<br><b>Branch:</b> " + def.role);
         window.switchBranchGroup.addLayer(segment);
 
-        // Seules normal et deviation sont concernées par le toggle de couleur
-        if (branch.role === "normal" || branch.role === "deviation") {
-            window.switchBranchMap[id][branch.role] = segment;
-        }
+        if (def.role === "normal" || def.role === "deviation")
+            window.switchBranchMap[id][def.role] = segment;
     }
 };

@@ -53,7 +53,8 @@ void SwitchBlock::orient(std::string rootId, std::string normalId, std::string d
         return std::find(m_branchIds.begin(), m_branchIds.end(), id) != m_branchIds.end();
         };
     if (!has(rootId) || !has(normalId) || !has(deviationId))
-        throw std::invalid_argument("SwitchBlock::orient — ID absent de branchIds sur " + m_id);
+        throw std::invalid_argument(
+            "SwitchBlock::orient — ID absent de branchIds sur " + m_id);
 
     m_rootBranchId = std::move(rootId);
     m_normalBranchId = std::move(normalId);
@@ -73,6 +74,8 @@ void SwitchBlock::swapNormalDeviation()
 {
     std::swap(m_normalBranchId, m_deviationBranchId);
     std::swap(m_tipOnNormal, m_tipOnDeviation);
+    std::swap(m_absorbedNormalCoords, m_absorbedDeviationCoords);
+    std::swap(m_doubleOnNormal, m_doubleOnDeviation);
 }
 
 void SwitchBlock::computeTotalLength()
@@ -94,23 +97,28 @@ void SwitchBlock::computeTotalLength()
 
 void SwitchBlock::absorbLink(const std::string& linkId,
     const std::string& partnerId,
-    const LatLon& midpoint)
+    std::vector<LatLon> linkCoords)
 {
-    // Remplace le segment de liaison par l'ID du partenaire dans la liste de branches
+    // Remplace le segment de liaison dans la liste de branches
     for (auto& bid : m_branchIds)
         if (bid == linkId) { bid = partnerId; break; }
+
+    // Le dernier point de la polyligne orientée = jonction du partenaire = nouveau tip CDC
+    const LatLon tipFar = linkCoords.empty() ? m_junctionCoordinate : linkCoords.back();
 
     if (m_normalBranchId == linkId)
     {
         m_normalBranchId = partnerId;
-        m_tipOnNormal = midpoint;
+        m_tipOnNormal = tipFar;
         m_doubleOnNormal = partnerId;
+        m_absorbedNormalCoords = std::move(linkCoords);
     }
     else if (m_deviationBranchId == linkId)
     {
         m_deviationBranchId = partnerId;
-        m_tipOnDeviation = midpoint;
+        m_tipOnDeviation = tipFar;
         m_doubleOnDeviation = partnerId;
+        m_absorbedDeviationCoords = std::move(linkCoords);
     }
 }
 
@@ -127,8 +135,12 @@ std::string SwitchBlock::toString() const
     if (isDouble())
     {
         s << " [DOUBLE:";
-        if (m_doubleOnNormal)    s << "normal→" << *m_doubleOnNormal;
-        if (m_doubleOnDeviation) s << "deviation→" << *m_doubleOnDeviation;
+        if (m_doubleOnNormal)
+            s << "normal→" << *m_doubleOnNormal
+            << " (" << m_absorbedNormalCoords.size() << " pts)";
+        if (m_doubleOnDeviation)
+            s << "deviation→" << *m_doubleOnDeviation
+            << " (" << m_absorbedDeviationCoords.size() << " pts)";
         s << "]";
     }
 

@@ -69,7 +69,7 @@ void DoubleSwitchDetector::detectAndAbsorb()
             auto* swB = switchIndex.count(cluster[i + 1]) ? switchIndex.at(cluster[i + 1]) : nullptr;
             if (!swA || !swB) continue;
 
-            // Recherche du segment de liaison : présent dans les branches de swA, voisin de swB
+            // Recherche du segment de liaison : dans les branches de swA, voisin de swB
             std::string linkId;
             for (const auto& bid : swA->getBranchIds())
             {
@@ -103,7 +103,7 @@ void DoubleSwitchDetector::detectAndAbsorb()
 
 
 // =============================================================================
-// Recherche des clusters de doubles aiguilles
+// Recherche des clusters
 // =============================================================================
 
 std::vector<std::vector<std::string>> DoubleSwitchDetector::findDoubleSwitchClusters(
@@ -230,16 +230,49 @@ void DoubleSwitchDetector::absorbLinkSegment(
 
     segmentsToRemove.insert(linkSegmentId);
 
-    // Midpoint du segment absorbé — les deux demi-doubles se rejoignent visuellement ici
-    const auto& coords = link->getCoordinates();
-    const LatLon midpoint = coords.empty()
-        ? swA->getJunctionCoordinate()
-        : coords[coords.size() / 2];
+    const std::vector<LatLon>& coords = link->getCoordinates();
 
-    // absorbLink : remplace le segment dans branchIds + roles + tips,
-    //              et renseigne doubleOnNormal ou doubleOnDeviation
-    swA->absorbLink(linkSegmentId, switchIdB, midpoint);
-    swB->absorbLink(linkSegmentId, switchIdA, midpoint);
+    // -------------------------------------------------------------------------
+    // Orientation de la polyligne pour chaque switch.
+    //
+    // Pour swA : le premier point doit être le plus proche de la jonction de swA.
+    //            Si c'est déjà le cas → coords tel quel.
+    //            Sinon → coords inversé.
+    // Pour swB : idem depuis sa jonction → direction opposée à swA.
+    // -------------------------------------------------------------------------
+
+    auto orientedFor = [&](const LatLon& junction) -> std::vector<LatLon>
+        {
+            if (coords.empty()) return {};
+
+            const LatLon& front = coords.front();
+            const LatLon& back = coords.back();
+
+            const double dFront = (front.latitude - junction.latitude) * (front.latitude - junction.latitude)
+                + (front.longitude - junction.longitude) * (front.longitude - junction.longitude);
+            const double dBack = (back.latitude - junction.latitude) * (back.latitude - junction.latitude)
+                + (back.longitude - junction.longitude) * (back.longitude - junction.longitude);
+
+            // Jonction proche du front → ordre direct ; proche du back → on inverse
+            if (dFront <= dBack)
+                return coords;
+
+            std::vector<LatLon> reversed(coords.rbegin(), coords.rend());
+            return reversed;
+        };
+
+    // Polyligne orientée depuis la jonction de chaque switch vers l'autre
+    std::vector<LatLon> coordsForA = orientedFor(swA->getJunctionCoordinate());
+    std::vector<LatLon> coordsForB = orientedFor(swB->getJunctionCoordinate());
+
+    LOG_DEBUG(m_logger,
+        "Absorption " + linkSegmentId + " : "
+        + std::to_string(coords.size()) + " point(s), "
+        + switchIdA + " ↔ " + switchIdB);
+
+    // absorbLink : remplace la branche, stocke la polyligne complète, met à jour tip + double flag
+    swA->absorbLink(linkSegmentId, switchIdB, std::move(coordsForA));
+    swB->absorbLink(linkSegmentId, switchIdA, std::move(coordsForB));
 
     // Mise à jour des voisins des Straights qui référençaient le segment absorbé
     for (auto& st : m_straights)
@@ -281,7 +314,6 @@ void DoubleSwitchDetector::validateSwitches()
 
         if (sw.isDouble())
         {
-            // Exactement une des deux branches doit pointer vers le partenaire
             const int swCount = static_cast<int>(swIds.count(nId))
                 + static_cast<int>(swIds.count(dId));
             if (swCount != 1)

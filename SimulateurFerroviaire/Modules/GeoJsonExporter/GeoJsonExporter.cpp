@@ -20,7 +20,10 @@
 
 namespace
 {
-    /** Encode un tip optionnel en "lat,lon" ou "NaN,NaN" si absent. */
+    /**
+     * Encode un tip optionnel en "lat,lon" ou "NaN,NaN" si absent.
+     * Utilisé pour les branches simples (non absorbées).
+     */
     std::wstring encodeTip(const std::optional<LatLon>& tip)
     {
         if (!tip.has_value())
@@ -32,6 +35,29 @@ namespace
     std::wstring toWide(const std::string& s)
     {
         return std::wstring(s.begin(), s.end());
+    }
+
+    /**
+     * Encode une polyligne WGS-84 en tableau JS : [[lat,lon],[lat,lon],…]
+     * Retourne "null" si la polyligne est vide.
+     */
+    std::wstring encodePolyline(const std::vector<LatLon>& coords)
+    {
+        if (coords.empty())
+            return L"null";
+
+        std::wstring s = L"[";
+        for (std::size_t i = 0; i < coords.size(); ++i)
+        {
+            s += L"[";
+            s += std::to_wstring(coords[i].latitude);
+            s += L",";
+            s += std::to_wstring(coords[i].longitude);
+            s += L"]";
+            if (i + 1 < coords.size()) s += L",";
+        }
+        s += L"]";
+        return s;
     }
 }
 
@@ -146,7 +172,6 @@ std::wstring GeoJsonExporter::escapeForJavaScript(const std::string& input)
 {
     std::wstring output;
     output.reserve(input.size());
-
     for (char c : input)
     {
         switch (c)
@@ -186,7 +211,6 @@ std::wstring GeoJsonExporter::renderStraightBlock(const StraightBlock& straight)
         script += L"]";
         if (i + 1 < coords.size()) script += L",";
     }
-
     script += L"]);";
     return script;
 }
@@ -237,7 +261,6 @@ std::wstring GeoJsonExporter::renderSwitchBlock(const SwitchBlock& sw)
         ? bearingDeg(junction, *sw.getTipOnDeviation())
         : bearingNormal;
 
-    // Partner ID : on expose l'ID du partenaire (chaîne vide si pas de double)
     const std::string partnerId = sw.getPartnerId().value_or("");
 
     std::wstring script = L"renderSwitch(\"";
@@ -273,11 +296,73 @@ std::wstring GeoJsonExporter::renderAllSwitchBlocksJunctions()
 // Switches — branches (rendu WebView)
 // =============================================================================
 
+/**
+ * Génère l'appel JS renderSwitchBranches pour un SwitchBlock.
+ *
+ * Signature JS :
+ *   renderSwitchBranches(id,
+ *     jLat, jLon,
+ *     rootCoords,      // [[lat,lon],...] ou null
+ *     normalCoords,    // [[lat,lon],...] ou null
+ *     devCoords)       // [[lat,lon],...] ou null
+ *
+ * Pour les branches simples (non absorbées) : tableau à 1 point [tip].
+ * Pour les branches absorbées (double switch) : polyligne complète.
+ * null si le tip est absent.
+ */
 std::wstring GeoJsonExporter::renderSwitchBranches(const SwitchBlock& sw)
 {
     if (!sw.isOriented()) return L"";
 
     const LatLon& junction = sw.getJunctionCoordinate();
+
+    // --- Branche root : toujours un simple tip (jamais absorbée) ---
+    std::wstring rootCoords = L"null";
+    if (sw.getTipOnRoot())
+        rootCoords = L"[["
+        + std::to_wstring(sw.getTipOnRoot()->latitude) + L","
+        + std::to_wstring(sw.getTipOnRoot()->longitude) + L"]]";
+
+    // --- Branche normal ---
+    std::wstring normalCoords;
+    if (!sw.getAbsorbedNormalCoords().empty())
+    {
+        // Double switch : polyligne complète du segment absorbé
+        // On skip le premier point (≈ jonction de ce switch, déjà connue côté JS)
+        const auto& pts = sw.getAbsorbedNormalCoords();
+        normalCoords = encodePolyline(
+            std::vector<LatLon>(pts.begin() + (pts.size() > 1 ? 1 : 0), pts.end()));
+    }
+    else if (sw.getTipOnNormal())
+    {
+        // Switch simple : un seul point tip
+        normalCoords = L"[["
+            + std::to_wstring(sw.getTipOnNormal()->latitude) + L","
+            + std::to_wstring(sw.getTipOnNormal()->longitude) + L"]]";
+    }
+    else
+    {
+        normalCoords = L"null";
+    }
+
+    // --- Branche deviation ---
+    std::wstring devCoords;
+    if (!sw.getAbsorbedDeviationCoords().empty())
+    {
+        const auto& pts = sw.getAbsorbedDeviationCoords();
+        devCoords = encodePolyline(
+            std::vector<LatLon>(pts.begin() + (pts.size() > 1 ? 1 : 0), pts.end()));
+    }
+    else if (sw.getTipOnDeviation())
+    {
+        devCoords = L"[["
+            + std::to_wstring(sw.getTipOnDeviation()->latitude) + L","
+            + std::to_wstring(sw.getTipOnDeviation()->longitude) + L"]]";
+    }
+    else
+    {
+        devCoords = L"null";
+    }
 
     std::wstring script = L"renderSwitchBranches(\"";
     script += toWide(sw.getId());
@@ -286,11 +371,11 @@ std::wstring GeoJsonExporter::renderSwitchBranches(const SwitchBlock& sw)
     script += L",";
     script += std::to_wstring(junction.longitude);
     script += L",";
-    script += encodeTip(sw.getTipOnRoot());
+    script += rootCoords;
     script += L",";
-    script += encodeTip(sw.getTipOnNormal());
+    script += normalCoords;
     script += L",";
-    script += encodeTip(sw.getTipOnDeviation());
+    script += devCoords;
     script += L");";
     return script;
 }

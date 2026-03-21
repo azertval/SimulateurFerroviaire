@@ -10,15 +10,17 @@
  *   Phase 3   → constructeur
  *   Phase 5b  → addBranchId
  *   Phase 6   → orient / setTips / swapNormalDeviation / computeTotalLength
- *   Phase 7   → absorbLink  (marque le double ET remplace la branche + tip)
+ *   Phase 7   → absorbLink
  *
  * Double aiguille :
  *   Un aiguillage peut absorber le segment de liaison côté branche normale
  *   (doubleOnNormal) ou côté branche déviée (doubleOnDeviation).
- *   Un seul des deux est renseigné à la fois — un switch ne peut avoir
- *   qu'un seul partenaire.
- *   isDouble()    → au moins l'un des deux est renseigné
- *   getPartnerId()→ celui qui est renseigné
+ *   Un seul des deux est renseigné à la fois.
+ *
+ *   absorbLink() stocke la polyligne COMPLÈTE du segment absorbé, orientée
+ *   depuis la jonction de ce switch vers celle du partenaire.
+ *   Cette polyligne est utilisée par le rendu WebView pour tracer la branche
+ *   fusionnée avec fidélité géométrique.
  */
 
 #include <optional>
@@ -54,39 +56,51 @@ public:
     // Requêtes
     // =========================================================================
 
-    [[nodiscard]] const std::string& getId()                const { return m_id; }
+    [[nodiscard]] const std::string& getId()                 const { return m_id; }
     [[nodiscard]] const LatLon& getJunctionCoordinate() const { return m_junctionCoordinate; }
-    [[nodiscard]] const std::vector<std::string>& getBranchIds()         const { return m_branchIds; }
+    [[nodiscard]] const std::vector<std::string>& getBranchIds()          const { return m_branchIds; }
 
     /** True si Phase 6 a assigné root / normal / deviation. */
     [[nodiscard]] bool isOriented() const { return m_rootBranchId.has_value(); }
 
     /** True si Phase 7 a absorbé un segment de liaison (double aiguille). */
-    [[nodiscard]] bool isDouble()   const { return m_doubleOnNormal.has_value() || m_doubleOnDeviation.has_value(); }
+    [[nodiscard]] bool isDouble() const
+    {
+        return m_doubleOnNormal.has_value() || m_doubleOnDeviation.has_value();
+    }
 
     [[nodiscard]] const std::optional<std::string>& getRootBranchId()      const { return m_rootBranchId; }
     [[nodiscard]] const std::optional<std::string>& getNormalBranchId()    const { return m_normalBranchId; }
     [[nodiscard]] const std::optional<std::string>& getDeviationBranchId() const { return m_deviationBranchId; }
 
+    /** Point CDC à ~branchTipDistance depuis la jonction sur la branche root. */
     [[nodiscard]] const std::optional<LatLon>& getTipOnRoot()      const { return m_tipOnRoot; }
+
+    /**
+     * Point CDC sur la branche normal.
+     * Pour un double switch côté normal : extrémité distale de la polyligne absorbée
+     * (= jonction du partenaire).
+     */
     [[nodiscard]] const std::optional<LatLon>& getTipOnNormal()    const { return m_tipOnNormal; }
+
+    /**
+     * Point CDC sur la branche deviation.
+     * Pour un double switch côté deviation : extrémité distale de la polyligne absorbée.
+     */
     [[nodiscard]] const std::optional<LatLon>& getTipOnDeviation() const { return m_tipOnDeviation; }
 
     /**
-     * @brief ID du partenaire si le lien traverse la branche normale.
-     * Absent si le double n'est pas côté normal.
+     * @brief ID du partenaire si le lien absorbé était côté branche NORMALE.
      */
     [[nodiscard]] const std::optional<std::string>& getDoubleOnNormal()    const { return m_doubleOnNormal; }
 
     /**
-     * @brief ID du partenaire si le lien traverse la branche déviée.
-     * Absent si le double n'est pas côté deviation.
+     * @brief ID du partenaire si le lien absorbé était côté branche DEVIEE.
      */
     [[nodiscard]] const std::optional<std::string>& getDoubleOnDeviation() const { return m_doubleOnDeviation; }
 
     /**
-     * @brief Retourne l'ID du partenaire (peu importe la branche).
-     * Retourne nullopt si pas un double.
+     * @brief Retourne l'ID du partenaire (peu importe la branche). Nullopt si pas un double.
      */
     [[nodiscard]] std::optional<std::string> getPartnerId() const
     {
@@ -95,13 +109,26 @@ public:
         return std::nullopt;
     }
 
+    /**
+     * @brief Polyligne complète du segment absorbé côté normal.
+     *
+     * Orientée depuis la jonction de CE switch vers celle du partenaire.
+     * Vide si ce switch n'est pas un double côté normal.
+     * Utilisée par le rendu WebView pour tracer la branche fusionnée.
+     */
+    [[nodiscard]] const std::vector<LatLon>& getAbsorbedNormalCoords()    const { return m_absorbedNormalCoords; }
+
+    /**
+     * @brief Polyligne complète du segment absorbé côté deviation.
+     *
+     * Même sémantique que getAbsorbedNormalCoords().
+     */
+    [[nodiscard]] const std::vector<LatLon>& getAbsorbedDeviationCoords() const { return m_absorbedDeviationCoords; }
+
     [[nodiscard]] const std::optional<double>& getTotalLengthMeters() const { return m_totalLengthMeters; }
 
     /**
      * @brief Représentation textuelle pour le débogage.
-     *
-     * Format orienté : Switch(id=sw/0 [DOUBLE:normal→sw/1], root=s/0, normal=sw/1, deviation=s/2, len=45.3m)
-     * Format brut    : Switch(id=sw/0, junction=(48.85,2.35), degree=3)
      */
     [[nodiscard]] std::string toString() const;
 
@@ -124,16 +151,13 @@ public:
      */
     void orient(std::string rootId, std::string normalId, std::string deviationId);
 
-    /**
-     * @brief Assigne les trois tips CDC en une seule opération.
-     */
+    /** @brief Assigne les trois tips CDC en une seule opération. */
     void setTips(std::optional<LatLon> tipRoot,
         std::optional<LatLon> tipNormal,
         std::optional<LatLon> tipDeviation);
 
     /**
-     * @brief Échange normal ↔ deviation (rôles + tips).
-     * Appelé par alignDoubleSwitchRoles() (Phase 6b) et enforceCrossoverConsistency() (Phase 6c).
+     * @brief Échange normal ↔ deviation (rôles + tips + polylignes absorbées).
      */
     void swapNormalDeviation();
 
@@ -152,17 +176,23 @@ public:
      * @brief Absorbe le segment de liaison d'un double aiguille.
      *
      * - Remplace linkId par partnerId dans m_branchIds.
-     * - Si linkId était la branche normale  : met à jour normalBranchId,
-     *   étend tipOnNormal au midpoint, et renseigne m_doubleOnNormal.
-     * - Si linkId était la branche déviée   : idem côté deviation.
+     * - Si linkId était la branche normale :
+     *     • met à jour normalBranchId
+     *     • stocke linkCoords (orientée depuis cette jonction) dans m_absorbedNormalCoords
+     *     • tipOnNormal = linkCoords.back() (jonction du partenaire)
+     *     • renseigne m_doubleOnNormal
+     * - Idem côté deviation.
      *
      * @param linkId     ID du StraightBlock intermédiaire absorbé.
-     * @param partnerId  ID de l'aiguillage partenaire (remplace linkId).
-     * @param midpoint   Coordonnée du milieu du segment absorbé (nouveau tip).
+     * @param partnerId  ID de l'aiguillage partenaire.
+     * @param linkCoords Polyligne complète du segment absorbé, orientée depuis
+     *                   LA JONCTION DE CE SWITCH vers celle du partenaire.
+     *                   Premier point ≈ jonction de ce switch.
+     *                   Dernier point  = jonction du partenaire (nouveau tip CDC).
      */
     void absorbLink(const std::string& linkId,
         const std::string& partnerId,
-        const LatLon& midpoint);
+        std::vector<LatLon>       linkCoords);
 
 private:
 
@@ -173,7 +203,6 @@ private:
     std::string m_id;
     LatLon      m_junctionCoordinate;
 
-    /** Branches connectées. Peuplé en Phase 5b, muté en Phase 7. */
     std::vector<std::string> m_branchIds;
 
     // --- Phase 6 ---
@@ -189,16 +218,24 @@ private:
 
     // --- Phase 7 : double aiguille ---
 
-    /**
-     * ID du partenaire si le lien absorbé était côté branche NORMALE.
-     * Exactement l'un des deux est renseigné pour un double aiguille.
-     */
+    /** ID du partenaire si le lien absorbé était côté branche NORMALE. */
     std::optional<std::string> m_doubleOnNormal;
 
-    /**
-     * ID du partenaire si le lien absorbé était côté branche DEVIEE.
-     */
+    /** ID du partenaire si le lien absorbé était côté branche DEVIEE. */
     std::optional<std::string> m_doubleOnDeviation;
+
+    /**
+     * Polyligne complète du segment absorbé côté normal,
+     * orientée depuis la jonction de ce switch vers le partenaire.
+     * Vide si non applicable.
+     */
+    std::vector<LatLon> m_absorbedNormalCoords;
+
+    /**
+     * Polyligne complète du segment absorbé côté deviation,
+     * orientée depuis la jonction de ce switch vers le partenaire.
+     */
+    std::vector<LatLon> m_absorbedDeviationCoords;
 
 
     // =========================================================================

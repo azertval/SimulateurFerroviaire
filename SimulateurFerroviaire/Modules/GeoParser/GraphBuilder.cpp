@@ -11,33 +11,30 @@
 #include "./Exceptions/GeoParserException.h"
 #include "./Utils/GeometryUtils.h"
 
-// Dépendance externe — nlohmann/json (single header)
-// Télécharger depuis : https://github.com/nlohmann/json/releases
-// Placer à : External/nlohmann/json.hpp
 #if __has_include("../../External/nlohmann/json.hpp")
 #  include "../../External/nlohmann/json.hpp"
-   using JsonDocument = nlohmann::json;
+using JsonDocument = nlohmann::json;
 #  define NLOHMANN_JSON_AVAILABLE 1
 #else
 #  pragma message("GraphBuilder : External/nlohmann/json.hpp introuvable.")
-#  pragma message("Télécharger depuis https://github.com/nlohmann/json/releases")
 #  define NLOHMANN_JSON_AVAILABLE 0
 #endif
 
 
-// =============================================================================
-// Construction
-// =============================================================================
+ // =============================================================================
+ // Construction
+ // =============================================================================
 
-GraphBuilder::GraphBuilder(Logger&            logger,
-                             const std::string& geoJsonFilePath,
-                             double             snapGridMeters,
-                             double             endpointSnapMeters)
+GraphBuilder::GraphBuilder(Logger& logger,
+    const std::string& geoJsonFilePath,
+    double             snapGridMeters,
+    double             endpointSnapMeters)
     : m_logger(logger)
     , m_geoJsonFilePath(geoJsonFilePath)
     , m_snapGridMeters(snapGridMeters)
     , m_endpointSnapMeters(endpointSnapMeters)
-{}
+{
+}
 
 
 // =============================================================================
@@ -49,7 +46,7 @@ GraphBuildResult GraphBuilder::build()
     LOG_INFO(m_logger, "Démarrage Phase 1+2 — fichier : " + m_geoJsonFilePath);
 
     std::vector<RawPolyline> rawPolylines;
-    int  estimatedUtmZone           = 32;
+    int  estimatedUtmZone = 32;
     bool detectedNorthernHemisphere = true;
 
     loadGeoJsonFile(rawPolylines, estimatedUtmZone, detectedNorthernHemisphere);
@@ -60,8 +57,8 @@ GraphBuildResult GraphBuilder::build()
         + (detectedNorthernHemisphere ? "N" : "S"));
 
     TopologyGraph graph = buildTopologyGraph(rawPolylines,
-                                              estimatedUtmZone,
-                                              detectedNorthernHemisphere);
+        estimatedUtmZone,
+        detectedNorthernHemisphere);
 
     LOG_INFO(m_logger,
         "Graphe construit — " + std::to_string(graph.nodePositions.size())
@@ -73,9 +70,9 @@ GraphBuildResult GraphBuilder::build()
         std::to_string(boundaryIds.size()) + " nœud(s) frontière(s) identifié(s)");
 
     GraphBuildResult result;
-    result.topologyGraph        = std::move(graph);
-    result.boundaryNodeIds      = std::move(boundaryIds);
-    result.utmZoneNumber        = estimatedUtmZone;
+    result.topologyGraph = std::move(graph);
+    result.boundaryNodeIds = std::move(boundaryIds);
+    result.utmZoneNumber = estimatedUtmZone;
     result.isNorthernHemisphere = detectedNorthernHemisphere;
     return result;
 }
@@ -86,8 +83,8 @@ GraphBuildResult GraphBuilder::build()
 // =============================================================================
 
 void GraphBuilder::loadGeoJsonFile(std::vector<RawPolyline>& rawPolylines,
-                                    int&                      estimatedUtmZone,
-                                    bool&                     detectedNorthernHemisphere)
+    int& estimatedUtmZone,
+    bool& detectedNorthernHemisphere)
 {
 #if !NLOHMANN_JSON_AVAILABLE
     throw InvalidGeoJsonFormatException(
@@ -97,129 +94,90 @@ void GraphBuilder::loadGeoJsonFile(std::vector<RawPolyline>& rawPolylines,
 #else
     std::ifstream fileStream(m_geoJsonFilePath);
     if (!fileStream.is_open())
-    {
         throw InvalidGeoJsonFormatException(
             "Impossible d'ouvrir le fichier GeoJSON : " + m_geoJsonFilePath);
-    }
 
     JsonDocument document;
-    try
-    {
-        fileStream >> document;
-    }
-    catch (const JsonDocument::exception& jsonException)
+    try { fileStream >> document; }
+    catch (const JsonDocument::exception& e)
     {
         throw InvalidGeoJsonFormatException(
-            "Fichier GeoJSON malformé : " + std::string(jsonException.what()));
+            "Fichier GeoJSON malformé : " + std::string(e.what()));
     }
 
     if (!document.contains("features") || !document["features"].is_array())
-    {
         throw InvalidGeoJsonFormatException(
             "GeoJSON invalide : champ 'features' absent ou non-tableau");
-    }
 
     bool utmZoneDetected = false;
-    int  featureIndex    = 0;
+    int  featureIndex = 0;
 
     for (const auto& feature : document["features"])
     {
-        if (!feature.contains("geometry") || feature["geometry"].is_null())
-        {
-            continue;
-        }
+        if (!feature.contains("geometry") || feature["geometry"].is_null()) continue;
 
         const auto& geometry = feature["geometry"];
-        if (!geometry.contains("type") || !geometry.contains("coordinates"))
-        {
-            continue;
-        }
+        if (!geometry.contains("type") || !geometry.contains("coordinates")) continue;
 
         const std::string geometryType = geometry["type"].get<std::string>();
 
-        // Extraction de l'identifiant du feature
         std::string featureId = "feature/" + std::to_string(featureIndex++);
         if (feature.contains("id") && !feature["id"].is_null())
-        {
             featureId = feature["id"].get<std::string>();
-        }
 
-        // Extraction des polylignes selon le type de géométrie
         std::vector<std::vector<std::pair<double, double>>> coordinateSets;
 
         if (geometryType == "LineString")
         {
-            std::vector<std::pair<double, double>> coordinateSet;
-            for (const auto& point : geometry["coordinates"])
-            {
-                if (point.size() >= 2)
-                {
-                    coordinateSet.emplace_back(point[0].get<double>(), point[1].get<double>());
-                }
-            }
-            if (coordinateSet.size() >= 2)
-            {
-                coordinateSets.push_back(std::move(coordinateSet));
-            }
+            std::vector<std::pair<double, double>> cs;
+            for (const auto& pt : geometry["coordinates"])
+                if (pt.size() >= 2)
+                    cs.emplace_back(pt[0].get<double>(), pt[1].get<double>());
+            if (cs.size() >= 2) coordinateSets.push_back(std::move(cs));
         }
         else if (geometryType == "MultiLineString")
         {
-            for (const auto& lineStringCoords : geometry["coordinates"])
+            for (const auto& line : geometry["coordinates"])
             {
-                std::vector<std::pair<double, double>> coordinateSet;
-                for (const auto& point : lineStringCoords)
-                {
-                    if (point.size() >= 2)
-                    {
-                        coordinateSet.emplace_back(point[0].get<double>(), point[1].get<double>());
-                    }
-                }
-                if (coordinateSet.size() >= 2)
-                {
-                    coordinateSets.push_back(std::move(coordinateSet));
-                }
+                std::vector<std::pair<double, double>> cs;
+                for (const auto& pt : line)
+                    if (pt.size() >= 2)
+                        cs.emplace_back(pt[0].get<double>(), pt[1].get<double>());
+                if (cs.size() >= 2) coordinateSets.push_back(std::move(cs));
             }
         }
         else
         {
-            LOG_DEBUG(m_logger, "Géométrie ignorée (type non supporté) : " + geometryType
-                                + " sur feature " + featureId);
+            LOG_DEBUG(m_logger,
+                "Géométrie ignorée (type non supporté) : " + geometryType
+                + " sur feature " + featureId);
             continue;
         }
 
-        // Conversion en RawPolyline — GeoJSON stocke [lon, lat], on convertit en LatLon(lat, lon)
-        for (const auto& coordinateSet : coordinateSets)
+        for (const auto& cs : coordinateSets)
         {
             RawPolyline polyline;
             polyline.featureId = featureId;
+            for (const auto& [lon, lat] : cs)
+                polyline.wgs84Coords.push_back(LatLon(lat, lon));
 
-            for (const auto& [longitude, latitude] : coordinateSet)
-            {
-                polyline.wgs84Coords.push_back(LatLon(latitude, longitude));
-            }
-
-            // Estimation de la zone UTM depuis le tout premier point du dataset
             if (!utmZoneDetected && !polyline.wgs84Coords.empty())
             {
                 estimatedUtmZone = GeometryUtils::estimateUtmZone(
-                                       polyline.wgs84Coords.front().longitude);
+                    polyline.wgs84Coords.front().longitude);
                 detectedNorthernHemisphere = (polyline.wgs84Coords.front().latitude >= 0.0);
                 utmZoneDetected = true;
-
                 LOG_DEBUG(m_logger,
                     "Zone UTM estimée : " + std::to_string(estimatedUtmZone)
                     + (detectedNorthernHemisphere ? "N" : "S"));
             }
-
             rawPolylines.push_back(std::move(polyline));
         }
     }
 
     if (rawPolylines.empty())
-    {
         throw InvalidGeoJsonFormatException(
             "Le fichier GeoJSON ne contient aucune géométrie LineString exploitable");
-    }
 #endif
 }
 
@@ -229,8 +187,8 @@ void GraphBuilder::loadGeoJsonFile(std::vector<RawPolyline>& rawPolylines,
 // =============================================================================
 
 TopologyGraph GraphBuilder::buildTopologyGraph(const std::vector<RawPolyline>& rawPolylines,
-                                                int                             utmZoneNumber,
-                                                bool                            isNorthernHemisphere)
+    int  utmZoneNumber,
+    bool isNorthernHemisphere)
 {
     TopologyGraph graph(m_snapGridMeters);
 
@@ -238,32 +196,19 @@ TopologyGraph GraphBuilder::buildTopologyGraph(const std::vector<RawPolyline>& r
     {
         std::vector<CoordinateXY> metricCoords =
             GeometryUtils::convertPolylineToMetric(polyline.wgs84Coords,
-                                                    utmZoneNumber,
-                                                    isNorthernHemisphere);
-        if (metricCoords.size() < 2)
-        {
-            continue;
-        }
+                utmZoneNumber,
+                isNorthernHemisphere);
+        if (metricCoords.size() < 2) continue;
 
-        // Accrochage sur grille
         for (auto& coord : metricCoords)
-        {
             coord = GeometryUtils::snapToMetricGrid(coord.x, coord.y, m_snapGridMeters);
-        }
 
-        // Une arête par segment consécutif
-        for (std::size_t index = 1; index < metricCoords.size(); ++index)
+        for (std::size_t i = 1; i < metricCoords.size(); ++i)
         {
-            if (metricCoords[index] == metricCoords[index - 1])
-            {
-                continue;  // Segment dégénéré après snap
-            }
-            const int startNodeId = graph.getOrCreateNode(metricCoords[index - 1].x,
-                                                           metricCoords[index - 1].y);
-            const int endNodeId   = graph.getOrCreateNode(metricCoords[index].x,
-                                                           metricCoords[index].y);
-            graph.addEdge(startNodeId, endNodeId,
-                          { metricCoords[index - 1], metricCoords[index] });
+            if (metricCoords[i] == metricCoords[i - 1]) continue;
+            const int startId = graph.getOrCreateNode(metricCoords[i - 1].x, metricCoords[i - 1].y);
+            const int endId = graph.getOrCreateNode(metricCoords[i].x, metricCoords[i].y);
+            graph.addEdge(startId, endId, { metricCoords[i - 1], metricCoords[i] });
         }
     }
 
@@ -274,10 +219,8 @@ TopologyGraph GraphBuilder::buildTopologyGraph(const std::vector<RawPolyline>& r
     graph.mergeCloseNodes(m_endpointSnapMeters);
 
     if (graph.edges.empty())
-    {
         throw InvalidTopologyException(
             "Aucune arête construite depuis le GeoJSON — vérifier le fichier source");
-    }
 
     LOG_DEBUG(m_logger,
         "Après fusion (" + std::to_string(m_endpointSnapMeters) + " m) : "
@@ -295,14 +238,42 @@ TopologyGraph GraphBuilder::buildTopologyGraph(const std::vector<RawPolyline>& r
 std::set<int> GraphBuilder::computeBoundaryNodeIds(const TopologyGraph& graph) const
 {
     std::set<int> boundaryIds;
+
+    int terminus = 0;
+    int switches = 0;
+    int crossings = 0;
+
     for (const auto& [nodeId, adjacencyList] : graph.adjacency)
     {
         const int degree = static_cast<int>(adjacencyList.size());
-        if (degree == NodeDegreeThresholds::TERMINUS
-         || degree >= NodeDegreeThresholds::JUNCTION_MINIMUM)
+
+        if (degree == NodeDegreeThresholds::TERMINUS)
         {
             boundaryIds.insert(nodeId);
+            ++terminus;
+        }
+        else if (degree == NodeDegreeThresholds::SWITCH_PORT_COUNT)
+        {
+            // Aiguillage en Y : exactement 3 branches
+            boundaryIds.insert(nodeId);
+            ++switches;
+        }
+        else if (degree > NodeDegreeThresholds::SWITCH_PORT_COUNT)
+        {
+            // Croisement (degré 4+) : frontière pour découper les Straights,
+            // mais PAS un aiguillage — sera ignoré par detectSwitches.
+            boundaryIds.insert(nodeId);
+            ++crossings;
+            LOG_DEBUG(m_logger,
+                "Nœud frontière degré " + std::to_string(degree)
+                + " (croisement, non-switch) — nodeId=" + std::to_string(nodeId));
         }
     }
+
+    LOG_INFO(m_logger,
+        "Frontières : " + std::to_string(terminus) + " terminus, "
+        + std::to_string(switches) + " aiguillage(s) potentiel(s), "
+        + std::to_string(crossings) + " croisement(s) ignoré(s)");
+
     return boundaryIds;
 }

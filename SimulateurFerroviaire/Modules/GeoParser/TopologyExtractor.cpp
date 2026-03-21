@@ -68,23 +68,36 @@ std::vector<SwitchBlock> TopologyExtractor::detectSwitches()
     std::vector<SwitchBlock> switches;
     int switchIndex = 0;
 
-    std::vector<int> junctionNodeIds;
+    // Tri déterministe des nœuds candidats
+    std::vector<int> candidateNodeIds;
     for (const auto& [nodeId, adjacencyList] : graph.adjacency)
-        if (static_cast<int>(adjacencyList.size()) >= NodeDegreeThresholds::JUNCTION_MINIMUM)
-            junctionNodeIds.push_back(nodeId);
-
-    std::sort(junctionNodeIds.begin(), junctionNodeIds.end());
-
-    for (int nodeId : junctionNodeIds)
     {
-        const CoordinateXY& metricPosition = graph.nodePositions[nodeId];
-        const LatLon junctionCoordinate =
-            GeometryUtils::metricUtmToWgs84(metricPosition,
+        const int degree = static_cast<int>(adjacencyList.size());
+
+        // Un aiguillage ferroviaire est une jonction en Y : exactement 3 branches.
+        // Les nœuds de degré > 3 (croisements en X, etc.) sont des frontières
+        // pour le découpage des Straights, mais ne sont PAS des aiguillages.
+        if (degree == NodeDegreeThresholds::SWITCH_PORT_COUNT)
+            candidateNodeIds.push_back(nodeId);
+        else if (degree > NodeDegreeThresholds::SWITCH_PORT_COUNT)
+            LOG_WARNING(m_logger,
+                "Nœud de degré " + std::to_string(degree)
+                + " ignoré comme aiguillage (croisement ?) — nodeId="
+                + std::to_string(nodeId));
+    }
+
+    std::sort(candidateNodeIds.begin(), candidateNodeIds.end());
+
+    for (int nodeId : candidateNodeIds)
+    {
+        const CoordinateXY& metricPos = graph.nodePositions[nodeId];
+        const LatLon junction =
+            GeometryUtils::metricUtmToWgs84(metricPos,
                 m_graphResult.utmZoneNumber,
                 m_graphResult.isNorthernHemisphere);
 
         const std::string switchId = "sw/" + std::to_string(switchIndex++);
-        switches.emplace_back(switchId, junctionCoordinate);
+        switches.emplace_back(switchId, junction);
 
         m_nodeIdToSwitchId[nodeId] = switchId;
         m_switchIdToNodeId[switchId] = nodeId;
@@ -103,9 +116,9 @@ std::vector<StraightBlock> TopologyExtractor::extractStraights()
     TopologyGraph& graph = m_graphResult.topologyGraph;
     const std::set<int>& boundary = m_graphResult.boundaryNodeIds;
 
-    std::set<std::string>              visitedEdgeIds;
+    std::set<std::string>               visitedEdgeIds;
     std::set<std::tuple<int, int, int>> seenGeometryHashes;
-    std::vector<StraightBlock>         straights;
+    std::vector<StraightBlock>          straights;
     int straightIndex = 0;
 
     for (int startNodeId : boundary)
@@ -180,7 +193,6 @@ int TopologyExtractor::walkPathUntilBoundary(int                        startNod
 
         const TopologyEdge& edge = edgeIt->second;
         std::vector<CoordinateXY> edgeCoords = edge.geometry;
-
         if (edge.startNodeIndex != currentNodeId)
             std::reverse(edgeCoords.begin(), edgeCoords.end());
 
@@ -267,6 +279,7 @@ std::vector<StraightBlock> TopologyExtractor::splitLongStraights(
         }
 
         const double chunkLength = totalMetricLength / static_cast<double>(chunkCount);
+        const std::string baseId = straight.getId();
 
         std::size_t coordIdx = 0;
         double      accumulated = 0.0;
@@ -275,7 +288,6 @@ std::vector<StraightBlock> TopologyExtractor::splitLongStraights(
             currentChunk.push_back(metricCoords[0]);
 
         int chunkIdx = 0;
-        const std::string baseId = straight.getId();   // save before potential move
 
         while (coordIdx + 1 < metricCoords.size() && chunkIdx < chunkCount)
         {
@@ -302,8 +314,7 @@ std::vector<StraightBlock> TopologyExtractor::splitLongStraights(
                 if (currentChunk.size() >= 2)
                 {
                     const std::string chunkId = (chunkIdx == 0)
-                        ? baseId
-                        : baseId + "_c" + std::to_string(chunkIdx);
+                        ? baseId : baseId + "_c" + std::to_string(chunkIdx);
 
                     std::vector<LatLon> chunkWgs84 = GeometryUtils::convertPolylineToWgs84(
                         currentChunk, m_graphResult.utmZoneNumber, m_graphResult.isNorthernHemisphere);
@@ -327,8 +338,7 @@ std::vector<StraightBlock> TopologyExtractor::splitLongStraights(
                 currentChunk.push_back(metricCoords.back());
 
             const std::string chunkId = (chunkIdx == 0)
-                ? baseId
-                : baseId + "_c" + std::to_string(chunkIdx);
+                ? baseId : baseId + "_c" + std::to_string(chunkIdx);
 
             std::vector<LatLon> chunkWgs84 = GeometryUtils::convertPolylineToWgs84(
                 currentChunk, m_graphResult.utmZoneNumber, m_graphResult.isNorthernHemisphere);
@@ -358,7 +368,6 @@ void TopologyExtractor::wireTopology(std::vector<SwitchBlock>& switches,
     for (auto& sw : switches)  switchById[sw.getId()] = &sw;
     for (auto& st : straights) straightById[st.getId()] = &st;
 
-    // nodeId → liste des StraightBlock IDs touchant ce nœud
     std::unordered_map<int, std::vector<std::string>> nodeToStraightIds;
     for (const auto& [straightId, endpoints] : m_straightEndpointNodeIds)
     {
@@ -367,18 +376,17 @@ void TopologyExtractor::wireTopology(std::vector<SwitchBlock>& switches,
         if (endNode >= 0) nodeToStraightIds[endNode].push_back(straightId);
     }
 
-    // Peuplement des branchIds des switches
+    // Branches des switches (seulement les nœuds de degré 3 = vrais aiguillages)
     for (auto& sw : switches)
     {
         const auto nodeIt = m_switchIdToNodeId.find(sw.getId());
         if (nodeIt == m_switchIdToNodeId.end()) continue;
-        const int junctionNodeId = nodeIt->second;
 
-        for (const auto& straightId : nodeToStraightIds[junctionNodeId])
+        for (const auto& straightId : nodeToStraightIds[nodeIt->second])
             sw.addBranchId(straightId);
     }
 
-    // Peuplement des neighbourIds des straights (via les nœuds de switch)
+    // Voisins des Straights via les nœuds de switch
     for (const auto& [straightId, endpoints] : m_straightEndpointNodeIds)
     {
         auto stIt = straightById.find(straightId);
@@ -404,8 +412,8 @@ void TopologyExtractor::wireTopology(std::vector<SwitchBlock>& switches,
             if (stIt == straightById.end()) continue;
             StraightBlock& st = *stIt->second;
 
-            if (i > 0)                      st.addNeighbourId(chunkIds[i - 1]);
-            if (i + 1 < chunkIds.size())    st.addNeighbourId(chunkIds[i + 1]);
+            if (i > 0)                   st.addNeighbourId(chunkIds[i - 1]);
+            if (i + 1 < chunkIds.size()) st.addNeighbourId(chunkIds[i + 1]);
         }
     }
 }
