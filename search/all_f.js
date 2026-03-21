@@ -15,10 +15,11 @@ var searchData=
   ['renderswitchblock_12',['renderSwitchBlock',['../classTopologyRenderer.html#a1641df30af7ec14097c50b8cfc4a9824',1,'TopologyRenderer']]],
   ['renderswitchbranches_13',['renderSwitchBranches',['../classTopologyRenderer.html#a94cd0b11ecdb050db826110fc4a9e175',1,'TopologyRenderer']]],
   ['rendu_20et_20exportation_14',['TopologyRenderer — Rendu et exportation',['../index.html#renderer',1,'']]],
-  ['replaceneighbourid_15',['replaceNeighbourId',['../classStraightBlock.html#afb372797f7bc0e80b8dd97c781197772',1,'StraightBlock']]],
-  ['reportprogress_16',['reportProgress',['../classGeoParser.html#ac1bf91960abbe3c2b4a2090f5cb84c82',1,'GeoParser']]],
-  ['resize_17',['resize',['../classPCCPanel.html#afddac4ff78519cb2a37e74b62ba76d3b',1,'PCCPanel::resize()'],['../classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a',1,'WebViewPanel::resize()']]],
-  ['resource_2eh_18',['Resource.h',['../Resource_8h.html',1,'']]],
-  ['root_19',['root',['../structSwitchBlock_1_1SwitchBranches.html#ab5e0217ec069bb25c1e3c3af1eb2e38a',1,'SwitchBlock::SwitchBranches']]],
-  ['run_20',['run',['../classApplication.html#a8cf8941c8db90117d3735bce5ae1fdf4',1,'Application']]]
+  ['rendu_20gdi_15',['TCORenderer — Rendu GDI',['../index.html#tco',1,'']]],
+  ['replaceneighbourid_16',['replaceNeighbourId',['../classStraightBlock.html#afb372797f7bc0e80b8dd97c781197772',1,'StraightBlock']]],
+  ['reportprogress_17',['reportProgress',['../classGeoParser.html#ac1bf91960abbe3c2b4a2090f5cb84c82',1,'GeoParser']]],
+  ['resize_18',['resize',['../classPCCPanel.html#afddac4ff78519cb2a37e74b62ba76d3b',1,'PCCPanel::resize()'],['../classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a',1,'WebViewPanel::resize()']]],
+  ['resource_2eh_19',['Resource.h',['../Resource_8h.html',1,'']]],
+  ['root_20',['root',['../structSwitchBlock_1_1SwitchBranches.html#ab5e0217ec069bb25c1e3c3af1eb2e38a',1,'SwitchBlock::SwitchBranches']]],
+  ['run_21',['run',['../classApplication.html#a8cf8941c8db90117d3735bce5ae1fdf4',1,'Application']]]
 ];

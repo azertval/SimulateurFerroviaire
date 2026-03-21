@@ -99,7 +99,9 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li class="level3"><a href="#renderer">TopologyRenderer — Rendu et exportation</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#hmi">HMI — Interface utilisateur</a><ul><li class="level3"><a href="#binding">Binding bidirectionnel Leaflet ↔ C++</a></li>
+<li class="level2"><a href="#hmi">HMI — Interface utilisateur</a><ul><li class="level3"><a href="#pcc">Panneau PCC — Vue TCO</a></li>
+<li class="level3"><a href="#tco">TCORenderer — Rendu GDI</a></li>
+<li class="level3"><a href="#binding">Binding bidirectionnel Leaflet ↔ C++</a></li>
 </ul>
 </li>
 <li class="level2"><a href="#autotoc_md3">&lt;/blockquote&gt;</a></li>
@@ -137,6 +139,7 @@ Description</h1>
 <li>Résoudre les pointeurs inter-blocs et construire les index de lookup</li>
 <li>Stocker le modèle dans un singleton partagé et le visualiser dans un WebView</li>
 <li>Permettre une interaction bidirectionnelle <a class="el" href="classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> ↔ C++ (clic → mise à jour modèle → rendu)</li>
+<li>Afficher une vue PCC type TCO SNCF superposée à la carte, togglable via F2</li>
 </ul>
 <hr  />
 <h1><a class="anchor" id="engine"></a>
@@ -215,11 +218,68 @@ HMI — Interface utilisateur</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><a class="el" href="classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué.">WebViewPanel</a>   </td><td class="markdownTableBodyNone">Affichage cartographique <a class="el" href="classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> embarqué via WebView2    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="classPCCPanel.html">PCCPanel</a>   </td><td class="markdownTableBodyNone">Panneau PCC superposé togglable (F2 / menu Vue), child window Win32    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classTCORenderer.html">TCORenderer</a>   </td><td class="markdownTableBodyNone">Renderer GDI statique du schéma TCO — projection GPS → pixels + dessin voies/aiguillages    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a class="el" href="classAboutDialog.html" title="Boîte de dialogue modale &quot;À propos&quot; de l&#39;application.">AboutDialog</a>   </td><td class="markdownTableBodyNone">Boîte de dialogue modale "À propos"    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><a class="el" href="classFileOpenDialog.html" title="Sélecteur de fichier GeoJSON (ou JSON) natif Win32.">FileOpenDialog</a>   </td><td class="markdownTableBodyNone">Sélecteur de fichier GeoJSON (GetOpenFileNameA)    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a class="el" href="classFileSaveDialog.html" title="Sauvegarde de fichier GeoJSON (ou JSON) natif Win32.">FileSaveDialog</a>   </td><td class="markdownTableBodyNone">Dialogue de sauvegarde GeoJSON (GetSaveFileNameA)   </td></tr>
+</table>
+<h3><a class="anchor" id="pcc"></a>
+Panneau PCC — Vue TCO</h3>
+<p>Le panneau PCC est une <code>WS_CHILD</code> window superposée au <code><a class="el" href="classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué.">WebViewPanel</a></code>, togglée via <b>F2</b> ou le menu <b>Vue → Panneau PCC</b>. Il est masqué par défaut et ne perturbe pas la carte <a class="el" href="classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>.</p>
+<p><a class="el" href="classPCCPanel.html">PCCPanel</a> délègue l'intégralité du rendu à <a class="el" href="classTCORenderer.html">TCORenderer</a> (appelé dans <code>WM_PAINT</code>). Le logger HMI (<code><a class="el" href="classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a>{"HMI"}</code>) est partagé par injection de référence depuis <code><a class="el" href="classMainWindow.html" title="Fenêtre principale de l&#39;application SimulateurFerroviaire.">MainWindow</a></code>.</p>
+<p><b>Cycle de vie :</b></p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Méthode   </th><th class="markdownTableHeadNone">Déclencheur    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="classPCCPanel.html#a8c381e0a06238c65ab19fdeba3c93608" title="Enregistre la classe Win32 et crée la fenêtre enfant masquée.">PCCPanel::create()</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar.">MainWindow::create()</a></code> — après <code><a class="el" href="classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1" title="Initialise WebView2 dans une fenêtre Win32 existante.">WebViewPanel::create()</a></code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="classPCCPanel.html#a1b37a13eaa0a03be291722243c4daf52" title="Alterne la visibilité du panneau (masqué ↔ visible).">PCCPanel::toggle()</a></code>   </td><td class="markdownTableBodyNone">F2 ou <code>IDM_VIEW_PCC</code> — place le panneau en <code>HWND_TOP</code> à l'affichage    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="classPCCPanel.html#afddac4ff78519cb2a37e74b62ba76d3b" title="Redimensionne le panneau pour couvrir toute la zone cliente du parent.">PCCPanel::resize()</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="classMainWindow.html#a74866b6b18c52698bdb52f339ad80830" title="Quand la fenêtre est redimensionnée, ajuste les éléments graphiques en conséquence.">MainWindow::onSizeUpdate()</a></code> — couvre toute la zone cliente parente    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="classPCCPanel.html#ace0b131cb0cdfc453c5ae7d3d90686af" title="Force un rafraîchissement du dessin TCO.">PCCPanel::refresh()</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="classMainWindow.html#a90cae565f67d1291d690d974547041a0" title="Gère la fin réussie du parsing (WM_PARSING_SUCCESS).">MainWindow::onParsingSuccess()</a></code> — invalide le rect pour forcer <code>WM_PAINT</code>   </td></tr>
+</table>
+<p><b>Z-order :</b> lors du toggle affichage, <code>SetWindowPos(..., HWND_TOP, ..., SWP_SHOWWINDOW)</code> place le panneau au-dessus du HWND WebView2, garantissant la visibilité.</p>
+<h3><a class="anchor" id="tco"></a>
+TCORenderer — Rendu GDI</h3>
+<p>Classe utilitaire statique, sans état. Lit <a class="el" href="classTopologyRepository.html">TopologyRepository</a> au moment du dessin.</p>
+<p><b>Conventions de couleurs (style TCO SNCF) :</b></p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">État   </th><th class="markdownTableHeadNone">Couleur    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Fond   </td><td class="markdownTableBodyNone">Noir <code>RGB(0,0,0)</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Voie libre (FREE)   </td><td class="markdownTableBodyNone">Blanc cassé <code>RGB(220,220,220)</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Voie occupée (OCCUPIED)   </td><td class="markdownTableBodyNone">Rouge <code>RGB(220,50,50)</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Voie inactive (INACTIVE)   </td><td class="markdownTableBodyNone">Gris <code>RGB(80,80,80)</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Branche normale active   </td><td class="markdownTableBodyNone">Vert <code>RGB(0,200,80)</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Branche déviation active   </td><td class="markdownTableBodyNone">Jaune <code>RGB(220,200,0)</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Erreur   </td><td class="markdownTableBodyNone">Magenta <code>RGB(255, 0, 216)</code>   </td></tr>
+</table>
+<p><b>Projection GPS → pixels :</b> Normalisation linéaire min/max sur l'ensemble des coordonnées (straights + jonctions + tips). Marge de 5 % appliquée de chaque côté. Axe Y inversé (latitude croissante → Y décroissant).</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Méthode   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="classTCORenderer.html#a84a480ca1f9b2d8dffd5a51148739898" title="Point d&#39;entrée unique du rendu TCO.">TCORenderer::draw()</a></code>   </td><td class="markdownTableBodyNone">Point d'entrée — fond + délégation aux sous-renderers    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="classTCORenderer.html#abfcb79ee489f92d1e8ddd3cfe7ce7bb6" title="Calcule la Projection à partir du contenu de TopologyRepository.">TCORenderer::computeProjection()</a></code>   </td><td class="markdownTableBodyNone">Calcul des bornes GPS et paramètres de projection    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="classTCORenderer.html#aeed8cc58c834a65669010f32359d4610" title="Dessine tous les StraightBlocks sous forme de polyligne GDI.">TCORenderer::drawStraights()</a></code>   </td><td class="markdownTableBodyNone">Polyligne GDI par <a class="el" href="classStraightBlock.html">StraightBlock</a>, colorisée par état    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="classTCORenderer.html#abac93569443d9bdd38b2dfb5cbd7e30b" title="Dessine tous les SwitchBlocks (jonction + 3 branches).">TCORenderer::drawSwitches()</a></code>   </td><td class="markdownTableBodyNone">3 branches + disque de jonction par <a class="el" href="classSwitchBlock.html">SwitchBlock</a> orienté   </td></tr>
 </table>
 <h3><a class="anchor" id="binding"></a>
 Binding bidirectionnel Leaflet ↔ C++</h3>

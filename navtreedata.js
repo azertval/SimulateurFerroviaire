@@ -32,6 +32,8 @@ var NAVTREE =
         [ "TopologyRenderer — Rendu et exportation", "index.html#renderer", null ]
       ] ],
       [ "HMI — Interface utilisateur", "index.html#hmi", [
+        [ "Panneau PCC — Vue TCO", "index.html#pcc", null ],
+        [ "TCORenderer — Rendu GDI", "index.html#tco", null ],
         [ "Binding bidirectionnel Leaflet ↔ C++", "index.html#binding", null ]
       ] ],
       [ "</blockquote>", "index.html#autotoc_md3", null ]
