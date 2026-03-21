@@ -142,6 +142,17 @@ public:
     [[nodiscard]] const std::optional<std::string>& getDoubleOnDeviation() const { return m_doubleOnDeviation; }
 
     /**
+     * @brief Enregistre les pointeurs vers les switches partenaires.
+     *
+     * Appelé par GeoParser après transfert en repository (adresses stables).
+     * Chaque paramètre est nullptr si la branche correspondante n'a pas de partenaire.
+     *
+     * @param partnerOnNormal    Switch connecté via la branche normale.
+     * @param partnerOnDeviation Switch connecté via la branche déviée.
+     */
+    void setPartners(SwitchBlock* partnerOnNormal, SwitchBlock* partnerOnDeviation);
+
+    /**
      * @brief Retourne l'ID du partenaire (peu importe la branche). Nullopt si pas un double.
      */
     [[nodiscard]] std::optional<std::string> getPartnerId() const
@@ -241,13 +252,21 @@ public:
      * Appelé par MainWindow::onSwitchClick() en réponse à un clic Leaflet.
      * Ne touche pas à la topologie — uniquement l'état opérationnel.
      */
-    void setActiveBranch(ActiveBranch branch);
+    void setActiveBranch(ActiveBranch branch, const bool propagate = true);
 
     /**
     * @brief Alterne entre NORMAL et DEVIATION.
     * Équivalent à setActiveBranch(!current).
+    * 
+    * @return m_activeBranch
     */
-    void toggleActiveBranch();
+    ActiveBranch toggleActiveBranch(const bool propagate = true);
+
+    /**
+    * @brief helper to get the current active branch
+    * @return m_activeBranch
+    */
+    ActiveBranch getActiveBranch() { return m_activeBranch; }
 
     /**
      * @brief Convertit l'état ActiveBranch courant en chaîne lisible.
@@ -328,6 +347,18 @@ private:
     std::optional<std::string> m_doubleOnDeviation;
 
     /**
+     * Pointeur non-propriétaire vers le partenaire côté branche NORMALE.
+     * Nullptr si pas de double sur cette branche.
+     */
+    SwitchBlock* m_partnerOnNormal = nullptr;
+
+    /**
+     * Pointeur non-propriétaire vers le partenaire côté branche DEVIEE.
+     * Nullptr si pas de double sur cette branche.
+     */
+    SwitchBlock* m_partnerOnDeviation = nullptr;
+
+    /**
      * Polyligne complète du segment absorbé côté normal,
      * orientée depuis la jonction de ce switch vers le partenaire.
      * Vide si non applicable.
@@ -342,6 +373,7 @@ private:
 
     /** Position opérationnelle courante. NORMAL par défaut. */
     ActiveBranch m_activeBranch = ActiveBranch::NORMAL;
+
 
     // =========================================================================
     // Helpers privés

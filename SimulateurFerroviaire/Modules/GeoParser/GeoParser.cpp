@@ -101,6 +101,34 @@ void GeoParser::parse(bool enableDebugDump)
     for (auto& sw : topo.switches)
         repoData.switches.push_back(std::make_unique<SwitchBlock>(std::move(sw)));
 
+    // Résolution des pointeurs partenaires après transfert en repository.
+    auto& switches = repoData.switches;
+
+    for (auto& sw : switches)
+    {
+        SwitchBlock* partnerNormal = nullptr;
+        SwitchBlock* partnerDeviation = nullptr;
+
+        // m_doubleOnNormal / m_doubleOnDeviation contiennent déjà les IDs
+        if (sw->getDoubleOnNormal())
+        {
+            const auto& id = *sw->getDoubleOnNormal();
+            const auto it = std::find_if(switches.begin(), switches.end(),
+                [&id](const auto& s) { return s->getId() == id; });
+            if (it != switches.end()) partnerNormal = it->get();
+        }
+
+        if (sw->getDoubleOnDeviation())
+        {
+            const auto& id = *sw->getDoubleOnDeviation();
+            const auto it = std::find_if(switches.begin(), switches.end(),
+                [&id](const auto& s) { return s->getId() == id; });
+            if (it != switches.end()) partnerDeviation = it->get();
+        }
+
+        sw->setPartners(partnerNormal, partnerDeviation);
+    }
+
     repoData.straights.reserve(topo.straights.size());
     for (auto& st : topo.straights)
         repoData.straights.push_back(std::make_unique<StraightBlock>(std::move(st)));

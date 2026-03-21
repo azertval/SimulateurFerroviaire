@@ -296,14 +296,7 @@ void MainWindow::onWebMessage(const std::string& jsonMessage)
         const std::string type = msg.value("type", "");
 
         if (type == "switch_click")
-        {
-            
-            onSwitchClick(msg.value("id", ""));
-
-            const std::string partnerId = msg.value("partnerId", "");
-            if (not partnerId.empty())
-                onSwitchClick(partnerId);
-        }          
+            onSwitchClick(msg.value("id", ""));       
         else
             LOG_WARNING(m_logger, "Message JS de type inconnu : " + type);
     }
@@ -316,8 +309,6 @@ void MainWindow::onWebMessage(const std::string& jsonMessage)
 
 void MainWindow::onSwitchClick(const std::string& switchId)
 {
-    if (switchId.empty()) { LOG_WARNING(m_logger, "onSwitchClick — ID vide"); return; }
-
     auto& switches = TopologyRepository::instance().data().switches;
 
     const auto it = std::find_if(switches.begin(), switches.end(),
@@ -325,12 +316,31 @@ void MainWindow::onSwitchClick(const std::string& switchId)
 
     if (it == switches.end())
     {
-        LOG_WARNING(m_logger, "onSwitchClick — switch introuvable : " + switchId);
+        LOG_WARNING(m_logger, "onSwitchClick — introuvable : " + switchId);
         return;
     }
 
-    (*it)->toggleActiveBranch();
+    SwitchBlock& sw = **it;
+    const bool toDeviation = (sw.toggleActiveBranch() == ActiveBranch::DEVIATION);
 
-    LOG_INFO(m_logger,
-        "Switch " + switchId + " → " + ((*it)->isDeviationActive() ? "DEVIATION" : "NORMAL"));
+    std::wstring script = buildApplyStateScript(sw.getId(), toDeviation);
+
+    // Partenaire sur la branche qui vient de devenir active
+    const std::optional<std::string>& DoubleOnDeviationPartner = sw.getDoubleOnDeviation();
+    const std::optional<std::string>& DoubleOnNormalPartner = sw.getDoubleOnNormal();
+
+    if (DoubleOnDeviationPartner)
+        script += buildApplyStateScript(*DoubleOnDeviationPartner, toDeviation);
+
+    if (DoubleOnNormalPartner)
+        script += buildApplyStateScript(*DoubleOnNormalPartner, toDeviation);
+
+    m_webViewPanel.executeScript(script);
+}
+
+std::wstring MainWindow::buildApplyStateScript(const std::string& switchId, bool toDeviation)
+{
+    return L"window.switchApplyState(\""
+        + std::wstring(switchId.begin(), switchId.end())
+        + L"\"," + (toDeviation ? L"true" : L"false") + L");";
 }

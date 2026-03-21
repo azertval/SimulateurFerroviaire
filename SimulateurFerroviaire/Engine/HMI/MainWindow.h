@@ -193,6 +193,14 @@ private:
     */
     void onSwitchClick(const std::string& switchId);
 
+    /**
+     * @brief Construit le script JS de mise à jour visuelle d'un switch.
+     * @param switchId    ID du switch.
+     * @param toDeviation Nouvel état (true = deviation).
+     * @return            Instruction JavaScript pour executeScript().
+     */
+    std::wstring buildApplyStateScript(const std::string& switchId, bool toDeviation);
+
 
     // =========================================================================
     // Membres

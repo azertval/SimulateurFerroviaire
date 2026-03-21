@@ -122,17 +122,45 @@ void SwitchBlock::absorbLink(const std::string& linkId,
     }
 }
 
-void SwitchBlock::setActiveBranch(ActiveBranch branch)
+void SwitchBlock::setPartners(SwitchBlock* partnerOnNormal, SwitchBlock* partnerOnDeviation)
 {
-   m_activeBranch = branch;
-   LOG_DEBUG(m_logger, "Switch " + m_id + " set active branch to " + activeBranchToString());
+    m_partnerOnNormal = partnerOnNormal;
+    m_partnerOnDeviation = partnerOnDeviation;
+    if (partnerOnNormal)
+        LOG_DEBUG(m_logger, m_id + " partner normal → " + partnerOnNormal->getId());
+    if (partnerOnDeviation)
+        LOG_DEBUG(m_logger, m_id + " partner deviation → " + partnerOnDeviation->getId());
 }
 
-void SwitchBlock::toggleActiveBranch()
+void SwitchBlock::setActiveBranch(ActiveBranch branch, bool propagate)
+{
+    m_activeBranch = branch;
+    LOG_DEBUG(m_logger, m_id + " set → " + activeBranchToString());
+
+    if (!propagate) return;
+
+    if (m_partnerOnDeviation)
+        m_partnerOnDeviation->setActiveBranch(branch, false);
+    if (m_partnerOnNormal)
+        m_partnerOnNormal -> setActiveBranch(branch, false);
+}
+
+ActiveBranch SwitchBlock::toggleActiveBranch(bool propagate)
 {
     m_activeBranch = (m_activeBranch == ActiveBranch::NORMAL)
         ? ActiveBranch::DEVIATION : ActiveBranch::NORMAL;
-    LOG_DEBUG(m_logger, "Switch " + m_id + " toggle active branch to " + activeBranchToString());
+
+    LOG_DEBUG(m_logger, m_id + " toggled → " + activeBranchToString());
+
+    if (propagate)
+    {
+        if(m_partnerOnDeviation)
+            m_partnerOnDeviation->toggleActiveBranch(false);
+        if (m_partnerOnNormal)
+            m_partnerOnNormal->toggleActiveBranch(false);
+    }
+
+    return m_activeBranch;
 }
 
 
