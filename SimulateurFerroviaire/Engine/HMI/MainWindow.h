@@ -18,10 +18,9 @@
 #pragma once
 
 #include "framework.h"
-#include "Modules/GeoParser/GeoParsingTask.h"
 #include "Engine/HMI/ProgressBar.h"
 #include "Engine/HMI/WebViewPanel/WebViewPanel.h"
-#include "Engine/Core/Logger/Logger.h"
+#include "Engine/HMI/PCCPanel/PCCPanel.h"
 
 /**
  * @class MainWindow
@@ -194,12 +193,12 @@ private:
     void onSwitchClick(const std::string& switchId);
 
     /**
-     * @brief Construit le script JS de mise à jour visuelle d'un switch.
-     * @param switchId    ID du switch.
-     * @param toDeviation Nouvel état (true = deviation).
-     * @return            Instruction JavaScript pour executeScript().
+     * @brief Bascule la visibilité du panneau PCC.
+     *
+     * Délègue à @ref PCCPanel::toggle. Appelé depuis @ref onCommand
+     * (IDM_VIEW_PCC) et depuis le gestionnaire @c WM_KEYDOWN (touche F2).
      */
-    std::wstring buildApplyStateScript(const std::string& switchId, bool toDeviation);
+    void onTogglePCC();
 
 
     // =========================================================================
@@ -229,4 +228,10 @@ private:
 
     /** Panneau WebView2 pour l'affichage de la carte ferroviaire. */
     WebViewPanel m_webViewPanel{m_logger};
+
+    /**
+     * @brief Panneau PCC superposé, togglé via F2 ou menu Vue → Panneau PCC.
+     * Créé dans @ref create, masqué par défaut.
+     */
+    PCCPanel m_pccPanel{m_logger};
 };

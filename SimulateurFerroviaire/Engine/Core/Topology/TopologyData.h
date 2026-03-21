@@ -8,6 +8,7 @@
 
 #include <memory>
 #include <vector>
+#include <unordered_map>
 
 #include "Modules/InteractiveElements/ShuntingElements/StraightBlock.h"
 #include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
