@@ -68,6 +68,31 @@ public:
      */
     [[nodiscard]] const std::vector<std::string>& getNeighbourIds() const { return m_neighbourIds; }
 
+    /**
+     * @brief Voisins topologiques d'un StraightBlock.
+     *
+     * Un straight est toujours borné par exactement deux extrémités.
+     * Chaque extrémité est soit un SwitchBlock, soit un autre StraightBlock
+     * (morceau découpé), soit nullptr (terminus).
+     */
+    struct StraightNeighbours
+    {
+        /** Bloc adjacent à l'extrémité A (front des coordonnées). */
+        ShuntingElement* prev = nullptr;
+
+        /** Bloc adjacent à l'extrémité B (back des coordonnées). */
+        ShuntingElement* next = nullptr;
+    };
+
+    /**
+     * @brief Enregistre les pointeurs prev/next après parsing.
+     * @param neighbours  Struct contenant les deux extrémités résolues.
+     */
+    void setNeighbourPointers(StraightNeighbours neighbours);
+
+    /** @brief Retourne les voisins résolus. Nullptr si non encore initialisé. */
+    [[nodiscard]] const StraightNeighbours& getNeighbours() const { return m_neighbours; }
+
     /** Longueur géodésique en mètres (Haversine), mise à jour par setCoordinates(). */
     [[nodiscard]] double getLengthMeters() const { return m_lengthMeters; }
 
@@ -108,13 +133,51 @@ public:
     void setCoordinates(std::vector<LatLon> coords);
 
 private:
+    /**
+     * Polyligne WGS-84 ordonnée du bloc.
+     * Premier point : extrémité A. Dernier point : extrémité B.
+     * Modifiable uniquement via setCoordinates() (Phase 6d) — recalcule automatiquement m_lengthMeters.
+     */
+    std::vector<LatLon> m_coordinates;
 
-    std::string              m_id;
-    std::vector<LatLon>      m_coordinates;
-    std::vector<std::string> m_neighbourIds;   ///< Toujours trié.
-    double                   m_lengthMeters = 0.0;
-    ShuntingState            m_state = ShuntingState::FREE;
+    /**
+     * IDs des blocs adjacents (StraightBlock ou SwitchBlock).
+     * Toujours trié lexicographiquement — addNeighbourId() maintient l'invariant.
+     * Peuplé en Phase 5b, muté en Phase 7 via replaceNeighbourId().
+     */
+    std::vector<std::string> m_neighbourIds;
 
+    /**
+     * Pointeurs non-propriétaires vers les blocs adjacents (SwitchBlock ou StraightBlock).
+     * Parallèle à m_neighbourIds — même ordre, même contenu sous forme de pointeurs.
+     * Propriété du TopologyRepository — ne pas delete.
+     */
+    StraightNeighbours m_neighbours;
+
+    /**
+     * Longueur géodésique totale en mètres, calculée par Haversine.
+     * Mise à jour automatiquement à la construction et à chaque appel à setCoordinates().
+     * Ne pas modifier directement — utiliser setCoordinates() pour garantir la cohérence.
+     */
+    double m_lengthMeters = 0.0;
+
+    /**
+     * @brief Calcule la longueur géodésique totale depuis m_coordinates.
+     *
+     * Somme des distances Haversine entre chaque paire de points consécutifs.
+     * Retourne 0 si m_coordinates contient moins de 2 points.
+     */
     [[nodiscard]] double computeGeodesicLength() const;
+
+    /**
+     * @brief Calcule la distance de Haversine entre deux points WGS-84.
+     *
+     * Formule exacte sur sphère de rayon 6 371 000 m.
+     * Utilisée en interne par computeGeodesicLength().
+     *
+     * @param a  Premier point (latitude, longitude en degrés décimaux).
+     * @param b  Second point.
+     * @return   Distance en mètres.
+     */
     static double haversineDistanceMeters(const LatLon& a, const LatLon& b);
 };

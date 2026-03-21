@@ -25,10 +25,21 @@ namespace
 SwitchBlock::SwitchBlock(std::string              switchId,
     LatLon                   junctionCoord,
     std::vector<std::string> initialBranchIds)
-    : m_id(std::move(switchId))
-    , m_junctionCoordinate(junctionCoord)
+    : m_junctionCoordinate(junctionCoord)
     , m_branchIds(std::move(initialBranchIds))
 {
+    m_id = std::move(switchId);
+}
+
+void SwitchBlock::setBranchPointers(SwitchBranches branches)
+{
+    m_branches = branches;
+    LOG_DEBUG(m_logger, m_id + " — root="
+        + (m_branches.root ? m_branches.root->getId() : "null")
+        + " normal="
+        + (m_branches.normal ? m_branches.normal->getId() : "null")
+        + " deviation="
+        + (m_branches.deviation ? m_branches.deviation->getId() : "null"));
 }
 
 
@@ -87,7 +98,7 @@ void SwitchBlock::computeTotalLength()
     const double normalLeg = haversineDistanceMeters(m_junctionCoordinate, *m_tipOnNormal);
     const double deviationLeg = haversineDistanceMeters(m_junctionCoordinate, *m_tipOnDeviation);
 
-    m_totalLengthMeters = rootLeg + std::max(normalLeg, deviationLeg);
+    m_totalLengthMeters = rootLeg + (((normalLeg) > (deviationLeg)) ? (normalLeg) : (deviationLeg));
 }
 
 
@@ -122,6 +133,32 @@ void SwitchBlock::absorbLink(const std::string& linkId,
     }
 }
 
+void SwitchBlock::setActiveBranch(ActiveBranch branch, bool propagate)
+{
+    m_activeBranch = branch;
+    LOG_DEBUG(m_logger, m_id + " set → " + activeBranchToString());
+
+    if (!propagate) return;
+
+    if (auto* p = getPartnerOnNormal())    p->setActiveBranch(branch, false);
+    if (auto* p = getPartnerOnDeviation()) p->setActiveBranch(branch, false);
+}
+
+ActiveBranch SwitchBlock::toggleActiveBranch(bool propagate)
+{
+    m_activeBranch = (m_activeBranch == ActiveBranch::NORMAL)
+        ? ActiveBranch::DEVIATION : ActiveBranch::NORMAL;
+
+    LOG_DEBUG(m_logger, m_id + " toggled → " + activeBranchToString());
+
+    if (propagate)
+    {
+        if (auto* p = getPartnerOnNormal())    p->setActiveBranch(m_activeBranch, false);
+        if (auto* p = getPartnerOnDeviation()) p->setActiveBranch(m_activeBranch, false);
+    }
+
+    return m_activeBranch;
+}
 
 // =============================================================================
 // Affichage

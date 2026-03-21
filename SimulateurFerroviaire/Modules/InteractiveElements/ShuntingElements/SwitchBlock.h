@@ -29,9 +29,19 @@
 #include <vector>
 
 #include "Modules/Coordinates/LatLon.h"
+#include "ShuntingElement.h"
+ /**
+  * @brief Branche active d'un aiguillage.
+  *
+  * NORMAL    : le train emprunte la voie directe (position repos).
+  * DEVIATION : le train emprunte la voie déviée (position basculée).
+  *
+  * Modifié en runtime par l'opérateur via clic Leaflet.
+  * N'est pas persisté entre deux parsings.
+  */
+enum class ActiveBranch { NORMAL, DEVIATION };
 
-
-class SwitchBlock
+class SwitchBlock : public ShuntingElement
 {
 public:
 
@@ -51,26 +61,83 @@ public:
         LatLon                   junctionCoord,
         std::vector<std::string> initialBranchIds = {});
 
+    // =========================================================================
+    // Interface ShuntingElement
+    // =========================================================================
+
+    [[nodiscard]] std::string            getId()    const override { return m_id; }
+    [[nodiscard]] InteractiveElementType getType()  const override { return InteractiveElementType::SWITCH; }
+    [[nodiscard]] ShuntingState          getState() const override { return m_state; }
+
+    void setState(ShuntingState state) { m_state = state; }
 
     // =========================================================================
     // Requêtes
     // =========================================================================
 
-    [[nodiscard]] const std::string& getId()                 const { return m_id; }
+    /**
+     * @brief Branches topologiques d'un SwitchBlock.
+     *
+     * Après orientation (Phase 6), chaque switch expose exactement 3 branches.
+     * Pour un double switch, normal ou deviation pointe vers le SwitchBlock partenaire.
+     */
+    struct SwitchBranches
+    {
+        /** Bloc sur la branche root (tronc entrant). */
+        ShuntingElement* root = nullptr;
+
+        /** Bloc sur la branche normale (sortie directe). */
+        ShuntingElement* normal = nullptr;
+
+        /** Bloc sur la branche déviée. */
+        ShuntingElement* deviation = nullptr;
+    };
+
+    /**
+     * @brief Enregistre les pointeurs root/normal/deviation après parsing.
+     * @param branches  Struct contenant les trois branches résolues.
+     */
+    void setBranchPointers(SwitchBranches branches);
+
+    /** @brief Retourne les branches résolues. Nullptr si non encore initialisé. */
+    [[nodiscard]] const SwitchBranches& getBranches() const { return m_branches; }
+
+    /** Coordonnée WGS-84 du point de jonction physique. */
     [[nodiscard]] const LatLon& getJunctionCoordinate() const { return m_junctionCoordinate; }
-    [[nodiscard]] const std::vector<std::string>& getBranchIds()          const { return m_branchIds; }
+
+    /**
+     * IDs des StraightBlocks connectés à la jonction.
+     * Peuplé en Phase 5b, muté en Phase 7 lors de l'absorption du segment de liaison.
+     */
+    [[nodiscard]] const std::vector<std::string>& getBranchIds() const { return m_branchIds; }
 
     /** True si Phase 6 a assigné root / normal / deviation. */
     [[nodiscard]] bool isOriented() const { return m_rootBranchId.has_value(); }
 
-    /** True si Phase 7 a absorbé un segment de liaison (double aiguille). */
+    /**
+     * True si Phase 7 a absorbé un segment de liaison (double aiguille).
+     * Un des deux champs m_doubleOnNormal ou m_doubleOnDeviation est renseigné.
+     */
     [[nodiscard]] bool isDouble() const
     {
         return m_doubleOnNormal.has_value() || m_doubleOnDeviation.has_value();
     }
 
-    [[nodiscard]] const std::optional<std::string>& getRootBranchId()      const { return m_rootBranchId; }
-    [[nodiscard]] const std::optional<std::string>& getNormalBranchId()    const { return m_normalBranchId; }
+    /** ID du StraightBlock entrant dans la jonction (branche tronc). Absent si non orienté. */
+    [[nodiscard]] const std::optional<std::string>& getRootBranchId() const { return m_rootBranchId; }
+
+    /**
+     * ID du StraightBlock de sortie principale.
+     * Pour un double switch côté normal : ID du partenaire (après absorption Phase 7).
+     * Absent si non orienté.
+     */
+    [[nodiscard]] const std::optional<std::string>& getNormalBranchId() const { return m_normalBranchId; }
+
+    /**
+     * ID du StraightBlock de sortie déviée.
+     * Pour un double switch côté deviation : ID du partenaire (après absorption Phase 7).
+     * Absent si non orienté.
+     */
     [[nodiscard]] const std::optional<std::string>& getDeviationBranchId() const { return m_deviationBranchId; }
 
     /** Point CDC à ~branchTipDistance depuis la jonction sur la branche root. */
@@ -100,13 +167,24 @@ public:
     [[nodiscard]] const std::optional<std::string>& getDoubleOnDeviation() const { return m_doubleOnDeviation; }
 
     /**
-     * @brief Retourne l'ID du partenaire (peu importe la branche). Nullopt si pas un double.
+     * @brief Retourne le switch partenaire côté normal, ou nullptr.
+     * Cast valide uniquement si isDouble() && getDoubleOnNormal().
      */
-    [[nodiscard]] std::optional<std::string> getPartnerId() const
+    [[nodiscard]] SwitchBlock* getPartnerOnNormal() const
     {
-        if (m_doubleOnNormal)    return m_doubleOnNormal;
-        if (m_doubleOnDeviation) return m_doubleOnDeviation;
-        return std::nullopt;
+        return m_doubleOnNormal
+            ? static_cast<SwitchBlock*>(m_branches.normal)
+            : nullptr;
+    }
+
+    /**
+        * @brief Retourne le switch partenaire côté deviation, ou nullptr.
+        */
+    [[nodiscard]] SwitchBlock* getPartnerOnDeviation() const
+    {
+        return m_doubleOnDeviation
+            ? static_cast<SwitchBlock*>(m_branches.deviation)
+            : nullptr;
     }
 
     /**
@@ -127,6 +205,15 @@ public:
 
     [[nodiscard]] const std::optional<double>& getTotalLengthMeters() const { return m_totalLengthMeters; }
 
+    /** Retourne la branche actuellement active (NORMAL par défaut). */
+    [[nodiscard]] ActiveBranch getActiveBranch() const { return m_activeBranch; }
+
+    /** Raccourci — évite la comparaison explicite à l'appelant. */
+    [[nodiscard]] bool isDeviationActive() const
+    {
+        return m_activeBranch == ActiveBranch::DEVIATION;
+    }
+
     /**
      * @brief Représentation textuelle pour le débogage.
      */
@@ -134,16 +221,11 @@ public:
 
 
     // =========================================================================
-    // Mutations — Phase 5b
+    // Mutations 
     // =========================================================================
 
     /** Ajoute un ID de branche (StraightBlock adjacent). Pas de doublon. */
     void addBranchId(const std::string& id);
-
-
-    // =========================================================================
-    // Mutations — Phase 6
-    // =========================================================================
 
     /**
      * @brief Assigne les rôles root / normal / deviation.
@@ -167,11 +249,6 @@ public:
      */
     void computeTotalLength();
 
-
-    // =========================================================================
-    // Mutations — Phase 7
-    // =========================================================================
-
     /**
      * @brief Absorbe le segment de liaison d'un double aiguille.
      *
@@ -194,29 +271,102 @@ public:
         const std::string& partnerId,
         std::vector<LatLon>       linkCoords);
 
-private:
+    /**
+     * @brief Assigne la branche active.
+     *
+     * Appelé par MainWindow::onSwitchClick() en réponse à un clic Leaflet.
+     * Ne touche pas à la topologie — uniquement l'état opérationnel.
+     */
+    void setActiveBranch(ActiveBranch branch, const bool propagate = true);
 
+    /**
+    * @brief Alterne entre NORMAL et DEVIATION.
+    * Équivalent à setActiveBranch(!current).
+    * 
+    * @return m_activeBranch
+    */
+    ActiveBranch toggleActiveBranch(const bool propagate = true);
+
+    /**
+    * @brief helper to get the current active branch
+    * @return m_activeBranch
+    */
+    ActiveBranch getActiveBranch() { return m_activeBranch; }
+
+    /**
+     * @brief Convertit l'état ActiveBranch courant en chaîne lisible.
+     * Utilisé exclusivement par les appels de log.
+     */
+    [[nodiscard]] std::string activeBranchToString() const
+    {
+        return m_activeBranch == ActiveBranch::DEVIATION ? "DEVIATION" : "NORMAL";
+    }
+
+private:
     // =========================================================================
     // Champs
     // =========================================================================
+    /** Coordonnée WGS-84 du point de jonction physique. */
+    LatLon m_junctionCoordinate;
 
-    std::string m_id;
-    LatLon      m_junctionCoordinate;
-
+    /**
+     * IDs des StraightBlocks connectés à la jonction.
+     * Peuplé en Phase 5b via addBranchId().
+     * Muté en Phase 7 lors de l'absorption du segment de liaison (double switch).
+     */
     std::vector<std::string> m_branchIds;
 
-    // --- Phase 6 ---
+    /**
+     * ID du StraightBlock entrant dans la jonction (côté tronc de l'aiguillage).
+     * Absent tant que Phase 6 n'a pas orienté le switch.
+     */
     std::optional<std::string> m_rootBranchId;
+
+    /**
+     * ID du StraightBlock de sortie principale (continuation directe du tronc).
+     * Absent tant que Phase 6 n'a pas orienté le switch.
+     * Remplacé par l'ID du partenaire en Phase 7 si le switch est un double côté normal.
+     */
     std::optional<std::string> m_normalBranchId;
+
+    /**
+     * ID du StraightBlock de sortie déviée.
+     * Absent tant que Phase 6 n'a pas orienté le switch.
+     * Remplacé par l'ID du partenaire en Phase 7 si le switch est un double côté deviation.
+     */
     std::optional<std::string> m_deviationBranchId;
 
+    /** Branches topologiques résolues après parsing. */
+    SwitchBranches m_branches;
+
+    /**
+     * Point CDC WGS-84 interpolé à ~branchTipDistance depuis la jonction, côté root.
+     * Sert de référence géométrique pour les vérifications d'écartement de voies.
+     * Absent si le switch n'est pas orienté.
+     */
     std::optional<LatLon> m_tipOnRoot;
+
+    /**
+     * Point CDC WGS-84 côté normal.
+     * Pour un double switch côté normal : jonction du partenaire (extrémité du segment absorbé).
+     * Absent si le switch n'est pas orienté.
+     */
     std::optional<LatLon> m_tipOnNormal;
+
+    /**
+     * Point CDC WGS-84 côté deviation.
+     * Pour un double switch côté deviation : jonction du partenaire.
+     * Absent si le switch n'est pas orienté.
+     */
     std::optional<LatLon> m_tipOnDeviation;
 
+    /**
+     * Longueur physique totale de traversée en mètres.
+     * Formule : root_leg + max(normal_leg, deviation_leg).
+     * Calculée par computeTotalLength() après Phase 6.
+     * Absent si les tips CDC ne sont pas tous disponibles.
+     */
     std::optional<double> m_totalLengthMeters;
-
-    // --- Phase 7 : double aiguille ---
 
     /** ID du partenaire si le lien absorbé était côté branche NORMALE. */
     std::optional<std::string> m_doubleOnNormal;
@@ -237,10 +387,23 @@ private:
      */
     std::vector<LatLon> m_absorbedDeviationCoords;
 
+    /** Position opérationnelle courante. NORMAL par défaut. */
+    ActiveBranch m_activeBranch = ActiveBranch::NORMAL;
+
 
     // =========================================================================
     // Helpers privés
     // =========================================================================
 
+    /**
+     * @brief Calcule la distance de Haversine entre deux points WGS-84.
+     *
+     * Formule exacte sur sphère de rayon 6 371 000 m.
+     * Utilisée en interne par computeTotalLength().
+     *
+     * @param a  Premier point (latitude, longitude en degrés décimaux).
+     * @param b  Second point.
+     * @return   Distance en mètres.
+     */
     static double haversineDistanceMeters(const LatLon& a, const LatLon& b);
 };

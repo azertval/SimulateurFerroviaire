@@ -1,8 +1,8 @@
 /**
- * @file  GeoJsonExporter.h
+ * @file  TopologyRenderer.h
  * @brief Exporteur de topologie ferroviaire au format GeoJSON.
  *
- * @see GeoJsonExporter
+ * @see TopologyRenderer
  */
 #pragma once
 
@@ -17,7 +17,7 @@
 using JsonDocument = nlohmann::json;
 
 /**
- * @class GeoJsonExporter
+ * @class TopologyRenderer
  * @brief Utilitaire statique d'export de la topologie ferroviaire en GeoJSON.
  *
  * Convertit :
@@ -26,10 +26,10 @@ using JsonDocument = nlohmann::json;
  *
  * Usage :
  * @code
- *   GeoJsonExporter::exportToFile("output.geojson");
+ *   TopologyRenderer::exportToFile("output.geojson");
  * @endcode
  */
-class GeoJsonExporter
+class TopologyRenderer
 {
 public:
 
@@ -103,6 +103,17 @@ public:
      */
     static std::wstring renderAllSwitchBranches();
 
+    /**
+     * @brief Génère le script JS de mise à jour visuelle d'un switch et ses partenaires.
+     *
+     * Appelé par MainWindow::onSwitchClick() après toggleActiveBranch().
+     * Propage automatiquement aux partenaires double switch si présents.
+     *
+     * @param sw  Switch dont l'état vient d'être modifié.
+     * @return    Série d'appels window.switchApplyState() prête pour executeScript().
+     */
+    static std::wstring updateSwitchBlocks(const SwitchBlock& sw);
+
 private:
     /**
     * @brief Convertit un StraightBlock en feature GeoJSON de type LineString.
@@ -132,19 +143,5 @@ private:
     */
     static std::wstring escapeForJavaScript(const std::string& input);
 
-    /**
-    * @brief Calcule le bearing en degrés entre deux points géographiques.
-     * @param a Point de départ (latitude, longitude).
-     * @param b Point d'arrivée (latitude, longitude).
-     * @return Bearing en degrés (0° = nord, 90° = est, 180° = sud, 270° = ouest).
-     *
-     * Utilise la formule de l'azimut géodésique pour calculer le bearing
-     * entre les deux points sur la sphère terrestre.
-     *
-     * Retourne 0 si les coordonnées sont invalides ou identiques.
-    */
-    static double bearingDeg(const LatLon& a, const LatLon& b);
-
-
-    GeoJsonExporter() = delete;
+    TopologyRenderer() = delete;
 };

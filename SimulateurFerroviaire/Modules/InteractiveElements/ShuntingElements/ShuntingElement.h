@@ -38,11 +38,9 @@ enum class ShuntingState
 class ShuntingElement : public InteractiveElement
 {
 public:
-
     // -------------------------------------------------------------------------
     // Construction / Destruction
     // -------------------------------------------------------------------------
-
     ShuntingElement() = default;
     virtual ~ShuntingElement() = default;
 
@@ -78,4 +76,10 @@ public:
 
     /** @brief Retourne true si l'élément est hors service. */
     [[nodiscard]] bool isInactive() const { return getState() == ShuntingState::INACTIVE; }
+
+protected :
+    /** État opérationnel courant du bloc (FREE par défaut). */
+    ShuntingState m_state = ShuntingState::FREE;
+private:
+    // Pas de champs supplémentaires dans l'interface abstraite — les sous-classes concrètes
 };

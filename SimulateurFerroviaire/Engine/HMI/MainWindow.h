@@ -116,7 +116,7 @@ private:
     /**
      * @brief Gère la fin réussie du parsing (@c WM_PARSING_SUCCESS).
      *
-     * Génère le script d'injection GeoJSON @ref GeoJsonExporter 
+     * Génère le script d'injection GeoJSON @ref TopologyRenderer 
      * et l'exécute dans le WebView pour afficher la carte. 
      *
      * @param hWnd Handle de la fenêtre parente pour la boîte de dialogue.
@@ -149,7 +149,7 @@ private:
     * @brief Ouvre le dialogue d'exportation et déclenche l'export GeoJSON.
      *
      * Délègue la sélection à un dialogue d'exportation @ref FileOpenDialog, puis déclenche
-     * puis déclenche l'export via un module dédié @ref GeoJsonExporter
+     * puis déclenche l'export via un module dédié @ref TopologyRenderer
      *
      * @param hWnd Handle de la fenêtre principale (propriétaire du dialogue).
     */
@@ -166,6 +166,41 @@ private:
     * @brief Nettoie les ressources avant la destruction de la fenêtre (WM_DESTROY)
     */
     void onDestroy();
+
+    /**
+    * @brief Dispatcher principal des messages JSON reçus depuis Leaflet.
+    *
+    * Branché sur WebViewPanel via setOnMessageReceived() dans create().
+    * Parse le JSON, identifie le champ "type", et délègue au handler
+    * spécialisé. Un JSON malformé est loggé et ignoré — jamais de crash.
+    *
+    * @param jsonMessage  Contenu brut du postMessage (UTF-8).
+    */
+    void onWebMessage(const std::string& jsonMessage);
+
+    /**
+    * @brief Met à jour l'état opérationnel d'un SwitchBlock après un clic.
+    *
+    * Localise le switch par ID dans TopologyRepository, convertit la chaîne
+    * JS "normal"/"deviation" en ActiveBranch, et appelle setActiveBranch().
+    *
+    * Le visuel Leaflet est déjà à jour (mise à jour optimiste côté JS).
+    * Si à l'avenir une validation C++ peut rejeter le changement, envoyer
+    * ici un script de correction via executeScript().
+    *
+    * @param switchId  Identifiant du switch (ex. "sw/0").
+    * @param active    "normal" ou "deviation".
+    */
+    void onSwitchClick(const std::string& switchId);
+
+    /**
+     * @brief Construit le script JS de mise à jour visuelle d'un switch.
+     * @param switchId    ID du switch.
+     * @param toDeviation Nouvel état (true = deviation).
+     * @return            Instruction JavaScript pour executeScript().
+     */
+    std::wstring buildApplyStateScript(const std::string& switchId, bool toDeviation);
+
 
     // =========================================================================
     // Membres
@@ -190,8 +225,8 @@ private:
     ProgressBar m_progressBar;
 
     /** Logger dédié à la couche HMI, utilisé pour tracer les événements et erreurs liés à l'interface utilisateur. */
-    Logger m_hmiLogger{"HMI"};
+    Logger m_logger{"HMI"};
 
     /** Panneau WebView2 pour l'affichage de la carte ferroviaire. */
-    WebViewPanel m_webViewPanel{m_hmiLogger};
+    WebViewPanel m_webViewPanel{m_logger};
 };

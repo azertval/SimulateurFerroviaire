@@ -14,7 +14,9 @@
 
 #include "Engine/HMI/WebViewPanel/Leaflet/Leaflet.h"
 #include "Engine/HMI/Utils/PathUtils.h"
-#include "Modules/GeoJsonExporter/GeoJsonExporter.h"
+#include "Engine/Core/Topology/TopologyRenderer.h"
+
+#include "Engine/Core/Topology/TopologyRepository.h"
 
 #include <string>
 #include <stdexcept>
@@ -76,6 +78,10 @@ void MainWindow::create()
     m_progressBar.setProgress(0);
 
     // Initialisation du panneau WebView
+    m_webViewPanel.setOnMessageReceived([this](const std::string& message)
+        {
+            onWebMessage(message);
+        });
     m_webViewPanel.setOnInitialized([this]()
         {
             m_webViewPanel.setVirtualHostMapping(
@@ -229,7 +235,7 @@ void MainWindow::onFileExport(HWND hWnd)
         return; // Annulation par l'utilisateur
     }
 
-    GeoJsonExporter::exportToFile(selectedPath.value());
+    TopologyRenderer::exportToFile(selectedPath.value());
 }
 
 void MainWindow::onProgressUpdate(int progressValue)
@@ -240,9 +246,9 @@ void MainWindow::onProgressUpdate(int progressValue)
 void MainWindow::onParsingSuccess(HWND hWnd)
 {
     std::wstring script;
-    script += GeoJsonExporter::renderAllStraightBlocks();
-    script += GeoJsonExporter::renderAllSwitchBranches();
-    script += GeoJsonExporter::renderAllSwitchBlocksJunctions();
+    script += TopologyRenderer::renderAllStraightBlocks();
+    script += TopologyRenderer::renderAllSwitchBranches();
+    script += TopologyRenderer::renderAllSwitchBlocksJunctions();
     m_webViewPanel.executeScript(script);
     m_progressBar.setProgress(100);
     m_progressBar.show(false);
@@ -277,4 +283,43 @@ void MainWindow::onSizeUpdate()
 
 void MainWindow::onDestroy()
 {
+}
+
+void MainWindow::onWebMessage(const std::string& jsonMessage)
+{
+    try
+    {
+        const JsonDocument msg = JsonDocument::parse(jsonMessage);
+
+        // Dispatcher sur "type" — extensible sans changer la signature du callback.
+        // Ajouter ici d'autres types : "straight_click", "zoom_change", etc.
+        const std::string type = msg.value("type", "");
+
+        if (type == "switch_click")
+            onSwitchClick(msg.value("id", ""));       
+        else
+            LOG_WARNING(m_logger, "Message JS de type inconnu : " + type);
+    }
+    catch (const JsonDocument::exception& e)
+    {
+        // JSON malformé — log et ignore, jamais de crash
+        LOG_ERROR(m_logger, "Parse message JS échoué : " + std::string(e.what()));
+    }
+}
+
+void MainWindow::onSwitchClick(const std::string& switchId)
+{
+    const auto& index = TopologyRepository::instance().data().switchIndex;
+
+    const auto it = index.find(switchId);
+    if (it == index.end())
+    {
+        LOG_WARNING(m_logger, "onSwitchClick — introuvable : " + switchId);
+        return;
+    }
+
+    SwitchBlock& sw = *it->second;
+    sw.toggleActiveBranch();
+
+    m_webViewPanel.executeScript(TopologyRenderer::updateSwitchBlocks(sw));
 }

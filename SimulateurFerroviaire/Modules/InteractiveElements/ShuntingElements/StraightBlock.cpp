@@ -24,14 +24,22 @@ namespace
 StraightBlock::StraightBlock(std::string              blockId,
     std::vector<LatLon>      blockCoords,
     std::vector<std::string> initialNeighbourIds)
-    : m_id(std::move(blockId))
-    , m_coordinates(std::move(blockCoords))
+    : m_coordinates(std::move(blockCoords))
     , m_neighbourIds(std::move(initialNeighbourIds))
     , m_lengthMeters(computeGeodesicLength())
 {
     std::sort(m_neighbourIds.begin(), m_neighbourIds.end());
+    m_id = std::move(blockId);
 }
 
+void StraightBlock::setNeighbourPointers(StraightNeighbours neighbours)
+{
+    m_neighbours = neighbours;
+    LOG_DEBUG(m_logger, m_id + " — prev="
+        + (m_neighbours.prev ? m_neighbours.prev->getId() : "null")
+        + " next="
+        + (m_neighbours.next ? m_neighbours.next->getId() : "null"));
+}
 
 // =============================================================================
 // Phase 5b

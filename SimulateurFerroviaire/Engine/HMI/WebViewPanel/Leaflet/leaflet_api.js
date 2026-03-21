@@ -71,14 +71,8 @@ window.clearSwitchBranches = function() {
  * @param {string}  id
  * @param {number}  lat
  * @param {number}  lon
- * @param {boolean} isDouble
- * @param {number}  bearingNormal     (réservé, non utilisé — cercle sans direction)
- * @param {number}  bearingDeviation  (réservé, non utilisé)
- * @param {string}  partnerId         ID du partenaire, "" si pas un double.
  */
-window.renderSwitch = function(id, lat, lon, isDouble, bearingNormal, bearingDeviation, partnerId) {
-
-    let pointingToDeviation = false;
+window.renderSwitch = function(id, lat, lon) {
 
     const circle = L.circleMarker([lat, lon], {
         radius:      3,
@@ -89,12 +83,7 @@ window.renderSwitch = function(id, lat, lon, isDouble, bearingNormal, bearingDev
     });
 
     window.switchGroup.addLayer(circle);
-
-    function applyState(toDeviation) {
-        circle.setStyle({
-            fillColor: COLOR_SWITCH_JUNCTION
-        });
-
+    window.switchToggleMap[id] = function(toDeviation) {
         const branches = window.switchBranchMap[id];
         if (branches) {
             if (branches.normal)
@@ -102,22 +91,15 @@ window.renderSwitch = function(id, lat, lon, isDouble, bearingNormal, bearingDev
             if (branches.deviation)
                 branches.deviation.setStyle({ color: toDeviation ? COLOR_ACTIVE : COLOR_BRANCH_INACTIVE });
         }
-    }
-
-    window.switchToggleMap[id] = function(toDeviation) {
-        pointingToDeviation = toDeviation;
-        applyState(toDeviation);
     };
 
     circle.on("click", function() {
-        pointingToDeviation = !pointingToDeviation;
-        applyState(pointingToDeviation);
-
-        if (isDouble && partnerId && window.switchToggleMap[partnerId])
-            window.switchToggleMap[partnerId](pointingToDeviation);
+        window.chrome.webview.postMessage(JSON.stringify({
+            type: "switch_click",
+            id:   id
+        }));
     });
 };
-
 /**
  * Affiche les branches d'un switch depuis la jonction.
  *
@@ -161,4 +143,18 @@ window.renderSwitchBranches = function(id, jLat, jLon, rootCoords, normalCoords,
         if (def.role === "normal" || def.role === "deviation")
             window.switchBranchMap[id][def.role] = segment;
     }
+};
+
+/**
+* Applique un état visuel sur un switch depuis C++.
+*
+* Appelé par executeScript() après que C++ a calculé le nouvel état.
+* C'est le seul point d'entrée pour modifier l'affichage d'un switch
+*
+* @param {string}  id           Identifiant du switch.
+* @param {boolean} toDeviation  True = deviation active, false = normal.
+*/
+window.switchApplyState = function(id, toDeviation) {
+    const fn = window.switchToggleMap[id];
+    if (fn) fn(toDeviation);
 };

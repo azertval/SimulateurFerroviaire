@@ -142,6 +142,20 @@ public:
      */
     void setVirtualHostMapping(const std::wstring& hostname, const std::wstring& folderPath);
 
+    /**
+     * @brief Enregistre le handler des messages JS entrants.
+     *
+     * Appelé par MainWindow::create() AVANT l'initialisation du WebView.
+     * Le callback reçoit le message brut UTF-8 envoyé depuis Leaflet via :
+     *   window.chrome.webview.postMessage(JSON.stringify({...}))
+     *
+     * Exécuté sur le thread UI — accès aux objets Win32 et au modèle sûr.
+     * Si non enregistré, les messages JS sont ignorés silencieusement.
+     *
+     * @param callback  Handler à appeler avec le message JSON en paramètre.
+     */
+    void setOnMessageReceived(std::function<void(const std::string&)> callback);
+
 private:
     // -------------------------------------------------------------------------
     // Méthodes privées
@@ -190,7 +204,7 @@ private:
      * @param args    Arguments contenant le message brut.
      * @return        S_OK dans tous les cas (les erreurs sont silencieuses).
      */
-    static HRESULT onWebMessageReceived(ICoreWebView2* sender,
+    HRESULT onWebMessageReceived(ICoreWebView2* sender,
         ICoreWebView2WebMessageReceivedEventArgs* args);
 
     // -------------------------------------------------------------------------
@@ -213,4 +227,7 @@ private:
 
     /*Callback optionnel à appeler une fois l'initialisation terminée (ex. pour lancer la navigation) */
     std::function<void()> m_onInitialized;   
+
+    /** Handler des messages JS. Nullptr si non enregistré. */
+    std::function<void(const std::string&)> m_onMessageReceived;
 };

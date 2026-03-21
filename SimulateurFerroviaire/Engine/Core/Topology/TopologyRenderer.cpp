@@ -1,18 +1,16 @@
 /**
- * @file  GeoJsonExporter.cpp
+ * @file  TopologyRenderer.cpp
  * @brief Implémentation de l'exporteur GeoJSON.
  *
- * @see GeoJsonExporter
+ * @see TopologyRenderer
  */
 
-#include "GeoJsonExporter.h"
+#include "TopologyRenderer.h"
 
-#include "Modules/Stockages/TopologyRepository.h"
+#include "Engine/Core/Topology/TopologyRepository.h"
 
 #include <fstream>
 #include <iomanip>
-#include <numbers>
-
 
  // =============================================================================
  // Helpers locaux
@@ -66,7 +64,7 @@ namespace
 // Conversion GeoJSON
 // =============================================================================
 
-JsonDocument GeoJsonExporter::convertStraightToFeature(const StraightBlock& straight)
+JsonDocument TopologyRenderer::convertStraightToFeature(const StraightBlock& straight)
 {
     JsonDocument feature;
     feature["type"] = "Feature";
@@ -92,7 +90,7 @@ JsonDocument GeoJsonExporter::convertStraightToFeature(const StraightBlock& stra
     return feature;
 }
 
-JsonDocument GeoJsonExporter::convertSwitchToFeature(const SwitchBlock& sw)
+JsonDocument TopologyRenderer::convertSwitchToFeature(const SwitchBlock& sw)
 {
     JsonDocument feature;
     feature["type"] = "Feature";
@@ -123,7 +121,7 @@ JsonDocument GeoJsonExporter::convertSwitchToFeature(const SwitchBlock& sw)
 // Export fichier
 // =============================================================================
 
-void GeoJsonExporter::exportToFile(const std::string& outputPath)
+void TopologyRenderer::exportToFile(const std::string& outputPath)
 {
     const auto& straights = TopologyRepository::instance().data().straights;
     const auto& switches = TopologyRepository::instance().data().switches;
@@ -148,7 +146,7 @@ void GeoJsonExporter::exportToFile(const std::string& outputPath)
 // Injection WebView (GeoJSON brut)
 // =============================================================================
 
-std::wstring GeoJsonExporter::loadGeoJsonToWebView()
+std::wstring TopologyRenderer::loadGeoJsonToWebView()
 {
     const auto& straights = TopologyRepository::instance().data().straights;
     const auto& switches = TopologyRepository::instance().data().switches;
@@ -168,7 +166,7 @@ std::wstring GeoJsonExporter::loadGeoJsonToWebView()
         + L"\"));";
 }
 
-std::wstring GeoJsonExporter::escapeForJavaScript(const std::string& input)
+std::wstring TopologyRenderer::escapeForJavaScript(const std::string& input)
 {
     std::wstring output;
     output.reserve(input.size());
@@ -192,7 +190,7 @@ std::wstring GeoJsonExporter::escapeForJavaScript(const std::string& input)
 // Straights — rendu WebView
 // =============================================================================
 
-std::wstring GeoJsonExporter::renderStraightBlock(const StraightBlock& straight)
+std::wstring TopologyRenderer::renderStraightBlock(const StraightBlock& straight)
 {
     if (straight.getCoordinates().size() < 2)
         return L"";
@@ -215,7 +213,7 @@ std::wstring GeoJsonExporter::renderStraightBlock(const StraightBlock& straight)
     return script;
 }
 
-std::wstring GeoJsonExporter::renderAllStraightBlocks()
+std::wstring TopologyRenderer::renderAllStraightBlocks()
 {
     const auto& straights = TopologyRepository::instance().data().straights;
 
@@ -231,37 +229,9 @@ std::wstring GeoJsonExporter::renderAllStraightBlocks()
 // Switches — jonction (rendu WebView)
 // =============================================================================
 
-double GeoJsonExporter::bearingDeg(const LatLon& a, const LatLon& b)
-{
-    constexpr double DEG2RAD = std::numbers::pi / 180.0;
-    constexpr double RAD2DEG = 180.0 / std::numbers::pi;
-
-    const double lat1 = a.latitude * DEG2RAD;
-    const double lat2 = b.latitude * DEG2RAD;
-    const double dLon = (b.longitude - a.longitude) * DEG2RAD;
-
-    const double x = std::cos(lat2) * std::sin(dLon);
-    const double y = std::cos(lat1) * std::sin(lat2)
-        - std::sin(lat1) * std::cos(lat2) * std::cos(dLon);
-
-    double result = std::fmod(std::atan2(x, y) * RAD2DEG + 360.0, 360.0);
-    if (std::isnan(result)) result = 0.0;
-    return result;
-}
-
-std::wstring GeoJsonExporter::renderSwitchBlock(const SwitchBlock& sw)
+std::wstring TopologyRenderer::renderSwitchBlock(const SwitchBlock& sw)
 {
     const LatLon& junction = sw.getJunctionCoordinate();
-
-    const double bearingNormal = sw.getTipOnNormal()
-        ? bearingDeg(junction, *sw.getTipOnNormal())
-        : 0.0;
-
-    const double bearingDeviation = sw.getTipOnDeviation()
-        ? bearingDeg(junction, *sw.getTipOnDeviation())
-        : bearingNormal;
-
-    const std::string partnerId = sw.getPartnerId().value_or("");
 
     std::wstring script = L"renderSwitch(\"";
     script += toWide(sw.getId());
@@ -269,19 +239,11 @@ std::wstring GeoJsonExporter::renderSwitchBlock(const SwitchBlock& sw)
     script += std::to_wstring(junction.latitude);
     script += L",";
     script += std::to_wstring(junction.longitude);
-    script += L",";
-    script += sw.isDouble() ? L"true" : L"false";
-    script += L",";
-    script += std::to_wstring(bearingNormal);
-    script += L",";
-    script += std::to_wstring(bearingDeviation);
-    script += L",\"";
-    script += toWide(partnerId);
-    script += L"\");";
+    script += L");";
     return script;
 }
 
-std::wstring GeoJsonExporter::renderAllSwitchBlocksJunctions()
+std::wstring TopologyRenderer::renderAllSwitchBlocksJunctions()
 {
     const auto& switches = TopologyRepository::instance().data().switches;
 
@@ -290,7 +252,6 @@ std::wstring GeoJsonExporter::renderAllSwitchBlocksJunctions()
         script += renderSwitchBlock(*sw);
     return script;
 }
-
 
 // =============================================================================
 // Switches — branches (rendu WebView)
@@ -310,7 +271,7 @@ std::wstring GeoJsonExporter::renderAllSwitchBlocksJunctions()
  * Pour les branches absorbées (double switch) : polyligne complète.
  * null si le tip est absent.
  */
-std::wstring GeoJsonExporter::renderSwitchBranches(const SwitchBlock& sw)
+std::wstring TopologyRenderer::renderSwitchBranches(const SwitchBlock& sw)
 {
     if (!sw.isOriented()) return L"";
 
@@ -380,12 +341,33 @@ std::wstring GeoJsonExporter::renderSwitchBranches(const SwitchBlock& sw)
     return script;
 }
 
-std::wstring GeoJsonExporter::renderAllSwitchBranches()
+std::wstring TopologyRenderer::renderAllSwitchBranches()
 {
     const auto& switches = TopologyRepository::instance().data().switches;
 
     std::wstring script = L"clearSwitchBranches();";
     for (const auto& sw : switches)
         script += renderSwitchBranches(*sw);
+    return script;
+}
+
+std::wstring TopologyRenderer::updateSwitchBlocks(const SwitchBlock& sw)
+{
+    const bool toDeviation = sw.isDeviationActive();
+
+    auto applyState = [&](const std::string& id) -> std::wstring
+        {
+            return L"window.switchApplyState(\""
+                + toWide(id)
+                + L"\"," + (toDeviation ? L"true" : L"false") + L");";
+        };
+
+    std::wstring script = applyState(sw.getId());
+
+    if (auto* p = sw.getPartnerOnNormal())
+        script += applyState(p->getId());
+    if (auto* p = sw.getPartnerOnDeviation())
+        script += applyState(p->getId());
+
     return script;
 }

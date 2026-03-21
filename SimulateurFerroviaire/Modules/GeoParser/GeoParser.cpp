@@ -11,8 +11,8 @@
 #include "TopologyExtractor.h"
 #include "SwitchOrientator.h"
 #include "DoubleSwitchDetector.h"
-#include "Modules/GeoJsonExporter/GeoJsonExporter.h"
-#include "Modules/Stockages/TopologyRepository.h"
+#include "Engine/Core/Topology/TopologyRenderer.h"
+#include "Engine/Core/Topology/TopologyRepository.h"
 
  /**
   * @brief Constructeur.
@@ -104,6 +104,56 @@ void GeoParser::parse(bool enableDebugDump)
     repoData.straights.reserve(topo.straights.size());
     for (auto& st : topo.straights)
         repoData.straights.push_back(std::make_unique<StraightBlock>(std::move(st)));
+
+    // Index rapide id → ShuntingElement* couvrant switches ET straights
+    std::unordered_map<std::string, ShuntingElement*> elementIndex;
+    for (auto& sw : repoData.switches)
+        elementIndex[sw->getId()] = sw.get();
+    for (auto& st : repoData.straights)
+        elementIndex[st->getId()] = st.get();
+
+    // --- Straights : résolution prev/next ---
+    for (auto& st : repoData.straights)
+    {
+        StraightBlock::StraightNeighbours nb;
+
+        const auto& ids = st->getNeighbourIds();
+        if (ids.size() >= 1)
+        {
+            const auto it = elementIndex.find(ids[0]);
+            if (it != elementIndex.end()) nb.prev = it->second;
+        }
+        if (ids.size() >= 2)
+        {
+            const auto it = elementIndex.find(ids[1]);
+            if (it != elementIndex.end()) nb.next = it->second;
+        }
+
+        st->setNeighbourPointers(nb);
+    }
+
+    // --- Switches : résolution root/normal/deviation ---
+    for (auto& sw : repoData.switches)
+    {
+        if (!sw->isOriented()) continue;
+
+        SwitchBlock::SwitchBranches br;
+
+        auto resolve = [&](const std::optional<std::string>& id) -> ShuntingElement*
+            {
+                if (!id) return nullptr;
+                const auto it = elementIndex.find(*id);
+                return (it != elementIndex.end()) ? it->second : nullptr;
+            };
+
+        br.root = resolve(sw->getRootBranchId());
+        br.normal = resolve(sw->getNormalBranchId());
+        br.deviation = resolve(sw->getDeviationBranchId());
+
+        sw->setBranchPointers(br);
+    }
+
+    TopologyRepository::instance().data().buildIndex();
 
     if (enableDebugDump)
         dumpDebugOutput();
