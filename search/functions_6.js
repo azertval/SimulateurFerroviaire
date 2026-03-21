@@ -5,7 +5,7 @@ var searchData=
   ['geoparsingtask_2',['GeoParsingTask',['../classGeoParsingTask.html#a2f2657bdbe4afb81073307b22167e043',1,'GeoParsingTask']]],
   ['getabsorbeddeviationcoords_3',['getAbsorbedDeviationCoords',['../classSwitchBlock.html#aaca37431800ae6145596cc436d93ab92',1,'SwitchBlock']]],
   ['getabsorbednormalcoords_4',['getAbsorbedNormalCoords',['../classSwitchBlock.html#a1e0096ec969222b7244af2ad26f2be12',1,'SwitchBlock']]],
-  ['getactivebranch_5',['getactivebranch',['../classSwitchBlock.html#aba30776838f3363fc7e93bcb7ce7888c',1,'SwitchBlock::getActiveBranch() const'],['../classSwitchBlock.html#a302177ecf0402abac6b670ed3eac219b',1,'SwitchBlock::getActiveBranch()']]],
+  ['getactivebranch_5',['getActiveBranch',['../classSwitchBlock.html#aba30776838f3363fc7e93bcb7ce7888c',1,'SwitchBlock']]],
   ['getbranches_6',['getBranches',['../classSwitchBlock.html#a0d8ed60c4fa6c012210b3d643a590680',1,'SwitchBlock']]],
   ['getbranchids_7',['getBranchIds',['../classSwitchBlock.html#a3df4225adcb5d9121388c7b90fcd1af2',1,'SwitchBlock']]],
   ['getcoordinates_8',['getCoordinates',['../classStraightBlock.html#a646d3135d365dcb832ff66b1304c6850',1,'StraightBlock']]],

@@ -1,7 +1,7 @@
 <map id="SimulateurFerroviaire" name="SimulateurFerroviaire">
 <area shape="rect" id="node2" href="dir_b70de4a9b2a9f967d011983a1fdf80d1.html" title="Engine" alt="" coords="75,100,141,125"/>
-<area shape="poly" id="edge1" href="dir_000017_000005.html" alt="" coords="111,52,111,86,105,86,105,52"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000017_000005.html" title="23" alt="" coords="108,74,125,89"/>
+<area shape="poly" id="edge1" href="dir_000018_000005.html" alt="" coords="111,52,111,86,105,86,105,52"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000018_000005.html" title="26" alt="" coords="108,74,125,89"/>
 <area shape="rect" id="node3" href="dir_387a2147fe1fbdf0efef36368214e4d3.html" title="Modules" alt="" coords="69,173,147,199"/>
 <area shape="poly" id="edge2" href="dir_000005_000015.html" alt="" coords="104,126,102,160,97,160,98,126"/>
 <area shape="rect" id="edge2-headlabel" href="dir_000005_000015.html" title="5" alt="" coords="102,147,112,161"/>

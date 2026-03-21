@@ -1,9 +1,9 @@
 <map id="ShuntingElement" name="ShuntingElement">
 <area shape="rect" id="Node000001" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="147,279,309,484"/>
-<area shape="rect" id="Node000003" href="$classStraightBlock.html" title=" " alt="" coords="5,862,211,1307"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,498,149,862,143,861,206,497"/>
-<area shape="rect" id="Node000004" href="$classSwitchBlock.html" title=" " alt="" coords="235,532,464,1637"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="251,497,256,531,251,532,245,498"/>
+<area shape="rect" id="Node000003" href="$classStraightBlock.html" title=" " alt="" coords="5,852,211,1297"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,498,149,852,144,851,205,497"/>
+<area shape="rect" id="Node000004" href="$classSwitchBlock.html" title=" " alt="" coords="235,532,464,1617"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="251,497,257,531,251,532,246,498"/>
 <area shape="rect" id="Node000002" href="$classInteractiveElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="141,5,315,231"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,244,231,278,225,278,225,244"/>
 </map>

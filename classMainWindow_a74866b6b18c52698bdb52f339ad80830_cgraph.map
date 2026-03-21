@@ -1,7 +1,9 @@
 <map id="MainWindow::onSizeUpdate" name="MainWindow::onSizeUpdate">
-<area shape="rect" id="Node000001" title="Quand la fenêtre est redimensionnée, ajuste les éléments graphiques en conséquence." alt="" coords="5,31,208,56"/>
+<area shape="rect" id="Node000001" title="Quand la fenêtre est redimensionnée, ajuste les éléments graphiques en conséquence." alt="" coords="5,55,208,80"/>
 <area shape="rect" id="Node000002" href="$classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2" title="Vérifie si le WebView est prêt." alt="" coords="256,5,456,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,30,242,27,242,32,209,36"/>
-<area shape="rect" id="Node000003" href="$classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a" title="Redimensionne le WebView pour s&#39;adapter à la fenêtre." alt="" coords="274,55,438,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,50,261,55,260,61,208,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,52,277,31,278,36,172,57"/>
+<area shape="rect" id="Node000003" href="$classPCCPanel.html#afddac4ff78519cb2a37e74b62ba76d3b" title="Redimensionne le panneau pour couvrir toute la zone cliente du parent." alt="" coords="291,55,421,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,65,277,65,277,70,208,70"/>
+<area shape="rect" id="Node000004" href="$classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a" title="Redimensionne le WebView pour s&#39;adapter à la fenêtre." alt="" coords="274,104,438,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="172,77,278,99,277,104,171,83"/>
 </map>

@@ -16,5 +16,5 @@ var searchData=
   ['fonctionnalités_20métier_13',['Modules — Fonctionnalités métier',['../index.html#modules',1,'']]],
   ['formatlogline_14',['formatLogLine',['../classLogger.html#a8f0182d5ff94d8b9585a1e75e7b02f1e',1,'Logger']]],
   ['framework_2eh_15',['framework.h',['../framework_8h.html',1,'']]],
-  ['free_16',['FREE',['../ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da88c189a42c87aa49d667fc8ab76bc323',1,'ShuntingElement.h']]]
+  ['free_16',['free',['../structTCOColors.html#ac6729c1d8f4ac4d519aec32abfec301c',1,'TCOColors::free'],['../ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da88c189a42c87aa49d667fc8ab76bc323',1,'FREE:&#160;ShuntingElement.h']]]
 ];

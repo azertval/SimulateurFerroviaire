@@ -1,11 +1,17 @@
 <map id="SimulateurFerroviaire/Engine/Core/Topology/TopologyData.h" name="SimulateurFerroviaire/Engine/Core/Topology/TopologyData.h">
-<area shape="rect" id="Node000001" title="Conteneur central des données topologiques ferroviaires." alt="" coords="223,5,389,60"/>
-<area shape="rect" id="Node000002" href="$TopologyRepository_8h.html" title="Singleton de stockage des données topologiques ferroviaires." alt="" coords="223,108,389,163"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="309,74,309,108,303,108,303,74"/>
+<area shape="rect" id="Node000001" title="Conteneur central des données topologiques ferroviaires." alt="" coords="329,5,496,60"/>
+<area shape="rect" id="Node000002" href="$TopologyRepository_8h.html" title="Singleton de stockage des données topologiques ferroviaires." alt="" coords="329,108,496,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="415,74,415,108,410,108,410,74"/>
 <area shape="rect" id="Node000003" href="$TopologyRenderer_8cpp.html" title="Implémentation de l&#39;exporteur GeoJSON." alt="" coords="5,211,175,265"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="239,171,147,213,145,208,236,166"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="317,169,175,213,173,208,315,164"/>
 <area shape="rect" id="Node000004" href="$MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="199,218,413,258"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="309,177,309,218,303,218,303,177"/>
-<area shape="rect" id="Node000005" href="$GeoParser_8cpp.html" title="Implémentation du pipeline GeoParser." alt="" coords="437,218,684,258"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="386,165,514,215,512,220,384,170"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="377,174,328,219,325,216,373,170"/>
+<area shape="rect" id="Node000005" href="$TCORenderer_8h.html" title="Renderer GDI du schéma TCO (Tableau de Contrôle Optique) ferroviaire." alt="" coords="438,211,603,265"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="453,170,494,209,491,213,449,174"/>
+<area shape="rect" id="Node000008" href="$GeoParser_8cpp.html" title="Implémentation du pipeline GeoParser." alt="" coords="628,218,875,258"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="510,163,688,215,687,220,509,168"/>
+<area shape="rect" id="Node000006" href="$PCCPanel_8cpp.html" title="Implémentation du panneau PCC superposé togglable." alt="" coords="343,313,509,368"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="489,277,453,315,449,311,485,273"/>
+<area shape="rect" id="Node000007" href="$TCORenderer_8cpp.html" title="Implémentation du renderer GDI TCO." alt="" coords="533,313,698,368"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="557,273,593,311,589,315,553,277"/>
 </map>

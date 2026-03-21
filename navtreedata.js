@@ -81,8 +81,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AboutDialog_8cpp.html",
-"classInvalidSwitchConfigException.html#abaaafef573235d7c5ea379dfeddb7359",
-"classTopologyRepository.html"
+"classInteractiveElement.html#a8ff2705adce5c5c4d9a056dbf80cc79e",
+"classTopologyGraph.html#a07cb1a1808c40751d01dd7d43d335024"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -18,8 +18,9 @@ var searchData=
   ['shuntingelement_15',['shuntingelement',['../classShuntingElement.html#acb088c612e8db99dbd162ba65743c4ff',1,'ShuntingElement::ShuntingElement()=default'],['../classShuntingElement.html#a1ef256ed0728c76f6a50856699005640',1,'ShuntingElement::ShuntingElement(ShuntingElement &amp;&amp;)=default']]],
   ['snaptometricgrid_16',['snapToMetricGrid',['../classGeometryUtils.html#a1f0bcf5c241331f56979b6d63b3412c1',1,'GeometryUtils']]],
   ['splitlongstraights_17',['splitLongStraights',['../classTopologyExtractor.html#a8fe29fd6ba117f652d0e545869a99c61',1,'TopologyExtractor']]],
-  ['straightblock_18',['straightblock',['../classStraightBlock.html#a8efe465dfa6a2c5a6afc2125246194fd',1,'StraightBlock::StraightBlock()=default'],['../classStraightBlock.html#a6b5d2078a32199b21c8ab3117fc6c01f',1,'StraightBlock::StraightBlock(std::string blockId, std::vector&lt; LatLon &gt; blockCoords, std::vector&lt; std::string &gt; initialNeighbourIds={})']]],
-  ['swapnormaldeviation_19',['swapNormalDeviation',['../classSwitchBlock.html#affd7f73a8ed825143cf59a485d1d690b',1,'SwitchBlock']]],
-  ['switchblock_20',['switchblock',['../classSwitchBlock.html#ad6536f8891b40359de7e09db486294ba',1,'SwitchBlock::SwitchBlock()=default'],['../classSwitchBlock.html#a39e05d6618d01419d30e1051584272bc',1,'SwitchBlock::SwitchBlock(std::string switchId, LatLon junctionCoord, std::vector&lt; std::string &gt; initialBranchIds={})']]],
-  ['switchorientator_21',['SwitchOrientator',['../classSwitchOrientator.html#a46a28c6219eff3633abd7e111321a877',1,'SwitchOrientator']]]
+  ['statetocolor_18',['stateToColor',['../classTCORenderer.html#a538d4c108ec65a52b98810f96e6662e1',1,'TCORenderer']]],
+  ['straightblock_19',['straightblock',['../classStraightBlock.html#a8efe465dfa6a2c5a6afc2125246194fd',1,'StraightBlock::StraightBlock()=default'],['../classStraightBlock.html#a6b5d2078a32199b21c8ab3117fc6c01f',1,'StraightBlock::StraightBlock(std::string blockId, std::vector&lt; LatLon &gt; blockCoords, std::vector&lt; std::string &gt; initialNeighbourIds={})']]],
+  ['swapnormaldeviation_20',['swapNormalDeviation',['../classSwitchBlock.html#affd7f73a8ed825143cf59a485d1d690b',1,'SwitchBlock']]],
+  ['switchblock_21',['switchblock',['../classSwitchBlock.html#ad6536f8891b40359de7e09db486294ba',1,'SwitchBlock::SwitchBlock()=default'],['../classSwitchBlock.html#a39e05d6618d01419d30e1051584272bc',1,'SwitchBlock::SwitchBlock(std::string switchId, LatLon junctionCoord, std::vector&lt; std::string &gt; initialBranchIds={})']]],
+  ['switchorientator_22',['SwitchOrientator',['../classSwitchOrientator.html#a46a28c6219eff3633abd7e111321a877',1,'SwitchOrientator']]]
 ];

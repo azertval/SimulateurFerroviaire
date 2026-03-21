@@ -8,5 +8,5 @@ var searchData=
   ['nodeidtoswitchid_5',['nodeIdToSwitchId',['../structTopologyExtractResult.html#a78a0bc107f0a7aabe7f1cdffbf7f906b',1,'TopologyExtractResult']]],
   ['nodepositions_6',['nodePositions',['../classTopologyGraph.html#a2254224df52b78e67993556e46c04bb6',1,'TopologyGraph']]],
   ['nominmax_7',['NOMINMAX',['../framework_8h.html#a9f918755b601cf4bffca775992e6fb90',1,'framework.h']]],
-  ['normal_8',['normal',['../structSwitchBlock_1_1SwitchBranches.html#aa79a430cbe4719df2cd2962b70e0f5c2',1,'SwitchBlock::SwitchBranches::normal'],['../SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89a1e23852820b9154316c7c06e2b7ba051',1,'NORMAL:&#160;SwitchBlock.h']]]
+  ['normal_8',['normal',['../structTCOColors.html#afdcfea26b5693be1e249559b0cb931a6',1,'TCOColors::normal'],['../structSwitchBlock_1_1SwitchBranches.html#aa79a430cbe4719df2cd2962b70e0f5c2',1,'SwitchBlock::SwitchBranches::normal'],['../SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89a1e23852820b9154316c7c06e2b7ba051',1,'NORMAL:&#160;SwitchBlock.h']]]
 ];

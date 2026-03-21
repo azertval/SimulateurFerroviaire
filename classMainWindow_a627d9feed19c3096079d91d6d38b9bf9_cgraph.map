@@ -1,59 +1,94 @@
 <map id="MainWindow::create" name="MainWindow::create">
-<area shape="rect" id="Node000001" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar." alt="" coords="5,255,160,280"/>
-<area shape="rect" id="Node000002" href="$classProgressBar.html#a608e19274cfd76f8874e4ef6e2dcb396" title="Crée la ProgressBar dans une fenêtre parent." alt="" coords="247,5,396,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,254,97,212,120,154,156,92,179,64,206,40,232,26,234,31,210,44,183,68,161,95,125,156,102,214,90,255"/>
-<area shape="rect" id="Node000003" href="$classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1" title="Initialise WebView2 dans une fenêtre Win32 existante." alt="" coords="238,55,405,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="87,253,104,222,129,179,164,135,206,97,235,82,237,87,210,102,168,139,134,182,108,224,92,256"/>
-<area shape="rect" id="Node000008" href="$classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a" title="Redimensionne le WebView pour s&#39;adapter à la fenêtre." alt="" coords="1291,105,1455,131"/>
-<area shape="poly" id="edge25_Node000001_Node000008" title=" " alt="" coords="90,253,134,197,168,165,207,141,260,120,307,108,349,102,390,102,476,110,583,115,848,115,1278,115,1278,121,848,121,583,121,475,115,390,107,350,108,308,113,262,125,209,146,171,170,138,200,94,256"/>
-<area shape="rect" id="Node000009" href="$PathUtils_8h.html#ad3c857d595cfed1f004777b9307b8aa5" title=" " alt="" coords="245,156,398,181"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="100,252,147,221,207,190,230,182,232,187,209,195,149,226,103,257"/>
-<area shape="rect" id="Node000010" href="$classWebViewPanel.html#a17fdacaf19c8e0830ae1ea7ee1632993" title="Navigue vers une URL." alt="" coords="230,205,413,231"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="144,252,245,231,246,236,145,257"/>
-<area shape="rect" id="Node000011" href="$classMainWindow.html#a6e84464d583e27d6f978385b22a5945f" title="Dispatcher principal des messages JSON reçus depuis Leaflet." alt="" coords="214,255,429,280"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="161,265,200,265,200,270,161,270"/>
-<area shape="rect" id="Node000023" href="$classWebViewPanel.html#a118dd6f6115c00ad0d01b6c4238e5caf" title="Définit un callback à appeler une fois l&#39;initialisation terminée." alt="" coords="208,304,435,329"/>
-<area shape="poly" id="edge26_Node000001_Node000023" title=" " alt="" coords="145,277,246,299,245,304,144,283"/>
-<area shape="rect" id="Node000024" href="$classWebViewPanel.html#a71afad8b186e38cd35fded12d736b0c6" title="Enregistre le handler des messages JS entrants." alt="" coords="211,354,432,394"/>
-<area shape="poly" id="edge27_Node000001_Node000024" title=" " alt="" coords="103,278,150,308,209,340,228,347,226,352,207,344,147,313,100,282"/>
-<area shape="rect" id="Node000025" href="$classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd" title="Met à jour la progression." alt="" coords="229,419,413,444"/>
-<area shape="poly" id="edge28_Node000001_Node000025" title=" " alt="" coords="94,278,137,339,171,374,209,404,225,411,222,416,207,408,167,378,133,343,89,282"/>
-<area shape="rect" id="Node000026" href="$classWebViewPanel.html#a3d18421b35ea7ad55ff884ce299ac53c" title="Mappe un nom d&#39;hôte virtuel vers un dossier local. Permet de servir des fichiers locaux via https://h..." alt="" coords="227,469,415,509"/>
-<area shape="poly" id="edge29_Node000001_Node000026" title=" " alt="" coords="91,279,106,314,131,362,166,412,186,435,210,455,217,460,214,464,206,459,183,439,161,415,126,365,101,317,86,281"/>
-<area shape="rect" id="Node000027" href="$classProgressBar.html#ac9fbcf04d7d4e8c5b3e332efcfc0d34c" title="Show or hide the ProgressBar." alt="" coords="250,533,393,559"/>
-<area shape="poly" id="edge30_Node000001_Node000027" title=" " alt="" coords="89,280,100,326,122,391,138,426,158,460,181,492,210,519,238,534,236,539,206,523,178,495,153,463,133,428,117,393,95,327,84,281"/>
-<area shape="rect" id="Node000004" href="$classWebViewPanel.html#a886fd07f1d23eec535d0b57215c6ce50" title="Initialise l&#39;environnement WebView2 de manière asynchrone." alt="" coords="494,41,675,81"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="405,63,480,61,481,66,405,68"/>
-<area shape="rect" id="Node000005" href="$classWebViewPanel.html#a49d047e945df840f4c48dbf0a3264b16" title="Callback déclenché à la fin de la création de l&#39;environnement WebView2." alt="" coords="735,41,959,81"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="676,58,721,58,721,63,676,63"/>
-<area shape="rect" id="Node000006" href="$classWebViewPanel.html#a2098e8aa83f6ab5b825514deda7fd846" title="Callback déclenché à la fin de la création du contrôleur WebView2." alt="" coords="1007,41,1212,81"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="959,58,993,58,993,63,959,63"/>
-<area shape="rect" id="Node000007" href="$classWebViewPanel.html#ac77338c39cc87b2fb7b7bde9da2004b1" title="Callback statique déclenché à la réception d&#39;un message JavaScript." alt="" coords="1260,41,1487,81"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1212,58,1246,58,1246,63,1212,63"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="1203,78,1302,100,1300,105,1201,83"/>
-<area shape="rect" id="Node000012" href="$classMainWindow.html#a242d9acf230544637908fc2cf31f1284" title="Met à jour l&#39;état opérationnel d&#39;un SwitchBlock après un clic." alt="" coords="483,269,687,295"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="429,271,469,273,469,278,429,276"/>
-<area shape="rect" id="Node000013" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="771,219,922,259"/>
-<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="663,267,757,251,758,256,664,272"/>
-<area shape="rect" id="Node000014" href="$classWebViewPanel.html#a5890da7c431554b9e864759f293dac1f" title="Exécute un script JavaScript dans le contexte de la page chargée." alt="" coords="740,284,953,309"/>
-<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="687,285,726,287,726,293,687,290"/>
-<area shape="rect" id="Node000015" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="771,358,922,398"/>
-<area shape="poly" id="edge14_Node000012_Node000015" title=" " alt="" coords="621,292,779,350,777,355,620,297"/>
-<area shape="rect" id="Node000016" href="$classSwitchBlock.html#a49ee6b32f553615447b412e58afca21a" title="Alterne entre NORMAL et DEVIATION. Équivalent à setActiveBranch(!current)." alt="" coords="751,422,942,462"/>
-<area shape="poly" id="edge16_Node000012_Node000016" title=" " alt="" coords="599,293,655,348,693,380,736,408,750,414,747,419,733,412,690,384,651,352,595,297"/>
-<area shape="rect" id="Node000020" href="$classTopologyRenderer.html#acf7559914d95f6d59c37106a11bd0df7" title="Génère le script JS de mise à jour visuelle d&#39;un switch et ses partenaires." alt="" coords="751,155,943,195"/>
-<area shape="poly" id="edge20_Node000012_Node000020" title=" " alt="" coords="607,267,663,237,734,205,755,197,757,202,736,210,666,242,609,272"/>
-<area shape="poly" id="edge15_Node000015_Node000015" title=" " alt="" coords="798,358,795,348,803,339,820,333,847,331,877,334,893,341,891,346,876,339,847,337,821,339,806,343,800,349,803,357"/>
-<area shape="rect" id="Node000017" href="$classSwitchBlock.html#a4c252f2bb90dbe50b8c9d8e8de0fc5b5" title="Convertit l&#39;état ActiveBranch courant en chaîne lisible. Utilisé exclusivement par les appels de log." alt="" coords="1012,422,1207,462"/>
-<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="942,439,998,439,998,445,942,445"/>
-<area shape="rect" id="Node000018" href="$classSwitchBlock.html#af65a62f314ce4544ce687eacc13786e8" title="Retourne le switch partenaire côté deviation, ou nullptr." alt="" coords="1012,351,1207,391"/>
-<area shape="poly" id="edge18_Node000016_Node000018" title=" " alt="" coords="921,419,1020,392,1022,398,923,425"/>
-<area shape="rect" id="Node000019" href="$classSwitchBlock.html#a72cf7392935372bed47bccc9c1feb096" title="Retourne le switch partenaire côté normal, ou nullptr. Cast valide uniquement si isDouble() &amp;&amp; getDou..." alt="" coords="1012,275,1207,315"/>
-<area shape="poly" id="edge19_Node000016_Node000019" title=" " alt="" coords="937,420,957,408,973,391,981,374,989,356,1005,337,1033,319,1035,324,1008,341,993,359,986,376,977,394,960,412,939,424"/>
-<area shape="poly" id="edge22_Node000020_Node000018" title=" " alt="" coords="943,193,960,205,974,220,981,236,986,266,991,296,997,311,1009,325,1031,342,1027,347,1005,329,993,313,986,297,981,267,976,237,969,223,957,209,940,198"/>
-<area shape="poly" id="edge23_Node000020_Node000019" title=" " alt="" coords="936,193,960,205,976,218,985,231,994,243,1008,256,1029,267,1026,272,1005,260,990,247,981,234,972,221,957,210,933,198"/>
-<area shape="rect" id="Node000021" href="$classSwitchBlock.html#adbf269599ac24cd670976368ae00b39f" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="1038,220,1181,245"/>
-<area shape="poly" id="edge21_Node000020_Node000021" title=" " alt="" coords="940,193,1038,214,1037,220,938,198"/>
-<area shape="rect" id="Node000022" href="$classSwitchBlock.html#ada66b97802d45a8b3dfbbb05011ae9b6" title=" " alt="" coords="1018,155,1201,195"/>
-<area shape="poly" id="edge24_Node000020_Node000022" title=" " alt="" coords="943,173,1004,173,1004,178,943,178"/>
+<area shape="rect" id="Node000001" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar." alt="" coords="5,549,160,575"/>
+<area shape="rect" id="Node000002" href="$classPCCPanel.html#a8c381e0a06238c65ab19fdeba3c93608" title="Enregistre la classe Win32 et crée la fenêtre enfant masquée." alt="" coords="255,269,387,295"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,548,96,504,119,441,155,374,179,342,206,315,241,295,244,299,210,319,183,346,160,376,124,443,101,506,89,550"/>
+<area shape="rect" id="Node000016" href="$classProgressBar.html#a608e19274cfd76f8874e4ef6e2dcb396" title="Crée la ProgressBar dans une fenêtre parent." alt="" coords="247,373,396,399"/>
+<area shape="poly" id="edge25_Node000001_Node000016" title=" " alt="" coords="88,548,105,518,131,480,165,441,207,408,232,396,234,401,209,412,169,444,135,483,110,521,93,550"/>
+<area shape="rect" id="Node000017" href="$classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1" title="Initialise WebView2 dans une fenêtre Win32 existante." alt="" coords="238,423,405,448"/>
+<area shape="poly" id="edge26_Node000001_Node000017" title=" " alt="" coords="96,547,142,507,173,484,207,465,246,450,248,454,209,470,176,489,146,511,99,551"/>
+<area shape="rect" id="Node000022" href="$classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a" title="Redimensionne le WebView pour s&#39;adapter à la fenêtre." alt="" coords="1302,473,1466,499"/>
+<area shape="poly" id="edge48_Node000001_Node000022" title=" " alt="" coords="108,547,154,527,207,510,313,490,397,483,589,483,859,483,1288,483,1288,489,859,489,589,489,397,488,314,495,209,515,156,532,110,552"/>
+<area shape="rect" id="Node000023" href="$PathUtils_8h.html#ad3c857d595cfed1f004777b9307b8aa5" title=" " alt="" coords="245,524,398,549"/>
+<area shape="poly" id="edge32_Node000001_Node000023" title=" " alt="" coords="160,551,231,544,231,549,161,556"/>
+<area shape="rect" id="Node000024" href="$classWebViewPanel.html#a17fdacaf19c8e0830ae1ea7ee1632993" title="Navigue vers une URL." alt="" coords="230,573,413,599"/>
+<area shape="poly" id="edge33_Node000001_Node000024" title=" " alt="" coords="161,567,217,573,216,578,160,572"/>
+<area shape="rect" id="Node000025" href="$classMainWindow.html#a6e84464d583e27d6f978385b22a5945f" title="Dispatcher principal des messages JSON reçus depuis Leaflet." alt="" coords="483,323,697,348"/>
+<area shape="poly" id="edge34_Node000001_Node000025" title=" " alt="" coords="85,548,98,509,122,456,157,402,180,378,207,358,243,340,282,327,322,318,363,313,441,312,510,318,509,323,441,317,363,318,323,323,283,332,245,345,209,363,184,382,162,405,126,459,103,511,90,550"/>
+<area shape="rect" id="Node000035" href="$classWebViewPanel.html#a118dd6f6115c00ad0d01b6c4238e5caf" title="Définit un callback à appeler une fois l&#39;initialisation terminée." alt="" coords="208,623,435,648"/>
+<area shape="poly" id="edge49_Node000001_Node000035" title=" " alt="" coords="113,572,209,609,239,617,238,622,207,614,111,577"/>
+<area shape="rect" id="Node000036" href="$classWebViewPanel.html#a71afad8b186e38cd35fded12d736b0c6" title="Enregistre le handler des messages JS entrants." alt="" coords="211,673,432,713"/>
+<area shape="poly" id="edge50_Node000001_Node000036" title=" " alt="" coords="98,573,145,615,176,638,209,658,225,665,222,670,207,663,173,643,141,619,95,577"/>
+<area shape="rect" id="Node000037" href="$classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd" title="Met à jour la progression." alt="" coords="229,737,413,763"/>
+<area shape="poly" id="edge51_Node000001_Node000037" title=" " alt="" coords="92,574,108,605,134,645,168,687,210,722,223,730,220,734,206,727,164,691,130,648,104,607,88,576"/>
+<area shape="rect" id="Node000038" href="$classWebViewPanel.html#a3d18421b35ea7ad55ff884ce299ac53c" title="Mappe un nom d&#39;hôte virtuel vers un dossier local. Permet de servir des fichiers locaux via https://h..." alt="" coords="227,787,415,827"/>
+<area shape="poly" id="edge52_Node000001_Node000038" title=" " alt="" coords="90,574,104,613,128,667,163,724,185,751,210,773,217,778,214,783,206,777,181,754,159,727,123,670,99,615,85,576"/>
+<area shape="rect" id="Node000039" href="$classProgressBar.html#ac9fbcf04d7d4e8c5b3e332efcfc0d34c" title="Show or hide the ProgressBar." alt="" coords="250,852,393,877"/>
+<area shape="poly" id="edge53_Node000001_Node000039" title=" " alt="" coords="88,574,98,624,119,696,135,735,155,772,180,807,210,837,238,853,236,857,206,841,176,811,150,775,130,737,114,698,93,625,83,575"/>
+<area shape="rect" id="Node000003" href="$classPCCPanel.html#ae4dd813f545a2e6aca3b63302a011603" title="Procédure de fenêtre statique, point d&#39;entrée imposé par Win32." alt="" coords="505,268,675,293"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="387,279,491,278,491,284,387,284"/>
+<area shape="rect" id="Node000004" href="$classPCCPanel.html#a4eb1ec290785cae336ff1f8e6bf0aafc" title="Dispatcher principal des messages de la fenêtre." alt="" coords="761,267,954,292"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="675,278,747,277,747,283,675,283"/>
+<area shape="rect" id="Node000005" href="$classPCCPanel.html#a8eecf984fba3d3b3bc86ea61b095e098" title="Gestionnaire de WM_PAINT — délègue le dessin à TCORenderer." alt="" coords="1051,255,1189,280"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="954,272,1037,268,1037,274,954,278"/>
+<area shape="rect" id="Node000006" href="$classTCORenderer.html#a84a480ca1f9b2d8dffd5a51148739898" title="Point d&#39;entrée unique du rendu TCO." alt="" coords="1311,229,1457,255"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1189,258,1297,248,1297,253,1190,263"/>
+<area shape="rect" id="Node000007" href="$classTCORenderer.html#abfcb79ee489f92d1e8ddd3cfe7ce7bb6" title="Calcule la Projection à partir du contenu de TopologyRepository." alt="" coords="1545,255,1783,280"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1458,246,1532,253,1532,258,1457,251"/>
+<area shape="rect" id="Node000008" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="1862,203,2013,243"/>
+<area shape="poly" id="edge10_Node000006_Node000008" title=" " alt="" coords="1458,237,1848,224,1849,229,1458,242"/>
+<area shape="rect" id="Node000009" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="1862,291,2013,331"/>
+<area shape="poly" id="edge24_Node000006_Node000009" title=" " alt="" coords="1419,252,1478,272,1546,289,1625,300,1706,306,1849,310,1848,316,1706,312,1625,305,1545,294,1476,277,1418,257"/>
+<area shape="rect" id="Node000010" href="$classTCORenderer.html#aeed8cc58c834a65669010f32359d4610" title="Dessine tous les StraightBlocks sous forme de polyligne GDI." alt="" coords="1561,153,1767,179"/>
+<area shape="poly" id="edge11_Node000006_Node000010" title=" " alt="" coords="1431,227,1545,195,1602,180,1604,185,1546,201,1432,232"/>
+<area shape="rect" id="Node000014" href="$classTCORenderer.html#abac93569443d9bdd38b2dfb5cbd7e30b" title="Dessine tous les SwitchBlocks (jonction + 3 branches)." alt="" coords="1561,104,1767,129"/>
+<area shape="poly" id="edge17_Node000006_Node000014" title=" " alt="" coords="1400,227,1461,183,1501,159,1544,138,1567,130,1569,135,1546,143,1504,164,1463,188,1403,231"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1743,252,1848,235,1849,240,1744,257"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="1744,277,1849,295,1848,300,1743,283"/>
+<area shape="poly" id="edge9_Node000009_Node000009" title=" " alt="" coords="1891,292,1888,282,1895,272,1912,267,1937,265,1966,268,1982,275,1980,280,1965,273,1937,270,1913,272,1898,277,1893,283,1896,290"/>
+<area shape="poly" id="edge12_Node000010_Node000008" title=" " alt="" coords="1726,176,1849,202,1848,207,1725,181"/>
+<area shape="poly" id="edge14_Node000010_Node000009" title=" " alt="" coords="1690,176,1832,253,1887,282,1884,287,1829,258,1688,181"/>
+<area shape="rect" id="Node000011" href="$classTCORenderer.html#ad888c0f18e1d658e017122e744d800af" title="Dessine un segment GDI entre deux points écran." alt="" coords="1850,104,2025,129"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="1735,151,1852,129,1853,135,1736,156"/>
+<area shape="rect" id="Node000012" href="$classTCORenderer.html#a444e83112e1f98c00fce1194e8c8d313" title="Projette un point GPS en coordonnées pixels." alt="" coords="1857,153,2017,179"/>
+<area shape="poly" id="edge15_Node000010_Node000012" title=" " alt="" coords="1767,163,1844,163,1844,169,1767,169"/>
+<area shape="rect" id="Node000013" href="$classTCORenderer.html#a538d4c108ec65a52b98810f96e6662e1" title="Mappe un ShuntingState vers une couleur GDI." alt="" coords="1839,55,2035,80"/>
+<area shape="poly" id="edge16_Node000010_Node000013" title=" " alt="" coords="1752,151,1781,138,1796,127,1805,115,1814,101,1829,89,1843,82,1845,87,1832,94,1818,105,1809,118,1800,131,1784,143,1754,156"/>
+<area shape="poly" id="edge18_Node000014_Node000008" title=" " alt="" coords="1757,127,1784,138,1800,150,1809,163,1818,176,1832,188,1851,197,1848,202,1829,192,1814,179,1805,166,1796,154,1781,143,1755,132"/>
+<area shape="poly" id="edge21_Node000014_Node000009" title=" " alt="" coords="1766,127,1784,139,1798,152,1805,167,1811,195,1816,224,1822,239,1833,254,1850,269,1871,283,1868,287,1847,274,1829,257,1817,241,1811,226,1806,196,1800,169,1793,156,1781,143,1763,132"/>
+<area shape="poly" id="edge20_Node000014_Node000011" title=" " alt="" coords="1767,114,1836,114,1836,119,1767,119"/>
+<area shape="poly" id="edge22_Node000014_Node000012" title=" " alt="" coords="1736,127,1853,148,1852,153,1735,132"/>
+<area shape="poly" id="edge23_Node000014_Node000013" title=" " alt="" coords="1735,101,1852,80,1853,85,1736,107"/>
+<area shape="rect" id="Node000015" href="$classTCORenderer.html#a16b62d2392d076c39684ef52fb11c84f" title="Dessine un disque plein centré sur center." alt="" coords="1852,5,2023,31"/>
+<area shape="poly" id="edge19_Node000014_Node000015" title=" " alt="" coords="1688,102,1751,71,1830,39,1857,31,1858,37,1832,45,1753,76,1691,106"/>
+<area shape="rect" id="Node000018" href="$classWebViewPanel.html#a886fd07f1d23eec535d0b57215c6ce50" title="Initialise l&#39;environnement WebView2 de manière asynchrone." alt="" coords="499,409,681,449"/>
+<area shape="poly" id="edge27_Node000017_Node000018" title=" " alt="" coords="405,431,486,429,486,434,405,436"/>
+<area shape="rect" id="Node000019" href="$classWebViewPanel.html#a49d047e945df840f4c48dbf0a3264b16" title="Callback déclenché à la fin de la création de l&#39;environnement WebView2." alt="" coords="745,409,969,449"/>
+<area shape="poly" id="edge28_Node000018_Node000019" title=" " alt="" coords="681,426,731,426,731,431,681,431"/>
+<area shape="rect" id="Node000020" href="$classWebViewPanel.html#a2098e8aa83f6ab5b825514deda7fd846" title="Callback déclenché à la fin de la création du contrôleur WebView2." alt="" coords="1017,409,1223,449"/>
+<area shape="poly" id="edge29_Node000019_Node000020" title=" " alt="" coords="970,426,1003,426,1003,431,970,431"/>
+<area shape="rect" id="Node000021" href="$classWebViewPanel.html#ac77338c39cc87b2fb7b7bde9da2004b1" title="Callback statique déclenché à la réception d&#39;un message JavaScript." alt="" coords="1271,409,1497,449"/>
+<area shape="poly" id="edge30_Node000020_Node000021" title=" " alt="" coords="1223,426,1257,426,1257,431,1223,431"/>
+<area shape="poly" id="edge31_Node000020_Node000022" title=" " alt="" coords="1213,446,1312,468,1311,473,1212,451"/>
+<area shape="rect" id="Node000026" href="$classMainWindow.html#a242d9acf230544637908fc2cf31f1284" title="Met à jour l&#39;état opérationnel d&#39;un SwitchBlock après un clic." alt="" coords="1562,356,1766,381"/>
+<area shape="poly" id="edge35_Node000025_Node000026" title=" " alt="" coords="698,336,1549,362,1548,368,697,341"/>
+<area shape="poly" id="edge36_Node000026_Node000008" title=" " alt="" coords="1684,354,1781,289,1804,270,1829,253,1848,245,1850,250,1832,258,1808,274,1784,293,1687,358"/>
+<area shape="poly" id="edge38_Node000026_Node000009" title=" " alt="" coords="1725,353,1848,327,1849,333,1726,359"/>
+<area shape="rect" id="Node000027" href="$classWebViewPanel.html#a5890da7c431554b9e864759f293dac1f" title="Exécute un script JavaScript dans le contexte de la page chargée." alt="" coords="1831,356,2044,381"/>
+<area shape="poly" id="edge37_Node000026_Node000027" title=" " alt="" coords="1766,366,1817,366,1817,371,1766,371"/>
+<area shape="rect" id="Node000028" href="$classSwitchBlock.html#a49ee6b32f553615447b412e58afca21a" title="Alterne entre NORMAL et DEVIATION. Équivalent à setActiveBranch(!current)." alt="" coords="1842,406,2033,446"/>
+<area shape="poly" id="edge39_Node000026_Node000028" title=" " alt="" coords="1726,379,1829,401,1828,406,1725,384"/>
+<area shape="rect" id="Node000032" href="$classTopologyRenderer.html#acf7559914d95f6d59c37106a11bd0df7" title="Génère le script JS de mise à jour visuelle d&#39;un switch et ses partenaires." alt="" coords="1841,470,2033,510"/>
+<area shape="poly" id="edge43_Node000026_Node000032" title=" " alt="" coords="1687,379,1751,416,1832,456,1851,463,1849,468,1830,460,1748,421,1685,384"/>
+<area shape="rect" id="Node000029" href="$classSwitchBlock.html#a4c252f2bb90dbe50b8c9d8e8de0fc5b5" title="Convertit l&#39;état ActiveBranch courant en chaîne lisible. Utilisé exclusivement par les appels de log." alt="" coords="2092,342,2287,382"/>
+<area shape="poly" id="edge40_Node000028_Node000029" title=" " alt="" coords="2016,403,2096,383,2098,388,2018,409"/>
+<area shape="rect" id="Node000030" href="$classSwitchBlock.html#af65a62f314ce4544ce687eacc13786e8" title="Retourne le switch partenaire côté deviation, ou nullptr." alt="" coords="2092,470,2287,510"/>
+<area shape="poly" id="edge41_Node000028_Node000030" title=" " alt="" coords="2018,443,2098,464,2096,469,2016,449"/>
+<area shape="rect" id="Node000031" href="$classSwitchBlock.html#a72cf7392935372bed47bccc9c1feb096" title="Retourne le switch partenaire côté normal, ou nullptr. Cast valide uniquement si isDouble() &amp;&amp; getDou..." alt="" coords="2092,406,2287,446"/>
+<area shape="poly" id="edge42_Node000028_Node000031" title=" " alt="" coords="2033,423,2078,423,2078,429,2033,429"/>
+<area shape="poly" id="edge45_Node000032_Node000030" title=" " alt="" coords="2034,487,2078,487,2078,493,2034,493"/>
+<area shape="poly" id="edge46_Node000032_Node000031" title=" " alt="" coords="2016,467,2096,447,2098,452,2018,473"/>
+<area shape="rect" id="Node000033" href="$classSwitchBlock.html#adbf269599ac24cd670976368ae00b39f" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="2118,599,2261,624"/>
+<area shape="poly" id="edge44_Node000032_Node000033" title=" " alt="" coords="1967,508,2024,546,2093,584,2116,592,2114,597,2091,588,2021,551,1964,513"/>
+<area shape="rect" id="Node000034" href="$classSwitchBlock.html#ada66b97802d45a8b3dfbbb05011ae9b6" title=" " alt="" coords="2098,534,2281,574"/>
+<area shape="poly" id="edge47_Node000032_Node000034" title=" " alt="" coords="2018,507,2098,528,2096,533,2016,513"/>
 </map>

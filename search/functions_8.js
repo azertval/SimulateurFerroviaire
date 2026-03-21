@@ -13,5 +13,6 @@ var searchData=
   ['isinactive_10',['isInactive',['../classShuntingElement.html#ac236019e6961a887732237cc5f1da697',1,'ShuntingElement']]],
   ['isinitialized_11',['isInitialized',['../classWebViewPanel.html#abea11ffd7181d2514edb9283256aa8e2',1,'WebViewPanel']]],
   ['isoccupied_12',['isOccupied',['../classShuntingElement.html#a6b545a802c6d06e1f8fb77a59f4ed0a4',1,'ShuntingElement']]],
-  ['isoriented_13',['isOriented',['../classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7',1,'SwitchBlock']]]
+  ['isoriented_13',['isOriented',['../classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7',1,'SwitchBlock']]],
+  ['isvisible_14',['isVisible',['../classPCCPanel.html#ab68408423409418ffc1de2d37fbb8e40',1,'PCCPanel']]]
 ];

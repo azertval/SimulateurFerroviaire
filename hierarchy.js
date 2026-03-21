@@ -25,7 +25,9 @@ var hierarchy =
     [ "MainWindow", "classMainWindow.html", null ],
     [ "NodeDegreeThresholds", "classNodeDegreeThresholds.html", null ],
     [ "ParserDefaultValues", "classParserDefaultValues.html", null ],
+    [ "PCCPanel", "classPCCPanel.html", null ],
     [ "ProgressBar", "classProgressBar.html", null ],
+    [ "TCORenderer::Projection", "structTCORenderer_1_1Projection.html", null ],
     [ "GraphBuilder::RawPolyline", "structGraphBuilder_1_1RawPolyline.html", null ],
     [ "std::runtime_error", null, [
       [ "RailwayParserException", "classRailwayParserException.html", [
@@ -39,6 +41,8 @@ var hierarchy =
     [ "StraightBlock::StraightNeighbours", "structStraightBlock_1_1StraightNeighbours.html", null ],
     [ "SwitchBlock::SwitchBranches", "structSwitchBlock_1_1SwitchBranches.html", null ],
     [ "SwitchOrientator", "classSwitchOrientator.html", null ],
+    [ "TCOColors", "structTCOColors.html", null ],
+    [ "TCORenderer", "classTCORenderer.html", null ],
     [ "TopologyData", "classTopologyData.html", null ],
     [ "TopologyEdge", "classTopologyEdge.html", null ],
     [ "TopologyExtractor", "classTopologyExtractor.html", null ],

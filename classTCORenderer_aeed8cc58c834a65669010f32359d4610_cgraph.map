@@ -1,0 +1,14 @@
+<map id="TCORenderer::drawStraights" name="TCORenderer::drawStraights">
+<area shape="rect" id="Node000001" title="Dessine tous les StraightBlocks sous forme de polyligne GDI." alt="" coords="5,151,211,177"/>
+<area shape="rect" id="Node000002" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="281,5,432,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,149,179,104,217,78,257,55,272,48,275,53,260,60,220,83,183,108,126,153"/>
+<area shape="rect" id="Node000003" href="$classTCORenderer.html#ad888c0f18e1d658e017122e744d800af" title="Dessine un segment GDI entre deux points écran." alt="" coords="269,70,444,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,149,258,105,289,96,291,101,260,111,141,154"/>
+<area shape="rect" id="Node000004" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="281,144,432,184"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="211,161,267,161,267,167,211,167"/>
+<area shape="rect" id="Node000005" href="$classTCORenderer.html#a444e83112e1f98c00fce1194e8c8d313" title="Projette un point GPS en coordonnées pixels." alt="" coords="277,209,437,234"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="165,174,288,203,287,208,163,179"/>
+<area shape="rect" id="Node000006" href="$classTCORenderer.html#a538d4c108ec65a52b98810f96e6662e1" title="Mappe un ShuntingState vers une couleur GDI." alt="" coords="259,258,455,283"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="131,175,188,208,260,243,285,252,284,257,258,248,185,213,128,179"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="311,144,308,134,315,125,332,119,357,117,385,120,401,127,399,132,384,125,357,123,333,125,318,129,313,135,316,143"/>
+</map>

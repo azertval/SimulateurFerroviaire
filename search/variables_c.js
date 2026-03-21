@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['pass_5fthrough_0',['PASS_THROUGH',['../classNodeDegreeThresholds.html#a4c0d965e0db81f01f6f2668511588b6f',1,'NodeDegreeThresholds']]],
-  ['pi_1',['PI',['../classGeometryUtils.html#ac6b38319d2e8ef20763a2010dc18ddae',1,'GeometryUtils']]],
-  ['prev_2',['prev',['../structStraightBlock_1_1StraightNeighbours.html#aedc663023d362e36b4990bfce054f9ba',1,'StraightBlock::StraightNeighbours']]]
+  ['next_0',['next',['../structStraightBlock_1_1StraightNeighbours.html#a9edcaa8bccf67a2b2bf16e07ea667c1c',1,'StraightBlock::StraightNeighbours']]],
+  ['nodeidtoswitchid_1',['nodeIdToSwitchId',['../structTopologyExtractResult.html#a78a0bc107f0a7aabe7f1cdffbf7f906b',1,'TopologyExtractResult']]],
+  ['nodepositions_2',['nodePositions',['../classTopologyGraph.html#a2254224df52b78e67993556e46c04bb6',1,'TopologyGraph']]],
+  ['normal_3',['normal',['../structTCOColors.html#afdcfea26b5693be1e249559b0cb931a6',1,'TCOColors::normal'],['../structSwitchBlock_1_1SwitchBranches.html#aa79a430cbe4719df2cd2962b70e0f5c2',1,'SwitchBlock::SwitchBranches::normal']]]
 ];

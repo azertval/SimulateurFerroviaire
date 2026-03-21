@@ -1,7 +1,6 @@
 var classMainWindow =
 [
     [ "MainWindow", "classMainWindow.html#a49399147361e2b1d1c52c69d0cea548d", null ],
-    [ "buildApplyStateScript", "classMainWindow.html#a8f5778297ba710ad9d34a683113779ee", null ],
     [ "create", "classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9", null ],
     [ "handleMessage", "classMainWindow.html#ab85682874f3ab5dfa81f782f889d8556", null ],
     [ "onCommand", "classMainWindow.html#afbecf0f64f48c5c868168884bab52356", null ],
@@ -13,6 +12,7 @@ var classMainWindow =
     [ "onProgressUpdate", "classMainWindow.html#a358c35e21b8d81e718d259a502648dd6", null ],
     [ "onSizeUpdate", "classMainWindow.html#a74866b6b18c52698bdb52f339ad80830", null ],
     [ "onSwitchClick", "classMainWindow.html#a242d9acf230544637908fc2cf31f1284", null ],
+    [ "onTogglePCC", "classMainWindow.html#a1a4521cbfe1f7ce92f6a0e12ff836b9d", null ],
     [ "onWebMessage", "classMainWindow.html#a6e84464d583e27d6f978385b22a5945f", null ],
     [ "windowProc", "classMainWindow.html#a332648d0a0caec8070b05bc27bb9a14b", null ],
     [ "m_className", "classMainWindow.html#ae4ebb138d65f55f9e1fc07927dc33a7e", null ],
@@ -20,6 +20,7 @@ var classMainWindow =
     [ "m_hWnd", "classMainWindow.html#aac115e46ed896228edc50c123d621666", null ],
     [ "m_logger", "classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0", null ],
     [ "m_nCmdShow", "classMainWindow.html#a7851704517af5a0e647770d2d5bbbb41", null ],
+    [ "m_pccPanel", "classMainWindow.html#adb4ab6a6334f26620a1cd0a5b6a5ec92", null ],
     [ "m_progressBar", "classMainWindow.html#af7868dafb194e564e76bd19c6343aaf2", null ],
     [ "m_title", "classMainWindow.html#a77cfbf99d86040cef118f2396aeb596d", null ],
     [ "m_webViewPanel", "classMainWindow.html#a0ba8e3b9ed7402c7cc1ff2cc78db9c1c", null ]

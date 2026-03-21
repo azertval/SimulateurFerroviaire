@@ -1,23 +1,28 @@
 <map id="SimulateurFerroviaire/Engine/HMI" name="SimulateurFerroviaire/Engine/HMI">
-<area shape="rect" id="node1" href="dir_db532fcf2b7ab198586d05907cd2a60c.html" title="Core" alt="" coords="299,209,351,235"/>
-<area shape="poly" id="edge5" href="dir_000010_000001.html" alt="" coords="239,86,265,107,291,134,309,165,321,195,316,197,304,167,287,138,262,111,235,91"/>
-<area shape="rect" id="edge5-headlabel" href="dir_000010_000001.html" title="4" alt="" coords="320,182,330,196"/>
+<area shape="rect" id="node1" href="dir_db532fcf2b7ab198586d05907cd2a60c.html" title="Core" alt="" coords="406,209,458,235"/>
+<area shape="poly" id="edge6" href="dir_000010_000001.html" alt="" coords="305,81,352,100,376,115,398,134,417,164,429,195,424,197,413,166,394,138,373,120,349,105,303,86"/>
+<area shape="rect" id="edge6-headlabel" href="dir_000010_000001.html" title="6" alt="" coords="429,182,438,197"/>
 <area shape="rect" id="node3" href="dir_4c1c7a346f82d27fa8dc7bdfc7d4df65.html" title="Dialogs" alt="" coords="38,136,109,161"/>
-<area shape="poly" id="edge4" href="dir_000010_000002.html" alt="" coords="196,90,110,132,108,128,194,86"/>
-<area shape="rect" id="edge4-headlabel" href="dir_000010_000002.html" title="3" alt="" coords="112,128,122,143"/>
-<area shape="rect" id="node4" href="dir_4a2a55060b21fd8d2f0c9c08ef9a4af5.html" title="Utils" alt="" coords="150,209,202,235"/>
-<area shape="poly" id="edge3" href="dir_000010_000019.html" alt="" coords="198,90,172,110,150,137,147,152,149,167,161,196,157,199,143,168,142,151,146,135,168,106,195,86"/>
-<area shape="rect" id="edge3-headlabel" href="dir_000010_000019.html" title="2" alt="" coords="159,182,168,196"/>
-<area shape="rect" id="node5" href="dir_29002af622f034b8e7f3d38226cac7e0.html" title="WebViewPanel" alt="" coords="160,136,277,161"/>
-<area shape="poly" id="edge1" href="dir_000010_000021.html" alt="" coords="221,88,221,122,216,122,216,88"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000010_000021.html" title="2" alt="" coords="222,110,232,125"/>
-<area shape="rect" id="node6" href="dir_387a2147fe1fbdf0efef36368214e4d3.html" title="Modules" alt="" coords="373,136,451,161"/>
-<area shape="poly" id="edge2" href="dir_000010_000015.html" alt="" coords="244,83,368,129,367,134,242,88"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000010_000015.html" title="1" alt="" coords="362,114,371,129"/>
-<area shape="poly" id="edge7" href="dir_000021_000001.html" alt="" coords="237,159,298,199,295,204,234,164"/>
-<area shape="rect" id="edge7-headlabel" href="dir_000021_000001.html" title="1" alt="" coords="293,185,302,199"/>
-<area shape="poly" id="edge6" href="dir_000021_000019.html" alt="" coords="214,163,192,199,188,196,209,160"/>
-<area shape="rect" id="edge6-headlabel" href="dir_000021_000019.html" title="1" alt="" coords="195,191,204,205"/>
-<area shape="rect" id="clust2" href="dir_fa749c79e99d4161e054d79886d12aa3.html" alt="" coords="27,52,288,245"/>
-<area shape="rect" id="clust1" href="dir_b70de4a9b2a9f967d011983a1fdf80d1.html" title="Engine" alt="" coords="16,16,363,256"/>
+<area shape="poly" id="edge5" href="dir_000010_000002.html" alt="" coords="257,87,120,134,119,129,255,82"/>
+<area shape="rect" id="edge5-headlabel" href="dir_000010_000002.html" title="3" alt="" coords="122,131,131,145"/>
+<area shape="rect" id="node4" href="dir_073edf83a0a96e21097776b99910cb5f.html" title="PCCPanel" alt="" coords="301,136,384,161"/>
+<area shape="poly" id="edge1" href="dir_000010_000016.html" alt="" coords="292,87,325,124,321,127,288,90"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000010_000016.html" title="1" alt="" coords="322,109,331,124"/>
+<area shape="rect" id="node5" href="dir_4a2a55060b21fd8d2f0c9c08ef9a4af5.html" title="Utils" alt="" coords="150,209,202,235"/>
+<area shape="poly" id="edge4" href="dir_000010_000020.html" alt="" coords="256,82,230,88,200,98,172,114,150,137,145,151,147,167,161,197,156,199,142,168,140,151,146,135,169,110,198,94,229,83,255,77"/>
+<area shape="rect" id="edge4-headlabel" href="dir_000010_000020.html" title="2" alt="" coords="158,182,167,197"/>
+<area shape="rect" id="node6" href="dir_29002af622f034b8e7f3d38226cac7e0.html" title="WebViewPanel" alt="" coords="160,136,277,161"/>
+<area shape="poly" id="edge2" href="dir_000010_000022.html" alt="" coords="272,90,240,127,236,124,268,87"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000010_000022.html" title="2" alt="" coords="242,120,252,135"/>
+<area shape="rect" id="node7" href="dir_387a2147fe1fbdf0efef36368214e4d3.html" title="Modules" alt="" coords="480,136,557,161"/>
+<area shape="poly" id="edge3" href="dir_000010_000015.html" alt="" coords="305,81,468,130,467,135,303,86"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000010_000015.html" title="1" alt="" coords="461,115,470,130"/>
+<area shape="poly" id="edge7" href="dir_000016_000001.html" alt="" coords="359,159,408,198,405,203,355,163"/>
+<area shape="rect" id="edge7-headlabel" href="dir_000016_000001.html" title="3" alt="" coords="404,184,413,199"/>
+<area shape="poly" id="edge9" href="dir_000022_000001.html" alt="" coords="255,159,393,204,392,209,253,164"/>
+<area shape="rect" id="edge9-headlabel" href="dir_000022_000001.html" title="1" alt="" coords="387,190,396,205"/>
+<area shape="poly" id="edge8" href="dir_000022_000020.html" alt="" coords="214,163,192,199,188,196,209,160"/>
+<area shape="rect" id="edge8-headlabel" href="dir_000022_000020.html" title="1" alt="" coords="195,191,204,205"/>
+<area shape="rect" id="clust2" href="dir_fa749c79e99d4161e054d79886d12aa3.html" alt="" coords="27,52,395,245"/>
+<area shape="rect" id="clust1" href="dir_b70de4a9b2a9f967d011983a1fdf80d1.html" title="Engine" alt="" coords="16,16,469,256"/>
 </map>

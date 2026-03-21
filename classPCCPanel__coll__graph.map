@@ -1,0 +1,5 @@
+<map id="PCCPanel" name="PCCPanel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="25,453,167,739"/>
+<area shape="rect" id="Node000002" href="$classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="5,5,187,391"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,391,99,437,93,437,93,391"/>
+</map>

@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('classMainWindow.html',''); initResizab
 <div class="dynheader">
 Collaboration diagram for MainWindow:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow__coll__graph.svg" width="495" height="1452"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow__coll__graph.svg" width="660" height="1452"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -160,9 +160,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a242d9acf230544637908fc2cf31f1284" id="r_a242d9acf230544637908fc2cf31f1284"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a242d9acf230544637908fc2cf31f1284">onSwitchClick</a> (const std::string &amp;switchId)</td></tr>
 <tr class="memdesc:a242d9acf230544637908fc2cf31f1284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour l'état opérationnel d'un <a class="el" href="classSwitchBlock.html">SwitchBlock</a> après un clic.  <br /></td></tr>
 <tr class="separator:a242d9acf230544637908fc2cf31f1284"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f5778297ba710ad9d34a683113779ee" id="r_a8f5778297ba710ad9d34a683113779ee"><td class="memItemLeft" align="right" valign="top">std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a8f5778297ba710ad9d34a683113779ee">buildApplyStateScript</a> (const std::string &amp;switchId, bool toDeviation)</td></tr>
-<tr class="memdesc:a8f5778297ba710ad9d34a683113779ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit le script JS de mise à jour visuelle d'un switch.  <br /></td></tr>
-<tr class="separator:a8f5778297ba710ad9d34a683113779ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a4521cbfe1f7ce92f6a0e12ff836b9d" id="r_a1a4521cbfe1f7ce92f6a0e12ff836b9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a1a4521cbfe1f7ce92f6a0e12ff836b9d">onTogglePCC</a> ()</td></tr>
+<tr class="memdesc:a1a4521cbfe1f7ce92f6a0e12ff836b9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bascule la visibilité du panneau PCC.  <br /></td></tr>
+<tr class="separator:a1a4521cbfe1f7ce92f6a0e12ff836b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -182,6 +182,9 @@ Private Attributes</h2></td></tr>
 <tr class="separator:af932420967655fb2b8dcda78d8fa7bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ba8e3b9ed7402c7cc1ff2cc78db9c1c" id="r_a0ba8e3b9ed7402c7cc1ff2cc78db9c1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWebViewPanel.html">WebViewPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a0ba8e3b9ed7402c7cc1ff2cc78db9c1c">m_webViewPanel</a> {<a class="el" href="classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a>}</td></tr>
 <tr class="separator:a0ba8e3b9ed7402c7cc1ff2cc78db9c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb4ab6a6334f26620a1cd0a5b6a5ec92" id="r_adb4ab6a6334f26620a1cd0a5b6a5ec92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPCCPanel.html">PCCPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#adb4ab6a6334f26620a1cd0a5b6a5ec92">m_pccPanel</a> {<a class="el" href="classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a>}</td></tr>
+<tr class="memdesc:adb4ab6a6334f26620a1cd0a5b6a5ec92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Panneau PCC superposé, togglé via F2 ou menu Vue → Panneau PCC. Créé dans <a class="el" href="classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9">create</a>, masqué par défaut.  <br /></td></tr>
+<tr class="separator:adb4ab6a6334f26620a1cd0a5b6a5ec92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Fenêtre principale de l'application SimulateurFerroviaire. </p>
@@ -244,52 +247,6 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8f5778297ba710ad9d34a683113779ee" name="a8f5778297ba710ad9d34a683113779ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f5778297ba710ad9d34a683113779ee">&#9670;&#160;</a></span>buildApplyStateScript()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::wstring MainWindow::buildApplyStateScript </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>switchId</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>toDeviation</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Construit le script JS de mise à jour visuelle d'un switch. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">switchId</td><td>ID du switch. </td></tr>
-    <tr><td class="paramname">toDeviation</td><td>Nouvel état (true = deviation). </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Instruction JavaScript pour executeScript(). </dd></dl>
-
-</div>
-</div>
 <a id="a627d9feed19c3096079d91d6d38b9bf9" name="a627d9feed19c3096079d91d6d38b9bf9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a627d9feed19c3096079d91d6d38b9bf9">&#9670;&#160;</a></span>create()</h2>
 
@@ -315,7 +272,7 @@ Private Attributes</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a627d9feed19c3096079d91d6d38b9bf9_cgraph.svg" width="1492" height="564"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a627d9feed19c3096079d91d6d38b9bf9_cgraph.svg" width="2292" height="883"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -381,7 +338,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_ab85682874f3ab5dfa81f782f889d8556_cgraph.svg" width="1846" height="874"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_ab85682874f3ab5dfa81f782f889d8556_cgraph.svg" width="1846" height="863"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -437,7 +394,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_afbecf0f64f48c5c868168884bab52356_cgraph.svg" width="1798" height="1194"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_afbecf0f64f48c5c868168884bab52356_cgraph.svg" width="1808" height="1036"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -660,7 +617,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a90cae565f67d1291d690d974547041a0_cgraph.svg" width="1016" height="526"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a90cae565f67d1291d690d974547041a0_cgraph.svg" width="1016" height="542"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -748,7 +705,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a74866b6b18c52698bdb52f339ad80830_cgraph.svg" width="462" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a74866b6b18c52698bdb52f339ad80830_cgraph.svg" width="462" height="135"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -801,6 +758,44 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a242d9acf230544637908fc2cf31f1284_icgraph.svg" width="680" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a1a4521cbfe1f7ce92f6a0e12ff836b9d" name="a1a4521cbfe1f7ce92f6a0e12ff836b9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a4521cbfe1f7ce92f6a0e12ff836b9d">&#9670;&#160;</a></span>onTogglePCC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::onTogglePCC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bascule la visibilité du panneau PCC. </p>
+<p>Délègue à <a class="el" href="classPCCPanel.html#a1b37a13eaa0a03be291722243c4daf52">PCCPanel::toggle</a>. Appelé depuis <a class="el" href="classMainWindow.html#afbecf0f64f48c5c868168884bab52356">onCommand</a> (IDM_VIEW_PCC) et depuis le gestionnaire <code>WM_KEYDOWN</code> (touche F2). </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a1a4521cbfe1f7ce92f6a0e12ff836b9d_cgraph.svg" width="567" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a1a4521cbfe1f7ce92f6a0e12ff836b9d_icgraph.svg" width="1431" height="70"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -911,7 +906,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a332648d0a0caec8070b05bc27bb9a14b_cgraph.svg" width="2084" height="867"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMainWindow_a332648d0a0caec8070b05bc27bb9a14b_cgraph.svg" width="2084" height="894"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -1034,6 +1029,30 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 <p>Mode d'affichage initial. </p>
+
+</div>
+</div>
+<a id="adb4ab6a6334f26620a1cd0a5b6a5ec92" name="adb4ab6a6334f26620a1cd0a5b6a5ec92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb4ab6a6334f26620a1cd0a5b6a5ec92">&#9670;&#160;</a></span>m_pccPanel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classPCCPanel.html">PCCPanel</a> MainWindow::m_pccPanel {<a class="el" href="classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Panneau PCC superposé, togglé via F2 ou menu Vue → Panneau PCC. Créé dans <a class="el" href="classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9">create</a>, masqué par défaut. </p>
 
 </div>
 </div>

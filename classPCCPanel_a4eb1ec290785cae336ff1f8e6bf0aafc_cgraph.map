@@ -1,0 +1,35 @@
+<map id="PCCPanel::handleMessage" name="PCCPanel::handleMessage">
+<area shape="rect" id="Node000001" title="Dispatcher principal des messages de la fenêtre." alt="" coords="5,107,199,133"/>
+<area shape="rect" id="Node000002" href="$classPCCPanel.html#a8eecf984fba3d3b3bc86ea61b095e098" title="Gestionnaire de WM_PAINT — délègue le dessin à TCORenderer." alt="" coords="247,107,385,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,117,233,117,233,123,199,123"/>
+<area shape="rect" id="Node000003" href="$classTCORenderer.html#a84a480ca1f9b2d8dffd5a51148739898" title="Point d&#39;entrée unique du rendu TCO." alt="" coords="433,107,580,133"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="386,117,419,117,419,123,386,123"/>
+<area shape="rect" id="Node000004" href="$classTCORenderer.html#abfcb79ee489f92d1e8ddd3cfe7ce7bb6" title="Calcule la Projection à partir du contenu de TopologyRepository." alt="" coords="628,57,865,82"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="567,105,672,82,673,87,568,110"/>
+<area shape="rect" id="Node000005" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="936,5,1087,45"/>
+<area shape="poly" id="edge7_Node000003_Node000005" title=" " alt="" coords="521,105,566,72,596,55,627,41,703,24,782,15,857,12,922,14,922,20,857,18,782,20,704,29,629,47,598,59,569,76,524,109"/>
+<area shape="rect" id="Node000006" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="936,93,1087,133"/>
+<area shape="poly" id="edge21_Node000003_Node000006" title=" " alt="" coords="580,116,922,112,922,117,580,122"/>
+<area shape="rect" id="Node000007" href="$classTCORenderer.html#aeed8cc58c834a65669010f32359d4610" title="Dessine tous les StraightBlocks sous forme de polyligne GDI." alt="" coords="644,158,849,183"/>
+<area shape="poly" id="edge8_Node000003_Node000007" title=" " alt="" coords="568,130,673,153,672,158,567,135"/>
+<area shape="rect" id="Node000011" href="$classTCORenderer.html#abac93569443d9bdd38b2dfb5cbd7e30b" title="Dessine tous les SwitchBlocks (jonction + 3 branches)." alt="" coords="644,207,849,233"/>
+<area shape="poly" id="edge14_Node000003_Node000011" title=" " alt="" coords="526,131,571,162,629,192,655,201,654,206,627,197,568,166,523,135"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="823,54,922,37,923,43,824,59"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="824,79,923,96,922,101,823,85"/>
+<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="962,94,959,84,967,74,985,69,1011,67,1042,69,1059,77,1056,82,1041,75,1011,72,986,74,970,79,965,85,967,92"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="767,156,864,91,887,72,912,55,927,48,929,53,915,60,890,76,867,95,770,160"/>
+<area shape="poly" id="edge11_Node000007_Node000006" title=" " alt="" coords="806,155,922,130,923,135,807,161"/>
+<area shape="rect" id="Node000008" href="$classTCORenderer.html#ad888c0f18e1d658e017122e744d800af" title="Dessine un segment GDI entre deux points écran." alt="" coords="924,158,1099,183"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="850,168,910,168,910,173,850,173"/>
+<area shape="rect" id="Node000009" href="$classTCORenderer.html#a444e83112e1f98c00fce1194e8c8d313" title="Projette un point GPS en coordonnées pixels." alt="" coords="931,207,1091,233"/>
+<area shape="poly" id="edge12_Node000007_Node000009" title=" " alt="" coords="816,181,930,202,929,207,815,186"/>
+<area shape="rect" id="Node000010" href="$classTCORenderer.html#a538d4c108ec65a52b98810f96e6662e1" title="Mappe un ShuntingState vers une couleur GDI." alt="" coords="913,257,1109,282"/>
+<area shape="poly" id="edge13_Node000007_Node000010" title=" " alt="" coords="840,181,867,192,882,205,892,218,900,231,915,243,927,249,925,254,912,248,896,235,887,221,879,209,864,197,838,186"/>
+<area shape="poly" id="edge15_Node000011_Node000005" title=" " alt="" coords="845,205,864,193,877,177,884,161,888,127,891,91,898,73,911,55,922,47,926,51,915,59,902,76,896,93,893,127,889,162,882,180,867,197,847,210"/>
+<area shape="poly" id="edge18_Node000011_Node000006" title=" " alt="" coords="834,205,864,192,879,181,887,169,897,156,912,143,923,137,926,142,915,148,901,160,892,172,882,185,867,197,836,210"/>
+<area shape="poly" id="edge17_Node000011_Node000008" title=" " alt="" coords="815,205,929,183,930,189,816,210"/>
+<area shape="poly" id="edge19_Node000011_Node000009" title=" " alt="" coords="850,217,918,217,918,223,850,223"/>
+<area shape="poly" id="edge20_Node000011_Node000010" title=" " alt="" coords="816,230,930,251,929,257,815,235"/>
+<area shape="rect" id="Node000012" href="$classTCORenderer.html#a16b62d2392d076c39684ef52fb11c84f" title="Dessine un disque plein centré sur center." alt="" coords="926,306,1097,331"/>
+<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="774,230,837,261,914,292,939,300,937,305,912,297,835,266,771,235"/>
+</map>

@@ -11,12 +11,13 @@ var searchData=
   ['wgs84_5fsemi_5fmajor_5faxis_8',['wgs84_semi_major_axis',['../classGeographicProjection.html#aab5fcbc3c496e78e66819b2797475883',1,'GeographicProjection::WGS84_SEMI_MAJOR_AXIS'],['../classGeometryUtils.html#ae029132bc26d50cc79bef60b1a40a918',1,'GeometryUtils::WGS84_SEMI_MAJOR_AXIS']]],
   ['wgs84coords_9',['wgs84Coords',['../structGraphBuilder_1_1RawPolyline.html#addbb9066eeb04e8c0e990c6a87a96d9b',1,'GraphBuilder::RawPolyline']]],
   ['wgs84tometricutm_10',['wgs84ToMetricUtm',['../classGeometryUtils.html#abcb43f3e49607318e07012e902febfdb',1,'GeometryUtils']]],
-  ['win32_5flean_5fand_5fmean_11',['WIN32_LEAN_AND_MEAN',['../framework_8h.html#ac7bef5d85e3dcd73eef56ad39ffc84a9',1,'framework.h']]],
-  ['windowproc_12',['windowProc',['../classMainWindow.html#a332648d0a0caec8070b05bc27bb9a14b',1,'MainWindow']]],
-  ['wiretopology_13',['wireTopology',['../classTopologyExtractor.html#ad16f6760ca59d58d9e37dee7404071d6',1,'TopologyExtractor']]],
-  ['wm_5fparsing_5ferror_14',['wm_parsing_error',['../MainWindow_8cpp.html#aceb0af3e41fadb0e741d1b18a89d1214',1,'WM_PARSING_ERROR:&#160;MainWindow.cpp'],['../GeoParsingTask_8cpp.html#aceb0af3e41fadb0e741d1b18a89d1214',1,'WM_PARSING_ERROR:&#160;GeoParsingTask.cpp']]],
-  ['wm_5fparsing_5fsuccess_15',['wm_parsing_success',['../MainWindow_8cpp.html#a7738d2c299f0b98844346bed1e13ea58',1,'WM_PARSING_SUCCESS:&#160;MainWindow.cpp'],['../GeoParsingTask_8cpp.html#a7738d2c299f0b98844346bed1e13ea58',1,'WM_PARSING_SUCCESS:&#160;GeoParsingTask.cpp']]],
-  ['wm_5fprogress_5fupdate_16',['wm_progress_update',['../MainWindow_8cpp.html#aacda7c0aa83125b36195c5703d1b4959',1,'WM_PROGRESS_UPDATE:&#160;MainWindow.cpp'],['../GeoParsingTask_8cpp.html#aacda7c0aa83125b36195c5703d1b4959',1,'WM_PROGRESS_UPDATE:&#160;GeoParsingTask.cpp']]],
-  ['writelog_17',['writeLog',['../classLogger.html#ad3f8120f97679ef581fe34b3c220fe90',1,'Logger']]],
-  ['wwinmain_18',['wWinMain',['../SimulateurFerroviaire_8cpp.html#a1e683c5a19c00d05cd803e46b805e339',1,'SimulateurFerroviaire.cpp']]]
+  ['width_11',['width',['../structTCORenderer_1_1Projection.html#ae3e4e0bcab68bac471edca096b2ed3d8',1,'TCORenderer::Projection']]],
+  ['win32_5flean_5fand_5fmean_12',['WIN32_LEAN_AND_MEAN',['../framework_8h.html#ac7bef5d85e3dcd73eef56ad39ffc84a9',1,'framework.h']]],
+  ['windowproc_13',['windowproc',['../classPCCPanel.html#ae4dd813f545a2e6aca3b63302a011603',1,'PCCPanel::windowProc()'],['../classMainWindow.html#a332648d0a0caec8070b05bc27bb9a14b',1,'MainWindow::windowProc()']]],
+  ['wiretopology_14',['wireTopology',['../classTopologyExtractor.html#ad16f6760ca59d58d9e37dee7404071d6',1,'TopologyExtractor']]],
+  ['wm_5fparsing_5ferror_15',['wm_parsing_error',['../MainWindow_8cpp.html#aceb0af3e41fadb0e741d1b18a89d1214',1,'WM_PARSING_ERROR:&#160;MainWindow.cpp'],['../GeoParsingTask_8cpp.html#aceb0af3e41fadb0e741d1b18a89d1214',1,'WM_PARSING_ERROR:&#160;GeoParsingTask.cpp']]],
+  ['wm_5fparsing_5fsuccess_16',['wm_parsing_success',['../MainWindow_8cpp.html#a7738d2c299f0b98844346bed1e13ea58',1,'WM_PARSING_SUCCESS:&#160;MainWindow.cpp'],['../GeoParsingTask_8cpp.html#a7738d2c299f0b98844346bed1e13ea58',1,'WM_PARSING_SUCCESS:&#160;GeoParsingTask.cpp']]],
+  ['wm_5fprogress_5fupdate_17',['wm_progress_update',['../MainWindow_8cpp.html#aacda7c0aa83125b36195c5703d1b4959',1,'WM_PROGRESS_UPDATE:&#160;MainWindow.cpp'],['../GeoParsingTask_8cpp.html#aacda7c0aa83125b36195c5703d1b4959',1,'WM_PROGRESS_UPDATE:&#160;GeoParsingTask.cpp']]],
+  ['writelog_18',['writeLog',['../classLogger.html#ad3f8120f97679ef581fe34b3c220fe90',1,'Logger']]],
+  ['wwinmain_19',['wWinMain',['../SimulateurFerroviaire_8cpp.html#a1e683c5a19c00d05cd803e46b805e339',1,'SimulateurFerroviaire.cpp']]]
 ];

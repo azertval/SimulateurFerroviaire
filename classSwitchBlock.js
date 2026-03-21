@@ -9,7 +9,6 @@ var classSwitchBlock =
     [ "computeTotalLength", "classSwitchBlock.html#a003ca555f7f3dfd8e8057ae23dba9381", null ],
     [ "getAbsorbedDeviationCoords", "classSwitchBlock.html#aaca37431800ae6145596cc436d93ab92", null ],
     [ "getAbsorbedNormalCoords", "classSwitchBlock.html#a1e0096ec969222b7244af2ad26f2be12", null ],
-    [ "getActiveBranch", "classSwitchBlock.html#a302177ecf0402abac6b670ed3eac219b", null ],
     [ "getActiveBranch", "classSwitchBlock.html#aba30776838f3363fc7e93bcb7ce7888c", null ],
     [ "getBranches", "classSwitchBlock.html#a0d8ed60c4fa6c012210b3d643a590680", null ],
     [ "getBranchIds", "classSwitchBlock.html#a3df4225adcb5d9121388c7b90fcd1af2", null ],
