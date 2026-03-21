@@ -132,5 +132,19 @@ private:
     */
     static std::wstring escapeForJavaScript(const std::string& input);
 
+    /**
+    * @brief Calcule le bearing en degrés entre deux points géographiques.
+     * @param a Point de départ (latitude, longitude).
+     * @param b Point d'arrivée (latitude, longitude).
+     * @return Bearing en degrés (0° = nord, 90° = est, 180° = sud, 270° = ouest).
+     *
+     * Utilise la formule de l'azimut géodésique pour calculer le bearing
+     * entre les deux points sur la sphère terrestre.
+     *
+     * Retourne 0 si les coordonnées sont invalides ou identiques.
+    */
+    static double bearingDeg(const LatLon& a, const LatLon& b);
+
+
     GeoJsonExporter() = delete;
 };

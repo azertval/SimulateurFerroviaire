@@ -68,15 +68,11 @@ std::vector<SwitchBlock> TopologyExtractor::detectSwitches()
     std::vector<SwitchBlock> switches;
     int switchIndex = 0;
 
-    // Tri des nœuds de jonction pour un ordre déterministe
     std::vector<int> junctionNodeIds;
     for (const auto& [nodeId, adjacencyList] : graph.adjacency)
-    {
         if (static_cast<int>(adjacencyList.size()) >= NodeDegreeThresholds::JUNCTION_MINIMUM)
-        {
             junctionNodeIds.push_back(nodeId);
-        }
-    }
+
     std::sort(junctionNodeIds.begin(), junctionNodeIds.end());
 
     for (int nodeId : junctionNodeIds)
@@ -88,9 +84,8 @@ std::vector<SwitchBlock> TopologyExtractor::detectSwitches()
                 m_graphResult.isNorthernHemisphere);
 
         const std::string switchId = "sw/" + std::to_string(switchIndex++);
-        SwitchBlock switchBlock(switchId, junctionCoordinate);
+        switches.emplace_back(switchId, junctionCoordinate);
 
-        switches.push_back(std::move(switchBlock));
         m_nodeIdToSwitchId[nodeId] = switchId;
         m_switchIdToNodeId[switchId] = nodeId;
     }
@@ -108,25 +103,19 @@ std::vector<StraightBlock> TopologyExtractor::extractStraights()
     TopologyGraph& graph = m_graphResult.topologyGraph;
     const std::set<int>& boundary = m_graphResult.boundaryNodeIds;
 
-    std::set<std::string>  visitedEdgeIds;
-    std::set<std::tuple<int, int, int>> seenGeometryHashes;  // hash grossier pour dédup
-    std::vector<StraightBlock> straights;
+    std::set<std::string>              visitedEdgeIds;
+    std::set<std::tuple<int, int, int>> seenGeometryHashes;
+    std::vector<StraightBlock>         straights;
     int straightIndex = 0;
 
     for (int startNodeId : boundary)
     {
-        auto adjacencyIterator = graph.adjacency.find(startNodeId);
-        if (adjacencyIterator == graph.adjacency.end())
-        {
-            continue;
-        }
+        auto adjIt = graph.adjacency.find(startNodeId);
+        if (adjIt == graph.adjacency.end()) continue;
 
-        for (const auto& [neighbourId, edgeId] : adjacencyIterator->second)
+        for (const auto& [neighbourId, edgeId] : adjIt->second)
         {
-            if (visitedEdgeIds.count(edgeId))
-            {
-                continue;
-            }
+            if (visitedEdgeIds.count(edgeId)) continue;
 
             std::vector<CoordinateXY> accumulatedCoords;
             std::set<std::string>     pathEdges;
@@ -140,14 +129,13 @@ std::vector<StraightBlock> TopologyExtractor::extractStraights()
                 continue;
             }
 
-            // Empreinte géométrique pour déduplication (premiers/derniers points)
             const auto& front = accumulatedCoords.front();
             const auto& back = accumulatedCoords.back();
             auto hashKey = std::make_tuple(
                 static_cast<int>(std::round(front.x)),
                 static_cast<int>(std::round(front.y)),
-                static_cast<int>(std::round(back.x * 1000.0 + back.y))
-            );
+                static_cast<int>(std::round(back.x * 1000.0 + back.y)));
+
             if (seenGeometryHashes.count(hashKey))
             {
                 for (const auto& eid : pathEdges) visitedEdgeIds.insert(eid);
@@ -155,17 +143,14 @@ std::vector<StraightBlock> TopologyExtractor::extractStraights()
             }
             seenGeometryHashes.insert(hashKey);
 
-            // Conversion métrique → WGS-84
             std::vector<LatLon> wgs84Coords =
                 GeometryUtils::convertPolylineToWgs84(accumulatedCoords,
                     m_graphResult.utmZoneNumber,
                     m_graphResult.isNorthernHemisphere);
 
             const std::string straightId = "s/" + std::to_string(straightIndex++);
-            StraightBlock straight(straightId, std::move(wgs84Coords));
-
+            straights.emplace_back(straightId, std::move(wgs84Coords));
             m_straightEndpointNodeIds[straightId] = { startNodeId, endNodeId };
-            straights.push_back(std::move(straight));
 
             for (const auto& eid : pathEdges) visitedEdgeIds.insert(eid);
         }
@@ -190,20 +175,14 @@ int TopologyExtractor::walkPathUntilBoundary(int                        startNod
     {
         visitedEdgeIds.insert(currentEdgeId);
 
-        auto edgeIterator = graph.edges.find(currentEdgeId);
-        if (edgeIterator == graph.edges.end())
-        {
-            break;
-        }
+        auto edgeIt = graph.edges.find(currentEdgeId);
+        if (edgeIt == graph.edges.end()) break;
 
-        const TopologyEdge& edge = edgeIterator->second;
+        const TopologyEdge& edge = edgeIt->second;
         std::vector<CoordinateXY> edgeCoords = edge.geometry;
 
-        // Orienter les coordonnées de l'arête dans le sens de la marche
         if (edge.startNodeIndex != currentNodeId)
-        {
             std::reverse(edgeCoords.begin(), edgeCoords.end());
-        }
 
         if (firstIteration)
         {
@@ -213,35 +192,23 @@ int TopologyExtractor::walkPathUntilBoundary(int                        startNod
         }
         else
         {
-            // Éviter le doublon du point de jonction
             accumulatedCoords.insert(accumulatedCoords.end(),
                 edgeCoords.begin() + 1, edgeCoords.end());
         }
 
         const int nextNodeId = graph.getOppositeNodeId(currentEdgeId, currentNodeId);
 
-        // Arrêt sur nœud frontière
-        if (boundary.count(nextNodeId))
-        {
-            return nextNodeId;
-        }
+        if (boundary.count(nextNodeId)) return nextNodeId;
 
-        // Nœud de degré != 2 : terminus ou jonction non identifiée comme frontière
         if (graph.getDegreeOfNode(nextNodeId) != NodeDegreeThresholds::PASS_THROUGH)
-        {
             return nextNodeId;
-        }
 
-        // Continuation colinéaire sur les nœuds de passage (degré 2)
-        auto continuationEdgeOpt =
+        auto continuationOpt =
             graph.findMostCollinearContinuation(nextNodeId, currentEdgeId);
-        if (!continuationEdgeOpt)
-        {
-            return nextNodeId;
-        }
+        if (!continuationOpt) return nextNodeId;
 
         currentNodeId = nextNodeId;
-        currentEdgeId = *continuationEdgeOpt;
+        currentEdgeId = *continuationOpt;
     }
 
     return currentNodeId;
@@ -256,137 +223,119 @@ std::vector<StraightBlock> TopologyExtractor::splitLongStraights(
     std::vector<StraightBlock> inputStraights)
 {
     if (m_maxStraightLengthMeters <= 0.0)
-    {
         return inputStraights;
-    }
 
-    std::vector<StraightBlock>                         outputStraights;
+    std::vector<StraightBlock>                           outputStraights;
     std::unordered_map<std::string, std::pair<int, int>> newEndpoints;
 
     for (StraightBlock& straight : inputStraights)
     {
-        const auto endpointIterator = m_straightEndpointNodeIds.find(straight.id);
-        const int startNodeId = (endpointIterator != m_straightEndpointNodeIds.end())
-            ? endpointIterator->second.first : -1;
-        const int endNodeId = (endpointIterator != m_straightEndpointNodeIds.end())
-            ? endpointIterator->second.second : -1;
+        const auto endpointIt = m_straightEndpointNodeIds.find(straight.getId());
+        const int startNodeId = (endpointIt != m_straightEndpointNodeIds.end())
+            ? endpointIt->second.first : -1;
+        const int endNodeId = (endpointIt != m_straightEndpointNodeIds.end())
+            ? endpointIt->second.second : -1;
 
-        if (straight.lengthMeters <= m_maxStraightLengthMeters)
+        if (straight.getLengthMeters() <= m_maxStraightLengthMeters)
         {
-            // Sauvegarder l'ID avant le move — straight.id est invalide après.
-            const std::string savedId = straight.id;
+            const std::string savedId = straight.getId();
             newEndpoints[savedId] = { startNodeId, endNodeId };
             outputStraights.push_back(std::move(straight));
             continue;
         }
 
-        // Nombre de morceaux nécessaires
         const int chunkCount = static_cast<int>(
-            std::ceil(straight.lengthMeters / m_maxStraightLengthMeters));
+            std::ceil(straight.getLengthMeters() / m_maxStraightLengthMeters));
 
         LOG_DEBUG(m_logger,
-            straight.id + " (" + std::to_string(static_cast<int>(straight.lengthMeters))
+            straight.getId() + " (" + std::to_string(static_cast<int>(straight.getLengthMeters()))
             + " m) → découpe en " + std::to_string(chunkCount) + " morceaux");
 
-        // Projection de la polyligne en métrique pour la découpe
         std::vector<CoordinateXY> metricCoords =
-            GeometryUtils::convertPolylineToMetric(straight.coordinates,
+            GeometryUtils::convertPolylineToMetric(straight.getCoordinates(),
                 m_graphResult.utmZoneNumber,
                 m_graphResult.isNorthernHemisphere);
 
-        const double totalMetricLength =
-            GeometryUtils::computePolylineLengthMeters(metricCoords);
+        const double totalMetricLength = GeometryUtils::computePolylineLengthMeters(metricCoords);
 
         if (totalMetricLength <= 0.0)
         {
-            const std::string savedId = straight.id;
+            const std::string savedId = straight.getId();
             newEndpoints[savedId] = { startNodeId, endNodeId };
             outputStraights.push_back(std::move(straight));
             continue;
         }
 
-        const double chunkLengthMeters = totalMetricLength / static_cast<double>(chunkCount);
+        const double chunkLength = totalMetricLength / static_cast<double>(chunkCount);
 
-        // Subdivision de la polyligne en morceaux de longueur égale
-        std::size_t coordIndex = 0;
+        std::size_t coordIdx = 0;
         double      accumulated = 0.0;
-        std::vector<CoordinateXY> currentChunkCoords;
-
+        std::vector<CoordinateXY> currentChunk;
         if (!metricCoords.empty())
+            currentChunk.push_back(metricCoords[0]);
+
+        int chunkIdx = 0;
+        const std::string baseId = straight.getId();   // save before potential move
+
+        while (coordIdx + 1 < metricCoords.size() && chunkIdx < chunkCount)
         {
-            currentChunkCoords.push_back(metricCoords[0]);
-        }
+            const double dx = metricCoords[coordIdx + 1].x - metricCoords[coordIdx].x;
+            const double dy = metricCoords[coordIdx + 1].y - metricCoords[coordIdx].y;
+            const double segLen = std::hypot(dx, dy);
+            const double target = (chunkIdx + 1) * chunkLength;
 
-        int chunkIndex = 0;
-        while (coordIndex + 1 < metricCoords.size() && chunkIndex < chunkCount)
-        {
-            const double deltaX = metricCoords[coordIndex + 1].x - metricCoords[coordIndex].x;
-            const double deltaY = metricCoords[coordIndex + 1].y - metricCoords[coordIndex].y;
-            const double segLength = std::hypot(deltaX, deltaY);
-
-            const double targetLength = (chunkIndex + 1) * chunkLengthMeters;
-
-            if (accumulated + segLength < targetLength - 1e-9)
+            if (accumulated + segLen < target - 1e-9)
             {
-                accumulated += segLength;
-                ++coordIndex;
-                if (coordIndex < metricCoords.size())
-                {
-                    currentChunkCoords.push_back(metricCoords[coordIndex]);
-                }
+                accumulated += segLen;
+                ++coordIdx;
+                if (coordIdx < metricCoords.size())
+                    currentChunk.push_back(metricCoords[coordIdx]);
             }
             else
             {
-                // Point de coupure intermédiaire
-                const double ratio = (targetLength - accumulated) / (segLength < 1e-12 ? 1e-12 : segLength);
+                const double ratio = (target - accumulated) / (segLen < 1e-12 ? 1e-12 : segLen);
                 const CoordinateXY cutPoint{
-                    metricCoords[coordIndex].x + ratio * deltaX,
-                    metricCoords[coordIndex].y + ratio * deltaY
-                };
-                currentChunkCoords.push_back(cutPoint);
+                    metricCoords[coordIdx].x + ratio * dx,
+                    metricCoords[coordIdx].y + ratio * dy };
+                currentChunk.push_back(cutPoint);
 
-                if (currentChunkCoords.size() >= 2)
+                if (currentChunk.size() >= 2)
                 {
-                    const std::string chunkId = (chunkIndex == 0)
-                        ? straight.id
-                        : straight.id + "_c" + std::to_string(chunkIndex);
+                    const std::string chunkId = (chunkIdx == 0)
+                        ? baseId
+                        : baseId + "_c" + std::to_string(chunkIdx);
 
                     std::vector<LatLon> chunkWgs84 = GeometryUtils::convertPolylineToWgs84(
-                        currentChunkCoords,
-                        m_graphResult.utmZoneNumber,
-                        m_graphResult.isNorthernHemisphere);
+                        currentChunk, m_graphResult.utmZoneNumber, m_graphResult.isNorthernHemisphere);
 
                     outputStraights.emplace_back(chunkId, std::move(chunkWgs84));
                     newEndpoints[chunkId] = {
-                        (chunkIndex == 0) ? startNodeId : TopologySentinel::INTERNAL_CHUNK_NODE,
-                        (chunkIndex == chunkCount - 1) ? endNodeId : TopologySentinel::INTERNAL_CHUNK_NODE
+                        (chunkIdx == 0) ? startNodeId : TopologySentinel::INTERNAL_CHUNK_NODE,
+                        (chunkIdx == chunkCount - 1) ? endNodeId : TopologySentinel::INTERNAL_CHUNK_NODE
                     };
                 }
 
-                currentChunkCoords = { cutPoint };
-                ++chunkIndex;
+                currentChunk = { cutPoint };
+                ++chunkIdx;
             }
         }
 
         // Dernier morceau
-        if (chunkIndex < chunkCount && currentChunkCoords.size() >= 2)
+        if (chunkIdx < chunkCount && currentChunk.size() >= 2)
         {
             if (!metricCoords.empty())
-            {
-                currentChunkCoords.push_back(metricCoords.back());
-            }
-            const std::string chunkId = (chunkIndex == 0)
-                ? straight.id
-                : straight.id + "_c" + std::to_string(chunkIndex);
+                currentChunk.push_back(metricCoords.back());
+
+            const std::string chunkId = (chunkIdx == 0)
+                ? baseId
+                : baseId + "_c" + std::to_string(chunkIdx);
 
             std::vector<LatLon> chunkWgs84 = GeometryUtils::convertPolylineToWgs84(
-                currentChunkCoords,
-                m_graphResult.utmZoneNumber,
-                m_graphResult.isNorthernHemisphere);
+                currentChunk, m_graphResult.utmZoneNumber, m_graphResult.isNorthernHemisphere);
 
             outputStraights.emplace_back(chunkId, std::move(chunkWgs84));
             newEndpoints[chunkId] = {
-                (chunkIndex == 0) ? startNodeId : TopologySentinel::INTERNAL_CHUNK_NODE,
+                (chunkIdx == 0) ? startNodeId : TopologySentinel::INTERNAL_CHUNK_NODE,
                 endNodeId
             };
         }
@@ -404,13 +353,12 @@ std::vector<StraightBlock> TopologyExtractor::splitLongStraights(
 void TopologyExtractor::wireTopology(std::vector<SwitchBlock>& switches,
     std::vector<StraightBlock>& straights)
 {
-    // Index rapide par ID
     std::unordered_map<std::string, SwitchBlock*>   switchById;
     std::unordered_map<std::string, StraightBlock*> straightById;
-    for (auto& sw : switches)   switchById[sw.id] = &sw;
-    for (auto& st : straights)  straightById[st.id] = &st;
+    for (auto& sw : switches)  switchById[sw.getId()] = &sw;
+    for (auto& st : straights) straightById[st.getId()] = &st;
 
-    // Map nodeId → liste de StraightBlock IDs touchant ce nœud
+    // nodeId → liste des StraightBlock IDs touchant ce nœud
     std::unordered_map<int, std::vector<std::string>> nodeToStraightIds;
     for (const auto& [straightId, endpoints] : m_straightEndpointNodeIds)
     {
@@ -419,42 +367,30 @@ void TopologyExtractor::wireTopology(std::vector<SwitchBlock>& switches,
         if (endNode >= 0) nodeToStraightIds[endNode].push_back(straightId);
     }
 
-    // Peuplement des branchIds des Switch
-    for (auto& switchBlock : switches)
+    // Peuplement des branchIds des switches
+    for (auto& sw : switches)
     {
-        const auto nodeIterator = m_switchIdToNodeId.find(switchBlock.id);
-        if (nodeIterator == m_switchIdToNodeId.end()) continue;
-        const int junctionNodeId = nodeIterator->second;
+        const auto nodeIt = m_switchIdToNodeId.find(sw.getId());
+        if (nodeIt == m_switchIdToNodeId.end()) continue;
+        const int junctionNodeId = nodeIt->second;
 
-        std::set<std::string> addedBranches;
         for (const auto& straightId : nodeToStraightIds[junctionNodeId])
-        {
-            if (!addedBranches.count(straightId))
-            {
-                switchBlock.branchIds.push_back(straightId);
-                addedBranches.insert(straightId);
-            }
-        }
+            sw.addBranchId(straightId);
     }
 
-    // Peuplement des neighbourIds des StraightBlock
-    std::unordered_map<std::string, std::set<std::string>> neighbourSets;
-    for (const auto& straight : straights)
-    {
-        neighbourSets[straight.id] = {};
-    }
-
-    // Voisins depuis les nœuds Switch
+    // Peuplement des neighbourIds des straights (via les nœuds de switch)
     for (const auto& [straightId, endpoints] : m_straightEndpointNodeIds)
     {
+        auto stIt = straightById.find(straightId);
+        if (stIt == straightById.end()) continue;
+        StraightBlock& st = *stIt->second;
+
         for (int nodeId : { endpoints.first, endpoints.second })
         {
             if (nodeId < 0) continue;
-            auto switchIterator = m_nodeIdToSwitchId.find(nodeId);
-            if (switchIterator != m_nodeIdToSwitchId.end())
-            {
-                neighbourSets[straightId].insert(switchIterator->second);
-            }
+            auto swIt = m_nodeIdToSwitchId.find(nodeId);
+            if (swIt != m_nodeIdToSwitchId.end())
+                st.addNeighbourId(swIt->second);
         }
     }
 
@@ -462,28 +398,15 @@ void TopologyExtractor::wireTopology(std::vector<SwitchBlock>& switches,
     const auto chunkGroups = groupChunksByBaseId();
     for (const auto& [baseId, chunkIds] : chunkGroups)
     {
-        for (std::size_t index = 0; index < chunkIds.size(); ++index)
+        for (std::size_t i = 0; i < chunkIds.size(); ++i)
         {
-            if (index > 0)
-            {
-                neighbourSets[chunkIds[index]].insert(chunkIds[index - 1]);
-            }
-            if (index + 1 < chunkIds.size())
-            {
-                neighbourSets[chunkIds[index]].insert(chunkIds[index + 1]);
-            }
+            auto stIt = straightById.find(chunkIds[i]);
+            if (stIt == straightById.end()) continue;
+            StraightBlock& st = *stIt->second;
+
+            if (i > 0)                      st.addNeighbourId(chunkIds[i - 1]);
+            if (i + 1 < chunkIds.size())    st.addNeighbourId(chunkIds[i + 1]);
         }
-    }
-
-    // Application des sets triés sur chaque StraightBlock
-    for (auto& straight : straights)
-    {
-        auto setIterator = neighbourSets.find(straight.id);
-        if (setIterator == neighbourSets.end()) continue;
-
-        straight.neighbourIds.assign(setIterator->second.begin(),
-            setIterator->second.end());
-        std::sort(straight.neighbourIds.begin(), straight.neighbourIds.end());
     }
 }
 
@@ -499,15 +422,13 @@ TopologyExtractor::groupChunksByBaseId() const
     for (auto& [baseId, chunkIds] : groups)
     {
         std::sort(chunkIds.begin(), chunkIds.end(),
-            [](const std::string& idA, const std::string& idB)
+            [](const std::string& a, const std::string& b)
             {
-                const auto posA = idA.find("_c");
-                const auto posB = idB.find("_c");
-                const int  indexA = (posA != std::string::npos)
-                    ? std::stoi(idA.substr(posA + 2)) : 0;
-                const int  indexB = (posB != std::string::npos)
-                    ? std::stoi(idB.substr(posB + 2)) : 0;
-                return indexA < indexB;
+                const auto posA = a.find("_c");
+                const auto posB = b.find("_c");
+                const int  idxA = (posA != std::string::npos) ? std::stoi(a.substr(posA + 2)) : 0;
+                const int  idxB = (posB != std::string::npos) ? std::stoi(b.substr(posB + 2)) : 0;
+                return idxA < idxB;
             });
     }
     return groups;

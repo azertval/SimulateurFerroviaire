@@ -8,16 +8,13 @@
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
+#include <stdexcept>
 
-
-// =============================================================================
-// Constantes locales
-// =============================================================================
 
 namespace
 {
     constexpr double EARTH_RADIUS_METERS = 6371000.0;
-    constexpr double DEGREES_TO_RADIANS  = 3.14159265358979323846 / 180.0;
+    constexpr double DEGREES_TO_RADIANS = 3.14159265358979323846 / 180.0;
 }
 
 
@@ -26,99 +23,158 @@ namespace
 // =============================================================================
 
 SwitchBlock::SwitchBlock(std::string              switchId,
-                          LatLon                   junctionCoord,
-                          std::vector<std::string> initialBranchIds)
-    : id(std::move(switchId))
-    , junctionCoordinate(junctionCoord)
-    , branchIds(std::move(initialBranchIds))
-{}
-
-
-// =============================================================================
-// Requêtes
-// =============================================================================
-
-bool SwitchBlock::isOriented() const
+    LatLon                   junctionCoord,
+    std::vector<std::string> initialBranchIds)
+    : m_id(std::move(switchId))
+    , m_junctionCoordinate(junctionCoord)
+    , m_branchIds(std::move(initialBranchIds))
 {
-    return rootBranchId.has_value();
+}
+
+
+// =============================================================================
+// Phase 5b
+// =============================================================================
+
+void SwitchBlock::addBranchId(const std::string& id)
+{
+    if (std::find(m_branchIds.begin(), m_branchIds.end(), id) == m_branchIds.end())
+        m_branchIds.push_back(id);
+}
+
+
+// =============================================================================
+// Phase 6
+// =============================================================================
+
+void SwitchBlock::orient(std::string rootId, std::string normalId, std::string deviationId)
+{
+    auto has = [&](const std::string& id) {
+        return std::find(m_branchIds.begin(), m_branchIds.end(), id) != m_branchIds.end();
+        };
+    if (!has(rootId) || !has(normalId) || !has(deviationId))
+        throw std::invalid_argument("SwitchBlock::orient — ID absent de branchIds sur " + m_id);
+
+    m_rootBranchId = std::move(rootId);
+    m_normalBranchId = std::move(normalId);
+    m_deviationBranchId = std::move(deviationId);
+}
+
+void SwitchBlock::setTips(std::optional<LatLon> tipRoot,
+    std::optional<LatLon> tipNormal,
+    std::optional<LatLon> tipDeviation)
+{
+    m_tipOnRoot = std::move(tipRoot);
+    m_tipOnNormal = std::move(tipNormal);
+    m_tipOnDeviation = std::move(tipDeviation);
+}
+
+void SwitchBlock::swapNormalDeviation()
+{
+    std::swap(m_normalBranchId, m_deviationBranchId);
+    std::swap(m_tipOnNormal, m_tipOnDeviation);
 }
 
 void SwitchBlock::computeTotalLength()
 {
-    if (!isOriented())
-    {
+    if (!isOriented() || !m_tipOnRoot || !m_tipOnNormal || !m_tipOnDeviation)
         return;
-    }
-    if (!tipOnRoot || !tipOnNormal || !tipOnDeviation)
-    {
-        return;
-    }
 
-    const double rootLegLength      = haversineDistanceMeters(*tipOnRoot,      junctionCoordinate);
-    const double normalLegLength    = haversineDistanceMeters(junctionCoordinate, *tipOnNormal);
-    const double deviationLegLength = haversineDistanceMeters(junctionCoordinate, *tipOnDeviation);
+    const double rootLeg = haversineDistanceMeters(*m_tipOnRoot, m_junctionCoordinate);
+    const double normalLeg = haversineDistanceMeters(m_junctionCoordinate, *m_tipOnNormal);
+    const double deviationLeg = haversineDistanceMeters(m_junctionCoordinate, *m_tipOnDeviation);
 
-    totalLengthMeters = rootLegLength + std::max(normalLegLength, deviationLegLength);
+    m_totalLengthMeters = rootLeg + std::max(normalLeg, deviationLeg);
 }
+
+
+// =============================================================================
+// Phase 7
+// =============================================================================
+
+void SwitchBlock::absorbLink(const std::string& linkId,
+    const std::string& partnerId,
+    const LatLon& midpoint)
+{
+    // Remplace le segment de liaison par l'ID du partenaire dans la liste de branches
+    for (auto& bid : m_branchIds)
+        if (bid == linkId) { bid = partnerId; break; }
+
+    if (m_normalBranchId == linkId)
+    {
+        m_normalBranchId = partnerId;
+        m_tipOnNormal = midpoint;
+        m_doubleOnNormal = partnerId;
+    }
+    else if (m_deviationBranchId == linkId)
+    {
+        m_deviationBranchId = partnerId;
+        m_tipOnDeviation = midpoint;
+        m_doubleOnDeviation = partnerId;
+    }
+}
+
+
+// =============================================================================
+// Affichage
+// =============================================================================
 
 std::string SwitchBlock::toString() const
 {
-    std::ostringstream stream;
-    stream << "Switch(id=" << id;
+    std::ostringstream s;
+    s << "Switch(id=" << m_id;
 
-    if (isDoubleSwitch)
+    if (isDouble())
     {
-        stream << " [DOUBLE]";
+        s << " [DOUBLE:";
+        if (m_doubleOnNormal)    s << "normal→" << *m_doubleOnNormal;
+        if (m_doubleOnDeviation) s << "deviation→" << *m_doubleOnDeviation;
+        s << "]";
     }
 
     if (isOriented())
     {
-        stream << ", root=" << rootBranchId.value_or("?")
-               << ", normal=" << normalBranchId.value_or("?")
-               << ", deviation=" << deviationBranchId.value_or("?");
+        s << ", root=" << m_rootBranchId.value_or("?")
+            << ", normal=" << m_normalBranchId.value_or("?")
+            << ", deviation=" << m_deviationBranchId.value_or("?");
 
-        if (totalLengthMeters.has_value())
+        if (m_totalLengthMeters)
         {
-            stream << std::fixed;
-            stream.precision(1);
-            stream << ", len=" << *totalLengthMeters << "m";
+            s << std::fixed;
+            s.precision(1);
+            s << ", len=" << *m_totalLengthMeters << "m";
         }
     }
     else
     {
-        stream << std::fixed;
-        stream.precision(6);
-        stream << ", junction=(" << junctionCoordinate.latitude
-               << ", " << junctionCoordinate.longitude << ")"
-               << ", degree=" << branchIds.size();
+        s << std::fixed;
+        s.precision(6);
+        s << ", junction=(" << m_junctionCoordinate.latitude
+            << ", " << m_junctionCoordinate.longitude << ")"
+            << ", degree=" << m_branchIds.size();
     }
 
-    stream << ")";
-    return stream.str();
+    s << ")";
+    return s.str();
 }
 
 
 // =============================================================================
-// Méthodes privées
+// Helpers privés
 // =============================================================================
 
-double SwitchBlock::haversineDistanceMeters(const LatLon& pointA, const LatLon& pointB)
+double SwitchBlock::haversineDistanceMeters(const LatLon& a, const LatLon& b)
 {
-    const double deltaLatitude  = (pointB.latitude  - pointA.latitude)  * DEGREES_TO_RADIANS;
-    const double deltaLongitude = (pointB.longitude - pointA.longitude) * DEGREES_TO_RADIANS;
+    const double dLat = (b.latitude - a.latitude) * DEGREES_TO_RADIANS;
+    const double dLon = (b.longitude - a.longitude) * DEGREES_TO_RADIANS;
+    const double latA = a.latitude * DEGREES_TO_RADIANS;
+    const double latB = b.latitude * DEGREES_TO_RADIANS;
 
-    const double latitudeA = pointA.latitude * DEGREES_TO_RADIANS;
-    const double latitudeB = pointB.latitude * DEGREES_TO_RADIANS;
+    const double sinDLat = std::sin(dLat / 2.0);
+    const double sinDLon = std::sin(dLon / 2.0);
 
-    const double sinHalfDeltaLatitude  = std::sin(deltaLatitude  / 2.0);
-    const double sinHalfDeltaLongitude = std::sin(deltaLongitude / 2.0);
+    const double hav = sinDLat * sinDLat
+        + std::cos(latA) * std::cos(latB) * sinDLon * sinDLon;
 
-    const double haversineValue =
-        sinHalfDeltaLatitude  * sinHalfDeltaLatitude +
-        std::cos(latitudeA)   * std::cos(latitudeB)  *
-        sinHalfDeltaLongitude * sinHalfDeltaLongitude;
-
-    const double centralAngle = 2.0 * std::atan2(std::sqrt(haversineValue),
-                                                   std::sqrt(1.0 - haversineValue));
-    return EARTH_RADIUS_METERS * centralAngle;
+    return EARTH_RADIUS_METERS * 2.0 * std::atan2(std::sqrt(hav), std::sqrt(1.0 - hav));
 }

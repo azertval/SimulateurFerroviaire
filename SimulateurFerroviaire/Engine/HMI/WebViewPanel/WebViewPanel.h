@@ -141,18 +141,57 @@ public:
      * Permet de servir des fichiers locaux via https://hostname/...
      */
     void setVirtualHostMapping(const std::wstring& hostname, const std::wstring& folderPath);
+
 private:
     // -------------------------------------------------------------------------
     // Méthodes privées
     // -------------------------------------------------------------------------
 
     /**
-    * @brief Initialise le runtime WebView2 et crée le controller et le webview.
-     *
-     * Cette méthode est appelée par create() après avoir stocké le handle de la fenêtre parent.
-     * En cas d'échec, elle log une erreur et laisse m_isInitialized à false.
+    * @brief Initialise l'environnement WebView2 de manière asynchrone.
+    *
+    *Lance CreateCoreWebView2EnvironmentWithOptions avec les options par défaut
+    * (runtime Evergreen installé sur le système).Le résultat est traité dans
+    * onEnvironmentCreated via un callback WRL.
     */
     void initializeWebView();
+
+    /**
+     * @brief Callback déclenché à la fin de la création de l'environnement WebView2.
+     *
+     * Vérifie que l'environnement est valide puis lance la création du contrôleur.
+     *
+     * @param result  Code HRESULT retourné par l'API WebView2.
+     * @param env     Pointeur vers l'environnement créé (nullptr en cas d'échec).
+     */
+    void onEnvironmentCreated(HRESULT result, ICoreWebView2Environment* env);
+
+    /**
+     * @brief Callback déclenché à la fin de la création du contrôleur WebView2.
+     *
+     * Initialise le contrôleur et la vue, enregistre le handler de messages,
+     * redimensionne la vue et notifie l'appelant via m_onInitialized.
+     *
+     * @param result      Code HRESULT retourné par l'API WebView2.
+     * @param controller  Pointeur vers le contrôleur créé (nullptr en cas d'échec).
+     */
+    void onControllerCreated(HRESULT result, ICoreWebView2Controller* controller);
+
+    /**
+     * @brief Callback statique déclenché à la réception d'un message JavaScript.
+     *
+     * Récupère le message UTF-16 envoyé depuis la page web, le convertit en
+     * std::string puis l'affiche dans une boîte de dialogue.
+     *
+     * @note La conversion wstring → string est naïve (ASCII uniquement).
+     *       Utiliser WideCharToMultiByte si les messages peuvent contenir de l'Unicode.
+     *
+     * @param sender  Interface WebView2 émettrice du message.
+     * @param args    Arguments contenant le message brut.
+     * @return        S_OK dans tous les cas (les erreurs sont silencieuses).
+     */
+    static HRESULT onWebMessageReceived(ICoreWebView2* sender,
+        ICoreWebView2WebMessageReceivedEventArgs* args);
 
     // -------------------------------------------------------------------------
     // Membres privés

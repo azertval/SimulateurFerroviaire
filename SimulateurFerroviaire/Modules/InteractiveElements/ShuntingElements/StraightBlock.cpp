@@ -5,19 +5,14 @@
 
 #include "StraightBlock.h"
 
+#include <algorithm>
 #include <cmath>
+#include <sstream>
 
-
-// =============================================================================
-// Constantes locales
-// =============================================================================
 
 namespace
 {
-    /** Rayon moyen de la Terre en mètres (utilisé dans la formule de Haversine). */
     constexpr double EARTH_RADIUS_METERS = 6371000.0;
-
-    /** Facteur de conversion degrés → radians. */
     constexpr double DEGREES_TO_RADIANS = 3.14159265358979323846 / 180.0;
 }
 
@@ -27,85 +22,103 @@ namespace
 // =============================================================================
 
 StraightBlock::StraightBlock(std::string              blockId,
-                              std::vector<LatLon>      blockCoords,
-                              std::vector<std::string> initialNeighbourIds)
-    : id(std::move(blockId))
-    , coordinates(std::move(blockCoords))
-    , neighbourIds(std::move(initialNeighbourIds))
-    , lengthMeters(0.0)
+    std::vector<LatLon>      blockCoords,
+    std::vector<std::string> initialNeighbourIds)
+    : m_id(std::move(blockId))
+    , m_coordinates(std::move(blockCoords))
+    , m_neighbourIds(std::move(initialNeighbourIds))
+    , m_lengthMeters(computeGeodesicLength())
 {
-    lengthMeters = computeGeodesicLength();
+    std::sort(m_neighbourIds.begin(), m_neighbourIds.end());
 }
 
 
 // =============================================================================
-// Méthodes publiques
+// Phase 5b
 // =============================================================================
 
-void StraightBlock::recomputeGeodesicLength()
+void StraightBlock::addNeighbourId(const std::string& id)
 {
-    lengthMeters = computeGeodesicLength();
+    // Insertion triée sans doublon
+    const auto pos = std::lower_bound(m_neighbourIds.begin(), m_neighbourIds.end(), id);
+    if (pos != m_neighbourIds.end() && *pos == id)
+        return;
+    m_neighbourIds.insert(pos, id);
 }
+
+void StraightBlock::replaceNeighbourId(const std::string& oldId, const std::string& newId)
+{
+    const auto pos = std::find(m_neighbourIds.begin(), m_neighbourIds.end(), oldId);
+    if (pos == m_neighbourIds.end())
+        return;
+
+    m_neighbourIds.erase(pos);
+    addNeighbourId(newId);   // ré-insère en position triée
+}
+
+
+// =============================================================================
+// Phase 6d
+// =============================================================================
+
+void StraightBlock::setCoordinates(std::vector<LatLon> coords)
+{
+    m_coordinates = std::move(coords);
+    m_lengthMeters = computeGeodesicLength();
+}
+
+
+// =============================================================================
+// Affichage
+// =============================================================================
 
 std::string StraightBlock::toString() const
 {
-    std::ostringstream stream;
-    stream << "Straight(id=" << id
-           << ", len=" << std::fixed;
-    stream.precision(1);
-    stream << lengthMeters << "m"
-           << ", coords=" << coordinates.size()
-           << ", neighbours=[";
+    std::ostringstream s;
+    s << "Straight(id=" << m_id
+        << ", len=" << std::fixed;
+    s.precision(1);
+    s << m_lengthMeters << "m"
+        << ", coords=" << m_coordinates.size()
+        << ", neighbours=[";
 
-    for (std::size_t index = 0; index < neighbourIds.size(); ++index)
+    for (std::size_t i = 0; i < m_neighbourIds.size(); ++i)
     {
-        if (index > 0)
-        {
-            stream << ", ";
-        }
-        stream << neighbourIds[index];
+        if (i > 0) s << ", ";
+        s << m_neighbourIds[i];
     }
-    stream << "])";
-    return stream.str();
+    s << "])";
+    return s.str();
 }
 
 
 // =============================================================================
-// Méthodes privées
+// Helpers privés
 // =============================================================================
 
 double StraightBlock::computeGeodesicLength() const
 {
-    if (coordinates.size() < 2)
-    {
+    if (m_coordinates.size() < 2)
         return 0.0;
-    }
 
-    double totalLength = 0.0;
-    for (std::size_t index = 1; index < coordinates.size(); ++index)
-    {
-        totalLength += haversineDistanceMeters(coordinates[index - 1], coordinates[index]);
-    }
-    return totalLength;
+    double total = 0.0;
+    for (std::size_t i = 1; i < m_coordinates.size(); ++i)
+        total += haversineDistanceMeters(m_coordinates[i - 1], m_coordinates[i]);
+    return total;
 }
 
-double StraightBlock::haversineDistanceMeters(const LatLon& pointA, const LatLon& pointB)
+double StraightBlock::haversineDistanceMeters(const LatLon& a, const LatLon& b)
 {
-    const double deltaLatitude  = (pointB.latitude  - pointA.latitude)  * DEGREES_TO_RADIANS;
-    const double deltaLongitude = (pointB.longitude - pointA.longitude) * DEGREES_TO_RADIANS;
+    const double dLat = (b.latitude - a.latitude) * DEGREES_TO_RADIANS;
+    const double dLon = (b.longitude - a.longitude) * DEGREES_TO_RADIANS;
+    const double latA = a.latitude * DEGREES_TO_RADIANS;
+    const double latB = b.latitude * DEGREES_TO_RADIANS;
 
-    const double latitudeA = pointA.latitude * DEGREES_TO_RADIANS;
-    const double latitudeB = pointB.latitude * DEGREES_TO_RADIANS;
+    const double sinDLat = std::sin(dLat / 2.0);
+    const double sinDLon = std::sin(dLon / 2.0);
 
-    const double sinHalfDeltaLatitude  = std::sin(deltaLatitude  / 2.0);
-    const double sinHalfDeltaLongitude = std::sin(deltaLongitude / 2.0);
+    const double hav = sinDLat * sinDLat
+        + std::cos(latA) * std::cos(latB) * sinDLon * sinDLon;
 
-    const double haversineValue =
-        sinHalfDeltaLatitude  * sinHalfDeltaLatitude +
-        std::cos(latitudeA)   * std::cos(latitudeB) *
-        sinHalfDeltaLongitude * sinHalfDeltaLongitude;
-
-    const double centralAngle = 2.0 * std::atan2(std::sqrt(haversineValue),
-                                                   std::sqrt(1.0 - haversineValue));
-    return EARTH_RADIUS_METERS * centralAngle;
+    return EARTH_RADIUS_METERS * 2.0 * std::atan2(std::sqrt(hav), std::sqrt(1.0 - hav));
 }

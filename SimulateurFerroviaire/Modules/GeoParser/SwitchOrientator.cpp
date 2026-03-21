@@ -12,7 +12,6 @@
 #ifdef min
 #undef min
 #endif
-
 #ifdef max
 #undef max
 #endif
@@ -50,26 +49,25 @@ void SwitchOrientator::orient()
 {
     std::unordered_map<std::string, StraightBlock*> straightById;
     for (auto& straight : m_topoResult.straights)
-        straightById[straight.id] = &straight;
+        straightById[straight.getId()] = &straight;
 
     int orientedCount = 0;
     int skippedCount = 0;
 
-    for (auto& switchBlock : m_topoResult.switches)
+    for (auto& sw : m_topoResult.switches)
     {
-        if (static_cast<int>(switchBlock.branchIds.size())
-            != NodeDegreeThresholds::SWITCH_PORT_COUNT)
+        if (static_cast<int>(sw.getBranchIds().size()) != NodeDegreeThresholds::SWITCH_PORT_COUNT)
         {
             LOG_WARNING(m_logger,
-                "Aiguillage " + switchBlock.id + " ignoré : degré "
-                + std::to_string(switchBlock.branchIds.size()) + " ≠ 3");
+                "Aiguillage " + sw.getId() + " ignoré : degré "
+                + std::to_string(sw.getBranchIds().size()) + " ≠ 3");
             ++skippedCount;
             continue;
         }
 
-        orientThreePortSwitch(switchBlock, straightById);
-        computeBranchTipPoints(switchBlock, straightById);
-        switchBlock.computeTotalLength();
+        orientThreePortSwitch(sw, straightById);
+        computeBranchTipPoints(sw, straightById);
+        sw.computeTotalLength();
         ++orientedCount;
     }
 
@@ -82,8 +80,6 @@ void SwitchOrientator::orient()
 
     LOG_INFO(m_logger, "Phases 6b+6c terminées");
 
-    // Phase 6d — doit être exécutée après que toutes les orientations
-    // (6, 6b, 6c) sont définitives, car elle utilise les branchIds finaux.
     trimStraightOverlaps(straightById);
 
     LOG_INFO(m_logger, "Phase 6d terminée — chevauchements junction/straight supprimés");
@@ -95,126 +91,86 @@ void SwitchOrientator::orient()
 // =============================================================================
 
 void SwitchOrientator::orientThreePortSwitch(
-    SwitchBlock& switchBlock,
+    SwitchBlock& sw,
     const std::unordered_map<std::string, StraightBlock*>& straightById)
 {
-    const LatLon& junctionCoord = switchBlock.junctionCoordinate;
+    const LatLon& junction = sw.getJunctionCoordinate();
 
-    struct BranchInfo
-    {
-        std::string  branchId;
-        CoordinateXY directionVector;
-    };
+    struct BranchInfo { std::string id; CoordinateXY dir; };
 
-    std::vector<BranchInfo> branchInfos;
-    branchInfos.reserve(3);
-    for (const auto& branchId : switchBlock.branchIds)
-    {
-        branchInfos.push_back({
-            branchId,
-            computeBranchDirectionVector(branchId, junctionCoord, straightById)
-            });
-    }
+    std::vector<BranchInfo> branches;
+    branches.reserve(3);
+    for (const auto& branchId : sw.getBranchIds())
+        branches.push_back({ branchId, computeBranchDirectionVector(branchId, junction, straightById) });
 
     // Paire de sorties = angle mutuel minimal
     std::size_t exitA = 0, exitB = 1;
-    double minimumAngle = GeometryUtils::angleBetweenVectorsPiFallback(
-        branchInfos[0].directionVector, branchInfos[1].directionVector);
+    double minAngle = GeometryUtils::angleBetweenVectorsPiFallback(
+        branches[0].dir, branches[1].dir);
 
     for (std::size_t i = 0; i < 3; ++i)
-    {
         for (std::size_t j = i + 1; j < 3; ++j)
         {
-            const double angle = GeometryUtils::angleBetweenVectorsPiFallback(
-                branchInfos[i].directionVector, branchInfos[j].directionVector);
-            if (angle < minimumAngle)
-            {
-                minimumAngle = angle;
-                exitA = i;
-                exitB = j;
-            }
+            const double a = GeometryUtils::angleBetweenVectorsPiFallback(
+                branches[i].dir, branches[j].dir);
+            if (a < minAngle) { minAngle = a; exitA = i; exitB = j; }
         }
-    }
 
-    const std::size_t rootIndex = 3 - exitA - exitB;
-    const CoordinateXY antiRootVector{
-        -branchInfos[rootIndex].directionVector.x,
-        -branchInfos[rootIndex].directionVector.y
+    const std::size_t rootIdx = 3 - exitA - exitB;
+    const CoordinateXY antiRoot{
+        -branches[rootIdx].dir.x,
+        -branches[rootIdx].dir.y
     };
 
-    const double dotA = branchInfos[exitA].directionVector.x * antiRootVector.x
-        + branchInfos[exitA].directionVector.y * antiRootVector.y;
-    const double dotB = branchInfos[exitB].directionVector.x * antiRootVector.x
-        + branchInfos[exitB].directionVector.y * antiRootVector.y;
+    const double dotA = branches[exitA].dir.x * antiRoot.x + branches[exitA].dir.y * antiRoot.y;
+    const double dotB = branches[exitB].dir.x * antiRoot.x + branches[exitB].dir.y * antiRoot.y;
 
-    std::string normalId, deviationId;
-    if (std::abs(dotA - dotB) < GeometricTolerances::ZERO_VECTOR_MAGNITUDE)
-    {
-        if (branchInfos[exitA].branchId < branchInfos[exitB].branchId)
-        {
-            normalId = branchInfos[exitA].branchId; deviationId = branchInfos[exitB].branchId;
-        }
-        else
-        {
-            normalId = branchInfos[exitB].branchId; deviationId = branchInfos[exitA].branchId;
-        }
-    }
-    else if (dotA >= dotB)
-    {
-        normalId = branchInfos[exitA].branchId; deviationId = branchInfos[exitB].branchId;
-    }
-    else
-    {
-        normalId = branchInfos[exitB].branchId; deviationId = branchInfos[exitA].branchId;
-    }
+    const std::string normalId = (dotA >= dotB) ? branches[exitA].id : branches[exitB].id;
+    const std::string deviationId = (dotA >= dotB) ? branches[exitB].id : branches[exitA].id;
 
-    switchBlock.rootBranchId = branchInfos[rootIndex].branchId;
-    switchBlock.normalBranchId = normalId;
-    switchBlock.deviationBranchId = deviationId;
-    switchBlock.branchIds = { branchInfos[rootIndex].branchId, normalId, deviationId };
-
-    LOG_DEBUG(m_logger,
-        switchBlock.id + " orienté — root=" + branchInfos[rootIndex].branchId
-        + ", normal=" + normalId + ", deviation=" + deviationId);
+    sw.orient(branches[rootIdx].id, normalId, deviationId);
 }
 
 void SwitchOrientator::computeBranchTipPoints(
-    SwitchBlock& switchBlock,
+    SwitchBlock& sw,
     const std::unordered_map<std::string, StraightBlock*>& straightById)
 {
-    if (!switchBlock.isOriented()) return;
+    const LatLon& junction = sw.getJunctionCoordinate();
 
-    switchBlock.tipOnRoot = interpolateTipPoint(*switchBlock.rootBranchId,
-        switchBlock.junctionCoordinate, m_branchTipDistanceMeters, straightById);
-    switchBlock.tipOnNormal = interpolateTipPoint(*switchBlock.normalBranchId,
-        switchBlock.junctionCoordinate, m_branchTipDistanceMeters, straightById);
-    switchBlock.tipOnDeviation = interpolateTipPoint(*switchBlock.deviationBranchId,
-        switchBlock.junctionCoordinate, m_branchTipDistanceMeters, straightById);
+    sw.setTips(
+        interpolateTipPoint(sw.getRootBranchId().value_or(""), junction, m_branchTipDistanceMeters, straightById),
+        interpolateTipPoint(sw.getNormalBranchId().value_or(""), junction, m_branchTipDistanceMeters, straightById),
+        interpolateTipPoint(sw.getDeviationBranchId().value_or(""), junction, m_branchTipDistanceMeters, straightById)
+    );
 }
 
 std::optional<LatLon> SwitchOrientator::interpolateTipPoint(
     const std::string& straightId,
     const LatLon& junctionCoord,
-    double                                                distanceMeters,
+    double distanceMeters,
     const std::unordered_map<std::string, StraightBlock*>& straightById)
 {
+    if (straightId.empty()) return std::nullopt;
+
     auto it = straightById.find(straightId);
-    if (it == straightById.end() || it->second->coordinates.empty()) return std::nullopt;
+    if (it == straightById.end()) return std::nullopt;
 
     const StraightBlock& straight = *it->second;
-    const LatLon& first = straight.coordinates.front();
-    const LatLon& last = straight.coordinates.back();
+    if (straight.getCoordinates().size() < 2) return std::nullopt;
+
+    const LatLon& first = straight.getCoordinates().front();
+    const LatLon& last = straight.getCoordinates().back();
 
     const double dFirst = (first.latitude - junctionCoord.latitude) * (first.latitude - junctionCoord.latitude)
         + (first.longitude - junctionCoord.longitude) * (first.longitude - junctionCoord.longitude);
     const double dLast = (last.latitude - junctionCoord.latitude) * (last.latitude - junctionCoord.latitude)
         + (last.longitude - junctionCoord.longitude) * (last.longitude - junctionCoord.longitude);
 
-    std::vector<LatLon> orientedCoords = straight.coordinates;
-    if (dFirst > dLast) std::reverse(orientedCoords.begin(), orientedCoords.end());
+    std::vector<LatLon> oriented = straight.getCoordinates();
+    if (dFirst > dLast) std::reverse(oriented.begin(), oriented.end());
 
     std::vector<CoordinateXY> metric =
-        GeometryUtils::convertPolylineToMetric(orientedCoords, m_utmZoneNumber, m_isNorthernHemisphere);
+        GeometryUtils::convertPolylineToMetric(oriented, m_utmZoneNumber, m_isNorthernHemisphere);
 
     const double totalLength = GeometryUtils::computePolylineLengthMeters(metric);
     if (totalLength <= GeometricTolerances::EMPTY_LINE_LENGTH_METERS) return std::nullopt;
@@ -235,40 +191,37 @@ void SwitchOrientator::alignDoubleSwitchRoles(
 {
     std::unordered_map<std::string, SwitchBlock*> switchById;
     for (auto& sw : m_topoResult.switches)
-        if (sw.isOriented()) switchById[sw.id] = &sw;
+        if (sw.isOriented()) switchById[sw.getId()] = &sw;
 
-    std::unordered_map<std::string, std::vector<SwitchBlock*>> segmentToSwitches;
+    // segmentId → liste des switches qui l'ont en branche (non-root)
+    std::unordered_map<std::string, std::vector<SwitchBlock*>> segToSwitches;
     for (auto& [swId, swPtr] : switchById)
-        for (const auto& branchId : swPtr->branchIds)
-            segmentToSwitches[branchId].push_back(swPtr);
+        for (const auto& bid : swPtr->getBranchIds())
+            segToSwitches[bid].push_back(swPtr);
 
-    for (auto& [segmentId, switchList] : segmentToSwitches)
+    for (auto& [segId, switchList] : segToSwitches)
     {
         if (static_cast<int>(switchList.size()) != NodeDegreeThresholds::CROSSOVER_SHARED_BRANCH_COUNT)
             continue;
 
-        auto stIt = straightById.find(segmentId);
-        if (stIt == straightById.end() || stIt->second->lengthMeters > m_doubleLinkMaxMeters)
+        auto stIt = straightById.find(segId);
+        if (stIt == straightById.end() || stIt->second->getLengthMeters() > m_doubleLinkMaxMeters)
             continue;
 
-        SwitchBlock* refPtr = (switchList[0]->id < switchList[1]->id) ? switchList[0] : switchList[1];
-        SwitchBlock* otherPtr = (switchList[0]->id < switchList[1]->id) ? switchList[1] : switchList[0];
+        SwitchBlock* refPtr = (switchList[0]->getId() < switchList[1]->getId()) ? switchList[0] : switchList[1];
+        SwitchBlock* otherPtr = (switchList[0]->getId() < switchList[1]->getId()) ? switchList[1] : switchList[0];
 
-        if (refPtr->rootBranchId == segmentId || otherPtr->rootBranchId == segmentId) continue;
+        if (refPtr->getRootBranchId() == segId || otherPtr->getRootBranchId() == segId) continue;
 
-        const bool refIsNormal = (refPtr->normalBranchId == segmentId);
-        const bool otherIsNormal = (otherPtr->normalBranchId == segmentId);
+        const bool refIsNormal = (refPtr->getNormalBranchId() == segId);
+        const bool otherIsNormal = (otherPtr->getNormalBranchId() == segId);
 
         if (refIsNormal != otherIsNormal)
         {
-            std::swap(otherPtr->normalBranchId, otherPtr->deviationBranchId);
-            std::swap(otherPtr->tipOnNormal, otherPtr->tipOnDeviation);
-            otherPtr->branchIds = {
-                *otherPtr->rootBranchId, *otherPtr->normalBranchId, *otherPtr->deviationBranchId
-            };
+            otherPtr->swapNormalDeviation();
             LOG_DEBUG(m_logger,
-                "Phase 6b — rôles échangés sur " + otherPtr->id
-                + " pour segment " + segmentId);
+                "Phase 6b — rôles échangés sur " + otherPtr->getId()
+                + " pour segment " + segId);
         }
     }
 }
@@ -288,36 +241,29 @@ void SwitchOrientator::enforceCrossoverConsistency()
     {
         for (std::size_t j = i + 1; j < oriented.size(); ++j)
         {
-            SwitchBlock* switchA = oriented[i];
-            SwitchBlock* switchB = oriented[j];
+            SwitchBlock* swA = oriented[i];
+            SwitchBlock* swB = oriented[j];
 
             std::vector<std::string> shared;
-            for (const auto& bId : switchA->branchIds)
-                if (std::find(switchB->branchIds.begin(), switchB->branchIds.end(), bId)
-                    != switchB->branchIds.end())
+            for (const auto& bId : swA->getBranchIds())
+                if (std::find(swB->getBranchIds().begin(), swB->getBranchIds().end(), bId)
+                    != swB->getBranchIds().end())
                     shared.push_back(bId);
 
             if (static_cast<int>(shared.size()) != NodeDegreeThresholds::CROSSOVER_SHARED_BRANCH_COUNT)
                 continue;
-            if (switchA->rootBranchId == switchB->rootBranchId) continue;
+            if (swA->getRootBranchId() == swB->getRootBranchId()) continue;
 
             for (const auto& sharedId : shared)
             {
-                if (switchA->rootBranchId == sharedId || switchB->rootBranchId == sharedId)
+                if (swA->getRootBranchId() == sharedId || swB->getRootBranchId() == sharedId)
                     continue;
 
-                if (switchA->normalBranchId == sharedId)
-                {
-                    std::swap(switchA->normalBranchId, switchA->deviationBranchId);
-                    std::swap(switchA->tipOnNormal, switchA->tipOnDeviation);
-                }
-                if (switchB->normalBranchId == sharedId)
-                {
-                    std::swap(switchB->normalBranchId, switchB->deviationBranchId);
-                    std::swap(switchB->tipOnNormal, switchB->tipOnDeviation);
-                }
+                if (swA->getNormalBranchId() == sharedId) swA->swapNormalDeviation();
+                if (swB->getNormalBranchId() == sharedId) swB->swapNormalDeviation();
+
                 LOG_DEBUG(m_logger,
-                    "Phase 6c — croisement " + switchA->id + "↔" + switchB->id
+                    "Phase 6c — croisement " + swA->getId() + "↔" + swB->getId()
                     + " : " + sharedId + " forcé en DEVIATION");
             }
         }
@@ -332,28 +278,24 @@ void SwitchOrientator::enforceCrossoverConsistency()
 void SwitchOrientator::trimStraightOverlaps(
     std::unordered_map<std::string, StraightBlock*>& straightById)
 {
-    // Garde pour éviter de retailler deux fois le même bout d'un Straight.
-    // Clé : (straightId, junctionAtFront)
-    //   junctionAtFront = true  → la jonction était à coordinates.front()
-    //   junctionAtFront = false → la jonction était à coordinates.back()
+    // Garde : éviter de retailler deux fois le même bout d'un Straight
     std::set<std::pair<std::string, bool>> processed;
 
     int trimCount = 0;
 
-    for (auto& switchBlock : m_topoResult.switches)
+    for (auto& sw : m_topoResult.switches)
     {
-        if (!switchBlock.isOriented()) continue;
+        if (!sw.isOriented()) continue;
 
-        const LatLon& junction = switchBlock.junctionCoordinate;
+        const LatLon& junction = sw.getJunctionCoordinate();
 
-        // Itérer sur les 3 branches orientées
-        const std::optional<std::string>* branches[3] = {
-            &switchBlock.rootBranchId,
-            &switchBlock.normalBranchId,
-            &switchBlock.deviationBranchId
+        const std::optional<std::string>* branchOpts[3] = {
+            &sw.getRootBranchId(),
+            &sw.getNormalBranchId(),
+            &sw.getDeviationBranchId()
         };
 
-        for (const auto* branchOpt : branches)
+        for (const auto* branchOpt : branchOpts)
         {
             if (!branchOpt || !branchOpt->has_value()) continue;
             const std::string& branchId = branchOpt->value();
@@ -361,13 +303,11 @@ void SwitchOrientator::trimStraightOverlaps(
             auto it = straightById.find(branchId);
             if (it == straightById.end()) continue;
             StraightBlock& straight = *it->second;
-            if (straight.coordinates.size() < 2) continue;
+            if (straight.getCoordinates().size() < 2) continue;
 
-            // -----------------------------------------------------------------
-            // 1. Déterminer quel bout est côté jonction
-            // -----------------------------------------------------------------
-            const LatLon& front = straight.coordinates.front();
-            const LatLon& back = straight.coordinates.back();
+            // 1. Quel bout est côté jonction ?
+            const LatLon& front = straight.getCoordinates().front();
+            const LatLon& back = straight.getCoordinates().back();
 
             const double dFront = (front.latitude - junction.latitude) * (front.latitude - junction.latitude)
                 + (front.longitude - junction.longitude) * (front.longitude - junction.longitude);
@@ -375,96 +315,78 @@ void SwitchOrientator::trimStraightOverlaps(
                 + (back.longitude - junction.longitude) * (back.longitude - junction.longitude);
 
             const bool junctionAtFront = (dFront <= dBack);
-
-            auto key = std::make_pair(branchId, junctionAtFront);
+            const auto key = std::make_pair(branchId, junctionAtFront);
             if (processed.count(key)) continue;
             processed.insert(key);
 
-            // -----------------------------------------------------------------
-            // 2. Travailler en métrique, jonction en tête
-            // -----------------------------------------------------------------
-            std::vector<LatLon> workCoords = straight.coordinates;
-            if (!junctionAtFront)
-                std::reverse(workCoords.begin(), workCoords.end());
+            // 2. Mise en métrique, jonction en tête
+            std::vector<LatLon> workCoords = straight.getCoordinates();
+            if (!junctionAtFront) std::reverse(workCoords.begin(), workCoords.end());
 
             std::vector<CoordinateXY> metric =
-                GeometryUtils::convertPolylineToMetric(
-                    workCoords, m_utmZoneNumber, m_isNorthernHemisphere);
+                GeometryUtils::convertPolylineToMetric(workCoords, m_utmZoneNumber, m_isNorthernHemisphere);
 
-            // -----------------------------------------------------------------
-            // 3. Parcourir les segments jusqu'à branchTipDistanceMeters
-            // -----------------------------------------------------------------
+            // 3. Parcourir jusqu'à branchTipDistanceMeters
             double       accumulated = 0.0;
             std::size_t  trimSegIdx = 0;
             CoordinateXY trimPoint = metric.front();
             bool         foundTrim = false;
 
-            for (std::size_t i = 1; i < metric.size(); ++i)
+            for (std::size_t k = 1; k < metric.size(); ++k)
             {
-                const double dx = metric[i].x - metric[i - 1].x;
-                const double dy = metric[i].y - metric[i - 1].y;
+                const double dx = metric[k].x - metric[k - 1].x;
+                const double dy = metric[k].y - metric[k - 1].y;
                 const double segLen = std::hypot(dx, dy);
 
                 if (accumulated + segLen >= m_branchTipDistanceMeters)
                 {
                     const double ratio = (m_branchTipDistanceMeters - accumulated) / segLen;
-                    trimPoint = CoordinateXY(
-                        metric[i - 1].x + ratio * dx,
-                        metric[i - 1].y + ratio * dy);
-                    trimSegIdx = i - 1;
+                    trimPoint = CoordinateXY(metric[k - 1].x + ratio * dx,
+                        metric[k - 1].y + ratio * dy);
+                    trimSegIdx = k - 1;
                     foundTrim = true;
                     break;
                 }
                 accumulated += segLen;
-                trimSegIdx = i;
+                trimSegIdx = k;
             }
 
             if (!foundTrim)
             {
                 LOG_WARNING(m_logger,
-                    "Phase 6d — Straight " + branchId
-                    + " trop court pour être trimé côté " + switchBlock.id
-                    + " (" + std::to_string(static_cast<int>(straight.lengthMeters)) + " m < "
-                    + std::to_string(static_cast<int>(m_branchTipDistanceMeters)) + " m tip)");
+                    "Phase 6d — Straight " + branchId + " trop court pour être trimé côté "
+                    + sw.getId() + " (" + std::to_string(static_cast<int>(straight.getLengthMeters()))
+                    + " m < " + std::to_string(static_cast<int>(m_branchTipDistanceMeters)) + " m tip)");
                 continue;
             }
 
-            // -----------------------------------------------------------------
-            // 4. Construire la polyligne retaillée : trimPoint + sommets restants
-            // -----------------------------------------------------------------
+            // 4. Polyligne retaillée
             std::vector<CoordinateXY> trimmedMetric;
             trimmedMetric.push_back(trimPoint);
-            for (std::size_t i = trimSegIdx + 1; i < metric.size(); ++i)
-                trimmedMetric.push_back(metric[i]);
+            for (std::size_t k = trimSegIdx + 1; k < metric.size(); ++k)
+                trimmedMetric.push_back(metric[k]);
 
             if (trimmedMetric.size() < 2)
             {
                 LOG_WARNING(m_logger,
                     "Phase 6d — Straight " + branchId
-                    + " réduit à un seul point après trim côté " + switchBlock.id
-                    + " — ignoré");
+                    + " réduit à un seul point après trim côté " + sw.getId() + " — ignoré");
                 continue;
             }
 
-            // -----------------------------------------------------------------
-            // 5. Reconvertir en WGS-84 et restaurer l'orientation d'origine
-            // -----------------------------------------------------------------
+            // 5. Reconversion WGS-84 + restauration de l'orientation d'origine
             std::vector<LatLon> trimmedCoords =
-                GeometryUtils::convertPolylineToWgs84(
-                    trimmedMetric, m_utmZoneNumber, m_isNorthernHemisphere);
+                GeometryUtils::convertPolylineToWgs84(trimmedMetric, m_utmZoneNumber, m_isNorthernHemisphere);
 
-            // La jonction était au back → le résultat doit rester jonction au back
-            if (!junctionAtFront)
-                std::reverse(trimmedCoords.begin(), trimmedCoords.end());
+            if (!junctionAtFront) std::reverse(trimmedCoords.begin(), trimmedCoords.end());
 
-            straight.coordinates = std::move(trimmedCoords);
-            straight.recomputeGeodesicLength();
+            straight.setCoordinates(std::move(trimmedCoords));  // recalcule lengthMeters
 
             ++trimCount;
             LOG_DEBUG(m_logger,
                 "Phase 6d — Straight " + branchId + " : "
                 + std::to_string(static_cast<int>(m_branchTipDistanceMeters))
-                + " m retaillés côté " + switchBlock.id
+                + " m retaillés côté " + sw.getId()
                 + " (jonction " + (junctionAtFront ? "front" : "back") + ")");
         }
     }
@@ -475,7 +397,7 @@ void SwitchOrientator::trimStraightOverlaps(
 
 
 // =============================================================================
-// Utilitaires
+// Utilitaire géométrique
 // =============================================================================
 
 CoordinateXY SwitchOrientator::computeBranchDirectionVector(
@@ -484,12 +406,12 @@ CoordinateXY SwitchOrientator::computeBranchDirectionVector(
     const std::unordered_map<std::string, StraightBlock*>& straightById) const
 {
     auto it = straightById.find(straightId);
-    if (it == straightById.end() || it->second->coordinates.size() < 2)
+    if (it == straightById.end() || it->second->getCoordinates().size() < 2)
         return CoordinateXY(0.0, 0.0);
 
-    const StraightBlock& straight = *it->second;
-    const LatLon& first = straight.coordinates.front();
-    const LatLon& last = straight.coordinates.back();
+    const auto& coords = it->second->getCoordinates();
+    const LatLon& first = coords.front();
+    const LatLon& last = coords.back();
 
     const double dFirst = (first.latitude - junctionCoord.latitude) * (first.latitude - junctionCoord.latitude)
         + (first.longitude - junctionCoord.longitude) * (first.longitude - junctionCoord.longitude);
