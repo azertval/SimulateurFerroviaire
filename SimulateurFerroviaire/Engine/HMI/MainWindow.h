@@ -116,7 +116,7 @@ private:
     /**
      * @brief Gère la fin réussie du parsing (@c WM_PARSING_SUCCESS).
      *
-     * Génère le script d'injection GeoJSON @ref GeoJsonExporter 
+     * Génère le script d'injection GeoJSON @ref TopologyRenderer 
      * et l'exécute dans le WebView pour afficher la carte. 
      *
      * @param hWnd Handle de la fenêtre parente pour la boîte de dialogue.
@@ -149,7 +149,7 @@ private:
     * @brief Ouvre le dialogue d'exportation et déclenche l'export GeoJSON.
      *
      * Délègue la sélection à un dialogue d'exportation @ref FileOpenDialog, puis déclenche
-     * puis déclenche l'export via un module dédié @ref GeoJsonExporter
+     * puis déclenche l'export via un module dédié @ref TopologyRenderer
      *
      * @param hWnd Handle de la fenêtre principale (propriétaire du dialogue).
     */

@@ -71,11 +71,36 @@ public:
 
     void setState(ShuntingState state) { m_state = state; }
 
-
-
     // =========================================================================
     // Requêtes
     // =========================================================================
+
+    /**
+     * @brief Branches topologiques d'un SwitchBlock.
+     *
+     * Après orientation (Phase 6), chaque switch expose exactement 3 branches.
+     * Pour un double switch, normal ou deviation pointe vers le SwitchBlock partenaire.
+     */
+    struct SwitchBranches
+    {
+        /** Bloc sur la branche root (tronc entrant). */
+        ShuntingElement* root = nullptr;
+
+        /** Bloc sur la branche normale (sortie directe). */
+        ShuntingElement* normal = nullptr;
+
+        /** Bloc sur la branche déviée. */
+        ShuntingElement* deviation = nullptr;
+    };
+
+    /**
+     * @brief Enregistre les pointeurs root/normal/deviation après parsing.
+     * @param branches  Struct contenant les trois branches résolues.
+     */
+    void setBranchPointers(SwitchBranches branches);
+
+    /** @brief Retourne les branches résolues. Nullptr si non encore initialisé. */
+    [[nodiscard]] const SwitchBranches& getBranches() const { return m_branches; }
 
     /** Coordonnée WGS-84 du point de jonction physique. */
     [[nodiscard]] const LatLon& getJunctionCoordinate() const { return m_junctionCoordinate; }
@@ -142,24 +167,24 @@ public:
     [[nodiscard]] const std::optional<std::string>& getDoubleOnDeviation() const { return m_doubleOnDeviation; }
 
     /**
-     * @brief Enregistre les pointeurs vers les switches partenaires.
-     *
-     * Appelé par GeoParser après transfert en repository (adresses stables).
-     * Chaque paramètre est nullptr si la branche correspondante n'a pas de partenaire.
-     *
-     * @param partnerOnNormal    Switch connecté via la branche normale.
-     * @param partnerOnDeviation Switch connecté via la branche déviée.
+     * @brief Retourne le switch partenaire côté normal, ou nullptr.
+     * Cast valide uniquement si isDouble() && getDoubleOnNormal().
      */
-    void setPartners(SwitchBlock* partnerOnNormal, SwitchBlock* partnerOnDeviation);
+    [[nodiscard]] SwitchBlock* getPartnerOnNormal() const
+    {
+        return m_doubleOnNormal
+            ? static_cast<SwitchBlock*>(m_branches.normal)
+            : nullptr;
+    }
 
     /**
-     * @brief Retourne l'ID du partenaire (peu importe la branche). Nullopt si pas un double.
-     */
-    [[nodiscard]] std::optional<std::string> getPartnerId() const
+        * @brief Retourne le switch partenaire côté deviation, ou nullptr.
+        */
+    [[nodiscard]] SwitchBlock* getPartnerOnDeviation() const
     {
-        if (m_doubleOnNormal)    return m_doubleOnNormal;
-        if (m_doubleOnDeviation) return m_doubleOnDeviation;
-        return std::nullopt;
+        return m_doubleOnDeviation
+            ? static_cast<SwitchBlock*>(m_branches.deviation)
+            : nullptr;
     }
 
     /**
@@ -311,6 +336,9 @@ private:
      */
     std::optional<std::string> m_deviationBranchId;
 
+    /** Branches topologiques résolues après parsing. */
+    SwitchBranches m_branches;
+
     /**
      * Point CDC WGS-84 interpolé à ~branchTipDistance depuis la jonction, côté root.
      * Sert de référence géométrique pour les vérifications d'écartement de voies.
@@ -345,18 +373,6 @@ private:
 
     /** ID du partenaire si le lien absorbé était côté branche DEVIEE. */
     std::optional<std::string> m_doubleOnDeviation;
-
-    /**
-     * Pointeur non-propriétaire vers le partenaire côté branche NORMALE.
-     * Nullptr si pas de double sur cette branche.
-     */
-    SwitchBlock* m_partnerOnNormal = nullptr;
-
-    /**
-     * Pointeur non-propriétaire vers le partenaire côté branche DEVIEE.
-     * Nullptr si pas de double sur cette branche.
-     */
-    SwitchBlock* m_partnerOnDeviation = nullptr;
 
     /**
      * Polyligne complète du segment absorbé côté normal,

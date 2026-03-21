@@ -68,6 +68,31 @@ public:
      */
     [[nodiscard]] const std::vector<std::string>& getNeighbourIds() const { return m_neighbourIds; }
 
+    /**
+     * @brief Voisins topologiques d'un StraightBlock.
+     *
+     * Un straight est toujours borné par exactement deux extrémités.
+     * Chaque extrémité est soit un SwitchBlock, soit un autre StraightBlock
+     * (morceau découpé), soit nullptr (terminus).
+     */
+    struct StraightNeighbours
+    {
+        /** Bloc adjacent à l'extrémité A (front des coordonnées). */
+        ShuntingElement* prev = nullptr;
+
+        /** Bloc adjacent à l'extrémité B (back des coordonnées). */
+        ShuntingElement* next = nullptr;
+    };
+
+    /**
+     * @brief Enregistre les pointeurs prev/next après parsing.
+     * @param neighbours  Struct contenant les deux extrémités résolues.
+     */
+    void setNeighbourPointers(StraightNeighbours neighbours);
+
+    /** @brief Retourne les voisins résolus. Nullptr si non encore initialisé. */
+    [[nodiscard]] const StraightNeighbours& getNeighbours() const { return m_neighbours; }
+
     /** Longueur géodésique en mètres (Haversine), mise à jour par setCoordinates(). */
     [[nodiscard]] double getLengthMeters() const { return m_lengthMeters; }
 
@@ -121,6 +146,13 @@ private:
      * Peuplé en Phase 5b, muté en Phase 7 via replaceNeighbourId().
      */
     std::vector<std::string> m_neighbourIds;
+
+    /**
+     * Pointeurs non-propriétaires vers les blocs adjacents (SwitchBlock ou StraightBlock).
+     * Parallèle à m_neighbourIds — même ordre, même contenu sous forme de pointeurs.
+     * Propriété du TopologyRepository — ne pas delete.
+     */
+    StraightNeighbours m_neighbours;
 
     /**
      * Longueur géodésique totale en mètres, calculée par Haversine.

@@ -14,7 +14,7 @@
 
 #include "Engine/HMI/WebViewPanel/Leaflet/Leaflet.h"
 #include "Engine/HMI/Utils/PathUtils.h"
-#include "Modules/GeoJsonExporter/GeoJsonExporter.h"
+#include "Engine/Core/Topology/TopologyRenderer.h"
 
 #include "Engine/Core/Topology/TopologyRepository.h"
 
@@ -235,7 +235,7 @@ void MainWindow::onFileExport(HWND hWnd)
         return; // Annulation par l'utilisateur
     }
 
-    GeoJsonExporter::exportToFile(selectedPath.value());
+    TopologyRenderer::exportToFile(selectedPath.value());
 }
 
 void MainWindow::onProgressUpdate(int progressValue)
@@ -246,9 +246,9 @@ void MainWindow::onProgressUpdate(int progressValue)
 void MainWindow::onParsingSuccess(HWND hWnd)
 {
     std::wstring script;
-    script += GeoJsonExporter::renderAllStraightBlocks();
-    script += GeoJsonExporter::renderAllSwitchBranches();
-    script += GeoJsonExporter::renderAllSwitchBlocksJunctions();
+    script += TopologyRenderer::renderAllStraightBlocks();
+    script += TopologyRenderer::renderAllSwitchBranches();
+    script += TopologyRenderer::renderAllSwitchBlocksJunctions();
     m_webViewPanel.executeScript(script);
     m_progressBar.setProgress(100);
     m_progressBar.show(false);
@@ -309,38 +309,17 @@ void MainWindow::onWebMessage(const std::string& jsonMessage)
 
 void MainWindow::onSwitchClick(const std::string& switchId)
 {
-    auto& switches = TopologyRepository::instance().data().switches;
+    const auto& index = TopologyRepository::instance().data().switchIndex;
 
-    const auto it = std::find_if(switches.begin(), switches.end(),
-        [&switchId](const auto& sw) { return sw->getId() == switchId; });
-
-    if (it == switches.end())
+    const auto it = index.find(switchId);
+    if (it == index.end())
     {
         LOG_WARNING(m_logger, "onSwitchClick — introuvable : " + switchId);
         return;
     }
 
-    SwitchBlock& sw = **it;
-    const bool toDeviation = (sw.toggleActiveBranch() == ActiveBranch::DEVIATION);
+    SwitchBlock& sw = *it->second;
+    sw.toggleActiveBranch();
 
-    std::wstring script = buildApplyStateScript(sw.getId(), toDeviation);
-
-    // Partenaire sur la branche qui vient de devenir active
-    const std::optional<std::string>& DoubleOnDeviationPartner = sw.getDoubleOnDeviation();
-    const std::optional<std::string>& DoubleOnNormalPartner = sw.getDoubleOnNormal();
-
-    if (DoubleOnDeviationPartner)
-        script += buildApplyStateScript(*DoubleOnDeviationPartner, toDeviation);
-
-    if (DoubleOnNormalPartner)
-        script += buildApplyStateScript(*DoubleOnNormalPartner, toDeviation);
-
-    m_webViewPanel.executeScript(script);
-}
-
-std::wstring MainWindow::buildApplyStateScript(const std::string& switchId, bool toDeviation)
-{
-    return L"window.switchApplyState(\""
-        + std::wstring(switchId.begin(), switchId.end())
-        + L"\"," + (toDeviation ? L"true" : L"false") + L");";
+    m_webViewPanel.executeScript(TopologyRenderer::updateSwitchBlocks(sw));
 }

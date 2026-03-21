@@ -32,6 +32,14 @@ StraightBlock::StraightBlock(std::string              blockId,
     m_id = std::move(blockId);
 }
 
+void StraightBlock::setNeighbourPointers(StraightNeighbours neighbours)
+{
+    m_neighbours = neighbours;
+    LOG_DEBUG(m_logger, m_id + " — prev="
+        + (m_neighbours.prev ? m_neighbours.prev->getId() : "null")
+        + " next="
+        + (m_neighbours.next ? m_neighbours.next->getId() : "null"));
+}
 
 // =============================================================================
 // Phase 5b

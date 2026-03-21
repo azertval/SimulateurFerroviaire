@@ -31,6 +31,17 @@ SwitchBlock::SwitchBlock(std::string              switchId,
     m_id = std::move(switchId);
 }
 
+void SwitchBlock::setBranchPointers(SwitchBranches branches)
+{
+    m_branches = branches;
+    LOG_DEBUG(m_logger, m_id + " — root="
+        + (m_branches.root ? m_branches.root->getId() : "null")
+        + " normal="
+        + (m_branches.normal ? m_branches.normal->getId() : "null")
+        + " deviation="
+        + (m_branches.deviation ? m_branches.deviation->getId() : "null"));
+}
+
 
 // =============================================================================
 // Phase 5b
@@ -122,16 +133,6 @@ void SwitchBlock::absorbLink(const std::string& linkId,
     }
 }
 
-void SwitchBlock::setPartners(SwitchBlock* partnerOnNormal, SwitchBlock* partnerOnDeviation)
-{
-    m_partnerOnNormal = partnerOnNormal;
-    m_partnerOnDeviation = partnerOnDeviation;
-    if (partnerOnNormal)
-        LOG_DEBUG(m_logger, m_id + " partner normal → " + partnerOnNormal->getId());
-    if (partnerOnDeviation)
-        LOG_DEBUG(m_logger, m_id + " partner deviation → " + partnerOnDeviation->getId());
-}
-
 void SwitchBlock::setActiveBranch(ActiveBranch branch, bool propagate)
 {
     m_activeBranch = branch;
@@ -139,10 +140,8 @@ void SwitchBlock::setActiveBranch(ActiveBranch branch, bool propagate)
 
     if (!propagate) return;
 
-    if (m_partnerOnDeviation)
-        m_partnerOnDeviation->setActiveBranch(branch, false);
-    if (m_partnerOnNormal)
-        m_partnerOnNormal -> setActiveBranch(branch, false);
+    if (auto* p = getPartnerOnNormal())    p->setActiveBranch(branch, false);
+    if (auto* p = getPartnerOnDeviation()) p->setActiveBranch(branch, false);
 }
 
 ActiveBranch SwitchBlock::toggleActiveBranch(bool propagate)
@@ -154,15 +153,12 @@ ActiveBranch SwitchBlock::toggleActiveBranch(bool propagate)
 
     if (propagate)
     {
-        if(m_partnerOnDeviation)
-            m_partnerOnDeviation->toggleActiveBranch(false);
-        if (m_partnerOnNormal)
-            m_partnerOnNormal->toggleActiveBranch(false);
+        if (auto* p = getPartnerOnNormal())    p->setActiveBranch(m_activeBranch, false);
+        if (auto* p = getPartnerOnDeviation()) p->setActiveBranch(m_activeBranch, false);
     }
 
     return m_activeBranch;
 }
-
 
 // =============================================================================
 // Affichage

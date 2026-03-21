@@ -11,7 +11,7 @@
 #include "TopologyExtractor.h"
 #include "SwitchOrientator.h"
 #include "DoubleSwitchDetector.h"
-#include "Modules/GeoJsonExporter/GeoJsonExporter.h"
+#include "Engine/Core/Topology/TopologyRenderer.h"
 #include "Engine/Core/Topology/TopologyRepository.h"
 
  /**
@@ -101,37 +101,59 @@ void GeoParser::parse(bool enableDebugDump)
     for (auto& sw : topo.switches)
         repoData.switches.push_back(std::make_unique<SwitchBlock>(std::move(sw)));
 
-    // Résolution des pointeurs partenaires après transfert en repository.
-    auto& switches = repoData.switches;
-
-    for (auto& sw : switches)
-    {
-        SwitchBlock* partnerNormal = nullptr;
-        SwitchBlock* partnerDeviation = nullptr;
-
-        // m_doubleOnNormal / m_doubleOnDeviation contiennent déjà les IDs
-        if (sw->getDoubleOnNormal())
-        {
-            const auto& id = *sw->getDoubleOnNormal();
-            const auto it = std::find_if(switches.begin(), switches.end(),
-                [&id](const auto& s) { return s->getId() == id; });
-            if (it != switches.end()) partnerNormal = it->get();
-        }
-
-        if (sw->getDoubleOnDeviation())
-        {
-            const auto& id = *sw->getDoubleOnDeviation();
-            const auto it = std::find_if(switches.begin(), switches.end(),
-                [&id](const auto& s) { return s->getId() == id; });
-            if (it != switches.end()) partnerDeviation = it->get();
-        }
-
-        sw->setPartners(partnerNormal, partnerDeviation);
-    }
-
     repoData.straights.reserve(topo.straights.size());
     for (auto& st : topo.straights)
         repoData.straights.push_back(std::make_unique<StraightBlock>(std::move(st)));
+
+    // Index rapide id → ShuntingElement* couvrant switches ET straights
+    std::unordered_map<std::string, ShuntingElement*> elementIndex;
+    for (auto& sw : repoData.switches)
+        elementIndex[sw->getId()] = sw.get();
+    for (auto& st : repoData.straights)
+        elementIndex[st->getId()] = st.get();
+
+    // --- Straights : résolution prev/next ---
+    for (auto& st : repoData.straights)
+    {
+        StraightBlock::StraightNeighbours nb;
+
+        const auto& ids = st->getNeighbourIds();
+        if (ids.size() >= 1)
+        {
+            const auto it = elementIndex.find(ids[0]);
+            if (it != elementIndex.end()) nb.prev = it->second;
+        }
+        if (ids.size() >= 2)
+        {
+            const auto it = elementIndex.find(ids[1]);
+            if (it != elementIndex.end()) nb.next = it->second;
+        }
+
+        st->setNeighbourPointers(nb);
+    }
+
+    // --- Switches : résolution root/normal/deviation ---
+    for (auto& sw : repoData.switches)
+    {
+        if (!sw->isOriented()) continue;
+
+        SwitchBlock::SwitchBranches br;
+
+        auto resolve = [&](const std::optional<std::string>& id) -> ShuntingElement*
+            {
+                if (!id) return nullptr;
+                const auto it = elementIndex.find(*id);
+                return (it != elementIndex.end()) ? it->second : nullptr;
+            };
+
+        br.root = resolve(sw->getRootBranchId());
+        br.normal = resolve(sw->getNormalBranchId());
+        br.deviation = resolve(sw->getDeviationBranchId());
+
+        sw->setBranchPointers(br);
+    }
+
+    TopologyRepository::instance().data().buildIndex();
 
     if (enableDebugDump)
         dumpDebugOutput();
