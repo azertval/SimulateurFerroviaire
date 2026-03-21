@@ -7,16 +7,20 @@
 
 #include "framework.h"
 #include "MainWindow.h"
+#include "SimulateurFerroviaire.h"
+
+#include "Engine/HMI/Utils/PathUtils.h"
+
 #include "Engine/HMI/Dialogs/AboutDialog.h"
 #include "Engine/HMI/Dialogs/FileOpenDialog.h"
 #include "Engine/HMI/Dialogs/FileSaveDialog.h"
-#include "SimulateurFerroviaire.h"
 
 #include "Engine/HMI/WebViewPanel/Leaflet/Leaflet.h"
-#include "Engine/HMI/Utils/PathUtils.h"
-#include "Engine/Core/Topology/TopologyRenderer.h"
 
+#include "Engine/Core/Topology/TopologyRenderer.h"
 #include "Engine/Core/Topology/TopologyRepository.h"
+
+#include "Modules/GeoParser/GeoParsingTask.h"
 
 #include <string>
 #include <stdexcept>
@@ -92,7 +96,7 @@ void MainWindow::create()
             m_webViewPanel.resize();
         });
     m_webViewPanel.create(m_hWnd);
-
+    m_pccPanel.create(m_hWnd, m_hInstance);
 }
 
 
@@ -149,9 +153,18 @@ LRESULT MainWindow::handleMessage(HWND hWnd, UINT message, WPARAM wParam, LPARAM
     case WM_PARSING_ERROR:
         onParsingError(hWnd, lParam);
         return 0;
+
     case WM_SIZE:
         onSizeUpdate();
         return 0;
+
+    case WM_KEYDOWN:
+        if (wParam == VK_F2)
+        {
+            onTogglePCC();
+            return 0;
+        }
+        return DefWindowProc(hWnd, message, wParam, lParam);
 
     case WM_PAINT:
     {
@@ -188,6 +201,10 @@ void MainWindow::onCommand(HWND hWnd, int commandId)
     case IDM_FILE_EXPORT:
         onFileExport(hWnd);
         break; // TODO: Implémenter l'export GeoJSON
+
+    case IDM_VIEW_PCC:
+        onTogglePCC();
+        break;
 
     case IDM_ABOUT:
         AboutDialog::show(hWnd, m_hInstance);
@@ -250,8 +267,9 @@ void MainWindow::onParsingSuccess(HWND hWnd)
     script += TopologyRenderer::renderAllSwitchBranches();
     script += TopologyRenderer::renderAllSwitchBlocksJunctions();
     m_webViewPanel.executeScript(script);
+    m_pccPanel.refresh();
     m_progressBar.setProgress(100);
-    m_progressBar.show(false);
+    m_progressBar.show(false);    
 }
 
 void MainWindow::onParsingError(HWND hWnd, LPARAM lParam)
@@ -279,6 +297,8 @@ void MainWindow::onSizeUpdate()
     {
         m_webViewPanel.resize();
     }
+
+    m_pccPanel.resize();
 }
 
 void MainWindow::onDestroy()
@@ -322,4 +342,9 @@ void MainWindow::onSwitchClick(const std::string& switchId)
     sw.toggleActiveBranch();
 
     m_webViewPanel.executeScript(TopologyRenderer::updateSwitchBlocks(sw));
+}
+
+void MainWindow::onTogglePCC()
+{
+    m_pccPanel.toggle();
 }

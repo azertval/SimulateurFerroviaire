@@ -208,6 +208,15 @@ public:
     /** Retourne la branche actuellement active (NORMAL par défaut). */
     [[nodiscard]] ActiveBranch getActiveBranch() const { return m_activeBranch; }
 
+    /**
+    * @brief Convertit l'état ActiveBranch courant en chaîne lisible.
+    * Utilisé exclusivement par les appels de log.
+    */
+    [[nodiscard]] std::string activeBranchToString() const
+    {
+        return m_activeBranch == ActiveBranch::DEVIATION ? "DEVIATION" : "NORMAL";
+    }
+
     /** Raccourci — évite la comparaison explicite à l'appelant. */
     [[nodiscard]] bool isDeviationActive() const
     {
@@ -286,21 +295,6 @@ public:
     * @return m_activeBranch
     */
     ActiveBranch toggleActiveBranch(const bool propagate = true);
-
-    /**
-    * @brief helper to get the current active branch
-    * @return m_activeBranch
-    */
-    ActiveBranch getActiveBranch() { return m_activeBranch; }
-
-    /**
-     * @brief Convertit l'état ActiveBranch courant en chaîne lisible.
-     * Utilisé exclusivement par les appels de log.
-     */
-    [[nodiscard]] std::string activeBranchToString() const
-    {
-        return m_activeBranch == ActiveBranch::DEVIATION ? "DEVIATION" : "NORMAL";
-    }
 
 private:
     // =========================================================================
