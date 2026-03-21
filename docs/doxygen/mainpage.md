@@ -17,6 +17,7 @@ Le projet repose sur un pipeline de parsing permettant de :
 - Résoudre les pointeurs inter-blocs et construire les index de lookup
 - Stocker le modèle dans un singleton partagé et le visualiser dans un WebView
 - Permettre une interaction bidirectionnelle Leaflet ↔ C++ (clic → mise à jour modèle → rendu)
+- Afficher une vue PCC type TCO SNCF superposée à la carte, togglable via F2
 
 ---
 
@@ -81,9 +82,58 @@ Couche graphique Win32 + WebView2.
 | MainWindow | Fenêtre principale, routage des messages Win32, coordination UI ↔ métier |
 | ProgressBar | Wrapper du contrôle natif `PROGRESS_CLASS` |
 | WebViewPanel | Affichage cartographique Leaflet embarqué via WebView2 |
+| PCCPanel | Panneau PCC superposé togglable (F2 / menu Vue), child window Win32 |
+| TCORenderer | Renderer GDI statique du schéma TCO — projection GPS → pixels + dessin voies/aiguillages |
 | AboutDialog | Boîte de dialogue modale "À propos" |
 | FileOpenDialog | Sélecteur de fichier GeoJSON (GetOpenFileNameA) |
 | FileSaveDialog | Dialogue de sauvegarde GeoJSON (GetSaveFileNameA) |
+
+### Panneau PCC — Vue TCO {#pcc}
+
+Le panneau PCC est une `WS_CHILD` window superposée au `WebViewPanel`, togglée via **F2** ou
+le menu **Vue → Panneau PCC**. Il est masqué par défaut et ne perturbe pas la carte Leaflet.
+
+@ref PCCPanel délègue l'intégralité du rendu à @ref TCORenderer (appelé dans `WM_PAINT`).
+Le logger HMI (`Logger{"HMI"}`) est partagé par injection de référence depuis `MainWindow`.
+
+**Cycle de vie :**
+
+| Méthode | Déclencheur |
+|---------|-------------|
+| `PCCPanel::create()` | `MainWindow::create()` — après `WebViewPanel::create()` |
+| `PCCPanel::toggle()` | F2 ou `IDM_VIEW_PCC` — place le panneau en `HWND_TOP` à l'affichage |
+| `PCCPanel::resize()` | `MainWindow::onSizeUpdate()` — couvre toute la zone cliente parente |
+| `PCCPanel::refresh()` | `MainWindow::onParsingSuccess()` — invalide le rect pour forcer `WM_PAINT` |
+
+**Z-order :** lors du toggle affichage, `SetWindowPos(..., HWND_TOP, ..., SWP_SHOWWINDOW)`
+place le panneau au-dessus du HWND WebView2, garantissant la visibilité.
+
+### TCORenderer — Rendu GDI {#tco}
+
+Classe utilitaire statique, sans état. Lit @ref TopologyRepository au moment du dessin.
+
+**Conventions de couleurs (style TCO SNCF) :**
+
+| État | Couleur |
+|------|---------|
+| Fond | Noir `RGB(0,0,0)` |
+| Voie libre (FREE) | Blanc cassé `RGB(220,220,220)` |
+| Voie occupée (OCCUPIED) | Rouge `RGB(220,50,50)` |
+| Voie inactive (INACTIVE) | Gris `RGB(80,80,80)` |
+| Branche normale active | Vert `RGB(0,200,80)` |
+| Branche déviation active | Jaune `RGB(220,200,0)` |
+| Erreur | Magenta `RGB(255, 0, 216)` |
+
+**Projection GPS → pixels :**
+Normalisation linéaire min/max sur l'ensemble des coordonnées (straights + jonctions + tips).
+Marge de 5 % appliquée de chaque côté. Axe Y inversé (latitude croissante → Y décroissant).
+
+| Méthode | Rôle |
+|---------|------|
+| `TCORenderer::draw()` | Point d'entrée — fond + délégation aux sous-renderers |
+| `TCORenderer::computeProjection()` | Calcul des bornes GPS et paramètres de projection |
+| `TCORenderer::drawStraights()` | Polyligne GDI par StraightBlock, colorisée par état |
+| `TCORenderer::drawSwitches()` | 3 branches + disque de jonction par SwitchBlock orienté |
 
 ### Binding bidirectionnel Leaflet ↔ C++ {#binding}
 
