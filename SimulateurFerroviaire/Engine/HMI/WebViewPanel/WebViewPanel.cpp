@@ -94,6 +94,8 @@ void WebViewPanel::executeScript(const std::wstring& script)
             }).Get());
 }
 
+
+
 bool WebViewPanel::isInitialized() const
 {
     return m_isInitialized;
@@ -151,51 +153,87 @@ void WebViewPanel::setVirtualHostMapping(const std::wstring& hostname, const std
 void WebViewPanel::initializeWebView()
 {
     HRESULT hr = CreateCoreWebView2EnvironmentWithOptions(
-        nullptr, // runtime installé (Evergreen)
-        nullptr,
-        nullptr,
+        nullptr, nullptr, nullptr,
         Microsoft::WRL::Callback<ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler>(
             [this](HRESULT result, ICoreWebView2Environment* env) -> HRESULT
             {
-                if (!env)
-                {
-                    LOG_ERROR(m_logger, "Échec création environnement WebView2");
-                    return E_FAIL;
-                }
-
-                env->CreateCoreWebView2Controller(
-                    m_parentHwnd,
-                    Microsoft::WRL::Callback<ICoreWebView2CreateCoreWebView2ControllerCompletedHandler>(
-                        [this](HRESULT result, ICoreWebView2Controller* controller) -> HRESULT
-                        {
-                            if (!controller)
-                            {
-                                LOG_ERROR(m_logger, "Échec création controller WebView2");
-                                return E_FAIL;
-                            }
-
-                            m_controller = controller;
-                            m_controller->get_CoreWebView2(&m_webview);
-
-                            resize();
-
-                            m_isInitialized = true;
-
-                            LOG_INFO(m_logger, "WebView2 initialisé avec succès");
-
-                            if (m_onInitialized)
-                            {
-                                m_onInitialized();
-                            }
-
-                            return S_OK;
-                        }).Get());
-
+                onEnvironmentCreated(result, env);
                 return S_OK;
             }).Get());
 
     if (FAILED(hr))
     {
-        LOG_ERROR(m_logger, "CreateCoreWebView2EnvironmentWithOptions FAILED");
+        LOG_ERROR(m_logger, "CreateCoreWebView2EnvironmentWithOptions échoué");
     }
+}
+
+
+void WebViewPanel::onEnvironmentCreated(HRESULT result, ICoreWebView2Environment* env)
+{
+    if (FAILED(result) || !env)
+    {
+        LOG_ERROR(m_logger, "Échec de la création de l'environnement WebView2");
+        return;
+    }
+
+    env->CreateCoreWebView2Controller(
+        m_parentHwnd,
+        Microsoft::WRL::Callback<ICoreWebView2CreateCoreWebView2ControllerCompletedHandler>(
+            [this](HRESULT result, ICoreWebView2Controller* controller) -> HRESULT
+            {
+                onControllerCreated(result, controller);
+                return S_OK;
+            }).Get());
+}
+
+
+void WebViewPanel::onControllerCreated(HRESULT result, ICoreWebView2Controller* controller)
+{
+    if (FAILED(result) || !controller)
+    {
+        LOG_ERROR(m_logger, "Échec de la création du contrôleur WebView2");
+        return;
+    }
+
+    m_controller = controller;
+    m_controller->get_CoreWebView2(&m_webview);
+
+    m_webview->add_WebMessageReceived(
+        Microsoft::WRL::Callback<ICoreWebView2WebMessageReceivedEventHandler>(
+            &WebViewPanel::onWebMessageReceived).Get(),
+        nullptr);
+
+    resize();
+
+    m_isInitialized = true;
+    LOG_INFO(m_logger, "WebView2 initialisé avec succès");
+
+    if (m_onInitialized)
+    {
+        m_onInitialized();
+    }
+}
+
+
+HRESULT WebViewPanel::onWebMessageReceived(ICoreWebView2* sender,
+    ICoreWebView2WebMessageReceivedEventArgs* args)
+{
+    LPWSTR rawMessage = nullptr;
+
+    HRESULT hr = args->TryGetWebMessageAsString(&rawMessage);
+    if (FAILED(hr) || !rawMessage)
+    {
+        return S_OK;
+    }
+
+    std::wstring wideMessage(rawMessage);
+    CoTaskMemFree(rawMessage); // libération obligatoire de la mémoire allouée par WebView2
+
+    // Conversion naïve UTF-16 → char (ASCII uniquement)
+    // Remplacer par WideCharToMultiByte pour supporter l'Unicode complet
+    std::string message(wideMessage.begin(), wideMessage.end());
+
+    MessageBoxA(nullptr, message.c_str(), "JS MESSAGE", MB_OK);
+
+    return S_OK;
 }
