@@ -100,9 +100,21 @@ TCORenderer::Projection TCORenderer::computeProjection(
 
     proj.cellWidth = (proj.width - 2 * MARGIN_PX) / rangeX;
     proj.cellHeight = (proj.height - 2 * MARGIN_PX) / rangeY;
+
+    // Plafonne cellHeight à 2× cellWidth pour éviter les spikes
+    // disproportionnés sur les branches de déviation. Un ratio 2:1
+    // donne des diagonales à ~63° — visuellement lisible comme un
+    // embranchement, pas comme une aiguille verticale.
+    proj.cellHeight = std::min(proj.cellHeight, proj.cellWidth * 2);
+
     proj.marginX = MARGIN_PX;
-    proj.centerY = proj.height / 2;
-    // ^ centerY : le backbone (y=0) passe par le centre vertical de la zone
+
+    // Centre vertical — positionne le milieu de la plage Y logique au
+    // milieu de l'écran. Évite le décalage visuel quand toutes les
+    // déviations sont du même côté (ex. minY=0, maxY=+2 → le backbone
+    // se retrouverait en bas au lieu d'être centré).
+    const double midLogicalY = (minY + maxY) / 2.0;
+    proj.centerY = static_cast<int>(proj.height / 2.0 + midLogicalY * proj.cellHeight);
 
     LOG_DEBUG(logger, "Projection — cellule "
         + std::to_string(proj.cellWidth) + "x"

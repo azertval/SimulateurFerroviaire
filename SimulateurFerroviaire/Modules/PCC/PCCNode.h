@@ -184,6 +184,9 @@ public:
      */
     void addEdge(PCCEdge* edge);
 
+    bool isCrossover() const { return m_isCrossover; }
+    void setCrossover(bool v) { m_isCrossover = v; }
+
 protected:
 
     /** Identifiant du bloc source (ex. "s/0", "sw/3"). */
@@ -209,4 +212,7 @@ protected:
 
     /** Logger de la class*/
     Logger& m_logger;
+
+private:
+    bool m_isCrossover = false;
 };

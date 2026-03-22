@@ -101,4 +101,21 @@ private:
      *         quelle que soit l'ordre des paramètres.
      */
     static std::string makeEdgeKey(const std::string& idA, const std::string& idB);
+
+    /**
+    */
+    static void tagCrossovers(PCCGraph& graph, const TopologyData& topo, Logger& logger);
+
+    /**
+     * @brief Calcule le côté géographique de la déviation pour chaque switch.
+     *
+     * Compare la latitude du premier point de la branche déviation avec
+     * la latitude du switch. Si la déviation va au nord (latitude plus
+     * élevée), le côté est +1 (vers le haut). Sinon -1 (vers le bas).
+     *
+     * @param graph  Graphe construit (nœuds et arêtes câblées).
+     * @param topo   Données topologiques avec coordonnées GPS.
+     * @param logger Référence au logger HMI.
+     */
+    static void computeDeviationSides(PCCGraph& graph, const TopologyData& topo, Logger& logger);
 };

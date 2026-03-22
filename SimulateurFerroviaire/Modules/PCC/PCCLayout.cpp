@@ -5,9 +5,12 @@
  * @see PCCLayout
  */
 #include "PCCLayout.h"
+#include "PCCSwitchNode.h"
 
 #include <queue>
 #include <algorithm>
+#include <set>
+#include <unordered_map>
 
 
  // =============================================================================
@@ -34,10 +37,9 @@ void PCCLayout::compute(PCCGraph& graph, Logger& logger)
         if (visited.count(terminus))
             continue;  // Terminus déjà couvert par un BFS précédent
 
-        runBFS(graph, terminus, visited, offsetX, logger);
-        offsetX += 10;
-        // ^ Séparation entre composantes déconnectées — espacées de 10 unités X
-        //   pour éviter les superpositions dans TCORenderer
+        int maxX = runBFS(graph, terminus, visited, offsetX, logger);
+        offsetX = maxX + 2;
+        // ^ Le prochain composant commence 2 unités après le X max du BFS précédent
     }
 
     // Nœuds non couverts — composante sans terminus détecté
@@ -48,8 +50,8 @@ void PCCLayout::compute(PCCGraph& graph, Logger& logger)
         {
             LOG_WARNING(logger, "Nœud non couvert : "
                 + node->getSourceId() + ", BFS de secours lancé.");
-            runBFS(graph, node, visited, offsetX, logger);
-            offsetX += 10;
+            int maxX = runBFS(graph, node, visited, offsetX, logger);
+            offsetX = maxX + 2;
         }
     }
 
@@ -102,7 +104,7 @@ std::vector<PCCNode*> PCCLayout::findTermini(const PCCGraph& graph, Logger& logg
 // BFS
 // =============================================================================
 
-void PCCLayout::runBFS(PCCGraph& graph,
+int PCCLayout::runBFS(PCCGraph& graph,
     PCCNode* start,
     std::unordered_set<PCCNode*>& visited,
     int                           offsetX,
@@ -110,42 +112,115 @@ void PCCLayout::runBFS(PCCGraph& graph,
 {
     std::queue<BFSItem> frontier;
 
+    // Positions occupées — permet de détecter et résoudre les collisions.
+    // Clé = paire (x, y). Marquée à l'enqueue (pas au dequeue) pour que
+    // deux voisins du même nœud ne reçoivent pas la même position.
+    std::set<std::pair<int, int>> occupied;
+
     visited.insert(start);
+    occupied.insert({ offsetX, 0 });
     frontier.push({ start, offsetX, 0 });
-    // ^ Nœud de départ à x=offsetX (séparation entre composantes), y=0 (backbone)
 
     int processedCount = 0;
+    int maxX = offsetX;
 
     while (!frontier.empty())
     {
-        // Structured binding C++17 — déstructure BFSItem en trois variables
         auto [node, x, y] = frontier.front();
         frontier.pop();
 
         node->setPosition({ x, y });
         ++processedCount;
+        if (x > maxX) maxX = x;
+
+        // -----------------------------------------------------------------
+        // Passe 1 : identifier les voisins non visités et déterminer si
+        //           AU MOINS UNE arête forward DEVIATION pointe vers eux.
+        //
+        // Nécessaire pour les doubles aiguilles (sw/A ↔ sw/B) :
+        //   sw/B→sw/A DEVIATION est ajoutée à sw/A en premier (backward),
+        //   sw/A→sw/B DEVIATION est ajoutée après (forward).
+        //   Sans ce scan, l'arête backward est parcourue en premier,
+        //   sw/B est visité à y courant, et l'arête forward arrive trop tard.
+        // -----------------------------------------------------------------
+        std::unordered_map<PCCNode*, bool> neighbourDevMap;
 
         for (PCCEdge* edge : node->getEdges())
         {
-            PCCNode* neighbour = edge->getTo();
+            const bool isForward = (edge->getFrom() == node);
+            PCCNode* neighbour = isForward ? edge->getTo() : edge->getFrom();
 
             if (visited.count(neighbour))
-                continue;  // Nœud déjà visité — évite les cycles
+                continue;
 
-            // Calcul du Y selon le rôle de l'arête empruntée
+            if (isForward && edge->getRole() == PCCEdgeRole::DEVIATION)
+                neighbourDevMap[neighbour] = true;
+            else
+                neighbourDevMap.emplace(neighbour, false);
+        }
+
+        // -----------------------------------------------------------------
+        // Passe 2 : tri déterministe — non-déviation d'abord.
+        //
+        // Les branches ROOT / NORMAL / STRAIGHT sont placées avant les
+        // branches DEVIATION. Cela garantit que la continuation du backbone
+        // reçoit la position "naturelle" (même Y) tandis que les branches
+        // déviées sont décalées. En cas de collision, c'est la branche
+        // secondaire qui est déplacée, pas la continuation principale.
+        // -----------------------------------------------------------------
+        std::vector<std::pair<PCCNode*, bool>> sortedNeighbours(
+            neighbourDevMap.begin(), neighbourDevMap.end());
+        std::sort(sortedNeighbours.begin(), sortedNeighbours.end(),
+            [](const auto& a, const auto& b) { return a.second < b.second; });
+
+        // -----------------------------------------------------------------
+        // Passe 3 : calcul du Y et résolution des collisions.
+        // -----------------------------------------------------------------
+        for (auto& [neighbour, isDeviation] : sortedNeighbours)
+        {
+            const int nextX = x + 1;
             int nextY = y;
-            if (edge->getRole() == PCCEdgeRole::DEVIATION)
-                nextY = y + 1;
-            // NORMAL, ROOT, STRAIGHT → y inchangé (continuité du rang courant)
+
+            if (isDeviation)
+            {
+                // Direction de la déviation déterminée par la géographie.
+                // PCCGraphBuilder::computeDeviationSides a calculé le côté
+                // pour chaque switch à partir des coordonnées GPS :
+                //   +1 = déviation au nord (vers le haut)
+                //   -1 = déviation au sud  (vers le bas)
+                auto* sw = dynamic_cast<PCCSwitchNode*>(node);
+                const int side = sw ? sw->getDeviationSide() : 1;
+                nextY = y + side;
+            }
+
+            // Résolution de collision — si la position est déjà prise,
+            // chercher la position libre la plus proche en alternant +/-.
+            if (occupied.count({ nextX, nextY }))
+            {
+                for (int delta = 1; ; ++delta)
+                {
+                    if (!occupied.count({ nextX, nextY + delta }))
+                    {
+                        nextY += delta;
+                        break;
+                    }
+                    if (!occupied.count({ nextX, nextY - delta }))
+                    {
+                        nextY -= delta;
+                        break;
+                    }
+                }
+            }
 
             visited.insert(neighbour);
-            frontier.push({ neighbour, x + 1, nextY });
-            // ^ x grandit de 1 à chaque niveau BFS
+            occupied.insert({ nextX, nextY });
+            frontier.push({ neighbour, nextX, nextY });
         }
     }
 
-    LOG_DEBUG(logger, "RunBFS — "
-        + std::to_string(processedCount)
+    LOG_DEBUG(graph.getLogger(), std::to_string(processedCount)
         + " nœuds positionnés depuis " + start->getSourceId()
         + " (offsetX=" + std::to_string(offsetX) + ").");
+
+    return maxX;
 }

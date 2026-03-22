@@ -93,8 +93,11 @@ private:
      * @param offsetX         Décalage X appliqué à toute la composante
      *                        (séparation entre composantes déconnectées).
      * @param logger          Référence au logger HMI.
+     *
+     * @return Le X maximal atteint par ce BFS — utilisé par compute()
+     *         pour espacer les composantes déconnectées.
      */
-    static void runBFS(PCCGraph& graph,
+    static int runBFS(PCCGraph& graph,
         PCCNode* start,
         std::unordered_set<PCCNode*>& visited,
         int                             offsetX,
