@@ -20,6 +20,11 @@ Le projet repose sur un pipeline de parsing permettant de :
 - Afficher une vue PCC type TCO SNCF superposée à la carte, togglable via F2
 
 ---
+# Architecture du projet {#diag}
+
+![Architecture SimulateurFerroviaire](images/architecture.svg)
+
+---
 
 # Engine — Moteur de l'application {#engine}
 

@@ -1,0 +1,86 @@
+<svg width="860" viewBox="0 0 680 594" xmlns="http://www.w3.org/2000/svg"
+     style="font-family: Arial, sans-serif;">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#9C9A92" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="680" height="580" fill="#2C2C2A" rx="8"/>
+
+  <!-- Entry point -->
+  <rect x="240" y="16" width="200" height="36" rx="8" fill="#444441" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="340" y="34" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700" fill="#D3D1C7">SimulateurFerroviaire.cpp</text>
+  <line x1="340" y1="52" x2="340" y2="72" stroke="#9C9A92" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Engine/Core -->
+  <rect x="20" y="72" width="640" height="108" rx="12" fill="#3C3489" stroke="#AFA9EC" stroke-width="0.5"/>
+  <text x="36" y="90" font-size="12" fill="#AFA9EC">Engine / Core</text>
+  <rect x="36" y="100" width="110" height="44" rx="6" fill="#3C3489" stroke="#AFA9EC" stroke-width="0.5"/>
+  <text x="91" y="118" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700" text-decoration="underline" fill="#CECBF6">Application</text>
+  <text x="91" y="134" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#AFA9EC">Win32 lifecycle</text>
+  <rect x="158" y="100" width="80" height="44" rx="6" fill="#3C3489" stroke="#AFA9EC" stroke-width="0.5"/>
+  <text x="198" y="118" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700" text-decoration="underline" fill="#CECBF6">Logger</text>
+  <text x="198" y="134" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#AFA9EC">5 levels</text>
+  <rect x="250" y="100" width="168" height="44" rx="6" fill="#085041" stroke="#5DCAA5" stroke-width="0.5"/>
+  <text x="334" y="118" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700" text-decoration="underline" fill="#9FE1CB">TopologyRepository</text>
+  <text x="334" y="134" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#5DCAA5">Singleton — TopologyData</text>
+  <rect x="430" y="100" width="150" height="44" rx="6" fill="#085041" stroke="#5DCAA5" stroke-width="0.5"/>
+  <text x="505" y="118" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700" text-decoration="underline" fill="#9FE1CB">TopologyRenderer</text>
+  <text x="505" y="134" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#5DCAA5">GeoJSON → JS scripts</text>
+
+  <line x1="340" y1="180" x2="340" y2="200" stroke="#9C9A92" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Engine/HMI -->
+  <rect x="20" y="200" width="640" height="110" rx="12" fill="#3C3489" stroke="#AFA9EC" stroke-width="0.5"/>
+  <text x="36" y="218" font-size="12" fill="#AFA9EC">Engine / HMI</text>
+  <rect x="36" y="226" width="118" height="56" rx="6" fill="#3C3489" stroke="#AFA9EC" stroke-width="0.5"/>
+  <text x="95" y="248" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700" text-decoration="underline" fill="#CECBF6">MainWindow</text>
+  <text x="95" y="266" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#AFA9EC">Msg routing</text>
+  <rect x="166" y="226" width="108" height="56" rx="6" fill="#444441" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="220" y="248" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700" text-decoration="underline" fill="#D3D1C7">ProgressBar</text>
+  <text x="220" y="266" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#B4B2A9">PROGRESS_CLASS</text>
+  <rect x="286" y="226" width="128" height="56" rx="6" fill="#0C447C" stroke="#85B7EB" stroke-width="0.5"/>
+  <text x="350" y="248" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700" text-decoration="underline" fill="#B5D4F4">WebViewPanel</text>
+  <text x="350" y="266" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#85B7EB">Leaflet / WebView2</text>
+  <rect x="426" y="226" width="72" height="56" rx="6" fill="#444441" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="462" y="248" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700" text-decoration="underline" fill="#D3D1C7">Dialogs</text>
+  <text x="462" y="266" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#B4B2A9">About / File</text>
+  <rect x="510" y="226" width="130" height="56" rx="6" fill="#633806" stroke="#EF9F27" stroke-width="0.5"/>
+  <text x="575" y="244" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="700" text-decoration="underline" fill="#FAC775">PCCPanel</text>
+  <text x="575" y="260" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#EF9F27">WS_CHILD toggle</text>
+  <text x="575" y="275" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#EF9F27">+ TCORenderer</text>
+
+  <!-- Modules -->
+  <rect x="20" y="330" width="640" height="220" rx="12" fill="#444441" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="36" y="348" font-size="12" fill="#B4B2A9">Modules</text>
+
+  <!-- GeoParser : x=36 w=184 ends=220 -->
+  <rect x="36" y="356" width="184" height="180" rx="8" fill="#0C447C" stroke="#85B7EB" stroke-width="0.5"/>
+  <text x="52" y="374" font-size="13" font-weight="700" text-decoration="underline" fill="#85B7EB">GeoParser</text>
+  <text x="52" y="396" font-size="11" fill="#85B7EB">GeoParser</text>
+  <text x="52" y="414" font-size="11" fill="#85B7EB">GraphBuilder</text>
+  <text x="52" y="432" font-size="11" fill="#85B7EB">TopologyExtractor</text>
+  <text x="52" y="450" font-size="11" fill="#85B7EB">SwitchOrientator</text>
+  <text x="52" y="468" font-size="11" fill="#85B7EB">DoubleSwitchDet.</text>
+  <text x="52" y="486" font-size="11" fill="#85B7EB">GeoParsingTask</text>
+
+  <!-- InteractiveElements : x=228 w=196 ends=424 -->
+  <rect x="228" y="356" width="196" height="180" rx="8" fill="#712B13" stroke="#F0997B" stroke-width="0.5"/>
+  <text x="244" y="374" font-size="13" font-weight="700" text-decoration="underline" fill="#F0997B">InteractiveElements</text>
+  <text x="244" y="396" font-size="11" fill="#F0997B">InteractiveElement (abstract)</text>
+  <text x="244" y="414" font-size="11" fill="#F0997B">ShuntingElement (abstract)</text>
+  <text x="244" y="432" font-size="11" fill="#F0997B">StraightBlock</text>
+  <text x="244" y="450" font-size="11" fill="#F0997B">SwitchBlock</text>
+
+  <!-- PCC : x=432 w=208 ends=640 -->
+  <rect x="432" y="356" width="208" height="180" rx="8" fill="#633806" stroke="#EF9F27" stroke-width="0.5"/>
+  <text x="448" y="374" font-size="13" font-weight="700" text-decoration="underline" fill="#FAC775">PCC</text>
+  <text x="448" y="396" font-size="11" fill="#EF9F27">PCCNode (abstract)</text>
+  <text x="448" y="414" font-size="11" fill="#EF9F27">PCCStraightNode</text>
+  <text x="448" y="432" font-size="11" fill="#EF9F27">PCCSwitchNode</text>
+  <text x="448" y="450" font-size="11" fill="#EF9F27">PCCEdge</text>
+  <text x="448" y="468" font-size="11" fill="#EF9F27">PCCGraph</text>
+  <text x="448" y="486" font-size="11" fill="#EF9F27">PCCGraphBuilder</text>
+  <text x="448" y="504" font-size="11" fill="#EF9F27">PCCLayout</text>
+</svg>
