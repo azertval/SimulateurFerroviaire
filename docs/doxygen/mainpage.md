@@ -101,6 +101,34 @@ le menu **Vue → Panneau PCC**. Il est masqué par défaut et ne perturbe pas l
 @ref PCCPanel délègue l'intégralité du rendu à @ref TCORenderer (appelé dans `WM_PAINT`).
 Le logger HMI (`Logger{"HMI"}`) est partagé par injection de référence depuis `MainWindow`.
 
+**Séquence d'appel complète**
+
+```
+MainWindow::onParsingSuccess()
+  │
+  ├─► m_webViewPanel.executeScript(...)    — rendu Leaflet inchangé
+  │
+  └─► m_pccPanel.refresh()
+        │
+        ├─► rebuild()
+        │     ├─► PCCGraphBuilder::build(m_graph, m_logger)
+        │     │     ├─► m_graph.clear()
+        │     │     ├─► buildNodes(...)    — crée PCCStraightNode / PCCSwitchNode
+        │     │     └─► buildEdges(...)    — résout et câble les arêtes
+        │     │
+        │     └─► PCCLayout::compute(m_graph, m_logger)
+        │           ├─► findTermini(...)
+        │           └─► runBFS(...)        — assigne PCCPosition à chaque nœud
+        │
+        └─► InvalidateRect()  →  WM_PAINT
+              └─► onPaint(hWnd)
+                    └─► TCORenderer::draw(hdc, rc, m_graph, m_logger)
+```
+
+> `rebuild()` est également appelé dans `toggle()` si le graphe est vide
+au moment de l'affichage — évite un panneau blanc si le fichier est
+chargé après le premier toggle.
+
 **Cycle de vie :**
 
 | Méthode | Déclencheur |
@@ -115,7 +143,7 @@ place le panneau au-dessus du HWND WebView2, garantissant la visibilité.
 
 ### TCORenderer — Rendu GDI {#tco}
 
-Classe utilitaire statique, sans état. Lit @ref TopologyRepository au moment du dessin.
+Classe utilitaire statique, sans état. Lit @ref PCCGraph au moment du dessin.
 
 **Conventions de couleurs (style TCO SNCF) :**
 

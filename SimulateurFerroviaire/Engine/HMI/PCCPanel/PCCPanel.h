@@ -25,6 +25,7 @@
 #pragma once
 #include "framework.h"
 #include "Engine/Core/Logger/Logger.h"
+#include "Modules/PCC/PCCGraph.h"
 
 class PCCPanel
 {
@@ -35,7 +36,7 @@ public:
      * @param logger  Référence au logger HMI fourni par @ref MainWindow.
      *                Doit rester valide pour toute la durée de vie du panneau.
      */
-    explicit PCCPanel(Logger& logger) : m_logger(logger) {}
+    explicit PCCPanel(Logger& logger);
 
     /**
      * @brief Enregistre la classe Win32 et crée la fenêtre enfant masquée.
@@ -144,12 +145,20 @@ private:
      */
     void onPaint(HWND hWnd);
 
+    /**
+    * @brief Reconstruit le graphe PCC depuis @ref TopologyRepository.
+    *
+    * Appelle successivement :
+    *  -# @ref PCCGraphBuilder::build — crée nœuds et arêtes.
+    *  -# @ref PCCLayout::compute — calcule les positions X/Y.
+    *
+    * No-op si @ref TopologyRepository est vide.
+    */
+    void rebuild();
+
     // =========================================================================
     // Membres
     // =========================================================================
-    /*fichier log*/
-    Logger& m_logger;
-
     /** Handle Win32 de la fenêtre enfant (valide après @ref create). */
     HWND m_hWnd = nullptr;
 
@@ -158,6 +167,20 @@ private:
 
     /** Handle de l'instance Win32 de l'application. */
     HINSTANCE m_hInstance = nullptr;
+
+    /**
+     * Logger HMI partagé, fourni par @ref MainWindow.
+     * Déclaré avant @ref m_graph — transmis au constructeur de PCCGraph.
+     */
+    Logger& m_logger;
+
+    /**
+     * Graphe PCC possédé par ce panneau.
+     * Membre valeur — durée de vie identique à PCCPanel.
+     * Reconstruit à chaque appel à @ref rebuild.
+     * Déclaré après @ref m_logger — reçoit m_logger dans son constructeur.
+     */
+    PCCGraph m_graph;
 
     /** Nom de la classe Win32 enregistrée pour @ref PCCPanel. */
     static constexpr wchar_t CLASS_NAME[] = L"PCCPanelClass";

@@ -1,10 +1,15 @@
 /**
  * @file  TCORenderer.cpp
- * @brief Implémentation du renderer GDI TCO.
+ * @brief Implémentation du renderer GDI TCO depuis PCCGraph.
  *
  * @see TCORenderer
  */
+#include "framework.h"
 #include "TCORenderer.h"
+
+#include "Modules/PCC/PCCStraightNode.h"
+#include "Modules/PCC/PCCSwitchNode.h"
+#include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
 
 #include <algorithm>
 #include <limits>
@@ -14,24 +19,24 @@
  // Constantes locales
  // =============================================================================
 
-struct TCOColors
-{
-    COLORREF background = RGB(0, 0, 0);
-    COLORREF free = RGB(220, 220, 220);
-    COLORREF occupied = RGB(220, 50, 50);
-    COLORREF inactive = RGB(80, 80, 80);
-    COLORREF normal = RGB(0, 200, 80);
-    COLORREF deviation = RGB(220, 200, 0);
-    COLORREF error = RGB(255, 0, 216);
-};
-
 namespace
 {
+    struct TCOColors
+    {
+        COLORREF background = RGB(0, 0, 0);
+        COLORREF free = RGB(220, 220, 220);
+        COLORREF occupied = RGB(220, 50, 50);
+        COLORREF inactive = RGB(80, 80, 80);
+        COLORREF normal = RGB(0, 200, 80);
+        COLORREF deviation = RGB(220, 200, 0);
+    };
+
     const TCOColors COLORS;
-    constexpr int    LINE_WIDTH_STRAIGHT = 2;
-    constexpr int    LINE_WIDTH_SWITCH = 3;
-    constexpr int    DOT_RADIUS_JUNCTION = 4;
-    constexpr double PROJECTION_MARGIN = 0.05;
+
+    constexpr int LINE_WIDTH_EDGE = 2;
+    constexpr int DOT_RADIUS_SWITCH = 5;
+    constexpr int DOT_RADIUS_STRAIGHT = 3;
+    constexpr int MARGIN_PX = 40;
 }
 
 
@@ -39,25 +44,28 @@ namespace
 // Point d'entrée
 // =============================================================================
 
-void TCORenderer::draw(HDC hdc, const RECT& rect, Logger& logger)
+void TCORenderer::draw(HDC hdc, const RECT& rect,
+    const PCCGraph& graph, Logger& logger)
 {
-    // Fond noir
     HBRUSH bgBrush = CreateSolidBrush(COLORS.background);
     FillRect(hdc, &rect, bgBrush);
     DeleteObject(bgBrush);
 
-    const TopologyData& topo = TopologyRepository::instance().data();
-
-    if (topo.straights.empty() && topo.switches.empty())
+    if (graph.isEmpty())
     {
-        LOG_WARNING(logger, "TCORenderer::draw — repository vide, fond seul dessiné.");
+        LOG_DEBUG(logger, "Graphe vide, fond seul dessiné.");
         return;
     }
 
-    const Projection proj = computeProjection(rect, logger);
+    const Projection proj = computeProjection(rect, graph, logger);
 
-    drawStraights(hdc, proj, logger);
-    drawSwitches(hdc, proj, logger);
+    drawEdges(hdc, proj, graph, logger);
+    // ^ Arêtes en premier — les disques de nœuds passent par-dessus
+
+    drawNodes(hdc, proj, graph, logger);
+
+    LOG_DEBUG(logger, std::to_string(graph.nodeCount()) + " nœuds, "
+        + std::to_string(graph.edgeCount()) + " arêtes dessinés.");
 }
 
 
@@ -65,156 +73,124 @@ void TCORenderer::draw(HDC hdc, const RECT& rect, Logger& logger)
 // Projection
 // =============================================================================
 
-TCORenderer::Projection TCORenderer::computeProjection(const RECT& rect, Logger& logger)
+TCORenderer::Projection TCORenderer::computeProjection(
+    const RECT& rect, const PCCGraph& graph, Logger& logger)
 {
-    const TopologyData& topo = TopologyRepository::instance().data();
+    int minX = INT_MAX, maxX = INT_MIN;
+    int minY = INT_MAX, maxY = INT_MIN;
 
-    double minLat = std::numeric_limits<double>::max();
-    double maxLat = -std::numeric_limits<double>::max();
-    double minLon = std::numeric_limits<double>::max();
-    double maxLon = -std::numeric_limits<double>::max();
-
-    auto expand = [&](double lat, double lon)
-        {
-            minLat = std::min(minLat, lat);  maxLat = std::max(maxLat, lat);
-            minLon = std::min(minLon, lon);  maxLon = std::max(maxLon, lon);
-        };
-
-    for (const auto& st : topo.straights)
-        for (const auto& pt : st->getCoordinates())
-            expand(pt.latitude, pt.longitude);
-
-    for (const auto& sw : topo.switches)
+    for (const auto& nodePtr : graph.getNodes())
     {
-        const LatLon& jct = sw->getJunctionCoordinate();
-        expand(jct.latitude, jct.longitude);
-
-        if (sw->getTipOnRoot())
-            expand(sw->getTipOnRoot()->latitude, sw->getTipOnRoot()->longitude);
-        if (sw->getTipOnNormal())
-            expand(sw->getTipOnNormal()->latitude, sw->getTipOnNormal()->longitude);
-        if (sw->getTipOnDeviation())
-            expand(sw->getTipOnDeviation()->latitude, sw->getTipOnDeviation()->longitude);
+        const PCCPosition& pos = nodePtr->getPosition();
+        minX = std::min(minX, pos.x);  maxX = std::max(maxX, pos.x);
+        minY = std::min(minY, pos.y);  maxY = std::max(maxY, pos.y);
     }
 
     Projection proj;
-    proj.minLat = minLat;  proj.maxLat = maxLat;
-    proj.minLon = minLon;  proj.maxLon = maxLon;
+    proj.minX = minX;
+    proj.maxX = maxX;
+    proj.minY = minY;
+    proj.maxY = maxY;
     proj.width = rect.right - rect.left;
     proj.height = rect.bottom - rect.top;
 
-    LOG_DEBUG(logger, "TCORenderer — bounds lat["
-        + std::to_string(minLat) + ", " + std::to_string(maxLat) + "] lon["
-        + std::to_string(minLon) + ", " + std::to_string(maxLon) + "]");
+    const int rangeX = std::max(1, maxX - minX);
+    const int rangeY = std::max(3, maxY - minY + 1);
+    // ^ Min 3 rangs — évite les cellules géantes sur réseau sans déviation
+
+    proj.cellWidth = (proj.width - 2 * MARGIN_PX) / rangeX;
+    proj.cellHeight = (proj.height - 2 * MARGIN_PX) / rangeY;
+    proj.marginX = MARGIN_PX;
+    proj.centerY = proj.height / 2;
+    // ^ centerY : le backbone (y=0) passe par le centre vertical de la zone
+
+    LOG_DEBUG(logger, "Projection — cellule "
+        + std::to_string(proj.cellWidth) + "x"
+        + std::to_string(proj.cellHeight) + "px.");
 
     return proj;
 }
 
-POINT TCORenderer::project(double lat, double lon, const Projection& proj)
+POINT TCORenderer::project(int logicalX, int logicalY, const Projection& proj)
 {
-    const double rangeLat = proj.maxLat - proj.minLat;
-    const double rangeLon = proj.maxLon - proj.minLon;
-
-    const double usableW = proj.width * (1.0 - 2.0 * Projection::MARGIN);
-    const double usableH = proj.height * (1.0 - 2.0 * Projection::MARGIN);
-    const double offX = proj.width * Projection::MARGIN;
-    const double offY = proj.height * Projection::MARGIN;
-
-    const double normLon = (rangeLon > 1e-10) ? (lon - proj.minLon) / rangeLon : 0.5;
-    const double normLat = (rangeLat > 1e-10) ? (lat - proj.minLat) / rangeLat : 0.5;
-
     POINT pt;
-    pt.x = static_cast<LONG>(offX + normLon * usableW);
-    pt.y = static_cast<LONG>(offY + (1.0 - normLat) * usableH); // Y inversé
+    pt.x = proj.marginX + (logicalX - proj.minX) * proj.cellWidth;
+    pt.y = proj.centerY - logicalY * proj.cellHeight;
+    // Y inversé : y positif (déviation) monte sur l'écran
     return pt;
 }
 
 
 // =============================================================================
-// Dessin des StraightBlocks
+// Dessin des arêtes
 // =============================================================================
 
-void TCORenderer::drawStraights(HDC hdc, const Projection& proj, Logger& logger)
+void TCORenderer::drawEdges(HDC hdc, const Projection& proj,
+    const PCCGraph& graph, Logger& logger)
 {
-    const TopologyData& topo = TopologyRepository::instance().data();
-
-    for (const auto& st : topo.straights)
+    for (const auto& edgePtr : graph.getEdges())
     {
-        const auto& coords = st->getCoordinates();
-        if (coords.size() < 2)
-        {
-            LOG_WARNING(logger, "TCORenderer — straight " + st->getId()
-                + " ignoré (coords < 2).");
-            continue;
-        }
+        const PCCEdge* edge = edgePtr.get();
+        const PCCPosition& fromPos = edge->getFrom()->getPosition();
+        const PCCPosition& toPos = edge->getTo()->getPosition();
 
-        const COLORREF color = stateToColor(st->getState());
+        const POINT pFrom = project(fromPos.x, fromPos.y, proj);
+        const POINT pTo = project(toPos.x, toPos.y, proj);
+        const COLORREF color = resolveEdgeColor(edge);
 
-        for (std::size_t i = 1; i < coords.size(); ++i)
-        {
-            const POINT from = project(coords[i - 1].latitude, coords[i - 1].longitude, proj);
-            const POINT to = project(coords[i].latitude, coords[i].longitude, proj);
-            drawLine(hdc, from, to, color, LINE_WIDTH_STRAIGHT);
-        }
+        drawLine(hdc, pFrom, pTo, color, LINE_WIDTH_EDGE);
     }
 }
 
 
 // =============================================================================
-// Dessin des SwitchBlocks
+// Dessin des nœuds
 // =============================================================================
 
-void TCORenderer::drawSwitches(HDC hdc, const Projection& proj, Logger& logger)
+void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
+    const PCCGraph& graph, Logger& logger)
 {
-    const TopologyData& topo = TopologyRepository::instance().data();
-
-    for (const auto& sw : topo.switches)
+    for (const auto& nodePtr : graph.getNodes())
     {
-        if (!sw->isOriented())
-        {
-            LOG_WARNING(logger, "TCORenderer — switch " + sw->getId()
-                + " ignoré (non orienté).");
-            continue;
-        }
+        const PCCNode* node = nodePtr.get();
+        const PCCPosition& pos = node->getPosition();
+        const POINT        pt = project(pos.x, pos.y, proj);
+        const COLORREF     color = stateToColor(node->getSource()->getState());
 
-        const LatLon& jct = sw->getJunctionCoordinate();
-        const POINT   pJct = project(jct.latitude, jct.longitude, proj);
-        const COLORREF swColor = stateToColor(sw->getState());
-
-        // Branche root → jonction
-        if (sw->getTipOnRoot())
-        {
-            const POINT pRoot = project(
-                sw->getTipOnRoot()->latitude,
-                sw->getTipOnRoot()->longitude, proj);
-            drawLine(hdc, pRoot, pJct, swColor, LINE_WIDTH_SWITCH);
-        }
-
-        // Jonction → tip normal
-        if (sw->getTipOnNormal())
-        {
-            const bool     isActive = (sw->getActiveBranch() == ActiveBranch::NORMAL);
-            const COLORREF color = isActive ? COLORS.normal : swColor;
-            const POINT    pNorm = project(
-                sw->getTipOnNormal()->latitude,
-                sw->getTipOnNormal()->longitude, proj);
-            drawLine(hdc, pJct, pNorm, color, LINE_WIDTH_SWITCH);
-        }
-
-        // Jonction → tip déviation
-        if (sw->getTipOnDeviation())
-        {
-            const bool     isActive = (sw->getActiveBranch() == ActiveBranch::DEVIATION);
-            const COLORREF color = isActive ? COLORS.deviation : swColor;
-            const POINT    pDev = project(
-                sw->getTipOnDeviation()->latitude,
-                sw->getTipOnDeviation()->longitude, proj);
-            drawLine(hdc, pJct, pDev, color, LINE_WIDTH_SWITCH);
-        }
-
-        // Disque de jonction
-        drawDot(hdc, pJct, DOT_RADIUS_JUNCTION, COLORS.free);
+        if (node->getNodeType() == PCCNodeType::SWITCH)
+            drawDot(hdc, pt, DOT_RADIUS_SWITCH, color);
+        else
+            drawDot(hdc, pt, DOT_RADIUS_STRAIGHT, color);
     }
+}
+
+
+// =============================================================================
+// Résolution couleur d'une arête
+// =============================================================================
+
+COLORREF TCORenderer::resolveEdgeColor(const PCCEdge* edge)
+{
+    PCCNode* from = edge->getFrom();
+
+    if (edge->getRole() == PCCEdgeRole::STRAIGHT)
+        return stateToColor(from->getSource()->getState());
+
+    // Arête switch — teste la branche active
+    if (auto* sw = dynamic_cast<PCCSwitchNode*>(from))
+    {
+        const ActiveBranch active = sw->getSwitchSource()->getActiveBranch();
+
+        if (edge->getRole() == PCCEdgeRole::NORMAL
+            && active == ActiveBranch::NORMAL)
+            return COLORS.normal;
+
+        if (edge->getRole() == PCCEdgeRole::DEVIATION
+            && active == ActiveBranch::DEVIATION)
+            return COLORS.deviation;
+    }
+
+    return stateToColor(from->getSource()->getState());
 }
 
 
@@ -228,19 +204,18 @@ COLORREF TCORenderer::stateToColor(ShuntingState state)
     {
     case ShuntingState::OCCUPIED: return COLORS.occupied;
     case ShuntingState::INACTIVE: return COLORS.inactive;
-    case ShuntingState::FREE:     return COLORS.free;
-    default:                      return COLORS.error;
+    case ShuntingState::FREE:
+    default:                      return COLORS.free;
     }
 }
 
-void TCORenderer::drawLine(HDC hdc, POINT from, POINT to, COLORREF color, int lineWidth)
+void TCORenderer::drawLine(HDC hdc, POINT from, POINT to,
+    COLORREF color, int lineWidth)
 {
     HPEN pen = CreatePen(PS_SOLID, lineWidth, color);
     HPEN oldPen = static_cast<HPEN>(SelectObject(hdc, pen));
-
     MoveToEx(hdc, from.x, from.y, nullptr);
     LineTo(hdc, to.x, to.y);
-
     SelectObject(hdc, oldPen);
     DeleteObject(pen);
 }
