@@ -33,6 +33,8 @@
 #include "PCCStraightNode.h"
 #include "PCCSwitchNode.h"
 
+#include "Engine/Core/Logger/Logger.h"
+
 #include "Modules/InteractiveElements/ShuntingElements/StraightBlock.h"
 #include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
 
@@ -52,7 +54,7 @@ public:
     // Construction
     // =========================================================================
 
-    PCCGraph() = default;
+    explicit PCCGraph(Logger& logger);
     ~PCCGraph() = default;
 
     /** @brief Interdit la copie — unique_ptr non copiable. */
@@ -205,7 +207,6 @@ public:
     void clear();
 
 private:
-
     /**
      * Nœuds du graphe — propriétaires exclusifs.
      * Chaque entrée est un @ref PCCStraightNode ou @ref PCCSwitchNode.
@@ -228,4 +229,7 @@ private:
      * vide si la clé est absente.
      */
     std::unordered_map<std::string, PCCNode*> m_index;
+
+    /** Logger de la class*/
+    Logger& m_logger;
 };

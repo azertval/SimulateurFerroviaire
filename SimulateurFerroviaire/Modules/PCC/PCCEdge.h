@@ -17,8 +17,10 @@
  *       non-orienté — chaque connexion génère une arête dans chaque sens.
  */
 #pragma once
+#include "Engine/Core/Logger/Logger.h"
 
 class PCCNode;   // Forward declaration — évite la dépendance circulaire avec PCCNode.h
+
 
 /**
  * @brief Rôle sémantique d'une arête dans la topologie ferroviaire.
@@ -55,13 +57,15 @@ public:
     /**
      * @brief Construit une arête orientée entre deux nœuds.
      *
-     * @param from  Nœud source (non-propriétaire). Ne doit pas être nullptr.
-     * @param to    Nœud cible (non-propriétaire). Ne doit pas être nullptr.
-     * @param role  Rôle sémantique de la connexion dans la topologie.
+     * @param from    Nœud source. Ne doit pas être nullptr.
+     * @param to      Nœud cible. Ne doit pas être nullptr.
+     * @param role    Rôle sémantique de la connexion.
+     * @param logger  Référence au logger HMI fourni par @ref PCCGraph.
      *
      * @throws std::invalid_argument Si @p from ou @p to est nullptr.
      */
-    PCCEdge(PCCNode* from, PCCNode* to, PCCEdgeRole role);
+    PCCEdge(PCCNode* from, PCCNode* to, PCCEdgeRole role, Logger& logger);
+
 
     /** @brief Interdit la copie — aliasing des pointeurs non-propriétaires. */
     PCCEdge(const PCCEdge&) = delete;
@@ -108,4 +112,7 @@ private:
 
     /** Rôle sémantique de la connexion dans la topologie ferroviaire. */
     PCCEdgeRole m_role;
+
+    /** Logger de la class*/
+    Logger& m_logger;
 };

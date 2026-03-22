@@ -29,6 +29,8 @@
 #include "PCCEdge.h"
 #include "Modules/InteractiveElements/ShuntingElements/ShuntingElement.h"
 
+#include "Engine/Core/Logger/Logger.h"
+
  /**
   * @brief Type d'un nœud PCC — miroir de @ref InteractiveElementType.
   *
@@ -81,10 +83,11 @@ public:
      * @param sourceId  Identifiant du bloc source (ex. "s/0", "sw/3").
      * @param source    Pointeur non-propriétaire vers le bloc source.
      *                  Doit rester valide pendant toute la durée de vie du nœud.
+     * @param logger    Référence au logger HMI fourni par @ref PCCGraph.
      *
      * @throws std::invalid_argument Si @p source est nullptr.
      */
-    PCCNode(std::string sourceId, ShuntingElement* source);
+    PCCNode(std::string sourceId, ShuntingElement* source, Logger& logger);
 
     /** @brief Interdit la copie — slicing et aliasing du pointeur source. */
     PCCNode(const PCCNode&) = delete;
@@ -203,4 +206,7 @@ protected:
      * Les arêtes sont possédées par @ref PCCGraph via unique_ptr.
      */
     std::vector<PCCEdge*> m_edges;
+
+    /** Logger de la class*/
+    Logger& m_logger;
 };

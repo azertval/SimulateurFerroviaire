@@ -38,7 +38,7 @@ public:
      *
      * @throws std::invalid_argument Si @p source est nullptr.
      */
-    explicit PCCSwitchNode(SwitchBlock* source);
+    explicit PCCSwitchNode(SwitchBlock* source, Logger& logger);
 
     // =========================================================================
     // Interface PCCNode

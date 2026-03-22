@@ -7,6 +7,11 @@
 #include "PCCGraph.h"
 #include <stdexcept>
 
+PCCGraph::PCCGraph(Logger& logger)
+    : m_logger(logger)
+{
+    LOG_DEBUG(m_logger, "PCCGraph initialisé.");
+}
 
  // =============================================================================
  // Construction du graphe
@@ -14,40 +19,27 @@
 
 PCCNode* PCCGraph::addStraightNode(StraightBlock* source)
 {
-    // make_unique : alloue + construit PCCStraightNode sans new nu
-    // Le constructeur de PCCStraightNode lève std::invalid_argument si source == nullptr
-    auto node = std::make_unique<PCCStraightNode>(source);
-
+    auto node = std::make_unique<PCCStraightNode>(source, m_logger);
     PCCNode* raw = node.get();
-    // ^ Récupérer le raw pointer AVANT le std::move.
-    //   Après move, node.get() == nullptr — raw reste le seul accès au nœud.
-
     m_index[source->getId()] = raw;
-    // ^ Indexer AVANT le move — source->getId() est encore accessible.
-
     m_nodes.push_back(std::move(node));
-    // ^ Transfère l'ownership vers m_nodes.
-    //   unique_ptr ne pouvant être copié, std::move est obligatoire.
-
     return raw;
-    // ^ Retourne un pointeur d'observation — valide tant que PCCGraph est en vie.
+    
 }
 
 PCCNode* PCCGraph::addSwitchNode(SwitchBlock* source)
 {
-    auto node = std::make_unique<PCCSwitchNode>(source);
-
+    auto node = std::make_unique<PCCSwitchNode>(source, m_logger);
     PCCNode* raw = node.get();
     m_index[source->getId()] = raw;
     m_nodes.push_back(std::move(node));
-
     return raw;
 }
 
 PCCEdge* PCCGraph::addEdge(PCCNode* from, PCCNode* to, PCCEdgeRole role)
 {
     // PCCEdge::PCCEdge lève std::invalid_argument si from ou to == nullptr
-    auto edge = std::make_unique<PCCEdge>(from, to, role);
+    auto edge = std::make_unique<PCCEdge>(from, to, role, m_logger);
     PCCEdge* raw = edge.get();
 
     // Câblage sur les deux nœuds — chacun observe l'arête (non-propriétaire)
@@ -80,6 +72,11 @@ PCCNode* PCCGraph::findNode(const std::string& sourceId) const
     // find() et non operator[] — operator[] insèrerait une entrée vide
     // si la clé est absente, ce qui modifierait la map (interdit sur un const this).
     const auto it = m_index.find(sourceId);
+    if (it == m_index.end())
+    {
+        LOG_WARNING(m_logger, "PCCGraph::findNode — nœud introuvable : " + sourceId);
+        return nullptr;
+    }
     return (it != m_index.end()) ? it->second : nullptr;
 }
 
@@ -90,6 +87,10 @@ PCCNode* PCCGraph::findNode(const std::string& sourceId) const
 
 void PCCGraph::clear()
 {
+    LOG_INFO(m_logger, "PCCGraph::clear — "
+        + std::to_string(m_nodes.size()) + " nœuds, "
+        + std::to_string(m_edges.size()) + " arêtes supprimés.");
+
     // L'ordre de vidage est important :
     // 1. m_index en premier — il contient des raw pointers vers m_nodes
     // 2. m_edges avant m_nodes — les arêtes référencent des PCCNode*

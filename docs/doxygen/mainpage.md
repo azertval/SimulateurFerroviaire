@@ -345,9 +345,7 @@ TopologyRepository      Modules/PCC       HMI/PCCPanel
 `PCCNode` ne construit pas le graphe. `PCCGraph` ne calcule pas les positions. \
 `PCCLayout` ne connaît pas TopologyRepository.
 
-
-
-## Nodes
+## Nodes {#node}
 
 ```
 PCCEdge          — connexion orientée entre deux nœuds
@@ -366,7 +364,7 @@ PCCNode  (abstrait)
                            PCCStraightNode::getRootEdge() / PCCStraightNode::getNormalEdge() / PCCStraightNode::getDeviationEdge()
 ```
 
-## Notion de graphe
+## Notion de graphe {#ngraphe}
 
 Un **graphe** est une structure mathématique composée de :
 - **Nœuds** (vertices / nodes) : les entités
@@ -376,7 +374,7 @@ Dans notre cas :
 - Nœud = un bloc ferroviaire (`StraightBlock` ou `SwitchBlock`)
 - Arête = une connexion physique entre deux blocs
 
-#### Graphe non-orienté vs orienté
+#### Graphe non-orienté vs orienté {#ngraph_eo/no} 
 
 | Type | Description | Notre cas |
 |------|-------------|-----------|
@@ -387,7 +385,7 @@ Le réseau ferroviaire est physiquement non-orienté. On crée des arêtes
 orientées (une dans chaque sens) pour simplifier le parcours gauche→droite
 dans `PCCLayout` sans logique de direction supplémentaire.
 
-#### BFS (Breadth-First Search) — utilisé par PCCLayout
+#### BFS (Breadth-First Search) — utilisé par PCCLayout {#bfs} 
 
 Le **parcours en largeur** explore un graphe niveau par niveau depuis un
 nœud de départ. Il sert à calculer la profondeur (coordonnée X logique)
@@ -402,7 +400,7 @@ Terminus ──► s/0 ──► sw/0 ──► s/1 ──► ...
 
 > Référence — BFS : https://en.wikipedia.org/wiki/Breadth-first_search
 
-## Graph
+## Graph {#graph}
 
 `PCCGraph` est le **conteneur propriétaire** du graphe PCC. Il possède tous
 les nœuds et toutes les arêtes, expose un index de lookup O(1), et fournit
@@ -414,7 +412,6 @@ PCCGraph
   ├── PCCGraph::m_edges  : vector<unique_ptr<PCCEdge>>     propriétaire des arêtes
   └── PCCGraph::m_index  : unordered_map<string, PCCNode*> lookup O(1) par sourceId
 ```
-
 **Séparation des responsabilités :**
 
 | Classe | Rôle |
@@ -427,11 +424,42 @@ PCCGraph
 `PCCGraph` ne sait pas comment le graphe est construit ni comment les
 positions sont calculées — ce savoir appartient aux classes dédiées.
 
+## PCCGraphBuilder {#graphbuilder}
+
+`PCCGraphBuilder` est la **seule classe qui connaît `TopologyRepository`**
+dans le module PCC. Son unique responsabilité est de lire la topologie GeoJSON
+parsée et d'en construire le `PCCGraph` logique.
+
+```
+TopologyRepository
+  ├── TopologyRepository::straights : vector<unique_ptr<StraightBlock>>
+  └── TopologyRepository::switches  : vector<unique_ptr<SwitchBlock>>
+            │ 
+            │ PCCGraphBuilder::build()
+            │
+            ▼ 
+          PCCGraph
+          ├── PCCStraightNode  (1 par StraightBlock)
+          ├── PCCSwitchNode    (1 par SwitchBlock)
+          └── PCCEdge          (1 par connexion orientée)
+```
+
+**Pipeline interne de `PCCGraphBuilder::build()`:**
+
+```
+1. PCCGraphBuilder::buildNodes()  — crée un nœud PCC pour chaque bloc
+2. PCCGraphBuilder::buildEdges()  — résout les connexions via les IDs de voisins/branches
+```
+
+Les deux passes sont séparées intentionnellement : les arêtes référencent des
+nœuds par ID — tous les nœuds doivent exister dans l'index avant de résoudre
+les connexions.
+
 ---
 
-# Références externes
+# Références externes {#rextern}
 
-## C++ moderne
+## C++ moderne {#cpp}
 
 | Sujet | Lien |
 |-------|------|
@@ -439,39 +467,21 @@ positions sont calculées — ce savoir appartient aux classes dédiées.
 | CppCoreGuidelines — bonnes pratiques | https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines |
 | C++ Weekly (Jason Turner) | https://www.youtube.com/@cppweekly |
 
-## Concepts spécifiques
+ 
+## Architecture logicielle {#archiconcept}
 
-| Concept | Lien |
-|---------|------|
-| enum class | https://en.cppreference.com/w/cpp/language/enum |
-| unique_ptr | https://en.cppreference.com/w/cpp/memory/unique_ptr |
-| make_unique | https://en.cppreference.com/w/cpp/memory/unique_ptr/make_unique |
-| Rule of Five | https://en.cppreference.com/w/cpp/language/rule_of_three |
-| Destructeur virtuel | https://isocpp.org/wiki/faq/virtual-functions#virtual-dtors |
-| [[nodiscard]] | https://en.cppreference.com/w/cpp/language/attributes/nodiscard |
-| std::move | https://en.cppreference.com/w/cpp/utility/move |
-| Forward declaration | https://en.wikipedia.org/wiki/Forward_declaration |
-| Member initializer list | https://en.cppreference.com/w/cpp/language/constructor |
-| Polymorphisme | https://en.cppreference.com/w/cpp/language/virtual |
-| explicit | https://en.cppreference.com/w/cpp/language/explicit |
-| override | https://en.cppreference.com/w/cpp/language/override |
-| unordered_map | https://en.cppreference.com/w/cpp/container/unordered_map |
-| unordered_map::find | https://en.cppreference.com/w/cpp/container/unordered_map/find |
-| dynamic_cast | https://en.cppreference.com/w/cpp/language/dynamic_cast |
-| const member functions | https://en.cppreference.com/w/cpp/language/member_functions |
-| Ownership semantics | https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r-resource-management |
-
-## Architecture logicielle
 
 | Concept | Lien |
 |---------|------|
 | SOLID principles | https://en.wikipedia.org/wiki/SOLID |
-| Théorie des graphes | https://en.wikipedia.org/wiki/Graph_(discrete_mathematics) |
-| BFS algorithm | https://en.wikipedia.org/wiki/Breadth-first_search |
+| SRP — Single Responsibility | https://en.wikipedia.org/wiki/Single-responsibility_principle |
 | Ownership semantics | https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r-resource-management |
 | Liskov Substitution Principle | https://en.wikipedia.org/wiki/Liskov_substitution_principle |
 | Hash table | https://en.wikipedia.org/wiki/Hash_table |
-| SRP — Single Responsibility | https://en.wikipedia.org/wiki/Single-responsibility_principle |
+| Théorie des graphes | https://en.wikipedia.org/wiki/Graph_(discrete_mathematics) |
+| BFS algorithm | https://en.wikipedia.org/wiki/Breadth-first_search |
+| Two-pass graph construction | https://en.wikipedia.org/wiki/Topological_sorting |
+
 
 ---
 
