@@ -45,13 +45,13 @@ namespace
     constexpr int    MARGIN_PX = 40;
 
     // Gap entre blocs adjacents (en pixels fixes)
-    constexpr double BLOCK_GAP_PX = 4.0;
+    constexpr double BLOCK_GAP_PX = 6.0;
 
     // Bout droit horizontal en fin de déviation (fraction de cellWidth)
     constexpr double STUB_RATIO = 0.20;
 
     // Gap de la branche inactive côté jonction (fraction de cellWidth)
-    constexpr double INACTIVE_GAP_RATIO = 0.16;
+    constexpr double INACTIVE_GAP_RATIO = 0.1;
 }
 
 
@@ -213,7 +213,8 @@ void TCORenderer::drawStraightBlock(HDC hdc, const Projection& proj,
 //    Normal actif :
 //    |←————————— cellWidth ——————————→|
 //                          __________
-//                    gap ╱  (stub)   |gap
+//                   ╱  (stub)   |gap
+//                gap    
 //    gap ══════════════════════════ gap
 //     (root)    ↑     (active)
 //            jonction
@@ -307,10 +308,19 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
         int dirToDev = (devBorderX > center.x) ? 1 : -1;
 
         // Point de départ
-        const int diagStartX = normalIsActive
-            ? center.x + dirToDev * INACTIVE_GAP
-            : center.x;
-        const POINT pStart = { diagStartX, center.y };
+        const int devScreenDir = [&]() -> int {
+            if (devEdge && devEdge->getTo()) {
+                const int tgtLogY = devEdge->getTo()->getPosition().y;
+                if (tgtLogY != sw->getPosition().y)
+                    return (tgtLogY > sw->getPosition().y) ? -1 : 1; // Y écran inversé
+            }
+            return -sw->getDeviationSide(); // getDeviationSide() est en logique, on inverse
+            }();
+        const int startY = normalIsActive 
+            ? center.y + devScreenDir * INACTIVE_GAP 
+            : center.y;
+
+        const POINT pStart = {center.x,startY};
 
         if (isDouble)
         {
