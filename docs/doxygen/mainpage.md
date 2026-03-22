@@ -398,8 +398,34 @@ Terminus ──► s/0 ──► sw/0 ──► s/1 ──► ...
   X=0         X=1     X=2     X=3
 ```
 
-> Référence — Théorie des graphes : https://en.wikipedia.org/wiki/Graph_(discrete_mathematics) \
+> Référence — Théorie des graphes : https://en.wikipedia.org/wiki/Graph_(discrete_mathematics) 
+
 > Référence — BFS : https://en.wikipedia.org/wiki/Breadth-first_search
+
+## Graph
+
+`PCCGraph` est le **conteneur propriétaire** du graphe PCC. Il possède tous
+les nœuds et toutes les arêtes, expose un index de lookup O(1), et fournit
+les méthodes de construction utilisées par `PCCGraphBuilder`.
+
+```
+PCCGraph
+  ├── PCCGraph::m_nodes : vector<unique_ptr<PCCNode>>     propriétaire des nœuds
+  ├── PCCGraph::m_edges  : vector<unique_ptr<PCCEdge>>     propriétaire des arêtes
+  └── PCCGraph::m_index  : unordered_map<string, PCCNode*> lookup O(1) par sourceId
+```
+
+**Séparation des responsabilités :**
+
+| Classe | Rôle |
+|--------|------|
+| `PCCGraph` | Posséder, indexer, exposer en lecture |
+| `PCCGraphBuilder` | Appeler les méthodes de construction *(étape 3)* |
+| `PCCLayout` | Lire les nœuds et affecter les positions *(étape 4)* |
+| `TCORenderer` | Lire les nœuds et arêtes pour le rendu *(existant)* |
+
+`PCCGraph` ne sait pas comment le graphe est construit ni comment les
+positions sont calculées — ce savoir appartient aux classes dédiées.
 
 ---
 
@@ -419,6 +445,7 @@ Terminus ──► s/0 ──► sw/0 ──► s/1 ──► ...
 |---------|------|
 | enum class | https://en.cppreference.com/w/cpp/language/enum |
 | unique_ptr | https://en.cppreference.com/w/cpp/memory/unique_ptr |
+| make_unique | https://en.cppreference.com/w/cpp/memory/unique_ptr/make_unique |
 | Rule of Five | https://en.cppreference.com/w/cpp/language/rule_of_three |
 | Destructeur virtuel | https://isocpp.org/wiki/faq/virtual-functions#virtual-dtors |
 | [[nodiscard]] | https://en.cppreference.com/w/cpp/language/attributes/nodiscard |
@@ -428,6 +455,11 @@ Terminus ──► s/0 ──► sw/0 ──► s/1 ──► ...
 | Polymorphisme | https://en.cppreference.com/w/cpp/language/virtual |
 | explicit | https://en.cppreference.com/w/cpp/language/explicit |
 | override | https://en.cppreference.com/w/cpp/language/override |
+| unordered_map | https://en.cppreference.com/w/cpp/container/unordered_map |
+| unordered_map::find | https://en.cppreference.com/w/cpp/container/unordered_map/find |
+| dynamic_cast | https://en.cppreference.com/w/cpp/language/dynamic_cast |
+| const member functions | https://en.cppreference.com/w/cpp/language/member_functions |
+| Ownership semantics | https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r-resource-management |
 
 ## Architecture logicielle
 
@@ -438,6 +470,8 @@ Terminus ──► s/0 ──► sw/0 ──► s/1 ──► ...
 | BFS algorithm | https://en.wikipedia.org/wiki/Breadth-first_search |
 | Ownership semantics | https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r-resource-management |
 | Liskov Substitution Principle | https://en.wikipedia.org/wiki/Liskov_substitution_principle |
+| Hash table | https://en.wikipedia.org/wiki/Hash_table |
+| SRP — Single Responsibility | https://en.wikipedia.org/wiki/Single-responsibility_principle |
 
 ---
 
