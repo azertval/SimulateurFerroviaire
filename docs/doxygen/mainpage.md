@@ -312,6 +312,36 @@ La propagation aux partenaires est gérée directement par `SwitchBlock` via
 
 ---
 
+# PCC {#pcc}
+
+Le module PCC transforme le modèle topologique (`StraightBlock` / `SwitchBlock`)
+en un **graphe logique indépendant des coordonnées GPS**, positionnable en schéma
+gauche → droite pour l'affichage TCO.
+
+```
+TopologyRepository      Modules/PCC       HMI/PCCPanel
+  StraightBlock  ────┬─►  PCCNode  ────►  TCORenderer
+  SwitchBlock    ────┘       │
+                          PCCEdge
+                             │
+                          PCCGraph
+```
+
+| Classe | Responsabilité unique |
+|--------|----------------------|
+| `PCCNode` | Représenter un bloc ferroviaire dans le graphe |
+| `PCCEdge` | Représenter une connexion entre deux nœuds |
+| `PCCGraph` | Posséder et indexer les nœuds et arêtes |
+| `PCCGraphBuilder` | Construire le graphe depuis TopologyRepository |
+| `PCCLayout` | Calculer les positions logiques X/Y |
+
+`PCCNode` ne construit pas le graphe. `PCCGraph` ne calcule pas les positions. \
+`PCCLayout` ne connaît pas TopologyRepository.
+
+
+---
+
+
 # Licence {#licence}
 
 Ce projet est distribué sous licence :

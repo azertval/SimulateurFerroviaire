@@ -7,7 +7,32 @@
 # 🚆 Simulateur Ferroviaire
 
 ## 🎯 Overview
-Simulation ferroviaire basée sur données GeoJSON avec visualisation interactive.
+
+Reconstruction et visualisation d'un réseau ferroviaire à partir de données GeoJSON.
+
+Le projet repose sur un pipeline de parsing permettant de :
+- Charger des données géographiques (WGS-84 / GeoJSON)
+- Construire un graphe topologique métrique (UTM)
+- Extraire les blocs ferroviaires (voies droites + aiguillages)
+- Orienter et valider les aiguillages (root / normal / deviation)
+- Détecter les doubles aiguilles et absorber les segments de liaison
+- Résoudre les pointeurs inter-blocs et construire les index de lookup
+- Stocker le modèle dans un singleton partagé et le visualiser dans un WebView
+- Permettre une interaction bidirectionnelle Leaflet ↔ C++ (clic → mise à jour modèle → rendu)
+- Afficher une vue PCC type TCO SNCF superposée à la carte, togglable via F2
+
+---
+## 📚 Documentation
+
+La documentation du projet est générée avec **Doxygen**.
+👉 Ouvrir la documentation : https://azertval.github.io/SimulateurFerroviaire/
+
+👉 Genérer la doc en local :
+    ```bash
+    doxygen -g Doxyfile
+    ```
+👉  docs/doxygen/mainpage.md : 
+La mainpage de Doxygen est configurée pour présenter une vue d’ensemble du projet, avec des sections dédiées à la description, à l’architecture, aux modules, et à l’utilisation.
 
 ---
 # ⚙️ Prérequis
@@ -68,19 +93,6 @@ cmake --build build --config Debug
 ```text
 build/Debug/SimulateurFerroviaire.exe
 ```
-
----
-## 📚 Documentation
-
-La documentation du projet est générée avec **Doxygen**.
-👉 Ouvrir la documentation : https://azertval.github.io/SimulateurFerroviaire/
-
-👉 Genérer la doc en local :
-    ```bash
-    doxygen -g Doxyfile
-    ```
-👉  docs/doxygen/mainpage.md : 
-La mainpage de Doxygen est configurée pour présenter une vue d’ensemble du projet, avec des sections dédiées à la description, à l’architecture, aux modules, et à l’utilisation.
 
 ---
 
