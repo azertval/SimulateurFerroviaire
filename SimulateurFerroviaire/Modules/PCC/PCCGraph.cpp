@@ -7,8 +7,7 @@
 #include "PCCGraph.h"
 #include <stdexcept>
 
-PCCGraph::PCCGraph(Logger& logger)
-    : m_logger(logger)
+PCCGraph::PCCGraph()
 {
     LOG_DEBUG(m_logger, "PCCGraph initialisé.");
 }

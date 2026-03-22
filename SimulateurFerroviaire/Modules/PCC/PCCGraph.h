@@ -54,7 +54,7 @@ public:
     // Construction
     // =========================================================================
 
-    explicit PCCGraph(Logger& logger);
+    explicit PCCGraph();
     ~PCCGraph() = default;
 
     /** @brief Interdit la copie — unique_ptr non copiable. */
@@ -64,6 +64,16 @@ public:
     /** @brief Déplacement autorisé. */
     PCCGraph(PCCGraph&&) = default;
     PCCGraph& operator=(PCCGraph&&) = default;
+
+    /**
+     * @brief Retourne une référence au logger PCC pour les classes consommatrices.
+     *
+     * Permet à @ref PCCGraphBuilder et @ref PCCLayout d'utiliser le même
+     * logger sans couplage direct à PCCGraph.
+     *
+     * @return Référence au logger interne @c Logger{"PCC"}.
+     */
+    [[nodiscard]] Logger& getLogger() { return m_logger; }
 
     // =========================================================================
     // Construction du graphe — appelée par PCCGraphBuilder
@@ -207,6 +217,9 @@ public:
     void clear();
 
 private:
+    /** Logger dédié à la couche PCC, utilisé pour tracer les événements et erreurs liés à l'interface utilisateur. */
+    mutable Logger m_logger{ "PCC" };
+
     /**
      * Nœuds du graphe — propriétaires exclusifs.
      * Chaque entrée est un @ref PCCStraightNode ou @ref PCCSwitchNode.
@@ -230,6 +243,4 @@ private:
      */
     std::unordered_map<std::string, PCCNode*> m_index;
 
-    /** Logger de la class*/
-    Logger& m_logger;
 };

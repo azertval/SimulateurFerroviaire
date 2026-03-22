@@ -20,7 +20,7 @@
 
 PCCPanel::PCCPanel(Logger& logger)
     : m_logger(logger)      // Initialisé en 1er — m_graph en a besoin
-    , m_graph(logger)       // Initialisé en 2nd — m_logger est valide
+    , m_graph()
 {
 }
 

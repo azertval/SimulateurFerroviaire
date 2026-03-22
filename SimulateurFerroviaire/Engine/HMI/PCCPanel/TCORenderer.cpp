@@ -172,27 +172,27 @@ void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
 COLORREF TCORenderer::resolveEdgeColor(const PCCEdge* edge)
 {
     PCCNode* from = edge->getFrom();
+    if (!from) return COLORS.free;   // ← garde défensive
 
     if (edge->getRole() == PCCEdgeRole::STRAIGHT)
         return stateToColor(from->getSource()->getState());
 
-    // Arête switch — teste la branche active
     if (auto* sw = dynamic_cast<PCCSwitchNode*>(from))
     {
         const ActiveBranch active = sw->getSwitchSource()->getActiveBranch();
-
         if (edge->getRole() == PCCEdgeRole::NORMAL
             && active == ActiveBranch::NORMAL)
             return COLORS.normal;
-
         if (edge->getRole() == PCCEdgeRole::DEVIATION
             && active == ActiveBranch::DEVIATION)
             return COLORS.deviation;
+
+        return stateToColor(sw->getSource()->getState());
+        // ^ sw garanti non-null ici — utilise sw, pas from
     }
 
     return stateToColor(from->getSource()->getState());
 }
-
 
 // =============================================================================
 // Helpers GDI

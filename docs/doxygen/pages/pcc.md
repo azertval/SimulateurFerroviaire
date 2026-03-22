@@ -77,11 +77,11 @@ PCCGraph
 
 | Méthode | Rôle |
 |---------|------|
-| `addStraightNode(StraightBlock*)` | Crée, stocke et indexe un `PCCStraightNode` |
-| `addSwitchNode(SwitchBlock*)` | Crée, stocke et indexe un `PCCSwitchNode` |
-| `addEdge(from, to, role)` | Crée, stocke et câble une `PCCEdge` sur les deux nœuds |
-| `findNode(sourceId)` | Lookup O(1) — retourne `nullptr` si absent |
-| `clear()` | Vide nœuds, arêtes et index |
+| `PCCGraph::addStraightNode()` | Crée, stocke et indexe un `PCCStraightNode` |
+| `PCCGraph::addSwitchNode()` | Crée, stocke et indexe un `PCCSwitchNode` |
+| `PCCGraph::addEdge()` | Crée, stocke et câble une `PCCEdge` sur les deux nœuds |
+| `PCCGraph::findNode()` | Lookup O(1) — retourne `nullptr` si absent |
+| `PCCGraph::clear()` | Vide nœuds, arêtes et index |
 
 ---
 

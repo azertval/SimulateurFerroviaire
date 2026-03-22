@@ -29,24 +29,4 @@
 | DFS — Depth-First Search | https://en.wikipedia.org/wiki/Depth-first_search |
 | Graphe connexe / composantes | https://en.wikipedia.org/wiki/Connected_component |
 
----
 
-# Licence {#licence}
-
-Ce projet est distribué sous licence :
-
-**Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**
-
-https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-- Partager — copier et redistribuer le matériel
-- Adapter — remixer, transformer et créer à partir du matériel
-- Attribution requise
-- Usage commercial interdit
-- Redistribution sous la même licence
-
----
-
-# Auteur {#auteur}
-
-© 2026 Valentin Eloy
