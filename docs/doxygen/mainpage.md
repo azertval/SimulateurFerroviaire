@@ -20,6 +20,11 @@ Le projet repose sur un pipeline de parsing permettant de :
 - Afficher une vue PCC type TCO SNCF superposée à la carte, togglable via F2
 
 ---
+# Architecture du projet {#diag}
+
+![Architecture SimulateurFerroviaire](images/architecture.svg)
+
+---
 
 # Engine — Moteur de l'application {#engine}
 
@@ -311,6 +316,131 @@ La propagation aux partenaires est gérée directement par `SwitchBlock` via
 | @ref CoordinateXY | Métrique UTM (x = est, y = nord) |
 
 ---
+
+# PCC {#pcc}
+
+Le module PCC transforme le modèle topologique (`StraightBlock` / `SwitchBlock`)
+en un **graphe logique indépendant des coordonnées GPS**, positionnable en schéma
+gauche → droite pour l'affichage TCO.
+
+```
+TopologyRepository      Modules/PCC       HMI/PCCPanel
+  StraightBlock  ────┬─►  PCCNode  ────►  TCORenderer
+  SwitchBlock    ────┘       │
+                          PCCEdge
+                             │
+                          PCCGraph
+```
+
+| Classe | Responsabilité unique |
+|--------|----------------------|
+| `PCCNode` | Représenter un bloc ferroviaire dans le graphe |
+| `PCCStraightNode` | Exposer les données spécifiques d'une voie droite |
+| `PCCSwitchNode` | Exposer les données spécifiques d'un aiguillage |
+| `PCCEdge` | Représenter une connexion entre deux nœuds |
+| `PCCGraph` | Posséder et indexer les nœuds et arêtes |
+| `PCCGraphBuilder` | Construire le graphe depuis TopologyRepository |
+| `PCCLayout` | Calculer les positions logiques X/Y |
+
+`PCCNode` ne construit pas le graphe. `PCCGraph` ne calcule pas les positions. \
+`PCCLayout` ne connaît pas TopologyRepository.
+
+
+
+## Nodes
+
+```
+PCCEdge          — connexion orientée entre deux nœuds
+PCCNode          — nœud abstrait (bloc ferroviaire)
+PCCStraightNode  — nœud voie droite (StraightBlock source)
+PCCSwitchNode    — nœud aiguillage  (SwitchBlock source)
+```
+
+**Pourquoi ces quatre classes et pas une seule ?**
+
+TCORenderer a besoin d'opérations communes sur tous les nœuds (position, état, arêtes) et d'opérations spécifiques selon le type (longueur d'une voie droite, branche active d'un aiguillage). La hiérarchie abstraite permet les deux sans cast dynamique (dynamic_cast) à chaque frame de rendu.
+```
+PCCNode  (abstrait)
+  ├── PCCStraightNode   →  PCCStraightNode::getStraightSource() : StraightBlock *
+  └── PCCSwitchNode     →  PCCStraightNode::getSwitchSource()   : SwitchBlock *
+                           PCCStraightNode::getRootEdge() / PCCStraightNode::getNormalEdge() / PCCStraightNode::getDeviationEdge()
+```
+
+## Notion de graphe
+
+Un **graphe** est une structure mathématique composée de :
+- **Nœuds** (vertices / nodes) : les entités
+- **Arêtes** (edges) : les connexions entre entités
+
+Dans notre cas :
+- Nœud = un bloc ferroviaire (`StraightBlock` ou `SwitchBlock`)
+- Arête = une connexion physique entre deux blocs
+
+#### Graphe non-orienté vs orienté
+
+| Type | Description | Notre cas |
+|------|-------------|-----------|
+| Non-orienté | A–B == B–A | Topologie physique ferroviaire |
+| Orienté | A→B ≠ B→A | Arêtes PCC (facilite le parcours layout) |
+
+Le réseau ferroviaire est physiquement non-orienté. On crée des arêtes
+orientées (une dans chaque sens) pour simplifier le parcours gauche→droite
+dans `PCCLayout` sans logique de direction supplémentaire.
+
+#### BFS (Breadth-First Search) — utilisé par PCCLayout
+
+Le **parcours en largeur** explore un graphe niveau par niveau depuis un
+nœud de départ. Il sert à calculer la profondeur (coordonnée X logique)
+de chaque nœud en partant du terminus le plus à l'ouest.
+
+```
+Terminus ──► s/0 ──► sw/0 ──► s/1 ──► ...
+  X=0         X=1     X=2     X=3
+```
+
+> Référence — Théorie des graphes : https://en.wikipedia.org/wiki/Graph_(discrete_mathematics) \
+> Référence — BFS : https://en.wikipedia.org/wiki/Breadth-first_search
+
+---
+
+# Références externes
+
+## C++ moderne
+
+| Sujet | Lien |
+|-------|------|
+| cppreference — référence complète C++ | https://en.cppreference.com |
+| CppCoreGuidelines — bonnes pratiques | https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines |
+| C++ Weekly (Jason Turner) | https://www.youtube.com/@cppweekly |
+
+## Concepts spécifiques
+
+| Concept | Lien |
+|---------|------|
+| enum class | https://en.cppreference.com/w/cpp/language/enum |
+| unique_ptr | https://en.cppreference.com/w/cpp/memory/unique_ptr |
+| Rule of Five | https://en.cppreference.com/w/cpp/language/rule_of_three |
+| Destructeur virtuel | https://isocpp.org/wiki/faq/virtual-functions#virtual-dtors |
+| [[nodiscard]] | https://en.cppreference.com/w/cpp/language/attributes/nodiscard |
+| std::move | https://en.cppreference.com/w/cpp/utility/move |
+| Forward declaration | https://en.wikipedia.org/wiki/Forward_declaration |
+| Member initializer list | https://en.cppreference.com/w/cpp/language/constructor |
+| Polymorphisme | https://en.cppreference.com/w/cpp/language/virtual |
+| explicit | https://en.cppreference.com/w/cpp/language/explicit |
+| override | https://en.cppreference.com/w/cpp/language/override |
+
+## Architecture logicielle
+
+| Concept | Lien |
+|---------|------|
+| SOLID principles | https://en.wikipedia.org/wiki/SOLID |
+| Théorie des graphes | https://en.wikipedia.org/wiki/Graph_(discrete_mathematics) |
+| BFS algorithm | https://en.wikipedia.org/wiki/Breadth-first_search |
+| Ownership semantics | https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r-resource-management |
+| Liskov Substitution Principle | https://en.wikipedia.org/wiki/Liskov_substitution_principle |
+
+---
+
 
 # Licence {#licence}
 
