@@ -9,7 +9,7 @@ var searchData=
   ['activebranch_6',['ActiveBranch',['../SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89',1,'SwitchBlock.h']]],
   ['activebranchtostring_7',['activeBranchToString',['../classSwitchBlock.html#a4c252f2bb90dbe50b8c9d8e8de0fc5b5',1,'SwitchBlock']]],
   ['addbranchid_8',['addBranchId',['../classSwitchBlock.html#af60b9a9bfb1223cdb1da385d4aff13cd',1,'SwitchBlock']]],
-  ['addedge_9',['addEdge',['../classTopologyGraph.html#a99f720078a226f9d62b284d67194153b',1,'TopologyGraph']]],
+  ['addedge_9',['addedge',['../classTopologyGraph.html#a99f720078a226f9d62b284d67194153b',1,'TopologyGraph::addEdge()'],['../classPCCNode.html#afb9531c8186a9d8b547fa2faf3ca5b32',1,'PCCNode::addEdge()']]],
   ['addneighbourid_10',['addNeighbourId',['../classStraightBlock.html#a31992cb0d660a2be22d99615c4be8c23',1,'StraightBlock']]],
   ['adjacency_11',['adjacency',['../classTopologyGraph.html#a32d45f877383238871e9522eb306b20f',1,'TopologyGraph']]],
   ['adjacencylist_12',['AdjacencyList',['../classTopologyGraph.html#ac53af35f8fd414da3bf4eb54422455d5',1,'TopologyGraph']]],
@@ -20,6 +20,8 @@ var searchData=
   ['application_17',['application',['../classApplication.html',1,'Application'],['../classApplication.html#a719cf091afd2276d52f9a58e4962ebfb',1,'Application::Application()'],['../index.html#engine',1,'Engine — Moteur de l&apos;application']]],
   ['application_2ecpp_18',['Application.cpp',['../Application_8cpp.html',1,'']]],
   ['application_2eh_19',['Application.h',['../Application_8h.html',1,'']]],
-  ['asynchrone_20',['Tâche asynchrone',['../index.html#task',1,'']]],
-  ['auteur_21',['Auteur',['../index.html#auteur',1,'']]]
+  ['architecture_20du_20projet_20',['Architecture du projet',['../index.html#diag',1,'']]],
+  ['architecture_20logicielle_21',['Architecture logicielle',['../index.html#autotoc_md17',1,'']]],
+  ['asynchrone_22',['Tâche asynchrone',['../index.html#task',1,'']]],
+  ['auteur_23',['Auteur',['../index.html#auteur',1,'']]]
 ];

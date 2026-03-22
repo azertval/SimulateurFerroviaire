@@ -1,0 +1,19 @@
+<map id="PCCStraightNode" name="PCCStraightNode">
+<area shape="rect" id="Node000001" title="Nœud PCC issu d&#39;un StraightBlock." alt="" coords="188,1867,343,1972"/>
+<area shape="rect" id="Node000002" href="$classPCCNode.html" title="Nœud abstrait du graphe PCC." alt="" coords="305,991,429,1316"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="393,1330,398,1448,394,1579,387,1647,375,1714,358,1780,336,1844,322,1868,317,1865,331,1842,353,1779,370,1713,381,1646,389,1578,393,1448,387,1330"/>
+<area shape="rect" id="Node000003" href="$classShuntingElement.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="83,708,245,913"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="245,912,296,989,299,995,294,998,291,992,241,915"/>
+<area shape="rect" id="Node000007" href="$classStraightBlock.html" title=" " alt="" coords="61,1379,267,1804"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="78,913,55,951,37,992,14,1080,9,1152,18,1225,37,1315,64,1399,59,1400,32,1317,12,1225,3,1152,9,1079,32,990,50,949,73,910"/>
+<area shape="rect" id="Node000008" href="$structStraightBlock_1_1StraightNeighbours.html" title="Voisins topologiques d&#39;un StraightBlock." alt="" coords="47,1121,281,1186"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="167,914,167,1104,161,1104,161,914"/>
+<area shape="rect" id="Node000004" href="$classInteractiveElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="77,453,251,659"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="167,672,167,708,161,708,161,672"/>
+<area shape="rect" id="Node000005" href="$classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="73,5,255,391"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="167,391,167,437,161,437,161,391"/>
+<area shape="rect" id="Node000006" href="$structPCCPosition.html" title="Position logique d&#39;un nœud dans le schéma PCC." alt="" coords="321,768,413,853"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="369,853,369,974,364,974,364,853"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="198,1803,212,1842,217,1851,212,1854,207,1844,193,1805"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="167,1186,167,1362,161,1362,161,1186"/>
+</map>

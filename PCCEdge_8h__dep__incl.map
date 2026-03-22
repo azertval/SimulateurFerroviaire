@@ -1,0 +1,18 @@
+<map id="SimulateurFerroviaire/Modules/PCC/PCCEdge.h" name="SimulateurFerroviaire/Modules/PCC/PCCEdge.h">
+<area shape="rect" id="Node000001" title="Connexion orientée entre deux nœuds du graphe PCC." alt="" coords="126,5,311,45"/>
+<area shape="rect" id="Node000002" href="$PCCEdge_8cpp.html" title="Implémentation de l&#39;arête orientée du graphe PCC." alt="" coords="5,181,205,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,58,120,183,115,180,197,55"/>
+<area shape="rect" id="Node000003" href="$PCCNode_8h.html" title="Nœud abstrait du graphe PCC représentant un bloc ferroviaire." alt="" coords="237,93,424,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="256,52,307,91,304,95,253,56"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="269,141,156,184,154,179,267,136"/>
+<area shape="rect" id="Node000004" href="$PCCNode_8cpp.html" title="Implémentation du nœud abstrait du graphe PCC." alt="" coords="229,181,432,221"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="333,147,333,181,328,181,328,147"/>
+<area shape="rect" id="Node000005" href="$PCCStraightNode_8h.html" title="Nœud PCC représentant un StraightBlock." alt="" coords="457,181,695,221"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="398,135,523,179,521,184,397,140"/>
+<area shape="rect" id="Node000007" href="$PCCSwitchNode_8h.html" title="Nœud PCC représentant un SwitchBlock." alt="" coords="726,181,957,221"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="438,130,730,179,729,184,437,135"/>
+<area shape="rect" id="Node000006" href="$PCCStraightNode_8cpp.html" title="Implémentation du nœud PCC pour voie droite." alt="" coords="445,269,699,309"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="577,235,576,269,570,269,572,235"/>
+<area shape="rect" id="Node000008" href="$PCCSwitchNode_8cpp.html" title="Implémentation du nœud PCC pour aiguillage." alt="" coords="723,269,968,309"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="846,235,847,269,842,269,840,235"/>
+</map>

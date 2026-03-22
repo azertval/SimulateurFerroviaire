@@ -1,0 +1,36 @@
+<map id="SimulateurFerroviaire/Modules/PCC/PCCStraightNode.h" name="SimulateurFerroviaire/Modules/PCC/PCCStraightNode.h">
+<area shape="rect" id="Node000001" title="Nœud PCC représentant un StraightBlock." alt="" coords="403,5,641,45"/>
+<area shape="rect" id="Node000002" href="$PCCNode_8h.html" title="Nœud abstrait du graphe PCC représentant un bloc ferroviaire." alt="" coords="377,101,472,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="502,48,450,93,446,89,499,44"/>
+<area shape="rect" id="Node000014" href="$StraightBlock_8h.html" title="Modèle de domaine d&#39;un bloc de voie droite (Straight)." alt="" coords="496,93,743,133"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="545,44,589,82,586,86,542,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="487,445,546,471"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="417,128,400,152,386,182,379,217,379,246,387,274,402,308,422,345,447,380,496,434,492,437,443,383,418,348,397,311,382,276,374,247,373,217,381,181,395,149,412,125"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="396,189,459,214"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="428,126,429,174,424,174,422,126"/>
+<area shape="rect" id="Node000005" href="$PCCEdge_8h.html" title="Connexion orientée entre deux nœuds du graphe PCC." alt="" coords="228,189,320,214"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="406,128,308,184,305,179,403,124"/>
+<area shape="rect" id="Node000006" href="$ShuntingElement_8h.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="483,181,753,221"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="452,124,564,173,562,178,450,129"/>
+<area shape="rect" id="Node000007" href="$InteractiveElement_8h.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="411,269,623,309"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="597,224,551,262,548,258,594,220"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="519,310,519,432,514,432,514,310"/>
+<area shape="rect" id="Node000008" href="$Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur." alt="" coords="172,357,320,397"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="458,312,319,356,318,351,456,307"/>
+<area shape="poly" id="edge14_Node000008_Node000003" title=" " alt="" coords="312,395,475,442,473,447,310,400"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="290,445,349,471"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="266,396,301,433,297,437,262,399"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="373,445,463,471"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="288,395,381,437,379,442,286,400"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="5,445,79,471"/>
+<area shape="poly" id="edge11_Node000008_Node000011" title=" " alt="" coords="198,400,86,443,84,438,196,395"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="103,445,167,471"/>
+<area shape="poly" id="edge12_Node000008_Node000012" title=" " alt="" coords="221,400,164,439,161,435,218,395"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="191,445,266,471"/>
+<area shape="poly" id="edge13_Node000008_Node000013" title=" " alt="" coords="244,398,237,432,232,431,239,397"/>
+<area shape="poly" id="edge16_Node000014_Node000003" title=" " alt="" coords="703,131,739,150,755,164,768,180,775,201,768,222,748,260,723,296,664,358,602,407,551,441,548,436,599,402,660,354,719,292,744,258,764,220,770,201,764,183,751,168,736,155,701,136"/>
+<area shape="poly" id="edge17_Node000014_Node000004" title=" " alt="" coords="578,136,466,186,464,181,576,131"/>
+<area shape="poly" id="edge18_Node000014_Node000006" title=" " alt="" coords="622,134,621,167,616,167,616,134"/>
+<area shape="rect" id="Node000015" href="$LatLon_8h.html" title="Représentation d&#39;une coordonnée géographique WGS&#45;84 (latitude, longitude)." alt="" coords="829,181,988,221"/>
+<area shape="poly" id="edge19_Node000014_Node000015" title=" " alt="" coords="684,131,833,175,832,180,682,136"/>
+</map>

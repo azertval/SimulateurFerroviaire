@@ -1,0 +1,13 @@
+<map id="PCCEdge" name="PCCEdge">
+<area shape="rect" id="Node000001" title="Connexion orientée entre deux PCCNode du PCCGraph." alt="" coords="137,1379,245,1604"/>
+<area shape="rect" id="Node000002" href="$classPCCNode.html" title="Nœud abstrait du graphe PCC." alt="" coords="129,976,253,1301"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,1302,193,1362,188,1362,188,1302"/>
+<area shape="rect" id="Node000003" href="$classShuntingElement.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="15,708,177,913"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="128,913,142,959,136,961,123,914"/>
+<area shape="rect" id="Node000004" href="$classInteractiveElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="9,453,183,659"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="99,672,99,708,93,708,93,672"/>
+<area shape="rect" id="Node000005" href="$classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="5,5,187,391"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="99,391,99,437,93,437,93,391"/>
+<area shape="rect" id="Node000006" href="$structPCCPosition.html" title="Position logique d&#39;un nœud dans le schéma PCC." alt="" coords="201,768,293,853"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="242,854,224,960,219,960,237,853"/>
+</map>

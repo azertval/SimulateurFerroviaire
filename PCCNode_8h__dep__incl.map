@@ -1,0 +1,15 @@
+<map id="SimulateurFerroviaire/Modules/PCC/PCCNode.h" name="SimulateurFerroviaire/Modules/PCC/PCCNode.h">
+<area shape="rect" id="Node000001" title="Nœud abstrait du graphe PCC représentant un bloc ferroviaire." alt="" coords="360,5,547,45"/>
+<area shape="rect" id="Node000002" href="$PCCEdge_8cpp.html" title="Implémentation de l&#39;arête orientée du graphe PCC." alt="" coords="5,93,205,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="364,51,182,96,181,91,363,46"/>
+<area shape="rect" id="Node000003" href="$PCCNode_8cpp.html" title="Implémentation du nœud abstrait du graphe PCC." alt="" coords="229,93,432,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="417,55,359,95,356,91,414,51"/>
+<area shape="rect" id="Node000004" href="$PCCStraightNode_8h.html" title="Nœud PCC représentant un StraightBlock." alt="" coords="457,93,695,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="493,51,550,91,547,95,490,55"/>
+<area shape="rect" id="Node000006" href="$PCCSwitchNode_8h.html" title="Nœud PCC représentant un SwitchBlock." alt="" coords="726,93,957,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="552,46,757,91,756,96,551,51"/>
+<area shape="rect" id="Node000005" href="$PCCStraightNode_8cpp.html" title="Implémentation du nœud PCC pour voie droite." alt="" coords="445,181,699,221"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="577,147,576,181,570,181,572,147"/>
+<area shape="rect" id="Node000007" href="$PCCSwitchNode_8cpp.html" title="Implémentation du nœud PCC pour aiguillage." alt="" coords="723,181,968,221"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="846,147,847,181,842,181,840,147"/>
+</map>

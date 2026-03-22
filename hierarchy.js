@@ -25,7 +25,13 @@ var hierarchy =
     [ "MainWindow", "classMainWindow.html", null ],
     [ "NodeDegreeThresholds", "classNodeDegreeThresholds.html", null ],
     [ "ParserDefaultValues", "classParserDefaultValues.html", null ],
+    [ "PCCEdge", "classPCCEdge.html", null ],
+    [ "PCCNode", "classPCCNode.html", [
+      [ "PCCStraightNode", "classPCCStraightNode.html", null ],
+      [ "PCCSwitchNode", "classPCCSwitchNode.html", null ]
+    ] ],
     [ "PCCPanel", "classPCCPanel.html", null ],
+    [ "PCCPosition", "structPCCPosition.html", null ],
     [ "ProgressBar", "classProgressBar.html", null ],
     [ "TCORenderer::Projection", "structTCORenderer_1_1Projection.html", null ],
     [ "GraphBuilder::RawPolyline", "structGraphBuilder_1_1RawPolyline.html", null ],

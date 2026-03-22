@@ -26,17 +26,16 @@ var NAVTREE =
 [
   [ "Simulateur Ferroviaire", "index.html", [
     [ "Description", "index.html#description", null ],
+    [ "Architecture du projet", "index.html#diag", null ],
     [ "Engine — Moteur de l'application", "index.html#engine", [
       [ "Core — Cœur applicatif", "index.html#core", [
         [ "TopologyData", "index.html#data", null ],
         [ "TopologyRenderer — Rendu et exportation", "index.html#renderer", null ]
       ] ],
-      [ "HMI — Interface utilisateur", "index.html#hmi", [
-        [ "Panneau PCC — Vue TCO", "index.html#pcc", null ],
-        [ "TCORenderer — Rendu GDI", "index.html#tco", null ],
-        [ "Binding bidirectionnel Leaflet ↔ C++", "index.html#binding", null ]
-      ] ],
-      [ "</blockquote>", "index.html#autotoc_md3", null ]
+      [ "HMI — Interface utilisateur", "index.html#hmi", null ]
+    ] ],
+    [ "Panneau PCC — Vue TCO", "index.html#pcc", [
+      [ "</blockquote>", "index.html#autotoc_md4", null ]
     ] ],
     [ "Modules — Fonctionnalités métier", "index.html#modules", null ],
     [ "GeoParser — Pipeline principal", "index.html#geoparser", [
@@ -52,7 +51,16 @@ var NAVTREE =
       [ "État opérationnel des aiguillages", "index.html#activestate", null ],
       [ "Énumérations clés", "index.html#enums", null ]
     ] ],
-    [ "Coordonnées", "index.html#coords", null ],
+    [ "Coordonnées", "index.html#coords", [
+      [ "Nodes", "index.html#autotoc_md9", null ],
+      [ "Notion de graphe", "index.html#autotoc_md10", null ],
+      [ "</blockquote>", "index.html#autotoc_md13", null ]
+    ] ],
+    [ "Références externes", "index.html#autotoc_md14", [
+      [ "C++ moderne", "index.html#autotoc_md15", null ],
+      [ "Concepts spécifiques", "index.html#autotoc_md16", null ],
+      [ "Architecture logicielle", "index.html#autotoc_md17", null ]
+    ] ],
     [ "Licence", "index.html#licence", null ],
     [ "Auteur", "index.html#auteur", null ],
     [ "Classes", "annotated.html", [
@@ -83,8 +91,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AboutDialog_8cpp.html",
-"classInteractiveElement.html#a8ff2705adce5c5c4d9a056dbf80cc79e",
-"classTopologyGraph.html#a07cb1a1808c40751d01dd7d43d335024"
+"classGeometryUtils.html#a756f72673be859edd9f14ba8b0985177",
+"classSwitchBlock.html#aba30776838f3363fc7e93bcb7ce7888c",
+"index.html#elements"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
