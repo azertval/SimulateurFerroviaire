@@ -22,7 +22,7 @@ Le projet repose sur un pipeline de parsing permettant de :
 ---
 # Architecture du projet {#diag}
 
-![Architecture SimulateurFerroviaire](images/architecture.svg)
+![Architecture SimulateurFerroviaire](architecture.svg)
 
 ---
 
@@ -455,6 +455,30 @@ Les deux passes sont séparées intentionnellement : les arêtes référencent d
 nœuds par ID — tous les nœuds doivent exister dans l'index avant de résoudre
 les connexions.
 
+## PCCLayout {#layout}
+
+`PCCLayout` calcule les **positions logiques X/Y** de chaque nœud du graphe
+PCC, indépendamment des coordonnées GPS. Le résultat est un schéma gauche →
+droite lisible par `TCORenderer` pour le dessin GDI.
+
+```
+Avant PCCLayout          Après PCCLayout
+
+s/0  sw/0  s/1           s/0(x=0,y=0) ─ sw/0(x=1,y=0) ─┬─ s/1(x=2,y=0)
+                                                       └─ s/2(x=2,y=1)  ← déviation
+```
+
+**Responsabilité unique :**
+
+| Méthode | Rôle |
+|---------|------|
+| `PCCLayout::compute()` | Point d'entrée — orchestre tout le calcul |
+| `PCCLayout::findTermini()` | Détecte les nœuds de départ (terminus) |
+| `PCCLayout::runBFS()` | BFS depuis un terminus, assigne x et y |
+
+`PCCLayout` ne crée pas de nœuds, ne lit pas `TopologyRepository`, ne dessine
+rien — il affecte uniquement `PCCPosition` via `PCCNode::setPosition()`.
+
 ---
 
 # Références externes {#rextern}
@@ -478,8 +502,11 @@ les connexions.
 | Ownership semantics | https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r-resource-management |
 | Liskov Substitution Principle | https://en.wikipedia.org/wiki/Liskov_substitution_principle |
 | Hash table | https://en.wikipedia.org/wiki/Hash_table |
+| FIFO vs LIFO | https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics) |
 | Théorie des graphes | https://en.wikipedia.org/wiki/Graph_(discrete_mathematics) |
 | BFS algorithm | https://en.wikipedia.org/wiki/Breadth-first_search |
+| DFS — Depth-First Search | https://en.wikipedia.org/wiki/Depth-first_search |
+| Graphe connexe / composantes | https://en.wikipedia.org/wiki/Connected_component |
 | Two-pass graph construction | https://en.wikipedia.org/wiki/Topological_sorting |
 
 
