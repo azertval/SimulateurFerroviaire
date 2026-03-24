@@ -22,9 +22,9 @@ namespace
 // =============================================================================
 
 StraightBlock::StraightBlock(std::string              blockId,
-    std::vector<LatLon>      blockCoords,
+    std::vector<CoordinateLatLon>      blockCoordinates,
     std::vector<std::string> initialNeighbourIds)
-    : m_coordinates(std::move(blockCoords))
+    : m_coordinates(std::move(blockCoordinates))
     , m_neighbourIds(std::move(initialNeighbourIds))
     , m_lengthMeters(computeGeodesicLength())
 {
@@ -69,9 +69,9 @@ void StraightBlock::replaceNeighbourId(const std::string& oldId, const std::stri
 // Phase 6d
 // =============================================================================
 
-void StraightBlock::setCoordinates(std::vector<LatLon> coords)
+void StraightBlock::setCoordinates(std::vector<CoordinateLatLon> Coordinates)
 {
-    m_coordinates = std::move(coords);
+    m_coordinates = std::move(Coordinates);
     m_lengthMeters = computeGeodesicLength();
 }
 
@@ -87,7 +87,7 @@ std::string StraightBlock::toString() const
         << ", len=" << std::fixed;
     s.precision(1);
     s << m_lengthMeters << "m"
-        << ", coords=" << m_coordinates.size()
+        << ", Coordinates=" << m_coordinates.size()
         << ", neighbours=[";
 
     for (std::size_t i = 0; i < m_neighbourIds.size(); ++i)
@@ -115,7 +115,7 @@ double StraightBlock::computeGeodesicLength() const
     return total;
 }
 
-double StraightBlock::haversineDistanceMeters(const LatLon& a, const LatLon& b)
+double StraightBlock::haversineDistanceMeters(const CoordinateLatLon& a, const CoordinateLatLon& b)
 {
     const double dLat = (b.latitude - a.latitude) * DEGREES_TO_RADIANS;
     const double dLon = (b.longitude - a.longitude) * DEGREES_TO_RADIANS;

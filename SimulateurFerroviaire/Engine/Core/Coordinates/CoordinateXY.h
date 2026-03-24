@@ -6,7 +6,7 @@
  *
  * Utilisé en interne par le pipeline pour tous les calculs métriques
  * (construction du graphe, accrochage sur grille, interpolation, angles).
- * Les coordonnées publiques (sorties du parseur) sont toujours en LatLon WGS-84.
+ * Les coordonnées publiques (sorties du parseur) sont toujours en CoordinateLatLon WGS-84.
  *
  * Exemple :
  * @code

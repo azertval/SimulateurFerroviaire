@@ -10,13 +10,13 @@
 #include <cmath>
 
 
- // =============================================================================
- // Point d'entrée
- // =============================================================================
+// =============================================================================
+// Point d'entrée
+// =============================================================================
 
 void Phase3_NetworkSplitter::run(PipelineContext& ctx,
-    const ParserConfig& config,
-    Logger& logger)
+                                  const ParserConfig& config,
+                                  Logger& logger)
 {
     const auto t0 = PipelineContext::startTimer();
 
@@ -31,18 +31,18 @@ void Phase3_NetworkSplitter::run(PipelineContext& ctx,
 
     for (size_t pi = 0; pi < polyCount; ++pi)
     {
-        const auto& poly = ctx.rawNetwork.polylines[pi];
-        const auto& ptsUTM = poly.pointsUTM;
-        const auto& ptsWGS84 = poly.pointsWGS84;
+        const auto& poly      = ctx.rawNetwork.polylines[pi];
+        const auto& ptsUTM    = poly.pointsUTM;
+        const auto& ptsWGS84  = poly.pointsWGS84;
 
         if (ptsUTM.size() < 2) { ++globalIdx; continue; }
 
         for (size_t si = 0; si + 1 < ptsUTM.size(); ++si, ++globalIdx)
         {
-            const CoordinateXY& A = ptsUTM[si];
-            const CoordinateXY& B = ptsUTM[si + 1];
-            const LatLon& Ageo = ptsWGS84[si];
-            const LatLon& Bgeo = ptsWGS84[si + 1];
+            const CoordinateXY& A    = ptsUTM[si];
+            const CoordinateXY& B    = ptsUTM[si + 1];
+            const CoordinateLatLon&       Ageo = ptsWGS84[si];
+            const CoordinateLatLon&       Bgeo = ptsWGS84[si + 1];
 
             const double segLen = std::hypot(B.x - A.x, B.y - A.y);
 
@@ -56,15 +56,15 @@ void Phase3_NetworkSplitter::run(PipelineContext& ctx,
                 const double tA = cutParams[ci];
                 const double tB = cutParams[ci + 1];
 
-                const CoordinateXY subA = interpolateUTM(A, B, tA);
-                const CoordinateXY subB = interpolateUTM(A, B, tB);
-                const LatLon       subAgeo = interpolateWGS84(Ageo, Bgeo, tA);
-                const LatLon       subBgeo = interpolateWGS84(Ageo, Bgeo, tB);
+                const CoordinateXY subA    = interpolateUTM(A, B, tA);
+                const CoordinateXY subB    = interpolateUTM(A, B, tB);
+                const CoordinateLatLon       subAgeo = interpolateWGS84(Ageo, Bgeo, tA);
+                const CoordinateLatLon       subBgeo = interpolateWGS84(Ageo, Bgeo, tB);
 
                 // Subdivise si le sous-segment dépasse maxSegmentLength
                 subdivideLong(subA, subAgeo, subB, subBgeo,
-                    config.maxSegmentLength, pi,
-                    ctx.splitNetwork.segments);
+                              config.maxSegmentLength, pi,
+                              ctx.splitNetwork.segments);
             }
         }
     }
@@ -72,8 +72,8 @@ void Phase3_NetworkSplitter::run(PipelineContext& ctx,
     const size_t produced = ctx.splitNetwork.size();
 
     ctx.endTimer(t0, "Phase3_NetworkSplitter",
-        globalIdx,    // nb segments d'entrée
-        produced);    // nb segments atomiques produits
+                 globalIdx,    // nb segments d'entrée
+                 produced);    // nb segments atomiques produits
 
     LOG_INFO(logger, std::to_string(produced)
         + " segment(s) atomique(s) produit(s).");
@@ -147,13 +147,13 @@ CoordinateXY Phase3_NetworkSplitter::interpolateUTM(
              A.y + t * (B.y - A.y) };
 }
 
-LatLon Phase3_NetworkSplitter::interpolateWGS84(
-    const LatLon& A, const LatLon& B, double t)
+CoordinateLatLon Phase3_NetworkSplitter::interpolateWGS84(
+    const CoordinateLatLon& A, const CoordinateLatLon& B, double t)
 {
     // Interpolation linéaire — valable pour des segments < 10 km
     // L'erreur par rapport à la géodésique est < 1 mm sur < 1 km
-    return { A.lat + t * (B.lat - A.lat),
-             A.lon + t * (B.lon - A.lon) };
+    return { A.latitude + t * (B.latitude - A.latitude),
+             A.longitude + t * (B.longitude - A.longitude) };
 }
 
 
@@ -162,8 +162,8 @@ LatLon Phase3_NetworkSplitter::interpolateWGS84(
 // =============================================================================
 
 void Phase3_NetworkSplitter::subdivideLong(
-    const CoordinateXY& A, const LatLon& Ageo,
-    const CoordinateXY& B, const LatLon& Bgeo,
+    const CoordinateXY& A, const CoordinateLatLon& Ageo,
+    const CoordinateXY& B, const CoordinateLatLon& Bgeo,
     double maxLen,
     size_t parentIdx,
     std::vector<AtomicSegment>& out)
@@ -174,8 +174,8 @@ void Phase3_NetworkSplitter::subdivideLong(
     {
         // Segment assez court — on le garde tel quel
         AtomicSegment seg;
-        seg.pointsWGS84 = { Ageo, Bgeo };
-        seg.pointsUTM = { A,    B };
+        seg.pointsWGS84        = { Ageo, Bgeo };
+        seg.pointsUTM          = { A,    B    };
         seg.parentPolylineIndex = parentIdx;
         out.push_back(std::move(seg));
         return;
@@ -184,23 +184,23 @@ void Phase3_NetworkSplitter::subdivideLong(
     // Nombre de portions nécessaires : ⌈len / maxLen⌉
     const int n = static_cast<int>(std::ceil(len / maxLen));
 
-    CoordinateXY prev = A;
-    LatLon       prevGeo = Ageo;
+    CoordinateXY prev    = A;
+    CoordinateLatLon       prevGeo = Ageo;
 
     for (int i = 1; i <= n; ++i)
     {
         const double t = static_cast<double>(i) / static_cast<double>(n);
 
-        const CoordinateXY curr = interpolateUTM(A, B, t);
-        const LatLon       currGeo = interpolateWGS84(Ageo, Bgeo, t);
+        const CoordinateXY curr    = interpolateUTM(A, B, t);
+        const CoordinateLatLon       currGeo = interpolateWGS84(Ageo, Bgeo, t);
 
         AtomicSegment seg;
-        seg.pointsWGS84 = { prevGeo, currGeo };
-        seg.pointsUTM = { prev,    curr };
-        seg.parentPolylineIndex = parentIdx;
+        seg.pointsWGS84         = { prevGeo, currGeo };
+        seg.pointsUTM           = { prev,    curr    };
+        seg.parentPolylineIndex  = parentIdx;
         out.push_back(std::move(seg));
 
-        prev = curr;
+        prev    = curr;
         prevGeo = currGeo;
     }
 }

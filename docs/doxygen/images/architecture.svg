@@ -9,7 +9,7 @@ configurationStart;Unit=smInches;Dpi=96;Division=4;Grid=True;Zoom=2,5;CanvasW=68
 </path>
 </marker>
 </defs>
- Entry point  Engine/Core  Engine/HMI  Modules  GeoParser : x=36 w=184  Pipeline sub-block  SRP label  InteractiveElements : x=228 w=196  PCC : x=432 w=208  Coords  Arrow GeoParser → TopologyRepository <g isVisble = "True" inkscape:label = "architecture Default Layer" inkscape:groupmode = "layer" ><rect style="fill:#2C2C2A;stroke:none; stroke-width:1" x = "0" y = "0" width = "7,083333in" height = "6,75in" transform = "matrix(1,0,0,1,0,0)" vector-effect="non-scaling-stroke" pen = "1,1" rx = "8" />
+ Entry point  Engine/Core  Engine/HMI  Modules  GeoParser : x=36 w=184  Pipeline sub-block  SRP label  InteractiveElements : x=228 w=196  PCC : x=432 w=208  Coordinates  Arrow GeoParser → TopologyRepository <g isVisble = "True" inkscape:label = "architecture Default Layer" inkscape:groupmode = "layer" ><rect style="fill:#2C2C2A;stroke:none; stroke-width:1" x = "0" y = "0" width = "7,083333in" height = "6,75in" transform = "matrix(1,0,0,1,0,0)" vector-effect="non-scaling-stroke" pen = "1,1" rx = "8" />
 <rect style="fill:#444441;stroke:#B4B2A9; stroke-width:0.5" x = "240" y = "16" width = "2,083333in" height = "0,375in" transform = "matrix(1,0,0,1,0,0)" vector-effect="non-scaling-stroke" pen = "1,1" rx = "8" />
 <text fill="#D3D1C7" font-family="Microsoft Sans Serif" font-size="9.75pt" text-anchor="middle" x="340" y="34" transform = "matrix(1,0,0,1,0,0)" vector-effect="non-scaling-stroke" pen = "1,1" dominant-baseline = "central" >SimulateurFerroviaire.cpp</text>
 <line style="fill:Black;stroke:#9C9A92; stroke-width:1.5" x1 = "340" y1 = "52" x2 = "340" y2 = "72" transform = "matrix(1,0,0,1,0,0)" vector-effect="non-scaling-stroke" pen = "1,1" marker-end = "url(#arr)" />
@@ -85,7 +85,7 @@ configurationStart;Unit=smInches;Dpi=96;Division=4;Grid=True;Zoom=2,5;CanvasW=68
 <text fill="#B4B2A9" font-family="Microsoft Sans Serif" font-size="7.5pt" text-anchor="middle" x="318,605" y="591" transform = "matrix(1,0,0,1,-39,2,8,4)" vector-effect="non-scaling-stroke" pen = "1,1" dominant-baseline = "central" > CoordinateXY (UTM)</text>
 <line style="fill:Black;stroke:#9C9A92; stroke-width:1" x1 = "220" y1 = "144" x2 = "250" y2 = "144" transform = "matrix(1,0,0,1,0,0)" vector-effect="non-scaling-stroke" pen = "1,1" stroke-dasharray = "4 3" marker-end = "url(#arr)" />
 <g id="group_1">
-<text fill="#B4B2A9" font-family="Microsoft Sans Serif" font-size="7.5pt" text-anchor="middle" x="275,3066" y="588" transform = "matrix(1,0,0,1,-25,6,-2)" vector-effect="non-scaling-stroke" pen = "1,1" dominant-baseline = "central" >LatLon</text>
+<text fill="#B4B2A9" font-family="Microsoft Sans Serif" font-size="7.5pt" text-anchor="middle" x="275,3066" y="588" transform = "matrix(1,0,0,1,-25,6,-2)" vector-effect="non-scaling-stroke" pen = "1,1" dominant-baseline = "central" >CoordinateLatLon</text>
 </g>
 </g>
 </svg>

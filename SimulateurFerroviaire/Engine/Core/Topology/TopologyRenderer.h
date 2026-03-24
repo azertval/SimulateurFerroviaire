@@ -50,7 +50,7 @@ public:
     // -------------------------------------------------------------------------
 
     /**
-     * @brief Construit l'appel JS @c renderStraightBlock(id, coords) pour un bloc.
+     * @brief Construit l'appel JS @c renderStraightBlock(id, Coordinates) pour un bloc.
      * @param straightBlock  Bloc à rendre (ignoré si < 2 coordonnées).
      * @return Instruction JavaScript.
      */

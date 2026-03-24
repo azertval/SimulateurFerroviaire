@@ -11,8 +11,8 @@
 #include <string>
 #include <vector>
 
-#include "Engine/Core/Coords/LatLon.h"
-#include "Engine/Core/Coords/CoordinateXY.h"
+#include "Engine/Core/Coordinates/CoordinateLatLon.h"
+#include "Engine/Core/Coordinates/CoordinateXY.h"
 
  /**
   * @struct RawPolyline
@@ -27,7 +27,7 @@ struct RawPolyline
     std::string id;
 
     /** Points WGS84 (latitude, longitude) — conservés pour le rendu. */
-    std::vector<LatLon> pointsWGS84;
+    std::vector<CoordinateLatLon> pointsWGS84;
 
     /**
      * Points projetés en UTM (x = est, y = nord, en mètres).

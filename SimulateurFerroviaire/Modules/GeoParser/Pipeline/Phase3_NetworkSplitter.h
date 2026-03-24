@@ -91,7 +91,7 @@ private:
      *
      * @return Point WGS84 interpolé.
      */
-    static LatLon interpolateWGS84(const LatLon& A, const LatLon& B, double t);
+    static CoordinateLatLon interpolateWGS84(const CoordinateLatLon& A, const CoordinateLatLon& B, double t);
 
     /**
      * @brief Subdivise un sous-segment si sa longueur dépasse @p maxLen.
@@ -107,8 +107,8 @@ private:
      * @param parentIdx  Indice de la polyligne parente.
      * @param out        Vecteur de sortie — les portions sont appendées.
      */
-    static void subdivideLong(const CoordinateXY& A, const LatLon& Ageo,
-        const CoordinateXY& B, const LatLon& Bgeo,
+    static void subdivideLong(const CoordinateXY& A, const CoordinateLatLon& Ageo,
+        const CoordinateXY& B, const CoordinateLatLon& Bgeo,
         double maxLen,
         size_t parentIdx,
         std::vector<AtomicSegment>& out);

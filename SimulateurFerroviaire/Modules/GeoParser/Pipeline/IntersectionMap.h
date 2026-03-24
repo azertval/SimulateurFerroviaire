@@ -10,7 +10,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "Engine/Core/Coords/CoordinateXY.h"
+#include "Engine/Core/Coordinates/CoordinateXY.h"
 
  /**
   * @struct SegmentId

@@ -10,8 +10,8 @@
 
 #include <vector>
 
-#include "Engine/Core/Coords/LatLon.h"
-#include "Engine/Core/Coords/CoordinateXY.h"
+#include "Engine/Core/Coordinates/CoordinateLatLon.h"
+#include "Engine/Core/Coordinates/CoordinateXY.h"
 
  /**
   * @struct TopoNode
@@ -24,7 +24,7 @@ struct TopoNode
 {
     size_t       id = 0;   ///< Identifiant unique (index dans TopoGraph::nodes).
     CoordinateXY posUTM;        ///< Position UTM (x = est, y = nord, mètres).
-    LatLon       posWGS84;      ///< Position WGS84 (lat, lon) — pour rendu Leaflet.
+    CoordinateLatLon       posWGS84;      ///< Position WGS84 (lat, lon) — pour rendu Leaflet.
 };
 
 /**

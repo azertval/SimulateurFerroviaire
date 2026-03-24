@@ -23,7 +23,7 @@ namespace
 // =============================================================================
 
 SwitchBlock::SwitchBlock(std::string              switchId,
-    LatLon                   junctionCoord,
+    CoordinateLatLon                   junctionCoord,
     std::vector<std::string> initialBranchIds)
     : m_junctionCoordinate(junctionCoord)
     , m_branchIds(std::move(initialBranchIds))
@@ -72,9 +72,9 @@ void SwitchBlock::orient(std::string rootId, std::string normalId, std::string d
     m_deviationBranchId = std::move(deviationId);
 }
 
-void SwitchBlock::setTips(std::optional<LatLon> tipRoot,
-    std::optional<LatLon> tipNormal,
-    std::optional<LatLon> tipDeviation)
+void SwitchBlock::setTips(std::optional<CoordinateLatLon> tipRoot,
+    std::optional<CoordinateLatLon> tipNormal,
+    std::optional<CoordinateLatLon> tipDeviation)
 {
     m_tipOnRoot = std::move(tipRoot);
     m_tipOnNormal = std::move(tipNormal);
@@ -85,7 +85,7 @@ void SwitchBlock::swapNormalDeviation()
 {
     std::swap(m_normalBranchId, m_deviationBranchId);
     std::swap(m_tipOnNormal, m_tipOnDeviation);
-    std::swap(m_absorbedNormalCoords, m_absorbedDeviationCoords);
+    std::swap(m_absorbedNormalCoordinates, m_absorbedDeviationCoordinates);
     std::swap(m_doubleOnNormal, m_doubleOnDeviation);
 }
 
@@ -108,28 +108,28 @@ void SwitchBlock::computeTotalLength()
 
 void SwitchBlock::absorbLink(const std::string& linkId,
     const std::string& partnerId,
-    std::vector<LatLon> linkCoords)
+    std::vector<CoordinateLatLon> linkCoordinates)
 {
     // Remplace le segment de liaison dans la liste de branches
     for (auto& bid : m_branchIds)
         if (bid == linkId) { bid = partnerId; break; }
 
     // Le dernier point de la polyligne orientée = jonction du partenaire = nouveau tip CDC
-    const LatLon tipFar = linkCoords.empty() ? m_junctionCoordinate : linkCoords.back();
+    const CoordinateLatLon tipFar = linkCoordinates.empty() ? m_junctionCoordinate : linkCoordinates.back();
 
     if (m_normalBranchId == linkId)
     {
         m_normalBranchId = partnerId;
         m_tipOnNormal = tipFar;
         m_doubleOnNormal = partnerId;
-        m_absorbedNormalCoords = std::move(linkCoords);
+        m_absorbedNormalCoordinates = std::move(linkCoordinates);
     }
     else if (m_deviationBranchId == linkId)
     {
         m_deviationBranchId = partnerId;
         m_tipOnDeviation = tipFar;
         m_doubleOnDeviation = partnerId;
-        m_absorbedDeviationCoords = std::move(linkCoords);
+        m_absorbedDeviationCoordinates = std::move(linkCoordinates);
     }
 }
 
@@ -174,10 +174,10 @@ std::string SwitchBlock::toString() const
         s << " [DOUBLE:";
         if (m_doubleOnNormal)
             s << "normal→" << *m_doubleOnNormal
-            << " (" << m_absorbedNormalCoords.size() << " pts)";
+            << " (" << m_absorbedNormalCoordinates.size() << " pts)";
         if (m_doubleOnDeviation)
             s << "deviation→" << *m_doubleOnDeviation
-            << " (" << m_absorbedDeviationCoords.size() << " pts)";
+            << " (" << m_absorbedDeviationCoordinates.size() << " pts)";
         s << "]";
     }
 
@@ -212,7 +212,7 @@ std::string SwitchBlock::toString() const
 // Helpers privés
 // =============================================================================
 
-double SwitchBlock::haversineDistanceMeters(const LatLon& a, const LatLon& b)
+double SwitchBlock::haversineDistanceMeters(const CoordinateLatLon& a, const CoordinateLatLon& b)
 {
     const double dLat = (b.latitude - a.latitude) * DEGREES_TO_RADIANS;
     const double dLon = (b.longitude - a.longitude) * DEGREES_TO_RADIANS;

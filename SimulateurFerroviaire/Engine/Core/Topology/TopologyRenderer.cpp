@@ -22,7 +22,7 @@ namespace
      * Encode un tip optionnel en "lat,lon" ou "NaN,NaN" si absent.
      * Utilisé pour les branches simples (non absorbées).
      */
-    std::wstring encodeTip(const std::optional<LatLon>& tip)
+    std::wstring encodeTip(const std::optional<CoordinateLatLon>& tip)
     {
         if (!tip.has_value())
             return L"NaN,NaN";
@@ -39,20 +39,20 @@ namespace
      * Encode une polyligne WGS-84 en tableau JS : [[lat,lon],[lat,lon],…]
      * Retourne "null" si la polyligne est vide.
      */
-    std::wstring encodePolyline(const std::vector<LatLon>& coords)
+    std::wstring encodePolyline(const std::vector<CoordinateLatLon>& Coordinates)
     {
-        if (coords.empty())
+        if (Coordinates.empty())
             return L"null";
 
         std::wstring s = L"[";
-        for (std::size_t i = 0; i < coords.size(); ++i)
+        for (std::size_t i = 0; i < Coordinates.size(); ++i)
         {
             s += L"[";
-            s += std::to_wstring(coords[i].latitude);
+            s += std::to_wstring(Coordinates[i].latitude);
             s += L",";
-            s += std::to_wstring(coords[i].longitude);
+            s += std::to_wstring(Coordinates[i].longitude);
             s += L"]";
-            if (i + 1 < coords.size()) s += L",";
+            if (i + 1 < Coordinates.size()) s += L",";
         }
         s += L"]";
         return s;
@@ -199,15 +199,15 @@ std::wstring TopologyRenderer::renderStraightBlock(const StraightBlock& straight
     script += toWide(straight.getId());
     script += L"\",[";
 
-    const auto& coords = straight.getCoordinates();
-    for (std::size_t i = 0; i < coords.size(); ++i)
+    const auto& Coordinates = straight.getCoordinates();
+    for (std::size_t i = 0; i < Coordinates.size(); ++i)
     {
         script += L"[";
-        script += std::to_wstring(coords[i].latitude);
+        script += std::to_wstring(Coordinates[i].latitude);
         script += L",";
-        script += std::to_wstring(coords[i].longitude);
+        script += std::to_wstring(Coordinates[i].longitude);
         script += L"]";
-        if (i + 1 < coords.size()) script += L",";
+        if (i + 1 < Coordinates.size()) script += L",";
     }
     script += L"]);";
     return script;
@@ -231,7 +231,7 @@ std::wstring TopologyRenderer::renderAllStraightBlocks()
 
 std::wstring TopologyRenderer::renderSwitchBlock(const SwitchBlock& sw)
 {
-    const LatLon& junction = sw.getJunctionCoordinate();
+    const CoordinateLatLon& junction = sw.getJunctionCoordinate();
 
     std::wstring script = L"renderSwitch(\"";
     script += toWide(sw.getId());
@@ -263,9 +263,9 @@ std::wstring TopologyRenderer::renderAllSwitchBlocksJunctions()
  * Signature JS :
  *   renderSwitchBranches(id,
  *     jLat, jLon,
- *     rootCoords,      // [[lat,lon],...] ou null
- *     normalCoords,    // [[lat,lon],...] ou null
- *     devCoords)       // [[lat,lon],...] ou null
+ *     rootCoordinates,      // [[lat,lon],...] ou null
+ *     normalCoordinates,    // [[lat,lon],...] ou null
+ *     devCoordinates)       // [[lat,lon],...] ou null
  *
  * Pour les branches simples (non absorbées) : tableau à 1 point [tip].
  * Pour les branches absorbées (double switch) : polyligne complète.
@@ -275,54 +275,54 @@ std::wstring TopologyRenderer::renderSwitchBranches(const SwitchBlock& sw)
 {
     if (!sw.isOriented()) return L"";
 
-    const LatLon& junction = sw.getJunctionCoordinate();
+    const CoordinateLatLon& junction = sw.getJunctionCoordinate();
 
     // --- Branche root : toujours un simple tip (jamais absorbée) ---
-    std::wstring rootCoords = L"null";
+    std::wstring rootCoordinates = L"null";
     if (sw.getTipOnRoot())
-        rootCoords = L"[["
+        rootCoordinates = L"[["
         + std::to_wstring(sw.getTipOnRoot()->latitude) + L","
         + std::to_wstring(sw.getTipOnRoot()->longitude) + L"]]";
 
     // --- Branche normal ---
-    std::wstring normalCoords;
-    if (!sw.getAbsorbedNormalCoords().empty())
+    std::wstring normalCoordinates;
+    if (!sw.getAbsorbedNormalCoordinates().empty())
     {
         // Double switch : polyligne complète du segment absorbé
         // On skip le premier point (≈ jonction de ce switch, déjà connue côté JS)
-        const auto& pts = sw.getAbsorbedNormalCoords();
-        normalCoords = encodePolyline(
-            std::vector<LatLon>(pts.begin() + (pts.size() > 1 ? 1 : 0), pts.end()));
+        const auto& pts = sw.getAbsorbedNormalCoordinates();
+        normalCoordinates = encodePolyline(
+            std::vector<CoordinateLatLon>(pts.begin() + (pts.size() > 1 ? 1 : 0), pts.end()));
     }
     else if (sw.getTipOnNormal())
     {
         // Switch simple : un seul point tip
-        normalCoords = L"[["
+        normalCoordinates = L"[["
             + std::to_wstring(sw.getTipOnNormal()->latitude) + L","
             + std::to_wstring(sw.getTipOnNormal()->longitude) + L"]]";
     }
     else
     {
-        normalCoords = L"null";
+        normalCoordinates = L"null";
     }
 
     // --- Branche deviation ---
-    std::wstring devCoords;
-    if (!sw.getAbsorbedDeviationCoords().empty())
+    std::wstring devCoordinates;
+    if (!sw.getAbsorbedDeviationCoordinates().empty())
     {
-        const auto& pts = sw.getAbsorbedDeviationCoords();
-        devCoords = encodePolyline(
-            std::vector<LatLon>(pts.begin() + (pts.size() > 1 ? 1 : 0), pts.end()));
+        const auto& pts = sw.getAbsorbedDeviationCoordinates();
+        devCoordinates = encodePolyline(
+            std::vector<CoordinateLatLon>(pts.begin() + (pts.size() > 1 ? 1 : 0), pts.end()));
     }
     else if (sw.getTipOnDeviation())
     {
-        devCoords = L"[["
+        devCoordinates = L"[["
             + std::to_wstring(sw.getTipOnDeviation()->latitude) + L","
             + std::to_wstring(sw.getTipOnDeviation()->longitude) + L"]]";
     }
     else
     {
-        devCoords = L"null";
+        devCoordinates = L"null";
     }
 
     std::wstring script = L"renderSwitchBranches(\"";
@@ -332,11 +332,11 @@ std::wstring TopologyRenderer::renderSwitchBranches(const SwitchBlock& sw)
     script += L",";
     script += std::to_wstring(junction.longitude);
     script += L",";
-    script += rootCoords;
+    script += rootCoordinates;
     script += L",";
-    script += normalCoords;
+    script += normalCoordinates;
     script += L",";
-    script += devCoords;
+    script += devCoordinates;
     script += L");";
     return script;
 }

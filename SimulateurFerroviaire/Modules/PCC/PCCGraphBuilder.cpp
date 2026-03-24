@@ -128,7 +128,7 @@ void PCCGraphBuilder::buildEdges(PCCGraph& graph, const TopologyData& topo, Logg
         // Double switch — arête directe switch ↔ switch
         // Après absorption de s/5, sw/2.deviation == "sw/4" et sw/4.deviation == "sw/2".
         // Il n'existe plus de StraightBlock entre eux — l'arête doit être créée
-        // directement entre les deux nœuds switch en utilisant les coords absorbées.
+        // directement entre les deux nœuds switch en utilisant les Coordinates absorbées.
         // ---------------------------------------------------------------------
         if (sw->isDouble())
         {

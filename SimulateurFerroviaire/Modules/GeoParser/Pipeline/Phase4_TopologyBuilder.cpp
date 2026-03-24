@@ -43,7 +43,7 @@ void Phase4_TopologyBuilder::run(PipelineContext& ctx,
 
     // Positions UTM et WGS84 de chaque endpoint (avant fusion)
     std::vector<CoordinateXY> endUTM(segCount * 2);
-    std::vector<LatLon>       endWGS84(segCount * 2);
+    std::vector<CoordinateLatLon>       endWGS84(segCount * 2);
 
     for (size_t si = 0; si < segCount; ++si)
     {
@@ -65,7 +65,7 @@ void Phase4_TopologyBuilder::run(PipelineContext& ctx,
     // Position canonique de chaque ensemble Union-Find
     // (position du premier endpoint qui a créé cet ensemble)
     std::vector<CoordinateXY> canonPos(segCount * 2);
-    std::vector<LatLon>       canonPosWGS84(segCount * 2);
+    std::vector<CoordinateLatLon>       canonPosWGS84(segCount * 2);
 
     for (size_t i = 0; i < segCount * 2; ++i)
         canonPos[i] = endUTM[i];   // Position initiale = position propre

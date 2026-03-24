@@ -20,7 +20,7 @@
 #include <vector>
 
 #include "ShuntingElement.h"
-#include "Engine/Core/Coords/LatLon.h"
+#include "Engine/Core/Coordinates/CoordinateLatLon.h"
 
 
 class StraightBlock : public ShuntingElement
@@ -36,11 +36,11 @@ public:
     /**
      * @brief Construit un StraightBlock et calcule immédiatement sa longueur géodésique.
      * @param blockId             Identifiant unique (ex. "s/0").
-     * @param blockCoords         Polyligne WGS-84 ordonnée (≥ 2 points).
+     * @param blockCoordinates         Polyligne WGS-84 ordonnée (≥ 2 points).
      * @param initialNeighbourIds Voisins connus à la construction (optionnel).
      */
     StraightBlock(std::string              blockId,
-        std::vector<LatLon>      blockCoords,
+        std::vector<CoordinateLatLon>      blockCoordinates,
         std::vector<std::string> initialNeighbourIds = {});
 
 
@@ -60,7 +60,7 @@ public:
     // =========================================================================
 
     /** Polyligne WGS-84 ordonnée. Premier point : extrémité A. Dernier : extrémité B. */
-    [[nodiscard]] const std::vector<LatLon>& getCoordinates()  const { return m_coordinates; }
+    [[nodiscard]] const std::vector<CoordinateLatLon>& getCoordinates()  const { return m_coordinates; }
 
     /**
      * Identifiants des blocs adjacents (StraightBlock ou SwitchBlock).
@@ -98,7 +98,7 @@ public:
 
     /**
      * @brief Représentation textuelle pour le débogage.
-     * Format : Straight(id=s/0, len=342.5m, coords=7, neighbours=[sw/0, sw/1])
+     * Format : Straight(id=s/0, len=342.5m, Coordinates=7, neighbours=[sw/0, sw/1])
      */
     [[nodiscard]] std::string toString() const;
 
@@ -130,7 +130,7 @@ public:
      * Appelé par trimStraightOverlaps() pour retirer le chevauchement
      * entre la branche du switch et le début (ou la fin) du Straight.
      */
-    void setCoordinates(std::vector<LatLon> coords);
+    void setCoordinates(std::vector<CoordinateLatLon> Coordinates);
 
 private:
     /**
@@ -138,7 +138,7 @@ private:
      * Premier point : extrémité A. Dernier point : extrémité B.
      * Modifiable uniquement via setCoordinates() (Phase 6d) — recalcule automatiquement m_lengthMeters.
      */
-    std::vector<LatLon> m_coordinates;
+    std::vector<CoordinateLatLon> m_coordinates;
 
     /**
      * IDs des blocs adjacents (StraightBlock ou SwitchBlock).
@@ -179,5 +179,5 @@ private:
      * @param b  Second point.
      * @return   Distance en mètres.
      */
-    static double haversineDistanceMeters(const LatLon& a, const LatLon& b);
+    static double haversineDistanceMeters(const CoordinateLatLon& a, const CoordinateLatLon& b);
 };

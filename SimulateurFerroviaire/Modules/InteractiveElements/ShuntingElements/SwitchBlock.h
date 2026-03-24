@@ -28,7 +28,7 @@
 #include <string>
 #include <vector>
 
-#include "Engine/Core/Coords/LatLon.h"
+#include "Engine/Core/Coordinates/CoordinateLatLon.h"
 #include "ShuntingElement.h"
  /**
   * @brief Branche active d'un aiguillage.
@@ -58,7 +58,7 @@ public:
      * @param initialBranchIds  Branches connues à la création (optionnel).
      */
     SwitchBlock(std::string              switchId,
-        LatLon                   junctionCoord,
+        CoordinateLatLon                   junctionCoord,
         std::vector<std::string> initialBranchIds = {});
 
     // =========================================================================
@@ -103,7 +103,7 @@ public:
     [[nodiscard]] const SwitchBranches& getBranches() const { return m_branches; }
 
     /** Coordonnée WGS-84 du point de jonction physique. */
-    [[nodiscard]] const LatLon& getJunctionCoordinate() const { return m_junctionCoordinate; }
+    [[nodiscard]] const CoordinateLatLon& getJunctionCoordinate() const { return m_junctionCoordinate; }
 
     /**
      * IDs des StraightBlocks connectés à la jonction.
@@ -141,20 +141,20 @@ public:
     [[nodiscard]] const std::optional<std::string>& getDeviationBranchId() const { return m_deviationBranchId; }
 
     /** Point CDC à ~branchTipDistance depuis la jonction sur la branche root. */
-    [[nodiscard]] const std::optional<LatLon>& getTipOnRoot()      const { return m_tipOnRoot; }
+    [[nodiscard]] const std::optional<CoordinateLatLon>& getTipOnRoot()      const { return m_tipOnRoot; }
 
     /**
      * Point CDC sur la branche normal.
      * Pour un double switch côté normal : extrémité distale de la polyligne absorbée
      * (= jonction du partenaire).
      */
-    [[nodiscard]] const std::optional<LatLon>& getTipOnNormal()    const { return m_tipOnNormal; }
+    [[nodiscard]] const std::optional<CoordinateLatLon>& getTipOnNormal()    const { return m_tipOnNormal; }
 
     /**
      * Point CDC sur la branche deviation.
      * Pour un double switch côté deviation : extrémité distale de la polyligne absorbée.
      */
-    [[nodiscard]] const std::optional<LatLon>& getTipOnDeviation() const { return m_tipOnDeviation; }
+    [[nodiscard]] const std::optional<CoordinateLatLon>& getTipOnDeviation() const { return m_tipOnDeviation; }
 
     /**
      * @brief ID du partenaire si le lien absorbé était côté branche NORMALE.
@@ -194,14 +194,14 @@ public:
      * Vide si ce switch n'est pas un double côté normal.
      * Utilisée par le rendu WebView pour tracer la branche fusionnée.
      */
-    [[nodiscard]] const std::vector<LatLon>& getAbsorbedNormalCoords()    const { return m_absorbedNormalCoords; }
+    [[nodiscard]] const std::vector<CoordinateLatLon>& getAbsorbedNormalCoordinates()    const { return m_absorbedNormalCoordinates; }
 
     /**
      * @brief Polyligne complète du segment absorbé côté deviation.
      *
-     * Même sémantique que getAbsorbedNormalCoords().
+     * Même sémantique que getAbsorbedNormalCoordinates().
      */
-    [[nodiscard]] const std::vector<LatLon>& getAbsorbedDeviationCoords() const { return m_absorbedDeviationCoords; }
+    [[nodiscard]] const std::vector<CoordinateLatLon>& getAbsorbedDeviationCoordinates() const { return m_absorbedDeviationCoordinates; }
 
     [[nodiscard]] const std::optional<double>& getTotalLengthMeters() const { return m_totalLengthMeters; }
 
@@ -243,9 +243,9 @@ public:
     void orient(std::string rootId, std::string normalId, std::string deviationId);
 
     /** @brief Assigne les trois tips CDC en une seule opération. */
-    void setTips(std::optional<LatLon> tipRoot,
-        std::optional<LatLon> tipNormal,
-        std::optional<LatLon> tipDeviation);
+    void setTips(std::optional<CoordinateLatLon> tipRoot,
+        std::optional<CoordinateLatLon> tipNormal,
+        std::optional<CoordinateLatLon> tipDeviation);
 
     /**
      * @brief Échange normal ↔ deviation (rôles + tips + polylignes absorbées).
@@ -264,21 +264,21 @@ public:
      * - Remplace linkId par partnerId dans m_branchIds.
      * - Si linkId était la branche normale :
      *     • met à jour normalBranchId
-     *     • stocke linkCoords (orientée depuis cette jonction) dans m_absorbedNormalCoords
-     *     • tipOnNormal = linkCoords.back() (jonction du partenaire)
+     *     • stocke linkCoordinates (orientée depuis cette jonction) dans m_absorbedNormalCoordinates
+     *     • tipOnNormal = linkCoordinates.back() (jonction du partenaire)
      *     • renseigne m_doubleOnNormal
      * - Idem côté deviation.
      *
      * @param linkId     ID du StraightBlock intermédiaire absorbé.
      * @param partnerId  ID de l'aiguillage partenaire.
-     * @param linkCoords Polyligne complète du segment absorbé, orientée depuis
+     * @param linkCoordinates Polyligne complète du segment absorbé, orientée depuis
      *                   LA JONCTION DE CE SWITCH vers celle du partenaire.
      *                   Premier point ≈ jonction de ce switch.
      *                   Dernier point  = jonction du partenaire (nouveau tip CDC).
      */
     void absorbLink(const std::string& linkId,
         const std::string& partnerId,
-        std::vector<LatLon>       linkCoords);
+        std::vector<CoordinateLatLon>       linkCoordinates);
 
     /**
      * @brief Assigne la branche active.
@@ -301,7 +301,7 @@ private:
     // Champs
     // =========================================================================
     /** Coordonnée WGS-84 du point de jonction physique. */
-    LatLon m_junctionCoordinate;
+    CoordinateLatLon m_junctionCoordinate;
 
     /**
      * IDs des StraightBlocks connectés à la jonction.
@@ -338,21 +338,21 @@ private:
      * Sert de référence géométrique pour les vérifications d'écartement de voies.
      * Absent si le switch n'est pas orienté.
      */
-    std::optional<LatLon> m_tipOnRoot;
+    std::optional<CoordinateLatLon> m_tipOnRoot;
 
     /**
      * Point CDC WGS-84 côté normal.
      * Pour un double switch côté normal : jonction du partenaire (extrémité du segment absorbé).
      * Absent si le switch n'est pas orienté.
      */
-    std::optional<LatLon> m_tipOnNormal;
+    std::optional<CoordinateLatLon> m_tipOnNormal;
 
     /**
      * Point CDC WGS-84 côté deviation.
      * Pour un double switch côté deviation : jonction du partenaire.
      * Absent si le switch n'est pas orienté.
      */
-    std::optional<LatLon> m_tipOnDeviation;
+    std::optional<CoordinateLatLon> m_tipOnDeviation;
 
     /**
      * Longueur physique totale de traversée en mètres.
@@ -373,13 +373,13 @@ private:
      * orientée depuis la jonction de ce switch vers le partenaire.
      * Vide si non applicable.
      */
-    std::vector<LatLon> m_absorbedNormalCoords;
+    std::vector<CoordinateLatLon> m_absorbedNormalCoordinates;
 
     /**
      * Polyligne complète du segment absorbé côté deviation,
      * orientée depuis la jonction de ce switch vers le partenaire.
      */
-    std::vector<LatLon> m_absorbedDeviationCoords;
+    std::vector<CoordinateLatLon> m_absorbedDeviationCoordinates;
 
     /** Position opérationnelle courante. NORMAL par défaut. */
     ActiveBranch m_activeBranch = ActiveBranch::NORMAL;
@@ -399,5 +399,5 @@ private:
      * @param b  Second point.
      * @return   Distance en mètres.
      */
-    static double haversineDistanceMeters(const LatLon& a, const LatLon& b);
+    static double haversineDistanceMeters(const CoordinateLatLon& a, const CoordinateLatLon& b);
 };

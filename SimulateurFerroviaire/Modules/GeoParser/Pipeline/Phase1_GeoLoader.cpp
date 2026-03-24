@@ -61,15 +61,15 @@ void Phase1_GeoLoader::run(PipelineContext& ctx,
         if (geom.at("type").get<std::string>() != "LineString") continue;
         if (!geom.contains("coordinates")) continue;
 
-        const auto& coords = geom.at("coordinates");
-        if (coords.size() < 2) continue;
+        const auto& Coordinates = geom.at("coordinates");
+        if (Coordinates.size() < 2) continue;
         // ^ Une polyligne avec un seul point est invalide
 
         // Détection UTM sur le premier point du premier feature
         if (ctx.rawNetwork.utmZone.empty())
         {
-            const double lat = coords[0][1].get<double>();
-            const double lon = coords[0][0].get<double>();
+            const double lat = Coordinates[0][1].get<double>();
+            const double lon = Coordinates[0][0].get<double>();
             ctx.rawNetwork.utmZone = detectUtmZone(lat, lon);
             LOG_DEBUG(logger, "Zone UTM estimée : " + ctx.rawNetwork.utmZone);
         }
@@ -81,7 +81,7 @@ void Phase1_GeoLoader::run(PipelineContext& ctx,
             polyline.id = feature["properties"]["name"].get<std::string>();
 
         // Extraction et projection des coordonnées
-        for (const auto& coord : coords)
+        for (const auto& coord : Coordinates)
         {
             if (!coord.is_array() || coord.size() < 2) continue;
 

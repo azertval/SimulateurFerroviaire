@@ -114,9 +114,9 @@ InteractiveElement          getId(), getType(), m_logger (static)
 
 ---
 
-# Coordonnées {#coords}
+# Coordonnées {#Coordinates}
 
 | Classe | Système |
 |--------|---------|
-| @ref LatLon | Géographique WGS-84 (latitude, longitude) |
+| @ref CoordinateLatLon | Géographique WGS-84 (latitude, longitude) |
 | @ref CoordinateXY | Métrique UTM (x = est, y = nord) |

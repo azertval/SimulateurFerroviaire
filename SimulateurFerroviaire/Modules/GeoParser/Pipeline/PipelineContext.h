@@ -19,6 +19,7 @@
 #include <chrono>
 #include <string>
 #include <vector>
+#include <numeric>
 
 #include "RawNetwork.h"
 #include "IntersectionMap.h"

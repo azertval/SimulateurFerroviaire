@@ -9,8 +9,8 @@
 
 #include <vector>
 
-#include "Engine/Core/Coords/LatLon.h"
-#include "Engine/Core/Coords/CoordinateXY.h"
+#include "Engine/Core/Coordinates/CoordinateLatLon.h"
+#include "Engine/Core/Coordinates/CoordinateXY.h"
 
  /**
   * @struct AtomicSegment
@@ -32,7 +32,7 @@ struct AtomicSegment
      * Au minimum 2 points (extrémités). Peut en avoir plus si le segment
      * original avait des points intermédiaires entre deux intersections.
      */
-    std::vector<LatLon> pointsWGS84;
+    std::vector<CoordinateLatLon> pointsWGS84;
 
     /**
      * Points du segment en UTM (x = est, y = nord, mètres).
