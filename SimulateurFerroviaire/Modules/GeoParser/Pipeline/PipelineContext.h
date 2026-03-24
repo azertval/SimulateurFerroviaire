@@ -25,6 +25,7 @@
 #include "IntersectionMap.h"
 #include "SplitNetwork.h"
 #include "TopologyGraph.h"
+#include "ClassifiedNodes.h"
 
  /**
   * @struct PhaseStats
@@ -70,7 +71,9 @@ struct PipelineContext
     /** Phase 4 — graphe planaire nœuds + arêtes. */
     TopologyGraph topoGraph;
 
-    // ClassifiedNodes classifiedNodes; — ajouté en étape 5
+    /** Phase 5 — classification topologique des nœuds. */
+    ClassifiedNodes classifiedNodes;
+
     // BlockSet        blocks;          — ajouté en étape 6
 
     // =========================================================================

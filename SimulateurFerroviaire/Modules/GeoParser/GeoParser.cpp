@@ -10,6 +10,7 @@
 #include "Pipeline/Phase2_GeometricIntersector.h"
 #include "Pipeline/Phase3_NetworkSplitter.h"
 #include "Pipeline/Phase4_TopologyBuilder.h"
+#include "Pipeline/Phase5_SwitchClassifier.h"
 
 
  // =============================================================================
@@ -32,26 +33,28 @@ GeoParser::GeoParser(ParserConfig config,
 
 void GeoParser::parse(const std::string& filePath)
 {
-    LOG_INFO(m_logger, "PARSING START for " + filePath );
+    LOG_INFO(m_logger, "GeoParser START : " + filePath);
     m_ctx = PipelineContext{};   // Reset complet
     m_ctx.filePath = filePath;
 
-    reportProgress(0, "Phase 1/9 — Chargement GeoJSON");
+
     Phase1_GeoLoader::run(m_ctx, m_config, m_logger);
+    reportProgress(8, "Phase 1/9 — Chargement GeoJSON");
 
-    reportProgress(8, "Phase 2/9 — Intersections géométriques");
     Phase2_GeometricIntersector::run(m_ctx, m_config, m_logger);
-
     reportProgress(33, "Phase 2/9 — Intersections géométriques");
+
     Phase3_NetworkSplitter::run(m_ctx, m_config, m_logger);
+    reportProgress(43, "Phase 3/9 — Découpe des segments");
 
-    reportProgress(43, "Phase 4/9 — Construction du graphe");
     Phase4_TopologyBuilder::run(m_ctx, m_config, m_logger);
+    reportProgress(58, "Phase 4/9 — Construction du graphe");
 
-    reportProgress(58, "Phase 5/9 — [...]");
+    Phase5_SwitchClassifier::run(m_ctx, m_config, m_logger);
+    reportProgress(68, "Phase 5/9 — Classification des nœuds");
 
     logPerformanceSummary();
-    LOG_INFO(m_logger, "=== PARSING COMPLETED ===");
+    LOG_INFO(m_logger, "GeoParser COMPLETED");
 }
 
 
