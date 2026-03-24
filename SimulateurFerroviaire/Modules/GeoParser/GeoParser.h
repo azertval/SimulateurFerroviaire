@@ -24,30 +24,31 @@
 class GeoParser
 {
 public:
+    /** Exception levée lors d'une annulation propre. */
+    struct CancelledException {};
 
     /**
-     * @brief Construit le parser avec la configuration fournie.
+     * @brief Construit le parser avec configuration, logger et callback de progression.
      *
-     * @param config    Configuration — copiée (snapshot immuable pendant parse).
-     * @param logger    Référence au logger GeoParser.
-     * @param onProgress Callback de progression (0-100). Appelé entre les phases.
+     * @param config      Configuration — copiée.
+     * @param logger      Logger GeoParser.
+     * @param onProgress  Callback (progression 0-100, label phase).
      */
     explicit GeoParser(ParserConfig config,
         Logger& logger,
-        std::function<void(int)> onProgress = nullptr);
+        std::function<void(int, const std::wstring&)> onProgress = nullptr);
 
     /**
-     * @brief Exécute le pipeline complet sur le fichier GeoJSON indiqué.
+     * @brief Exécute le pipeline complet.
      *
-     * Orchestre les phases 1 à 9. Chaque phase lit/écrit dans @c m_ctx.
-     * En cas d'échec d'une phase, propage l'exception sans altérer
-     * @ref TopologyRepository.
+     * @param filePath     Chemin vers le GeoJSON.
+     * @param cancelToken  Token d'annulation partagé — vérifié entre chaque phase.
      *
-     * @param filePath  Chemin absolu vers le fichier GeoJSON.
-     *
-     * @throws std::runtime_error En cas d'erreur de parsing ou de fichier.
+     * @throws CancelledException  Si le token est positionné entre deux phases.
+     * @throws std::runtime_error  En cas d'erreur de parsing.
      */
-    void parse(const std::string& filePath);
+    void parse(const std::string& filePath,
+        std::shared_ptr<std::atomic<bool>> cancelToken = nullptr);
 
 private:
 
@@ -56,7 +57,7 @@ private:
      *
      * @param progress  Valeur 0-100 envoyée au callback.
      */
-    void reportProgress(int progress, std::string msg);
+    void reportProgress(int progress, const std::wstring& label);
 
     /**
      * @brief Logue le tableau de performance de toutes les phases exécutées.
@@ -66,5 +67,11 @@ private:
     ParserConfig             m_config;
     Logger& m_logger;
     PipelineContext          m_ctx;
-    std::function<void(int)> m_onProgress;
+    std::function<void(int, const std::wstring&)> m_onProgress;
+
+    /**
+     * @brief Vérifie le cancel token et lève CancelledException si nécessaire.
+     */
+    void checkCancel() const;
+    std::shared_ptr<std::atomic<bool>> m_cancelToken;
 };

@@ -146,3 +146,12 @@ Clic sur jonction switch
 | type | Champs | Handler C++ |
 |--------|--------|-------------|
 | `switch_click` | `id` | `MainWindow::onSwitchClick()` |
+
+---
+
+# Coordonnées {#Coordinates}
+
+| Classe | Système |
+|--------|---------|
+| @ref CoordinateLatLon | Géographique WGS-84 (latitude, longitude) |
+| @ref CoordinateXY | Métrique UTM (x = est, y = nord) |

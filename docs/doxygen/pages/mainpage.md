@@ -30,8 +30,9 @@ Le projet repose sur un pipeline de parsing permettant de :
 # Documentation
 
 - @subpage engine   — Moteur de l'application (Core + HMI)
-- @subpage modules  — Fonctionnalités métier (GeoParser + InteractiveElements + Coordonnées)
-- @subpage pcc      — Module PCC (graphe logique + rendu TCO)
+- @subpage modules  — Fonctionnalités
+	- @subpage geoparser      — Module de parsing GeoJson
+	- @subpage pcc      — Module PCC (graphe logique + rendu TCO)
 - @subpage references — Références externes
 
 ---

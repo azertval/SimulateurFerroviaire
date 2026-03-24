@@ -17,21 +17,29 @@
 
 #pragma once
 
+#include <optional>
+#include <string>
+
 #include "framework.h"
+#include "Engine/Core/Config/ParserConfig.h"
+#include "Engine/Core/Config/ParserConfigIni.h"
 #include "Engine/HMI/ProgressBar.h"
 #include "Engine/HMI/WebViewPanel/WebViewPanel.h"
 #include "Engine/HMI/PCCPanel/PCCPanel.h"
+#include "Modules/GeoParser/GeoParsingTask.h"
 
-/**
- * @class MainWindow
- * @brief Fenêtre principale de l'application SimulateurFerroviaire.
- *
- * Responsabilités :
- *  - Créer et afficher la fenêtre principale.
- *  - Gérer l'ensemble des messages Win32 entrants via @ref handleMessage.
- *  - Déclencher l'ouverture d'un fichier GeoJSON et le parsing asynchrone.
- *  - Mettre à jour la @ref ProgressBar en réponse aux messages inter-threads.
- */
+ /**
+  * @class MainWindow
+  * @brief Fenêtre principale de l'application SimulateurFerroviaire.
+  *
+  * Responsabilités :
+  *  - Créer et afficher la fenêtre principale.
+  *  - Gérer l'ensemble des messages Win32 entrants via @ref handleMessage.
+  *  - Déclencher l'ouverture d'un fichier GeoJSON et le parsing asynchrone
+  *    via @ref GeoParsingTask.
+  *  - Mettre à jour la @ref ProgressBar (label + valeur + bouton Cancel)
+  *    en réponse aux messages inter-threads.
+  */
 class MainWindow
 {
 public:
@@ -45,12 +53,13 @@ public:
      * @param nCmdShow    Mode d'affichage (@c SW_SHOW, @c SW_HIDE, …).
      */
     MainWindow(HINSTANCE hInstance,
-               const WCHAR* className,
-               const WCHAR* title,
-               int nCmdShow);
+        const WCHAR* className,
+        const WCHAR* title,
+        int nCmdShow);
 
     /**
-     * @brief Crée et affiche la fenêtre Win32, puis initialise la ProgressBar.
+     * @brief Crée et affiche la fenêtre Win32, initialise la ProgressBar
+     *        et charge la @ref ParserConfig depuis le fichier .ini.
      *
      * @throws std::runtime_error Si @c CreateWindowW retourne @c nullptr.
      */
@@ -69,7 +78,8 @@ public:
      *
      * @return Résultat du traitement du message.
      */
-    static LRESULT CALLBACK windowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+    static LRESULT CALLBACK windowProc(HWND hWnd, UINT message,
+        WPARAM wParam, LPARAM lParam);
 
 private:
 
@@ -79,23 +89,15 @@ private:
 
     /**
      * @brief Dispatcher principal des messages de la fenêtre.
-     *
-     * Reçoit chaque message depuis @ref windowProc et le route vers le
-     * gestionnaire spécialisé approprié.
-     *
-     * @param hWnd    Handle de la fenêtre.
-     * @param message Identifiant du message.
-     * @param wParam  Paramètre WPARAM.
-     * @param lParam  Paramètre LPARAM.
-     *
-     * @return Résultat du traitement.
      */
     LRESULT handleMessage(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
     /**
-     * @brief Gère les commandes menu (@c WM_COMMAND).
+     * @brief Gère les commandes menu et boutons (@c WM_COMMAND).
      *
-     * Traite les identifiants @c IDM_FILE_OPEN, @c IDM_ABOUT et @c IDM_EXIT.
+     * Traite : IDM_FILE_OPEN, IDM_FILE_EXPORT, IDM_VIEW_PCC,
+     *          IDM_PARSER_SETTINGS, IDM_ABOUT, IDM_EXIT,
+     *          IDC_CANCEL_PARSING.
      *
      * @param hWnd      Handle de la fenêtre.
      * @param commandId Identifiant de la commande (issu de @c LOWORD(wParam)).
@@ -105,20 +107,20 @@ private:
     /**
      * @brief Gère la mise à jour de la progression (@c WM_PROGRESS_UPDATE).
      *
-     * Appelé depuis le thread principal en réponse à un @c PostMessage
-     * émis par le thread de parsing.
+     * Met à jour la barre et le label. Libère le @c std::wstring* transporté
+     * dans @p lParam, alloué par @ref GeoParsingTask.
      *
-     * @param progressValue Valeur de progression (0–100).
+     * @param progress  Valeur de progression (0–100), depuis @c wParam.
+     * @param label     Pointeur vers le label de phase (propriété transférée).
      */
-    void onProgressUpdate(int progressValue);
+    void onProgressUpdate(int progress, std::wstring* label);
 
     /**
      * @brief Gère la fin réussie du parsing (@c WM_PARSING_SUCCESS).
      *
-     * Génère le script d'injection GeoJSON @ref TopologyRenderer 
-     * et l'exécute dans le WebView pour afficher la carte. 
+     * Injecte le rendu GeoJSON dans le WebView et réinitialise la ProgressBar.
      *
-     * @param hWnd Handle de la fenêtre parente pour la boîte de dialogue.
+     * @param hWnd Handle de la fenêtre parente.
      */
     void onParsingSuccess(HWND hWnd);
 
@@ -126,77 +128,75 @@ private:
      * @brief Gère un échec de parsing (@c WM_PARSING_ERROR).
      *
      * Affiche le message d'erreur transporté par @p lParam, libère la
-     * mémoire allouée par le thread de parsing, puis masque la ProgressBar.
+     * mémoire allouée par le thread de parsing, puis réinitialise la ProgressBar.
      *
      * @param hWnd   Handle de la fenêtre parente.
-     * @param lParam Pointeur vers un @c std::string alloué par le thread de parsing.
-     *               Ce pointeur est libéré ici après utilisation.
+     * @param lParam Pointeur vers un @c std::wstring alloué par GeoParsingTask.
      */
     void onParsingError(HWND hWnd, LPARAM lParam);
 
     /**
+     * @brief Gère une annulation propre du parsing (@c WM_PARSING_CANCELLED).
+     *
+     * Réinitialise la ProgressBar sans afficher d'erreur.
+     */
+    void onParsingCancelled();
+
+    /**
      * @brief Ouvre le sélecteur de fichier et lance le parsing asynchrone.
      *
-     * Délègue la sélection à @ref FileOpenDialog, puis déclenche
-     * @ref GeoParsingTask si un fichier est sélectionné.
-     * 
-     * @param hWnd Handle de la fenêtre principale (propriétaire du dialogue).
+     * @param hWnd Handle de la fenêtre principale.
      */
     void onFileOpen(HWND hWnd);
 
     /**
-    * @brief Ouvre le dialogue d'exportation et déclenche l'export GeoJSON.
+     * @brief Ouvre le dialogue d'export et déclenche l'export GeoJSON.
      *
-     * Délègue la sélection à un dialogue d'exportation @ref FileOpenDialog, puis déclenche
-     * puis déclenche l'export via un module dédié @ref TopologyRenderer
-     *
-     * @param hWnd Handle de la fenêtre principale (propriétaire du dialogue).
-    */
+     * @param hWnd Handle de la fenêtre principale.
+     */
     void onFileExport(HWND hWnd);
 
     /**
-     * @brief Quand la fenêtre est redimensionnée, ajuste les éléments graphiques en conséquence.
+     * @brief Demande l'annulation du parsing en cours via @ref GeoParsingTask.
      *
-     * @param None
+     * Appelé quand l'utilisateur clique sur le bouton "Annuler" (@c IDC_CANCEL_PARSING).
+     */
+    void onCancelButtonClick();
+
+    /**
+     * @brief Ouvre le dialogue des paramètres du parser (@c IDM_PARSER_SETTINGS).
+     *
+     * Si l'utilisateur valide, sauvegarde la config dans @c m_parserIniPath.
+     * Le prochain parsing utilisera les nouveaux paramètres.
+     */
+    void onParserSettings();
+
+    /**
+     * @brief Appelé lors d'un redimensionnement — ajuste WebView et PCCPanel.
      */
     void onSizeUpdate();
 
     /**
-    * @brief Nettoie les ressources avant la destruction de la fenêtre (WM_DESTROY)
-    */
+     * @brief Nettoie les ressources avant la destruction (@c WM_DESTROY).
+     */
     void onDestroy();
 
     /**
-    * @brief Dispatcher principal des messages JSON reçus depuis Leaflet.
-    *
-    * Branché sur WebViewPanel via setOnMessageReceived() dans create().
-    * Parse le JSON, identifie le champ "type", et délègue au handler
-    * spécialisé. Un JSON malformé est loggé et ignoré — jamais de crash.
-    *
-    * @param jsonMessage  Contenu brut du postMessage (UTF-8).
-    */
+     * @brief Dispatcher des messages JSON reçus depuis Leaflet.
+     *
+     * @param jsonMessage  Contenu brut du postMessage (UTF-8).
+     */
     void onWebMessage(const std::string& jsonMessage);
 
     /**
-    * @brief Met à jour l'état opérationnel d'un SwitchBlock après un clic.
-    *
-    * Localise le switch par ID dans TopologyRepository, convertit la chaîne
-    * JS "normal"/"deviation" en ActiveBranch, et appelle setActiveBranch().
-    *
-    * Le visuel Leaflet est déjà à jour (mise à jour optimiste côté JS).
-    * Si à l'avenir une validation C++ peut rejeter le changement, envoyer
-    * ici un script de correction via executeScript().
-    *
-    * @param switchId  Identifiant du switch (ex. "sw/0").
-    * @param active    "normal" ou "deviation".
-    */
+     * @brief Met à jour l'état d'un SwitchBlock après un clic Leaflet.
+     *
+     * @param switchId  Identifiant du switch (ex. "sw/0").
+     */
     void onSwitchClick(const std::string& switchId);
 
     /**
-     * @brief Bascule la visibilité du panneau PCC.
-     *
-     * Délègue à @ref PCCPanel::toggle. Appelé depuis @ref onCommand
-     * (IDM_VIEW_PCC) et depuis le gestionnaire @c WM_KEYDOWN (touche F2).
+     * @brief Bascule la visibilité du panneau PCC (F2 ou IDM_VIEW_PCC).
      */
     void onTogglePCC();
 
@@ -206,32 +206,40 @@ private:
     // =========================================================================
 
     /** Handle Win32 de la fenêtre physique (valide après @ref create). */
-    HWND m_hWnd = nullptr;
-
-    /** Handle de l'instance Win32 de l'application. */
-    HINSTANCE m_hInstance;
-
-    /** Nom de la classe Win32 enregistrée. */
+    HWND        m_hWnd = nullptr;
+    HINSTANCE   m_hInstance;
     const WCHAR* m_className;
-
-    /** Titre de la fenêtre. */
     const WCHAR* m_title;
-
-    /** Mode d'affichage initial. */
-    int m_nCmdShow;
+    int          m_nCmdShow;
 
     /** Barre de progression affichée lors du parsing. */
     ProgressBar m_progressBar;
 
-    /** Logger dédié à la couche HMI, utilisé pour tracer les événements et erreurs liés à l'interface utilisateur. */
-    Logger m_logger{"HMI"};
-
-    /** Panneau WebView2 pour l'affichage de la carte ferroviaire. */
-    WebViewPanel m_webViewPanel{m_logger};
+    /**
+     * Configuration du pipeline GeoParser.
+     * Chargée depuis @c m_parserIniPath au démarrage (@ref create),
+     * potentiellement modifiée via @ref onParserSettings.
+     */
+    ParserConfig m_parserConfig;
 
     /**
-     * @brief Panneau PCC superposé, togglé via F2 ou menu Vue → Panneau PCC.
-     * Créé dans @ref create, masqué par défaut.
+     * Chemin du fichier .ini de configuration du parser.
+     * Initialisé par @c ParserConfigIni::defaultPath() dans @ref create.
      */
-    PCCPanel m_pccPanel{m_logger};
+    std::string m_parserIniPath;
+
+    /**
+     * Tâche asynchrone du pipeline GeoParser.
+     * Instanciée dans @ref create une fois @c m_hWnd disponible.
+     */
+    std::optional<GeoParsingTask> m_parserTask;
+
+    /** Logger HMI. */
+    Logger m_logger{ "HMI" };
+
+    /** Panneau WebView2 pour l'affichage de la carte ferroviaire. */
+    WebViewPanel m_webViewPanel{ m_logger };
+
+    /** Panneau PCC superposé — togglé via F2 ou IDM_VIEW_PCC. */
+    PCCPanel m_pccPanel{ m_logger };
 };

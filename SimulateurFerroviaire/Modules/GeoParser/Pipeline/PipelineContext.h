@@ -26,6 +26,7 @@
 #include "SplitNetwork.h"
 #include "TopologyGraph.h"
 #include "ClassifiedNodes.h"
+#include "BlockSet.h"
 
  /**
   * @struct PhaseStats
@@ -74,7 +75,8 @@ struct PipelineContext
     /** Phase 5 — classification topologique des nœuds. */
     ClassifiedNodes classifiedNodes;
 
-    // BlockSet        blocks;          — ajouté en étape 6
+    /** Phase 6 — blocs ferroviaires non-orientés. */
+    BlockSet blocks;
 
     // =========================================================================
     // Instrumentation

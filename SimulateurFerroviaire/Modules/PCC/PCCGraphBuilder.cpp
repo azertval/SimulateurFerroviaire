@@ -273,7 +273,7 @@ void PCCGraphBuilder::computeDeviationSides(PCCGraph& graph,
         if (!tipOpt.has_value()) continue;
 
         // Comparaison latitude : tip déviation vs jonction du switch
-        const double swLat = source->getJunctionCoordinate().latitude;
+        const double swLat = source->getJunctionWGS84().latitude;
         const double devLat = tipOpt->latitude;
 
         // Déviation au nord → +1 (y positif, vers le haut sur l'écran)

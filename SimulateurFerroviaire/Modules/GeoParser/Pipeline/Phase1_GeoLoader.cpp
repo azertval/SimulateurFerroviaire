@@ -133,7 +133,7 @@ CoordinateXY Phase1_GeoLoader::project(double lat, double lon,
     // Constantes ellipsoïde WGS84
     constexpr double a = 6378137.0;           // demi-grand axe (m)
     constexpr double f = 1.0 / 298.257223563; // aplatissement
-    constexpr double b = a * (1.0 - f);
+    // constexpr double b = a * (1.0 - f);
     constexpr double e2 = 2.0 * f - f * f;     // excentricité au carré
     constexpr double k0 = 0.9996;              // facteur d'échelle UTM
     constexpr double E0 = 500000.0;            // fausse est (m)
@@ -169,7 +169,7 @@ CoordinateXY Phase1_GeoLoader::project(double lat, double lon,
         + (5.0 - 18.0 * t2 + t2 * t2 + 72.0 * c - 58.0 * e2 / (1.0 - e2)) * A5 / 120.0
         ) + E0;
 
-    const double M0 = 0.0; // méridien d'origine à lat=0
+    // const double M0 = 0.0; // méridien d'origine à lat=0
     const double northing = k0 * (M + n * std::tan(latRad) * (
         A2 / 2.0
         + (5.0 - t2 + 9.0 * c + 4.0 * c2) * A4 / 24.0

@@ -1,26 +1,23 @@
-#pragma once
-
 /**
  * @file  StraightBlock.h
  * @brief Modèle de domaine d'un bloc de voie droite (Straight).
  *
- * Encapsulation : tous les champs sont privés. Les mutations passent par des
- * méthodes à intent explicite, appelées uniquement par la phase du pipeline
- * qui en a la charge :
- *   Phase 3/4 → constructeur
- *   Phase 5b  → addNeighbourId / replaceNeighbourId
- *   Phase 6d  → setCoordinates  (retaille le Straight côté jonction)
- *
  * Identifiants :
  *   Format standard : "s/0", "s/1", …
- *   Format morceau  : "s/0_c1", "s/0_c2", … (après découpe Phase 5a)
+ *   Format morceau  : "s/0_c1", "s/0_c2", … (après découpe)
+ *
+ * Système de coordonnées :
+ *   WGS84 — conservé pour le rendu Leaflet (TopologyRenderer).
+ *   UTM   — utilisé pour tous les calculs métriques du pipeline.
  */
+#pragma once
 
 #include <string>
 #include <vector>
 
 #include "ShuntingElement.h"
 #include "Engine/Core/Coordinates/CoordinateLatLon.h"
+#include "Engine/Core/Coordinates/CoordinateXY.h"
 
 
 class StraightBlock : public ShuntingElement
@@ -34,15 +31,15 @@ public:
     StraightBlock() = default;
 
     /**
-     * @brief Construit un StraightBlock et calcule immédiatement sa longueur géodésique.
-     * @param blockId             Identifiant unique (ex. "s/0").
-     * @param blockCoordinates         Polyligne WGS-84 ordonnée (≥ 2 points).
-     * @param initialNeighbourIds Voisins connus à la construction (optionnel).
+     * @brief Construit un StraightBlock avec géométrie WGS84 et calcule sa longueur.
+     *
+     * @param blockId          Identifiant unique (ex. "s/0").
+     * @param pointsWGS84      Polyligne WGS-84 ordonnée (≥ 2 points).
+     * @param neighbourIds     Voisins connus à la construction (optionnel).
      */
-    StraightBlock(std::string              blockId,
-        std::vector<CoordinateLatLon>      blockCoordinates,
-        std::vector<std::string> initialNeighbourIds = {});
-
+    StraightBlock(std::string                   blockId,
+        std::vector<CoordinateLatLon> pointsWGS84,
+        std::vector<std::string>      neighbourIds = {});
 
     // =========================================================================
     // Interface ShuntingElement
@@ -54,57 +51,101 @@ public:
 
     void setState(ShuntingState state) { m_state = state; }
 
-
     // =========================================================================
-    // Requêtes
+    // Requêtes géométriques
     // =========================================================================
-
-    /** Polyligne WGS-84 ordonnée. Premier point : extrémité A. Dernier : extrémité B. */
-    [[nodiscard]] const std::vector<CoordinateLatLon>& getCoordinates()  const { return m_coordinates; }
 
     /**
-     * Identifiants des blocs adjacents (StraightBlock ou SwitchBlock).
-     * Toujours triés lexicographiquement — addNeighbourId maintient l'ordre.
+     * @brief Polyligne WGS-84 ordonnée.
+     * Premier point = extrémité A. Dernier point = extrémité B.
+     */
+    [[nodiscard]] const std::vector<CoordinateLatLon>& getPointsWGS84() const { return m_pointsWGS84; }
+
+    /**
+     * @brief Polyligne projetée en UTM (x = est, y = nord, mètres).
+     * Même taille et même index que getPointsWGS84().
+     * Vide si non renseigné par le pipeline v2.
+     */
+    [[nodiscard]] const std::vector<CoordinateXY>& getPointsUTM() const { return m_pointsUTM; }
+
+    /**
+     * @brief Référence modifiable sur la polyligne UTM.
+     * Utilisée par Phase7_SwitchOrientator::trimStraightOverlaps().
+     */
+    [[nodiscard]] std::vector<CoordinateXY>& getPointsUTMRef() { return m_pointsUTM; }
+
+    /**
+     * @brief Longueur géodésique Haversine en mètres (depuis pointsWGS84).
+     * Mise à jour par setPointsWGS84().
+     */
+    [[nodiscard]] double getLengthMeters() const { return m_lengthMeters; }
+
+    /**
+     * @brief Longueur euclidienne en mètres depuis les coordonnées UTM.
+     * Retourne 0 si pointsUTM est vide ou contient moins de 2 points.
+     */
+    [[nodiscard]] double getLengthUTM() const;
+
+    // =========================================================================
+    // Requêtes topologiques
+    // =========================================================================
+
+    /**
+     * @brief Identifiants des blocs adjacents (StraightBlock ou SwitchBlock).
+     * Triés lexicographiquement — addNeighbourId() maintient l'ordre.
      */
     [[nodiscard]] const std::vector<std::string>& getNeighbourIds() const { return m_neighbourIds; }
 
     /**
-     * @brief Voisins topologiques d'un StraightBlock.
+     * @brief Voisins topologiques résolus (pointeurs non-propriétaires).
      *
-     * Un straight est toujours borné par exactement deux extrémités.
-     * Chaque extrémité est soit un SwitchBlock, soit un autre StraightBlock
-     * (morceau découpé), soit nullptr (terminus).
+     * Renseignés par Phase9_RepositoryTransfer::resolve() via
+     * setNeighbourPrev() / setNeighbourNext().
      */
     struct StraightNeighbours
     {
-        /** Bloc adjacent à l'extrémité A (front des coordonnées). */
-        ShuntingElement* prev = nullptr;
-
-        /** Bloc adjacent à l'extrémité B (back des coordonnées). */
-        ShuntingElement* next = nullptr;
+        ShuntingElement* prev = nullptr;  ///< Bloc adjacent à l'extrémité A.
+        ShuntingElement* next = nullptr;  ///< Bloc adjacent à l'extrémité B.
     };
 
-    /**
-     * @brief Enregistre les pointeurs prev/next après parsing.
-     * @param neighbours  Struct contenant les deux extrémités résolues.
-     */
-    void setNeighbourPointers(StraightNeighbours neighbours);
-
-    /** @brief Retourne les voisins résolus. Nullptr si non encore initialisé. */
+    /** @brief Retourne les voisins résolus. nullptr si non encore initialisé. */
     [[nodiscard]] const StraightNeighbours& getNeighbours() const { return m_neighbours; }
 
-    /** Longueur géodésique en mètres (Haversine), mise à jour par setCoordinates(). */
-    [[nodiscard]] double getLengthMeters() const { return m_lengthMeters; }
-
-    /**
-     * @brief Représentation textuelle pour le débogage.
-     * Format : Straight(id=s/0, len=342.5m, Coordinates=7, neighbours=[sw/0, sw/1])
-     */
+    /** @brief Représentation textuelle pour le débogage. */
     [[nodiscard]] std::string toString() const;
 
+    // =========================================================================
+    // Mutations — identifiant
+    // =========================================================================
+
+    /**
+     * @brief Assigne l'identifiant du bloc.
+     * Appelé par Phase6_BlockExtractor lors de la création du bloc.
+     *
+     * @param id  Identifiant unique (ex. "s/0").
+     */
+    void setId(std::string id) { m_id = std::move(id); }
 
     // =========================================================================
-    // Mutations — Phase 5b
+    // Mutations — géométrie
+    // =========================================================================
+
+    /**
+     * @brief Remplace la polyligne WGS84 et recalcule la longueur géodésique.
+     *
+     * @param points  Polyligne WGS-84 ordonnée (≥ 2 points).
+     */
+    void setPointsWGS84(std::vector<CoordinateLatLon> points);
+
+    /**
+     * @brief Assigne la polyligne UTM.
+     *
+     * @param points  Points projetés en UTM (même taille que pointsWGS84).
+     */
+    void setPointsUTM(std::vector<CoordinateXY> points) { m_pointsUTM = std::move(points); }
+
+    // =========================================================================
+    // Mutations — topologie IDs
     // =========================================================================
 
     /**
@@ -115,69 +156,73 @@ public:
 
     /**
      * @brief Remplace un ID de voisin par un autre.
-     * Utilisé en Phase 7 lors de l'absorption du segment de liaison.
+     * Utilisé lors de l'absorption du segment de liaison double switch.
      */
     void replaceNeighbourId(const std::string& oldId, const std::string& newId);
 
-
     // =========================================================================
-    // Mutations — Phase 6d
+    // Mutations — pointeurs résolus (Phase9_RepositoryTransfer)
     // =========================================================================
 
     /**
-     * @brief Remplace la polyligne et recalcule la longueur géodésique.
+     * @brief Assigne le voisin côté extrémité A.
      *
-     * Appelé par trimStraightOverlaps() pour retirer le chevauchement
-     * entre la branche du switch et le début (ou la fin) du Straight.
+     * @param elem  Pointeur non-propriétaire. nullptr si terminus.
      */
-    void setCoordinates(std::vector<CoordinateLatLon> Coordinates);
+    void setNeighbourPrev(ShuntingElement* elem) { m_neighbours.prev = elem; }
+
+    /**
+     * @brief Assigne le voisin côté extrémité B.
+     *
+     * @param elem  Pointeur non-propriétaire. nullptr si terminus.
+     */
+    void setNeighbourNext(ShuntingElement* elem) { m_neighbours.next = elem; }
+
+    /**
+     * @brief Enregistre les pointeurs prev/next en une seule opération.
+     *
+     * @param neighbours  Struct contenant les deux extrémités résolues.
+     */
+    void setNeighbourPointers(StraightNeighbours neighbours);
 
 private:
+
     /**
-     * Polyligne WGS-84 ordonnée du bloc.
-     * Premier point : extrémité A. Dernier point : extrémité B.
-     * Modifiable uniquement via setCoordinates() (Phase 6d) — recalcule automatiquement m_lengthMeters.
+     * Polyligne WGS-84 ordonnée (latitude, longitude).
+     * Premier point = extrémité A. Dernier point = extrémité B.
+     * Modifiable via setPointsWGS84() — recalcule automatiquement m_lengthMeters.
      */
-    std::vector<CoordinateLatLon> m_coordinates;
+    std::vector<CoordinateLatLon> m_pointsWGS84;
+
+    /**
+     * Polyligne UTM (x = est, y = nord, mètres).
+     * Même taille et même index que m_pointsWGS84.
+     * Renseigné par le pipeline v2 (Phase6_BlockExtractor).
+     */
+    std::vector<CoordinateXY> m_pointsUTM;
 
     /**
      * IDs des blocs adjacents (StraightBlock ou SwitchBlock).
-     * Toujours trié lexicographiquement — addNeighbourId() maintient l'invariant.
-     * Peuplé en Phase 5b, muté en Phase 7 via replaceNeighbourId().
+     * Trié lexicographiquement — addNeighbourId() maintient l'invariant.
      */
     std::vector<std::string> m_neighbourIds;
 
     /**
-     * Pointeurs non-propriétaires vers les blocs adjacents (SwitchBlock ou StraightBlock).
-     * Parallèle à m_neighbourIds — même ordre, même contenu sous forme de pointeurs.
-     * Propriété du TopologyRepository — ne pas delete.
+     * Pointeurs non-propriétaires vers les blocs adjacents.
+     * Renseignés par Phase9_RepositoryTransfer::resolve().
+     * Propriété de TopologyRepository — ne pas delete.
      */
     StraightNeighbours m_neighbours;
 
     /**
-     * Longueur géodésique totale en mètres, calculée par Haversine.
-     * Mise à jour automatiquement à la construction et à chaque appel à setCoordinates().
-     * Ne pas modifier directement — utiliser setCoordinates() pour garantir la cohérence.
+     * Longueur géodésique totale en mètres (Haversine sur m_pointsWGS84).
+     * Mise à jour automatiquement par setPointsWGS84().
      */
     double m_lengthMeters = 0.0;
 
     /**
-     * @brief Calcule la longueur géodésique totale depuis m_coordinates.
-     *
+     * @brief Calcule la longueur géodésique totale depuis m_pointsWGS84.
      * Somme des distances Haversine entre chaque paire de points consécutifs.
-     * Retourne 0 si m_coordinates contient moins de 2 points.
      */
     [[nodiscard]] double computeGeodesicLength() const;
-
-    /**
-     * @brief Calcule la distance de Haversine entre deux points WGS-84.
-     *
-     * Formule exacte sur sphère de rayon 6 371 000 m.
-     * Utilisée en interne par computeGeodesicLength().
-     *
-     * @param a  Premier point (latitude, longitude en degrés décimaux).
-     * @param b  Second point.
-     * @return   Distance en mètres.
-     */
-    static double haversineDistanceMeters(const CoordinateLatLon& a, const CoordinateLatLon& b);
 };

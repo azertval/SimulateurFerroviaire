@@ -76,7 +76,7 @@ JsonDocument TopologyRenderer::convertStraightToFeature(const StraightBlock& str
     };
 
     JsonDocument coordinates = JsonDocument::array();
-    for (const auto& coord : straight.getCoordinates())
+    for (const auto& coord : straight.getPointsWGS84())
         coordinates.push_back({ coord.longitude, coord.latitude });
 
     feature["geometry"] = {
@@ -108,8 +108,8 @@ JsonDocument TopologyRenderer::convertSwitchToFeature(const SwitchBlock& sw)
     feature["geometry"] = {
         { "type", "Point" },
         { "coordinates", {
-            sw.getJunctionCoordinate().longitude,
-            sw.getJunctionCoordinate().latitude
+            sw.getJunctionWGS84().longitude,
+            sw.getJunctionWGS84().latitude
         }}
     };
 
@@ -192,14 +192,14 @@ std::wstring TopologyRenderer::escapeForJavaScript(const std::string& input)
 
 std::wstring TopologyRenderer::renderStraightBlock(const StraightBlock& straight)
 {
-    if (straight.getCoordinates().size() < 2)
+    if (straight.getPointsWGS84().size() < 2)
         return L"";
 
     std::wstring script = L"renderStraightBlock(\"";
     script += toWide(straight.getId());
     script += L"\",[";
 
-    const auto& Coordinates = straight.getCoordinates();
+    const auto& Coordinates = straight.getPointsWGS84();
     for (std::size_t i = 0; i < Coordinates.size(); ++i)
     {
         script += L"[";
@@ -231,7 +231,7 @@ std::wstring TopologyRenderer::renderAllStraightBlocks()
 
 std::wstring TopologyRenderer::renderSwitchBlock(const SwitchBlock& sw)
 {
-    const CoordinateLatLon& junction = sw.getJunctionCoordinate();
+    const CoordinateLatLon& junction = sw.getJunctionWGS84();
 
     std::wstring script = L"renderSwitch(\"";
     script += toWide(sw.getId());
@@ -275,7 +275,7 @@ std::wstring TopologyRenderer::renderSwitchBranches(const SwitchBlock& sw)
 {
     if (!sw.isOriented()) return L"";
 
-    const CoordinateLatLon& junction = sw.getJunctionCoordinate();
+    const CoordinateLatLon& junction = sw.getJunctionWGS84();
 
     // --- Branche root : toujours un simple tip (jamais absorbée) ---
     std::wstring rootCoordinates = L"null";
