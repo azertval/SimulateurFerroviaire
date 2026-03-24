@@ -20,7 +20,7 @@
 #include <vector>
 
 #include "ShuntingElement.h"
-#include "Modules/Coordinates/LatLon.h"
+#include "Engine/Core/Coords/LatLon.h"
 
 
 class StraightBlock : public ShuntingElement

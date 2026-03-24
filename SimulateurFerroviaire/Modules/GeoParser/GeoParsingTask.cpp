@@ -32,25 +32,17 @@ void GeoParsingTask::launch(HWND hWnd, const std::string& geoJsonPath)
         {
             Logger parserLogger("GeoParser");
 
-            GeoParser parser(
-                parserLogger,
-                geoJsonPath,
-                ParserDefaultValues::SNAP_GRID_METERS,
-                ParserDefaultValues::ENDPOINT_SNAP_METERS,
-                ParserDefaultValues::MAX_STRAIGHT_LENGTH_METERS,
-                ParserDefaultValues::MIN_BRANCH_LENGTH_METERS,
-                ParserDefaultValues::DOUBLE_LINK_MAX_METERS,
-                ParserDefaultValues::BRANCH_TIP_DISTANCE_METERS);
+            // GeoParser parser(geoJsonPath, parserLogger);
 
-            // Le callback est le seul point de contact entre le thread de parsing
-            // et l'UI. PostMessage est thread-safe ; aucune référence directe
-            // à un objet UI n'est tolérée ici.
-            parser.setProgressCallback([hWnd](int progressValue)
-            {
-                PostMessage(hWnd, WM_PROGRESS_UPDATE, static_cast<WPARAM>(progressValue), 0);
-            });
+           // Le callback est le seul point de contact entre le thread de parsing
+           // et l'UI. PostMessage est thread-safe ; aucune référence directe
+           // à un objet UI n'est tolérée ici.
+           // parser.setProgressCallback([hWnd](int progressValue)
+           // {
+           //     PostMessage(hWnd, WM_PROGRESS_UPDATE, static_cast<WPARAM>(progressValue), 0);
+           // });
 
-            parser.parse();
+           //sim parser.parse();
 
             PostMessage(hWnd, WM_PARSING_SUCCESS, 0, 0);
         }

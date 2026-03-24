@@ -28,7 +28,7 @@
 #include <string>
 #include <vector>
 
-#include "Modules/Coordinates/LatLon.h"
+#include "Engine/Core/Coords/LatLon.h"
 #include "ShuntingElement.h"
  /**
   * @brief Branche active d'un aiguillage.

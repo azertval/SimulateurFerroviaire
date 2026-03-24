@@ -51,10 +51,6 @@ public:
             nullptr
         );
 
-        if (!m_hwnd)
-        {
-            throw std::runtime_error("ProgressBar creation failed");
-        }
 
         SendMessage(m_hwnd, PBM_SETRANGE, 0, MAKELPARAM(0, 100));
         SendMessage(m_hwnd, PBM_SETPOS, 0, 0);
