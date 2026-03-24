@@ -259,15 +259,23 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
         };
 
     // -----------------------------------------------------------------
-    // 1. Root : bord → jonction
+    // Jonction : point où root se divise en normal / déviation.
+    //
+    // Placée à STUB_RATIO * cellWidth depuis le bord root (et non au
+    // centre de la cellule). Cela donne au symbole une forme en Y
+    // typique des schémas ferroviaires : courte queue root, puis fourche.
     // -----------------------------------------------------------------
     const PCCEdge* rootEdge = sw->getRootEdge();
-    {
-        const int rootBorderX = edgeXToward(rootEdge);
-        const int dirFromRoot = (rootBorderX < center.x) ? 1 : -1;
+    const int rootBorderX = edgeXToward(rootEdge);
+    const int dirFromRoot = (rootBorderX < center.x) ? 1 : -1;
+    const int junctionX = rootBorderX + dirFromRoot * STUB;
 
+    // -----------------------------------------------------------------
+    // 1. Root : bord → jonction
+    // -----------------------------------------------------------------
+    {
         const POINT pA = { rootBorderX + dirFromRoot * halfGap, center.y };
-        const POINT pB = { center.x, center.y };
+        const POINT pB = { junctionX,                            center.y };
         drawLine(hdc, pA, pB, stateColor, LINE_WIDTH_ACTIVE);
     }
 
@@ -277,14 +285,14 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
     const PCCEdge* normalEdge = sw->getNormalEdge();
     {
         const int normalBorderX = edgeXToward(normalEdge);
-        const int dirToNormal = (normalBorderX > center.x) ? 1 : -1;
+        const int dirToNormal = (normalBorderX > junctionX) ? 1 : -1;
 
         const int startX = normalIsActive
-            ? center.x
-            : center.x + dirToNormal * INACTIVE_GAP;
+            ? junctionX
+            : junctionX + dirToNormal * INACTIVE_GAP;
 
-        const POINT pA = { startX, center.y };
-        const POINT pB = { normalBorderX - dirToNormal * halfGap, center.y };
+        const POINT pA = { startX,                                  center.y };
+        const POINT pB = { normalBorderX - dirToNormal * halfGap,   center.y };
 
         drawLine(hdc, pA, pB,
             normalIsActive ? stateColor : COLORS.branchOff,
@@ -305,22 +313,22 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
 
         // Direction vers la cible déviation
         int devBorderX = edgeXToward(devEdge);
-        int dirToDev = (devBorderX > center.x) ? 1 : -1;
+        int dirToDev = (devBorderX > junctionX) ? 1 : -1;
 
-        // Point de départ
+        // Point de départ Y (branche inactive : léger retrait depuis la jonction)
         const int devScreenDir = [&]() -> int {
             if (devEdge && devEdge->getTo()) {
                 const int tgtLogY = devEdge->getTo()->getPosition().y;
                 if (tgtLogY != sw->getPosition().y)
                     return (tgtLogY > sw->getPosition().y) ? -1 : 1; // Y écran inversé
             }
-            return -sw->getDeviationSide(); // getDeviationSide() est en logique, on inverse
+            return -sw->getDeviationSide();
             }();
-        const int startY = normalIsActive 
-            ? center.y + devScreenDir * INACTIVE_GAP 
+        const int startY = normalIsActive
+            ? center.y + devScreenDir * INACTIVE_GAP
             : center.y;
 
-        const POINT pStart = {center.x,startY};
+        const POINT pStart = { junctionX, startY };
 
         if (isDouble)
         {

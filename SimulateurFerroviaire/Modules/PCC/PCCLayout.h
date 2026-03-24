@@ -6,16 +6,35 @@
  * une @ref PCCPosition indépendante des coordonnées GPS, utilisable
  * directement par @ref TCORenderer pour le dessin GDI.
  *
- * @par Algorithme
+ * @par Algorithme — règle linéaire topologique
  *  -# Détection des terminus (nœuds de départ gauche).
  *  -# BFS multi-sources depuis chaque terminus non visité.
- *  -# X = profondeur BFS (distance minimale depuis le terminus).
- *  -# Y = rang vertical — 0 backbone, +1 par branche déviation empruntée.
+ *  -# Règle de positionnement selon le rôle de l'arête :
+ *     | Rôle                                        | ΔX | ΔY             |
+ *     |---------------------------------------------|----|----------------|
+ *     | STRAIGHT / NORMAL / ROOT standard            | +1 | 0 (Y constant) |
+ *     | ROOT forward + arrivée par déviation         | -1 | 0 (upstream)   |
+ *     | DEVIATION → nœud ordinaire                   | +1 | ±côté géo      |
+ *     | DEVIATION → SwitchNode  (aiguille double)    |  0 | ±côté géo      |
+ *
+ * @par Détection "arrivée par déviation"
+ *  Le flag @c arrivedViaDeviation est stocké dans @ref BFSItem et propagé
+ *  à chaque nœud enqueué. Il est levé dès qu'un voisin est atteint via
+ *  une arête DEVIATION. Quand un switch est dépilé avec ce flag à true,
+ *  sa voie ROOT est traitée comme upstream (x-1) plutôt que downstream
+ *  (x+1). Ce mécanisme couvre l'aiguille simple et la double aiguille
+ *  sans distinction de cas.
+ *
+ * @par Côté géographique
+ *  Le côté (±1) est calculé **une seule fois** par
+ *  PCCGraphBuilder::computeDeviationSides à partir des lat/lon
+ *  et stocké dans @ref PCCSwitchNode::getDeviationSide().
+ *  C'est la **seule** donnée GPS utilisée pendant le layout.
  *
  * @par Graphes déconnectés
- * Si le réseau contient plusieurs composantes non connectées, un BFS
- * est lancé depuis chaque terminus de chaque composante. Un décalage X
- * est appliqué entre composantes pour éviter les superpositions.
+ *  Un BFS est lancé depuis chaque terminus de chaque composante.
+ *  Un décalage X est appliqué entre composantes pour éviter les
+ *  superpositions.
  *
  * @note Classe entièrement statique — instanciation interdite.
  */
@@ -38,10 +57,6 @@ public:
     /**
      * @brief Calcule et assigne les positions logiques à tous les nœuds.
      *
-     * Appelle successivement @ref findTermini puis @ref runBFS pour chaque
-     * composante. Les nœuds non couverts reçoivent un BFS de secours avec
-     * un avertissement dans le logger.
-     *
      * @param graph   Graphe dont les positions seront calculées. Modifié en place.
      * @param logger  Référence au logger HMI fourni par @ref PCCPanel.
      */
@@ -53,53 +68,48 @@ public:
 private:
 
     /**
-     * @brief Structure interne portant un nœud et son contexte de position BFS.
+     * @brief Contexte BFS d'un nœud en file d'attente.
      *
-     * Utilisée comme élément de la file BFS pour propager x et y
-     * sans modifier le nœud avant de le dépiler.
+     * Le champ @c arrivedViaDeviation est le mécanisme central du layout :
+     * il indique si le nœud a été enqueué via une arête DEVIATION.
+     * Quand un @ref PCCSwitchNode est dépilé avec ce flag à true,
+     * sa voie ROOT (forward) est positionnée à x-1 (amont) plutôt
+     * qu'à x+1 (aval).
      */
     struct BFSItem
     {
-        PCCNode* node;  ///< Nœud à traiter.
-        int      x;     ///< Profondeur BFS (position horizontale).
-        int      y;     ///< Rang vertical (0 = backbone, +1 = déviation).
+        PCCNode* node;               ///< Nœud à traiter.
+        int      x;                  ///< Profondeur BFS (position horizontale).
+        int      y;                  ///< Rang vertical (0 = backbone, ±n = branches).
+        bool     arrivedViaDeviation;///< Vrai si atteint via une arête DEVIATION.
     };
 
     /**
      * @brief Détecte les nœuds terminus (points de départ du schéma).
      *
-     * Un terminus est un nœud absent de l'ensemble des cibles d'arêtes
-     * switch (ROOT/NORMAL/DEVIATION) et possédant un seul voisin.
-     * Si aucun terminus n'est trouvé (graphe circulaire), retourne le
-     * premier nœud de la collection.
+     * Un terminus est absent des cibles d'arêtes switch (ROOT/NORMAL/DEVIATION)
+     * et ne possède qu'un seul voisin. Si aucun terminus n'est trouvé
+     * (graphe circulaire), retourne le premier nœud de la collection.
      *
      * @param graph   Graphe à analyser.
      * @param logger  Référence au logger HMI.
-     *
      * @return Liste des nœuds terminus. Jamais vide si le graphe est non vide.
      */
     static std::vector<PCCNode*> findTermini(const PCCGraph& graph, Logger& logger);
 
     /**
-     * @brief Lance un BFS depuis @p start et assigne les positions X/Y.
+     * @brief Lance un BFS linéaire depuis @p start et assigne les positions X/Y.
      *
-     * Le BFS s'arrête lorsque tous les nœuds atteignables depuis @p start
-     * ont été visités. Les nœuds déjà présents dans @p visited sont ignorés
-     * (support multi-composantes).
-     *
-     * @param graph           Graphe dont les positions sont calculées.
-     * @param start           Nœud de départ du BFS.
-     * @param visited         Ensemble des nœuds déjà traités. Modifié en place.
-     * @param offsetX         Décalage X appliqué à toute la composante
-     *                        (séparation entre composantes déconnectées).
-     * @param logger          Référence au logger HMI.
-     *
-     * @return Le X maximal atteint par ce BFS — utilisé par compute()
-     *         pour espacer les composantes déconnectées.
+     * @param graph    Graphe dont les positions sont calculées.
+     * @param start    Nœud de départ du BFS.
+     * @param visited  Ensemble des nœuds déjà traités. Modifié en place.
+     * @param offsetX  Décalage X de la composante (séparation entre composantes).
+     * @param logger   Référence au logger HMI.
+     * @return Le X maximal atteint — utilisé pour espacer les composantes.
      */
     static int runBFS(PCCGraph& graph,
         PCCNode* start,
         std::unordered_set<PCCNode*>& visited,
-        int                             offsetX,
+        int                           offsetX,
         Logger& logger);
 };
