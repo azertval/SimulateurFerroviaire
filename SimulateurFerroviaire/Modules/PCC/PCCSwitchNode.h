@@ -38,7 +38,7 @@ public:
      *
      * @throws std::invalid_argument Si @p source est nullptr.
      */
-    explicit PCCSwitchNode(SwitchBlock* source);
+    explicit PCCSwitchNode(SwitchBlock* source, Logger& logger);
 
     // =========================================================================
     // Interface PCCNode
@@ -123,6 +123,30 @@ public:
      */
     void setDeviationEdge(PCCEdge* edge) { m_deviationEdge = edge; }
 
+    // =========================================================================
+    // Côté géographique de la déviation
+    // =========================================================================
+
+    /**
+     * @brief Retourne le côté géographique de la branche déviée.
+     *
+     * Calculé par @ref PCCGraphBuilder::computeDeviationSides à partir
+     * des coordonnées GPS du switch et de sa branche déviation.
+     *
+     * @return +1 si la déviation va au nord (y positif, vers le haut),
+     *         -1 si elle va au sud (y négatif, vers le bas).
+     */
+    [[nodiscard]] int getDeviationSide() const { return m_deviationSide; }
+
+    /**
+     * @brief Assigne le côté géographique de la déviation.
+     *
+     * Appelé par @ref PCCGraphBuilder après construction du graphe.
+     *
+     * @param side  +1 (nord/haut) ou -1 (sud/bas).
+     */
+    void setDeviationSide(int side) { m_deviationSide = side; }
+
 private:
 
     /**
@@ -152,4 +176,12 @@ private:
      * Propriété de @ref PCCGraph — ne pas delete.
      */
     PCCEdge* m_deviationEdge = nullptr;
+
+    /**
+     * Côté géographique de la déviation : +1 = nord/haut, -1 = sud/bas.
+     * Calculé par @ref PCCGraphBuilder::computeDeviationSides à partir
+     * de la comparaison latitude déviation vs latitude switch.
+     * Défaut +1 si non calculé.
+     */
+    int m_deviationSide = 1;
 };

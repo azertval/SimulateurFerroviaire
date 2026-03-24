@@ -45,7 +45,7 @@ public:
      *
      * @throws std::invalid_argument Si @p source est nullptr.
      */
-    explicit PCCStraightNode(StraightBlock* source);
+    explicit PCCStraightNode(StraightBlock* source, Logger& logger);
 
     // =========================================================================
     // Interface PCCNode

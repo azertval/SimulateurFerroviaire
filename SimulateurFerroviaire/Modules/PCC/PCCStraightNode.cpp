@@ -7,13 +7,15 @@
 #include "PCCStraightNode.h"
 #include <stdexcept>
 
-PCCStraightNode::PCCStraightNode(StraightBlock* source)
-    : PCCNode(source ? source->getId() : "", source)
-    // Appel du constructeur de base en premier dans la MIL — obligatoire.
-    // L'expression ternaire évite un déréférencement nullptr avant que
-    // PCCNode::PCCNode lève l'exception (source == nullptr).
+PCCStraightNode::PCCStraightNode(StraightBlock* source, Logger& logger)
+    : PCCNode(source ? source->getId() : "", source, logger)
     , m_straightSource(source)
 {
     if (!source)
+    {
+        LOG_ERROR(m_logger, "source ne peut pas être nullptr.");
         throw std::invalid_argument("PCCStraightNode — source ne peut pas être nullptr.");
+    }
+        
+    LOG_DEBUG(m_logger, "PCCStraightNode créé : " + source->getId());
 }
