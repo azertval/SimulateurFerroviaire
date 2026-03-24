@@ -1,8 +1,8 @@
 <map id="SimulateurFerroviaire/Modules/GeoParser" name="SimulateurFerroviaire/Modules/GeoParser">
 <area shape="rect" id="node1" href="dir_713206489b3f2e638ce64611b3101c39.html" title="InteractiveElements" alt="" coords="294,136,447,161"/>
 <area shape="rect" id="node2" href="dir_a2c10e0245c4d6d6087b65c22d77e4da.html" title="Coordinates" alt="" coords="290,283,390,308"/>
-<area shape="poly" id="edge3" href="dir_000008_000012.html" alt="" coords="248,86,335,128,333,132,245,90"/>
-<area shape="rect" id="edge3-headlabel" href="dir_000008_000012.html" title="8" alt="" coords="329,113,338,128"/>
+<area shape="poly" id="edge3" href="dir_000008_000011.html" alt="" coords="248,86,335,128,333,132,245,90"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000008_000011.html" title="8" alt="" coords="329,113,338,128"/>
 <area shape="poly" id="edge4" href="dir_000008_000000.html" alt="" coords="267,79,378,98,430,113,449,123,462,134,472,154,472,175,464,195,451,215,414,250,374,277,371,273,410,246,447,211,460,193,467,174,467,156,458,138,446,128,428,118,377,103,266,84"/>
 <area shape="rect" id="edge4-headlabel" href="dir_000008_000000.html" title="6" alt="" coords="376,273,385,288"/>
 <area shape="rect" id="node4" href="dir_0d00cb837240d01059edc7b1f705a6fc.html" title="Enums" alt="" coords="61,283,128,308"/>

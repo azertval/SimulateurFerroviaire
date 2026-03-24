@@ -1,8 +1,0 @@
-<map id="TCORenderer::computeProjection" name="TCORenderer::computeProjection">
-<area shape="rect" id="Node000001" title="Calcule la Projection à partir du contenu de TopologyRepository." alt="" coords="5,57,243,82"/>
-<area shape="rect" id="Node000002" href="$classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027" title="Retourne une référence mutable aux données topologiques." alt="" coords="291,5,441,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,54,277,39,278,44,195,59"/>
-<area shape="rect" id="Node000003" href="$classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse)." alt="" coords="291,93,441,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,79,278,95,277,100,194,85"/>
-<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="321,94,319,84,326,74,342,69,366,67,394,70,409,77,407,82,392,75,366,72,343,74,329,79,324,85,326,92"/>
-</map>

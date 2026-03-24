@@ -1,7 +1,0 @@
-<map id="executableDirectory" name="executableDirectory">
-<area shape="rect" id="Node000001" title=" " alt="" coords="208,31,361,56"/>
-<area shape="rect" id="Node000002" href="$classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar." alt="" coords="5,5,160,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,35,160,30,160,25,195,29"/>
-<area shape="rect" id="Node000003" href="$classLeaflet.html#a9046365be11f3d57341c8162ceb1fd88" title="Génère le code HTML complet pour intégrer Leaflet dans un WebView." alt="" coords="9,55,156,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,57,156,61,156,56,194,51"/>
-</map>

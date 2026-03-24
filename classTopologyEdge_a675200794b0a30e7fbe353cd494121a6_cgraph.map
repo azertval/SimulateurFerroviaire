@@ -1,5 +1,0 @@
-<map id="TopologyEdge::TopologyEdge" name="TopologyEdge::TopologyEdge">
-<area shape="rect" id="Node000001" title="Construit une arête complète avec calcul automatique de longueur." alt="" coords="5,13,216,38"/>
-<area shape="rect" id="Node000002" href="$classTopologyEdge.html#a7ea766c820d89878604352a287dc5ec9" title="Calcule la longueur planaire de geometry." alt="" coords="264,5,483,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,23,251,23,251,28,216,28"/>
-</map>

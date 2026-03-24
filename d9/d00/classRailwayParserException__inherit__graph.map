@@ -1,0 +1,13 @@
+<map id="RailwayParserException" name="RailwayParserException">
+<area shape="rect" id="Node000001" title="Classe de base pour toutes les erreurs du parseur ferroviaire." alt="" coords="293,232,488,297"/>
+<area shape="rect" id="Node000004" href="$d4/d01/classInvalidGeoJsonFormatException.html" title="Levée quand le fichier GeoJSON est malformé ou ne contient aucune géométrie LineString exploitable." alt="" coords="5,345,251,411"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="305,305,204,348,202,343,303,300"/>
+<area shape="rect" id="Node000005" href="$d3/d03/classInvalidSwitchConfigException.html" title="Levée quand un aiguillage viole une contrainte géométrique du CDC." alt="" coords="275,345,506,411"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="393,311,393,345,388,345,388,311"/>
+<area shape="rect" id="Node000006" href="$d7/d00/classInvalidTopologyException.html" title="Levée quand la topologie du graphe parsé est structurellement incohérente." alt="" coords="531,345,736,411"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="473,301,565,343,563,348,471,305"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="325,119,456,184"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="393,198,393,232,388,232,388,198"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="337,5,444,71"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="393,84,393,119,388,119,388,84"/>
+</map>

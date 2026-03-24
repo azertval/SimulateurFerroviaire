@@ -1,0 +1,7 @@
+<map id="SimulateurFerroviaire/Modules/GeoParser/GeoParser.h" name="SimulateurFerroviaire/Modules/GeoParser/GeoParser.h">
+<area shape="rect" id="Node000001" title="Orchestrateur principal du pipeline GeoJSON ferroviaire." alt="" coords="143,5,375,45"/>
+<area shape="rect" id="Node000002" href="$d7/d03/GeoParser_8cpp.html" title="Implémentation du pipeline GeoParser." alt="" coords="5,101,252,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,56,157,103,154,98,220,51"/>
+<area shape="rect" id="Node000003" href="$dd/d01/GeoParsingTask_8cpp.html" title="Implémentation de la tâche de parsing GeoJSON asynchrone." alt="" coords="276,93,504,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="298,51,355,91,352,95,295,55"/>
+</map>

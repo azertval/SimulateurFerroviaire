@@ -1,0 +1,7 @@
+<map id="StraightBlock" name="StraightBlock">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,532,211,977"/>
+<area shape="rect" id="Node000002" href="$d2/d00/classShuntingElement.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="27,279,189,484"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,498,111,532,105,532,105,498"/>
+<area shape="rect" id="Node000003" href="$d8/d02/classInteractiveElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="21,5,195,231"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="111,244,111,278,105,278,105,244"/>
+</map>

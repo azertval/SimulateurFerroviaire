@@ -1,0 +1,9 @@
+<map id="InvalidSwitchConfigException" name="InvalidSwitchConfigException">
+<area shape="rect" id="Node000001" title="Levée quand un aiguillage viole une contrainte géométrique du CDC." alt="" coords="5,345,236,411"/>
+<area shape="rect" id="Node000002" href="$de/d00/classRailwayParserException.html" title="Classe de base pour toutes les erreurs du parseur ferroviaire." alt="" coords="23,232,218,297"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,311,123,345,118,345,118,311"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="55,119,186,184"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="123,198,123,232,118,232,118,198"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="67,5,174,71"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="123,84,123,119,118,119,118,84"/>
+</map>

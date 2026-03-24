@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['doubleswitchdetector_0',['DoubleSwitchDetector',['../classDoubleSwitchDetector.html',1,'']]]
+  ['coordinatexy_0',['CoordinateXY',['../df/d01/classCoordinateXY.html',1,'']]]
 ];

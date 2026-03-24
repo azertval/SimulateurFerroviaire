@@ -1,0 +1,36 @@
+<map id="StraightBlock" name="StraightBlock">
+<area shape="rect" id="Node000001" title=" " alt="" coords="420,1725,625,2111"/>
+<area shape="rect" id="Node000002" href="$d2/d00/classShuntingElement.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="281,1315,442,1520"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="307,1534,298,1566,294,1598,295,1630,303,1662,325,1709,354,1753,387,1793,421,1829,418,1833,383,1797,350,1756,320,1711,297,1664,290,1631,289,1598,293,1565,301,1533"/>
+<area shape="rect" id="Node000016" href="$df/d03/structStraightBlock_1_1StraightNeighbours.html" title="Voisins topologiques d&#39;un StraightBlock." alt="" coords="312,1597,547,1663"/>
+<area shape="poly" id="edge18_Node000016_Node000002" title=" " alt="" coords="397,1520,417,1581,412,1582,392,1521"/>
+<area shape="rect" id="Node000003" href="$d8/d02/classInteractiveElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="275,1060,448,1265"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="364,1279,364,1314,359,1314,359,1279"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="435,493,514,559"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="477,559,473,643,464,762,446,899,417,1037,415,1045,410,1044,412,1035,441,898,458,761,468,643,471,559"/>
+<area shape="rect" id="Node000006" href="$db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="184,621,365,947"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="436,538,391,555,369,568,350,585,331,609,327,606,346,581,366,564,389,551,434,533"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="495,971,673,1036"/>
+<area shape="poly" id="edge16_Node000015_Node000004" title=" " alt="" coords="499,558,516,587,531,620,555,711,572,803,581,887,585,954,580,954,576,888,566,804,550,712,525,622,511,590,494,560"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="409,364,540,444"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="477,458,477,493,472,493,472,458"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="315,946,337,1043,332,1044,309,948"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="36,493,137,559"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="98,558,114,596,143,638,175,679,171,682,138,642,110,599,93,560"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="15,364,158,444"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="89,458,89,493,84,493,84,458"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="18,235,155,315"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="89,328,89,364,84,364,84,328"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="5,120,168,185"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="89,199,89,235,84,235,84,199"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="37,5,136,71"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="89,85,89,120,84,120,84,85"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="170,493,254,559"/>
+<area shape="poly" id="edge12_Node000006_Node000012" title=" " alt="" coords="213,559,216,597,217,605,212,606,211,598,208,559"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="665,1597,821,1663"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="720,1665,638,1772,634,1768,716,1661"/>
+<area shape="rect" id="Node000014" href="$d4/d01/classLatLon.html" title="Coordonnée géographique WGS&#45;84 exprimée en degrés décimaux." alt="" coords="722,1345,838,1490"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="770,1491,754,1582,748,1581,765,1490"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="587,1036,587,1289,587,1631,581,1709,575,1709,581,1631,581,1289,581,1036"/>
+<area shape="poly" id="edge17_Node000001_Node000016" title=" " alt="" coords="442,1662,458,1709,452,1711,437,1664"/>
+</map>

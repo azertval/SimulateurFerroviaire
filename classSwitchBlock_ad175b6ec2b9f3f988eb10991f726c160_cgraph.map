@@ -1,5 +1,0 @@
-<map id="SwitchBlock::setBranchPointers" name="SwitchBlock::setBranchPointers">
-<area shape="rect" id="Node000001" title="Enregistre les pointeurs root/normal/deviation après parsing." alt="" coords="5,13,232,38"/>
-<area shape="rect" id="Node000002" href="$classInteractiveElement.html#a6e4de24603c935ed0c9151c738239c9b" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="280,5,427,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,23,266,23,266,28,232,28"/>
-</map>

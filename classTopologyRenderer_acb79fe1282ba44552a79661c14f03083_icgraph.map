@@ -1,5 +1,0 @@
-<map id="TopologyRenderer::escapeForJavaScript" name="TopologyRenderer::escapeForJavaScript">
-<area shape="rect" id="Node000001" title="Échappe une chaîne JSON pour l&#39;injection dans JavaScript." alt="" coords="255,5,448,45"/>
-<area shape="rect" id="Node000002" href="$classTopologyRenderer.html#a53552ac3e53137c8510496ae2de4a4d8" title="Génère le script JavaScript d&#39;injection GeoJSON dans le WebView." alt="" coords="5,5,207,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="241,28,207,28,207,23,241,23"/>
-</map>

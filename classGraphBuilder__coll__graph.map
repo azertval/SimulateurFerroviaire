@@ -1,5 +1,0 @@
-<map id="GraphBuilder" name="GraphBuilder">
-<area shape="rect" id="Node000001" title="Charge un fichier GeoJSON et construit le TopologyGraph métrique." alt="" coords="5,453,216,639"/>
-<area shape="rect" id="Node000002" href="$classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="20,5,201,391"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,391,113,437,108,437,108,391"/>
-</map>

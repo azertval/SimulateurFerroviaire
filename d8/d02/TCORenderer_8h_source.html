@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire:  Fichier source de SimulateurFerroviaire/Engine/HMI/PCCPanel/TCORenderer.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d8/d02/TCORenderer_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">TCORenderer.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/d02/TCORenderer_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="../../d6/d01/framework_8h.html">framework.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="../../d8/d00/PCCGraph_8h.html">Modules/PCC/PCCGraph.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="../../dc/d01/PCCSwitchNode_8h.html">Modules/PCC/PCCSwitchNode.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="../../dd/d00/Logger_8h.html">Engine/Core/Logger/Logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../d9/d01/classTCORenderer.html">   18</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d9/d01/classTCORenderer.html">TCORenderer</a></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/d01/classTCORenderer.html#a6121818c20cecd5b7fcb6cae98de3584">draw</a>(HDC hdc, <span class="keyword">const</span> RECT&amp; rect,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keyword">const</span> <a class="code hl_class" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>&amp; graph, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../d9/d01/classTCORenderer.html#a0c7729d774bcc100ce9d6e1bb0948afb">   25</a></span>    <a class="code hl_function" href="../../d9/d01/classTCORenderer.html#a0c7729d774bcc100ce9d6e1bb0948afb">TCORenderer</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../d2/d01/structTCORenderer_1_1Projection.html">   29</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="../../d2/d01/structTCORenderer_1_1Projection.html">Projection</a></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="../../d2/d01/structTCORenderer_1_1Projection.html#adc7c015a31bb390cdee35cf509e296d0">   31</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d2/d01/structTCORenderer_1_1Projection.html#adc7c015a31bb390cdee35cf509e296d0">minX</a> = 0;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d2/d01/structTCORenderer_1_1Projection.html#aa0c35376a84573540073e45d1b359882">   32</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d2/d01/structTCORenderer_1_1Projection.html#aa0c35376a84573540073e45d1b359882">maxX</a> = 0;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="../../d2/d01/structTCORenderer_1_1Projection.html#aefbb1c07db370f901c9fcf3dcce75c06">   33</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d2/d01/structTCORenderer_1_1Projection.html#aefbb1c07db370f901c9fcf3dcce75c06">minY</a> = 0;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="../../d2/d01/structTCORenderer_1_1Projection.html#a8aebab01061e114fa0d6086ab7e657ae">   34</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d2/d01/structTCORenderer_1_1Projection.html#a8aebab01061e114fa0d6086ab7e657ae">maxY</a> = 0;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../d2/d01/structTCORenderer_1_1Projection.html#ae3e4e0bcab68bac471edca096b2ed3d8">   35</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d2/d01/structTCORenderer_1_1Projection.html#ae3e4e0bcab68bac471edca096b2ed3d8">width</a> = 0;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="../../d2/d01/structTCORenderer_1_1Projection.html#ad8bb57b43a2e99582f4e42d93b5c4594">   36</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d2/d01/structTCORenderer_1_1Projection.html#ad8bb57b43a2e99582f4e42d93b5c4594">height</a> = 0;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="../../d2/d01/structTCORenderer_1_1Projection.html#aa096b5ada590e8bdd2076c48b5d46b9e">   37</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d2/d01/structTCORenderer_1_1Projection.html#aa096b5ada590e8bdd2076c48b5d46b9e">cellWidth</a> = 1;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="../../d2/d01/structTCORenderer_1_1Projection.html#a9d60f4d46db9b2f06af1ed7fca344628">   38</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d2/d01/structTCORenderer_1_1Projection.html#a9d60f4d46db9b2f06af1ed7fca344628">cellHeight</a> = 1;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="../../d2/d01/structTCORenderer_1_1Projection.html#abacc6e0e3a5a23208012c6ceb6b0077d">   39</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d2/d01/structTCORenderer_1_1Projection.html#abacc6e0e3a5a23208012c6ceb6b0077d">marginX</a> = 0;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../d2/d01/structTCORenderer_1_1Projection.html#aec1b426df72609bf70a6f916b1fe0a2a">   40</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d2/d01/structTCORenderer_1_1Projection.html#aec1b426df72609bf70a6f916b1fe0a2a">centerY</a> = 0;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    };</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">static</span> <a class="code hl_struct" href="../../d2/d01/structTCORenderer_1_1Projection.html">Projection</a> <a class="code hl_function" href="../../d9/d01/classTCORenderer.html#a71d5b47b88c8e22bada0455a82f741ff">computeProjection</a>(<span class="keyword">const</span> RECT&amp; rect,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keyword">const</span> <a class="code hl_class" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>&amp; graph, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">static</span> POINT <a class="code hl_function" href="../../d9/d01/classTCORenderer.html#a80f5b6b3f3a62975691896a71031607b">project</a>(<span class="keywordtype">int</span> logicalX, <span class="keywordtype">int</span> logicalY, <span class="keyword">const</span> <a class="code hl_struct" href="../../d2/d01/structTCORenderer_1_1Projection.html">Projection</a>&amp; proj);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/d01/classTCORenderer.html#a44f68c25e17a718aa3c7e242a39ec633">drawNodes</a>(HDC hdc, <span class="keyword">const</span> <a class="code hl_struct" href="../../d2/d01/structTCORenderer_1_1Projection.html">Projection</a>&amp; proj,</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keyword">const</span> <a class="code hl_class" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>&amp; graph, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/d01/classTCORenderer.html#aeb8ec4c9ab41d190bcf7516b9cf3ff36">drawStraightBlock</a>(HDC hdc, <span class="keyword">const</span> <a class="code hl_struct" href="../../d2/d01/structTCORenderer_1_1Projection.html">Projection</a>&amp; proj,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keyword">const</span> <a class="code hl_class" href="../../d1/d03/classPCCNode.html">PCCNode</a>* node);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/d01/classTCORenderer.html#a079e5773791a2b8b6622721c95cf0ef5">drawSwitchBlock</a>(HDC hdc, <span class="keyword">const</span> <a class="code hl_struct" href="../../d2/d01/structTCORenderer_1_1Projection.html">Projection</a>&amp; proj,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keyword">const</span> <a class="code hl_class" href="../../d2/d00/classPCCSwitchNode.html">PCCSwitchNode</a>* sw);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">static</span> COLORREF <a class="code hl_function" href="../../d9/d01/classTCORenderer.html#a538d4c108ec65a52b98810f96e6662e1">stateToColor</a>(<a class="code hl_enumeration" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a> state);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/d01/classTCORenderer.html#a5c2f3fdecee9ae3c6bfcbc416eddd256">drawLine</a>(HDC hdc, POINT from, POINT to,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        COLORREF color, <span class="keywordtype">int</span> lineWidth = 3);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>};</div>
+</div>
+<div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="../../dd/d00/Logger_8h.html">Logger.h</a></div><div class="ttdoc">Système de journalisation à 5 niveaux de trace, un fichier par moteur.</div></div>
+<div class="ttc" id="aPCCGraph_8h_html"><div class="ttname"><a href="../../d8/d00/PCCGraph_8h.html">PCCGraph.h</a></div><div class="ttdoc">Conteneur propriétaire du graphe PCC.</div></div>
+<div class="ttc" id="aPCCSwitchNode_8h_html"><div class="ttname"><a href="../../dc/d01/PCCSwitchNode_8h.html">PCCSwitchNode.h</a></div><div class="ttdoc">Nœud PCC représentant un SwitchBlock.</div></div>
+<div class="ttc" id="aShuntingElement_8h_html_ad532a85a5d658a547e31b33193d9833d"><div class="ttname"><a href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a></div><div class="ttdeci">ShuntingState</div><div class="ttdoc">État opérationnel d'un élément de shuntage.</div><div class="ttdef"><b>Definition</b> ShuntingElement.h:18</div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="../../db/d03/classLogger.html">Logger</a></div><div class="ttdoc">Journaliseur associé à un moteur nommé.</div><div class="ttdef"><b>Definition</b> Logger.h:103</div></div>
+<div class="ttc" id="aclassPCCGraph_html"><div class="ttname"><a href="../../d2/d00/classPCCGraph.html">PCCGraph</a></div><div class="ttdoc">Conteneur propriétaire du graphe PCC — nœuds, arêtes et index.</div><div class="ttdef"><b>Definition</b> PCCGraph.h:50</div></div>
+<div class="ttc" id="aclassPCCNode_html"><div class="ttname"><a href="../../d1/d03/classPCCNode.html">PCCNode</a></div><div class="ttdoc">Nœud abstrait du graphe PCC.</div><div class="ttdef"><b>Definition</b> PCCNode.h:70</div></div>
+<div class="ttc" id="aclassPCCSwitchNode_html"><div class="ttname"><a href="../../d2/d00/classPCCSwitchNode.html">PCCSwitchNode</a></div><div class="ttdoc">Nœud PCC issu d'un SwitchBlock.</div><div class="ttdef"><b>Definition</b> PCCSwitchNode.h:26</div></div>
+<div class="ttc" id="aclassTCORenderer_html"><div class="ttname"><a href="../../d9/d01/classTCORenderer.html">TCORenderer</a></div><div class="ttdef"><b>Definition</b> TCORenderer.h:19</div></div>
+<div class="ttc" id="aclassTCORenderer_html_a079e5773791a2b8b6622721c95cf0ef5"><div class="ttname"><a href="../../d9/d01/classTCORenderer.html#a079e5773791a2b8b6622721c95cf0ef5">TCORenderer::drawSwitchBlock</a></div><div class="ttdeci">static void drawSwitchBlock(HDC hdc, const Projection &amp;proj, const PCCSwitchNode *sw)</div><div class="ttdef"><b>Definition</b> TCORenderer.cpp:231</div></div>
+<div class="ttc" id="aclassTCORenderer_html_a0c7729d774bcc100ce9d6e1bb0948afb"><div class="ttname"><a href="../../d9/d01/classTCORenderer.html#a0c7729d774bcc100ce9d6e1bb0948afb">TCORenderer::TCORenderer</a></div><div class="ttdeci">TCORenderer()=delete</div></div>
+<div class="ttc" id="aclassTCORenderer_html_a44f68c25e17a718aa3c7e242a39ec633"><div class="ttname"><a href="../../d9/d01/classTCORenderer.html#a44f68c25e17a718aa3c7e242a39ec633">TCORenderer::drawNodes</a></div><div class="ttdeci">static void drawNodes(HDC hdc, const Projection &amp;proj, const PCCGraph &amp;graph, Logger &amp;logger)</div><div class="ttdef"><b>Definition</b> TCORenderer.cpp:142</div></div>
+<div class="ttc" id="aclassTCORenderer_html_a538d4c108ec65a52b98810f96e6662e1"><div class="ttname"><a href="../../d9/d01/classTCORenderer.html#a538d4c108ec65a52b98810f96e6662e1">TCORenderer::stateToColor</a></div><div class="ttdeci">static COLORREF stateToColor(ShuntingState state)</div><div class="ttdef"><b>Definition</b> TCORenderer.cpp:376</div></div>
+<div class="ttc" id="aclassTCORenderer_html_a5c2f3fdecee9ae3c6bfcbc416eddd256"><div class="ttname"><a href="../../d9/d01/classTCORenderer.html#a5c2f3fdecee9ae3c6bfcbc416eddd256">TCORenderer::drawLine</a></div><div class="ttdeci">static void drawLine(HDC hdc, POINT from, POINT to, COLORREF color, int lineWidth=3)</div><div class="ttdef"><b>Definition</b> TCORenderer.cpp:387</div></div>
+<div class="ttc" id="aclassTCORenderer_html_a6121818c20cecd5b7fcb6cae98de3584"><div class="ttname"><a href="../../d9/d01/classTCORenderer.html#a6121818c20cecd5b7fcb6cae98de3584">TCORenderer::draw</a></div><div class="ttdeci">static void draw(HDC hdc, const RECT &amp;rect, const PCCGraph &amp;graph, Logger &amp;logger)</div><div class="ttdef"><b>Definition</b> TCORenderer.cpp:62</div></div>
+<div class="ttc" id="aclassTCORenderer_html_a71d5b47b88c8e22bada0455a82f741ff"><div class="ttname"><a href="../../d9/d01/classTCORenderer.html#a71d5b47b88c8e22bada0455a82f741ff">TCORenderer::computeProjection</a></div><div class="ttdeci">static Projection computeProjection(const RECT &amp;rect, const PCCGraph &amp;graph, Logger &amp;logger)</div><div class="ttdef"><b>Definition</b> TCORenderer.cpp:87</div></div>
+<div class="ttc" id="aclassTCORenderer_html_a80f5b6b3f3a62975691896a71031607b"><div class="ttname"><a href="../../d9/d01/classTCORenderer.html#a80f5b6b3f3a62975691896a71031607b">TCORenderer::project</a></div><div class="ttdeci">static POINT project(int logicalX, int logicalY, const Projection &amp;proj)</div><div class="ttdef"><b>Definition</b> TCORenderer.cpp:129</div></div>
+<div class="ttc" id="aclassTCORenderer_html_aeb8ec4c9ab41d190bcf7516b9cf3ff36"><div class="ttname"><a href="../../d9/d01/classTCORenderer.html#aeb8ec4c9ab41d190bcf7516b9cf3ff36">TCORenderer::drawStraightBlock</a></div><div class="ttdeci">static void drawStraightBlock(HDC hdc, const Projection &amp;proj, const PCCNode *node)</div><div class="ttdef"><b>Definition</b> TCORenderer.cpp:170</div></div>
+<div class="ttc" id="aframework_8h_html"><div class="ttname"><a href="../../d6/d01/framework_8h.html">framework.h</a></div></div>
+<div class="ttc" id="astructTCORenderer_1_1Projection_html"><div class="ttname"><a href="../../d2/d01/structTCORenderer_1_1Projection.html">TCORenderer::Projection</a></div><div class="ttdef"><b>Definition</b> TCORenderer.h:30</div></div>
+<div class="ttc" id="astructTCORenderer_1_1Projection_html_a8aebab01061e114fa0d6086ab7e657ae"><div class="ttname"><a href="../../d2/d01/structTCORenderer_1_1Projection.html#a8aebab01061e114fa0d6086ab7e657ae">TCORenderer::Projection::maxY</a></div><div class="ttdeci">int maxY</div><div class="ttdef"><b>Definition</b> TCORenderer.h:34</div></div>
+<div class="ttc" id="astructTCORenderer_1_1Projection_html_a9d60f4d46db9b2f06af1ed7fca344628"><div class="ttname"><a href="../../d2/d01/structTCORenderer_1_1Projection.html#a9d60f4d46db9b2f06af1ed7fca344628">TCORenderer::Projection::cellHeight</a></div><div class="ttdeci">int cellHeight</div><div class="ttdef"><b>Definition</b> TCORenderer.h:38</div></div>
+<div class="ttc" id="astructTCORenderer_1_1Projection_html_aa096b5ada590e8bdd2076c48b5d46b9e"><div class="ttname"><a href="../../d2/d01/structTCORenderer_1_1Projection.html#aa096b5ada590e8bdd2076c48b5d46b9e">TCORenderer::Projection::cellWidth</a></div><div class="ttdeci">int cellWidth</div><div class="ttdef"><b>Definition</b> TCORenderer.h:37</div></div>
+<div class="ttc" id="astructTCORenderer_1_1Projection_html_aa0c35376a84573540073e45d1b359882"><div class="ttname"><a href="../../d2/d01/structTCORenderer_1_1Projection.html#aa0c35376a84573540073e45d1b359882">TCORenderer::Projection::maxX</a></div><div class="ttdeci">int maxX</div><div class="ttdef"><b>Definition</b> TCORenderer.h:32</div></div>
+<div class="ttc" id="astructTCORenderer_1_1Projection_html_abacc6e0e3a5a23208012c6ceb6b0077d"><div class="ttname"><a href="../../d2/d01/structTCORenderer_1_1Projection.html#abacc6e0e3a5a23208012c6ceb6b0077d">TCORenderer::Projection::marginX</a></div><div class="ttdeci">int marginX</div><div class="ttdef"><b>Definition</b> TCORenderer.h:39</div></div>
+<div class="ttc" id="astructTCORenderer_1_1Projection_html_ad8bb57b43a2e99582f4e42d93b5c4594"><div class="ttname"><a href="../../d2/d01/structTCORenderer_1_1Projection.html#ad8bb57b43a2e99582f4e42d93b5c4594">TCORenderer::Projection::height</a></div><div class="ttdeci">int height</div><div class="ttdef"><b>Definition</b> TCORenderer.h:36</div></div>
+<div class="ttc" id="astructTCORenderer_1_1Projection_html_adc7c015a31bb390cdee35cf509e296d0"><div class="ttname"><a href="../../d2/d01/structTCORenderer_1_1Projection.html#adc7c015a31bb390cdee35cf509e296d0">TCORenderer::Projection::minX</a></div><div class="ttdeci">int minX</div><div class="ttdef"><b>Definition</b> TCORenderer.h:31</div></div>
+<div class="ttc" id="astructTCORenderer_1_1Projection_html_ae3e4e0bcab68bac471edca096b2ed3d8"><div class="ttname"><a href="../../d2/d01/structTCORenderer_1_1Projection.html#ae3e4e0bcab68bac471edca096b2ed3d8">TCORenderer::Projection::width</a></div><div class="ttdeci">int width</div><div class="ttdef"><b>Definition</b> TCORenderer.h:35</div></div>
+<div class="ttc" id="astructTCORenderer_1_1Projection_html_aec1b426df72609bf70a6f916b1fe0a2a"><div class="ttname"><a href="../../d2/d01/structTCORenderer_1_1Projection.html#aec1b426df72609bf70a6f916b1fe0a2a">TCORenderer::Projection::centerY</a></div><div class="ttdeci">int centerY</div><div class="ttdef"><b>Definition</b> TCORenderer.h:40</div></div>
+<div class="ttc" id="astructTCORenderer_1_1Projection_html_aefbb1c07db370f901c9fcf3dcce75c06"><div class="ttname"><a href="../../d2/d01/structTCORenderer_1_1Projection.html#aefbb1c07db370f901c9fcf3dcce75c06">TCORenderer::Projection::minY</a></div><div class="ttdeci">int minY</div><div class="ttdef"><b>Definition</b> TCORenderer.h:33</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_b70de4a9b2a9f967d011983a1fdf80d1.html">Engine</a></li><li class="navelem"><a class="el" href="../../dir_fa749c79e99d4161e054d79886d12aa3.html">HMI</a></li><li class="navelem"><a class="el" href="../../dir_073edf83a0a96e21097776b99910cb5f.html">PCCPanel</a></li><li class="navelem"><a class="el" href="../../d8/d02/TCORenderer_8h.html">TCORenderer.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

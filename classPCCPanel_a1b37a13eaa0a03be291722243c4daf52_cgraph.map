@@ -1,5 +1,0 @@
-<map id="PCCPanel::toggle" name="PCCPanel::toggle">
-<area shape="rect" id="Node000001" title="Alterne la visibilité du panneau (masqué ↔ visible)." alt="" coords="5,5,137,31"/>
-<area shape="rect" id="Node000002" href="$classPCCPanel.html#afddac4ff78519cb2a37e74b62ba76d3b" title="Redimensionne le panneau pour couvrir toute la zone cliente du parent." alt="" coords="185,5,316,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,15,171,15,171,21,137,21"/>
-</map>

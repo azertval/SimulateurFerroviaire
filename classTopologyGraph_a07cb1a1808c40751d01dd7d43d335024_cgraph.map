@@ -1,5 +1,0 @@
-<map id="TopologyGraph::findMostCollinearContinuation" name="TopologyGraph::findMostCollinearContinuation">
-<area shape="rect" id="Node000001" title="Retourne l&#39;arête sortante en atNodeId la plus colinéaire à incomingEdgeId." alt="" coords="5,5,247,45"/>
-<area shape="rect" id="Node000002" href="$classGeometryUtils.html#aa07ef087c8f85eb14e28f69875ecf41f" title="Calcule l&#39;angle non&#45;signé (radians) entre deux vecteurs 2&#45;D." alt="" coords="295,5,516,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="247,23,281,23,281,28,247,28"/>
-</map>

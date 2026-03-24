@@ -27,61 +27,66 @@ var NAVTREE =
   [ "Simulateur Ferroviaire", "index.html", [
     [ "Description", "index.html#description", null ],
     [ "Architecture du projet", "index.html#diag", null ],
-    [ "Engine — Moteur de l'application", "index.html#engine", [
-      [ "Core — Cœur applicatif", "index.html#core", [
-        [ "TopologyData", "index.html#data", null ],
-        [ "TopologyRenderer — Rendu et exportation", "index.html#renderer", null ]
-      ] ],
-      [ "HMI — Interface utilisateur", "index.html#hmi", null ]
-    ] ],
-    [ "Panneau PCC — Vue TCO", "index.html#pcc", [
-      [ "</blockquote>", "index.html#autotoc_md4", null ]
-    ] ],
-    [ "Modules — Fonctionnalités métier", "index.html#modules", null ],
-    [ "GeoParser — Pipeline principal", "index.html#geoparser", [
-      [ "Tâche asynchrone", "index.html#task", null ],
-      [ "Pipeline global", "index.html#pipeline", null ],
-      [ "Parsing & Construction", "index.html#parsing", null ],
-      [ "Graphe topologique", "index.html#graph", null ],
-      [ "Extraction ferroviaire", "index.html#extraction", null ]
-    ] ],
-    [ "Eléments interactifs", "index.html#elements", [
-      [ "Hiérarchie des éléments interactifs", "index.html#hierarchy", null ],
-      [ "Pointeurs résolus post-parsing", "index.html#pointers", null ],
-      [ "État opérationnel des aiguillages", "index.html#activestate", null ],
-      [ "Énumérations clés", "index.html#enums", null ]
-    ] ],
-    [ "Coordonnées", "index.html#coords", [
-      [ "Nodes", "index.html#autotoc_md9", null ],
-      [ "Notion de graphe", "index.html#autotoc_md10", null ],
-      [ "</blockquote>", "index.html#autotoc_md13", null ]
-    ] ],
-    [ "Références externes", "index.html#autotoc_md14", [
-      [ "C++ moderne", "index.html#autotoc_md15", null ],
-      [ "Concepts spécifiques", "index.html#autotoc_md16", null ],
-      [ "Architecture logicielle", "index.html#autotoc_md17", null ]
-    ] ],
+    [ "Documentation", "index.html#documentation", null ],
     [ "Licence", "index.html#licence", null ],
     [ "Auteur", "index.html#auteur", null ],
-    [ "Classes", "annotated.html", [
-      [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
-      [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Typedefs", "functions_type.html", null ]
+    [ "Engine — Moteur de l'application", "d3/d03/engine.html", [
+      [ "Core — Cœur applicatif", "d3/d03/engine.html#core", [
+        [ "TopologyData", "d3/d03/engine.html#data", null ],
+        [ "TopologyRenderer", "d3/d03/engine.html#renderer", null ]
+      ] ],
+      [ "HMI — Interface utilisateur", "d3/d03/engine.html#hmi", [
+        [ "Panneau PCC", "d3/d03/engine.html#pcc_panel", null ],
+        [ "TCORenderer", "d3/d03/engine.html#tco", null ],
+        [ "Binding bidirectionnel Leaflet ↔ C++", "d3/d03/engine.html#binding", null ]
       ] ]
     ] ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
+    [ "Modules — Fonctionnalités métier", "d1/d00/modules.html", [
+      [ "GeoParser — Pipeline principal", "d1/d00/modules.html#geoparser", [
+        [ "Tâche asynchrone", "d1/d00/modules.html#task", null ],
+        [ "Pipeline global", "d1/d00/modules.html#pipeline", null ],
+        [ "Classes du pipeline", "d1/d00/modules.html#parsing", null ]
+      ] ],
+      [ "Éléments interactifs", "d1/d00/modules.html#elements", [
+        [ "Hiérarchie", "d1/d00/modules.html#hierarchy", null ],
+        [ "Pointeurs résolus post-parsing", "d1/d00/modules.html#pointers", null ],
+        [ "État opérationnel des aiguillages", "d1/d00/modules.html#activestate", null ],
+        [ "Énumérations clés", "d1/d00/modules.html#enums", null ]
+      ] ],
+      [ "Coordonnées", "d1/d00/modules.html#coords", null ]
+    ] ],
+    [ "Module PCC — Graphe logique et rendu TCO", "d8/d02/pcc.html", [
+      [ "Vue d'ensemble", "d8/d02/pcc.html#pcc_overview", null ],
+      [ "Nœuds et arêtes", "d8/d02/pcc.html#pcc_nodes", null ],
+      [ "PCCGraph — Conteneur", "d8/d02/pcc.html#pcc_graph", null ],
+      [ "PCCGraphBuilder — Construction", "d8/d02/pcc.html#pcc_builder", null ],
+      [ "PCCLayout — Positionnement", "d8/d02/pcc.html#pcc_layout", null ]
+    ] ],
+    [ "Références", "d5/d01/references.html", [
+      [ "Références externes", "d5/d01/references.html#rextern", [
+        [ "C++ moderne", "d5/d01/references.html#cpp", null ],
+        [ "Architecture logicielle", "d5/d01/references.html#archiconcept", null ]
+      ] ]
+    ] ],
+    [ "Classes", "annotated.html", [
+      [ "Liste des classes", "annotated.html", "annotated_dup" ],
+      [ "Index des classes", "classes.html", null ],
+      [ "Hiérarchie des classes", "hierarchy.html", "hierarchy" ],
+      [ "Membres de classe", "functions.html", [
+        [ "Tout", "functions.html", "functions_dup" ],
+        [ "Fonctions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", null ],
+        [ "Définitions de type", "functions_type.html", null ]
+      ] ]
+    ] ],
+    [ "Fichiers", "files.html", [
+      [ "Liste des fichiers", "files.html", "files_dup" ],
+      [ "Membres de fichier", "globals.html", [
+        [ "Tout", "globals.html", null ],
+        [ "Fonctions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
+        [ "Définitions de type", "globals_type.html", null ],
+        [ "Énumérations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -90,11 +95,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"AboutDialog_8cpp.html",
-"classGeometryUtils.html#a756f72673be859edd9f14ba8b0985177",
-"classSwitchBlock.html#aba30776838f3363fc7e93bcb7ce7888c",
-"index.html#elements"
+"annotated.html",
+"d4/d01/classLatLon.html#a72ddde59606bc3160a064f74654bd88b",
+"d9/d02/classSwitchBlock.html#af65a62f314ce4544ce687eacc13786e8",
+"df/d01/classCoordinateXY.html#ad8cc600d7896c329e410cce0c1e45a70"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';
+var SYNCOFFMSG = 'cliquez pour activer la synchronisation du panel';

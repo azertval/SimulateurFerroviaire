@@ -1,0 +1,36 @@
+<map id="PCCEdge" name="PCCEdge">
+<area shape="rect" id="Node000001" title="Connexion orientée entre deux PCCNode du PCCGraph." alt="" coords="186,1009,294,1235"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="57,1367,239,1433"/>
+<area shape="poly" id="edge17_Node000015_Node000001" title=" " alt="" coords="203,1236,195,1260,165,1352,160,1351,190,1258,198,1234"/>
+<area shape="rect" id="Node000002" href="$d1/d03/classPCCNode.html" title="Nœud abstrait du graphe PCC." alt="" coords="308,1565,433,1911"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="314,1566,299,1503,287,1435,281,1381,276,1328,267,1259,265,1251,271,1250,272,1258,282,1327,287,1381,292,1434,304,1502,319,1564"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="463,493,542,559"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="544,553,590,593,638,646,660,677,677,710,688,746,692,783,692,1401,688,1455,680,1478,666,1504,645,1536,620,1566,564,1620,505,1664,449,1699,446,1694,502,1660,561,1615,616,1562,641,1533,662,1501,676,1475,683,1454,687,1401,687,783,683,747,672,712,655,680,634,649,587,597,541,557"/>
+<area shape="rect" id="Node000006" href="$d8/d02/classInteractiveElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="368,1019,541,1225"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="503,559,467,1003,462,1003,498,559"/>
+<area shape="rect" id="Node000007" href="$db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="149,621,331,947"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="464,541,420,558,378,585,343,619,339,615,374,581,418,553,462,536"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="437,364,568,444"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="505,458,505,493,500,493,500,458"/>
+<area shape="rect" id="Node000005" href="$d2/d00/classShuntingElement.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="374,1297,535,1503"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="432,1504,420,1550,415,1548,427,1502"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="457,1238,457,1297,452,1297,452,1238"/>
+<area shape="poly" id="edge19_Node000001_Node000007" title=" " alt="" coords="243,947,243,993,237,993,237,947"/>
+<area shape="poly" id="edge18_Node000002_Node000007" title=" " alt="" coords="152,918,117,978,83,1045,53,1118,28,1194,13,1272,9,1351,12,1390,19,1428,31,1465,46,1501,69,1537,96,1570,127,1600,160,1627,230,1672,294,1704,292,1709,227,1676,157,1631,123,1604,92,1574,64,1541,42,1504,26,1467,14,1429,7,1391,4,1351,8,1272,23,1193,48,1116,78,1043,112,975,147,915"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="333,926,383,1004,379,1007,329,928"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="64,493,165,559"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="127,558,143,596,147,605,142,608,138,598,122,560"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="43,364,186,444"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="117,458,117,493,112,493,112,458"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="46,235,183,315"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="117,328,117,364,112,364,112,328"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="33,120,196,185"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="117,199,117,235,112,235,112,199"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="65,5,164,71"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="117,85,117,120,112,120,112,85"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="198,493,282,559"/>
+<area shape="poly" id="edge14_Node000007_Node000013" title=" " alt="" coords="243,559,243,605,237,605,237,559"/>
+<area shape="rect" id="Node000014" href="$d2/d03/structPCCPosition.html" title="Position logique d&#39;un nœud dans le schéma PCC." alt="" coords="559,1357,651,1443"/>
+<area shape="poly" id="edge15_Node000002_Node000014" title=" " alt="" coords="586,1444,550,1504,499,1578,446,1648,442,1644,494,1575,546,1501,581,1442"/>
+<area shape="poly" id="edge16_Node000002_Node000015" title=" " alt="" coords="157,1432,172,1484,197,1540,245,1607,298,1666,294,1670,241,1611,192,1543,167,1486,152,1434"/>
+</map>

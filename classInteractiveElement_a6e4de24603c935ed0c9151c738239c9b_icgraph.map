@@ -1,7 +1,0 @@
-<map id="InteractiveElement::getId" name="InteractiveElement::getId">
-<area shape="rect" id="Node000001" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="280,27,427,67"/>
-<area shape="rect" id="Node000002" href="$classSwitchBlock.html#ad175b6ec2b9f3f988eb10991f726c160" title="Enregistre les pointeurs root/normal/deviation après parsing." alt="" coords="5,5,232,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="266,39,220,33,221,28,267,34"/>
-<area shape="rect" id="Node000003" href="$classStraightBlock.html#a77cd67bf5f6e2d8b10fa845c63461c5c" title="Enregistre les pointeurs prev/next après parsing." alt="" coords="17,55,221,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,60,221,66,221,60,266,55"/>
-</map>

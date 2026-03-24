@@ -1,7 +1,10 @@
 <map id="SimulateurFerroviaire/Modules/PCC" name="SimulateurFerroviaire/Modules/PCC">
 <area shape="rect" id="node1" href="dir_713206489b3f2e638ce64611b3101c39.html" title="InteractiveElements" alt="" coords="27,125,181,151"/>
-<area shape="rect" id="node2" href="dir_7c738cac3c5b225040bd3ab526c6dac3.html" title="PCC" alt="" coords="80,52,128,77"/>
-<area shape="poly" id="edge1" href="dir_000016_000012.html" alt="" coords="107,78,107,112,101,112,101,78"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000016_000012.html" title="3" alt="" coords="108,100,117,114"/>
+<area shape="rect" id="node2" href="dir_7c738cac3c5b225040bd3ab526c6dac3.html" title="PCC" alt="" coords="107,52,155,77"/>
+<area shape="poly" id="edge1" href="dir_000016_000011.html" alt="" coords="129,79,116,114,111,112,124,77"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000016_000011.html" title="5" alt="" coords="118,104,127,119"/>
+<area shape="rect" id="node3" href="dir_b70de4a9b2a9f967d011983a1fdf80d1.html" title="Engine" alt="" coords="205,125,272,151"/>
+<area shape="poly" id="edge2" href="dir_000016_000005.html" alt="" coords="149,75,211,115,208,120,147,80"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000016_000005.html" title="7" alt="" coords="206,101,215,115"/>
 <area shape="rect" id="clust1" href="dir_387a2147fe1fbdf0efef36368214e4d3.html" title="Modules" alt="" coords="16,16,192,161"/>
 </map>

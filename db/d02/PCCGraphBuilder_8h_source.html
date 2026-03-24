@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire:  Fichier source de SimulateurFerroviaire/Modules/PCC/PCCGraphBuilder.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('db/d02/PCCGraphBuilder_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">PCCGraphBuilder.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/d02/PCCGraphBuilder_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="../../d8/d00/PCCGraph_8h.html">PCCGraph.h</a>&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="../../dd/d00/Logger_8h.html">Engine/Core/Logger/Logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">class </span><a class="code hl_class" href="../../d0/d02/classTopologyData.html">TopologyData</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../d8/d01/classPCCGraphBuilder.html">   35</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d8/d01/classPCCGraphBuilder.html">PCCGraphBuilder</a></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d01/classPCCGraphBuilder.html#abf374147607f4e1db014ab3c96af68ad">build</a>(<a class="code hl_class" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>&amp; graph, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="../../d8/d01/classPCCGraphBuilder.html#aa67c78937c895517395f43762f92ad76">   55</a></span>    <a class="code hl_function" href="../../d8/d01/classPCCGraphBuilder.html#aa67c78937c895517395f43762f92ad76">PCCGraphBuilder</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d01/classPCCGraphBuilder.html#a362f748781b7ad77586d5d902d17c2ea">buildNodes</a>(<a class="code hl_class" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>&amp; graph, <span class="keyword">const</span> <a class="code hl_class" href="../../d0/d02/classTopologyData.html">TopologyData</a>&amp; topo, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d01/classPCCGraphBuilder.html#aa7ae7dc408d98356eda70331b21129ff">buildEdges</a>(<a class="code hl_class" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>&amp; graph, <span class="keyword">const</span> <a class="code hl_class" href="../../d0/d02/classTopologyData.html">TopologyData</a>&amp; topo, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="../../d8/d01/classPCCGraphBuilder.html#acc26c14e5611918614203f69422ae1d3">makeEdgeKey</a>(<span class="keyword">const</span> std::string&amp; idA, <span class="keyword">const</span> std::string&amp; idB);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d01/classPCCGraphBuilder.html#a937a648158c0c8bacd3273b6cc0ebdb8">tagCrossovers</a>(<a class="code hl_class" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>&amp; graph, <span class="keyword">const</span> <a class="code hl_class" href="../../d0/d02/classTopologyData.html">TopologyData</a>&amp; topo, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d01/classPCCGraphBuilder.html#a2128658a25ce447feac28a22f8b796b2">computeDeviationSides</a>(<a class="code hl_class" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>&amp; graph, <span class="keyword">const</span> <a class="code hl_class" href="../../d0/d02/classTopologyData.html">TopologyData</a>&amp; topo, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>};</div>
+</div>
+<div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="../../dd/d00/Logger_8h.html">Logger.h</a></div><div class="ttdoc">Système de journalisation à 5 niveaux de trace, un fichier par moteur.</div></div>
+<div class="ttc" id="aPCCGraph_8h_html"><div class="ttname"><a href="../../d8/d00/PCCGraph_8h.html">PCCGraph.h</a></div><div class="ttdoc">Conteneur propriétaire du graphe PCC.</div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="../../db/d03/classLogger.html">Logger</a></div><div class="ttdoc">Journaliseur associé à un moteur nommé.</div><div class="ttdef"><b>Definition</b> Logger.h:103</div></div>
+<div class="ttc" id="aclassPCCGraphBuilder_html"><div class="ttname"><a href="../../d8/d01/classPCCGraphBuilder.html">PCCGraphBuilder</a></div><div class="ttdoc">Constructeur statique du PCCGraph depuis TopologyRepository.</div><div class="ttdef"><b>Definition</b> PCCGraphBuilder.h:36</div></div>
+<div class="ttc" id="aclassPCCGraphBuilder_html_a2128658a25ce447feac28a22f8b796b2"><div class="ttname"><a href="../../d8/d01/classPCCGraphBuilder.html#a2128658a25ce447feac28a22f8b796b2">PCCGraphBuilder::computeDeviationSides</a></div><div class="ttdeci">static void computeDeviationSides(PCCGraph &amp;graph, const TopologyData &amp;topo, Logger &amp;logger)</div><div class="ttdoc">Calcule le côté géographique de la déviation pour chaque switch.</div><div class="ttdef"><b>Definition</b> PCCGraphBuilder.cpp:258</div></div>
+<div class="ttc" id="aclassPCCGraphBuilder_html_a362f748781b7ad77586d5d902d17c2ea"><div class="ttname"><a href="../../d8/d01/classPCCGraphBuilder.html#a362f748781b7ad77586d5d902d17c2ea">PCCGraphBuilder::buildNodes</a></div><div class="ttdeci">static void buildNodes(PCCGraph &amp;graph, const TopologyData &amp;topo, Logger &amp;logger)</div><div class="ttdoc">Passe 1 — crée un nœud PCC pour chaque bloc de la topologie.</div><div class="ttdef"><b>Definition</b> PCCGraphBuilder.cpp:56</div></div>
+<div class="ttc" id="aclassPCCGraphBuilder_html_a937a648158c0c8bacd3273b6cc0ebdb8"><div class="ttname"><a href="../../d8/d01/classPCCGraphBuilder.html#a937a648158c0c8bacd3273b6cc0ebdb8">PCCGraphBuilder::tagCrossovers</a></div><div class="ttdeci">static void tagCrossovers(PCCGraph &amp;graph, const TopologyData &amp;topo, Logger &amp;logger)</div><div class="ttdef"><b>Definition</b> PCCGraphBuilder.cpp:207</div></div>
+<div class="ttc" id="aclassPCCGraphBuilder_html_aa67c78937c895517395f43762f92ad76"><div class="ttname"><a href="../../d8/d01/classPCCGraphBuilder.html#aa67c78937c895517395f43762f92ad76">PCCGraphBuilder::PCCGraphBuilder</a></div><div class="ttdeci">PCCGraphBuilder()=delete</div><div class="ttdoc">Interdit l'instanciation — classe utilitaire statique.</div></div>
+<div class="ttc" id="aclassPCCGraphBuilder_html_aa7ae7dc408d98356eda70331b21129ff"><div class="ttname"><a href="../../d8/d01/classPCCGraphBuilder.html#aa7ae7dc408d98356eda70331b21129ff">PCCGraphBuilder::buildEdges</a></div><div class="ttdeci">static void buildEdges(PCCGraph &amp;graph, const TopologyData &amp;topo, Logger &amp;logger)</div><div class="ttdoc">Passe 2 — résout les connexions et crée les arêtes.</div><div class="ttdef"><b>Definition</b> PCCGraphBuilder.cpp:76</div></div>
+<div class="ttc" id="aclassPCCGraphBuilder_html_abf374147607f4e1db014ab3c96af68ad"><div class="ttname"><a href="../../d8/d01/classPCCGraphBuilder.html#abf374147607f4e1db014ab3c96af68ad">PCCGraphBuilder::build</a></div><div class="ttdeci">static void build(PCCGraph &amp;graph, Logger &amp;logger)</div><div class="ttdoc">Construit le PCCGraph depuis le contenu de TopologyRepository.</div><div class="ttdef"><b>Definition</b> PCCGraphBuilder.cpp:19</div></div>
+<div class="ttc" id="aclassPCCGraphBuilder_html_acc26c14e5611918614203f69422ae1d3"><div class="ttname"><a href="../../d8/d01/classPCCGraphBuilder.html#acc26c14e5611918614203f69422ae1d3">PCCGraphBuilder::makeEdgeKey</a></div><div class="ttdeci">static std::string makeEdgeKey(const std::string &amp;idA, const std::string &amp;idB)</div><div class="ttdoc">Construit une clé canonique pour une paire de blocs.</div><div class="ttdef"><b>Definition</b> PCCGraphBuilder.cpp:198</div></div>
+<div class="ttc" id="aclassPCCGraph_html"><div class="ttname"><a href="../../d2/d00/classPCCGraph.html">PCCGraph</a></div><div class="ttdoc">Conteneur propriétaire du graphe PCC — nœuds, arêtes et index.</div><div class="ttdef"><b>Definition</b> PCCGraph.h:50</div></div>
+<div class="ttc" id="aclassTopologyData_html"><div class="ttname"><a href="../../d0/d02/classTopologyData.html">TopologyData</a></div><div class="ttdoc">Conteneur partagé entre tous les modules métier et la couche HMI.</div><div class="ttdef"><b>Definition</b> TopologyData.h:29</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_7c738cac3c5b225040bd3ab526c6dac3.html">PCC</a></li><li class="navelem"><a class="el" href="../../db/d02/PCCGraphBuilder_8h.html">PCCGraphBuilder.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<map id="SimulateurFerroviaire/Engine/HMI/PCCPanel/PCCPanel.h" name="SimulateurFerroviaire/Engine/HMI/PCCPanel/PCCPanel.h">
+<area shape="rect" id="Node000001" title="Panneau PCC superposé togglable, affiché par&#45;dessus la carte Leaflet." alt="" coords="355,5,520,60"/>
+<area shape="rect" id="Node000002" href="$da/d00/MainWindow_8h.html" title="Déclaration de la fenêtre principale de l&#39;application." alt="" coords="235,115,434,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="402,72,356,117,352,113,399,68"/>
+<area shape="rect" id="Node000007" href="$d4/d03/PCCPanel_8cpp.html" title="Implémentation du panneau PCC superposé togglable." alt="" coords="457,108,623,163"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="476,68,515,106,511,110,472,72"/>
+<area shape="rect" id="Node000003" href="$d4/d00/Application_8h.html" title="Gestion du cycle de vie de l&#39;application Win32." alt="" coords="125,211,318,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="303,166,246,213,243,209,299,162"/>
+<area shape="rect" id="Node000006" href="$d3/d03/MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="342,211,557,251"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="370,162,428,209,424,213,367,166"/>
+<area shape="rect" id="Node000004" href="$d2/d02/Application_8cpp.html" title="Implémentation du cycle de vie de l&#39;application Win32." alt="" coords="5,299,213,339"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="187,261,136,301,133,296,184,257"/>
+<area shape="rect" id="Node000005" href="$db/d00/SimulateurFerroviaire_8cpp.html" title="Point d&#39;entrée unique de l&#39;application Win32." alt="" coords="237,299,432,339"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="259,257,311,296,308,301,256,261"/>
+</map>

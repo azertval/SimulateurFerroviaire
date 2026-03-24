@@ -1,7 +1,0 @@
-<map id="InvalidGeoJsonFormatException" name="InvalidGeoJsonFormatException">
-<area shape="rect" id="Node000001" title="Levée quand le fichier GeoJSON est malformé ou ne contient aucune géométrie LineString exploitable." alt="" coords="5,232,251,297"/>
-<area shape="rect" id="Node000002" href="$classRailwayParserException.html" title="Classe de base pour toutes les erreurs du parseur ferroviaire." alt="" coords="31,119,225,184"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,198,131,232,125,232,125,198"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="63,5,193,71"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="131,84,131,119,125,119,125,84"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="Logger::formatLogLine" name="Logger::formatLogLine">
-<area shape="rect" id="Node000001" title="Formate une ligne de trace complète." alt="" coords="184,5,352,31"/>
-<area shape="rect" id="Node000002" href="$classLogger.html#ad3f8120f97679ef581fe34b3c220fe90" title="Écrit une ligne de trace dans le fichier et la sortie de débogage." alt="" coords="5,5,136,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,21,136,21,136,15,170,15"/>
-</map>

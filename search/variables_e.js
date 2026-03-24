@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['pass_5fthrough_0',['PASS_THROUGH',['../classNodeDegreeThresholds.html#a4c0d965e0db81f01f6f2668511588b6f',1,'NodeDegreeThresholds']]],
-  ['pi_1',['PI',['../classGeometryUtils.html#ac6b38319d2e8ef20763a2010dc18ddae',1,'GeometryUtils']]],
-  ['prev_2',['prev',['../structStraightBlock_1_1StraightNeighbours.html#aedc663023d362e36b4990bfce054f9ba',1,'StraightBlock::StraightNeighbours']]]
+  ['radians_5fto_5fdegrees_0',['RADIANS_TO_DEGREES',['../db/d01/classGeometryUtils.html#a756f72673be859edd9f14ba8b0985177',1,'GeometryUtils']]],
+  ['root_1',['root',['../d2/d03/structSwitchBlock_1_1SwitchBranches.html#ab5e0217ec069bb25c1e3c3af1eb2e38a',1,'SwitchBlock::SwitchBranches']]]
 ];

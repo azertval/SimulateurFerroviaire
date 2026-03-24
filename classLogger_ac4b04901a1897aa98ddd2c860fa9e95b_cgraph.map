@@ -1,9 +1,0 @@
-<map id="Logger::Logger" name="Logger::Logger">
-<area shape="rect" id="Node000001" title="Construit un Logger pour le moteur spécifié." alt="" coords="5,55,124,80"/>
-<area shape="rect" id="Node000002" href="$classLogger.html#a44caa51276b396938aa0d2b0fa087a5b" title="Retourne l&#39;horodatage courant au format [HH:MM:SS]." alt="" coords="172,5,389,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,52,171,39,208,31,209,36,173,45,119,57"/>
-<area shape="rect" id="Node000003" href="$Logger_8cpp.html#a1c65afe69de9e58410454399683cef61" title=" " alt="" coords="193,55,368,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="124,65,179,65,179,70,124,70"/>
-<area shape="rect" id="Node000004" href="$classLogger.html#aa7d10eb28cdcf56612e1604e7cd4b95b" title="Envoie une chaîne vers la sortie de débogage Visual Studio." alt="" coords="178,104,383,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="122,77,212,98,211,104,120,83"/>
-</map>

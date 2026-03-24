@@ -1,5 +1,0 @@
-<map id="Application::registerWindowClass" name="Application::registerWindowClass">
-<area shape="rect" id="Node000001" title="Enregistre la classe de fenêtre Win32 (WNDCLASSEXW)." alt="" coords="229,5,435,45"/>
-<area shape="rect" id="Node000002" href="$classApplication.html#a719cf091afd2276d52f9a58e4962ebfb" title="Construit l&#39;application et enregistre la classe de fenêtre." alt="" coords="5,13,181,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,28,182,28,182,23,216,23"/>
-</map>

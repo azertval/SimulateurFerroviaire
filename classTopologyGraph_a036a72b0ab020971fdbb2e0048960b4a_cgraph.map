@@ -1,7 +1,0 @@
-<map id="TopologyGraph::computeReachableLength" name="TopologyGraph::computeReachableLength">
-<area shape="rect" id="Node000001" title="Marche le graphe depuis fromNodeId vers towardNodeId et accumule les longueurs." alt="" coords="5,27,257,67"/>
-<area shape="rect" id="Node000002" href="$classTopologyGraph.html#a8901749abf5847458808e8eec8a72af6" title="Retourne l&#39;ID de l&#39;arête reliant nodeIdA et nodeIdB, ou nullopt." alt="" coords="305,5,545,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="257,32,291,29,292,34,258,37"/>
-<area shape="rect" id="Node000003" href="$classTopologyGraph.html#a7c086df2f9774459710f88d37158b745" title="Retourne le degré d&#39;un nœud (nombre d&#39;arêtes incidentes)." alt="" coords="328,55,523,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="258,57,315,62,314,67,257,62"/>
-</map>

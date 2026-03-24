@@ -1,7 +1,0 @@
-<map id="TopologyEdge::computePlanarLength" name="TopologyEdge::computePlanarLength">
-<area shape="rect" id="Node000001" title="Calcule la longueur planaire de geometry." alt="" coords="288,23,507,63"/>
-<area shape="rect" id="Node000002" href="$classTopologyEdge.html#ae630380ed8206e650b0221cb8bd1b35f" title="Recalcule et met à jour lengthMeters depuis la géométrie actuelle." alt="" coords="5,5,240,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="274,35,240,31,241,26,274,29"/>
-<area shape="rect" id="Node000003" href="$classTopologyEdge.html#a675200794b0a30e7fbe353cd494121a6" title="Construit une arête complète avec calcul automatique de longueur." alt="" coords="17,55,228,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="275,57,229,61,228,55,274,51"/>
-</map>

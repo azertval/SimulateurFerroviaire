@@ -1,9 +1,0 @@
-<map id="SwitchBlock::SwitchBranches" name="SwitchBlock::SwitchBranches">
-<area shape="rect" id="Node000001" title="Branches topologiques d&#39;un SwitchBlock." alt="" coords="5,1005,209,1071"/>
-<area shape="rect" id="Node000002" href="$classShuntingElement.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="27,708,188,913"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,914,110,988,105,988,105,914"/>
-<area shape="rect" id="Node000003" href="$classInteractiveElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="21,453,194,659"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="110,672,110,708,105,708,105,672"/>
-<area shape="rect" id="Node000004" href="$classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="17,5,198,391"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="110,391,110,437,105,437,105,391"/>
-</map>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['fileopendialog_0',['FileOpenDialog',['../classFileOpenDialog.html',1,'']]],
-  ['filesavedialog_1',['FileSaveDialog',['../classFileSaveDialog.html',1,'']]]
+  ['doubleswitchdetector_0',['DoubleSwitchDetector',['../d3/d02/classDoubleSwitchDetector.html',1,'']]]
 ];

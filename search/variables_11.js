@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['terminus_0',['TERMINUS',['../classNodeDegreeThresholds.html#ad60b04e2144d28a060486328803f1963',1,'NodeDegreeThresholds']]],
-  ['topologygraph_1',['topologyGraph',['../structGraphBuildResult.html#a988e927be6e037464638d72873949207',1,'GraphBuildResult']]]
+  ['utm_5ffalse_5feasting_0',['utm_false_easting',['../d3/d00/classGeographicProjection.html#a3bfb30783df19255c7f614b26088c0f4',1,'GeographicProjection::UTM_FALSE_EASTING'],['../db/d01/classGeometryUtils.html#a7bdc5d3c45630a244e7f82f53afa19a5',1,'GeometryUtils::UTM_FALSE_EASTING']]],
+  ['utm_5ffalse_5fnorthing_5fsouth_1',['utm_false_northing_south',['../d3/d00/classGeographicProjection.html#a170119ead4ab619947f7cda1dc67521e',1,'GeographicProjection::UTM_FALSE_NORTHING_SOUTH'],['../db/d01/classGeometryUtils.html#a60a1eaeaaa2ea664956e255502fc7e7d',1,'GeometryUtils::UTM_FALSE_NORTHING_SOUTH']]],
+  ['utm_5fscale_5ffactor_2',['utm_scale_factor',['../d3/d00/classGeographicProjection.html#a213147daeed5a4d6fe82e982bea59fed',1,'GeographicProjection::UTM_SCALE_FACTOR'],['../db/d01/classGeometryUtils.html#acff318b1df11d2b382346ce48c1b7abb',1,'GeometryUtils::UTM_SCALE_FACTOR']]],
+  ['utmzonenumber_3',['utmZoneNumber',['../dc/d01/structGraphBuildResult.html#a97599d471cf5311b3a4b8dcdad7ce1dc',1,'GraphBuildResult']]]
 ];

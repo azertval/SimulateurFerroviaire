@@ -1,7 +1,0 @@
-<map id="SwitchBlock::toString" name="SwitchBlock::toString">
-<area shape="rect" id="Node000001" title="Représentation textuelle pour le débogage." alt="" coords="5,31,165,56"/>
-<area shape="rect" id="Node000002" href="$classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e" title=" " alt="" coords="218,5,385,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,31,204,27,205,32,166,37"/>
-<area shape="rect" id="Node000003" href="$classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7" title=" " alt="" coords="213,55,389,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,50,200,53,200,59,165,55"/>
-</map>

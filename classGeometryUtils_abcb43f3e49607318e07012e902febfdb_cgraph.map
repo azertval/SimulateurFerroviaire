@@ -1,5 +1,0 @@
-<map id="GeometryUtils::wgs84ToMetricUtm" name="GeometryUtils::wgs84ToMetricUtm">
-<area shape="rect" id="Node000001" title="Convertit une coordonnée WGS&#45;84 en mètres UTM." alt="" coords="5,13,256,38"/>
-<area shape="rect" id="Node000002" href="$classGeometryUtils.html#a0a57b43055d32f595a7c84dbd7d098e3" title="Retourne le méridien central (degrés) d&#39;une zone UTM." alt="" coords="304,5,503,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="256,23,290,23,290,28,256,28"/>
-</map>

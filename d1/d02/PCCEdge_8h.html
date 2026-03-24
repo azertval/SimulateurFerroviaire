@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire: Référence du fichier SimulateurFerroviaire/Modules/PCC/PCCEdge.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d1/d02/PCCEdge_8h.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Énumérations</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier PCCEdge.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Connexion orientée entre deux nœuds du graphe PCC.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="../../dd/d00/Logger_8h_source.html">Engine/Core/Logger/Logger.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de PCCEdge.h:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d0/d03/PCCEdge_8h__incl.svg" width="552" height="212"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d0/d00/PCCEdge_8h__dep__incl.svg" width="1887" height="696"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="../../d1/d02/PCCEdge_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d03/classPCCEdge.html">PCCEdge</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connexion orientée entre deux <a class="el" href="../../d1/d03/classPCCNode.html">PCCNode</a> du <a class="el" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>.  <a href="../../d2/d03/classPCCEdge.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:a9a8d762dd6dbdb3a831d977a55344d16" id="r_a9a8d762dd6dbdb3a831d977a55344d16"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16">PCCEdgeRole</a> { <a class="el" href="../../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16a8c5e50fab3748e9c53a6863b3dce1401">STRAIGHT</a>
+, <a class="el" href="../../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16aea2adde5c377cb5e09d14b71935c6f32">ROOT</a>
+, <a class="el" href="../../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16a1e23852820b9154316c7c06e2b7ba051">NORMAL</a>
+, <a class="el" href="../../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16a8ec95e82a6c348f798243a58891e546c">DEVIATION</a>
+ }</td></tr>
+<tr class="memdesc:a9a8d762dd6dbdb3a831d977a55344d16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rôle sémantique d'une arête dans la topologie ferroviaire.  <a href="../../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9a8d762dd6dbdb3a831d977a55344d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Connexion orientée entre deux nœuds du graphe PCC. </p>
+<p>Une arête relie deux <a class="el" href="../../d1/d03/classPCCNode.html">PCCNode</a> et porte un rôle sémantique qui correspond à la nature de la connexion dans la topologie ferroviaire. Permet à <a class="el" href="../../d9/d01/classTCORenderer.html">TCORenderer</a> de choisir couleur et style sans interroger les nœuds source.</p>
+<dl class="section user"><dt>Ownership</dt><dd>Les arêtes sont possédées par <a class="el" href="../../d2/d00/classPCCGraph.html">PCCGraph</a> via <code>unique_ptr</code>. Les pointeurs <code>from</code> et <code>to</code> sont non-propriétaires — leur durée de vie est garantie par <a class="el" href="../../d2/d00/classPCCGraph.html">PCCGraph</a> qui possède également les nœuds.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Les arêtes sont orientées (from → to) pour simplifier le parcours gauche → droite dans <a class="el" href="../../d4/d01/classPCCLayout.html">PCCLayout</a>. Le graphe reste logiquement non-orienté — chaque connexion génère une arête dans chaque sens. </dd></dl>
+</div><h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a id="a9a8d762dd6dbdb3a831d977a55344d16" name="a9a8d762dd6dbdb3a831d977a55344d16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a8d762dd6dbdb3a831d977a55344d16">&#9670;&#160;</a></span>PCCEdgeRole</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="../../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16">PCCEdgeRole</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rôle sémantique d'une arête dans la topologie ferroviaire. </p>
+<ul>
+<li>STRAIGHT : connexion entre deux blocs adjacents sans switch.</li>
+<li>ROOT : connexion sur la branche root d'un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>.</li>
+<li>NORMAL : connexion sur la branche normale d'un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>.</li>
+<li>DEVIATION : connexion sur la branche déviée d'un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>. </li>
+</ul>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a9a8d762dd6dbdb3a831d977a55344d16a8c5e50fab3748e9c53a6863b3dce1401" name="a9a8d762dd6dbdb3a831d977a55344d16a8c5e50fab3748e9c53a6863b3dce1401"></a>STRAIGHT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9a8d762dd6dbdb3a831d977a55344d16aea2adde5c377cb5e09d14b71935c6f32" name="a9a8d762dd6dbdb3a831d977a55344d16aea2adde5c377cb5e09d14b71935c6f32"></a>ROOT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9a8d762dd6dbdb3a831d977a55344d16a1e23852820b9154316c7c06e2b7ba051" name="a9a8d762dd6dbdb3a831d977a55344d16a1e23852820b9154316c7c06e2b7ba051"></a>NORMAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9a8d762dd6dbdb3a831d977a55344d16a8ec95e82a6c348f798243a58891e546c" name="a9a8d762dd6dbdb3a831d977a55344d16a8ec95e82a6c348f798243a58891e546c"></a>DEVIATION&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_7c738cac3c5b225040bd3ab526c6dac3.html">PCC</a></li><li class="navelem"><a class="el" href="../../d1/d02/PCCEdge_8h.html">PCCEdge.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

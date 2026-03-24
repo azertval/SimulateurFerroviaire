@@ -1,7 +1,0 @@
-<map id="PCCNode" name="PCCNode">
-<area shape="rect" id="Node000001" title="Nœud abstrait du graphe PCC." alt="" coords="110,5,234,371"/>
-<area shape="rect" id="Node000002" href="$classPCCStraightNode.html" title="Nœud PCC issu d&#39;un StraightBlock." alt="" coords="5,509,160,614"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,384,98,509,93,508,123,383"/>
-<area shape="rect" id="Node000003" href="$classPCCSwitchNode.html" title="Nœud PCC issu d&#39;un SwitchBlock." alt="" coords="184,419,339,704"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,383,230,418,225,419,216,385"/>
-</map>

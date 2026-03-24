@@ -1,0 +1,5 @@
+<map id="PCCStraightNode" name="PCCStraightNode">
+<area shape="rect" id="Node000001" title="Nœud PCC issu d&#39;un StraightBlock." alt="" coords="5,499,160,604"/>
+<area shape="rect" id="Node000002" href="$d1/d03/classPCCNode.html" title="Nœud abstrait du graphe PCC." alt="" coords="20,5,145,451"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,464,85,498,80,498,80,464"/>
+</map>

@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire:  Fichier source de SimulateurFerroviaire/Modules/PCC/PCCLayout.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d6/d01/PCCLayout_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">PCCLayout.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d6/d01/PCCLayout_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &quot;<a class="code" href="../../d8/d00/PCCGraph_8h.html">PCCGraph.h</a>&quot;</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &quot;<a class="code" href="../../dd/d00/Logger_8h.html">Engine/Core/Logger/Logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="foldopen" id="foldopen00053" data-start="{" data-end="};">
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="../../d4/d01/classPCCLayout.html">   53</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d4/d01/classPCCLayout.html">PCCLayout</a></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>{</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/d01/classPCCLayout.html#ab4cc295476fd4fa74b34318b127b3ab0">compute</a>(<a class="code hl_class" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>&amp; graph, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="../../d4/d01/classPCCLayout.html#aa0f8da662f20007eb5d7c1decae325d6">   66</a></span>    <a class="code hl_function" href="../../d4/d01/classPCCLayout.html#aa0f8da662f20007eb5d7c1decae325d6">PCCLayout</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="};">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="../../d2/d02/structPCCLayout_1_1BFSItem.html">   79</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="../../d2/d02/structPCCLayout_1_1BFSItem.html">BFSItem</a></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="../../d2/d02/structPCCLayout_1_1BFSItem.html#a443281483c9f9d45f518fcac4d5cd8bd">   81</a></span>        <a class="code hl_class" href="../../d1/d03/classPCCNode.html">PCCNode</a>* <a class="code hl_variable" href="../../d2/d02/structPCCLayout_1_1BFSItem.html#a443281483c9f9d45f518fcac4d5cd8bd">node</a>;               </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="../../d2/d02/structPCCLayout_1_1BFSItem.html#aee922d30e5ff7cbe83552b0ac5fabadf">   82</a></span>        <span class="keywordtype">int</span>      <a class="code hl_variable" href="../../d2/d02/structPCCLayout_1_1BFSItem.html#aee922d30e5ff7cbe83552b0ac5fabadf">x</a>;                  </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="../../d2/d02/structPCCLayout_1_1BFSItem.html#ac64ac3cde70ab946b4c20655d9aa8345">   83</a></span>        <span class="keywordtype">int</span>      <a class="code hl_variable" href="../../d2/d02/structPCCLayout_1_1BFSItem.html#ac64ac3cde70ab946b4c20655d9aa8345">y</a>;                  </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="../../d2/d02/structPCCLayout_1_1BFSItem.html#aa25d5e15555ef8e61b6f2334614da01f">   84</a></span>        <span class="keywordtype">bool</span>     <a class="code hl_variable" href="../../d2/d02/structPCCLayout_1_1BFSItem.html#aa25d5e15555ef8e61b6f2334614da01f">arrivedViaDeviation</a>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    };</div>
+</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">static</span> std::vector&lt;PCCNode*&gt; <a class="code hl_function" href="../../d4/d01/classPCCLayout.html#aa70b44899546415d337088f06365db90">findTermini</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>&amp; graph, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="../../d4/d01/classPCCLayout.html#ab4f624049096886733035938bc5499fc">runBFS</a>(<a class="code hl_class" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>&amp; graph,</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <a class="code hl_class" href="../../d1/d03/classPCCNode.html">PCCNode</a>* start,</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        std::unordered_set&lt;PCCNode*&gt;&amp; visited,</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordtype">int</span>                           offsetX,</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>};</div>
+</div>
+<div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="../../dd/d00/Logger_8h.html">Logger.h</a></div><div class="ttdoc">Système de journalisation à 5 niveaux de trace, un fichier par moteur.</div></div>
+<div class="ttc" id="aPCCGraph_8h_html"><div class="ttname"><a href="../../d8/d00/PCCGraph_8h.html">PCCGraph.h</a></div><div class="ttdoc">Conteneur propriétaire du graphe PCC.</div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="../../db/d03/classLogger.html">Logger</a></div><div class="ttdoc">Journaliseur associé à un moteur nommé.</div><div class="ttdef"><b>Definition</b> Logger.h:103</div></div>
+<div class="ttc" id="aclassPCCGraph_html"><div class="ttname"><a href="../../d2/d00/classPCCGraph.html">PCCGraph</a></div><div class="ttdoc">Conteneur propriétaire du graphe PCC — nœuds, arêtes et index.</div><div class="ttdef"><b>Definition</b> PCCGraph.h:50</div></div>
+<div class="ttc" id="aclassPCCLayout_html"><div class="ttname"><a href="../../d4/d01/classPCCLayout.html">PCCLayout</a></div><div class="ttdoc">Calculateur de positions logiques X/Y du PCCGraph.</div><div class="ttdef"><b>Definition</b> PCCLayout.h:54</div></div>
+<div class="ttc" id="aclassPCCLayout_html_aa0f8da662f20007eb5d7c1decae325d6"><div class="ttname"><a href="../../d4/d01/classPCCLayout.html#aa0f8da662f20007eb5d7c1decae325d6">PCCLayout::PCCLayout</a></div><div class="ttdeci">PCCLayout()=delete</div><div class="ttdoc">Interdit l'instanciation — classe utilitaire statique.</div></div>
+<div class="ttc" id="aclassPCCLayout_html_aa70b44899546415d337088f06365db90"><div class="ttname"><a href="../../d4/d01/classPCCLayout.html#aa70b44899546415d337088f06365db90">PCCLayout::findTermini</a></div><div class="ttdeci">static std::vector&lt; PCCNode * &gt; findTermini(const PCCGraph &amp;graph, Logger &amp;logger)</div><div class="ttdoc">Détecte les nœuds terminus (points de départ du schéma).</div><div class="ttdef"><b>Definition</b> PCCLayout.cpp:63</div></div>
+<div class="ttc" id="aclassPCCLayout_html_ab4cc295476fd4fa74b34318b127b3ab0"><div class="ttname"><a href="../../d4/d01/classPCCLayout.html#ab4cc295476fd4fa74b34318b127b3ab0">PCCLayout::compute</a></div><div class="ttdeci">static void compute(PCCGraph &amp;graph, Logger &amp;logger)</div><div class="ttdoc">Calcule et assigne les positions logiques à tous les nœuds.</div><div class="ttdef"><b>Definition</b> PCCLayout.cpp:19</div></div>
+<div class="ttc" id="aclassPCCLayout_html_ab4f624049096886733035938bc5499fc"><div class="ttname"><a href="../../d4/d01/classPCCLayout.html#ab4f624049096886733035938bc5499fc">PCCLayout::runBFS</a></div><div class="ttdeci">static int runBFS(PCCGraph &amp;graph, PCCNode *start, std::unordered_set&lt; PCCNode * &gt; &amp;visited, int offsetX, Logger &amp;logger)</div><div class="ttdoc">Lance un BFS linéaire depuis start et assigne les positions X/Y.</div><div class="ttdef"><b>Definition</b> PCCLayout.cpp:100</div></div>
+<div class="ttc" id="aclassPCCNode_html"><div class="ttname"><a href="../../d1/d03/classPCCNode.html">PCCNode</a></div><div class="ttdoc">Nœud abstrait du graphe PCC.</div><div class="ttdef"><b>Definition</b> PCCNode.h:70</div></div>
+<div class="ttc" id="astructPCCLayout_1_1BFSItem_html"><div class="ttname"><a href="../../d2/d02/structPCCLayout_1_1BFSItem.html">PCCLayout::BFSItem</a></div><div class="ttdoc">Contexte BFS d'un nœud en file d'attente.</div><div class="ttdef"><b>Definition</b> PCCLayout.h:80</div></div>
+<div class="ttc" id="astructPCCLayout_1_1BFSItem_html_a443281483c9f9d45f518fcac4d5cd8bd"><div class="ttname"><a href="../../d2/d02/structPCCLayout_1_1BFSItem.html#a443281483c9f9d45f518fcac4d5cd8bd">PCCLayout::BFSItem::node</a></div><div class="ttdeci">PCCNode * node</div><div class="ttdoc">Nœud à traiter.</div><div class="ttdef"><b>Definition</b> PCCLayout.h:81</div></div>
+<div class="ttc" id="astructPCCLayout_1_1BFSItem_html_aa25d5e15555ef8e61b6f2334614da01f"><div class="ttname"><a href="../../d2/d02/structPCCLayout_1_1BFSItem.html#aa25d5e15555ef8e61b6f2334614da01f">PCCLayout::BFSItem::arrivedViaDeviation</a></div><div class="ttdeci">bool arrivedViaDeviation</div><div class="ttdoc">Vrai si atteint via une arête DEVIATION.</div><div class="ttdef"><b>Definition</b> PCCLayout.h:84</div></div>
+<div class="ttc" id="astructPCCLayout_1_1BFSItem_html_ac64ac3cde70ab946b4c20655d9aa8345"><div class="ttname"><a href="../../d2/d02/structPCCLayout_1_1BFSItem.html#ac64ac3cde70ab946b4c20655d9aa8345">PCCLayout::BFSItem::y</a></div><div class="ttdeci">int y</div><div class="ttdoc">Rang vertical (0 = backbone, ±n = branches).</div><div class="ttdef"><b>Definition</b> PCCLayout.h:83</div></div>
+<div class="ttc" id="astructPCCLayout_1_1BFSItem_html_aee922d30e5ff7cbe83552b0ac5fabadf"><div class="ttname"><a href="../../d2/d02/structPCCLayout_1_1BFSItem.html#aee922d30e5ff7cbe83552b0ac5fabadf">PCCLayout::BFSItem::x</a></div><div class="ttdeci">int x</div><div class="ttdoc">Profondeur BFS (position horizontale).</div><div class="ttdef"><b>Definition</b> PCCLayout.h:82</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_7c738cac3c5b225040bd3ab526c6dac3.html">PCC</a></li><li class="navelem"><a class="el" href="../../d6/d01/PCCLayout_8h.html">PCCLayout.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

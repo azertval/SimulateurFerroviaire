@@ -1,5 +1,0 @@
-<map id="MainWindow::onProgressUpdate" name="MainWindow::onProgressUpdate">
-<area shape="rect" id="Node000001" title="Gère la mise à jour de la progression (WM_PROGRESS_UPDATE)." alt="" coords="5,5,237,31"/>
-<area shape="rect" id="Node000002" href="$classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd" title="Met à jour la progression." alt="" coords="285,5,469,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,15,272,15,272,21,237,21"/>
-</map>

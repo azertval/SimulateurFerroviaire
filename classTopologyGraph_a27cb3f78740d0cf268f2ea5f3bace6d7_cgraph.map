@@ -1,8 +1,0 @@
-<map id="TopologyGraph::mergeCloseNodes" name="TopologyGraph::mergeCloseNodes">
-<area shape="rect" id="Node000001" title="Fusionne les nœuds séparés de moins de toleranceMeters." alt="" coords="5,5,211,45"/>
-<area shape="rect" id="Node000002" href="$classTopologyGraph.html#ae6743defffd4df65ccd2f59931281e7d" title=" " alt="" coords="529,5,740,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,23,515,23,515,28,211,28"/>
-<area shape="rect" id="Node000003" href="$classTopologyGraph.html#a37b8517d94af461d5d7eb42e216a38e9" title=" " alt="" coords="259,38,481,63"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,33,245,36,245,41,210,38"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="481,37,515,34,516,39,482,43"/>
-</map>

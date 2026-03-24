@@ -1,9 +1,0 @@
-<map id="SwitchBlock::setActiveBranch" name="SwitchBlock::setActiveBranch">
-<area shape="rect" id="Node000001" title="Assigne la branche active." alt="" coords="5,77,220,102"/>
-<area shape="rect" id="Node000002" href="$classSwitchBlock.html#a4c252f2bb90dbe50b8c9d8e8de0fc5b5" title="Convertit l&#39;état ActiveBranch courant en chaîne lisible. Utilisé exclusivement par les appels de log." alt="" coords="268,5,463,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,74,272,46,273,51,165,79"/>
-<area shape="rect" id="Node000003" href="$classSwitchBlock.html#af65a62f314ce4544ce687eacc13786e8" title="Retourne le switch partenaire côté deviation, ou nullptr." alt="" coords="268,69,463,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,87,254,87,254,92,220,92"/>
-<area shape="rect" id="Node000004" href="$classSwitchBlock.html#a72cf7392935372bed47bccc9c1feb096" title="Retourne le switch partenaire côté normal, ou nullptr. Cast valide uniquement si isDouble() &amp;&amp; getDou..." alt="" coords="268,133,463,173"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="165,100,273,127,272,132,163,105"/>
-</map>

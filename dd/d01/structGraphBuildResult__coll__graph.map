@@ -1,0 +1,29 @@
+<map id="GraphBuildResult" name="GraphBuildResult">
+<area shape="rect" id="Node000001" title="Données de résultat de la Phase 1+2." alt="" coords="340,1129,516,1215"/>
+<area shape="rect" id="Node000002" href="$db/d00/classTopologyGraph.html" title="Graphe planaire non&#45;orienté utilisé pour la construction de la topologie ferroviaire." alt="" coords="211,761,447,1067"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="372,1066,388,1104,393,1114,388,1116,383,1106,367,1068"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="170,213,371,279"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="286,278,292,302,310,416,322,532,333,744,327,745,317,533,305,417,287,303,280,280"/>
+<area shape="rect" id="Node000010" href="$d5/d03/classTopologyEdge.html" title="Arête non&#45;orientée entre deux nœuds du graphe topologique." alt="" coords="89,341,271,527"/>
+<area shape="poly" id="edge11_Node000010_Node000003" title=" " alt="" coords="232,281,213,304,202,327,197,324,208,301,228,277"/>
+<area shape="rect" id="Node000004" href="$df/d01/classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire)." alt="" coords="207,5,334,151"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="273,151,273,197,268,197,268,151"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="360,589,504,699"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="414,700,396,747,391,745,409,698"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="370,394,521,474"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="445,475,439,573,434,573,440,474"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="63,604,270,684"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="193,683,231,746,226,749,188,686"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="31,213,110,279"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="56,280,44,310,35,342,23,394,16,436,18,477,34,525,58,562,90,592,86,596,54,565,30,528,13,478,10,436,18,393,29,341,39,308,52,278"/>
+<area shape="poly" id="edge10_Node000010_Node000008" title=" " alt="" coords="92,277,120,326,115,328,87,280"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="5,38,136,118"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="73,132,73,213,68,213,68,132"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="177,527,173,587,168,587,171,527"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="539,589,763,699"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="551,701,505,730,462,763,461,764,458,760,458,759,502,726,548,697"/>
+<area shape="rect" id="Node000012" href="$d3/d03/structTopologyGraph_1_1SnappedNodeKey.html" title=" " alt="" coords="545,391,778,477"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="662,477,657,573,652,573,657,477"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="472,881,581,947"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="531,947,525,1022,516,1065,500,1107,493,1118,488,1115,495,1104,511,1064,520,1021,525,947"/>
+</map>

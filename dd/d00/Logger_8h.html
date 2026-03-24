@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire: Référence du fichier SimulateurFerroviaire/Engine/Core/Logger/Logger.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('dd/d00/Logger_8h.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Énumérations</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier Logger.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Système de journalisation à 5 niveaux de trace, un fichier par moteur.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;ctime&gt;</code><br />
+<code>#include &lt;filesystem&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;mutex&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de Logger.h:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d00/Logger_8h__incl.svg" width="552" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../da/d00/Logger_8h__dep__incl.svg" width="3942" height="946"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="../../dd/d00/Logger_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d03/classLogger.html">Logger</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Journaliseur associé à un moteur nommé.  <a href="../../db/d03/classLogger.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a0c30634de010bc24deacc2cb5a123bec" id="r_a0c30634de010bc24deacc2cb5a123bec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/Logger_8h.html#a0c30634de010bc24deacc2cb5a123bec">LOG_INFO</a>(logger,  message)&#160;&#160;&#160;    (logger).writeLog(<a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a551b723eafd6a31d444fcb2f5920fbd3">LogLevel::INFO</a>,    __FUNCTION__, __LINE__, (message))</td></tr>
+<tr class="separator:a0c30634de010bc24deacc2cb5a123bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb268ee8276a4b312d31ed9db04e9926" id="r_adb268ee8276a4b312d31ed9db04e9926"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/Logger_8h.html#adb268ee8276a4b312d31ed9db04e9926">LOG_DEBUG</a>(logger,  message)&#160;&#160;&#160;    (logger).writeLog(<a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94adc30ec20708ef7b0f641ef78b7880a15">LogLevel::DEBUG</a>,   __FUNCTION__, __LINE__, (message))</td></tr>
+<tr class="separator:adb268ee8276a4b312d31ed9db04e9926"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32705d9b1868f3dc5918d6af2f45575a" id="r_a32705d9b1868f3dc5918d6af2f45575a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/Logger_8h.html#a32705d9b1868f3dc5918d6af2f45575a">LOG_WARNING</a>(logger,  message)&#160;&#160;&#160;    (logger).writeLog(<a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a059e9861e0400dfbe05c98a841f3f96b">LogLevel::WARNING</a>, __FUNCTION__, __LINE__, (message))</td></tr>
+<tr class="separator:a32705d9b1868f3dc5918d6af2f45575a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3dff3a4b05f59968670e28caf19134b" id="r_ab3dff3a4b05f59968670e28caf19134b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/Logger_8h.html#ab3dff3a4b05f59968670e28caf19134b">LOG_ERROR</a>(logger,  message)&#160;&#160;&#160;    (logger).writeLog(<a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94acd22bad976363fdd1bfbf6759fede482">LogLevel::ERR</a>,   __FUNCTION__, __LINE__, (message))</td></tr>
+<tr class="separator:ab3dff3a4b05f59968670e28caf19134b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9e36992ae1067715000bbfbc36d11a1" id="r_aa9e36992ae1067715000bbfbc36d11a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/Logger_8h.html#aa9e36992ae1067715000bbfbc36d11a1">LOG_FAILURE</a>(logger,  message)</td></tr>
+<tr class="separator:aa9e36992ae1067715000bbfbc36d11a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:a9cf4d2a890c8688e0fe1bc38fa88de94" id="r_a9cf4d2a890c8688e0fe1bc38fa88de94"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94">LogLevel</a> : int { <br />
+&#160;&#160;<a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94adc30ec20708ef7b0f641ef78b7880a15">DEBUG</a> = 0
+, <a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a551b723eafd6a31d444fcb2f5920fbd3">INFO</a> = 1
+, <a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a059e9861e0400dfbe05c98a841f3f96b">WARNING</a> = 2
+, <a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94acd22bad976363fdd1bfbf6759fede482">ERR</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a36fc6065a3e970bc3e6b2e59da52bf2a">FAILURE</a> = 4
+<br />
+ }</td></tr>
+<tr class="memdesc:a9cf4d2a890c8688e0fe1bc38fa88de94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Niveaux de sévérité des traces, du moins critique au plus critique.  <a href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9cf4d2a890c8688e0fe1bc38fa88de94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Système de journalisation à 5 niveaux de trace, un fichier par moteur. </p>
+<p>Chaque instance de <a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> est associée à un moteur nommé (ex. "GeoParser"). Les traces sont écrites dans "Logs/&lt;NomDuMoteur&gt;.log" et sur la sortie de débogage Visual Studio.</p>
+<p>Niveaux disponibles (ordre de sévérité croissant) : INFO — Événements nominaux (phases terminées, résultats attendus). DEBUG — État interne, valeurs intermédiaires, traces fines. WARNING — Anomalie non-bloquante (données douteuses, repli sur valeur par défaut). ERROR — Erreur bloquante récupérable (fichier absent, topologie invalide). FAILURE — Erreur fatale irrecupérable — journalise et plante l'application.</p>
+<p>Format de chaque ligne de trace : [HH:MM:SS] [NIVEAU] {NomDeClasse} [NomDeFonction] "Ligne : XX" : Message</p>
+<p>Utilisation via macros (injection automatique du contexte) : </p><div class="fragment"><div class="line"><a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a> logger(<span class="stringliteral">&quot;GeoParser&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#a0c30634de010bc24deacc2cb5a123bec">LOG_INFO</a>(logger,    <span class="stringliteral">&quot;Fichier chargé : &quot;</span> + filePath);</div>
+<div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#adb268ee8276a4b312d31ed9db04e9926">LOG_DEBUG</a>(logger,   <span class="stringliteral">&quot;Nœud créé à l&#39;index &quot;</span> + std::to_string(nodeIndex));</div>
+<div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#a32705d9b1868f3dc5918d6af2f45575a">LOG_WARNING</a>(logger, <span class="stringliteral">&quot;Branche trop courte : &quot;</span> + branchId);</div>
+<div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#ab3dff3a4b05f59968670e28caf19134b">LOG_ERROR</a>(logger,   <span class="stringliteral">&quot;Fichier introuvable : &quot;</span> + filePath);</div>
+<div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#aa9e36992ae1067715000bbfbc36d11a1">LOG_FAILURE</a>(logger, <span class="stringliteral">&quot;Topologie nulle — arrêt immédiat&quot;</span>);</div>
+<div class="ttc" id="aLogger_8h_html_a0c30634de010bc24deacc2cb5a123bec"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#a0c30634de010bc24deacc2cb5a123bec">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:71</div></div>
+<div class="ttc" id="aLogger_8h_html_a32705d9b1868f3dc5918d6af2f45575a"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#a32705d9b1868f3dc5918d6af2f45575a">LOG_WARNING</a></div><div class="ttdeci">#define LOG_WARNING(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:77</div></div>
+<div class="ttc" id="aLogger_8h_html_aa9e36992ae1067715000bbfbc36d11a1"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#aa9e36992ae1067715000bbfbc36d11a1">LOG_FAILURE</a></div><div class="ttdeci">#define LOG_FAILURE(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:84</div></div>
+<div class="ttc" id="aLogger_8h_html_ab3dff3a4b05f59968670e28caf19134b"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#ab3dff3a4b05f59968670e28caf19134b">LOG_ERROR</a></div><div class="ttdeci">#define LOG_ERROR(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:80</div></div>
+<div class="ttc" id="aLogger_8h_html_adb268ee8276a4b312d31ed9db04e9926"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#adb268ee8276a4b312d31ed9db04e9926">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:74</div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="../../db/d03/classLogger.html">Logger</a></div><div class="ttdoc">Journaliseur associé à un moteur nommé.</div><div class="ttdef"><b>Definition</b> Logger.h:103</div></div>
+</div><!-- fragment --> </div><h2 class="groupheader">Documentation des macros</h2>
+<a id="adb268ee8276a4b312d31ed9db04e9926" name="adb268ee8276a4b312d31ed9db04e9926"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb268ee8276a4b312d31ed9db04e9926">&#9670;&#160;</a></span>LOG_DEBUG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_DEBUG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">logger, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">message&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    (logger).writeLog(<a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94adc30ec20708ef7b0f641ef78b7880a15">LogLevel::DEBUG</a>,   __FUNCTION__, __LINE__, (message))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3dff3a4b05f59968670e28caf19134b" name="ab3dff3a4b05f59968670e28caf19134b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3dff3a4b05f59968670e28caf19134b">&#9670;&#160;</a></span>LOG_ERROR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_ERROR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">logger, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">message&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    (logger).writeLog(<a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94acd22bad976363fdd1bfbf6759fede482">LogLevel::ERR</a>,   __FUNCTION__, __LINE__, (message))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa9e36992ae1067715000bbfbc36d11a1" name="aa9e36992ae1067715000bbfbc36d11a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9e36992ae1067715000bbfbc36d11a1">&#9670;&#160;</a></span>LOG_FAILURE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_FAILURE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">logger, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">message&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur :</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
+<div class="line">        (logger).writeLog(<a class="code hl_enumvalue" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a36fc6065a3e970bc3e6b2e59da52bf2a">LogLevel::FAILURE</a>, __FUNCTION__, __LINE__, (message)); \</div>
+<div class="line">        Logger::triggerFatalCrash((message)); \</div>
+<div class="line">    } <span class="keywordflow">while</span> (<span class="keyword">false</span>)</div>
+<div class="ttc" id="aLogger_8h_html_a9cf4d2a890c8688e0fe1bc38fa88de94a36fc6065a3e970bc3e6b2e59da52bf2a"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a36fc6065a3e970bc3e6b2e59da52bf2a">LogLevel::FAILURE</a></div><div class="ttdeci">@ FAILURE</div><div class="ttdoc">Erreur fatale — plante l'application après journalisation.</div></div>
+</div><!-- fragment --><p>LOG_FAILURE journalise et appelle <a class="el" href="../../db/d03/classLogger.html#afe4d1f662b8e4018d0da19a81039dd5b" title="Provoque l&#39;arrêt immédiat de l&#39;application après affichage d&#39;une boîte de dialogue.">Logger::triggerFatalCrash()</a> — ne retourne jamais. </p>
+
+</div>
+</div>
+<a id="a0c30634de010bc24deacc2cb5a123bec" name="a0c30634de010bc24deacc2cb5a123bec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c30634de010bc24deacc2cb5a123bec">&#9670;&#160;</a></span>LOG_INFO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_INFO</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">logger, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">message&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    (logger).writeLog(<a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a551b723eafd6a31d444fcb2f5920fbd3">LogLevel::INFO</a>,    __FUNCTION__, __LINE__, (message))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sur MSVC, <b>FUNCTION</b> retourne "NomDeClasse::NomDeFonction". Les macros transmettent <b>FUNCTION</b> et <b>LINE</b> au <a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a>, qui en extrait le nom de classe et le nom de fonction. </p>
+
+</div>
+</div>
+<a id="a32705d9b1868f3dc5918d6af2f45575a" name="a32705d9b1868f3dc5918d6af2f45575a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32705d9b1868f3dc5918d6af2f45575a">&#9670;&#160;</a></span>LOG_WARNING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_WARNING</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">logger, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">message&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    (logger).writeLog(<a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a059e9861e0400dfbe05c98a841f3f96b">LogLevel::WARNING</a>, __FUNCTION__, __LINE__, (message))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a id="a9cf4d2a890c8688e0fe1bc38fa88de94" name="a9cf4d2a890c8688e0fe1bc38fa88de94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cf4d2a890c8688e0fe1bc38fa88de94">&#9670;&#160;</a></span>LogLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94">LogLevel</a> : int</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Niveaux de sévérité des traces, du moins critique au plus critique. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a9cf4d2a890c8688e0fe1bc38fa88de94adc30ec20708ef7b0f641ef78b7880a15" name="a9cf4d2a890c8688e0fe1bc38fa88de94adc30ec20708ef7b0f641ef78b7880a15"></a>DEBUG&#160;</td><td class="fielddoc"><p>Trace de débogage interne. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9cf4d2a890c8688e0fe1bc38fa88de94a551b723eafd6a31d444fcb2f5920fbd3" name="a9cf4d2a890c8688e0fe1bc38fa88de94a551b723eafd6a31d444fcb2f5920fbd3"></a>INFO&#160;</td><td class="fielddoc"><p>Événement nominal. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9cf4d2a890c8688e0fe1bc38fa88de94a059e9861e0400dfbe05c98a841f3f96b" name="a9cf4d2a890c8688e0fe1bc38fa88de94a059e9861e0400dfbe05c98a841f3f96b"></a>WARNING&#160;</td><td class="fielddoc"><p>Anomalie non-bloquante. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9cf4d2a890c8688e0fe1bc38fa88de94acd22bad976363fdd1bfbf6759fede482" name="a9cf4d2a890c8688e0fe1bc38fa88de94acd22bad976363fdd1bfbf6759fede482"></a>ERR&#160;</td><td class="fielddoc"><p>Erreur bloquante récupérable. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9cf4d2a890c8688e0fe1bc38fa88de94a36fc6065a3e970bc3e6b2e59da52bf2a" name="a9cf4d2a890c8688e0fe1bc38fa88de94a36fc6065a3e970bc3e6b2e59da52bf2a"></a>FAILURE&#160;</td><td class="fielddoc"><p>Erreur fatale — plante l'application après journalisation. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_b70de4a9b2a9f967d011983a1fdf80d1.html">Engine</a></li><li class="navelem"><a class="el" href="../../dir_db532fcf2b7ab198586d05907cd2a60c.html">Core</a></li><li class="navelem"><a class="el" href="../../dir_7917f52fb21902c496bbfec93874f116.html">Logger</a></li><li class="navelem"><a class="el" href="../../dd/d00/Logger_8h.html">Logger.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

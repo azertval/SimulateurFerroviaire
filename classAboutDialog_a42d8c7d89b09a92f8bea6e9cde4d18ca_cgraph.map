@@ -1,5 +1,0 @@
-<map id="AboutDialog::show" name="AboutDialog::show">
-<area shape="rect" id="Node000001" title="Affiche la boîte de dialogue &quot;À propos&quot; de façon modale." alt="" coords="5,5,149,31"/>
-<area shape="rect" id="Node000002" href="$classAboutDialog.html#ac66cccf4f3997d3ae5755646782f2d48" title="Procédure de dialogue Win32 (callback système)." alt="" coords="197,5,376,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,15,184,15,184,21,150,21"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="TopologyRenderer::convertStraightToFeature" name="TopologyRenderer::convertStraightToFeature">
-<area shape="rect" id="Node000001" title="Convertit un StraightBlock en feature GeoJSON de type LineString." alt="" coords="5,47,201,87"/>
-<area shape="rect" id="Node000002" href="$classStraightBlock.html#a646d3135d365dcb832ff66b1304c6850" title=" " alt="" coords="249,5,465,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,46,277,31,278,36,202,51"/>
-<area shape="rect" id="Node000003" href="$classStraightBlock.html#a295060fddd0675834ce4755ae4787780" title="Retourne l&#39;identifiant unique de l&#39;élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;)." alt="" coords="282,55,433,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,65,268,65,268,70,201,70"/>
-<area shape="rect" id="Node000004" href="$classStraightBlock.html#aebdce1e1b66d6b39376ae1a66c2d2d9e" title=" " alt="" coords="266,105,449,145"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="193,85,255,99,254,104,192,90"/>
-</map>

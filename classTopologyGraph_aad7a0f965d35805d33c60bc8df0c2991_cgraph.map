@@ -1,5 +1,0 @@
-<map id="TopologyGraph::getOrCreateNode" name="TopologyGraph::getOrCreateNode">
-<area shape="rect" id="Node000001" title="Retourne l&#39;ID du nœud en (x, y), le créant si absent." alt="" coords="5,5,245,31"/>
-<area shape="rect" id="Node000002" href="$classGeometryUtils.html#a1f0bcf5c241331f56979b6d63b3412c1" title="Accroche une coordonnée métrique au sommet le plus proche d&#39;une grille." alt="" coords="293,5,532,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,15,280,15,280,21,246,21"/>
-</map>

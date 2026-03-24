@@ -1,7 +1,0 @@
-<map id="SimulateurFerroviaire/Engine/HMI/Dialogs/FileOpenDialog.h" name="SimulateurFerroviaire/Engine/HMI/Dialogs/FileOpenDialog.h">
-<area shape="rect" id="Node000001" title="Déclaration du sélecteur de fichier GeoJSON." alt="" coords="124,5,339,60"/>
-<area shape="rect" id="Node000002" href="$FileOpenDialog_8cpp.html" title="Implémentation du sélecteur de fichier GeoJSON natif Win32." alt="" coords="5,108,220,163"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,71,145,110,142,106,188,67"/>
-<area shape="rect" id="Node000003" href="$MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="244,115,459,155"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="275,67,330,113,327,117,272,71"/>
-</map>

@@ -1,0 +1,7 @@
+<map id="SimulateurFerroviaire/Modules/PCC/PCCLayout.h" name="SimulateurFerroviaire/Modules/PCC/PCCLayout.h">
+<area shape="rect" id="Node000001" title="Calcul des positions logiques X/Y du graphe PCC par parcours BFS." alt="" coords="96,5,293,45"/>
+<area shape="rect" id="Node000002" href="$d4/d03/PCCPanel_8cpp.html" title="Implémentation du panneau PCC superposé togglable." alt="" coords="5,93,171,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,56,120,95,116,91,161,52"/>
+<area shape="rect" id="Node000003" href="$d3/d02/PCCLayout_8cpp.html" title="Implémentation du calculateur de positions logiques PCC." alt="" coords="195,101,407,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,52,282,99,278,103,225,56"/>
+</map>

@@ -1,7 +1,0 @@
-<map id="DoubleSwitchDetector::detectAndAbsorb" name="DoubleSwitchDetector::detectAndAbsorb">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,172,77"/>
-<area shape="rect" id="Node000002" href="$classDoubleSwitchDetector.html#a3be8598fec31308ef13ff0ccd942d319" title=" " alt="" coords="235,5,401,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,43,221,36,222,41,173,48"/>
-<area shape="rect" id="Node000003" href="$classDoubleSwitchDetector.html#a910540ff55f2d3523deab88d77fa185a" title=" " alt="" coords="220,69,416,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,66,207,71,206,76,172,72"/>
-</map>

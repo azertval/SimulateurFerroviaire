@@ -1,9 +1,0 @@
-<map id="TopologyExtractor" name="TopologyExtractor">
-<area shape="rect" id="Node000001" title="Extrait la topologie ferroviaire (Switch + Straight) depuis un TopologyGraph." alt="" coords="63,901,281,1167"/>
-<area shape="rect" id="Node000002" href="$classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="5,453,187,839"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,838,145,884,140,885,131,839"/>
-<area shape="rect" id="Node000003" href="$structGraphBuildResult.html" title="Données de résultat de la Phase 1+2." alt="" coords="211,593,387,699"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="284,700,223,887,218,885,279,698"/>
-<area shape="rect" id="Node000004" href="$classTopologyGraph.html" title="Graphe planaire non&#45;orienté utilisé pour la construction de la topologie ferroviaire." alt="" coords="181,5,417,391"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="301,391,301,577,296,577,296,391"/>
-</map>

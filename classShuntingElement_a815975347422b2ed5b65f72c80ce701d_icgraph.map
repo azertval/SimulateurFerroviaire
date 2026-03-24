@@ -1,9 +1,0 @@
-<map id="ShuntingElement::getState" name="ShuntingElement::getState">
-<area shape="rect" id="Node000001" title="Retourne l&#39;état opérationnel courant de l&#39;élément." alt="" coords="265,55,461,80"/>
-<area shape="rect" id="Node000002" href="$classShuntingElement.html#a679c294d3ca6d857e7ffa69eaed76c92" title="Retourne true si l&#39;élément est libre." alt="" coords="21,5,201,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="284,55,177,33,178,28,285,49"/>
-<area shape="rect" id="Node000003" href="$classShuntingElement.html#ac236019e6961a887732237cc5f1da697" title="Retourne true si l&#39;élément est hors service." alt="" coords="9,55,213,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="252,70,213,70,213,65,252,65"/>
-<area shape="rect" id="Node000004" href="$classShuntingElement.html#a6b545a802c6d06e1f8fb77a59f4ed0a4" title="Retourne true si l&#39;élément est occupé." alt="" coords="5,104,217,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="285,85,178,107,177,101,284,80"/>
-</map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nodedegreethresholds_0',['NodeDegreeThresholds',['../classNodeDegreeThresholds.html',1,'']]]
+  ['mainwindow_0',['MainWindow',['../d6/d02/classMainWindow.html',1,'']]]
 ];

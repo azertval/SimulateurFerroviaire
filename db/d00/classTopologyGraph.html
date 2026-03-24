@@ -1,0 +1,801 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire: Référence de la classe TopologyGraph</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('db/d00/classTopologyGraph.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Types publics</a> &#124;
+<a href="#pub-methods">Fonctions membres publiques</a> &#124;
+<a href="#pub-attribs">Attributs publics</a> &#124;
+<a href="#pri-static-methods">Fonctions membres privées statiques</a> &#124;
+<a href="#pri-attribs">Attributs privés</a> &#124;
+<a href="../../d5/d00/classTopologyGraph-members.html">Liste de tous les membres</a>  </div>
+  <div class="headertitle"><div class="title">Référence de la classe TopologyGraph</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Graphe planaire non-orienté utilisé pour la construction de la topologie ferroviaire.  
+ <a href="../../db/d00/classTopologyGraph.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d7/d03/TopologyGraph_8h_source.html">TopologyGraph.h</a>&gt;</code></p>
+<div class="dynheader">
+Graphe de collaboration de TopologyGraph:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d0/d02/classTopologyGraph__coll__graph.svg" width="784" height="1072"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d03/structTopologyGraph_1_1SnappedNodeKey.html">SnappedNodeKey</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/structTopologyGraph_1_1SnappedNodeKeyHasher.html">SnappedNodeKeyHasher</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Types publics</h2></td></tr>
+<tr class="memitem:ac53af35f8fd414da3bf4eb54422455d5" id="r_ac53af35f8fd414da3bf4eb54422455d5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#ac53af35f8fd414da3bf4eb54422455d5">AdjacencyList</a> = std::unordered_map&lt; int, std::vector&lt; std::pair&lt; int, std::string &gt; &gt; &gt;</td></tr>
+<tr class="separator:ac53af35f8fd414da3bf4eb54422455d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d78914a5caa8a9c7655397477fa1092" id="r_a1d78914a5caa8a9c7655397477fa1092"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a1d78914a5caa8a9c7655397477fa1092">EdgeIndex</a> = std::unordered_map&lt; std::string, <a class="el" href="../../d5/d03/classTopologyEdge.html">TopologyEdge</a> &gt;</td></tr>
+<tr class="separator:a1d78914a5caa8a9c7655397477fa1092"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Fonctions membres publiques</h2></td></tr>
+<tr class="memitem:a77932e161ce8ae1549036ec1a86af207" id="r_a77932e161ce8ae1549036ec1a86af207"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a77932e161ce8ae1549036ec1a86af207">TopologyGraph</a> (double snapGridMeters=<a class="el" href="../../df/d01/classParserDefaultValues.html#ae191373daa13e7bc2e91e1676f574578">ParserDefaultValues::SNAP_GRID_METERS</a>)</td></tr>
+<tr class="memdesc:a77932e161ce8ae1549036ec1a86af207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un graphe vide avec le pas de grille spécifié.  <br /></td></tr>
+<tr class="separator:a77932e161ce8ae1549036ec1a86af207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad7a0f965d35805d33c60bc8df0c2991" id="r_aad7a0f965d35805d33c60bc8df0c2991"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#aad7a0f965d35805d33c60bc8df0c2991">getOrCreateNode</a> (double x, double y)</td></tr>
+<tr class="memdesc:aad7a0f965d35805d33c60bc8df0c2991"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'ID du nœud en (x, y), le créant si absent.  <br /></td></tr>
+<tr class="separator:aad7a0f965d35805d33c60bc8df0c2991"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c086df2f9774459710f88d37158b745" id="r_a7c086df2f9774459710f88d37158b745"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a7c086df2f9774459710f88d37158b745">getDegreeOfNode</a> (int nodeId) const</td></tr>
+<tr class="memdesc:a7c086df2f9774459710f88d37158b745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le degré d'un nœud (nombre d'arêtes incidentes).  <br /></td></tr>
+<tr class="separator:a7c086df2f9774459710f88d37158b745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99f720078a226f9d62b284d67194153b" id="r_a99f720078a226f9d62b284d67194153b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a99f720078a226f9d62b284d67194153b">addEdge</a> (int startNodeId, int endNodeId, std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; edgeGeometry)</td></tr>
+<tr class="memdesc:a99f720078a226f9d62b284d67194153b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une arête non-orientée entre les nœuds startNodeId et endNodeId.  <br /></td></tr>
+<tr class="separator:a99f720078a226f9d62b284d67194153b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa04aff6ac9200cfc4a15af32bcd296fc" id="r_aa04aff6ac9200cfc4a15af32bcd296fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#aa04aff6ac9200cfc4a15af32bcd296fc">removeEdge</a> (const std::string &amp;edgeId)</td></tr>
+<tr class="memdesc:aa04aff6ac9200cfc4a15af32bcd296fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime l'arête et ses entrées dans la liste d'adjacence.  <br /></td></tr>
+<tr class="separator:aa04aff6ac9200cfc4a15af32bcd296fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8901749abf5847458808e8eec8a72af6" id="r_a8901749abf5847458808e8eec8a72af6"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a8901749abf5847458808e8eec8a72af6">findEdgeBetween</a> (int nodeIdA, int nodeIdB) const</td></tr>
+<tr class="memdesc:a8901749abf5847458808e8eec8a72af6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'ID de l'arête reliant nodeIdA et nodeIdB, ou nullopt.  <br /></td></tr>
+<tr class="separator:a8901749abf5847458808e8eec8a72af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aada47ec2c5b5ebc4ccf72b4b4c4f5e01" id="r_aada47ec2c5b5ebc4ccf72b4b4c4f5e01"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#aada47ec2c5b5ebc4ccf72b4b4c4f5e01">getOppositeNodeId</a> (const std::string &amp;edgeId, int fromNodeId) const</td></tr>
+<tr class="memdesc:aada47ec2c5b5ebc4ccf72b4b4c4f5e01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'ID du nœud de l'autre extrémité d'une arête.  <br /></td></tr>
+<tr class="separator:aada47ec2c5b5ebc4ccf72b4b4c4f5e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27cb3f78740d0cf268f2ea5f3bace6d7" id="r_a27cb3f78740d0cf268f2ea5f3bace6d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a27cb3f78740d0cf268f2ea5f3bace6d7">mergeCloseNodes</a> (double toleranceMeters)</td></tr>
+<tr class="memdesc:a27cb3f78740d0cf268f2ea5f3bace6d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fusionne les nœuds séparés de moins de toleranceMeters.  <br /></td></tr>
+<tr class="separator:a27cb3f78740d0cf268f2ea5f3bace6d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a036a72b0ab020971fdbb2e0048960b4a" id="r_a036a72b0ab020971fdbb2e0048960b4a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a036a72b0ab020971fdbb2e0048960b4a">computeReachableLength</a> (int fromNodeId, int towardNodeId, double limitMeters) const</td></tr>
+<tr class="memdesc:a036a72b0ab020971fdbb2e0048960b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marche le graphe depuis fromNodeId vers towardNodeId et accumule les longueurs.  <br /></td></tr>
+<tr class="separator:a036a72b0ab020971fdbb2e0048960b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07cb1a1808c40751d01dd7d43d335024" id="r_a07cb1a1808c40751d01dd7d43d335024"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a07cb1a1808c40751d01dd7d43d335024">findMostCollinearContinuation</a> (int atNodeId, const std::string &amp;incomingEdgeId) const</td></tr>
+<tr class="memdesc:a07cb1a1808c40751d01dd7d43d335024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'arête sortante en atNodeId la plus colinéaire à incomingEdgeId.  <br /></td></tr>
+<tr class="separator:a07cb1a1808c40751d01dd7d43d335024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Attributs publics</h2></td></tr>
+<tr class="memitem:a2254224df52b78e67993556e46c04bb6" id="r_a2254224df52b78e67993556e46c04bb6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a2254224df52b78e67993556e46c04bb6">nodePositions</a></td></tr>
+<tr class="separator:a2254224df52b78e67993556e46c04bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32d45f877383238871e9522eb306b20f" id="r_a32d45f877383238871e9522eb306b20f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d00/classTopologyGraph.html#ac53af35f8fd414da3bf4eb54422455d5">AdjacencyList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a32d45f877383238871e9522eb306b20f">adjacency</a></td></tr>
+<tr class="separator:a32d45f877383238871e9522eb306b20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa12230aba647b9ad45a88138c4d2e84a" id="r_aa12230aba647b9ad45a88138c4d2e84a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d00/classTopologyGraph.html#a1d78914a5caa8a9c7655397477fa1092">EdgeIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#aa12230aba647b9ad45a88138c4d2e84a">edges</a></td></tr>
+<tr class="separator:aa12230aba647b9ad45a88138c4d2e84a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Fonctions membres privées statiques</h2></td></tr>
+<tr class="memitem:ae6743defffd4df65ccd2f59931281e7d" id="r_ae6743defffd4df65ccd2f59931281e7d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#ae6743defffd4df65ccd2f59931281e7d">findRootWithPathCompression</a> (std::vector&lt; int &gt; &amp;parentArray, int nodeIndex)</td></tr>
+<tr class="separator:ae6743defffd4df65ccd2f59931281e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37b8517d94af461d5d7eb42e216a38e9" id="r_a37b8517d94af461d5d7eb42e216a38e9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a37b8517d94af461d5d7eb42e216a38e9">uniteNodeSets</a> (std::vector&lt; int &gt; &amp;parentArray, std::vector&lt; int &gt; &amp;rankArray, int nodeIndexA, int nodeIndexB)</td></tr>
+<tr class="separator:a37b8517d94af461d5d7eb42e216a38e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Attributs privés</h2></td></tr>
+<tr class="memitem:a01793a6a22692f2607f433033a24adbc" id="r_a01793a6a22692f2607f433033a24adbc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a01793a6a22692f2607f433033a24adbc">m_snapGridMeters</a></td></tr>
+<tr class="memdesc:a01793a6a22692f2607f433033a24adbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pas de la grille d'accrochage.  <br /></td></tr>
+<tr class="separator:a01793a6a22692f2607f433033a24adbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8fb0d36aa82934595f6f5e91ab1d6a1" id="r_ab8fb0d36aa82934595f6f5e91ab1d6a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#ab8fb0d36aa82934595f6f5e91ab1d6a1">m_nextEdgeIndex</a></td></tr>
+<tr class="memdesc:ab8fb0d36aa82934595f6f5e91ab1d6a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compteur pour la génération des IDs d'arête.  <br /></td></tr>
+<tr class="separator:ab8fb0d36aa82934595f6f5e91ab1d6a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cdb8fbdb0686827c4e967bd58c15a99" id="r_a0cdb8fbdb0686827c4e967bd58c15a99"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="../../d3/d03/structTopologyGraph_1_1SnappedNodeKey.html">SnappedNodeKey</a>, int, <a class="el" href="../../d9/d00/structTopologyGraph_1_1SnappedNodeKeyHasher.html">SnappedNodeKeyHasher</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html#a0cdb8fbdb0686827c4e967bd58c15a99">m_keyToNodeIndex</a></td></tr>
+<tr class="separator:a0cdb8fbdb0686827c4e967bd58c15a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Graphe planaire non-orienté utilisé pour la construction de la topologie ferroviaire. </p>
+<p>Nœuds indexés par entiers. Arêtes indexées par chaînes "e/N". Liste d'adjacence : nodeId → [(voisinId, edgeId), ...]. </p>
+</div><h2 class="groupheader">Documentation des définitions de type membres</h2>
+<a id="ac53af35f8fd414da3bf4eb54422455d5" name="ac53af35f8fd414da3bf4eb54422455d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac53af35f8fd414da3bf4eb54422455d5">&#9670;&#160;</a></span>AdjacencyList</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../db/d00/classTopologyGraph.html#ac53af35f8fd414da3bf4eb54422455d5">TopologyGraph::AdjacencyList</a> =  std::unordered_map&lt;int, std::vector&lt;std::pair&lt;int, std::string&gt; &gt;&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Liste d'adjacence : nodeId → liste de (voisinId, edgeId). </p>
+
+</div>
+</div>
+<a id="a1d78914a5caa8a9c7655397477fa1092" name="a1d78914a5caa8a9c7655397477fa1092"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d78914a5caa8a9c7655397477fa1092">&#9670;&#160;</a></span>EdgeIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../db/d00/classTopologyGraph.html#a1d78914a5caa8a9c7655397477fa1092">TopologyGraph::EdgeIndex</a> =  std::unordered_map&lt;std::string, <a class="el" href="../../d5/d03/classTopologyEdge.html">TopologyEdge</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Index des arêtes : edgeId → <a class="el" href="../../d5/d03/classTopologyEdge.html" title="Arête non-orientée entre deux nœuds du graphe topologique.">TopologyEdge</a>. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a id="a77932e161ce8ae1549036ec1a86af207" name="a77932e161ce8ae1549036ec1a86af207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77932e161ce8ae1549036ec1a86af207">&#9670;&#160;</a></span>TopologyGraph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TopologyGraph::TopologyGraph </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>snapGridMeters</em> = <code><a class="el" href="../../df/d01/classParserDefaultValues.html#ae191373daa13e7bc2e91e1676f574578">ParserDefaultValues::SNAP_GRID_METERS</a></code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construit un graphe vide avec le pas de grille spécifié. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">snapGridMeters</td><td>Pas de la grille d'accrochage des nœuds (mètres). Utiliser <a class="el" href="../../df/d01/classParserDefaultValues.html#ae191373daa13e7bc2e91e1676f574578">ParserDefaultValues::SNAP_GRID_METERS</a> si inconnu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions membres</h2>
+<a id="a99f720078a226f9d62b284d67194153b" name="a99f720078a226f9d62b284d67194153b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99f720078a226f9d62b284d67194153b">&#9670;&#160;</a></span>addEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string TopologyGraph::addEdge </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>startNodeId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>endNodeId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td>
+          <td class="paramname"><em>edgeGeometry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute une arête non-orientée entre les nœuds startNodeId et endNodeId. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startNodeId</td><td>Index du nœud de départ. </td></tr>
+    <tr><td class="paramname">endNodeId</td><td>Index du nœud d'arrivée. </td></tr>
+    <tr><td class="paramname">edgeGeometry</td><td>Polyligne métrique de l'arête. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Identifiant de l'arête créée (ex. "e/42"). </dd></dl>
+
+</div>
+</div>
+<a id="a036a72b0ab020971fdbb2e0048960b4a" name="a036a72b0ab020971fdbb2e0048960b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a036a72b0ab020971fdbb2e0048960b4a">&#9670;&#160;</a></span>computeReachableLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double TopologyGraph::computeReachableLength </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fromNodeId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>towardNodeId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>limitMeters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Marche le graphe depuis fromNodeId vers towardNodeId et accumule les longueurs. </p>
+<p>S'arrête au premier nœud de degré ≠ PASS_THROUGH ou quand limitMeters est atteint. Utilisé pour valider les longueurs minimales des branches d'aiguillage.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fromNodeId</td><td>Nœud de départ de la marche. </td></tr>
+    <tr><td class="paramname">towardNodeId</td><td>Nœud dans la direction de marche initiale. </td></tr>
+    <tr><td class="paramname">limitMeters</td><td>Limite de longueur cumulée. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Longueur accessible totale en mètres. </dd></dl>
+
+</div>
+</div>
+<a id="a8901749abf5847458808e8eec8a72af6" name="a8901749abf5847458808e8eec8a72af6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8901749abf5847458808e8eec8a72af6">&#9670;&#160;</a></span>findEdgeBetween()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::string &gt; TopologyGraph::findEdgeBetween </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nodeIdA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nodeIdB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne l'ID de l'arête reliant nodeIdA et nodeIdB, ou nullopt. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nodeIdA</td><td>Premier nœud. </td></tr>
+    <tr><td class="paramname">nodeIdB</td><td>Second nœud. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>ID de l'arête ou nullopt si aucune arête n'existe entre ces nœuds. </dd></dl>
+
+</div>
+</div>
+<a id="a07cb1a1808c40751d01dd7d43d335024" name="a07cb1a1808c40751d01dd7d43d335024"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07cb1a1808c40751d01dd7d43d335024">&#9670;&#160;</a></span>findMostCollinearContinuation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::string &gt; TopologyGraph::findMostCollinearContinuation </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>atNodeId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>incomingEdgeId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne l'arête sortante en atNodeId la plus colinéaire à incomingEdgeId. </p>
+<p>Calcule l'angle entre le vecteur d'arrivée et chaque vecteur sortant potentiel. Retourne l'arête dont l'angle est le plus faible (continuation la plus directe).</p>
+<p>Utilisé pour linéariser les nœuds de passage (degré 2) lors de l'extraction des blocs Straight.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">atNodeId</td><td>Nœud de jonction. </td></tr>
+    <tr><td class="paramname">incomingEdgeId</td><td>Arête entrante (référence de direction). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>ID de l'arête la plus colinéaire, ou nullopt si aucune disponible. </dd></dl>
+
+</div>
+</div>
+<a id="ae6743defffd4df65ccd2f59931281e7d" name="ae6743defffd4df65ccd2f59931281e7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6743defffd4df65ccd2f59931281e7d">&#9670;&#160;</a></span>findRootWithPathCompression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TopologyGraph::findRootWithPathCompression </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>parentArray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nodeIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Remonte la chaîne de parents jusqu'à la racine (avec compression de chemin). </p>
+
+</div>
+</div>
+<a id="a7c086df2f9774459710f88d37158b745" name="a7c086df2f9774459710f88d37158b745"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c086df2f9774459710f88d37158b745">&#9670;&#160;</a></span>getDegreeOfNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TopologyGraph::getDegreeOfNode </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nodeId</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne le degré d'un nœud (nombre d'arêtes incidentes). </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nodeId</td><td>Identifiant du nœud. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Degré du nœud, ou 0 si le nœud n'existe pas. </dd></dl>
+
+</div>
+</div>
+<a id="aada47ec2c5b5ebc4ccf72b4b4c4f5e01" name="aada47ec2c5b5ebc4ccf72b4b4c4f5e01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aada47ec2c5b5ebc4ccf72b4b4c4f5e01">&#9670;&#160;</a></span>getOppositeNodeId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TopologyGraph::getOppositeNodeId </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>edgeId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fromNodeId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne l'ID du nœud de l'autre extrémité d'une arête. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">edgeId</td><td>Identifiant de l'arête. </td></tr>
+    <tr><td class="paramname">fromNodeId</td><td>Nœud depuis lequel on regarde. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>ID du nœud opposé. </dd></dl>
+
+</div>
+</div>
+<a id="aad7a0f965d35805d33c60bc8df0c2991" name="aad7a0f965d35805d33c60bc8df0c2991"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad7a0f965d35805d33c60bc8df0c2991">&#9670;&#160;</a></span>getOrCreateNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TopologyGraph::getOrCreateNode </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne l'ID du nœud en (x, y), le créant si absent. </p>
+<p>La coordonnée est accrochée sur la grille avant recherche/insertion, garantissant la déduplication des nœuds quasi-coïncidents.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Abscisse métrique. </td></tr>
+    <tr><td class="paramname">y</td><td>Ordonnée métrique. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>ID du nœud (entier ≥ 0). </dd></dl>
+
+</div>
+</div>
+<a id="a27cb3f78740d0cf268f2ea5f3bace6d7" name="a27cb3f78740d0cf268f2ea5f3bace6d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27cb3f78740d0cf268f2ea5f3bace6d7">&#9670;&#160;</a></span>mergeCloseNodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TopologyGraph::mergeCloseNodes </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>toleranceMeters</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fusionne les nœuds séparés de moins de toleranceMeters. </p>
+<p>Algorithme union-find avec binning par cellule de grille (O(n) moyen). Supprime les doublons d'arêtes (garde le plus court) et les boucles.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">toleranceMeters</td><td>Distance maximale de fusion en mètres. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa04aff6ac9200cfc4a15af32bcd296fc" name="aa04aff6ac9200cfc4a15af32bcd296fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa04aff6ac9200cfc4a15af32bcd296fc">&#9670;&#160;</a></span>removeEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TopologyGraph::removeEdge </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>edgeId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Supprime l'arête et ses entrées dans la liste d'adjacence. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">edgeId</td><td>Identifiant de l'arête à supprimer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a37b8517d94af461d5d7eb42e216a38e9" name="a37b8517d94af461d5d7eb42e216a38e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37b8517d94af461d5d7eb42e216a38e9">&#9670;&#160;</a></span>uniteNodeSets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TopologyGraph::uniteNodeSets </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>parentArray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rankArray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nodeIndexA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nodeIndexB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Fusionne deux ensembles par rang. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des données membres</h2>
+<a id="a32d45f877383238871e9522eb306b20f" name="a32d45f877383238871e9522eb306b20f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32d45f877383238871e9522eb306b20f">&#9670;&#160;</a></span>adjacency</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d00/classTopologyGraph.html#ac53af35f8fd414da3bf4eb54422455d5">AdjacencyList</a> TopologyGraph::adjacency</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Liste d'adjacence de tous les nœuds. </p>
+
+</div>
+</div>
+<a id="aa12230aba647b9ad45a88138c4d2e84a" name="aa12230aba647b9ad45a88138c4d2e84a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa12230aba647b9ad45a88138c4d2e84a">&#9670;&#160;</a></span>edges</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d00/classTopologyGraph.html#a1d78914a5caa8a9c7655397477fa1092">EdgeIndex</a> TopologyGraph::edges</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Index de toutes les arêtes du graphe. </p>
+
+</div>
+</div>
+<a id="a0cdb8fbdb0686827c4e967bd58c15a99" name="a0cdb8fbdb0686827c4e967bd58c15a99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cdb8fbdb0686827c4e967bd58c15a99">&#9670;&#160;</a></span>m_keyToNodeIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;<a class="el" href="../../d3/d03/structTopologyGraph_1_1SnappedNodeKey.html">SnappedNodeKey</a>, int, <a class="el" href="../../d9/d00/structTopologyGraph_1_1SnappedNodeKeyHasher.html">SnappedNodeKeyHasher</a>&gt; TopologyGraph::m_keyToNodeIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8fb0d36aa82934595f6f5e91ab1d6a1" name="ab8fb0d36aa82934595f6f5e91ab1d6a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8fb0d36aa82934595f6f5e91ab1d6a1">&#9670;&#160;</a></span>m_nextEdgeIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TopologyGraph::m_nextEdgeIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compteur pour la génération des IDs d'arête. </p>
+
+</div>
+</div>
+<a id="a01793a6a22692f2607f433033a24adbc" name="a01793a6a22692f2607f433033a24adbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01793a6a22692f2607f433033a24adbc">&#9670;&#160;</a></span>m_snapGridMeters</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double TopologyGraph::m_snapGridMeters</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pas de la grille d'accrochage. </p>
+
+</div>
+</div>
+<a id="a2254224df52b78e67993556e46c04bb6" name="a2254224df52b78e67993556e46c04bb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2254224df52b78e67993556e46c04bb6">&#9670;&#160;</a></span>nodePositions</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>&gt; TopologyGraph::nodePositions</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Positions métriques des nœuds, indexées par ID de nœud. nodePositions[nodeId] = (x, y) en coordonnées UTM. </p>
+
+</div>
+</div>
+<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<li>SimulateurFerroviaire/Modules/GeoParser/Graph/<a class="el" href="../../d7/d03/TopologyGraph_8h_source.html">TopologyGraph.h</a></li>
+<li>SimulateurFerroviaire/Modules/GeoParser/Graph/<a class="el" href="../../d5/d01/TopologyGraph_8cpp.html">TopologyGraph.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../db/d00/classTopologyGraph.html">TopologyGraph</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

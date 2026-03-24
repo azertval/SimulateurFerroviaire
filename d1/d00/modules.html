@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire: Modules — Fonctionnalités métier</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d1/d00/modules.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Modules — Fonctionnalités métier</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>Table des matières</h3>
+<ul><li class="level1"><a href="#geoparser">GeoParser — Pipeline principal</a><ul><li class="level2"><a href="#task">Tâche asynchrone</a></li>
+<li class="level2"><a href="#pipeline">Pipeline global</a></li>
+<li class="level2"><a href="#parsing">Classes du pipeline</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#elements">Éléments interactifs</a><ul><li class="level2"><a href="#hierarchy">Hiérarchie</a></li>
+<li class="level2"><a href="#pointers">Pointeurs résolus post-parsing</a></li>
+<li class="level2"><a href="#activestate">État opérationnel des aiguillages</a></li>
+<li class="level2"><a href="#enums">Énumérations clés</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#coords">Coordonnées</a></li>
+</ul>
+</div>
+<div class="textblock"><hr  />
+<h1><a class="anchor" id="geoparser"></a>
+GeoParser — Pipeline principal</h1>
+<p>Pipeline complet de transformation <b>GeoJSON → modèle ferroviaire</b>.</p>
+<h2><a class="anchor" id="task"></a>
+Tâche asynchrone</h2>
+<p><a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a> lance <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a> dans un thread détaché. La communication vers l'UI passe exclusivement par <code>PostMessage</code> :</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Message   </th><th class="markdownTableHeadNone">Contenu    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>WM_PROGRESS_UPDATE</code>   </td><td class="markdownTableBodyNone">Avancement 0–100    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>WM_PARSING_SUCCESS</code>   </td><td class="markdownTableBodyNone">Parsing terminé    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>WM_PARSING_ERROR</code>   </td><td class="markdownTableBodyNone">Pointeur <code>std::string*</code> (à libérer par le destinataire)   </td></tr>
+</table>
+<h2><a class="anchor" id="pipeline"></a>
+Pipeline global</h2>
+<p>Voir <a class="el" href="../../db/d02/classGeoParser.html#aa4acc69a49444b9aa06b2c028b2c1133">GeoParser::parse()</a> pour l'implémentation complète.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Phase   </th><th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1–2   </td><td class="markdownTableBodyNone"><a class="el" href="../../db/d02/classGraphBuilder.html" title="Charge un fichier GeoJSON et construit le TopologyGraph métrique.">GraphBuilder</a>   </td><td class="markdownTableBodyNone">Chargement GeoJSON, projection WGS-84 → UTM, snap + fusion des nœuds    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">3–5   </td><td class="markdownTableBodyNone"><a class="el" href="../../d6/d02/classTopologyExtractor.html" title="Extrait la topologie ferroviaire (Switch + Straight) depuis un TopologyGraph.">TopologyExtractor</a>   </td><td class="markdownTableBodyNone">Détection des aiguillages (degré == 3), extraction des <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a>, câblage    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone"><a class="el" href="../../db/d02/classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC) et supprime les chevauche...">SwitchOrientator</a>   </td><td class="markdownTableBodyNone">Orientation root / normal / deviation, calcul des tips CDC    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">7–8   </td><td class="markdownTableBodyNone"><a class="el" href="../../d3/d02/classDoubleSwitchDetector.html">DoubleSwitchDetector</a>   </td><td class="markdownTableBodyNone">Détection des doubles aiguilles, absorption du segment de liaison, validation CDC    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">9   </td><td class="markdownTableBodyNone"><a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>   </td><td class="markdownTableBodyNone">Clear + transfert vers <a class="el" href="../../d2/d01/classTopologyRepository.html">TopologyRepository</a>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10   </td><td class="markdownTableBodyNone"><a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>   </td><td class="markdownTableBodyNone">Résolution des pointeurs partenaires, branches, voisins + <code>buildIndex()</code>   </td></tr>
+</table>
+<blockquote class="doxtable">
+<p>&zwj;<b>Phase 3 — Détection des aiguillages</b> : seuls les nœuds de degré exactement 3 (jonction en Y) sont des <code><a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a></code>. Les nœuds de degré &gt; 3 (croisements en X) sont des frontières de découpe pour les <code><a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a></code> mais ne génèrent pas d'aiguillage. </p>
+</blockquote>
+<blockquote class="doxtable">
+<p>&zwj;<b>Phase 10 — Résolution des pointeurs</b> : après transfert en <code>unique_ptr</code>, les adresses sont stables. Chaque bloc reçoit ses pointeurs directs via <code>setBranchPointers()</code> / <code>setNeighbourPointers()</code>, puis <code>buildIndex()</code> construit les tables de lookup O(1). </p>
+</blockquote>
+<h2><a class="anchor" id="parsing"></a>
+Classes du pipeline</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>   </td><td class="markdownTableBodyNone">Orchestrateur du pipeline    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a>   </td><td class="markdownTableBodyNone">Exécution asynchrone (évite le blocage UI)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../db/d01/classGeometryUtils.html">GeometryUtils</a>   </td><td class="markdownTableBodyNone">Projection UTM, interpolation, angles, snap de grille    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../db/d02/classGraphBuilder.html">GraphBuilder</a>   </td><td class="markdownTableBodyNone">Construction du graphe depuis le GeoJSON (phases 1–2)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../db/d00/classTopologyGraph.html">TopologyGraph</a>   </td><td class="markdownTableBodyNone">Graphe planaire non-orienté (nœuds + arêtes), union-find    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d5/d03/classTopologyEdge.html">TopologyEdge</a>   </td><td class="markdownTableBodyNone">Arête avec géométrie polyligne métrique et longueur planaire    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d6/d02/classTopologyExtractor.html">TopologyExtractor</a>   </td><td class="markdownTableBodyNone">Extraction des blocs depuis le graphe (phases 3–5)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../db/d02/classSwitchOrientator.html">SwitchOrientator</a>   </td><td class="markdownTableBodyNone">Orientation géométrique (phases 6, 6b, 6c, 6d)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d3/d02/classDoubleSwitchDetector.html">DoubleSwitchDetector</a>   </td><td class="markdownTableBodyNone">Détection des doubles aiguilles et validation CDC (phases 7–8)   </td></tr>
+</table>
+<hr  />
+<h1><a class="anchor" id="elements"></a>
+Éléments interactifs</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a>   </td><td class="markdownTableBodyNone">Interface abstraite commune (id, type). <a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> statique partagé. Copie interdite, déplacement autorisé    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a>   </td><td class="markdownTableBodyNone">Étend avec un état opérationnel + helpers <code>isFree()</code> / <code>isOccupied()</code> / <code>isInactive()</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a>   </td><td class="markdownTableBodyNone">Tronçon de voie droite. Longueur géodésique Haversine. Voisins résolus via <code>StraightNeighbours</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>   </td><td class="markdownTableBodyNone">Aiguillage 3 branches. Orientation + tips CDC + support double aiguille + état <code>ActiveBranch</code>   </td></tr>
+</table>
+<h2><a class="anchor" id="hierarchy"></a>
+Hiérarchie</h2>
+<div class="fragment"><div class="line">InteractiveElement          getId(), getType(), m_logger (static)</div>
+<div class="line">    └── ShuntingElement     getState()  [FREE / OCCUPIED / INACTIVE]</div>
+<div class="line">            ├── StraightBlock</div>
+<div class="line">            └── SwitchBlock</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;<b><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> statique</b> : <code><a class="el" href="../../d8/d02/classInteractiveElement.html#a92de0811b888277b54be4a6dae22c08b" title="Logger statique partagé par TOUS les éléments interactifs.">InteractiveElement::m_logger</a></code> est partagé par toutes les instances → un seul fichier <code>Logs/InteractiveElements.log</code>. </p>
+</blockquote>
+<h2><a class="anchor" id="pointers"></a>
+Pointeurs résolus post-parsing</h2>
+<p>**<code><a class="el" href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html" title="Voisins topologiques d&#39;un StraightBlock.">StraightBlock::StraightNeighbours</a></code>**</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Champ   </th><th class="markdownTableHeadNone">Type   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>prev</code>   </td><td class="markdownTableBodyNone"><code>ShuntingElement*</code>   </td><td class="markdownTableBodyNone">Bloc adjacent à l'extrémité A    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>next</code>   </td><td class="markdownTableBodyNone"><code>ShuntingElement*</code>   </td><td class="markdownTableBodyNone">Bloc adjacent à l'extrémité B   </td></tr>
+</table>
+<p>**<code><a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html" title="Branches topologiques d&#39;un SwitchBlock.">SwitchBlock::SwitchBranches</a></code>**</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Champ   </th><th class="markdownTableHeadNone">Type   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>root</code>   </td><td class="markdownTableBodyNone"><code>ShuntingElement*</code>   </td><td class="markdownTableBodyNone">Bloc sur la branche root    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>normal</code>   </td><td class="markdownTableBodyNone"><code>ShuntingElement*</code>   </td><td class="markdownTableBodyNone">Bloc sur la branche normale    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>deviation</code>   </td><td class="markdownTableBodyNone"><code>ShuntingElement*</code>   </td><td class="markdownTableBodyNone">Bloc sur la branche déviée   </td></tr>
+</table>
+<h2><a class="anchor" id="activestate"></a>
+État opérationnel des aiguillages</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Méthode   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="../../d9/d02/classSwitchBlock.html#aba30776838f3363fc7e93bcb7ce7888c">SwitchBlock::getActiveBranch()</a></code>   </td><td class="markdownTableBodyNone">Retourne <code><a class="el" href="../../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89a1e23852820b9154316c7c06e2b7ba051">ActiveBranch::NORMAL</a></code> ou <code>DEVIATION</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="../../d9/d02/classSwitchBlock.html#ada66b97802d45a8b3dfbbb05011ae9b6">SwitchBlock::isDeviationActive()</a></code>   </td><td class="markdownTableBodyNone">Raccourci booléen    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>SwitchBlock::setActiveBranch(branch)</code>   </td><td class="markdownTableBodyNone">Assigne l'état + propage aux partenaires    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="../../d9/d02/classSwitchBlock.html#a49ee6b32f553615447b412e58afca21a" title="Alterne entre NORMAL et DEVIATION. Équivalent à setActiveBranch(!current).">SwitchBlock::toggleActiveBranch()</a></code>   </td><td class="markdownTableBodyNone">Alterne + propage + retourne le nouvel état   </td></tr>
+</table>
+<h2><a class="anchor" id="enums"></a>
+Énumérations clés</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Enum   </th><th class="markdownTableHeadNone">Valeurs   </th><th class="markdownTableHeadNone">Usage    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>InteractiveElementType</code>   </td><td class="markdownTableBodyNone"><code>SWITCH</code>, <code>STRAIGHT</code>   </td><td class="markdownTableBodyNone">Typage sans RTTI    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>ShuntingState</code>   </td><td class="markdownTableBodyNone"><code>FREE</code>, <code>OCCUPIED</code>, <code>INACTIVE</code>   </td><td class="markdownTableBodyNone">État opérationnel infrastructure    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>ActiveBranch</code>   </td><td class="markdownTableBodyNone"><code>NORMAL</code>, <code>DEVIATION</code>   </td><td class="markdownTableBodyNone">Position opérationnelle de l'aiguillage   </td></tr>
+</table>
+<hr  />
+<h1><a class="anchor" id="coords"></a>
+Coordonnées</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Système    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d01/classLatLon.html">LatLon</a>   </td><td class="markdownTableBodyNone">Géographique WGS-84 (latitude, longitude)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>   </td><td class="markdownTableBodyNone">Métrique UTM (x = est, y = nord)   </td></tr>
+</table>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../index.html">Simulateur Ferroviaire</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

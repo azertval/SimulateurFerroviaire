@@ -1,0 +1,25 @@
+<map id="SimulateurFerroviaire/Engine/HMI/Dialogs/AboutDialog.h" name="SimulateurFerroviaire/Engine/HMI/Dialogs/AboutDialog.h">
+<area shape="rect" id="Node000001" title="Déclaration de la boîte de dialogue &quot;À propos&quot;." alt="" coords="363,5,612,45"/>
+<area shape="rect" id="Node000002" href="$d6/d01/framework_8h.html" title=" " alt="" coords="435,93,540,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="490,46,490,79,485,79,485,46"/>
+<area shape="rect" id="Node000003" href="$d9/d02/targetver_8h.html" title=" " alt="" coords="14,167,107,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="435,118,121,169,120,164,434,113"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="131,167,222,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="438,121,236,167,235,162,437,116"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="247,167,317,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="455,121,329,165,327,160,453,116"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="341,167,420,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="472,121,411,161,408,157,469,116"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="444,167,531,192"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="490,119,490,153,485,153,485,119"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="555,167,622,192"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="505,116,562,156,559,161,502,121"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="646,167,742,192"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="521,116,648,160,647,165,520,121"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="766,167,825,192"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="541,116,753,164,752,169,540,121"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="849,167,929,192"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="541,113,836,164,835,169,540,118"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,240,116,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="63,192,63,226,58,226,58,192"/>
+</map>

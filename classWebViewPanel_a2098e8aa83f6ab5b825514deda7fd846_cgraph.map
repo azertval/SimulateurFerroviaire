@@ -1,7 +1,0 @@
-<map id="WebViewPanel::onControllerCreated" name="WebViewPanel::onControllerCreated">
-<area shape="rect" id="Node000001" title="Callback déclenché à la fin de la création du contrôleur WebView2." alt="" coords="5,35,211,75"/>
-<area shape="rect" id="Node000002" href="$classWebViewPanel.html#ac77338c39cc87b2fb7b7bde9da2004b1" title="Callback statique déclenché à la réception d&#39;un message JavaScript." alt="" coords="259,5,485,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,41,245,37,245,42,211,46"/>
-<area shape="rect" id="Node000003" href="$classWebViewPanel.html#a7a3796392183cbf2538ccb72f87c839a" title="Redimensionne le WebView pour s&#39;adapter à la fenêtre." alt="" coords="290,70,454,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,63,276,70,276,75,210,68"/>
-</map>

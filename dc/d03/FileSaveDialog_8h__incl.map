@@ -1,0 +1,28 @@
+<map id="SimulateurFerroviaire/Engine/HMI/Dialogs/FileSaveDialog.h" name="SimulateurFerroviaire/Engine/HMI/Dialogs/FileSaveDialog.h">
+<area shape="rect" id="Node000001" title="Déclaration du sélecteur de sauvegarde de fichier GeoJSON." alt="" coords="657,5,869,60"/>
+<area shape="rect" id="Node000002" href="$d6/d01/framework_8h.html" title=" " alt="" coords="485,108,591,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="695,63,582,106,580,101,694,58"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="870,181,929,207"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="767,60,774,96,781,115,791,132,822,159,858,177,856,182,819,163,787,135,776,117,769,98,762,61"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="801,108,875,133"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="788,58,821,96,817,99,784,62"/>
+<area shape="rect" id="Node000003" href="$d9/d02/targetver_8h.html" title=" " alt="" coords="14,181,107,207"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="485,131,327,153,121,184,120,179,326,147,485,126"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="131,181,222,207"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="486,135,236,184,235,178,485,130"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="247,181,317,207"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="498,136,331,182,330,177,496,131"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="341,181,420,207"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="514,136,420,178,418,173,512,131"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="444,181,531,207"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="532,135,506,172,501,169,527,132"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="555,181,622,207"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="549,132,575,169,570,172,544,135"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="646,181,742,207"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="564,131,657,173,655,178,562,136"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="591,128,709,148,857,178,856,184,708,154,590,133"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="766,181,846,207"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="582,131,753,176,751,181,580,136"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,255,116,280"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="63,207,63,241,58,241,58,207"/>
+</map>
