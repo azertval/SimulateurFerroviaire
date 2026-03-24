@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // fichier Include Microsoft Visual C++.
-// Utilisé par SimulateurFerroviaire.rc
+// Utilise par SimulateurFerroviaire.rc
 //
 #define IDC_MYICON                      2
 #define IDD_SIMULATEURFERROVIAIRE_DIALOG 102
@@ -13,7 +13,7 @@
 #define IDR_MAINFRAME                   128
 #define IDS_APP_TITLE                   1010
 #define IDM_FILE_OPEN                   32771
-#define IDM_FILE_EXPORT					32772
+#define IDM_FILE_EXPORT                 32772
 #define IDM_VIEW_PCC                    32773
 #define IDC_STATIC                      -1
 

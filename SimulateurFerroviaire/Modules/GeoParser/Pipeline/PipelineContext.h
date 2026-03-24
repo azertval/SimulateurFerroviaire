@@ -22,6 +22,8 @@
 
 #include "RawNetwork.h"
 #include "IntersectionMap.h"
+#include "SplitNetwork.h"
+#include "TopologyGraph.h"
 
  /**
   * @struct PhaseStats
@@ -61,8 +63,12 @@ struct PipelineContext
     /** Phase 2 — intersections géométriques + grille spatiale. */
     IntersectionData intersections;
 
-    // SplitNetwork    splitNetwork;    — ajouté en étape 3
-    // TopologyGraph   topoGraph;       — ajouté en étape 4
+    /** Phase 3 — segments atomiques découpés aux intersections. */
+    SplitNetwork splitNetwork;
+
+    /** Phase 4 — graphe planaire nœuds + arêtes. */
+    TopologyGraph topoGraph;
+
     // ClassifiedNodes classifiedNodes; — ajouté en étape 5
     // BlockSet        blocks;          — ajouté en étape 6
 
