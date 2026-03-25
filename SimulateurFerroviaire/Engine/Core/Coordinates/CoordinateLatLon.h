@@ -45,4 +45,9 @@ public:
     {
         return !(*this == other);
     }
+
+    std::string toString() const
+    {
+        return "[" + std::to_string(latitude) + " ; " + std::to_string(longitude) + "]";
+    }
 };

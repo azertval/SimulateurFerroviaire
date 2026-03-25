@@ -68,7 +68,10 @@ void Phase4_TopologyBuilder::run(PipelineContext& ctx,
     std::vector<CoordinateLatLon>       canonPosWGS84(segCount * 2);
 
     for (size_t i = 0; i < segCount * 2; ++i)
-        canonPos[i] = endUTM[i];   // Position initiale = position propre
+    {
+        canonPos[i] = endUTM[i];
+        canonPosWGS84[i] = endWGS84[i];   // ← ajout
+    }
 
     // -------------------------------------------------------------------------
     // Phase de snap : pour chaque endpoint, cherche un voisin dans la grille
@@ -169,12 +172,6 @@ void Phase4_TopologyBuilder::run(PipelineContext& ctx,
     LOG_INFO(logger, "Graphe construit — "
         + std::to_string(ctx.topoGraph.nodes.size()) + " nœud(s), "
         + std::to_string(ctx.topoGraph.edges.size()) + " arête(s).");
-
-    // -------------------------------------------------------------------------
-    // Libération mémoire
-    // -------------------------------------------------------------------------
-    ctx.splitNetwork.clear();
-    LOG_DEBUG(logger, "splitNetwork libéré.");
 }
 
 
