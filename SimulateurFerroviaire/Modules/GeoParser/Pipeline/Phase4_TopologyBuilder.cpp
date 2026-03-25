@@ -22,6 +22,13 @@ void Phase4_TopologyBuilder::run(PipelineContext& ctx,
 {
     const auto t0 = PipelineContext::startTimer();
 
+    if (ctx.empty())
+    {
+        LOG_ERROR(logger, "splitNetwork vide — parsing annulé.");
+        throw EXCEPTION_EXECUTE_FAULT;
+    }
+
+
     const size_t segCount = ctx.splitNetwork.size();
     LOG_INFO(logger, "Construction du graphe — "
         + std::to_string(segCount) + " segment(s) atomique(s).");
