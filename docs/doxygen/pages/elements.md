@@ -29,8 +29,8 @@ GeoParser pipeline                   TopologyRepository         HMI / Rendu
 |--------|----------------------|
 | @ref Element | Interface abstraite commune — identifiant, type, logger partagé |
 | @ref ShuntingElement | Étend avec un état opérationnel et les helpers @ref ShuntingElement::isFree() "isFree" / @ref ShuntingElement::isOccupied() "isOccupied" / @ref ShuntingElement::isInactive() "isInactive" |
-| @ref StraightBlock | Tronçon de voie droite — géométrie duale WGS84/UTM, longueur Haversine, voisins |
-| @ref SwitchBlock | Aiguillage 3 branches — orientation, tips CDC, double aiguille, branche active |
+| @ref StraightBlock | Répresentation d'un bloc de circuit de voie |
+| @ref SwitchBlock | Répresentation d'un bloc d'aiguillage  |
 
 ---
 
@@ -39,8 +39,8 @@ GeoParser pipeline                   TopologyRepository         HMI / Rendu
 ```
 Element          getId(), getType(), m_id, m_logger (static)
     └── ShuntingElement     getState(), isFree(), isOccupied(), isInactive(), m_state
-            ├── StraightBlock   géométrie WGS84+UTM · voisins prev/next
-            └── SwitchBlock     jonction · branches root/normal/deviation · double switch
+            ├── StraightBlock   
+            └── SwitchBlock     
 ```
 
 > **Copie interdite / déplacement autorisé** sur toute la hiérarchie.
@@ -59,7 +59,7 @@ Classe de base **abstraite**. Définit l'interface commune à tous les élément
 ```
 Element
   ├── getId()   → std::string            (pure virtual)
-  ├── getType() → ElementType (pure virtual)
+  ├── getType() → ElementType            (pure virtual)
   ├── m_id      : std::string            (protected)
   └── m_logger  : Logger                 (protected, static)
 ```
@@ -117,7 +117,6 @@ Chaque bloc maintient deux représentations de sa polyligne, pour deux usages di
 | `m_pointsUTM`   | UTM (x = est, y = nord, mètres) | Calculs métriques du pipeline |
 
 Les deux polylignes ont la même taille et le même indexage.
-`m_pointsUTM` est vide si le pipeline v2 ne l'a pas renseigné.
 
 **Longueur géodésique :**
 `m_lengthMeters` est calculée par somme Haversine sur `m_pointsWGS84`
@@ -182,7 +181,7 @@ où convergent les trois branches.
 
 Les **tips CDC** (`m_tipOnRoot`, `m_tipOnNormal`, `m_tipOnDeviation`) sont les
 extrémités de chaque branche issues du fichier CDC. Ils sont de type `std::optional`
-car absents avant l'orientation (`Phase7`).
+car absents avant l'orientation (`Phase8`).
 
 La **longueur totale de traversée** est calculée par @ref SwitchBlock::computeTotalLength() "computeTotalLength()" :
 ```

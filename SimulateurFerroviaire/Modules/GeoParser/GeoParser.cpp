@@ -38,50 +38,50 @@ void GeoParser::parse(const std::string& filePath, std::shared_ptr<std::atomic<b
     m_ctx = PipelineContext{};   // Reset complet
     m_ctx.filePath = filePath;
 
-
-    Phase1_GeoLoader::run(m_ctx, m_config, m_logger);
-    reportProgress(8, L"Phase 1/9 — Chargement GeoJSON - Done");
+    reportProgress(0, L"Phase 1/9 — Chargement GeoJSON");
+    Phase1_GeoLoader::run(m_ctx, m_config, m_logger);    
     checkCancel();
 
+    reportProgress(5, L"Phase 2/9 — Intersections géométriques");
     Phase2_GeometricIntersector::run(m_ctx, m_config, m_logger);
-    reportProgress(33, L"Phase 2/9 — Intersections géométriques - Done");
     checkCancel();
 
+    reportProgress(30, L"Phase 3/9 — Découpe des segments");
     Phase3_NetworkSplitter::run(m_ctx, m_config, m_logger);
-    reportProgress(43, L"Phase 3/9 — Découpe des segments - Done");
     checkCancel();
 
+    reportProgress(45, L"Phase 4/9 — Construction du graphe");
     Phase4_TopologyBuilder::run(m_ctx, m_config, m_logger);
-    reportProgress(58, L"Phase 4/9 — Construction du graphe - Done");
     checkCancel();
 
+    reportProgress(58, L"Phase 5/9 — Classification des nœuds");
     Phase5_SwitchClassifier::run(m_ctx, m_config, m_logger);
-    reportProgress(65, L"Phase 5/9 — Classification des nœuds - Done);
     checkCancel();
 
+    reportProgress(65, L"Phase 6/9 — Extraction des blocs");
     Phase6_BlockExtractor::run(m_ctx, m_config, m_logger);
-    reportProgress(75, L"Phase 6/9 — Extraction des blocs - Done");
     checkCancel();
 
+    reportProgress(75, L"Phase 7/9 — Liaisons des doubles aiguilles");
     // Nota : Phase 7 et 8 est appelée APRÈS Phase 9a_resolutionDesPointeurs
     // SwitchOrientator et DoubleSwitchDetector ont besoin des pointeurs réels(getRootBlock(), getNormalBlock())
     Phase9_RepositoryTransfer::resolve(m_ctx, m_logger);
     checkCancel();
 
     Phase7_DoubleSwitchDetector::run(m_ctx, m_config, m_logger);
-    reportProgress(85, L"Phase 7/9 — Doubles aiguilles - Done");
     checkCancel();
 
+    reportProgress(85, L"hase 8/9 — Vérification de la bonne orientation des switches");
     Phase8_SwitchOrientator::run(m_ctx, m_config, m_logger);
-    reportProgress(95, L"Phase 8/9 — Orientation des switches - Done");
     checkCancel();
 
+    reportProgress(90, L"Phase 9/9 — Transfert TopologyRepository");
     Phase9_RepositoryTransfer::transfer(m_ctx, m_logger);
-    reportProgress(100, L"Phase 9/9 — Transfert TopologyRepository - Done");
     checkCancel();
-    
-    logPerformanceSummary();
+
+    reportProgress(95, L"Affichage en cours");
     LOG_INFO(m_logger, "GeoParser COMPLETED");
+    logPerformanceSummary();
 }
 
 
@@ -97,20 +97,13 @@ void GeoParser::checkCancel() const
 
 void GeoParser::reportProgress(int progress, const std::wstring& label)
 {
-    if (!m_ctx.stats.empty())
-    {
-        const auto& s = m_ctx.stats.back();
-        LOG_DEBUG(m_logger, s.name + " — "
-            + std::to_string(s.outputCount) + " éléments en "
-            + std::to_string(static_cast<int>(s.durationMs)) + " ms.");
-    }
     if (m_onProgress)
         m_onProgress(progress, label);
 }
 
 void GeoParser::logPerformanceSummary() const
 {
-    LOG_INFO(m_logger, "--- Performance pipeline ---");
+    LOG_INFO(m_logger, "--- parser performance ---");
     double total = 0.0;
     for (const auto& s : m_ctx.stats)
     {
@@ -121,4 +114,5 @@ void GeoParser::logPerformanceSummary() const
         total += s.durationMs;
     }
     LOG_INFO(m_logger, "  TOTAL : " + std::to_string(static_cast<int>(total)) + " ms");
+    LOG_INFO(m_logger, "--------------------------");
 }
