@@ -12,8 +12,8 @@
 #include "Pipeline/Phase4_TopologyBuilder.h"
 #include "Pipeline/Phase5_SwitchClassifier.h"
 #include "Pipeline/Phase6_BlockExtractor.h"
-#include "Pipeline/Phase7_SwitchOrientator.h"
-#include "Pipeline/Phase8_DoubleSwitchDetector.h"
+#include "Pipeline/Phase7_DoubleSwitchDetector.h"
+#include "Pipeline/Phase8_SwitchOrientator.h"
 #include "Pipeline/Phase9_RepositoryTransfer.h"
 
  // =============================================================================
@@ -40,44 +40,44 @@ void GeoParser::parse(const std::string& filePath, std::shared_ptr<std::atomic<b
 
 
     Phase1_GeoLoader::run(m_ctx, m_config, m_logger);
-    reportProgress(8, L"Phase 1/9 — Chargement GeoJSON");
+    reportProgress(8, L"Phase 1/9 — Chargement GeoJSON - Done");
     checkCancel();
 
     Phase2_GeometricIntersector::run(m_ctx, m_config, m_logger);
-    reportProgress(33, L"Phase 2/9 — Intersections géométriques");
+    reportProgress(33, L"Phase 2/9 — Intersections géométriques - Done");
     checkCancel();
 
     Phase3_NetworkSplitter::run(m_ctx, m_config, m_logger);
-    reportProgress(43, L"Phase 3/9 — Découpe des segments");
+    reportProgress(43, L"Phase 3/9 — Découpe des segments - Done");
     checkCancel();
 
     Phase4_TopologyBuilder::run(m_ctx, m_config, m_logger);
-    reportProgress(58, L"Phase 4/9 — Construction du graphe");
+    reportProgress(58, L"Phase 4/9 — Construction du graphe - Done");
     checkCancel();
 
     Phase5_SwitchClassifier::run(m_ctx, m_config, m_logger);
-    reportProgress(65, L"Phase 5/9 — Classification des nœuds");
+    reportProgress(65, L"Phase 5/9 — Classification des nœuds - Done);
     checkCancel();
 
     Phase6_BlockExtractor::run(m_ctx, m_config, m_logger);
-    reportProgress(75, L"Phase 6/9 — Extraction des blocs");
+    reportProgress(75, L"Phase 6/9 — Extraction des blocs - Done");
     checkCancel();
 
-    // Nota : Phase7_SwitchOrientator est appelée APRÈS Phase 9a_resolutionDesPointeurs
-    // SwitchOrientator a besoin des pointeurs réels(getRootBlock(), getNormalBlock()) pour calculer les angles.
+    // Nota : Phase 7 et 8 est appelée APRÈS Phase 9a_resolutionDesPointeurs
+    // SwitchOrientator et DoubleSwitchDetector ont besoin des pointeurs réels(getRootBlock(), getNormalBlock())
     Phase9_RepositoryTransfer::resolve(m_ctx, m_logger);
     checkCancel();
 
-    Phase8_DoubleSwitchDetector::run(m_ctx, m_config, m_logger);
-    reportProgress(85, L"Phase 7/9 — Doubles aiguilles");
+    Phase7_DoubleSwitchDetector::run(m_ctx, m_config, m_logger);
+    reportProgress(85, L"Phase 7/9 — Doubles aiguilles - Done");
     checkCancel();
 
-    Phase7_SwitchOrientator::run(m_ctx, m_config, m_logger);
-    reportProgress(95, L"Phase 8/9 — Orientation des switches");
+    Phase8_SwitchOrientator::run(m_ctx, m_config, m_logger);
+    reportProgress(95, L"Phase 8/9 — Orientation des switches - Done");
     checkCancel();
 
     Phase9_RepositoryTransfer::transfer(m_ctx, m_logger);
-    reportProgress(100, L"Phase 9/9 — Transfert TopologyRepository");
+    reportProgress(100, L"Phase 9/9 — Transfert TopologyRepository - Done");
     checkCancel();
     
     logPerformanceSummary();

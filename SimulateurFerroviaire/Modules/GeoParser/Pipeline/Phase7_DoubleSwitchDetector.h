@@ -1,5 +1,5 @@
 /**
- * @file  Phase8_DoubleSwitchDetector.h
+ * @file  Phase7_DoubleSwitchDetector.h
  * @brief Phase 8 du pipeline — détection et absorption des doubles aiguilles.
  *
  * @par Sous-phases
@@ -21,7 +21,7 @@
 #include "Engine/Core/Config/ParserConfig.h"
 #include "Engine/Core/Logger/Logger.h"
 
-class Phase8_DoubleSwitchDetector
+class Phase7_DoubleSwitchDetector
 {
 public:
 
@@ -38,7 +38,7 @@ public:
         const ParserConfig& config,
         Logger& logger);
 
-    Phase8_DoubleSwitchDetector() = delete;
+    Phase7_DoubleSwitchDetector() = delete;
 
 private:
 

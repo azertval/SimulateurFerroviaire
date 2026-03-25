@@ -9,8 +9,8 @@
 #include <string>
 #include <vector>
 
-#include "Modules/InteractiveElements/ShuntingElements/StraightBlock.h"
-#include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/StraightBlock.h"
+#include "Modules/Elements/ShuntingElements/SwitchBlock.h"
 #include "Engine/Core/Logger/Logger.h"
 #include "External/nlohmann/json.hpp"
 

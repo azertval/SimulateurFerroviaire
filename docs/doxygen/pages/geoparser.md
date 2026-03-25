@@ -1,55 +1,78 @@
-@page geoparser_v2 GeoParser v2 — Pipeline refactorisé
+@page geoparser GeoParser — Pipeline refactorisé
 
 @tableofcontents
 
 ---
 
-# Vue d'ensemble {#gpv2_overview}
+# GeoParser {#geoparser}
 
-GeoParser v2 est la refonte complète du pipeline **GeoJSON → modèle ferroviaire**.
+Pipeline complet de transformation **GeoJSON → modèle ferroviaire**,
 
-L'ancien pipeline monolithique (`GeoParser::parse()` tout-en-un) est remplacé par
-**9 phases indépendantes**, chacune avec une responsabilité unique, une interface
-uniforme et une instrumentation de performance intégrée.
+## Architecture du pipeline {#pipeline_arch}
 
 ```
-GeoJSON
-  │
-  ▼ Phase1  GeoLoader             WGS-84 → UTM, RawNetwork
-  ▼ Phase2  GeometricIntersector  intersections géométriques (Cramer + grid binning)
-  ▼ Phase3  NetworkSplitter       découpe aux intersections, segments atomiques
-  ▼ Phase4  TopologyBuilder       snap + Union-Find → graphe planaire
-  ▼ Phase5  SwitchClassifier      NodeClass par nœud (degré + angle)
-  ▼ Phase6  BlockExtractor        StraightBlock + SwitchBlock non-orientés
-  ▼ Phase9a resolve()             résolution pointeurs inter-blocs
-  ▼ Phase8  DoubleSwitchDetector  absorption doubles aiguilles
-  ▼ Phase7  SwitchOrientator      orientation root / normal / deviation
-  ▼ Phase9b transfer()            TopologyRepository + buildIndex()
-  │
-  ▼
-TopologyRepository  ← inchangé
+GeoParsingTask (thread async)
+  └─► GeoParser (orchestrateur)
+        ├─► PipelineContext  (transporteur inter-phases)
+        ├─► ParserConfig     (paramètres immuables pendant le parsing)
+        └─► Phase1..9        (chacune : run(ctx, config, logger))
 ```
 
-> **Ordre d'exécution réel** : Phase8 précède Phase7 dans `GeoParser::parse()`.
-> La résolution des pointeurs (Phase9a) est requise avant l'orientation (Phase7).
-> Voir @ref gpv2_phase9 pour le détail.
+## Phases {#pipeline}
 
-**Objectifs de la refonte :**
+| Ordre | Phase | Classe | Input → Output |
+|-------|-------|--------|----------------|
+| 1 | Chargement GeoJSON | @ref Phase1_GeoLoader | fichier → `RawNetwork` (WGS84 + UTM) |
+| 2 | Intersections géométriques | @ref Phase2_GeometricIntersector | `RawNetwork` → `IntersectionData` (Cramer + grid binning) |
+| 3 | Découpe des segments | @ref Phase3_NetworkSplitter | `RawNetwork` + `IntersectionData` → `SplitNetwork` |
+| 4 | Graphe planaire | @ref Phase4_TopologyBuilder | `SplitNetwork` → `TopologyGraph` (Union-Find + snap) |
+| 5 | Classification des nœuds | @ref Phase5_SwitchClassifier | `TopologyGraph` → `ClassifiedNodes` (degré + angle) |
+| 6 | Extraction des blocs | @ref Phase6_BlockExtractor | `ClassifiedNodes` → `BlockSet` (DFS entre nœuds frontières) |
+| 9a | Résolution des pointeurs | @ref Phase9_RepositoryTransfer | `BlockSet` → pointeurs inter-blocs résolus |
+| 8 | Doubles aiguilles | @ref Phase7_DoubleSwitchDetector | `BlockSet` → absorption + validation CDC |
+| 7 | Orientation des switches | @ref Phase8_SwitchOrientator | `BlockSet` → root / normal / deviation |
+| 9b | Transfert final | @ref Phase9_RepositoryTransfer | `BlockSet` → @ref TopologyRepository |
 
-| Axe | Apport |
-|-----|--------|
-| Modularité | Chaque phase est relançable indépendamment via `PhaseN::run(ctx, config, logger)` |
-| Performances | Conversion UTM une seule fois, libération mémoire inter-phases, grid binning O(n·k) |
-| Détection topologique | Switches détectés par intersection géométrique réelle, plus par heuristique de degré |
-| SOLID | SRP par phase, OCP sur l'orchestrateur, DIP via injection `ParserConfig` |
+> **Ordre d'exécution réel dans @ref GeoParser::parse() "GeoParser::parse()" :**
+> Phase1 → 2 → 3 → 4 → 5 → 6 → 9a::resolve → 8 → 7 → 9b::transfer.
+> Phase 8 et Phase 7 nécessitent les pointeurs résolus par 9a.
+> Phase 9b doit être la dernière — état final de @ref TopologyRepository.
 
-**Contrat de compatibilité :**
+## Libération mémoire inter-phases {#memory}
 
-| Composant | Statut |
-|-----------|--------|
-| `TopologyRepository` / `TopologyData` | **Inchangés** — seul le pipeline change |
-| `GeoParsingTask` — interface publique | **Inchangée** — `start(filePath, config)` |
-| Module PCC (`PCCGraphBuilder`, `PCCLayout`, `TCORenderer`) | **Aucune régression** |
+| Libéré après | Structure |
+|--------------|-----------|
+| Phase 3 | `RawNetwork`, `IntersectionData` |
+| Phase 4 | `SplitNetwork` |
+| Phase 6 | `TopologyGraph`, `ClassifiedNodes` |
+| Phase 9b | `BlockSet` |
+
+## Tâche asynchrone {#task}
+
+@ref GeoParsingTask lance @ref GeoParser dans un thread détaché.
+Communication vers l'UI via `PostMessage` :
+
+| Message | wParam | lParam | Signification |
+|---------|--------|--------|---------------|
+| `WM_PROGRESS_UPDATE` | 0-100 | `std::wstring*` label (à libérer) | Avancement |
+| `WM_PARSING_SUCCESS` | — | — | Parsing terminé |
+| `WM_PARSING_ERROR` | — | `std::wstring*` message (à libérer) | Échec |
+| `WM_PARSING_CANCELLED` | — | — | Annulation propre |
+
+**Annulation :** @ref GeoParsingTask::cancel() "GeoParsingTask::cancel()" positionne un `shared_ptr<atomic<bool>>`
+partagé avec @ref GeoParser. Vérifié entre chaque phase via @ref GeoParser::checkCancel() "GeoParser::checkCancel()"
+→ lève @ref GeoParser::CancelledException "GeoParser::CancelledException".
+
+## Structures de données du pipeline {#pipeline_data}
+
+| Struct | Phase productrice | Contenu |
+|--------|-------------------|---------|
+| `RawNetwork` | Phase 1 | Polylignes WGS84 + UTM brutes |
+| `IntersectionData` | Phase 2 | Points d'intersection + grille spatiale |
+| `SplitNetwork` | Phase 3 | Segments atomiques sans intersection interne |
+| `TopologyGraph` | Phase 4 | Graphe planaire nœuds + arêtes + adjacence |
+| `ClassifiedNodes` | Phase 5 | `NodeClass` par nœud |
+| `BlockSet` | Phase 6 | `unique_ptr<StraightBlock>` + `unique_ptr<SwitchBlock>` |
 
 ---
 
@@ -86,8 +109,8 @@ Modules/GeoParser/
       ├── Phase4_TopologyBuilder.h/.cpp
       ├── Phase5_SwitchClassifier.h/.cpp
       ├── Phase6_BlockExtractor.h/.cpp
-      ├── Phase7_SwitchOrientator.h/.cpp
-      ├── Phase8_DoubleSwitchDetector.h/.cpp
+      ├── Phase8_SwitchOrientator.h/.cpp
+      ├── Phase7_DoubleSwitchDetector.h/.cpp
       └── Phase9_RepositoryTransfer.h/.cpp
 ```
 
@@ -155,7 +178,7 @@ Phase9  lit    ctx.blocks         → TopologyRepository       → ctx.blocks.cl
 **PhaseStats — instrumentation intégrée :**
 
 Chaque phase enregistre sa durée et son compte d'éléments dans `ctx.stats`.
-`GeoParser::logPerformanceSummary()` produit le tableau de performance en fin de pipeline.
+@ref GeoParser::logPerformanceSummary() "GeoParser::logPerformanceSummary()" produit le tableau de performance en fin de pipeline.
 
 ```
 --- Performance pipeline ---
@@ -170,19 +193,19 @@ Chaque phase enregistre sa durée et son compte d'éléments dans `ctx.stats`.
 
 # GeoParser — Orchestrateur {#gpv2_orchestrator}
 
-`GeoParser` possède `PipelineContext` et `ParserConfig`.
+@ref GeoParser possède `PipelineContext` et `ParserConfig`.
 Il enchaîne les phases et reporte la progression via callback — il ne connaît pas
 les détails internes de chaque phase (OCP).
 
 | Méthode | Rôle |
 |---------|------|
-| `GeoParser::GeoParser(config, logger, onProgress)` | Construction — snapshot de config |
-| `GeoParser::parse(filePath)` | Pipeline complet — phases 1 à 9 |
-| `GeoParser::reportProgress(int)` | Callback UI + log de la dernière phase |
-| `GeoParser::logPerformanceSummary()` | Tableau de performance final |
+| @ref GeoParser::GeoParser() "GeoParser(config, logger, onProgress)" | Construction — snapshot de config |
+| @ref GeoParser::parse() "parse(filePath)" | Pipeline complet — phases 1 à 9 |
+| @ref GeoParser::reportProgress() "reportProgress(int)" | Callback UI + log de la dernière phase |
+| @ref GeoParser::logPerformanceSummary() "logPerformanceSummary()" | Tableau de performance final |
 
 **Ajout d'une phase (OCP) :** ajouter uniquement un appel `PhaseN::run(m_ctx, m_config, m_logger)`
-dans `parse()` — GeoParser n'a pas besoin de connaître l'implémentation.
+dans `parse()` — @ref GeoParser n'a pas besoin de connaître l'implémentation.
 
 ---
 
@@ -224,6 +247,49 @@ Calcule tous les points d'intersection géométrique entre segments du `RawNetwo
 
 **Sortie :** `ctx.intersections` — `map<SegmentId, vector<IntersectionPoint>>`
 
+### Intersection segment-segment — algorithme de Cramer
+
+Deux segments AB et CD se croisent si on peut écrire :
+
+```
+P = A + t * (B - A)    (point sur AB, t ∈ [0,1])
+P = C + u * (D - C)    (point sur CD, u ∈ [0,1])
+```
+
+En égalisant les deux expressions :
+
+```
+A + t*(B-A) = C + u*(D-C)
+```
+
+Ce système 2×2 s'écrit sous forme matricielle (règle de Cramer) :
+
+```
+| Bx-Ax   -(Dx-Cx) |   | t |   | Cx-Ax |
+| By-Ay   -(Dy-Cy) | × | u | = | Cy-Ay |
+```
+
+Le déterminant du système :
+
+```
+det = (Bx-Ax)*(-(Dy-Cy)) - (-(Dx-Cx))*(By-Ay)
+    = (Bx-Ax)*(Cy-Dy) + (Dx-Cx)*(By-Ay)
+```
+
+Si `det == 0`, les segments sont **parallèles** — pas d'intersection.
+
+Sinon :
+
+```
+t = ((Cx-Ax)*(Cy-Dy) + (Dx-Cx)*(Cy-Ay)) / det   ← simplifié
+u = ((Bx-Ax)*(Cy-Ay) - (By-Ay)*(Cx-Ax)) / det
+```
+
+Les segments se croisent si et seulement si `t ∈ [0,1]` et `u ∈ [0,1]`.
+
+> Référence — intersection segment-segment :
+> https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
+
 
 ---
 
@@ -243,6 +309,49 @@ de `maxSegmentLength`. Produit des **segments atomiques** sans intersection inte
 
 **Sortie :** `ctx.splitNetwork` — vecteur d'`AtomicSegment`
 
+### Interpolation linéaire UTM vs sphérique WGS84
+
+#### UTM — interpolation linéaire exacte
+
+En coordonnées UTM (métriques), l'interpolation linéaire est exacte :
+
+```cpp
+CoordinateXY interpolateUTM(const CoordinateXY& A,
+                              const CoordinateXY& B,
+                              double t)
+{
+    return { A.x + t * (B.x - A.x),
+             A.y + t * (B.y - A.y) };
+}
+```
+
+UTM est une projection conforme — les distances et angles sont préservés
+localement. Sur un segment de < 100 km, l'interpolation linéaire est
+exacte à mieux que 1 mm.
+
+#### WGS84 — approximation linéaire acceptable
+
+En WGS84, l'interpolation strictement correcte est la **géodésique** (ligne
+courbe sur l'ellipsoïde). Mais pour des segments de < 1 km (notre cas après
+découpe par `maxSegmentLength`), l'erreur d'interpolation linéaire est
+inférieure à 1 mm — négligeable pour le rendu Leaflet.
+
+```cpp
+LatLon interpolateWGS84(const LatLon& A, const LatLon& B, double t)
+{
+    // Interpolation linéaire — valable sur < ~10 km d'arc
+    return { A.lat + t * (B.lat - A.lat),
+             A.lon + t * (B.lon - A.lon) };
+}
+```
+
+**Quand faudrait-il une géodésique ?** Sur des segments transcontinentaux
+(> 100 km). Notre pipeline découpe à `maxSegmentLength` (défaut 1000 m)
+avant d'arriver ici — pas de risque.
+
+> Référence — géodésique vs linéaire :
+> https://en.wikipedia.org/wiki/Geodesics_on_an_ellipsoid
+
 
 ---
 
@@ -261,6 +370,38 @@ Fusionne les extrémités proches via Union-Find + grid binning.
 | Libération | `ctx.splitNetwork.clear()` après production |
 
 **Sortie :** `ctx.topoGraph` — graphe planaire nœuds + arêtes UTM
+
+### Union-Find — principe et complexité
+
+#### Problème
+
+On a N extrémités de segments. Certaines doivent être fusionnées
+(proches < snapTolerance). On veut savoir rapidement : "ces deux
+extrémités appartiennent-elles au même nœud topologique ?"
+
+#### Structure Union-Find (disjoint set)
+
+Une forêt d'arbres où chaque élément pointe vers son parent.
+La racine d'un arbre représente le **représentant canonique** de l'ensemble.
+
+```
+Éléments : [0, 1, 2, 3, 4]
+parent   : [0, 0, 2, 2, 4]  ← 0 et 1 sont dans le même ensemble
+                               2 et 3 sont dans le même ensemble
+                               4 est seul
+
+find(3) → parent[3] = 2 → parent[2] = 2 → racine = 2
+find(1) → parent[1] = 0 → parent[0] = 0 → racine = 0
+union(1, 3) → parent[0] = 2  (ou l'inverse selon rank)
+```
+
+### Complexité naïve
+
+Sans optimisation, `find()` peut parcourir toute la hauteur de l'arbre
+→ O(N) dans le pire cas (arbre dégénéré = liste chaînée).
+
+> Référence — Union-Find :
+> https://en.wikipedia.org/wiki/Disjoint-set_data_structure
 
 ---
 
@@ -296,7 +437,7 @@ réelle** des shapes, confirmée par l'angle entre branches.
 **Fichiers :** `Phase6_BlockExtractor.h/.cpp` · `BlockSet.h`
 
 Transforme le graphe planaire classifié en **blocs ferroviaires** —
-les objets métier `StraightBlock` et `SwitchBlock`.
+les objets métier @ref StraightBlock et @ref SwitchBlock.
 
 | Mécanisme | Description |
 |-----------|-------------|
@@ -313,7 +454,7 @@ les objets métier `StraightBlock` et `SwitchBlock`.
 
 ## Phase 7 — SwitchOrientator {#gpv2_phase7}
 
-**Fichiers :** `Phase7_SwitchOrientator.h/.cpp`
+**Fichiers :** `Phase8_SwitchOrientator.h/.cpp`
 
 Refactorisation de l'ancien `SwitchOrientator`. La **logique métier est conservée intégralement** —
 seule l'interface s'adapte au pipeline v2.
@@ -337,7 +478,7 @@ seule l'interface s'adapte au pipeline v2.
 
 ## Phase 8 — DoubleSwitchDetector {#gpv2_phase8}
 
-**Fichiers :** `Phase8_DoubleSwitchDetector.h/.cpp`
+**Fichiers :** `Phase7_DoubleSwitchDetector.h/.cpp`
 
 Refactorisation de l'ancien `DoubleSwitchDetector`. Détecte les paires de switches
 proches (< `doubleSwitchRadius`) et absorbe le segment de liaison entre eux.
@@ -354,9 +495,9 @@ proches (< `doubleSwitchRadius`) et absorbe le segment de liaison entre eux.
 
 **Fichiers :** `Phase9_RepositoryTransfer.h/.cpp`
 
-Transfère `ctx.blocks` vers `TopologyRepository` et finalise le modèle.
+Transfère `ctx.blocks` vers @ref TopologyRepository et finalise le modèle.
 
-**Ordre réel dans `GeoParser::parse()` :**
+**Ordre réel dans @ref GeoParser::parse() "GeoParser::parse()" :**
 
 ```
 Phase9::resolve(ctx)      — résolution pointeurs inter-blocs (adresses encore dans ctx)
@@ -371,10 +512,10 @@ ctx.blocks.clear()        — libération mémoire pipeline
 
 | Méthode | Rôle |
 |---------|------|
-| `Phase9_RepositoryTransfer::resolve()` | Résolution des `ShuntingElement*` inter-blocs depuis les IDs câblés en Phase6 |
-| `Phase9_RepositoryTransfer::transfer()` | `std::move` des `unique_ptr` → `TopologyData` + `buildIndex()` |
+| @ref Phase9_RepositoryTransfer::resolve() "Phase9_RepositoryTransfer::resolve()" | Résolution des `ShuntingElement*` inter-blocs depuis les IDs câblés en Phase6 |
+| @ref Phase9_RepositoryTransfer::transfer() "Phase9_RepositoryTransfer::transfer()" | `std::move` des `unique_ptr` → @ref TopologyData + `buildIndex()` |
 
-**Stabilité des adresses :** `TopologyData` stocke en `vector<unique_ptr<T>>`.
+**Stabilité des adresses :** @ref TopologyData stocke en `vector<unique_ptr<T>>`.
 Après `std::move`, les adresses des objets alloués sont stables — les pointeurs
 résolus par `resolve()` restent valides.
 
@@ -382,8 +523,8 @@ résolus par `resolve()` restent valides.
 
 # GeoParsingTask — Intégration async {#gpv2_task}
 
-`GeoParsingTask` est le point d'entrée depuis `MainWindow`. Son interface publique
-est **inchangée** — seul le paramètre `config` est ajouté à `start()`.
+@ref GeoParsingTask est le point d'entrée depuis `MainWindow`. Son interface publique
+est **inchangée** — seul le paramètre `config` est ajouté à @ref GeoParsingTask::start() "start()".
 
 ```cpp
 // Lancement — snapshot de config au moment du démarrage
@@ -403,7 +544,7 @@ GeoParsingTask
 ```
 
 Le thread vérifie `*m_cancelToken` entre les phases. Si `true`, il envoie
-`WM_PARSING_CANCELLED` et s'arrête proprement sans altérer `TopologyRepository`.
+`WM_PARSING_CANCELLED` et s'arrête proprement sans altérer @ref TopologyRepository.
 
 | Message Win32 | Contenu | Handler |
 |---------------|---------|---------|
@@ -430,16 +571,3 @@ de `ParserConfig` depuis l'interface.
 **Pattern :** identique à `AboutDialog` — `DialogBoxParam` / `WM_INITDIALOG` / `IDOK` / `IDCANCEL`.
 
 ---
-
-# Références {#gpv2_references}
-
-| Concept | Lien |
-|---------|------|
-| SRP — Single Responsibility | https://en.wikipedia.org/wiki/Single-responsibility_principle |
-| OCP — Open/Closed Principle | https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle |
-| DIP — Dependency Inversion | https://en.wikipedia.org/wiki/Dependency_inversion_principle |
-| Union-Find | https://en.wikipedia.org/wiki/Disjoint-set_data_structure |
-| BFS / DFS | https://en.wikipedia.org/wiki/Breadth-first_search |
-| Projection UTM | https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system |
-| nlohmann/json | https://github.com/nlohmann/json |
-| SimpleIni | https://github.com/brofield/simpleini |

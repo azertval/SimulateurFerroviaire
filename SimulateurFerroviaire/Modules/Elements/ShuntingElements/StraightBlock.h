@@ -46,7 +46,7 @@ public:
     // =========================================================================
 
     [[nodiscard]] std::string            getId()    const override { return m_id; }
-    [[nodiscard]] InteractiveElementType getType()  const override { return InteractiveElementType::STRAIGHT; }
+    [[nodiscard]] ElementType getType()  const override { return ElementType::STRAIGHT; }
     [[nodiscard]] ShuntingState          getState() const override { return m_state; }
 
     void setState(ShuntingState state) { m_state = state; }
@@ -70,7 +70,7 @@ public:
 
     /**
      * @brief Référence modifiable sur la polyligne UTM.
-     * Utilisée par Phase7_SwitchOrientator::trimStraightOverlaps().
+     * Utilisée par Phase8_SwitchOrientator::trimStraightOverlaps().
      */
     [[nodiscard]] std::vector<CoordinateXY>& getPointsUTMRef() { return m_pointsUTM; }
 

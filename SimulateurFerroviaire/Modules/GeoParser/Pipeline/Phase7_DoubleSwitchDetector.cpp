@@ -1,10 +1,10 @@
 /**
- * @file  Phase8_DoubleSwitchDetector.cpp
+ * @file  Phase7_DoubleSwitchDetector.cpp
  * @brief Implémentation de la phase 8 — doubles aiguilles.
  *
- * @see Phase8_DoubleSwitchDetector
+ * @see Phase7_DoubleSwitchDetector
  */
-#include "Phase8_DoubleSwitchDetector.h"
+#include "Phase7_DoubleSwitchDetector.h"
 
 #include <algorithm>
 #include <cmath>
@@ -14,7 +14,7 @@
  // Point d'entrée
  // =============================================================================
 
-void Phase8_DoubleSwitchDetector::run(PipelineContext& ctx,
+void Phase7_DoubleSwitchDetector::run(PipelineContext& ctx,
     const ParserConfig& config,
     Logger& logger)
 {
@@ -44,7 +44,7 @@ void Phase8_DoubleSwitchDetector::run(PipelineContext& ctx,
     // 8c — Validation CDC
     validateCDC(ctx.blocks, config.minBranchLength, logger);
 
-    ctx.endTimer(t0, "Phase8_DoubleSwitchDetector",
+    ctx.endTimer(t0, "Phase7_DoubleSwitchDetector",
         ctx.blocks.switches.size(),
         absorbed);
 }
@@ -55,7 +55,7 @@ void Phase8_DoubleSwitchDetector::run(PipelineContext& ctx,
 // =============================================================================
 
 std::vector<std::pair<SwitchBlock*, SwitchBlock*>>
-Phase8_DoubleSwitchDetector::detectClusters(const BlockSet& blocks,
+Phase7_DoubleSwitchDetector::detectClusters(const BlockSet& blocks,
     double radius,
     Logger& logger)
 {
@@ -95,7 +95,7 @@ Phase8_DoubleSwitchDetector::detectClusters(const BlockSet& blocks,
 // 8b — Recherche du segment de liaison
 // =============================================================================
 
-StraightBlock* Phase8_DoubleSwitchDetector::findLinkSegment(
+StraightBlock* Phase7_DoubleSwitchDetector::findLinkSegment(
     const BlockSet& blocks,
     const SwitchBlock* swA,
     const SwitchBlock* swB)
@@ -134,7 +134,7 @@ StraightBlock* Phase8_DoubleSwitchDetector::findLinkSegment(
 // 8b — Absorption
 // =============================================================================
 
-void Phase8_DoubleSwitchDetector::absorbLinkSegment(BlockSet& blocks,
+void Phase7_DoubleSwitchDetector::absorbLinkSegment(BlockSet& blocks,
     SwitchBlock* swA,
     SwitchBlock* swB,
     Logger& logger)
@@ -198,7 +198,7 @@ void Phase8_DoubleSwitchDetector::absorbLinkSegment(BlockSet& blocks,
 // 8c — Validation CDC
 // =============================================================================
 
-void Phase8_DoubleSwitchDetector::validateCDC(const BlockSet& blocks,
+void Phase7_DoubleSwitchDetector::validateCDC(const BlockSet& blocks,
     double minLength,
     Logger& logger)
 {

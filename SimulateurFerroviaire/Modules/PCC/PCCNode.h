@@ -27,12 +27,12 @@
 #include <vector>
 
 #include "PCCEdge.h"
-#include "Modules/InteractiveElements/ShuntingElements/ShuntingElement.h"
+#include "Modules/Elements/ShuntingElements/ShuntingElement.h"
 
 #include "Engine/Core/Logger/Logger.h"
 
  /**
-  * @brief Type d'un nœud PCC — miroir de @ref InteractiveElementType.
+  * @brief Type d'un nœud PCC — miroir de @ref ElementType.
   *
   *  - STRAIGHT : nœud issu d'un @ref StraightBlock.
   *  - SWITCH   : nœud issu d'un @ref SwitchBlock.

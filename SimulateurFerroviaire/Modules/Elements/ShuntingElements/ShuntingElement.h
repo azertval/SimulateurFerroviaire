@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Modules/InteractiveElements/InteractiveElement.h"
+#include "Modules/Elements/Element.h"
 
 /**
  * @file  ShuntingElement.h
@@ -24,18 +24,18 @@ enum class ShuntingState
 /**
  * @brief Interface abstraite pour tous les éléments de shuntage ferroviaire.
  *
- * Étend InteractiveElement avec une requête d'état propre à l'infrastructure
+ * Étend Element avec une requête d'état propre à l'infrastructure
  * de shuntage (sections de voie, détecteurs, signaux de manœuvre, …).
  *
  * Les sous-classes concrètes doivent implémenter getId(), getType() et getState().
  *
  * Règles de copie / déplacement :
- *   - Copie interdite (héritée de InteractiveElement).
+ *   - Copie interdite (héritée de Element).
  *   - Déplacement explicitement autorisé : la déclaration du destructeur virtuel
  *     supprimerait sinon la génération implicite des opérateurs de déplacement,
  *     rendant StraightBlock et SwitchBlock non-déplaçables.
  */
-class ShuntingElement : public InteractiveElement
+class ShuntingElement : public Element
 {
 public:
     // -------------------------------------------------------------------------

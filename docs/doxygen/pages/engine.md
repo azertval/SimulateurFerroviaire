@@ -19,21 +19,21 @@ Gestion des composants fondamentaux et de la logique applicative transverse.
 ## TopologyData {#data}
 
 > **Pourquoi `std::unique_ptr` ?**
-> Les blocs sont polymorphes (`InteractiveElement*`). Le stockage par valeur entraînerait
+> Les blocs sont polymorphes (`Element*`). Le stockage par valeur entraînerait
 > du slicing et interdirait le déplacement. Le stockage par `std::unique_ptr` garantit :
 > - polymorphisme correct (destructeur virtuel respecté),
 > - propriété exclusive et cycle de vie déterministe,
 > - interdiction de copie accidentelle.
 
-`TopologyData` expose deux index construits en fin de pipeline via `TopologyData::buildIndex()` :
+@ref TopologyData expose deux index construits en fin de pipeline via @ref TopologyData::buildIndex() "buildIndex()" :
 
 | Index | Type | Usage |
 |-------|------|-------|
 | `TopologyData::switchIndex` | `std::unordered_map<string, SwitchBlock*>` | Lookup O(1) par ID |
 | `TopologyData::straightIndex` | `std::unordered_map<string, StraightBlock*>` | Lookup O(1) par ID |
 
-> `TopologyData::buildIndex()` doit être appelé après que toutes les adresses sont stables.
-> `TopologyData::clear()` vide également les index.
+> @ref TopologyData::buildIndex() "buildIndex()" doit être appelé après que toutes les adresses sont stables.
+> @ref TopologyData::clear() "clear()" vide également les index.
 
 ## TopologyRenderer {#renderer}
 
@@ -41,15 +41,15 @@ Gestion des composants fondamentaux et de la logique applicative transverse.
 - Sérialise @ref StraightBlock → feature GeoJSON `LineString`
 - Sérialise @ref SwitchBlock → feature GeoJSON `Point`
 - Génère les scripts JavaScript d'injection pour le WebView Leaflet
-- Met à jour le rendu d'un switch et de ses partenaires via `TopologyRenderer::updateSwitchBlocks(sw)`
+- Met à jour le rendu d'un switch et de ses partenaires via @ref TopologyRenderer::updateSwitchBlocks() "updateSwitchBlocks(sw)"
 
 | Méthode | Rôle |
 |---------|------|
-| `TopologyRenderer::renderAllStraightBlocks()` | Efface et redessine tous les StraightBlocks |
-| `TopologyRenderer::renderAllSwitchBranches()` | Efface et redessine toutes les branches de switch |
-| `TopologyRenderer::renderAllSwitchBlocksJunctions()` | Efface et redessine tous les marqueurs de jonction |
-| `TopologyRenderer::updateSwitchBlocks()` | Met à jour visuellement un switch et ses partenaires double |
-| `TopologyRenderer::exportToFile()` | Export GeoJSON complet vers un fichier |
+| @ref TopologyRenderer::renderAllStraightBlocks() "renderAllStraightBlocks()" | Efface et redessine tous les @ref StraightBlock |
+| @ref TopologyRenderer::renderAllSwitchBranches() "renderAllSwitchBranches()" | Efface et redessine toutes les branches de switch |
+| @ref TopologyRenderer::renderAllSwitchBlocksJunctions() "renderAllSwitchBlocksJunctions()" | Efface et redessine tous les marqueurs de jonction |
+| @ref TopologyRenderer::updateSwitchBlocks() "updateSwitchBlocks()" | Met à jour visuellement un switch et ses partenaires double |
+| @ref TopologyRenderer::exportToFile() "exportToFile()" | Export GeoJSON complet vers un fichier |
 
 ---
 
@@ -63,7 +63,7 @@ Couche graphique Win32 + WebView2.
 | ProgressBar | Wrapper du contrôle natif `PROGRESS_CLASS` |
 | WebViewPanel | Affichage cartographique Leaflet embarqué via WebView2 |
 | PCCPanel | Panneau PCC superposé togglable (F2 / menu Vue), child window Win32 |
-| TCORenderer | Renderer GDI statique du schéma TCO — consomme @ref PCCGraph |
+| @ref TCORenderer | Renderer GDI statique du schéma TCO — consomme @ref PCCGraph |
 | AboutDialog | Boîte de dialogue modale "À propos" |
 | FileOpenDialog | Sélecteur de fichier GeoJSON (GetOpenFileNameA) |
 | FileSaveDialog | Dialogue de sauvegarde GeoJSON (GetSaveFileNameA) |
@@ -94,14 +94,14 @@ MainWindow::onParsingSuccess()
 
 | Méthode | Déclencheur |
 |---------|-------------|
-| `PCCPanel::create()` | `MainWindow::create()` — après `WebViewPanel::create()` |
-| `PCCPanel::toggle()` | F2 ou `IDM_VIEW_PCC` — place le panneau en `HWND_TOP` |
-| `PCCPanel::resize()` | `MainWindow::onSizeUpdate()` |
-| `PCCPanel::refresh()` | `MainWindow::onParsingSuccess()` |
+| @ref PCCPanel::create() "PCCPanel::create()" | `MainWindow::create()` — après `WebViewPanel::create()` |
+| @ref PCCPanel::toggle() "PCCPanel::toggle()" | F2 ou `IDM_VIEW_PCC` — place le panneau en `HWND_TOP` |
+| @ref PCCPanel::resize() "PCCPanel::resize()" | `MainWindow::onSizeUpdate()` |
+| @ref PCCPanel::refresh() "PCCPanel::refresh()" | `MainWindow::onParsingSuccess()` |
 
 ## TCORenderer {#tco}
 
-Classe utilitaire statique. Consomme `const PCCGraph&` — n'accède pas à `TopologyRepository`.
+Classe utilitaire statique. Consomme `const PCCGraph&` — n'accède pas à @ref TopologyRepository.
 
 **Conventions de couleurs (style TCO SNCF) :**
 
@@ -122,14 +122,14 @@ pixelY = centerY - logicalY * cellHeight   (Y inversé)
 
 | Méthode | Rôle |
 |---------|------|
-| `TCORenderer::draw()` | Point d'entrée — fond + arêtes + nœuds |
-| `TCORenderer::computeProjection()` | Calcul bornes X/Y logiques et taille des cellules |
-| `TCORenderer::drawEdges()` | Un segment GDI par @ref PCCEdge, colorisé par rôle et état |
-| `TCORenderer::drawNodes()` | Un disque GDI par @ref PCCNode |
+| @ref TCORenderer::draw() "draw()" | Point d'entrée — fond + arêtes + nœuds |
+| @ref TCORenderer::computeProjection() "computeProjection()" | Calcul bornes X/Y logiques et taille des cellules |
+| @ref TCORenderer::drawEdges() "drawEdges()" | Un segment GDI par @ref PCCEdge, colorisé par rôle et état |
+| @ref TCORenderer::drawNodes() "drawNodes()" | Un disque GDI par @ref PCCNode |
 
 ## Binding bidirectionnel Leaflet ↔ C++ {#binding}
 
-**C++ → Leaflet** : `WebViewPanel::executeScript()` injecte des appels JS générés par `TopologyRenderer`.
+**C++ → Leaflet** : `WebViewPanel::executeScript()` injecte des appels JS générés par @ref TopologyRenderer.
 
 **Leaflet → C++** : `window.chrome.webview.postMessage()` → `WebViewPanel::onWebMessageReceived()` → `MainWindow::onWebMessage()`.
 

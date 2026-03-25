@@ -13,8 +13,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "Modules/InteractiveElements/ShuntingElements/StraightBlock.h"
-#include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/StraightBlock.h"
+#include "Modules/Elements/ShuntingElements/SwitchBlock.h"
 
  /**
   * @struct BlockEndpoint

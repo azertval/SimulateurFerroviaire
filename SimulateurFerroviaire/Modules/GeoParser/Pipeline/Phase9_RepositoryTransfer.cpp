@@ -8,8 +8,8 @@
 
 #include "Engine/Core/Topology/TopologyRepository.h"
 #include "Engine/Core/Topology/TopologyData.h"
-#include "Modules/InteractiveElements/ShuntingElements/StraightBlock.h"
-#include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/StraightBlock.h"
+#include "Modules/Elements/ShuntingElements/SwitchBlock.h"
 
 #include <unordered_map>
 

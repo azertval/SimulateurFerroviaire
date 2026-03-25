@@ -63,7 +63,7 @@ public:
     // =========================================================================
 
     [[nodiscard]] std::string            getId()    const override { return m_id; }
-    [[nodiscard]] InteractiveElementType getType()  const override { return InteractiveElementType::SWITCH; }
+    [[nodiscard]] ElementType getType()  const override { return ElementType::SWITCH; }
     [[nodiscard]] ShuntingState          getState() const override { return m_state; }
 
     void setState(ShuntingState state) { m_state = state; }
@@ -246,7 +246,7 @@ public:
     /**
      * @brief Stocke les coordonnées absorbées d'un double switch.
      *
-     * Appelé par Phase8_DoubleSwitchDetector::absorbLinkSegment().
+     * Appelé par Phase7_DoubleSwitchDetector::absorbLinkSegment().
      *
      * @param side   Branche absorbée ("normal" ou "deviation").
      * @param coords Polyligne WGS84 du segment absorbé.
@@ -294,7 +294,7 @@ public:
     /**
      * @brief Remplace un pointeur de branche par un autre.
      *
-     * Appelé par Phase8_DoubleSwitchDetector::absorbLinkSegment()
+     * Appelé par Phase7_DoubleSwitchDetector::absorbLinkSegment()
      * après suppression du segment de liaison.
      *
      * @param oldElem  Ancien bloc pointé (ex. le StraightBlock absorbé).

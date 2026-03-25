@@ -29,11 +29,11 @@ Le projet repose sur un pipeline de parsing permettant de :
 
 # Documentation
 
-- @subpage engine   — Moteur de l'application (Core + HMI)
-- @subpage modules  — Fonctionnalités
-	- @subpage geoparser      — Module de parsing GeoJson
-	- @subpage pcc      — Module PCC (graphe logique + rendu TCO)
-- @subpage references — Références externes
+- @subpage engine                  — Moteur de l'application
+- @subpage geoparser               — Module de parsing GeoJson
+- @subpage elements                — Module Éléments — Modèle de domaine ferroviaire
+- @subpage pcc                     — Module PCC
+- @subpage references              — Références externes
 
 ---
 

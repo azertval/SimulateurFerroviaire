@@ -17,7 +17,7 @@
 
 #include "Modules/PCC/PCCStraightNode.h"
 #include "Modules/PCC/PCCSwitchNode.h"
-#include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/SwitchBlock.h"
 
 #include <algorithm>
 #include <limits>

@@ -4,7 +4,7 @@
 #include "Engine/Core/Logger/Logger.h"
 
 /**
- * @file  InteractiveElement.h
+ * @file  Element.h
  * @brief Classe de base abstraite pour tous les éléments interactifs ferroviaires.
  */
 
@@ -14,7 +14,7 @@
   *   SWITCH   – aiguillage à 3 branches.
   *   STRAIGHT – tronçon de voie rectiligne.
   */
-enum class InteractiveElementType
+enum class ElementType
 {
     SWITCH,
     STRAIGHT
@@ -30,7 +30,7 @@ enum class InteractiveElementType
  *   - Déplacement autorisé : nécessaire au pipeline de construction
  *     (TopologyExtractor, make_unique, etc.).
  */
-class InteractiveElement
+class Element
 {
 public:
 
@@ -38,16 +38,16 @@ public:
     // Construction / Destruction
     // -------------------------------------------------------------------------
 
-    InteractiveElement() = default;
-    virtual ~InteractiveElement() = default;
+    Element() = default;
+    virtual ~Element() = default;
 
     /** @brief Interdit la copie — risque de slicing. */
-    InteractiveElement(const InteractiveElement&) = delete;
-    InteractiveElement& operator=(const InteractiveElement&) = delete;
+    Element(const Element&) = delete;
+    Element& operator=(const Element&) = delete;
 
     /** @brief Déplacement autorisé — requis par le pipeline de construction. */
-    InteractiveElement(InteractiveElement&&) = default;
-    InteractiveElement& operator=(InteractiveElement&&) = default;
+    Element(Element&&) = default;
+    Element& operator=(Element&&) = default;
 
     // -------------------------------------------------------------------------
     // Interface virtuelle pure
@@ -60,9 +60,9 @@ public:
 
     /**
      * @brief Retourne le type de l'élément.
-     * @return InteractiveElementType::SWITCH ou InteractiveElementType::STRAIGHT.
+     * @return ElementType::SWITCH ou ElementType::STRAIGHT.
      */
-    [[nodiscard]] virtual InteractiveElementType getType() const = 0;
+    [[nodiscard]] virtual ElementType getType() const = 0;
 
 protected :
      /** 
@@ -74,7 +74,7 @@ protected :
      * @brief Logger statique partagé par TOUS les éléments interactifs.
      *
      * Une seule instance pour l'ensemble des SwitchBlock et StraightBlock
-     * → un seul fichier "Logs/InteractiveElements.log".
+     * → un seul fichier "Logs/Elements.log".
      *
      * Statique : initialisé une seule fois au démarrage, partagé par toutes
      * les instances de toutes les classes dérivées. Le mutex interne du Logger

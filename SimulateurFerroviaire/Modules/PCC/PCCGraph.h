@@ -35,8 +35,8 @@
 
 #include "Engine/Core/Logger/Logger.h"
 
-#include "Modules/InteractiveElements/ShuntingElements/StraightBlock.h"
-#include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/StraightBlock.h"
+#include "Modules/Elements/ShuntingElements/SwitchBlock.h"
 
  /**
   * @class PCCGraph

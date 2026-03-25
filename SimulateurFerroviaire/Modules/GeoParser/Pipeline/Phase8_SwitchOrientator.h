@@ -1,5 +1,5 @@
 /**
- * @file  Phase7_SwitchOrientator.h
+ * @file  Phase8_SwitchOrientator.h
  * @brief Phase 7 du pipeline — orientation des aiguillages
  * @note Classe entièrement statique — instanciation interdite.
  */
@@ -9,7 +9,7 @@
 #include "Engine/Core/Config/ParserConfig.h"
 #include "Engine/Core/Logger/Logger.h"
 
-class Phase7_SwitchOrientator
+class Phase8_SwitchOrientator
 {
 public:
 
@@ -26,7 +26,7 @@ public:
         const ParserConfig& config,
         Logger& logger);
 
-    Phase7_SwitchOrientator() = delete;
+    Phase8_SwitchOrientator() = delete;
 
 private:
     /**

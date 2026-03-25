@@ -15,7 +15,7 @@
 #pragma once
 
 #include "PCCNode.h"
-#include "Modules/InteractiveElements/ShuntingElements/StraightBlock.h"
+#include "Modules/Elements/ShuntingElements/StraightBlock.h"
 
  /**
   * @class PCCStraightNode

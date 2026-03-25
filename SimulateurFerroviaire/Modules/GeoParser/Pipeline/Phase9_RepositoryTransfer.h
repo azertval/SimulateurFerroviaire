@@ -3,12 +3,12 @@
  * @brief Phase 9 du pipeline — résolution des pointeurs et transfert vers TopologyRepository.
  *
  * Scindée en deux méthodes publiques pour respecter la contrainte d'ordre
- * avec @ref Phase7_SwitchOrientator :
+ * avec @ref Phase8_SwitchOrientator :
  *
  * @par Ordre d'appel obligatoire
  * @code
  * Phase9_RepositoryTransfer::resolve(ctx, logger);    // 9a
- * Phase7_SwitchOrientator::run(ctx, config, logger);  // 7 — nécessite pointeurs
+ * Phase8_SwitchOrientator::run(ctx, config, logger);  // 7 — nécessite pointeurs
  * Phase9_RepositoryTransfer::transfer(ctx, logger);   // 9b — transfert final
  * @endcode
  *
@@ -52,7 +52,7 @@ public:
      * @brief 9b — Transfère les blocs vers TopologyRepository.
      *
      * @par Précondition
-     * @c resolve() et @ref Phase7_SwitchOrientator::run() doivent avoir été
+     * @c resolve() et @ref Phase8_SwitchOrientator::run() doivent avoir été
      * appelés avant ce transfert.
      *
      * Vide @ref TopologyRepository via @c clear(), transfère les

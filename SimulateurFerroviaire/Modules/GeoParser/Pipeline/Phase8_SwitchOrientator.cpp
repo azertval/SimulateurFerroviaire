@@ -1,10 +1,10 @@
 /**
- * @file  Phase7_SwitchOrientator.cpp
+ * @file  Phase8_SwitchOrientator.cpp
  * @brief Implémentation de la phase 7 — orientation des aiguillages.
  *
- * @see Phase7_SwitchOrientator
+ * @see Phase8_SwitchOrientator
  */
-#include "Phase7_SwitchOrientator.h"
+#include "Phase8_SwitchOrientator.h"
 
 #include <algorithm>
 #include <cmath>
@@ -18,7 +18,7 @@
  // Point d'entrée
  // =============================================================================
 
-void Phase7_SwitchOrientator::run(PipelineContext& ctx,
+void Phase8_SwitchOrientator::run(PipelineContext& ctx,
     const ParserConfig& config,
     Logger& logger)
 {
@@ -36,7 +36,7 @@ void Phase7_SwitchOrientator::run(PipelineContext& ctx,
     for (const auto& sw : ctx.blocks.switches)
         if (sw->isOriented()) ++oriented;
 
-    ctx.endTimer(t0, "Phase7_SwitchOrientator", swCount, oriented);
+    ctx.endTimer(t0, "Phase8_SwitchOrientator", swCount, oriented);
 
     LOG_INFO(logger, std::to_string(oriented) + "/" + std::to_string(swCount)
         + " switch(es) orienté(s).");
@@ -47,7 +47,7 @@ void Phase7_SwitchOrientator::run(PipelineContext& ctx,
 // =============================================================================
 
 std::vector<std::pair<SwitchBlock*, SwitchBlock*>>
-Phase7_SwitchOrientator::detectCrossovers(const BlockSet& blocks,
+Phase8_SwitchOrientator::detectCrossovers(const BlockSet& blocks,
     Logger& logger)
 {
     std::vector<std::pair<SwitchBlock*, SwitchBlock*>> crossovers;
@@ -99,7 +99,7 @@ Phase7_SwitchOrientator::detectCrossovers(const BlockSet& blocks,
 //  Cohérence des crossovers
 // =============================================================================
 
-void Phase7_SwitchOrientator::enforceCrossoverConsistency(
+void Phase8_SwitchOrientator::enforceCrossoverConsistency(
     BlockSet& blocks,
     const std::vector<std::pair<SwitchBlock*, SwitchBlock*>>& crossovers,
     Logger& logger)
