@@ -2,29 +2,54 @@
  * @file  Phase6_BlockExtractor.cpp
  * @brief Implémentation de la phase 6 — extraction des blocs ferroviaires.
  *
+ * @par Corrections v2
+ *
+ * **Bug 1 — Crossover : même straight pour normal et deviation**
+ * Cause : la déduplication par @c pairKey(startNode, endNode) empêchait la
+ * création d'un second straight entre deux switches reliés par deux voies
+ * parallèles (crossover).  De plus, @c straightByDirectedPair stockait une
+ * valeur unique par clé, la seconde insertion écrasant la première.
+ *
+ * Correction :
+ *  - @c extractStraights utilise désormais un ensemble @c usedEdges (indices
+ *    d'arêtes) pour la déduplication. L'arête de départ (@c startEdgeIdx) et
+ *    l'arête d'arrivée (@c prevEdge) sont marquées après chaque création de
+ *    straight. Cela empêche la traversal inverse (B→A) mais autorise plusieurs
+ *    straights entre la même paire de frontières.
+ *  - @c straightByDirectedPair est désormais multi-valué
+ *    (@c unordered_map<size_t, vector<StraightBlock*>>).
+ *  - @c extractSwitches maintient un ensemble @c usedStraights par switch pour
+ *    attribuer des straights distincts à chaque branche.
+ *
+ * **Bug 2 — Subdivision : voisins null sur les sous-blocs internes**
+ * Ce bug est corrigé dans @ref Phase8_RepositoryTransfer::resolveStraight :
+ * la résolution ne s'applique qu'aux endpoints dont @c neighbourId est non
+ * vide, préservant ainsi les pointeurs de chaîne posés par @c registerStraight.
+ *
  * @see Phase6_BlockExtractor
  */
 #include "Phase6_BlockExtractor.h"
 
 #include <unordered_set>
 #include <array>
+#include <cmath>
 
 
- // =============================================================================
- // Point d'entrée
- // =============================================================================
+// =============================================================================
+// Point d'entrée
+// =============================================================================
 
 void Phase6_BlockExtractor::run(PipelineContext& ctx,
-    const ParserConfig& /*config*/,
+    const ParserConfig& config,
     Logger& logger)
 {
     const auto t0 = PipelineContext::startTimer();
 
     LOG_INFO(logger, "Extraction des blocs ferroviaires.");
 
-    // Straights en premier — construit straightByEndpointPair
+    // Straights en premier — construit straightByDirectedPair
     // dont extractSwitches a besoin pour résoudre les endpoints
-    extractStraights(ctx, logger);
+    extractStraights(ctx, config, logger);
     extractSwitches(ctx, logger);
 
     ctx.endTimer(t0, "Phase6_BlockExtractor",
@@ -49,23 +74,20 @@ void Phase6_BlockExtractor::run(PipelineContext& ctx,
 // =============================================================================
 
 void Phase6_BlockExtractor::extractStraights(PipelineContext& ctx,
+    const ParserConfig& config,
     Logger& logger)
 {
-    // Déduplication par arête et non plus par paire de nœuds frontières.
+    // Déduplication par arêtes — remplace l'ancienne déduplication par
+    // pairKey(startNode, endNode) qui bloquait les crossovers.
     //
-    // Pourquoi ce changement : dans un crossover, deux straights distincts
-    // relient exactement les mêmes frontières (ex. sw/5 ↔ sw/6 via deux
-    // chemins différents). La déduplication par pairKey(nodeA, nodeB)
-    // écrasait le second straight avant même de le créer.
-    //
-    // Principe : chaque arête du graphe n'appartient qu'à un seul straight.
-    // Quand un straight est créé depuis node via startEdgeIdx, on marque :
-    //   • startEdgeIdx — bloque la relecture du même chemin A→B
-    //   • prevEdge     — arête arrivant à endNode, bloque la relecture B→A
-    // Deux straights distincts empruntent des arêtes de départ différentes
-    // → ils ne s'inhibent pas mutuellement.
-    std::unordered_set<size_t> processedEdges;
+    // Invariant : quand un straight est créé via startEdge → ... → lastEdge,
+    // les deux indices d'arêtes sont insérés dans usedEdges.
+    //   • startEdge empêche qu'un autre DFS parte de la même arête.
+    //   • lastEdge empêche la traversal inverse depuis le nœud d'arrivée.
+    std::unordered_set<size_t> usedEdges;
+
     size_t straightIndex = 0;
+    size_t subdivided    = 0;
 
     for (const auto& node : ctx.topoGraph.nodes)
     {
@@ -73,14 +95,13 @@ void Phase6_BlockExtractor::extractStraights(PipelineContext& ctx,
 
         for (size_t startEdgeIdx : ctx.topoGraph.adjacency[node.id])
         {
-            // Si cette arête a déjà produit un straight (par sa traversée
-            // dans l'autre sens), on saute sans reconstruire le chemin.
-            if (processedEdges.count(startEdgeIdx)) continue;
+            // Arête déjà consommée par un straight précédent → ignorer
+            if (usedEdges.count(startEdgeIdx)) continue;
 
             std::vector<CoordinateXY>     ptsUTM;
             std::vector<CoordinateLatLon> ptsWGS84;
 
-            size_t curr = node.id;
+            size_t curr     = node.id;
             size_t prevEdge = SIZE_MAX;
             size_t nextEdge = startEdgeIdx;
 
@@ -88,23 +109,22 @@ void Phase6_BlockExtractor::extractStraights(PipelineContext& ctx,
             ptsUTM.push_back(ctx.topoGraph.nodes[curr].posUTM);
             ptsWGS84.push_back(ctx.topoGraph.nodes[curr].posWGS84);
 
-            size_t endNode = SIZE_MAX;
+            size_t endNode  = SIZE_MAX;
 
             while (true)
             {
-                const TopoEdge& edge = ctx.topoGraph.edges[nextEdge];
+                const TopoEdge& edge     = ctx.topoGraph.edges[nextEdge];
                 const size_t    nextNode = edge.opposite(curr);
 
                 if (nextNode == SIZE_MAX) break;
 
                 const bool reversed = (edge.nodeA == nextNode);
-                const AtomicSegment& seg =
-                    ctx.splitNetwork.segments[edge.segmentIndex];
+                appendSegment(ptsUTM, ptsWGS84,
+                    ctx.splitNetwork.segments[edge.segmentIndex],
+                    reversed);
 
-                appendSegment(ptsUTM, ptsWGS84, seg, reversed);
-
-                curr = nextNode;
-                prevEdge = nextEdge;   // ← arête arrivant au nœud courant
+                curr     = nextNode;
+                prevEdge = nextEdge;
 
                 if (isFrontier(ctx, curr))
                 {
@@ -126,39 +146,136 @@ void Phase6_BlockExtractor::extractStraights(PipelineContext& ctx,
 
             if (endNode == SIZE_MAX) continue;
 
-            // Marque les deux arêtes extrêmes du straight :
-            //   startEdgeIdx = arête quittant node.id  → bloque A→B
-            //   prevEdge     = arête arrivant à endNode → bloque B→A
-            processedEdges.insert(startEdgeIdx);
-            processedEdges.insert(prevEdge);
+            // Marque les deux arêtes extrêmes — empêche :
+            //   • une nouvelle traversal depuis startEdgeIdx
+            //   • la traversal inverse depuis endNode via prevEdge
+            usedEdges.insert(startEdgeIdx);
+            if (prevEdge != SIZE_MAX && prevEdge != startEdgeIdx)
+                usedEdges.insert(prevEdge);
 
-            // Création du StraightBlock
-            auto st = std::make_unique<StraightBlock>();
-            st->setId("s/" + std::to_string(straightIndex));
-            st->setPointsUTM(ptsUTM);
-            st->setPointsWGS84(ptsWGS84);
+            const std::string baseId = "s/" + std::to_string(straightIndex);
+            const BlockEndpoint epA{ node.id, "" };
+            const BlockEndpoint epB{ endNode,  "" };
 
-            StraightBlock* rawPtr = st.get();
+            const double totalLen = computeLength(ptsUTM);
+            if (totalLen > config.maxSegmentLength) ++subdivided;
 
-            // Endpoints
-            BlockEndpoint epA{ node.id, "" };
-            BlockEndpoint epB{ endNode,  "" };
+            registerStraight(ctx, ptsUTM, ptsWGS84,
+                node.id, endNode,
+                baseId, config.maxSegmentLength,
+                epA, epB);
 
-            // Index multi-valué : un nœud peut être connecté à plusieurs straights
-            ctx.blocks.straightsByNode[node.id].push_back(rawPtr);
-            ctx.blocks.straightsByNode[endNode].push_back(rawPtr);
-
-            const size_t key = pairKey(node.id, endNode);
-            // Index pair canonique : O(1), multi-valué pour les crossovers
-            ctx.blocks.straightByEndpointPair[key].push_back(rawPtr);
-
-            ctx.blocks.straightEndpoints.push_back({ epA, epB });
-            ctx.blocks.straights.push_back(std::move(st));
             ++straightIndex;
         }
     }
 
-    LOG_DEBUG(logger, std::to_string(straightIndex) + " StraightBlock(s) créé(s).");
+    LOG_DEBUG(logger, std::to_string(straightIndex)
+        + " StraightBlock(s) créé(s) — "
+        + std::to_string(subdivided) + " subdivisé(s) (maxSegmentLength="
+        + std::to_string(static_cast<int>(config.maxSegmentLength)) + " m).");
+}
+
+
+// =============================================================================
+// registerStraight — crée un ou plusieurs sous-blocs chaînés
+// =============================================================================
+
+void Phase6_BlockExtractor::registerStraight(
+    PipelineContext& ctx,
+    const std::vector<CoordinateXY>&     ptsUTM,
+    const std::vector<CoordinateLatLon>& ptsWGS84,
+    size_t nodeA,
+    size_t nodeB,
+    const std::string& baseId,
+    double maxLen,
+    const BlockEndpoint& epA,
+    const BlockEndpoint& epB)
+{
+    const double totalLen = computeLength(ptsUTM);
+    const size_t totalPts = ptsUTM.size();
+
+    // Nombre de sous-blocs nécessaires
+    const int N = (maxLen > 0.0 && totalLen > maxLen)
+        ? static_cast<int>(std::ceil(totalLen / maxLen))
+        : 1;
+
+    std::vector<StraightBlock*> subPtrs;
+    subPtrs.reserve(static_cast<size_t>(N));
+
+    for (int k = 0; k < N; ++k)
+    {
+        // Tranche de points proportionnelle à la longueur
+        const size_t startPt = (k == 0)
+            ? 0
+            : (static_cast<size_t>(k) * (totalPts - 1)) / static_cast<size_t>(N);
+        const size_t endPt   = (k == N - 1)
+            ? totalPts - 1
+            : (static_cast<size_t>(k + 1) * (totalPts - 1)) / static_cast<size_t>(N);
+
+        auto sub = std::make_unique<StraightBlock>();
+
+        const std::string subId = (N == 1)
+            ? baseId
+            : baseId + "_" + std::to_string(k);
+
+        sub->setId(subId);
+        sub->setPointsUTM({
+            ptsUTM.begin()   + static_cast<std::ptrdiff_t>(startPt),
+            ptsUTM.begin()   + static_cast<std::ptrdiff_t>(endPt + 1)
+        });
+        sub->setPointsWGS84({
+            ptsWGS84.begin() + static_cast<std::ptrdiff_t>(startPt),
+            ptsWGS84.begin() + static_cast<std::ptrdiff_t>(endPt + 1)
+        });
+
+        subPtrs.push_back(sub.get());
+
+        // Endpoints :
+        //   Sous-bloc de tête  (k==0)   : epFirst = epA (frontierNodeId = nodeA)
+        //   Sous-bloc de queue (k==N-1) : epLast  = epB (frontierNodeId = nodeB)
+        //   Sous-blocs internes          : frontierNodeId = SIZE_MAX, neighbourId vide
+        //     → Phase8_RepositoryTransfer::resolveStraight ne doit PAS
+        //       écraser les pointeurs de chaîne pour ces entrées.
+        BlockEndpoint epFirst = (k == 0)     ? epA : BlockEndpoint{ SIZE_MAX, "" };
+        BlockEndpoint epLast  = (k == N - 1) ? epB : BlockEndpoint{ SIZE_MAX, "" };
+
+        ctx.blocks.straightEndpoints.push_back({ epFirst, epLast });
+        ctx.blocks.straights.push_back(std::move(sub));
+    }
+
+    // Chaînage prev/next des sous-blocs — posé ICI, avant résolution Phase 8.
+    // Phase8_RepositoryTransfer::resolveStraight ne doit pas écraser ces pointeurs
+    // pour les sous-blocs internes (ceux dont neighbourId est vide).
+    for (int k = 0; k + 1 < N; ++k)
+    {
+        subPtrs[static_cast<size_t>(k)]->setNeighbourNext(
+            subPtrs[static_cast<size_t>(k + 1)]);
+        subPtrs[static_cast<size_t>(k + 1)]->setNeighbourPrev(
+            subPtrs[static_cast<size_t>(k)]);
+    }
+
+    // -------------------------------------------------------------------------
+    // Index lookup
+    // -------------------------------------------------------------------------
+
+    // straightsByNode : seuls les vrais nœuds frontières (extrémités)
+    ctx.blocks.straightsByNode[nodeA].push_back(subPtrs.front());
+    ctx.blocks.straightsByNode[nodeB].push_back(subPtrs.back());
+
+    // straightByEndpointPair : clé canonique → premier sous-bloc (côté nodeA)
+    // Note : pour un crossover, la seconde insertion écrase la première ici —
+    // ce map n'est utilisé que pour rebuildStraightIndex() et ne sert pas à
+    // la résolution des endpoints de switches (qui utilise straightByDirectedPair).
+    const size_t a = std::min(nodeA, nodeB);
+    const size_t b = std::max(nodeA, nodeB);
+    ctx.blocks.straightByEndpointPair[(a + b) * (a + b + 1) / 2 + b] = subPtrs.front();
+
+    // straightByDirectedPair : multi-valué — push_back pour conserver tous les
+    // straights entre la même paire de frontières (cas crossover).
+    //   directedKey(nodeA, nodeB) → sous-bloc adjacent à nodeA (subPtrs.front())
+    //   directedKey(nodeB, nodeA) → sous-bloc adjacent à nodeB (subPtrs.back())
+    ctx.blocks.straightByDirectedPair[directedKey(nodeA, nodeB)].push_back(subPtrs.front());
+    ctx.blocks.straightByDirectedPair[directedKey(nodeB, nodeA)].push_back(subPtrs.back());
 }
 
 
@@ -187,15 +304,18 @@ void Phase6_BlockExtractor::extractSwitches(PipelineContext& ctx,
         std::array<BlockEndpoint, 3> endpoints{};
         const auto& adj = ctx.topoGraph.adjacency[node.id];
 
+        // Ensemble local — empêche d'attribuer le même straight à deux branches
+        // distinctes du même switch (cas crossover où deux branches aboutissent
+        // au même nœud frontière et partagent la même clé directionnelle).
+        std::unordered_set<StraightBlock*> usedStraights;
+
         for (size_t bi = 0; bi < std::min(adj.size(), size_t{ 3 }); ++bi)
         {
-            const TopoEdge& edge = ctx.topoGraph.edges[adj[bi]];
+            const TopoEdge& edge     = ctx.topoGraph.edges[adj[bi]];
             const size_t    nextNode = edge.opposite(node.id);
-            // nextNode = premier nœud STRAIGHT après le switch (tip de la branche)
-            // Sa position géométrique permet de désambiguïser les straights
-            // en cas de crossover (deux straights entre les mêmes frontières).
 
-            size_t curr = nextNode;
+            // Traverse les nœuds STRAIGHT jusqu'au prochain nœud frontière
+            size_t curr     = nextNode;
             size_t prevEdge = adj[bi];
 
             while (!isFrontier(ctx, curr))
@@ -215,55 +335,26 @@ void Phase6_BlockExtractor::extractSwitches(PipelineContext& ctx,
 
             endpoints[bi].frontierNodeId = curr;
 
-            const size_t key = pairKey(node.id, curr);
-            const auto   it = ctx.blocks.straightByEndpointPair.find(key);
+            // Lookup directionnel — donne le sous-bloc adjacent au switch.
+            // straightByDirectedPair est multi-valué : deux entrées pour un
+            // crossover. On sélectionne la première non encore utilisée.
+            const size_t dkey = directedKey(node.id, curr);
+            const auto   dit  = ctx.blocks.straightByDirectedPair.find(dkey);
 
-            if (it != ctx.blocks.straightByEndpointPair.end())
+            if (dit != ctx.blocks.straightByDirectedPair.end())
             {
-                const auto& candidates = it->second;
-
-                if (candidates.size() == 1)
+                for (StraightBlock* candidate : dit->second)
                 {
-                    // Cas standard — un seul straight pour cette paire
-                    endpoints[bi].neighbourId = candidates[0]->getId();
-                }
-                else
-                {
-                    // Cas crossover — plusieurs straights entre les mêmes frontières.
-                    // Désambiguïsation : on sélectionne le straight dont la géométrie
-                    // passe le plus près du tip de la branche (nextNode).
-                    //
-                    // nextNode est par construction un point de la géométrie du
-                    // straight correct → distance quasi-nulle vers lui,
-                    // distance non-nulle vers l'autre straight.
-                    const CoordinateXY& tipPos =
-                        ctx.topoGraph.nodes[nextNode].posUTM;
-
-                    StraightBlock* best = nullptr;
-                    double         bestDist = std::numeric_limits<double>::max();
-
-                    for (StraightBlock* candidate : candidates)
-                    {
-                        for (const CoordinateXY& p : candidate->getPointsUTM())
-                        {
-                            const double dx = p.x - tipPos.x;
-                            const double dy = p.y - tipPos.y;
-                            const double dist = dx * dx + dy * dy; // comparaison — pas besoin de sqrt
-                            if (dist < bestDist)
-                            {
-                                bestDist = dist;
-                                best = candidate;
-                            }
-                        }
-                    }
-
-                    if (best)
-                        endpoints[bi].neighbourId = best->getId();
+                    if (usedStraights.count(candidate)) continue;
+                    endpoints[bi].neighbourId = candidate->getId();
+                    usedStraights.insert(candidate);
+                    break;
                 }
             }
             else
             {
-                // Frontier est un autre switch (connexion directe sw↔sw)
+                // Connexion directe sw↔sw (ex. double switch avant absorption)
+                // ou nœud non connecté à un straight connu.
                 const auto itSw = ctx.blocks.switchByNode.find(curr);
                 if (itSw != ctx.blocks.switchByNode.end())
                     endpoints[bi].neighbourId = itSw->second->getId();
@@ -290,17 +381,17 @@ bool Phase6_BlockExtractor::isFrontier(const PipelineContext& ctx,
 }
 
 void Phase6_BlockExtractor::appendSegment(
-    std::vector<CoordinateXY>& ptsUTM,
+    std::vector<CoordinateXY>&     ptsUTM,
     std::vector<CoordinateLatLon>& ptsWGS84,
-    const AtomicSegment& seg,
+    const AtomicSegment&           seg,
     bool                           reversed)
 {
     if (reversed)
     {
         for (int i = static_cast<int>(seg.pointsUTM.size()) - 2; i >= 0; --i)
         {
-            ptsUTM.push_back(seg.pointsUTM[i]);
-            ptsWGS84.push_back(seg.pointsWGS84[i]);
+            ptsUTM.push_back(seg.pointsUTM[static_cast<size_t>(i)]);
+            ptsWGS84.push_back(seg.pointsWGS84[static_cast<size_t>(i)]);
         }
     }
     else
@@ -313,9 +404,14 @@ void Phase6_BlockExtractor::appendSegment(
     }
 }
 
-size_t Phase6_BlockExtractor::pairKey(size_t idA, size_t idB)
+double Phase6_BlockExtractor::computeLength(const std::vector<CoordinateXY>& pts)
 {
-    const size_t a = std::min(idA, idB);
-    const size_t b = std::max(idA, idB);
-    return (a + b) * (a + b + 1) / 2 + b;
+    double len = 0.0;
+    for (size_t i = 0; i + 1 < pts.size(); ++i)
+    {
+        const double dx = pts[i + 1].x - pts[i].x;
+        const double dy = pts[i + 1].y - pts[i].y;
+        len += std::sqrt(dx * dx + dy * dy);
+    }
+    return len;
 }

@@ -2,6 +2,18 @@
  * @file  Phase8_RepositoryTransfer.cpp
  * @brief Implémentation de la phase 9 — résolution + transfert.
  *
+ * @par Correction v2 — resolveStraight ne doit pas écraser la chaîne
+ * Les sous-blocs internes produits par la subdivision (@c maxSegmentLength)
+ * ont des @ref BlockEndpoint avec @c frontierNodeId == SIZE_MAX et
+ * @c neighbourId vide.  L'ancien code appelait systématiquement
+ * @c setNeighbourPrev(nullptr) et @c setNeighbourNext(nullptr) pour ces
+ * entrées, écrasant la chaîne prev/next posée par
+ * @ref Phase6_BlockExtractor::registerStraight.
+ *
+ * Correction : @c resolveStraight ne résout (et ne surécrit) que les
+ * endpoints dont @c neighbourId est non vide.  Les pointeurs internes
+ * de la chaîne sont ainsi préservés.
+ *
  * @see Phase8_RepositoryTransfer
  */
 #include "Phase8_RepositoryTransfer.h"
@@ -14,9 +26,9 @@
 #include <unordered_map>
 
 
- // =============================================================================
- // 9a — Résolution des pointeurs
- // =============================================================================
+// =============================================================================
+// 9a — Résolution des pointeurs
+// =============================================================================
 
 void Phase8_RepositoryTransfer::resolve(PipelineContext& ctx,
     Logger& logger)
@@ -32,6 +44,10 @@ void Phase8_RepositoryTransfer::resolve(PipelineContext& ctx,
     // -------------------------------------------------------------------------
     // Les SwitchBlocks ont déjà leurs neighbourId renseignés par
     // Phase6_BlockExtractor::extractSwitches() — on ne les traite pas ici.
+    //
+    // Pour les sous-blocs internes (frontierNodeId == SIZE_MAX), les deux
+    // lookups échoueront naturellement et neighbourId restera vide.
+    // Passe 2 ne les modifiera donc pas — la chaîne est préservée.
     // -------------------------------------------------------------------------
 
     for (size_t i = 0; i < ctx.blocks.straights.size(); ++i)
@@ -144,9 +160,9 @@ void Phase8_RepositoryTransfer::transfer(PipelineContext& ctx,
 
     // Transfert O(1) via std::move — les adresses des blocs sont inchangées
     data.straights = std::move(ctx.blocks.straights);
-    data.switches = std::move(ctx.blocks.switches);
-    // Après le move : ctx.blocks.straights et ctx.blocks.switches sont vides
-    // Les StraightBlock* / SwitchBlock* non-propriétaires restent valides
+    data.switches  = std::move(ctx.blocks.switches);
+    // Après le move : ctx.blocks.straights et ctx.blocks.switches sont vides.
+    // Les StraightBlock* / SwitchBlock* non-propriétaires restent valides.
 
     // Construction des index de lookup O(1) — APRÈS le move (adresses finales)
     data.buildIndex();
@@ -202,8 +218,23 @@ void Phase8_RepositoryTransfer::resolveStraight(
             return it->second;
         };
 
-    st.setNeighbourPrev(resolve(epPrev, "prev"));
-    st.setNeighbourNext(resolve(epNext, "next"));
+    // Ne résout (et ne surécrit) que les endpoints dont neighbourId est non vide.
+    //
+    // Cas où neighbourId est vide :
+    //   1. Terminus réel (nœud de degré 1) — setNeighbour à nullptr est correct,
+    //      mais le sous-bloc concerné n'a pas de chaîne à préserver → OK.
+    //   2. Endpoint interne d'un sous-bloc de subdivision (frontierNodeId == SIZE_MAX)
+    //      — NE PAS appeler setNeighbour : cela écraserait la chaîne prev/next
+    //      posée par Phase6_BlockExtractor::registerStraight.
+    //
+    // La distinction entre cas 1 et cas 2 est gérée implicitement : dans les deux
+    // cas neighbourId reste vide après la Passe 1, et on n'appelle rien.
+    // Pour le cas 1 (terminus), le pointeur était déjà nullptr à la construction.
+    if (!epPrev.neighbourId.empty())
+        st.setNeighbourPrev(resolve(epPrev, "prev"));
+
+    if (!epNext.neighbourId.empty())
+        st.setNeighbourNext(resolve(epNext, "next"));
 }
 
 void Phase8_RepositoryTransfer::resolveSwitch(
@@ -226,8 +257,8 @@ void Phase8_RepositoryTransfer::resolveSwitch(
             return it->second;
         };
 
-    ShuntingElement* root = resolve(eps[0], "root");
-    ShuntingElement* normal = resolve(eps[1], "normal");
+    ShuntingElement* root      = resolve(eps[0], "root");
+    ShuntingElement* normal    = resolve(eps[1], "normal");
     ShuntingElement* deviation = resolve(eps[2], "deviation");
 
     sw.setRootPointer(root);

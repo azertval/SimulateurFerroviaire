@@ -2,14 +2,16 @@
  * @file  BlockSet.h
  * @brief Structures de données produites par @ref Phase6_BlockExtractor.
  *
- * Conteneur des blocs ferroviaires non-orientés.
- * Possède les blocs via @c std::unique_ptr — propriété exclusive,
- * destruction automatique.
+ * @par straightByDirectedPair — multi-valué depuis la v2
+ * La clé directionnelle (from * 1'000'000 + to) peut désormais pointer
+ * vers plusieurs StraightBlock* lorsque deux straights relient les mêmes
+ * nœuds frontières (cas crossover / voie double).
+ * Avant la correction, la seconde insertion écrasait la première, ce qui
+ * faisait apparaître le même straight en normal ET deviation d'un switch.
  */
 #pragma once
 
 #include <array>
-#include <functional>
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -18,79 +20,97 @@
 #include "Modules/Elements/ShuntingElements/StraightBlock.h"
 #include "Modules/Elements/ShuntingElements/SwitchBlock.h"
 
- /**
-  * @struct BlockEndpoint
-  * @brief Extrémité d'un bloc — nœud frontière + ID du bloc voisin.
-  *
-  * Données intermédiaires construites en Phase 6, résolues en Phase 9.
-  * Le champ @c neighbourId est vide jusqu'à la résolution.
-  */
+/**
+ * @struct BlockEndpoint
+ * @brief Extrémité d'un bloc — nœud frontière + ID du bloc voisin.
+ *
+ * @c frontierNodeId vaut @c SIZE_MAX pour les endpoints internes des
+ * sous-blocs produits par subdivision (@c maxSegmentLength) : il n'existe
+ * aucun nœud topologique réel à ces positions intermédiaires.
+ * @ref Phase8_RepositoryTransfer::resolveStraight teste cette valeur pour
+ * éviter d'écraser les pointeurs de chaîne posés par
+ * @ref Phase6_BlockExtractor::registerStraight.
+ */
 struct BlockEndpoint
 {
-    size_t      frontierNodeId = 0;  ///< ID du nœud topologique frontière.
-    std::string neighbourId;         ///< ID du bloc voisin — résolu en Phase 9.
+    size_t      frontierNodeId = 0;
+    std::string neighbourId;
 };
 
 /**
  * @struct BlockSet
  * @brief Conteneur propriétaire des StraightBlock et SwitchBlock.
  *
- * Produit en Phase 6, enrichi par Phase 7 (orientation) et Phase 8
- * (double switch), transféré vers @ref TopologyRepository en Phase 9.
- *
- * @par Ownership
- * Les blocs sont possédés via @c unique_ptr — copiabilité interdite,
- * déplacement autorisé. Les index @c straightByNode / @c switchByNode
- * contiennent des raw pointers non-propriétaires.
+ * Construit exclusivement par @ref Phase6_BlockExtractor.
+ * Transféré vers @ref TopologyRepository par @ref Phase8_RepositoryTransfer.
  */
 struct BlockSet
 {
-    /** Voies droites — propriétaire exclusif. */
-    std::vector<std::unique_ptr<StraightBlock>> straights;
+    // =========================================================================
+    // Blocs — ownership exclusif
+    // =========================================================================
 
-    /** Aiguillages — propriétaire exclusif. */
-    std::vector<std::unique_ptr<SwitchBlock>> switches;
+    std::vector<std::unique_ptr<StraightBlock>> straights;
+    std::vector<std::unique_ptr<SwitchBlock>>   switches;
+
+    // =========================================================================
+    // Index de lookup
+    // =========================================================================
 
     /**
-     * Index nodeId → StraightBlock* (non-propriétaire).
-     * Clé = ID du nœud frontière A ou B du bloc.
-     * Construit en Phase 6, utilisé en Phase 9 pour résoudre les voisins.
+     * nodeId → liste de StraightBlock* adjacents.
+     * Multi-valué : un nœud SWITCH est adjacent à plusieurs straights.
      */
     std::unordered_map<size_t, std::vector<StraightBlock*>> straightsByNode;
 
-    /**
-     * Index nodeId → SwitchBlock* (non-propriétaire).
-     * Clé = ID du nœud SWITCH correspondant au bloc.
-     */
+    /** nodeId → SwitchBlock* correspondant. */
     std::unordered_map<size_t, SwitchBlock*> switchByNode;
 
     /**
-     * Index pairKey(nodeA, nodeB) → liste de StraightBlock* (non-propriétaires).
-     * Clé canonique = Cantor(min(idA,idB), max(idA,idB)).
-     *
-     * La liste contient en général un seul élément.
-     * Elle en contient plusieurs uniquement dans le cas d'un crossover :
-     * deux straights distincts reliant exactement les mêmes nœuds frontières.
-     *
-     * La désambiguïsation est géométrique dans @ref Phase6_BlockExtractor::extractSwitches :
-     * on sélectionne le straight dont la géométrie passe le plus près du tip
-     * de la branche (premier nœud STRAIGHT immédiatement après le switch).
+     * Cantor(min(A,B), max(A,B)) → premier StraightBlock* depuis A.
+     * Utilisé par @c rebuildStraightIndex(). Pour la résolution des endpoints
+     * de switches, préférer @c straightByDirectedPair.
      */
-    std::unordered_map<size_t, std::vector<StraightBlock*>> straightByEndpointPair;
+    std::unordered_map<size_t, StraightBlock*> straightByEndpointPair;
 
     /**
-     * Endpoints des StraightBlocks — deux par bloc (prev et next).
-     * Index parallèle à @c straights : endpoints[i] = {prevEndpoint, nextEndpoint}
+     * Clé directionnelle : (from * 1'000'000 + to) → liste de StraightBlock*
+     * adjacents au nœud @c from vers le nœud @c to.
+     *
+     * @par Multi-valué — indispensable pour les crossovers
+     * Quand deux straights relient les mêmes deux nœuds frontières (voie double
+     * ou crossover), les deux entrées sont conservées dans le vecteur.
+     * @ref Phase6_BlockExtractor::extractSwitches consomme les entrées dans
+     * l'ordre via un ensemble @c usedStraights par switch pour éviter
+     * d'attribuer le même straight à deux branches distinctes.
+     *
+     * @par Sens de traversal
+     *  - directedKey(switchNode, frontierNode) → sous-bloc adjacent au switch
+     *  - directedKey(frontierNode, switchNode) → sous-bloc adjacent au frontier
+     *
+     * Valide pour < 1 000 000 nœuds (réseau typique ~420 nœuds).
+     */
+    std::unordered_map<size_t, std::vector<StraightBlock*>> straightByDirectedPair;
+
+    // =========================================================================
+    // Endpoints — index parallèles aux vecteurs straights / switches
+    // =========================================================================
+
+    /**
+     * Index parallèle à @c straights.
+     * Pour un sous-bloc interne (subdivision), @c frontierNodeId == SIZE_MAX
+     * et @c neighbourId est vide — @ref Phase8_RepositoryTransfer ne doit
+     * PAS écraser les pointeurs de chaîne pour ces entrées.
      */
     std::vector<std::pair<BlockEndpoint, BlockEndpoint>> straightEndpoints;
 
-    /**
-     * Endpoints des SwitchBlocks — trois par bloc (une par branche).
-     * Index parallèle à @c switches.
-     */
-    std::vector<std::array<BlockEndpoint, 3>> switchEndpoints;
+    /** Index parallèle à @c switches — 3 endpoints par switch. */
+    std::vector<std::array<BlockEndpoint, 3>>            switchEndpoints;
 
-    /** @brief Vide le conteneur — libère la mémoire après Phase 9. */
+    // =========================================================================
+    // Utilitaires
+    // =========================================================================
+
     void clear()
     {
         straights.clear();               straights.shrink_to_fit();
@@ -98,26 +118,29 @@ struct BlockSet
         straightsByNode.clear();
         switchByNode.clear();
         straightByEndpointPair.clear();
+        straightByDirectedPair.clear();
         straightEndpoints.clear();
         switchEndpoints.clear();
     }
 
-    /** @return Nombre total de blocs. */
     [[nodiscard]] size_t totalCount() const
     {
         return straights.size() + switches.size();
     }
 
     /**
-     * @brief Reconstruit les index straightsByNode et straightByEndpointPair.
+     * @brief Reconstruit tous les index straight depuis @c straights et
+     *        @c straightEndpoints (après absorption Phase7).
      *
-     * Appelé par @ref Phase7_SwitchProcessor::absorbLinkSegment() après
-     * suppression d'un segment de liaison pour invalider les entrées obsolètes.
+     * Recrée @c straightsByNode, @c straightByEndpointPair et
+     * @c straightByDirectedPair en parcourant les endpoints enregistrés.
+     * Ignore les sous-blocs internes (frontierNodeId == SIZE_MAX).
      */
     void rebuildStraightIndex()
     {
         straightsByNode.clear();
         straightByEndpointPair.clear();
+        straightByDirectedPair.clear();
 
         for (size_t i = 0; i < straights.size(); ++i)
         {
@@ -126,14 +149,19 @@ struct BlockSet
             const size_t   nA = straightEndpoints[i].first.frontierNodeId;
             const size_t   nB = straightEndpoints[i].second.frontierNodeId;
 
+            // Saute les sous-blocs internes — pas de nœud frontière réel
+            if (nA == SIZE_MAX || nB == SIZE_MAX) continue;
+
             straightsByNode[nA].push_back(st);
             straightsByNode[nB].push_back(st);
 
-            // Cantor pairing canonique
             const size_t a = std::min(nA, nB);
             const size_t b = std::max(nA, nB);
-            const size_t key = (a + b) * (a + b + 1) / 2 + b;
-            straightByEndpointPair[key].push_back(st);
+            straightByEndpointPair[(a + b) * (a + b + 1) / 2 + b] = st;
+
+            // Multi-valué : push_back pour conserver les deux entrées crossover
+            straightByDirectedPair[nA * 1'000'000ULL + nB].push_back(st);
+            straightByDirectedPair[nB * 1'000'000ULL + nA].push_back(st);
         }
     }
 };
