@@ -113,7 +113,7 @@ public:
     [[nodiscard]] const std::vector<std::string>& getBranchIds() const { return m_branchIds; }
 
     /** @brief True si les rôles root/normal/deviation sont assignés. */
-    [[nodiscard]] bool isOriented() const { return m_rootBranchId.has_value(); }
+    [[nodiscard]] bool isOriented() const { return m_branches.root != nullptr; }
 
     /** @brief ID de la branche root. Absent si non orienté. */
     [[nodiscard]] const std::optional<std::string>& getRootBranchId()      const { return m_rootBranchId; }
@@ -217,6 +217,10 @@ public:
     // =========================================================================
     // Mutations — géométrie
     // =========================================================================
+
+    void setRootBranchId(std::string id) { m_rootBranchId = std::move(id); }
+    void setNormalBranchId(std::string id) { m_normalBranchId = std::move(id); }
+    void setDeviationBranchId(std::string id) { m_deviationBranchId = std::move(id); }
 
     /**
      * @brief Assigne la position de jonction en WGS84.

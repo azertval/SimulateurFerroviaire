@@ -6,10 +6,12 @@
  * non-orientés depuis le graphe classifié.
  *
  * @par Algorithme
+ *  -# Les @ref StraightBlock sont extraits en premier par DFS entre
+ *     nœuds frontières — les index @c straightsByNode et
+ *     @c straightByEndpointPair sont construits au passage.
  *  -# Un @ref SwitchBlock par nœud @c NodeClass::SWITCH.
- *  -# Un @ref StraightBlock par chemin entre deux nœuds frontières,
- *     traversant les nœuds @c NodeClass::STRAIGHT (transparents).
- *  -# Câblage des endpoints (nœud frontière → bloc voisin).
+ *     Les endpoints de chaque branche sont résolus immédiatement via
+ *     @c straightByEndpointPair — sans ambiguïté, O(1).
  *
  * @par Libération mémoire
  * @c ctx.topoGraph, @c ctx.classifiedNodes et @c ctx.splitNetwork
@@ -30,10 +32,14 @@ public:
     /**
      * @brief Exécute la phase 6.
      *
+     * Ordre interne : extractStraights → extractSwitches.
+     * Les straights doivent exister avant les switches pour que
+     * straightByEndpointPair soit disponible lors de la résolution
+     * des endpoints de branches.
+     *
      * @param ctx     Contexte pipeline. Lit topoGraph + classifiedNodes +
      *                splitNetwork, écrit blocks. Libère les trois sources.
-     * @param config  Configuration — non utilisée directement ici,
-     *                transmise pour cohérence de signature.
+     * @param config  Configuration — transmise pour cohérence de signature.
      * @param logger  Référence au logger GeoParser.
      */
     static void run(PipelineContext& ctx,
@@ -45,15 +51,10 @@ public:
 private:
 
     /**
-     * @brief Extrait tous les SwitchBlocks depuis les nœuds SWITCH.
-     *
-     * @param ctx     Contexte pipeline.
-     * @param logger  Référence au logger.
-     */
-    static void extractSwitches(PipelineContext& ctx, Logger& logger);
-
-    /**
      * @brief Extrait tous les StraightBlocks par DFS entre nœuds frontières.
+     *
+     * Peuple @c ctx.blocks.straightsByNode et
+     * @c ctx.blocks.straightByEndpointPair au passage.
      *
      * @param ctx     Contexte pipeline.
      * @param logger  Référence au logger.
@@ -61,23 +62,28 @@ private:
     static void extractStraights(PipelineContext& ctx, Logger& logger);
 
     /**
-     * @brief Vérifie si un nœud est un nœud frontière (non-STRAIGHT).
+     * @brief Extrait tous les SwitchBlocks depuis les nœuds SWITCH.
      *
-     * Les nœuds STRAIGHT sont transparents — ils ne délimitent pas de bloc.
+     * Résout les endpoints de branches via @c straightByEndpointPair.
+     * Doit être appelé APRÈS @c extractStraights.
+     *
+     * @param ctx     Contexte pipeline.
+     * @param logger  Référence au logger.
+     */
+    static void extractSwitches(PipelineContext& ctx, Logger& logger);
+
+    /**
+     * @brief Vérifie si un nœud est un nœud frontière (non-STRAIGHT).
      *
      * @param ctx     Contexte pipeline.
      * @param nodeId  ID du nœud à tester.
      *
-     * @return @c true si le nœud est TERMINUS, SWITCH, CROSSING, ISOLATED
-     *         ou AMBIGUOUS.
+     * @return @c true si TERMINUS, SWITCH, CROSSING, ISOLATED ou AMBIGUOUS.
      */
     static bool isFrontier(const PipelineContext& ctx, size_t nodeId);
 
     /**
      * @brief Ajoute les points d'un segment atomique à une géométrie accumulée.
-     *
-     * Respecte le sens de traversal (normal ou inversé).
-     * Saute le premier point pour éviter les doublons de jonction.
      *
      * @param ptsUTM    Vecteur UTM à compléter.
      * @param ptsWGS84  Vecteur WGS84 à compléter.
@@ -87,17 +93,15 @@ private:
     static void appendSegment(std::vector<CoordinateXY>& ptsUTM,
         std::vector<CoordinateLatLon>& ptsWGS84,
         const AtomicSegment& seg,
-        bool                       reversed);
+        bool                           reversed);
 
     /**
      * @brief Calcule une clé canonique pour une paire de nœuds frontières.
      *
-     * Garantit que (A, B) et (B, A) produisent la même clé.
-     *
      * @param idA  Premier nœud.
      * @param idB  Second nœud.
      *
-     * @return Clé unique via Cantor pairing sur min/max.
+     * @return Clé Cantor pairing sur min/max — indépendante de l'ordre.
      */
     static size_t pairKey(size_t idA, size_t idB);
 };

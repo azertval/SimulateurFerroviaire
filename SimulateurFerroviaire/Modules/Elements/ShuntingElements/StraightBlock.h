@@ -99,7 +99,7 @@ public:
     /**
      * @brief Voisins topologiques résolus (pointeurs non-propriétaires).
      *
-     * Renseignés par Phase9_RepositoryTransfer::resolve() via
+     * Renseignés par Phase8_RepositoryTransfer::resolve() via
      * setNeighbourPrev() / setNeighbourNext().
      */
     struct StraightNeighbours
@@ -209,7 +209,7 @@ private:
 
     /**
      * Pointeurs non-propriétaires vers les blocs adjacents.
-     * Renseignés par Phase9_RepositoryTransfer::resolve().
+     * Renseignés par Phase8_RepositoryTransfer::resolve().
      * Propriété de TopologyRepository — ne pas delete.
      */
     StraightNeighbours m_neighbours;

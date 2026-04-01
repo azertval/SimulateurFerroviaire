@@ -84,6 +84,9 @@ if (WIN32)
         gdi32
         comctl32
         comdlg32
+        ole32       
+        oleaut32   
+        version    
     )
 endif()
 

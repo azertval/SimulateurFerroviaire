@@ -6,17 +6,15 @@
  */
 #include "ParserConfigIni.h"
 
- // SimpleIni — header-only, inclus uniquement ici (pas dans le .h)
- // pour ne pas exposer la dépendance aux consommateurs de ParserConfigIni.h
 #include "External/SimpleIni/SimpleIni.h"
 
 #include <stdexcept>
-#include <windows.h>    // GetModuleFileNameA — chemin exécutable
+#include <windows.h>
 
 
-// =============================================================================
-// Helpers privés
-// =============================================================================
+ // =============================================================================
+ // Helpers privés
+ // =============================================================================
 
 double ParserConfigIni::getDouble(const void* iniPtr,
     const char* section,
@@ -37,11 +35,9 @@ double ParserConfigIni::getDouble(const void* iniPtr,
 
 std::string ParserConfigIni::defaultPath()
 {
-    // Récupère le chemin de l'exécutable en cours
     char exePath[MAX_PATH] = {};
     GetModuleFileNameA(nullptr, exePath, MAX_PATH);
 
-    // Remplace le nom de l'exe par le chemin Config/parser_settings.ini
     std::string path(exePath);
     const size_t lastSlash = path.find_last_of("\\/");
     if (lastSlash != std::string::npos)
@@ -57,12 +53,11 @@ std::string ParserConfigIni::defaultPath()
 
 ParserConfig ParserConfigIni::load(const std::string& path)
 {
-    ParserConfig cfg;   // Initialisé avec les valeurs par défaut
+    ParserConfig cfg;
 
     CSimpleIniA ini;
-    ini.SetUnicode(false);  // Fichier ANSI — clés/valeurs ASCII
+    ini.SetUnicode(false);
 
-    // Si le fichier est absent, on retourne les défauts sans erreur
     if (ini.LoadFile(path.c_str()) < 0)
         return cfg;
 
@@ -77,6 +72,7 @@ ParserConfig ParserConfigIni::load(const std::string& path)
     cfg.minSwitchAngle = getDouble(&ini, "Switch", "MinSwitchAngle", cfg.minSwitchAngle);
     cfg.junctionTrimMargin = getDouble(&ini, "Switch", "JunctionTrimMargin", cfg.junctionTrimMargin);
     cfg.doubleSwitchRadius = getDouble(&ini, "Switch", "DoubleSwitchRadius", cfg.doubleSwitchRadius);
+    cfg.switchSideSize = getDouble(&ini, "Switch", "SwitchSideSize", cfg.switchSideSize);
 
     // [CDC]
     cfg.minBranchLength = getDouble(&ini, "CDC", "MinBranchLength", cfg.minBranchLength);
@@ -93,13 +89,10 @@ void ParserConfigIni::save(const std::string& path, const ParserConfig& cfg)
 {
     CSimpleIniA ini;
     ini.SetUnicode(false);
-
-    // Chargement si existant — préserve les commentaires et clés inconnues
     ini.LoadFile(path.c_str());
 
     auto setVal = [&](const char* s, const char* k, double v)
         {
-            // Formatage : max 4 décimales, sans notation scientifique
             char buf[32];
             std::snprintf(buf, sizeof(buf), "%.4g", v);
             ini.SetValue(s, k, buf);
@@ -111,6 +104,7 @@ void ParserConfigIni::save(const std::string& path, const ParserConfig& cfg)
     setVal("Switch", "MinSwitchAngle", cfg.minSwitchAngle);
     setVal("Switch", "JunctionTrimMargin", cfg.junctionTrimMargin);
     setVal("Switch", "DoubleSwitchRadius", cfg.doubleSwitchRadius);
+    setVal("Switch", "SwitchSideSize", cfg.switchSideSize);
     setVal("CDC", "MinBranchLength", cfg.minBranchLength);
 
     if (ini.SaveFile(path.c_str()) < 0)

@@ -26,6 +26,7 @@
 #define IDC_BTN_RESET					32782
 #define IDC_CANCEL_PARSING				32783
 #define IDD_PARSER_SETTINGS             32784
+#define IDC_EDIT_MIN_SWITCH_SIDE_SIZE	32785
 
 #define IDC_STATIC                      -1
 

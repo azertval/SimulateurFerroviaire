@@ -1,10 +1,10 @@
 /**
- * @file  Phase9_RepositoryTransfer.cpp
+ * @file  Phase8_RepositoryTransfer.cpp
  * @brief Implémentation de la phase 9 — résolution + transfert.
  *
- * @see Phase9_RepositoryTransfer
+ * @see Phase8_RepositoryTransfer
  */
-#include "Phase9_RepositoryTransfer.h"
+#include "Phase8_RepositoryTransfer.h"
 
 #include "Engine/Core/Topology/TopologyRepository.h"
 #include "Engine/Core/Topology/TopologyData.h"
@@ -18,7 +18,7 @@
  // 9a — Résolution des pointeurs
  // =============================================================================
 
-void Phase9_RepositoryTransfer::resolve(PipelineContext& ctx,
+void Phase8_RepositoryTransfer::resolve(PipelineContext& ctx,
     Logger& logger)
 {
     const auto t0 = PipelineContext::startTimer();
@@ -28,63 +28,65 @@ void Phase9_RepositoryTransfer::resolve(PipelineContext& ctx,
         + std::to_string(ctx.blocks.switches.size()) + " switch(es).");
 
     // -------------------------------------------------------------------------
-    // Passe 1 — Renseignement des neighbourId depuis les nœuds frontières
+    // Passe 1 — Renseignement des neighbourId des StraightBlocks
     // -------------------------------------------------------------------------
-    // Les BlockEndpoint stockent un frontierNodeId (nœud topologique).
-    // On les convertit en ID de bloc via les index de BlockSet.
+    // Les SwitchBlocks ont déjà leurs neighbourId renseignés par
+    // Phase6_BlockExtractor::extractSwitches() — on ne les traite pas ici.
     // -------------------------------------------------------------------------
 
-    // Pour chaque StraightBlock : résout les neighbourId des endpoints
     for (size_t i = 0; i < ctx.blocks.straights.size(); ++i)
     {
         if (i >= ctx.blocks.straightEndpoints.size()) break;
 
         auto& [epA, epB] = ctx.blocks.straightEndpoints[i];
 
-        // Cherche le switch voisin du côté epA
-        auto itSwA = ctx.blocks.switchByNode.find(epA.frontierNodeId);
-        if (itSwA != ctx.blocks.switchByNode.end())
-            epA.neighbourId = itSwA->second->getId();
-        else
+        // Côté epA — cherche switch en priorité, puis straight
         {
-            // Cherche un straight voisin (TERMINUS ou autre straight)
-            auto itStA = ctx.blocks.straightByNode.find(epA.frontierNodeId);
-            if (itStA != ctx.blocks.straightByNode.end()
-                && itStA->second != ctx.blocks.straights[i].get())
-                epA.neighbourId = itStA->second->getId();
+            auto itSw = ctx.blocks.switchByNode.find(epA.frontierNodeId);
+            if (itSw != ctx.blocks.switchByNode.end())
+            {
+                epA.neighbourId = itSw->second->getId();
+            }
+            else
+            {
+                // Terminus ou straight adjacent — lookup dans straightsByNode
+                const auto itSt = ctx.blocks.straightsByNode.find(epA.frontierNodeId);
+                if (itSt != ctx.blocks.straightsByNode.end())
+                {
+                    for (StraightBlock* candidate : itSt->second)
+                    {
+                        if (candidate != ctx.blocks.straights[i].get())
+                        {
+                            epA.neighbourId = candidate->getId();
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         // Côté epB
-        auto itSwB = ctx.blocks.switchByNode.find(epB.frontierNodeId);
-        if (itSwB != ctx.blocks.switchByNode.end())
-            epB.neighbourId = itSwB->second->getId();
-        else
         {
-            auto itStB = ctx.blocks.straightByNode.find(epB.frontierNodeId);
-            if (itStB != ctx.blocks.straightByNode.end()
-                && itStB->second != ctx.blocks.straights[i].get())
-                epB.neighbourId = itStB->second->getId();
-        }
-    }
-
-    // Pour chaque SwitchBlock : résout les neighbourId des 3 branches
-    for (size_t i = 0; i < ctx.blocks.switches.size(); ++i)
-    {
-        if (i >= ctx.blocks.switchEndpoints.size()) break;
-
-        auto& eps = ctx.blocks.switchEndpoints[i];
-        for (auto& ep : eps)
-        {
-            // Cherche straight d'abord, puis switch
-            auto itSt = ctx.blocks.straightByNode.find(ep.frontierNodeId);
-            if (itSt != ctx.blocks.straightByNode.end())
-            {
-                ep.neighbourId = itSt->second->getId();
-                continue;
-            }
-            auto itSw = ctx.blocks.switchByNode.find(ep.frontierNodeId);
+            auto itSw = ctx.blocks.switchByNode.find(epB.frontierNodeId);
             if (itSw != ctx.blocks.switchByNode.end())
-                ep.neighbourId = itSw->second->getId();
+            {
+                epB.neighbourId = itSw->second->getId();
+            }
+            else
+            {
+                const auto itSt = ctx.blocks.straightsByNode.find(epB.frontierNodeId);
+                if (itSt != ctx.blocks.straightsByNode.end())
+                {
+                    for (StraightBlock* candidate : itSt->second)
+                    {
+                        if (candidate != ctx.blocks.straights[i].get())
+                        {
+                            epB.neighbourId = candidate->getId();
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -108,8 +110,7 @@ void Phase9_RepositoryTransfer::resolve(PipelineContext& ctx,
             index, logger);
     }
 
-    ctx.endTimer(t0, "Phase9_resolve",
-        ctx.blocks.totalCount(), 0);
+    ctx.endTimer(t0, "Phase8_resolve", ctx.blocks.totalCount(), 0);
 
     LOG_INFO(logger, "Pointeurs résolus.");
 }
@@ -119,7 +120,7 @@ void Phase9_RepositoryTransfer::resolve(PipelineContext& ctx,
 // 9b — Transfert vers TopologyRepository
 // =============================================================================
 
-void Phase9_RepositoryTransfer::transfer(PipelineContext& ctx,
+void Phase8_RepositoryTransfer::transfer(PipelineContext& ctx,
     Logger& logger)
 {
     const auto t0 = PipelineContext::startTimer();
@@ -150,7 +151,7 @@ void Phase9_RepositoryTransfer::transfer(PipelineContext& ctx,
     // Construction des index de lookup O(1) — APRÈS le move (adresses finales)
     data.buildIndex();
 
-    ctx.endTimer(t0, "Phase9_transfer", stCount + swCount, 0);
+    ctx.endTimer(t0, "Phase8_transfer", stCount + swCount, 0);
 
     // Libération des structures intermédiaires de BlockSet
     ctx.blocks.clear();
@@ -166,7 +167,7 @@ void Phase9_RepositoryTransfer::transfer(PipelineContext& ctx,
 // =============================================================================
 
 std::unordered_map<std::string, ShuntingElement*>
-Phase9_RepositoryTransfer::buildBlockIndex(const BlockSet& blocks)
+Phase8_RepositoryTransfer::buildBlockIndex(const BlockSet& blocks)
 {
     std::unordered_map<std::string, ShuntingElement*> index;
     index.reserve(blocks.totalCount());
@@ -180,7 +181,7 @@ Phase9_RepositoryTransfer::buildBlockIndex(const BlockSet& blocks)
     return index;
 }
 
-void Phase9_RepositoryTransfer::resolveStraight(
+void Phase8_RepositoryTransfer::resolveStraight(
     StraightBlock& st,
     const BlockEndpoint& epPrev,
     const BlockEndpoint& epNext,
@@ -205,7 +206,7 @@ void Phase9_RepositoryTransfer::resolveStraight(
     st.setNeighbourNext(resolve(epNext, "next"));
 }
 
-void Phase9_RepositoryTransfer::resolveSwitch(
+void Phase8_RepositoryTransfer::resolveSwitch(
     SwitchBlock& sw,
     const std::array<BlockEndpoint, 3>& eps,
     const std::unordered_map<std::string, ShuntingElement*>& index,
@@ -225,7 +226,16 @@ void Phase9_RepositoryTransfer::resolveSwitch(
             return it->second;
         };
 
-    sw.setRootPointer(resolve(eps[0], "root"));
-    sw.setNormalPointer(resolve(eps[1], "normal"));
-    sw.setDeviationPointer(resolve(eps[2], "deviation"));
+    ShuntingElement* root = resolve(eps[0], "root");
+    ShuntingElement* normal = resolve(eps[1], "normal");
+    ShuntingElement* deviation = resolve(eps[2], "deviation");
+
+    sw.setRootPointer(root);
+    sw.setNormalPointer(normal);
+    sw.setDeviationPointer(deviation);
+
+    // Renseigne aussi les IDs — compatibilité avec orient() et isOriented()
+    if (root)      sw.setRootBranchId(eps[0].neighbourId);
+    if (normal)    sw.setNormalBranchId(eps[1].neighbourId);
+    if (deviation) sw.setDeviationBranchId(eps[2].neighbourId);
 }

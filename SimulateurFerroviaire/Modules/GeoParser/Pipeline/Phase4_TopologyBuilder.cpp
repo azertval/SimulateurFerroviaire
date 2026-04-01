@@ -22,7 +22,7 @@ void Phase4_TopologyBuilder::run(PipelineContext& ctx,
 {
     const auto t0 = PipelineContext::startTimer();
 
-    if (ctx.empty())
+    if (ctx.splitNetwork.empty())
     {
         LOG_ERROR(logger, "splitNetwork vide — parsing annulé.");
         throw EXCEPTION_EXECUTE_FAULT;

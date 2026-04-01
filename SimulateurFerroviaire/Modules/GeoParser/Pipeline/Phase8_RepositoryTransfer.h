@@ -1,5 +1,5 @@
 /**
- * @file  Phase9_RepositoryTransfer.h
+ * @file  Phase8_RepositoryTransfer.h
  * @brief Phase 9 du pipeline — résolution des pointeurs et transfert vers TopologyRepository.
  *
  * Scindée en deux méthodes publiques pour respecter la contrainte d'ordre
@@ -7,9 +7,9 @@
  *
  * @par Ordre d'appel obligatoire
  * @code
- * Phase9_RepositoryTransfer::resolve(ctx, logger);    // 9a
+ * Phase8_RepositoryTransfer::resolve(ctx, logger);    // 9a
  * Phase8_SwitchOrientator::run(ctx, config, logger);  // 7 — nécessite pointeurs
- * Phase9_RepositoryTransfer::transfer(ctx, logger);   // 9b — transfert final
+ * Phase8_RepositoryTransfer::transfer(ctx, logger);   // 9b — transfert final
  * @endcode
  *
  * @par 9a — resolve()
@@ -27,7 +27,7 @@
 #include "PipelineContext.h"
 #include "Engine/Core/Logger/Logger.h"
 
-class Phase9_RepositoryTransfer
+class Phase8_RepositoryTransfer
 {
 public:
 
@@ -64,7 +64,7 @@ public:
      */
     static void transfer(PipelineContext& ctx, Logger& logger);
 
-    Phase9_RepositoryTransfer() = delete;
+    Phase8_RepositoryTransfer() = delete;
 
 private:
 

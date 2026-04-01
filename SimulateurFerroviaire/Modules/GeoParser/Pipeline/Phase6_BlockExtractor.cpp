@@ -6,7 +6,6 @@
  */
 #include "Phase6_BlockExtractor.h"
 
-#include <stack>
 #include <unordered_set>
 #include <array>
 
@@ -23,8 +22,10 @@ void Phase6_BlockExtractor::run(PipelineContext& ctx,
 
     LOG_INFO(logger, "Extraction des blocs ferroviaires.");
 
-    extractSwitches(ctx, logger);
+    // Straights en premier — construit straightByEndpointPair
+    // dont extractSwitches a besoin pour résoudre les endpoints
     extractStraights(ctx, logger);
+    extractSwitches(ctx, logger);
 
     ctx.endTimer(t0, "Phase6_BlockExtractor",
         ctx.topoGraph.nodes.size(),
@@ -40,6 +41,105 @@ void Phase6_BlockExtractor::run(PipelineContext& ctx,
     ctx.splitNetwork.clear();
 
     LOG_DEBUG(logger, "topoGraph, classifiedNodes et splitNetwork libérés.");
+}
+
+
+// =============================================================================
+// Extraction des StraightBlocks
+// =============================================================================
+
+void Phase6_BlockExtractor::extractStraights(PipelineContext& ctx,
+    Logger& logger)
+{
+    std::unordered_set<size_t> processedPairs;
+    size_t straightIndex = 0;
+
+    for (const auto& node : ctx.topoGraph.nodes)
+    {
+        if (!isFrontier(ctx, node.id)) continue;
+
+        for (size_t startEdgeIdx : ctx.topoGraph.adjacency[node.id])
+        {
+            std::vector<CoordinateXY>     ptsUTM;
+            std::vector<CoordinateLatLon> ptsWGS84;
+
+            size_t curr = node.id;
+            size_t prevEdge = SIZE_MAX;
+            size_t nextEdge = startEdgeIdx;
+
+            // Premier point = position du nœud de départ
+            ptsUTM.push_back(ctx.topoGraph.nodes[curr].posUTM);
+            ptsWGS84.push_back(ctx.topoGraph.nodes[curr].posWGS84);
+
+            size_t endNode = SIZE_MAX;
+
+            while (true)
+            {
+                const TopoEdge& edge = ctx.topoGraph.edges[nextEdge];
+                const size_t    nextNode = edge.opposite(curr);
+
+                if (nextNode == SIZE_MAX) break;
+
+                const bool reversed = (edge.nodeA == nextNode);
+                const AtomicSegment& seg =
+                    ctx.splitNetwork.segments[edge.segmentIndex];
+
+                appendSegment(ptsUTM, ptsWGS84, seg, reversed);
+
+                curr = nextNode;
+                prevEdge = nextEdge;
+
+                if (isFrontier(ctx, curr))
+                {
+                    endNode = curr;
+                    break;
+                }
+
+                // Nœud STRAIGHT — continue sans demi-tour
+                bool advanced = false;
+                for (size_t eidx : ctx.topoGraph.adjacency[curr])
+                {
+                    if (eidx == prevEdge) continue;
+                    nextEdge = eidx;
+                    advanced = true;
+                    break;
+                }
+                if (!advanced) break;
+            }
+
+            if (endNode == SIZE_MAX) continue;
+
+            // Dédoublonnage — évite A→B et B→A
+            const size_t key = pairKey(node.id, endNode);
+            if (processedPairs.count(key)) continue;
+            processedPairs.insert(key);
+
+            // Création du StraightBlock
+            auto st = std::make_unique<StraightBlock>();
+            st->setId("s/" + std::to_string(straightIndex));
+            st->setPointsUTM(ptsUTM);
+            st->setPointsWGS84(ptsWGS84);
+
+            StraightBlock* rawPtr = st.get();
+
+            // Endpoints
+            BlockEndpoint epA{ node.id, "" };
+            BlockEndpoint epB{ endNode,  "" };
+
+            // Index multi-valué : un nœud peut être connecté à plusieurs straights
+            ctx.blocks.straightsByNode[node.id].push_back(rawPtr);
+            ctx.blocks.straightsByNode[endNode].push_back(rawPtr);
+
+            // Index pair canonique : O(1) sans ambiguïté pour extractSwitches
+            ctx.blocks.straightByEndpointPair[key] = rawPtr;
+
+            ctx.blocks.straightEndpoints.push_back({ epA, epB });
+            ctx.blocks.straights.push_back(std::move(st));
+            ++straightIndex;
+        }
+    }
+
+    LOG_DEBUG(logger, std::to_string(straightIndex) + " StraightBlock(s) créé(s).");
 }
 
 
@@ -63,12 +163,8 @@ void Phase6_BlockExtractor::extractSwitches(PipelineContext& ctx,
         sw->setJunctionWGS84(node.posWGS84);
 
         SwitchBlock* rawPtr = sw.get();
-
-        // Index : nœud SWITCH → SwitchBlock*
         ctx.blocks.switchByNode[node.id] = rawPtr;
 
-        // Endpoints des 3 branches — nœuds frontières voisins via DFS
-        // (les nœuds STRAIGHT intermédiaires sont traversés)
         std::array<BlockEndpoint, 3> endpoints{};
         const auto& adj = ctx.topoGraph.adjacency[node.id];
 
@@ -77,7 +173,7 @@ void Phase6_BlockExtractor::extractSwitches(PipelineContext& ctx,
             const TopoEdge& edge = ctx.topoGraph.edges[adj[bi]];
             const size_t    nextNode = edge.opposite(node.id);
 
-            // Traverse les STRAIGHT jusqu'au prochain frontière
+            // Traverse les STRAIGHT jusqu'au prochain nœud frontière
             size_t curr = nextNode;
             size_t prevEdge = adj[bi];
 
@@ -93,10 +189,27 @@ void Phase6_BlockExtractor::extractSwitches(PipelineContext& ctx,
                     advanced = true;
                     break;
                 }
-                if (!advanced) break;   // Cul-de-sac — ne devrait pas arriver
+                if (!advanced) break;
             }
 
             endpoints[bi].frontierNodeId = curr;
+
+            // Résolution directe via la paire canonique (switch ↔ frontier)
+            // — O(1), sans ambiguïté, sans doublon possible
+            const size_t key = pairKey(node.id, curr);
+            const auto   it = ctx.blocks.straightByEndpointPair.find(key);
+            if (it != ctx.blocks.straightByEndpointPair.end())
+            {
+                endpoints[bi].neighbourId = it->second->getId();
+            }
+            else
+            {
+                // Frontier est un autre switch (connexion directe sw↔sw)
+                // ou nœud non connecté à un straight connu
+                const auto itSw = ctx.blocks.switchByNode.find(curr);
+                if (itSw != ctx.blocks.switchByNode.end())
+                    endpoints[bi].neighbourId = itSw->second->getId();
+            }
         }
 
         ctx.blocks.switchEndpoints.push_back(endpoints);
@@ -109,127 +222,23 @@ void Phase6_BlockExtractor::extractSwitches(PipelineContext& ctx,
 
 
 // =============================================================================
-// Extraction des StraightBlocks
-// =============================================================================
-
-void Phase6_BlockExtractor::extractStraights(PipelineContext& ctx,
-    Logger& logger)
-{
-    std::unordered_set<size_t> processedPairs;
-    size_t straightIndex = 0;
-
-    for (const auto& node : ctx.topoGraph.nodes)
-    {
-        if (!isFrontier(ctx, node.id)) continue;
-
-        // DFS depuis ce nœud frontière sur chaque arête incidente
-        for (size_t startEdgeIdx : ctx.topoGraph.adjacency[node.id])
-        {
-            // --- Traversal DFS en traversant les STRAIGHT ---
-            std::vector<CoordinateXY> ptsUTM;
-            std::vector<CoordinateLatLon>       ptsWGS84;
-
-            size_t curr = node.id;
-            size_t prevEdge = SIZE_MAX;
-            size_t nextEdge = startEdgeIdx;
-
-            // Premier point = position du nœud de départ
-            ptsUTM.push_back(ctx.topoGraph.nodes[curr].posUTM);
-            ptsWGS84.push_back(ctx.topoGraph.nodes[curr].posWGS84);
-
-            size_t endNode = SIZE_MAX;
-
-            while (true)
-            {
-                const TopoEdge& edge = ctx.topoGraph.edges[nextEdge];
-                const size_t    nextNode = edge.opposite(curr);
-
-                if (nextNode == SIZE_MAX) break;
-
-                // Orientation du segment par rapport au sens de traversal
-                const bool reversed = (edge.nodeA == nextNode);
-                const AtomicSegment& seg =
-                    ctx.splitNetwork.segments[edge.segmentIndex];
-
-                appendSegment(ptsUTM, ptsWGS84, seg, reversed);
-
-                curr = nextNode;
-                prevEdge = nextEdge;
-
-                if (isFrontier(ctx, curr))
-                {
-                    endNode = curr;
-                    break;   // Nœud frontière atteint — StraightBlock terminé
-                }
-
-                // Nœud STRAIGHT — continue sur l'arête sortante (pas demi-tour)
-                bool advanced = false;
-                for (size_t eidx : ctx.topoGraph.adjacency[curr])
-                {
-                    if (eidx == prevEdge) continue;
-                    nextEdge = eidx;
-                    advanced = true;
-                    break;
-                }
-                if (!advanced) break;  // Impasse
-            }
-
-            if (endNode == SIZE_MAX) continue;
-            // ^ Traversal n'a pas atteint de frontière — données incohérentes
-
-            // Dédoublonnage — évite A→B et B→A
-            const size_t key = pairKey(node.id, endNode);
-            if (processedPairs.count(key)) continue;
-            processedPairs.insert(key);
-
-            // Création du StraightBlock
-            auto st = std::make_unique<StraightBlock>();
-            st->setId("s/" + std::to_string(straightIndex));
-            st->setPointsUTM(ptsUTM);
-            st->setPointsWGS84(ptsWGS84);
-
-            StraightBlock* rawPtr = st.get();
-
-            // Endpoints pour résolution Phase 9
-            BlockEndpoint epA{ node.id,  "" };
-            BlockEndpoint epB{ endNode,  "" };
-
-            // Index : nœud frontière → StraightBlock*
-            ctx.blocks.straightByNode[node.id] = rawPtr;
-            ctx.blocks.straightByNode[endNode] = rawPtr;
-
-            ctx.blocks.straightEndpoints.push_back({ epA, epB });
-            ctx.blocks.straights.push_back(std::move(st));
-            ++straightIndex;
-        }
-    }
-
-    LOG_DEBUG(logger, std::to_string(straightIndex) + " StraightBlock(s) créé(s).");
-}
-
-
-// =============================================================================
 // Helpers
 // =============================================================================
 
 bool Phase6_BlockExtractor::isFrontier(const PipelineContext& ctx,
     size_t nodeId)
 {
-    const NodeClass cls = ctx.classifiedNodes.getClass(nodeId);
-    return cls != NodeClass::STRAIGHT;
-    // TERMINUS, SWITCH, CROSSING, ISOLATED, AMBIGUOUS → frontière
-    // STRAIGHT → transparent
+    return ctx.classifiedNodes.getClass(nodeId) != NodeClass::STRAIGHT;
 }
 
 void Phase6_BlockExtractor::appendSegment(
     std::vector<CoordinateXY>& ptsUTM,
     std::vector<CoordinateLatLon>& ptsWGS84,
     const AtomicSegment& seg,
-    bool                       reversed)
+    bool                           reversed)
 {
     if (reversed)
     {
-        // Parcours en sens inverse — saute le dernier point (déjà dans pts)
         for (int i = static_cast<int>(seg.pointsUTM.size()) - 2; i >= 0; --i)
         {
             ptsUTM.push_back(seg.pointsUTM[i]);
@@ -238,7 +247,6 @@ void Phase6_BlockExtractor::appendSegment(
     }
     else
     {
-        // Parcours normal — saute le premier point (déjà dans pts)
         for (size_t i = 1; i < seg.pointsUTM.size(); ++i)
         {
             ptsUTM.push_back(seg.pointsUTM[i]);
@@ -249,7 +257,6 @@ void Phase6_BlockExtractor::appendSegment(
 
 size_t Phase6_BlockExtractor::pairKey(size_t idA, size_t idB)
 {
-    // Cantor pairing sur min/max — garantit clé canonique indépendante de l'ordre
     const size_t a = std::min(idA, idB);
     const size_t b = std::max(idA, idB);
     return (a + b) * (a + b + 1) / 2 + b;

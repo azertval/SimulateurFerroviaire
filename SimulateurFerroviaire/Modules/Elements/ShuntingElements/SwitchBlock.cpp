@@ -199,47 +199,74 @@ ActiveBranch SwitchBlock::toggleActiveBranch(bool propagate)
 std::string SwitchBlock::toString() const
 {
     std::ostringstream s;
-    s << "Switch(id=" << m_id;
+    s << std::fixed;
+    s.precision(6);
 
+    // -------------------------------------------------------------------------
+    // Identifiant + jonction
+    // -------------------------------------------------------------------------
+    s << "Switch(id=" << m_id
+        << ", junction=(" << m_junctionWGS84.latitude
+        << ", " << m_junctionWGS84.longitude << ")";
+
+    // -------------------------------------------------------------------------
+    // Double aiguille
+    // -------------------------------------------------------------------------
     if (isDouble())
     {
-        s << " [DOUBLE:";
+        s << ", [DOUBLE:";
         if (m_doubleOnNormal)
-            s << "normal→" << *m_doubleOnNormal
-            << " (" << m_absorbedNormalCoords.size() << " pts)";
+            s << " normal→" << *m_doubleOnNormal
+            << "(" << m_absorbedNormalCoords.size() << " pts)";
         if (m_doubleOnDeviation)
-            s << "deviation→" << *m_doubleOnDeviation
-            << " (" << m_absorbedDeviationCoords.size() << " pts)";
+            s << " deviation→" << *m_doubleOnDeviation
+            << "(" << m_absorbedDeviationCoords.size() << " pts)";
         s << "]";
     }
 
-    s << std::fixed;
-    s.precision(6);
-    s << ", junction=(" << m_junctionWGS84.latitude
-        << ", " << m_junctionWGS84.longitude << ")";
-
+    // -------------------------------------------------------------------------
+    // Orienté : branches + tips + longueur
+    // -------------------------------------------------------------------------
     if (isOriented())
     {
-        s << ", root=" << m_rootBranchId.value_or("?")
-            << ", normal=" << m_normalBranchId.value_or("?")
-            << ", deviation=" << m_deviationBranchId.value_or("?");
+        // Branches — ID + pointeur résolu
+        auto branch = [](const std::optional<std::string>& id,
+            const ShuntingElement* ptr) -> std::string
+            {
+                const std::string idStr = id.value_or("?");
+                const std::string ptrStr = ptr ? ptr->getId() : "null";
+                return idStr == ptrStr ? idStr : idStr + "→" + ptrStr;
+            };
 
-        if (m_tipOnRoot)
-            s << ", tipRoot=(" << m_tipOnRoot->latitude
-            << ", " << m_tipOnRoot->longitude << ")";
-        if (m_tipOnNormal)
-            s << ", tipNormal=(" << m_tipOnNormal->latitude
-            << ", " << m_tipOnNormal->longitude << ")";
-        if (m_tipOnDeviation)
-            s << ", tipDev=(" << m_tipOnDeviation->latitude
-            << ", " << m_tipOnDeviation->longitude << ")";
+        s << ", root=" << branch(m_rootBranchId, m_branches.root)
+            << ", normal=" << branch(m_normalBranchId, m_branches.normal)
+            << ", deviation=" << branch(m_deviationBranchId, m_branches.deviation);
 
+        // Tips CDC
+        auto tip = [](const std::optional<CoordinateLatLon>& t) -> std::string
+            {
+                if (!t) return "—";
+                std::ostringstream b;
+                b << std::fixed;
+                b.precision(6);
+                b << "(" << t->latitude << ", " << t->longitude << ")";
+                return b.str();
+            };
+
+        s << ", tipRoot=" << tip(m_tipOnRoot)
+            << ", tipNormal=" << tip(m_tipOnNormal)
+            << ", tipDeviation=" << tip(m_tipOnDeviation);
+
+        // Longueur totale
         if (m_totalLengthMeters)
         {
             s.precision(1);
             s << ", len=" << *m_totalLengthMeters << "m";
         }
     }
+    // -------------------------------------------------------------------------
+    // Non orienté : degré seulement
+    // -------------------------------------------------------------------------
     else
     {
         s << ", degree=" << m_branchIds.size();
