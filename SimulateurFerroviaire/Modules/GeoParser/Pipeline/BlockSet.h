@@ -65,14 +65,18 @@ struct BlockSet
     std::unordered_map<size_t, SwitchBlock*> switchByNode;
 
     /**
-     * Index pairKey(nodeA, nodeB) → StraightBlock* (non-propriétaire).
+     * Index pairKey(nodeA, nodeB) → liste de StraightBlock* (non-propriétaires).
      * Clé canonique = Cantor(min(idA,idB), max(idA,idB)).
-     * Garantit un lookup O(1) sans ambiguïté — chaque paire de nœuds
-     * frontières correspond exactement à un StraightBlock.
-     * Utilisé par @ref Phase6_BlockExtractor::extractSwitches pour résoudre
-     * les endpoints de branches sans doublon.
+     *
+     * La liste contient en général un seul élément.
+     * Elle en contient plusieurs uniquement dans le cas d'un crossover :
+     * deux straights distincts reliant exactement les mêmes nœuds frontières.
+     *
+     * La désambiguïsation est géométrique dans @ref Phase6_BlockExtractor::extractSwitches :
+     * on sélectionne le straight dont la géométrie passe le plus près du tip
+     * de la branche (premier nœud STRAIGHT immédiatement après le switch).
      */
-    std::unordered_map<size_t, StraightBlock*> straightByEndpointPair;
+    std::unordered_map<size_t, std::vector<StraightBlock*>> straightByEndpointPair;
 
     /**
      * Endpoints des StraightBlocks — deux par bloc (prev et next).
@@ -129,7 +133,7 @@ struct BlockSet
             const size_t a = std::min(nA, nB);
             const size_t b = std::max(nA, nB);
             const size_t key = (a + b) * (a + b + 1) / 2 + b;
-            straightByEndpointPair[key] = st;
+            straightByEndpointPair[key].push_back(st);
         }
     }
 };

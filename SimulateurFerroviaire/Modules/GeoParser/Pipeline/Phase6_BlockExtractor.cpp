@@ -51,7 +51,20 @@ void Phase6_BlockExtractor::run(PipelineContext& ctx,
 void Phase6_BlockExtractor::extractStraights(PipelineContext& ctx,
     Logger& logger)
 {
-    std::unordered_set<size_t> processedPairs;
+    // Déduplication par arête et non plus par paire de nœuds frontières.
+    //
+    // Pourquoi ce changement : dans un crossover, deux straights distincts
+    // relient exactement les mêmes frontières (ex. sw/5 ↔ sw/6 via deux
+    // chemins différents). La déduplication par pairKey(nodeA, nodeB)
+    // écrasait le second straight avant même de le créer.
+    //
+    // Principe : chaque arête du graphe n'appartient qu'à un seul straight.
+    // Quand un straight est créé depuis node via startEdgeIdx, on marque :
+    //   • startEdgeIdx — bloque la relecture du même chemin A→B
+    //   • prevEdge     — arête arrivant à endNode, bloque la relecture B→A
+    // Deux straights distincts empruntent des arêtes de départ différentes
+    // → ils ne s'inhibent pas mutuellement.
+    std::unordered_set<size_t> processedEdges;
     size_t straightIndex = 0;
 
     for (const auto& node : ctx.topoGraph.nodes)
@@ -60,6 +73,10 @@ void Phase6_BlockExtractor::extractStraights(PipelineContext& ctx,
 
         for (size_t startEdgeIdx : ctx.topoGraph.adjacency[node.id])
         {
+            // Si cette arête a déjà produit un straight (par sa traversée
+            // dans l'autre sens), on saute sans reconstruire le chemin.
+            if (processedEdges.count(startEdgeIdx)) continue;
+
             std::vector<CoordinateXY>     ptsUTM;
             std::vector<CoordinateLatLon> ptsWGS84;
 
@@ -87,7 +104,7 @@ void Phase6_BlockExtractor::extractStraights(PipelineContext& ctx,
                 appendSegment(ptsUTM, ptsWGS84, seg, reversed);
 
                 curr = nextNode;
-                prevEdge = nextEdge;
+                prevEdge = nextEdge;   // ← arête arrivant au nœud courant
 
                 if (isFrontier(ctx, curr))
                 {
@@ -109,10 +126,11 @@ void Phase6_BlockExtractor::extractStraights(PipelineContext& ctx,
 
             if (endNode == SIZE_MAX) continue;
 
-            // Dédoublonnage — évite A→B et B→A
-            const size_t key = pairKey(node.id, endNode);
-            if (processedPairs.count(key)) continue;
-            processedPairs.insert(key);
+            // Marque les deux arêtes extrêmes du straight :
+            //   startEdgeIdx = arête quittant node.id  → bloque A→B
+            //   prevEdge     = arête arrivant à endNode → bloque B→A
+            processedEdges.insert(startEdgeIdx);
+            processedEdges.insert(prevEdge);
 
             // Création du StraightBlock
             auto st = std::make_unique<StraightBlock>();
@@ -130,8 +148,9 @@ void Phase6_BlockExtractor::extractStraights(PipelineContext& ctx,
             ctx.blocks.straightsByNode[node.id].push_back(rawPtr);
             ctx.blocks.straightsByNode[endNode].push_back(rawPtr);
 
-            // Index pair canonique : O(1) sans ambiguïté pour extractSwitches
-            ctx.blocks.straightByEndpointPair[key] = rawPtr;
+            const size_t key = pairKey(node.id, endNode);
+            // Index pair canonique : O(1), multi-valué pour les crossovers
+            ctx.blocks.straightByEndpointPair[key].push_back(rawPtr);
 
             ctx.blocks.straightEndpoints.push_back({ epA, epB });
             ctx.blocks.straights.push_back(std::move(st));
@@ -172,8 +191,10 @@ void Phase6_BlockExtractor::extractSwitches(PipelineContext& ctx,
         {
             const TopoEdge& edge = ctx.topoGraph.edges[adj[bi]];
             const size_t    nextNode = edge.opposite(node.id);
+            // nextNode = premier nœud STRAIGHT après le switch (tip de la branche)
+            // Sa position géométrique permet de désambiguïser les straights
+            // en cas de crossover (deux straights entre les mêmes frontières).
 
-            // Traverse les STRAIGHT jusqu'au prochain nœud frontière
             size_t curr = nextNode;
             size_t prevEdge = adj[bi];
 
@@ -194,18 +215,55 @@ void Phase6_BlockExtractor::extractSwitches(PipelineContext& ctx,
 
             endpoints[bi].frontierNodeId = curr;
 
-            // Résolution directe via la paire canonique (switch ↔ frontier)
-            // — O(1), sans ambiguïté, sans doublon possible
             const size_t key = pairKey(node.id, curr);
             const auto   it = ctx.blocks.straightByEndpointPair.find(key);
+
             if (it != ctx.blocks.straightByEndpointPair.end())
             {
-                endpoints[bi].neighbourId = it->second->getId();
+                const auto& candidates = it->second;
+
+                if (candidates.size() == 1)
+                {
+                    // Cas standard — un seul straight pour cette paire
+                    endpoints[bi].neighbourId = candidates[0]->getId();
+                }
+                else
+                {
+                    // Cas crossover — plusieurs straights entre les mêmes frontières.
+                    // Désambiguïsation : on sélectionne le straight dont la géométrie
+                    // passe le plus près du tip de la branche (nextNode).
+                    //
+                    // nextNode est par construction un point de la géométrie du
+                    // straight correct → distance quasi-nulle vers lui,
+                    // distance non-nulle vers l'autre straight.
+                    const CoordinateXY& tipPos =
+                        ctx.topoGraph.nodes[nextNode].posUTM;
+
+                    StraightBlock* best = nullptr;
+                    double         bestDist = std::numeric_limits<double>::max();
+
+                    for (StraightBlock* candidate : candidates)
+                    {
+                        for (const CoordinateXY& p : candidate->getPointsUTM())
+                        {
+                            const double dx = p.x - tipPos.x;
+                            const double dy = p.y - tipPos.y;
+                            const double dist = dx * dx + dy * dy; // comparaison — pas besoin de sqrt
+                            if (dist < bestDist)
+                            {
+                                bestDist = dist;
+                                best = candidate;
+                            }
+                        }
+                    }
+
+                    if (best)
+                        endpoints[bi].neighbourId = best->getId();
+                }
             }
             else
             {
                 // Frontier est un autre switch (connexion directe sw↔sw)
-                // ou nœud non connecté à un straight connu
                 const auto itSw = ctx.blocks.switchByNode.find(curr);
                 if (itSw != ctx.blocks.switchByNode.end())
                     endpoints[bi].neighbourId = itSw->second->getId();

@@ -149,6 +149,7 @@ ParserConfig ParserSettingsDialog::readFields(HWND hDlg)
     cfg.junctionTrimMargin = getField(IDC_EDIT_JUNCTION_TRIM_MARGIN, cfg.junctionTrimMargin);
     cfg.doubleSwitchRadius = getField(IDC_EDIT_DOUBLE_SWITCH_RADIUS, cfg.doubleSwitchRadius);
     cfg.minBranchLength = getField(IDC_EDIT_MIN_BRANCH_LENGTH, cfg.minBranchLength);
+    cfg.switchSideSize = getField(IDC_EDIT_MIN_SWITCH_SIDE_SIZE, cfg.switchSideSize);
 
     return cfg;
 }
@@ -166,6 +167,7 @@ bool ParserSettingsDialog::validate(const ParserConfig& cfg,
     if (cfg.junctionTrimMargin <= 0.0) { errorMsg = L"Marge trim doit être > 0"; return false; }
     if (cfg.doubleSwitchRadius <= 0.0) { errorMsg = L"Rayon double switch doit être > 0"; return false; }
     if (cfg.minBranchLength <= 0.0) { errorMsg = L"Longueur min branche doit être > 0"; return false; }
+    if (cfg.switchSideSize <= 0.0) { errorMsg = L"Longueur min branche doit être > 0"; return false; }
 
     if (cfg.intersectionEpsilon >= cfg.snapTolerance)
     {
