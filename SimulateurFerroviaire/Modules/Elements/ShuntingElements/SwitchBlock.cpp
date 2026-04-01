@@ -213,27 +213,36 @@ std::string SwitchBlock::toString() const
         s << "]";
     }
 
+    s << std::fixed;
+    s.precision(6);
+    s << ", junction=(" << m_junctionWGS84.latitude
+        << ", " << m_junctionWGS84.longitude << ")";
+
     if (isOriented())
     {
         s << ", root=" << m_rootBranchId.value_or("?")
             << ", normal=" << m_normalBranchId.value_or("?")
             << ", deviation=" << m_deviationBranchId.value_or("?");
 
+        if (m_tipOnRoot)
+            s << ", tipRoot=(" << m_tipOnRoot->latitude
+            << ", " << m_tipOnRoot->longitude << ")";
+        if (m_tipOnNormal)
+            s << ", tipNormal=(" << m_tipOnNormal->latitude
+            << ", " << m_tipOnNormal->longitude << ")";
+        if (m_tipOnDeviation)
+            s << ", tipDev=(" << m_tipOnDeviation->latitude
+            << ", " << m_tipOnDeviation->longitude << ")";
+
         if (m_totalLengthMeters)
         {
-            s << std::fixed;
             s.precision(1);
             s << ", len=" << *m_totalLengthMeters << "m";
         }
     }
     else
     {
-        s << std::fixed;
-        s.precision(6);
-        s << ", junction=("
-            << m_junctionWGS84.latitude << ", "
-            << m_junctionWGS84.longitude << ")"
-            << ", degree=" << m_branchIds.size();
+        s << ", degree=" << m_branchIds.size();
     }
 
     s << ")";

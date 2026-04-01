@@ -30,7 +30,7 @@ public:
 
 private:
     /**
-     * @brief 7a — Détecte les paires de switches en crossover.
+     * @brief Détecte les paires de switches en crossover.
      *
      * Deux switches en crossover partagent exactement les mêmes deux
      * StraightBlocks sur leurs branches NORMAL et DEVIATION.
@@ -44,7 +44,7 @@ private:
         detectCrossovers(const BlockSet& blocks, Logger& logger);
 
     /**
-     * @brief 7b — Force la cohérence des crossovers.
+     * @brief Force la cohérence des crossovers.
      *
      * Pour chaque paire de crossover, s'assure que les deux branches
      * partagées sont toutes deux DEVIATION (convention ferroviaire).
@@ -56,5 +56,20 @@ private:
     static void enforceCrossoverConsistency(
         BlockSet& blocks,
         const std::vector<std::pair<SwitchBlock*, SwitchBlock*>>& crossovers,
+        Logger& logger);
+
+    /**
+     * @brief Oriente chaque switch géométriquement.
+     *
+     * Calcule les angles entre les branches et attribue root / normal / deviation
+     * selon la géométrie UTM. Utilise @c config.minSwitchAngle comme seuil
+     * de discrimination.
+     *
+     * @param blocks  Ensemble des blocs.
+     * @param config  Configuration — utilise minSwitchAngle.
+     * @param logger  Référence au logger.
+     */
+    static void orientGeometric(BlockSet& blocks,
+        const ParserConfig& config,
         Logger& logger);
 };

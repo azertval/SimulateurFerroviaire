@@ -120,13 +120,15 @@ std::string StraightBlock::toString() const
     s.precision(1);
     s << m_lengthMeters << "m"
         << ", pts=" << m_pointsWGS84.size()
+        << ", Starting at: " << m_pointsWGS84.front().toString()
+        << ", Finish at: " << m_pointsWGS84.back().toString()
         << ", neighbours=[";
-    for (size_t i = 0; i < m_neighbourIds.size(); ++i)
-    {
-        if (i > 0) s << ", ";
-        s << m_neighbourIds[i];
-    }
-    s << "])";
+        if (m_neighbours.prev) s << m_neighbours.prev->getId();
+        else                 s << "null";
+        s << ", ";
+        if (m_neighbours.next) s << m_neighbours.next->getId();
+        else                 s << "null";
+        s << "]";
     return s.str();
 }
 

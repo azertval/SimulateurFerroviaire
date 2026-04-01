@@ -131,6 +131,11 @@ void Phase9_RepositoryTransfer::transfer(PipelineContext& ctx,
         + std::to_string(swCount) + " SwitchBlock(s), "
         + std::to_string(stCount) + " StraightBlock(s).");
 
+    for (const auto& st : ctx.blocks.straights)
+        LOG_DEBUG(logger, st->toString());
+    for (const auto& sw : ctx.blocks.switches)
+        LOG_DEBUG(logger, sw->toString());
+
     TopologyData& data = TopologyRepository::instance().data();
 
     // Vide l'ancien contenu — obligatoire avant chaque nouveau parsing
