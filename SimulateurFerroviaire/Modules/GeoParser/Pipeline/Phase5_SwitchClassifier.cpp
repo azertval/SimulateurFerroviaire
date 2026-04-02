@@ -46,7 +46,7 @@ void Phase5_SwitchClassifier::run(PipelineContext& ctx,
             break;
 
         case 2:
-            cls = classifyDegree2(ctx.topoGraph, ctx.splitNetwork,
+            cls = classifyDegree2(ctx.topoGraph,
                 node.id, config.minSwitchAngle);
             if (cls == NodeClass::AMBIGUOUS)
                 LOG_WARNING(logger, "Nœud " + std::to_string(node.id)
@@ -54,7 +54,7 @@ void Phase5_SwitchClassifier::run(PipelineContext& ctx,
             break;
 
         case 3:
-            cls = classifyDegree3(ctx.topoGraph, ctx.splitNetwork,
+            cls = classifyDegree3(ctx.topoGraph,
                 node.id, config.minSwitchAngle);
             if (cls == NodeClass::AMBIGUOUS)
                 LOG_WARNING(logger, "Nœud " + std::to_string(node.id)
@@ -95,37 +95,24 @@ void Phase5_SwitchClassifier::run(PipelineContext& ctx,
 
 
 // =============================================================================
-// Vecteur sortant
+// Vecteur sortant — depuis les positions des nœuds du graphe
+// (indépendant de SplitNetwork)
 // =============================================================================
 
 CoordinateXY Phase5_SwitchClassifier::outVector(
     const TopologyGraph& graph,
-    const SplitNetwork& split,
     size_t nodeId,
     size_t edgeIdx)
 {
-    const TopoEdge& edge = graph.edges[edgeIdx];
-    const AtomicSegment& seg = split.segments[edge.segmentIndex];
+    const TopoEdge& edge    = graph.edges[edgeIdx];
+    const size_t   otherId = edge.opposite(nodeId);
 
-    if (seg.pointsUTM.size() < 2)
-        return { 0.0, 0.0 };   // Arête dégénérée
+    if (otherId == SIZE_MAX) return {0.0, 0.0};
 
-    const bool fromA = (edge.nodeA == nodeId);
+    const CoordinateXY& origin = graph.nodes[nodeId].posUTM;
+    const CoordinateXY& other  = graph.nodes[otherId].posUTM;
 
-    // Origine = extrémité adjacente au nœud
-    // Direction = vers le premier point intermédiaire (tangente locale)
-    if (fromA)
-    {
-        const CoordinateXY& origin = seg.pointsUTM.front();
-        const CoordinateXY& next = seg.pointsUTM[1];
-        return { next.x - origin.x, next.y - origin.y };
-    }
-    else
-    {
-        const CoordinateXY& origin = seg.pointsUTM.back();
-        const CoordinateXY& next = seg.pointsUTM[seg.pointsUTM.size() - 2];
-        return { next.x - origin.x, next.y - origin.y };
-    }
+    return { other.x - origin.x, other.y - origin.y };
 }
 
 
@@ -156,15 +143,13 @@ double Phase5_SwitchClassifier::angleBetween(
 
 NodeClass Phase5_SwitchClassifier::classifyDegree2(
     const TopologyGraph& graph,
-    const SplitNetwork& split,
     size_t nodeId,
     double minSwitchAngle)
 {
     const auto& adj = graph.adjacency[nodeId];
-    // adj contient exactement 2 indices d'arêtes (degré == 2)
 
-    const CoordinateXY u = outVector(graph, split, nodeId, adj[0]);
-    const CoordinateXY v = outVector(graph, split, nodeId, adj[1]);
+    const CoordinateXY u = outVector(graph, nodeId, adj[0]);
+    const CoordinateXY v = outVector(graph, nodeId, adj[1]);
 
     const double angle = angleBetween(u, v);
 
@@ -184,16 +169,14 @@ NodeClass Phase5_SwitchClassifier::classifyDegree2(
 
 NodeClass Phase5_SwitchClassifier::classifyDegree3(
     const TopologyGraph& graph,
-    const SplitNetwork& split,
     size_t nodeId,
     double minSwitchAngle)
 {
     const auto& adj = graph.adjacency[nodeId];
-    // adj contient exactement 3 indices d'arêtes (degré == 3)
 
-    const CoordinateXY u = outVector(graph, split, nodeId, adj[0]);
-    const CoordinateXY v = outVector(graph, split, nodeId, adj[1]);
-    const CoordinateXY w = outVector(graph, split, nodeId, adj[2]);
+    const CoordinateXY u = outVector(graph, nodeId, adj[0]);
+    const CoordinateXY v = outVector(graph, nodeId, adj[1]);
+    const CoordinateXY w = outVector(graph, nodeId, adj[2]);
 
     // Teste les 3 paires — un switch réel a au moins une paire
     // avec un angle ≥ minSwitchAngle (vraie bifurcation)

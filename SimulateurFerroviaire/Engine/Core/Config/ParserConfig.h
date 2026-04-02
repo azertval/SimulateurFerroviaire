@@ -89,9 +89,9 @@ struct ParserConfig
      * @brief Longueur minimale d'une branche switch pour validation CDC (m).
      *
      * @par Valeur typique
-     * 100.0 m.
+     * 25.0 m.
      */
-    double minBranchLength = 100.0;
+    double minBranchLength = 25.0;
 
     /**
      * @brief Longueur des branches CDC de l'aiguillage depuis la jonction (m).

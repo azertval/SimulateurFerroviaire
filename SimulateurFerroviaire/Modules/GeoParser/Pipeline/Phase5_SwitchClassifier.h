@@ -46,27 +46,21 @@ private:
     /**
      * @brief Calcule le vecteur sortant depuis un nœud via une arête.
      *
-     * Utilise le premier point intermédiaire du segment adjacent au nœud
-     * pour approximer la tangente locale (meilleure précision qu'un vecteur
-     * vers l'autre extrémité).
+     * Utilise la position UTM du nœud opposé — indépendant de SplitNetwork.
+     * Précision suffisante car les segments ont été découpés par maxSegmentLength.
      *
      * @param graph    Graphe topologique.
-     * @param split    Réseau splité — source des points intermédiaires.
      * @param nodeId   Nœud de départ.
      * @param edgeIdx  Indice de l'arête dans @c graph.edges.
      *
-     * @return Vecteur UTM sortant. {0,0} si arête dégénérée.
+     * @return Vecteur UTM sortant. {0,0} si arête invalide.
      */
     static CoordinateXY outVector(const TopologyGraph& graph,
-        const SplitNetwork& split,
-        size_t nodeId,
-        size_t edgeIdx);
+                                   size_t nodeId,
+                                   size_t edgeIdx);
 
     /**
      * @brief Calcule l'angle en degrés entre deux vecteurs UTM.
-     *
-     * Utilise le produit scalaire. Clamp sur [-1, 1] avant acos
-     * pour éviter les NaN dus aux erreurs flottantes.
      *
      * @param u  Premier vecteur UTM.
      * @param v  Second vecteur UTM.
@@ -76,38 +70,28 @@ private:
     static double angleBetween(const CoordinateXY& u, const CoordinateXY& v);
 
     /**
-     * @brief Classifie un nœud de degré 2.
-     *
-     * STRAIGHT si l'angle entre les deux arêtes ≥ (180° - minSwitchAngle).
-     * AMBIGUOUS sinon.
+     * @brief Classifie un nœud de degré 2 — indépendant de SplitNetwork.
      *
      * @param graph          Graphe topologique.
-     * @param split          Réseau splité.
      * @param nodeId         Nœud à classifier.
      * @param minSwitchAngle Angle minimal de bifurcation (degrés).
      *
      * @return @c NodeClass::STRAIGHT ou @c NodeClass::AMBIGUOUS.
      */
     static NodeClass classifyDegree2(const TopologyGraph& graph,
-        const SplitNetwork& split,
-        size_t nodeId,
-        double minSwitchAngle);
+                                      size_t nodeId,
+                                      double minSwitchAngle);
 
     /**
-     * @brief Classifie un nœud de degré 3.
-     *
-     * SWITCH si au moins une paire d'arêtes forme un angle ≥ minSwitchAngle.
-     * AMBIGUOUS sinon.
+     * @brief Classifie un nœud de degré 3 — indépendant de SplitNetwork.
      *
      * @param graph          Graphe topologique.
-     * @param split          Réseau splité.
      * @param nodeId         Nœud à classifier.
      * @param minSwitchAngle Angle minimal de bifurcation (degrés).
      *
      * @return @c NodeClass::SWITCH ou @c NodeClass::AMBIGUOUS.
      */
     static NodeClass classifyDegree3(const TopologyGraph& graph,
-        const SplitNetwork& split,
-        size_t nodeId,
-        double minSwitchAngle);
+                                      size_t nodeId,
+                                      double minSwitchAngle);
 };

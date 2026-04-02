@@ -184,17 +184,6 @@ void Phase7_SwitchProcessor::absorbLinkSegment(BlockSet& blocks,
     swA->replaceBranchPointer(link, swB);
     swB->replaceBranchPointer(link, swA);
 
-    // Purge straightsByNode
-    for (auto it = blocks.straightsByNode.begin();
-        it != blocks.straightsByNode.end(); )
-    {
-        auto& vec = it->second;
-        vec.erase(std::remove(vec.begin(), vec.end(), link), vec.end());
-        it = vec.empty()
-            ? blocks.straightsByNode.erase(it)
-            : std::next(it);
-    }
-
     // Purge straightEndpoints (index parallèle à straights)
     const auto idxIt = std::find_if(
         blocks.straights.begin(), blocks.straights.end(),

@@ -191,26 +191,59 @@ void Phase6_BlockExtractor::registerStraight(
     const BlockEndpoint& epA,
     const BlockEndpoint& epB)
 {
-    const double totalLen = computeLength(ptsUTM);
     const size_t totalPts = ptsUTM.size();
 
-    // Nombre de sous-blocs nécessaires
+    // -------------------------------------------------------------------------
+    // Longueurs cumulées — base du split par longueur réelle
+    // -------------------------------------------------------------------------
+    std::vector<double> cumLen(totalPts, 0.0);
+    for (size_t i = 1; i < totalPts; ++i)
+    {
+        const double dx = ptsUTM[i].x - ptsUTM[i - 1].x;
+        const double dy = ptsUTM[i].y - ptsUTM[i - 1].y;
+        cumLen[i] = cumLen[i - 1] + std::hypot(dx, dy);
+    }
+    const double totalLen = cumLen.back();
+
+    // Nombre de sous-blocs nécessaires — basé sur la longueur réelle
     const int N = (maxLen > 0.0 && totalLen > maxLen)
         ? static_cast<int>(std::ceil(totalLen / maxLen))
         : 1;
+
+    // -------------------------------------------------------------------------
+    // Indices de frontière entre sous-blocs, calculés par longueur cumulée
+    // boundaries[k] = indice du premier point du sous-bloc k
+    // boundaries[N] = dernier point (totalPts - 1)
+    // -------------------------------------------------------------------------
+    std::vector<size_t> boundaries(static_cast<size_t>(N) + 1);
+    boundaries[0] = 0;
+    boundaries[static_cast<size_t>(N)] = totalPts - 1;
+
+    for (int k = 1; k < N; ++k)
+    {
+        const double targetLen = totalLen * static_cast<double>(k)
+                               / static_cast<double>(N);
+
+        // Premier point dont la longueur cumulée ≥ targetLen
+        size_t pt = totalPts - 1;
+        for (size_t i = 1; i < totalPts; ++i)
+        {
+            if (cumLen[i] >= targetLen - 1e-9)
+            {
+                pt = i;
+                break;
+            }
+        }
+        boundaries[static_cast<size_t>(k)] = pt;
+    }
 
     std::vector<StraightBlock*> subPtrs;
     subPtrs.reserve(static_cast<size_t>(N));
 
     for (int k = 0; k < N; ++k)
     {
-        // Tranche de points proportionnelle à la longueur
-        const size_t startPt = (k == 0)
-            ? 0
-            : (static_cast<size_t>(k) * (totalPts - 1)) / static_cast<size_t>(N);
-        const size_t endPt   = (k == N - 1)
-            ? totalPts - 1
-            : (static_cast<size_t>(k + 1) * (totalPts - 1)) / static_cast<size_t>(N);
+        const size_t startPt = boundaries[static_cast<size_t>(k)];
+        const size_t endPt   = boundaries[static_cast<size_t>(k + 1)];
 
         auto sub = std::make_unique<StraightBlock>();
 

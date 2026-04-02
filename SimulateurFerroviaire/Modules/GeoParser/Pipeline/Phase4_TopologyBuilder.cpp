@@ -8,6 +8,7 @@
 
 #include <numeric>
 #include <algorithm>
+#include <stdexcept>
 #include <cmath>
 #include <unordered_map>
 
@@ -25,7 +26,7 @@ void Phase4_TopologyBuilder::run(PipelineContext& ctx,
     if (ctx.splitNetwork.empty())
     {
         LOG_ERROR(logger, "splitNetwork vide — parsing annulé.");
-        throw EXCEPTION_EXECUTE_FAULT;
+        throw std::runtime_error("Phase4_TopologyBuilder : splitNetwork vide.");
     }
 
 
