@@ -276,12 +276,7 @@ void MainWindow::onParsingSuccess(HWND hWnd)
 {
     m_progressBar.hideCancelButton();
 
-    // Update de l'affichage leaflet
-    std::wstring script;
-    script += TopologyRenderer::renderAllStraightBlocks();
-    script += TopologyRenderer::renderAllSwitchBranches();
-    script += TopologyRenderer::renderAllSwitchBlocksJunctions();
-    m_webViewPanel.executeScript(script);
+    m_webViewPanel.executeScript(TopologyRenderer::renderAllTopology());
 
     // Update de l'affichage PCC
     m_pccPanel.refresh();

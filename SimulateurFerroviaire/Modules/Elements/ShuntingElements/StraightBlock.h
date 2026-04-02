@@ -30,16 +30,6 @@ public:
 
     StraightBlock() = default;
 
-    /**
-     * @brief Construit un StraightBlock avec géométrie WGS84 et calcule sa longueur.
-     *
-     * @param blockId          Identifiant unique (ex. "s/0").
-     * @param pointsWGS84      Polyligne WGS-84 ordonnée (≥ 2 points).
-     * @param neighbourIds     Voisins connus à la construction (optionnel).
-     */
-    StraightBlock(std::string                   blockId,
-        std::vector<CoordinateLatLon> pointsWGS84,
-        std::vector<std::string>      neighbourIds = {});
 
     // =========================================================================
     // Interface ShuntingElement

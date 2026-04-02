@@ -29,23 +29,6 @@ namespace
     }
 }
 
-
-// =============================================================================
-// Construction
-// =============================================================================
-
-StraightBlock::StraightBlock(std::string                   blockId,
-    std::vector<CoordinateLatLon> pointsWGS84,
-    std::vector<std::string>      neighbourIds)
-    : m_pointsWGS84(std::move(pointsWGS84))
-    , m_neighbourIds(std::move(neighbourIds))
-    , m_lengthMeters(computeGeodesicLength())
-{
-    std::sort(m_neighbourIds.begin(), m_neighbourIds.end());
-    m_id = std::move(blockId);
-}
-
-
 // =============================================================================
 // Mutations — géométrie
 // =============================================================================
