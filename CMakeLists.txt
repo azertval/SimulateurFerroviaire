@@ -84,16 +84,50 @@ if (WIN32)
         gdi32
         comctl32
         comdlg32
+        ole32       
+        oleaut32   
+        version    
     )
 endif()
 
 # -----------------------------------------------------------------------------
-# Définition Debug / Release
+# Définitions de compilation
 # -----------------------------------------------------------------------------
 target_compile_definitions(SimulateurFerroviaire PRIVATE
+    # Debug / Release
     $<$<CONFIG:Debug>:DEBUG_BUILD>
     $<$<CONFIG:Release>:NDEBUG>
+
+    # Supprime les macros min/max de <windows.h> qui écrasent std::min/std::max
+    NOMINMAX
+
+    # Unicode Win32 — force les versions W des APIs (CreateWindowExW, etc.)
+    UNICODE
+    _UNICODE
+
+    # Cible Windows 10 minimum — active les APIs modernes
+    _WIN32_WINNT=0x0A00
+    WINVER=0x0A00
+
+    # Exclut les parties rarement utilisées de <windows.h> — accélère la compilation
+    WIN32_LEAN_AND_MEAN
+    VC_EXTRA_LEAN
 )
+
+# -----------------------------------------------------------------------------
+# Options de compilation MSVC
+# -----------------------------------------------------------------------------
+if(MSVC)
+    target_compile_options(SimulateurFerroviaire PRIVATE
+        /W4             # Niveau d'avertissement élevé
+        /WX-            # Avertissements non fatals (ne bloque pas le build)
+        /utf-8          # Source et exécution en UTF-8 — évite les pb d'encodage
+        /Zc:__cplusplus # Expose la vraie valeur de __cplusplus (sinon MSVC triche)
+        /permissive-    # Mode strict — rejette les extensions non-standard
+        /wd4100         # Silence C4100 : paramètre non référencé (trop verbeux)
+        /wd4505         # Silence C4505 : fonction statique non référencée
+    )
+endif()
 
 # -----------------------------------------------------------------------------
 # Logs dans le bon dossier (exe)
@@ -101,6 +135,15 @@ target_compile_definitions(SimulateurFerroviaire PRIVATE
 add_custom_command(TARGET SimulateurFerroviaire POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory
         $<TARGET_FILE_DIR:SimulateurFerroviaire>/Logs
+)
+
+# -----------------------------------------------------------------------------
+# Dossier Config (parser_settings.ini)
+# -----------------------------------------------------------------------------
+add_custom_command(TARGET SimulateurFerroviaire POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory
+        "$<TARGET_FILE_DIR:SimulateurFerroviaire>/Config"
+    COMMENT "Creating Config directory for parser_settings.ini"
 )
 
 # -----------------------------------------------------------------------------

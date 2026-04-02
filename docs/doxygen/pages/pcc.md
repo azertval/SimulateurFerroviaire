@@ -6,7 +6,7 @@
 
 # Vue d'ensemble {#pcc_overview}
 
-Le module PCC transforme le modèle topologique (`StraightBlock` / `SwitchBlock`)
+Le module PCC transforme le modèle topologique (@ref StraightBlock / @ref SwitchBlock)
 en un **graphe logique indépendant des coordonnées GPS**, positionnable en schéma
 gauche → droite pour l'affichage TCO.
 
@@ -20,18 +20,18 @@ TopologyRepository      Modules/PCC       HMI/PCCPanel
 ```
 
 **Règle de dépendance :**
-- `Modules/PCC` lit `TopologyRepository` — seul point de couplage vers le GeoParser.
-- `HMI/PCCPanel` consomme `PCCGraph` uniquement — jamais `TopologyRepository` directement.
+- `Modules/PCC` lit @ref TopologyRepository — seul point de couplage vers le GeoParser.
+- `HMI/PCCPanel` consomme @ref PCCGraph uniquement — jamais @ref TopologyRepository directement.
 
 | Classe | Responsabilité unique |
 |--------|----------------------|
-| `PCCNode` | Représenter un bloc ferroviaire dans le graphe |
-| `PCCStraightNode` | Exposer les données spécifiques d'une voie droite |
-| `PCCSwitchNode` | Exposer les données spécifiques d'un aiguillage |
-| `PCCEdge` | Représenter une connexion orientée entre deux nœuds |
-| `PCCGraph` | Posséder et indexer les nœuds et arêtes |
-| `PCCGraphBuilder` | Construire le graphe depuis `TopologyRepository` |
-| `PCCLayout` | Calculer les positions logiques X/Y |
+| @ref PCCNode | Représenter un bloc ferroviaire dans le graphe |
+| @ref PCCStraightNode | Exposer les données spécifiques d'une voie droite |
+| @ref PCCSwitchNode | Exposer les données spécifiques d'un aiguillage |
+| @ref PCCEdge | Représenter une connexion orientée entre deux nœuds |
+| @ref PCCGraph | Posséder et indexer les nœuds et arêtes |
+| @ref PCCGraphBuilder | Construire le graphe depuis @ref TopologyRepository |
+| @ref PCCLayout | Calculer les positions logiques X/Y |
 
 ---
 
@@ -57,15 +57,15 @@ PCCNode  (abstrait)
 | Valeur | Description |
 |--------|-------------|
 | `STRAIGHT` | Connexion entre deux blocs adjacents sans switch |
-| `ROOT` | Connexion sur la branche root d'un SwitchBlock |
-| `NORMAL` | Connexion sur la branche normale d'un SwitchBlock |
-| `DEVIATION` | Connexion sur la branche déviée d'un SwitchBlock |
+| `ROOT` | Connexion sur la branche root d'un @ref SwitchBlock |
+| `NORMAL` | Connexion sur la branche normale d'un @ref SwitchBlock |
+| `DEVIATION` | Connexion sur la branche déviée d'un @ref SwitchBlock |
 
 ---
 
 # PCCGraph — Conteneur {#pcc_graph}
 
-`PCCGraph` possède l'ensemble des nœuds et arêtes via `unique_ptr` et expose
+@ref PCCGraph possède l'ensemble des nœuds et arêtes via `unique_ptr` et expose
 un index de lookup O(1) par `sourceId`.
 
 ```
@@ -77,19 +77,19 @@ PCCGraph
 
 | Méthode | Rôle |
 |---------|------|
-| `PCCGraph::addStraightNode()` | Crée, stocke et indexe un `PCCStraightNode` |
-| `PCCGraph::addSwitchNode()` | Crée, stocke et indexe un `PCCSwitchNode` |
-| `PCCGraph::addEdge()` | Crée, stocke et câble une `PCCEdge` sur les deux nœuds |
-| `PCCGraph::findNode()` | Lookup O(1) — retourne `nullptr` si absent |
-| `PCCGraph::clear()` | Vide nœuds, arêtes et index |
+| @ref PCCGraph::addStraightNode() "addStraightNode()" | Crée, stocke et indexe un @ref PCCStraightNode |
+| @ref PCCGraph::addSwitchNode() "addSwitchNode()" | Crée, stocke et indexe un @ref PCCSwitchNode |
+| @ref PCCGraph::addEdge() "addEdge()" | Crée, stocke et câble une @ref PCCEdge sur les deux nœuds |
+| @ref PCCGraph::findNode() "findNode()" | Lookup O(1) — retourne `nullptr` si absent |
+| @ref PCCGraph::clear() "clear()" | Vide nœuds, arêtes et index |
 
 ---
 
 # PCCGraphBuilder — Construction {#pcc_builder}
 
-Classe statique. Seule classe du module qui connaît `TopologyRepository`.
+Classe statique. Seule classe du module qui connaît @ref TopologyRepository.
 
-**Pipeline interne de `PCCGraphBuilder::build()` :**
+**Pipeline interne de @ref PCCGraphBuilder::build() "PCCGraphBuilder::build()" :**
 
 ```
 Passe 1 — buildNodes()  : crée un nœud PCC par bloc (index complet)
@@ -121,6 +121,6 @@ s/0  sw/0  s/1           s/0(x=0,y=0) ─ sw/0(x=1,y=0) ─┬─ s/1(x=2,y=0)
 
 | Méthode | Rôle |
 |---------|------|
-| `PCCLayout::compute()` | Point d'entrée — orchestre BFS multi-sources |
-| `PCCLayout::findTermini()` | Détecte les nœuds de départ (1 seul voisin, non-cible de switch) |
-| `PCCLayout::runBFS()` | BFS depuis un terminus, assigne PCCPosition |
+| @ref PCCLayout::compute() "compute()" | Point d'entrée — orchestre BFS multi-sources |
+| @ref PCCLayout::findTermini() "findTermini()" | Détecte les nœuds de départ (1 seul voisin, non-cible de switch) |
+| @ref PCCLayout::runBFS() "runBFS()" | BFS depuis un terminus, assigne PCCPosition |

@@ -16,7 +16,7 @@
 #pragma once
 
 #include "PCCNode.h"
-#include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/SwitchBlock.h"
 
  /**
   * @class PCCSwitchNode

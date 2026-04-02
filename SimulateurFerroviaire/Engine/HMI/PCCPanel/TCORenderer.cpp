@@ -17,7 +17,7 @@
 
 #include "Modules/PCC/PCCStraightNode.h"
 #include "Modules/PCC/PCCSwitchNode.h"
-#include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/SwitchBlock.h"
 
 #include <algorithm>
 #include <limits>
@@ -231,7 +231,6 @@ void TCORenderer::drawStraightBlock(HDC hdc, const Projection& proj,
 void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
     const PCCSwitchNode* sw)
 {
-    const int halfCell = proj.cellWidth / 2;
     const int halfGap = static_cast<int>(BLOCK_GAP_PX / 2.0);
     const int STUB = std::max(4, static_cast<int>(proj.cellWidth * STUB_RATIO));
     const int INACTIVE_GAP = std::max(4, static_cast<int>(proj.cellWidth * INACTIVE_GAP_RATIO));

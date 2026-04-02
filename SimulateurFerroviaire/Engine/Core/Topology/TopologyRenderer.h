@@ -9,8 +9,8 @@
 #include <string>
 #include <vector>
 
-#include "Modules/InteractiveElements/ShuntingElements/StraightBlock.h"
-#include "Modules/InteractiveElements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/StraightBlock.h"
+#include "Modules/Elements/ShuntingElements/SwitchBlock.h"
 #include "Engine/Core/Logger/Logger.h"
 #include "External/nlohmann/json.hpp"
 
@@ -50,7 +50,7 @@ public:
     // -------------------------------------------------------------------------
 
     /**
-     * @brief Construit l'appel JS @c renderStraightBlock(id, coords) pour un bloc.
+     * @brief Construit l'appel JS @c renderStraightBlock(id, Coordinates) pour un bloc.
      * @param straightBlock  Bloc à rendre (ignoré si < 2 coordonnées).
      * @return Instruction JavaScript.
      */

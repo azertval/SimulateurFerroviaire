@@ -27,10 +27,10 @@ window.clearStraightBlocks = function() {
 
 /**
  * @param {string}                  id
- * @param {Array<[number, number]>} coords  Tableau de paires [lat, lon].
+ * @param {Array<[number, number]>} Coordinates  Tableau de paires [lat, lon].
  */
-window.renderStraightBlock = function(id, coords) {
-    const polyline = L.polyline(coords, { color: COLOR_ACTIVE, weight: 4 });
+window.renderStraightBlock = function(id, Coordinates) {
+    const polyline = L.polyline(Coordinates, { color: COLOR_ACTIVE, weight: 4 });
     polyline.bindPopup("Straight: " + id);
     window.straightGroup.addLayer(polyline);
 };
@@ -114,27 +114,27 @@ window.renderSwitch = function(id, lat, lon) {
  * @param {string}               id
  * @param {number}               jLat
  * @param {number}               jLon
- * @param {Array|null}           rootCoords     Polyligne après junction, null si absent.
- * @param {Array|null}           normalCoords   Idem.
- * @param {Array|null}           devCoords      Idem.
+ * @param {Array|null}           rootCoordinates     Polyligne après junction, null si absent.
+ * @param {Array|null}           normalCoordinates   Idem.
+ * @param {Array|null}           devCoordinates      Idem.
  */
-window.renderSwitchBranches = function(id, jLat, jLon, rootCoords, normalCoords, devCoords)
+window.renderSwitchBranches = function(id, jLat, jLon, rootCoordinates, normalCoordinates, devCoordinates)
 {
     const junction = [jLat, jLon];
 
     window.switchBranchMap[id] = { normal: null, deviation: null };
 
     const defs = [
-        { role: "root",      coords: rootCoords,   color: COLOR_ACTIVE   },
-        { role: "normal",    coords: normalCoords, color: COLOR_ACTIVE   },
-        { role: "deviation", coords: devCoords,    color: COLOR_BRANCH_INACTIVE }
+        { role: "root",      Coordinates: rootCoordinates,   color: COLOR_ACTIVE   },
+        { role: "normal",    Coordinates: normalCoordinates, color: COLOR_ACTIVE   },
+        { role: "deviation", Coordinates: devCoordinates,    color: COLOR_BRANCH_INACTIVE }
     ];
 
     for (const def of defs) {
-        if (!def.coords || def.coords.length === 0) continue;
+        if (!def.Coordinates || def.Coordinates.length === 0) continue;
 
         // Construit la polyligne complète : jonction + tous les points transmis
-        const fullLine = [junction, ...def.coords];
+        const fullLine = [junction, ...def.Coordinates];
 
         const segment = L.polyline(fullLine, { color: def.color, weight: 4 });
         segment.bindPopup("<b>Switch:</b> " + id + "<br><b>Branch:</b> " + def.role);

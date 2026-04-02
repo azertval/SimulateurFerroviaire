@@ -1,0 +1,53 @@
+#pragma once
+
+/**
+ * @file  CoordinateLatLon.h
+ * @brief Représentation d'une coordonnée géographique WGS-84 (latitude, longitude).
+ *
+ * Convention : latitude en premier, longitude en second.
+ * Toutes les coordonnées géographiques du pipeline sont exprimées dans ce format.
+ *
+ * Exemple :
+ * @code
+ *   CoordinateLatLon junctionPoint{ 48.8566, 2.3522 };  // Paris
+ *   double latitude  = junctionPoint.latitude;
+ *   double longitude = junctionPoint.longitude;
+ * @endcode
+ */
+
+/**
+ * @brief Coordonnée géographique WGS-84 exprimée en degrés décimaux.
+ */
+class CoordinateLatLon
+{
+public:
+    double latitude  = 0.0;  ///< Latitude en degrés décimaux (positif = nord).
+    double longitude = 0.0;  ///< Longitude en degrés décimaux (positif = est).
+
+    /** Constructeur par défaut — coordonnée à l'origine (0°N, 0°E). */
+    CoordinateLatLon() = default;
+
+    /**
+     * @brief Construit une coordonnée avec les valeurs fournies.
+     * @param lat  Latitude en degrés décimaux.
+     * @param lon  Longitude en degrés décimaux.
+     */
+    CoordinateLatLon(double lat, double lon)
+        : latitude(lat), longitude(lon)
+    {}
+
+    bool operator==(const CoordinateLatLon& other) const
+    {
+        return latitude == other.latitude && longitude == other.longitude;
+    }
+
+    bool operator!=(const CoordinateLatLon& other) const
+    {
+        return !(*this == other);
+    }
+
+    std::string toString() const
+    {
+        return "[" + std::to_string(latitude) + " ; " + std::to_string(longitude) + "]";
+    }
+};

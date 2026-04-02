@@ -14,41 +14,25 @@
 #include "Engine/HMI/Dialogs/AboutDialog.h"
 #include "Engine/HMI/Dialogs/FileOpenDialog.h"
 #include "Engine/HMI/Dialogs/FileSaveDialog.h"
+#include "Engine/HMI/Dialogs/ParserSettingsDialog.h"
 
 #include "Engine/HMI/WebViewPanel/Leaflet/Leaflet.h"
 
 #include "Engine/Core/Topology/TopologyRenderer.h"
 #include "Engine/Core/Topology/TopologyRepository.h"
 
-#include "Modules/GeoParser/GeoParsingTask.h"
-
 #include <string>
 #include <stdexcept>
 
-// Messages utilisateur inter-threads (définis ici pour rester locaux à MainWindow)
 
-/** @brief Demande de mise à jour de la ProgressBar émise par le thread de parsing. */
-static constexpr UINT WM_PROGRESS_UPDATE = WM_USER + 1;
-
-/** @brief Notification de fin de parsing réussie. */
-static constexpr UINT WM_PARSING_SUCCESS = WM_USER + 2;
-
-/**
- * @brief Notification d'échec de parsing.
- * Le LPARAM transporte un pointeur vers un @c std::string alloué dynamiquement,
- * libéré par @ref MainWindow::onParsingError.
- */
-static constexpr UINT WM_PARSING_ERROR   = WM_USER + 3;
-
-
-// =============================================================================
-// Construction & création
-// =============================================================================
+ // =============================================================================
+ // Construction & création
+ // =============================================================================
 
 MainWindow::MainWindow(HINSTANCE hInstance,
-                       const WCHAR* className,
-                       const WCHAR* title,
-                       int nCmdShow)
+    const WCHAR* className,
+    const WCHAR* title,
+    int nCmdShow)
     : m_hInstance(hInstance)
     , m_className(className)
     , m_title(title)
@@ -69,19 +53,30 @@ void MainWindow::create()
         m_hInstance, this);   // 'this' récupéré dans WM_NCCREATE via GWLP_USERDATA
 
     if (!m_hWnd)
-    {
         throw std::runtime_error("Échec de CreateWindowW.");
-    }
 
     ShowWindow(m_hWnd, m_nCmdShow);
     UpdateWindow(m_hWnd);
 
-    // Barre de progression positionnée sous la barre de menu, masquée par défaut.
-    m_progressBar.create(m_hWnd, 50, 10, 320, 24);
-    m_progressBar.show(false);
-    m_progressBar.setProgress(0);
+    // ---- ProgressBar --------------------------------------------------------
+    // Positionnée sous la barre de menu, masquée par défaut.
+    // IDC_CANCEL_PARSING est l'ID du bouton "Annuler" géré dans onCommand().
+    m_progressBar.create(m_hWnd, m_hInstance,
+        50, 10, 320,
+        IDC_CANCEL_PARSING);
+    // show(false) implicite — les contrôles sont créés sans WS_VISIBLE
 
-    // Initialisation du panneau WebView
+    // ---- Configuration du parser -------------------------------------------
+    m_parserIniPath = ParserConfigIni::defaultPath();
+    m_parserConfig = ParserConfigIni::load(m_parserIniPath);
+    // Si le fichier n'existe pas, load() retourne les valeurs par défaut.
+    // Il sera créé au prochain appel à ParserConfigIni::save().
+
+    // ---- Tâche asynchrone --------------------------------------------------
+    // Instanciée ici car elle nécessite m_hWnd (destinataire des PostMessage).
+    m_parserTask.emplace(m_hWnd);
+
+    // ---- WebView -----------------------------------------------------------
     m_webViewPanel.setOnMessageReceived([this](const std::string& message)
         {
             onWebMessage(message);
@@ -96,6 +91,8 @@ void MainWindow::create()
             m_webViewPanel.resize();
         });
     m_webViewPanel.create(m_hWnd);
+
+    // ---- PCC Panel ---------------------------------------------------------
     m_pccPanel.create(m_hWnd, m_hInstance);
 }
 
@@ -104,14 +101,13 @@ void MainWindow::create()
 // Procédure statique Win32 — point d'entrée imposé par le système
 // =============================================================================
 
-LRESULT CALLBACK MainWindow::windowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK MainWindow::windowProc(HWND hWnd, UINT message,
+    WPARAM wParam, LPARAM lParam)
 {
     MainWindow* self = nullptr;
 
     if (message == WM_NCCREATE)
     {
-        // Lors de la toute première création, lParam contient le CREATESTRUCT
-        // dont lpCreateParams est le 'this' passé à CreateWindowW.
         const CREATESTRUCT* cs = reinterpret_cast<const CREATESTRUCT*>(lParam);
         self = reinterpret_cast<MainWindow*>(cs->lpCreateParams);
         SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(self));
@@ -122,9 +118,7 @@ LRESULT CALLBACK MainWindow::windowProc(HWND hWnd, UINT message, WPARAM wParam, 
     }
 
     if (self)
-    {
         return self->handleMessage(hWnd, message, wParam, lParam);
-    }
 
     return DefWindowProc(hWnd, message, wParam, lParam);
 }
@@ -134,7 +128,8 @@ LRESULT CALLBACK MainWindow::windowProc(HWND hWnd, UINT message, WPARAM wParam, 
 // Dispatcher de messages d'instance
 // =============================================================================
 
-LRESULT MainWindow::handleMessage(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+LRESULT MainWindow::handleMessage(HWND hWnd, UINT message,
+    WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
@@ -143,7 +138,10 @@ LRESULT MainWindow::handleMessage(HWND hWnd, UINT message, WPARAM wParam, LPARAM
         return 0;
 
     case WM_PROGRESS_UPDATE:
-        onProgressUpdate(static_cast<int>(wParam));
+        // wParam = progression (int)
+        // lParam = std::wstring* label (alloué par GeoParsingTask — libéré ici)
+        onProgressUpdate(static_cast<int>(wParam),
+            reinterpret_cast<std::wstring*>(lParam));
         return 0;
 
     case WM_PARSING_SUCCESS:
@@ -151,7 +149,12 @@ LRESULT MainWindow::handleMessage(HWND hWnd, UINT message, WPARAM wParam, LPARAM
         return 0;
 
     case WM_PARSING_ERROR:
+        // lParam = std::wstring* message d'erreur (libéré dans onParsingError)
         onParsingError(hWnd, lParam);
+        return 0;
+
+    case WM_PARSING_CANCELLED:
+        onParsingCancelled();
         return 0;
 
     case WM_SIZE:
@@ -170,7 +173,6 @@ LRESULT MainWindow::handleMessage(HWND hWnd, UINT message, WPARAM wParam, LPARAM
     {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
-        // Zone de rendu future (carte ferroviaire, etc.)
         EndPaint(hWnd, &ps);
         return 0;
     }
@@ -200,7 +202,15 @@ void MainWindow::onCommand(HWND hWnd, int commandId)
 
     case IDM_FILE_EXPORT:
         onFileExport(hWnd);
-        break; // TODO: Implémenter l'export GeoJSON
+        break;
+
+    case IDC_CANCEL_PARSING:
+        onCancelButtonClick();
+        break;
+
+    case IDM_PARSER_SETTINGS:
+        onParserSettings();
+        break;
 
     case IDM_VIEW_PCC:
         onTogglePCC();
@@ -222,87 +232,119 @@ void MainWindow::onCommand(HWND hWnd, int commandId)
 
 void MainWindow::onFileOpen(HWND hWnd)
 {
-    if(m_webViewPanel.isInitialized())
-    { 
-        const std::optional<std::string> selectedPath = FileOpenDialog::open(hWnd);
-
-        if (!selectedPath.has_value())
-        {
-            return; // Annulation par l'utilisateur
-        }
-
-        m_progressBar.setProgress(0);
-        m_progressBar.show(true);
-
-        GeoParsingTask::launch(hWnd, selectedPath.value());
-    }
-    else
+    if (!m_webViewPanel.isInitialized())
     {
-        MessageBoxA(hWnd, "Le panneau WebView n'est pas encore initialisé. \
-            Veuillez réessayer dans quelques instants.", "Erreur", MB_OK | MB_ICONERROR);
-    }    
+        MessageBoxW(hWnd,
+            L"Le panneau WebView n'est pas encore initialisé.\n"
+            L"Veuillez réessayer dans quelques instants.",
+            L"Erreur", MB_OK | MB_ICONERROR);
+        return;
+    }
+
+    const std::optional<std::string> selectedPath = FileOpenDialog::open(hWnd);
+    if (!selectedPath.has_value())
+        return;  // Annulation par l'utilisateur
+
+    m_progressBar.reset();
+    m_progressBar.show(true);
+    m_progressBar.showCancelButton();
+
+    m_parserTask->start(selectedPath.value(), m_parserConfig);
 }
 
 void MainWindow::onFileExport(HWND hWnd)
 {
-   const std::optional<std::string> selectedPath = FileSaveDialog::save(hWnd);
-
+    const std::optional<std::string> selectedPath = FileSaveDialog::save(hWnd);
     if (!selectedPath.has_value())
-    {
-        return; // Annulation par l'utilisateur
-    }
+        return;
 
     TopologyRenderer::exportToFile(selectedPath.value());
 }
 
-void MainWindow::onProgressUpdate(int progressValue)
+void MainWindow::onProgressUpdate(int progress, std::wstring* label)
 {
-    m_progressBar.setProgress(progressValue);
+    m_progressBar.setProgress(progress);
+
+    if (label)
+    {
+        m_progressBar.setLabel(*label);
+        delete label;   // Propriété transférée depuis GeoParsingTask
+    }
 }
 
 void MainWindow::onParsingSuccess(HWND hWnd)
 {
+    m_progressBar.hideCancelButton();
+
+    // Update de l'affichage leaflet
     std::wstring script;
     script += TopologyRenderer::renderAllStraightBlocks();
     script += TopologyRenderer::renderAllSwitchBranches();
     script += TopologyRenderer::renderAllSwitchBlocksJunctions();
     m_webViewPanel.executeScript(script);
+
+    // Update de l'affichage PCC
     m_pccPanel.refresh();
-    m_progressBar.setProgress(100);
-    m_progressBar.show(false);    
+
+    m_progressBar.show(false);
 }
 
 void MainWindow::onParsingError(HWND hWnd, LPARAM lParam)
 {
-    m_progressBar.show(false);
-    m_progressBar.setProgress(0);
+    m_progressBar.reset();  // Masque + remet à zéro + cache Cancel
 
-    std::string* errorMessage = reinterpret_cast<std::string*>(lParam);
-
+    std::wstring* errorMessage = reinterpret_cast<std::wstring*>(lParam);
     if (errorMessage)
     {
-        MessageBoxA(hWnd, errorMessage->c_str(), "Erreur", MB_OK | MB_ICONERROR);
+        MessageBoxW(hWnd, errorMessage->c_str(), L"Erreur de parsing",
+            MB_OK | MB_ICONERROR);
         delete errorMessage;
     }
     else
     {
-        MessageBoxA(hWnd, "Erreur inconnue.", "Erreur", MB_OK | MB_ICONERROR);
+        MessageBoxW(hWnd, L"Erreur inconnue.", L"Erreur de parsing",
+            MB_OK | MB_ICONERROR);
     }
 }
 
+void MainWindow::onParsingCancelled()
+{
+    m_progressBar.reset();  // Masque + remet à zéro + cache Cancel
+    LOG_INFO(m_logger, "Parsing annulé par l'utilisateur.");
+}
+
+void MainWindow::onCancelButtonClick()
+{
+    if (m_parserTask)
+        m_parserTask->cancel();
+}
+
+void MainWindow::onParserSettings()
+{
+    const bool accepted = ParserSettingsDialog::show(
+        m_hWnd, m_parserConfig, m_parserIniPath);
+
+    if (accepted)
+    {
+        // m_parserConfig a été mis à jour et sauvegardé par le dialogue.
+        // Le prochain appel à start() utilisera automatiquement les nouveaux paramètres.
+        LOG_INFO(m_logger, "Configuration parser mise à jour.");
+    }
+}
 
 void MainWindow::onSizeUpdate()
 {
     if (m_webViewPanel.isInitialized())
-    {
         m_webViewPanel.resize();
-    }
 
     m_pccPanel.resize();
 }
 
 void MainWindow::onDestroy()
 {
+    // Annulation propre si un parsing est en cours au moment de la fermeture
+    if (m_parserTask && m_parserTask->isCancelling() == false)
+        m_parserTask->cancel();
 }
 
 void MainWindow::onWebMessage(const std::string& jsonMessage)
@@ -311,18 +353,15 @@ void MainWindow::onWebMessage(const std::string& jsonMessage)
     {
         const JsonDocument msg = JsonDocument::parse(jsonMessage);
 
-        // Dispatcher sur "type" — extensible sans changer la signature du callback.
-        // Ajouter ici d'autres types : "straight_click", "zoom_change", etc.
         const std::string type = msg.value("type", "");
 
         if (type == "switch_click")
-            onSwitchClick(msg.value("id", ""));       
+            onSwitchClick(msg.value("id", ""));
         else
             LOG_WARNING(m_logger, "Message JS de type inconnu : " + type);
     }
     catch (const JsonDocument::exception& e)
     {
-        // JSON malformé — log et ignore, jamais de crash
         LOG_ERROR(m_logger, "Parse message JS échoué : " + std::string(e.what()));
     }
 }

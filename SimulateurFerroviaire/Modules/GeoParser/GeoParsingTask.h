@@ -1,66 +1,82 @@
 /**
- * @file GeoParsingTask.h
- * @brief Déclaration de la tâche de parsing GeoJSON asynchrone.
+ * @file  GeoParsingTask.h
+ * @brief Tâche asynchrone d'exécution du pipeline GeoParser v2.
  *
- * La classe @ref GeoParsingTask isole l'exécution du @ref GeoParser dans un
- * thread détaché. Elle pilote la communication inter-threads via @c PostMessage
- * pour garantir que l'UI reste toujours manipulée depuis le thread principal.
+ * Lance @ref GeoParser dans un thread détaché et communique la progression
+ * vers @ref MainWindow via @c PostMessage :
  *
- * @par Protocole de messages
- * | Message              | WPARAM          | LPARAM                                  |
- * |----------------------|-----------------|-----------------------------------------|
- * | @c WM_PROGRESS_UPDATE | valeur 0–100   | —                                       |
- * | @c WM_PARSING_SUCCESS | —              | —                                       |
- * | @c WM_PARSING_ERROR   | —              | @c std::string* (à libérer par le destinataire) |
+ * | Message               | Contenu                                    |
+ * |-----------------------|--------------------------------------------|
+ * | WM_PROGRESS_UPDATE    | wParam = progression 0-100                |
+ * | WM_PARSING_SUCCESS    | —                                          |
+ * | WM_PARSING_ERROR      | wParam = std::wstring* (à libérer)         |
+ * | WM_PARSING_CANCELLED  | —                                          |
  *
- * @note Les identifiants de messages (@c WM_USER+1/2/3) doivent correspondre
- *       exactement à ceux déclarés dans @ref MainWindow.cpp.
+ * @par Annulation
+ * @c cancel() positionne le token atomique partagé avec @ref GeoParser.
+ * Le thread GeoParser lève @c ParseCancelledException entre les phases
+ * et @c GeoParsingTask poste @c WM_PARSING_CANCELLED.
  */
-
 #pragma once
 
-#include "framework.h"
-
+#include <atomic>
+#include <memory>
 #include <string>
+#include <windows.h>
 
+#include "Engine/Core/Config/ParserConfig.h"
+#include "Engine/Core/Logger/Logger.h"
 
-/**
- * @class GeoParsingTask
- * @brief Tâche asynchrone encapsulant l'exécution du GeoParser.
- *
- * Cette classe est purement statique : elle n'a pas d'état et ne doit
- * pas être instanciée.
- *
- * Usage :
- * @code
- *   GeoParsingTask::launch(hWnd, "C:/data/reseau.geojson");
- * @endcode
- *
- * Le thread lancé est détaché (@c std::thread::detach). La communication
- * vers l'UI passe exclusivement par @c PostMessage ; le thread de parsing
- * ne touche jamais directement aux éléments Win32.
- */
 class GeoParsingTask
 {
 public:
 
     /**
-     * @brief Lance le parsing GeoJSON dans un thread séparé et détaché.
+     * @brief Construit la tâche avec la fenêtre de destination des messages.
      *
-     * Le thread émet les messages suivants vers @p hWnd :
-     *  - @c WM_PROGRESS_UPDATE (WPARAM = avancement 0–100) à chaque étape.
-     *  - @c WM_PARSING_SUCCESS à la fin d'un parsing réussi.
-     *  - @c WM_PARSING_ERROR (LPARAM = pointeur @c std::string) en cas d'échec.
-     *
-     * @param hWnd         Fenêtre destinataire des messages de progression.
-     *                     Doit rester valide pendant toute la durée du parsing.
-     * @param geoJsonPath  Chemin absolu vers le fichier GeoJSON à analyser.
-     *
-     * @warning Le @c std::string* transporté par @c WM_PARSING_ERROR doit être
-     *          libéré (@c delete) par le destinataire du message.
+     * @param hwndTarget  Handle de @ref MainWindow — destinataire des PostMessage.
+     * @param logger      Référence au logger GeoParser.
      */
-    static void launch(HWND hWnd, const std::string& geoJsonPath);
+    explicit GeoParsingTask(HWND hwndTarget);
 
-    /** @brief Classe non instanciable — constructeur supprimé. */
-    GeoParsingTask() = delete;
+    /**
+     * @brief Lance le parsing dans un thread détaché.
+     *
+     * Prend un snapshot de @p config (immuable pendant le parsing).
+     * Réinitialise le cancel token si un parsing précédent avait été annulé.
+     *
+     * @param filePath  Chemin absolu vers le fichier GeoJSON.
+     * @param config    Configuration du pipeline — copiée.
+     */
+    void start(const std::string& filePath, const ParserConfig& config);
+
+    /**
+     * @brief Demande l'annulation du parsing en cours.
+     *
+     * Positionne le cancel token partagé avec @ref GeoParser.
+     * L'annulation est asynchrone — le thread se termine proprement
+     * entre deux phases et poste @c WM_PARSING_CANCELLED.
+     *
+     * No-op si aucun parsing n'est en cours.
+     */
+    void cancel();
+
+    /**
+     * @brief Indique si une annulation a été demandée.
+     *
+     * @return @c true si @c cancel() a été appelé et que le thread n'a pas encore terminé.
+     */
+    [[nodiscard]] bool isCancelling() const;
+
+private:
+
+    HWND    m_hwndTarget;   ///< Fenêtre destinataire des PostMessage.
+    Logger m_logger{ "GeoParser" };       ///< Logger GeoParser.
+
+    /**
+     * Cancel token partagé avec le thread GeoParser.
+     * shared_ptr — garantit que le token reste valide même si GeoParsingTask
+     * est détruit avant la fin du thread.
+     */
+    std::shared_ptr<std::atomic<bool>> m_cancelToken;
 };

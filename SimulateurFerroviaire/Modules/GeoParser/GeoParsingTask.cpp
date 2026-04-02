@@ -1,79 +1,90 @@
 /**
- * @file GeoParsingTask.cpp
- * @brief Implémentation de la tâche de parsing GeoJSON asynchrone.
+ * @file  GeoParsingTask.cpp
+ * @brief Implémentation de la tâche asynchrone GeoParsingTask v2.
  *
  * @see GeoParsingTask
  */
-
-#include "framework.h"
 #include "GeoParsingTask.h"
-
-#include "Modules/GeoParser/GeoParser.h"
-#include "Modules/GeoParser/Exceptions/GeoParserException.h"
-#include "Engine/Core/Logger/Logger.h"
 
 #include <thread>
 
-// Messages inter-threads (doivent correspondre à ceux de MainWindow.cpp)
-static constexpr UINT WM_PROGRESS_UPDATE = WM_USER + 1;
-static constexpr UINT WM_PARSING_SUCCESS = WM_USER + 2;
-static constexpr UINT WM_PARSING_ERROR   = WM_USER + 3;
+#include "GeoParser.h"
+#include "Resource.h"
 
 
-// =============================================================================
-// Interface publique
-// =============================================================================
+ // =============================================================================
+ // Construction
+ // =============================================================================
 
-void GeoParsingTask::launch(HWND hWnd, const std::string& geoJsonPath)
+GeoParsingTask::GeoParsingTask(HWND hwndTarget)
+    : m_hwndTarget(hwndTarget)
+    , m_cancelToken(std::make_shared<std::atomic<bool>>(false))
 {
-    std::thread([hWnd, geoJsonPath]()
-    {
-        try
+}
+
+// =============================================================================
+// Lancement
+// =============================================================================
+
+void GeoParsingTask::start(const std::string& filePath,
+    const ParserConfig& config)
+{
+    // Réinitialise le token — un parsing précédent annulé laisse le token à true
+    m_cancelToken->store(false);
+
+    // Copies pour le thread — durée de vie garantie
+    const std::string  pathCopy = filePath;
+    const ParserConfig configCopy = config;
+    const HWND         hwnd = m_hwndTarget;
+    auto               token = m_cancelToken;  // shared_ptr copié
+    Logger& logger = m_logger;
+
+    std::thread([pathCopy, configCopy, hwnd, token, &logger]()
         {
-            Logger parserLogger("GeoParser");
-
-            GeoParser parser(
-                parserLogger,
-                geoJsonPath,
-                ParserDefaultValues::SNAP_GRID_METERS,
-                ParserDefaultValues::ENDPOINT_SNAP_METERS,
-                ParserDefaultValues::MAX_STRAIGHT_LENGTH_METERS,
-                ParserDefaultValues::MIN_BRANCH_LENGTH_METERS,
-                ParserDefaultValues::DOUBLE_LINK_MAX_METERS,
-                ParserDefaultValues::BRANCH_TIP_DISTANCE_METERS);
-
-            // Le callback est le seul point de contact entre le thread de parsing
-            // et l'UI. PostMessage est thread-safe ; aucune référence directe
-            // à un objet UI n'est tolérée ici.
-            parser.setProgressCallback([hWnd](int progressValue)
+            try
             {
-                PostMessage(hWnd, WM_PROGRESS_UPDATE, static_cast<WPARAM>(progressValue), 0);
-            });
+                GeoParser parser(configCopy, logger,
+                    [hwnd](int progress, const std::wstring& label)
+                    {
+                        // Alloue le label sur le tas — libéré par MainWindow::onProgressUpdate
+                        auto* labelCopy = new std::wstring(label);
+                        PostMessageW(hwnd, WM_PROGRESS_UPDATE,
+                            static_cast<WPARAM>(progress),
+                            reinterpret_cast<LPARAM>(labelCopy));
+                    });
 
-            parser.parse();
+                parser.parse(pathCopy, token);
 
-            PostMessage(hWnd, WM_PARSING_SUCCESS, 0, 0);
-        }
-        catch (const RailwayParserException& exception)
-        {
-            
-            std::string* errorMessage = new std::string(
-                std::string("Erreur GeoParser : ") + exception.what());
-            LOG_FAILURE(Logger("CrashFolder"), *errorMessage);
-            PostMessage(hWnd, WM_PARSING_ERROR, 0, reinterpret_cast<LPARAM>(errorMessage));
-        }
-        catch (const std::exception& exception)
-        {
-            std::string* errorMessage = new std::string(std::string("Exception standard : ") + exception.what());
-            LOG_FAILURE(Logger("CrashFolder"), *errorMessage);
+                PostMessageW(hwnd, WM_PARSING_SUCCESS, 0, 0);
+            }
+            catch (const GeoParser::CancelledException&)
+            {
+                // Annulation propre — pas une erreur
+                PostMessageW(hwnd, WM_PARSING_CANCELLED, 0, 0);
+            }
+            catch (const std::exception& e)
+            {
+                // Erreur réelle — alloue le message (MainWindow::onParsingError le libère)
+                const char* what = e.what();
+                auto* msg = new std::wstring(what, what + std::strlen(what));
+                PostMessageW(hwnd, WM_PARSING_ERROR,
+                    0,
+                    reinterpret_cast<LPARAM>(msg));
+            }
+        }).detach();
+}
 
-            PostMessage(hWnd, WM_PARSING_ERROR, 0, reinterpret_cast<LPARAM>(errorMessage));
-        }
-        catch (...)
-        {
-            auto* errorMessage = new std::string("Erreur inconnue durant le parsing.");
-            LOG_FAILURE(Logger("CrashFolder"), *errorMessage);
-            PostMessage(hWnd, WM_PARSING_ERROR, 0, reinterpret_cast<LPARAM>(errorMessage));
-        }
-    }).detach();
+
+// =============================================================================
+// Annulation
+// =============================================================================
+
+void GeoParsingTask::cancel()
+{
+    m_cancelToken->store(true);
+}
+
+bool GeoParsingTask::isCancelling() const
+{
+    return m_cancelToken->load();
 }
