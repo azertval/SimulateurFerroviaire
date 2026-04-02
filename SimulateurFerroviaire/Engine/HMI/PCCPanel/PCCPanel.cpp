@@ -2,6 +2,10 @@
  * @file  PCCPanel.cpp
  * @brief Implémentation du panneau PCC superposé togglable.
  *
+ * Modification v2 : onPaint() met en cache la projection TCO.
+ * computeProjection() n'est recalculé que si la RECT a changé (resize)
+ * ou si m_projDirty est vrai (nouveau parsing via rebuild()).
+ *
  * @see PCCPanel
  */
 #include "framework.h"
@@ -19,7 +23,7 @@
  // =============================================================================
 
 PCCPanel::PCCPanel(Logger& logger)
-    : m_logger(logger)      // Initialisé en 1er — m_graph en a besoin
+    : m_logger(logger)
     , m_graph()
 {
 }
@@ -47,7 +51,7 @@ void PCCPanel::create(HWND hParent, HINSTANCE hInstance)
 
     if (!m_hWnd)
     {
-        DWORD err = GetLastError();
+        const DWORD err = GetLastError();
         LOG_ERROR(m_logger, "CreateWindowExW échoué. Code = " + std::to_string(err));
         throw std::runtime_error("PCCPanel::create — CreateWindowExW échoué.");
     }
@@ -75,12 +79,12 @@ void PCCPanel::toggle()
     }
     else
     {
-        // Rebuild si graphe vide — cas du premier toggle avant parsing
         if (m_graph.isEmpty())
             rebuild();
 
         resize();
-        SetWindowPos(m_hWnd, HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+        SetWindowPos(m_hWnd, HWND_TOP, 0, 0, 0, 0,
+            SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
         InvalidateRect(m_hWnd, nullptr, TRUE);
     }
 }
@@ -91,7 +95,8 @@ void PCCPanel::resize()
 
     RECT rc{};
     GetClientRect(m_hParent, &rc);
-    LOG_DEBUG(m_logger, "Resize — " + std::to_string(rc.right) + "x" + std::to_string(rc.bottom));
+    LOG_DEBUG(m_logger, "Resize — "
+        + std::to_string(rc.right) + "x" + std::to_string(rc.bottom));
     SetWindowPos(m_hWnd, HWND_TOP, 0, 0, rc.right, rc.bottom, SWP_NOZORDER);
 }
 
@@ -118,6 +123,8 @@ void PCCPanel::rebuild()
     LOG_DEBUG(m_logger, "Rebuild PCC — début.");
     PCCGraphBuilder::build(m_graph, m_logger);
     PCCLayout::compute(m_graph, m_logger);
+    // Invalide le cache — la topologie a changé, la projection doit être recalculée.
+    m_projDirty = true;
     LOG_DEBUG(m_logger, "Rebuild PCC — terminé.");
 }
 
@@ -139,7 +146,8 @@ LRESULT CALLBACK PCCPanel::windowProc(HWND hWnd, UINT msg,
     }
     else
     {
-        self = reinterpret_cast<PCCPanel*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
+        self = reinterpret_cast<PCCPanel*>(
+            GetWindowLongPtr(hWnd, GWLP_USERDATA));
     }
 
     if (self) return self->handleMessage(hWnd, msg, wParam, lParam);
@@ -156,7 +164,7 @@ LRESULT PCCPanel::handleMessage(HWND hWnd, UINT msg,
         return 0;
 
     case WM_ERASEBKGND:
-        return 1;  // No-op — supprime le flickering
+        return 1;   // No-op — supprime le flickering
 
     default:
         return DefWindowProcW(hWnd, msg, wParam, lParam);
@@ -171,8 +179,23 @@ void PCCPanel::onPaint(HWND hWnd)
     RECT rc;
     GetClientRect(hWnd, &rc);
 
-    // Passe le graphe PCC à TCORenderer — pas d'accès à TopologyRepository ici
-    TCORenderer::draw(hdc, rc, m_graph, m_logger);
+    // Recalcule la projection uniquement si nécessaire :
+    //   - premier paint (m_projDirty initialisé à true)
+    //   - nouveau parsing (rebuild() a mis m_projDirty = true)
+    //   - resize de la fenêtre (right ou bottom différents)
+    // Comparaison sur right/bottom : top/left sont toujours 0 pour WS_CHILD.
+    if (m_projDirty
+        || rc.right != m_lastRect.right
+        || rc.bottom != m_lastRect.bottom)
+    {
+        m_cachedProj = TCORenderer::computeProjection(rc, m_graph, m_logger);
+        m_lastRect = rc;
+        m_projDirty = false;
+        LOG_DEBUG(m_logger, "Projection recalculée.");
+    }
+
+    // Passe le graphe PCC et la projection cachée à TCORenderer
+    TCORenderer::draw(hdc, rc, m_graph, m_cachedProj, m_logger);
 
     EndPaint(hWnd, &ps);
 }

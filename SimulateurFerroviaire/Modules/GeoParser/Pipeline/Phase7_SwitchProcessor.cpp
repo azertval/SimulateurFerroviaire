@@ -487,25 +487,45 @@ void Phase7_SwitchProcessor::computeTips(BlockSet& blocks,
     {
         if (!sw->isOriented()) continue;
 
-        const CoordinateLatLon& junction = sw->getJunctionWGS84();
+        const CoordinateLatLon& junctionWGS84 = sw->getJunctionWGS84();
+        const CoordinateXY& junctionUTM = sw->getJunctionUTM();
 
-        auto makeTip = [&](const ShuntingElement* elem)
+        // --- Tips WGS84 (existant) ---
+        auto makeTipWGS84 = [&](const ShuntingElement* elem)
             -> std::optional<CoordinateLatLon>
             {
                 if (!elem) return std::nullopt;
                 const auto* st = dynamic_cast<const StraightBlock*>(elem);
                 if (!st || st->getPointsWGS84().size() < 2) return std::nullopt;
-                return interpolateTip(st->getPointsWGS84(), junction, sideSize);
+                return interpolateTip(st->getPointsWGS84(), junctionWGS84, sideSize);
             };
 
+        // --- Tips UTM (nouveau) ---
+        auto makeTipUTM = [&](const ShuntingElement* elem)
+            -> std::optional<CoordinateXY>
+            {
+                if (!elem) return std::nullopt;
+                const auto* st = dynamic_cast<const StraightBlock*>(elem);
+                // Un straight sans UTM ne peut pas produire de tip UTM
+                if (!st || st->getPointsUTM().size() < 2) return std::nullopt;
+                return interpolateTipUTM(st->getPointsUTM(), junctionUTM, sideSize);
+            };
+
+        // Assignation WGS84 — inchangée
         sw->setTips(
-            makeTip(sw->getRootBlock()),
-            makeTip(sw->getNormalBlock()),
-            makeTip(sw->getDeviationBlock()));
+            makeTipWGS84(sw->getRootBlock()),
+            makeTipWGS84(sw->getNormalBlock()),
+            makeTipWGS84(sw->getDeviationBlock()));
+
+        // Assignation UTM — nouvelle, même passe
+        sw->setTipsUTM(
+            makeTipUTM(sw->getRootBlock()),
+            makeTipUTM(sw->getNormalBlock()),
+            makeTipUTM(sw->getDeviationBlock()));
 
         sw->computeTotalLength();
 
-        LOG_DEBUG(logger, sw->getId() + " — tips calculés ("
+        LOG_DEBUG(logger, sw->getId() + " — tips WGS84 + UTM calculés ("
             + std::to_string(static_cast<int>(sideSize)) + " m).");
     }
 }
@@ -550,4 +570,55 @@ CoordinateLatLon Phase7_SwitchProcessor::interpolateTip(
 
     // Branche plus courte que targetDist → extrémité distale
     return fromFront ? pts.back() : pts.front();
+}
+
+CoordinateXY Phase7_SwitchProcessor::interpolateTipUTM(
+    const std::vector<CoordinateXY>& pts,
+    const CoordinateXY& junctionUTM,
+    double targetDist)
+{
+    if (pts.size() < 2) return junctionUTM;
+
+    // Détermine l'extrémité la plus proche de la jonction
+    const double dFront = std::hypot(
+        pts.front().x - junctionUTM.x,
+        pts.front().y - junctionUTM.y);
+    const double dBack = std::hypot(
+        pts.back().x - junctionUTM.x,
+        pts.back().y - junctionUTM.y);
+    const bool fromFront = (dFront <= dBack);
+
+    const int start = fromFront ? 0 : static_cast<int>(pts.size()) - 1;
+    const int step = fromFront ? 1 : -1;
+
+    double accumulated = 0.0;
+    int i = start;
+
+    while (true)
+    {
+        const int next = i + step;
+        if (next < 0 || next >= static_cast<int>(pts.size()))
+            // Branche trop courte : retourne l'extrémité distale
+            return pts[static_cast<std::size_t>(i)];
+
+        const double segLen = std::hypot(
+            pts[static_cast<std::size_t>(next)].x - pts[static_cast<std::size_t>(i)].x,
+            pts[static_cast<std::size_t>(next)].y - pts[static_cast<std::size_t>(i)].y);
+
+        if (accumulated + segLen >= targetDist)
+        {
+            // Interpolation linéaire dans le segment courant
+            const double t = (targetDist - accumulated) / segLen;
+            return CoordinateXY{
+                pts[static_cast<std::size_t>(i)].x
+                    + t * (pts[static_cast<std::size_t>(next)].x
+                         - pts[static_cast<std::size_t>(i)].x),
+                pts[static_cast<std::size_t>(i)].y
+                    + t * (pts[static_cast<std::size_t>(next)].y
+                         - pts[static_cast<std::size_t>(i)].y)
+            };
+        }
+        accumulated += segLen;
+        i = next;
+    }
 }

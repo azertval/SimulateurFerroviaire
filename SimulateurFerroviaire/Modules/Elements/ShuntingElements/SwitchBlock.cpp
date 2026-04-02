@@ -276,6 +276,17 @@ std::string SwitchBlock::toString() const
     return s.str();
 }
 
+void SwitchBlock::setTipsUTM(
+    std::optional<CoordinateXY> tipRoot,
+    std::optional<CoordinateXY> tipNormal,
+    std::optional<CoordinateXY> tipDeviation)
+{
+    // Même structure que setTips() — assignation directe sans calcul.
+    // Les valeurs viennent de Phase7_SwitchProcessor::interpolateTipUTM.
+    m_tipOnRootUTM = std::move(tipRoot);
+    m_tipOnNormalUTM = std::move(tipNormal);
+    m_tipOnDeviationUTM = std::move(tipDeviation);
+}
 
 // =============================================================================
 // Helpers privés

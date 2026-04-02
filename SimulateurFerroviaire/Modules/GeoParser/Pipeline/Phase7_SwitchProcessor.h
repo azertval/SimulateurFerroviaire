@@ -163,4 +163,21 @@ private:
         const std::vector<CoordinateLatLon>& pts,
         const CoordinateLatLon& junction,
         double targetDist);
+
+    /**
+     * @brief Interpole un point UTM sur une polyligne à @p targetDist mètres
+     *        depuis l'extrémité la plus proche de @p junctionUTM.
+     *
+     * Utilise la distance euclidienne (std::hypot) — pas de Haversine.
+     * Même logique que interpolateTip() mais sur CoordinateXY.
+     *
+     * @param pts         Polyligne UTM du StraightBlock.
+     * @param junctionUTM Position de la jonction en UTM.
+     * @param targetDist  Distance cible en mètres UTM.
+     * @return Point UTM interpolé, ou extrémité distale si branche trop courte.
+     */
+    static CoordinateXY interpolateTipUTM(
+        const std::vector<CoordinateXY>& pts,
+        const CoordinateXY& junctionUTM,
+        double targetDist);
 };

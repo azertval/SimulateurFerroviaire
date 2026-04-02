@@ -1,6 +1,11 @@
 /**
  * @file  StraightBlock.cpp
  * @brief Implémentation du bloc de voie droite StraightBlock.
+ *
+ * Modification v2 : le constructeur paramétré v1 (blockId, pointsWGS84,
+ * neighbourIds) a été supprimé. Phase6_BlockExtractor utilise le constructeur
+ * par défaut suivi des setters dédiés — computeGeodesicLength() reste appelé
+ * par setPointsWGS84().
  */
 
 #include "StraightBlock.h"
@@ -28,6 +33,7 @@ namespace
         return EARTH_RADIUS_METERS * 2.0 * std::atan2(std::sqrt(hav), std::sqrt(1.0 - hav));
     }
 }
+
 
 // =============================================================================
 // Mutations — géométrie
@@ -102,16 +108,21 @@ std::string StraightBlock::toString() const
         << ", len=" << std::fixed;
     s.precision(1);
     s << m_lengthMeters << "m"
-        << ", pts=" << m_pointsWGS84.size()
-        << ", Starting at: " << m_pointsWGS84.front().toString()
-        << ", Finish at: " << m_pointsWGS84.back().toString()
-        << ", neighbours=[";
-        if (m_neighbours.prev) s << m_neighbours.prev->getId();
-        else                 s << "null";
-        s << ", ";
-        if (m_neighbours.next) s << m_neighbours.next->getId();
-        else                 s << "null";
-        s << "]";
+        << ", pts=" << m_pointsWGS84.size();
+
+    if (!m_pointsWGS84.empty())
+    {
+        s << ", start=" << m_pointsWGS84.front().toString()
+            << ", end=" << m_pointsWGS84.back().toString();
+    }
+
+    s << ", prev=";
+    if (m_neighbours.prev) s << m_neighbours.prev->getId();
+    else                   s << "null";
+    s << ", next=";
+    if (m_neighbours.next) s << m_neighbours.next->getId();
+    else                   s << "null";
+    s << ")";
     return s.str();
 }
 
