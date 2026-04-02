@@ -2,6 +2,16 @@
  * @file  PCCGraphBuilder.cpp
  * @brief Implémentation du constructeur du graphe PCC.
  *
+ * @par Correction v2 — chaînes de sous-blocs (getNeighbours vs getNeighbourIds)
+ * buildEdges() utilise StraightBlock::getNeighbours() (pointeurs résolus par
+ * Phase9_RepositoryTransfer) et non getNeighbourIds() qui est vide pour les
+ * sous-blocs de subdivision.
+ *
+ * @par Modification v3 — computeDeviationSides sur UTM (Famille G3)
+ * computeDeviationSides() compare désormais getTipOnDeviationUTM()->y avec
+ * getJunctionUTM().y (axe Y UTM = nord) au lieu des latitudes WGS84.
+ * Supprime la dernière dépendance WGS84 dans le module PCC.
+ *
  * @see PCCGraphBuilder
  */
 #include "PCCGraphBuilder.h"

@@ -251,7 +251,7 @@ std::wstring TopologyRenderer::escapeForJavaScript(const std::string& input)
 
 
 // =============================================================================
-// Rendu complet — point d'entrée principal 
+// Rendu complet — point d'entrée principal (Famille B)
 // =============================================================================
 
 std::wstring TopologyRenderer::renderAllTopology()
@@ -283,7 +283,7 @@ std::wstring TopologyRenderer::renderAllTopology()
 
 
 // =============================================================================
-// Straights — rendu WebView 
+// Straights — rendu WebView (Famille B)
 // =============================================================================
 
 std::wstring TopologyRenderer::renderStraightBlock(const StraightBlock& straight)
@@ -309,7 +309,7 @@ std::wstring TopologyRenderer::renderStraightBlock(const StraightBlock& straight
 
 
 // =============================================================================
-// Switches — jonction (rendu WebView) 
+// Switches — jonction (rendu WebView) (Famille B)
 // =============================================================================
 
 std::wstring TopologyRenderer::renderSwitchBlock(const SwitchBlock& sw)
@@ -326,7 +326,7 @@ std::wstring TopologyRenderer::renderSwitchBlock(const SwitchBlock& sw)
 
 
 // =============================================================================
-// Switches — branches (rendu WebView) 
+// Switches — branches (rendu WebView) (Famille B)
 // =============================================================================
 
 std::wstring TopologyRenderer::renderSwitchBranches(const SwitchBlock& sw)
