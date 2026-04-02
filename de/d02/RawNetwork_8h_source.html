@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire:  Fichier source de SimulateurFerroviaire/Modules/GeoParser/Pipeline/RawNetwork.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('de/d02/RawNetwork_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">RawNetwork.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/d02/RawNetwork_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="../../d6/d01/CoordinateLatLon_8h.html">Engine/Core/Coordinates/CoordinateLatLon.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="../../db/d03/CoordinateXY_8h.html">Engine/Core/Coordinates/CoordinateXY.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="../../d0/d01/structRawPolyline.html">   24</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d0/d01/structRawPolyline.html">RawPolyline</a></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d0/d01/structRawPolyline.html#a91379489974310477db8e9c17171be4e">   27</a></span>    std::string <a class="code hl_variable" href="../../d0/d01/structRawPolyline.html#a91379489974310477db8e9c17171be4e">id</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="../../d0/d01/structRawPolyline.html#a68ec18dc48662158ae8605d3b033f584">   30</a></span>    std::vector&lt;CoordinateLatLon&gt; <a class="code hl_variable" href="../../d0/d01/structRawPolyline.html#a68ec18dc48662158ae8605d3b033f584">pointsWGS84</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="../../d0/d01/structRawPolyline.html#ab8fcbc974f489b0f1b7bcd78142c4d9e">   36</a></span>    std::vector&lt;CoordinateXY&gt; <a class="code hl_variable" href="../../d0/d01/structRawPolyline.html#ab8fcbc974f489b0f1b7bcd78142c4d9e">pointsUTM</a>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>};</div>
+</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="};">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="../../d7/d02/structRawNetwork.html">   46</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d7/d02/structRawNetwork.html">RawNetwork</a></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../d7/d02/structRawNetwork.html#a9e97eace62d1f763d4b3eb1f18decf45">   49</a></span>    std::string <a class="code hl_variable" href="../../d7/d02/structRawNetwork.html#a9e97eace62d1f763d4b3eb1f18decf45">utmZone</a>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="../../d7/d02/structRawNetwork.html#a7354b7014d9d5231f81b3912c6f3514e">   52</a></span>    std::vector&lt;RawPolyline&gt; <a class="code hl_variable" href="../../d7/d02/structRawNetwork.html#a7354b7014d9d5231f81b3912c6f3514e">polylines</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="../../d7/d02/structRawNetwork.html#a4057e27c7ef91d083cfeae8387e29d23">   55</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../d7/d02/structRawNetwork.html#a4057e27c7ef91d083cfeae8387e29d23">clear</a>()</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_variable" href="../../d7/d02/structRawNetwork.html#a7354b7014d9d5231f81b3912c6f3514e">polylines</a>.clear();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <a class="code hl_variable" href="../../d7/d02/structRawNetwork.html#a7354b7014d9d5231f81b3912c6f3514e">polylines</a>.shrink_to_fit();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <a class="code hl_variable" href="../../d7/d02/structRawNetwork.html#a9e97eace62d1f763d4b3eb1f18decf45">utmZone</a>.clear();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="../../d7/d02/structRawNetwork.html#a8402eca4e9c7ffc2531268a0c52a6a5e">   63</a></span>    [[nodiscard]] <span class="keywordtype">size_t</span> <a class="code hl_function" href="../../d7/d02/structRawNetwork.html#a8402eca4e9c7ffc2531268a0c52a6a5e">totalPointCount</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordtype">size_t</span> n = 0;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; p : <a class="code hl_variable" href="../../d7/d02/structRawNetwork.html#a7354b7014d9d5231f81b3912c6f3514e">polylines</a>) n += p.pointsUTM.size();</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">return</span> n;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
+</div>
+<div class="ttc" id="aCoordinateLatLon_8h_html"><div class="ttname"><a href="../../d6/d01/CoordinateLatLon_8h.html">CoordinateLatLon.h</a></div><div class="ttdoc">Représentation d'une coordonnée géographique WGS-84 (latitude, longitude).</div></div>
+<div class="ttc" id="aCoordinateXY_8h_html"><div class="ttname"><a href="../../db/d03/CoordinateXY_8h.html">CoordinateXY.h</a></div><div class="ttdoc">Représentation d'une coordonnée plane en mètres (système métrique UTM).</div></div>
+<div class="ttc" id="astructRawNetwork_html"><div class="ttname"><a href="../../d7/d02/structRawNetwork.html">RawNetwork</a></div><div class="ttdoc">Résultat de Phase1_GeoLoader — ensemble des polylignes du GeoJSON.</div><div class="ttdef"><b>Definition</b> RawNetwork.h:47</div></div>
+<div class="ttc" id="astructRawNetwork_html_a4057e27c7ef91d083cfeae8387e29d23"><div class="ttname"><a href="../../d7/d02/structRawNetwork.html#a4057e27c7ef91d083cfeae8387e29d23">RawNetwork::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Vide le réseau — libère la mémoire après Phase 4.</div><div class="ttdef"><b>Definition</b> RawNetwork.h:55</div></div>
+<div class="ttc" id="astructRawNetwork_html_a7354b7014d9d5231f81b3912c6f3514e"><div class="ttname"><a href="../../d7/d02/structRawNetwork.html#a7354b7014d9d5231f81b3912c6f3514e">RawNetwork::polylines</a></div><div class="ttdeci">std::vector&lt; RawPolyline &gt; polylines</div><div class="ttdef"><b>Definition</b> RawNetwork.h:52</div></div>
+<div class="ttc" id="astructRawNetwork_html_a8402eca4e9c7ffc2531268a0c52a6a5e"><div class="ttname"><a href="../../d7/d02/structRawNetwork.html#a8402eca4e9c7ffc2531268a0c52a6a5e">RawNetwork::totalPointCount</a></div><div class="ttdeci">size_t totalPointCount() const</div><div class="ttdef"><b>Definition</b> RawNetwork.h:63</div></div>
+<div class="ttc" id="astructRawNetwork_html_a9e97eace62d1f763d4b3eb1f18decf45"><div class="ttname"><a href="../../d7/d02/structRawNetwork.html#a9e97eace62d1f763d4b3eb1f18decf45">RawNetwork::utmZone</a></div><div class="ttdeci">std::string utmZone</div><div class="ttdef"><b>Definition</b> RawNetwork.h:49</div></div>
+<div class="ttc" id="astructRawPolyline_html"><div class="ttname"><a href="../../d0/d01/structRawPolyline.html">RawPolyline</a></div><div class="ttdoc">Une polyligne GeoJSON avec ses coordonnées en double système.</div><div class="ttdef"><b>Definition</b> RawNetwork.h:25</div></div>
+<div class="ttc" id="astructRawPolyline_html_a68ec18dc48662158ae8605d3b033f584"><div class="ttname"><a href="../../d0/d01/structRawPolyline.html#a68ec18dc48662158ae8605d3b033f584">RawPolyline::pointsWGS84</a></div><div class="ttdeci">std::vector&lt; CoordinateLatLon &gt; pointsWGS84</div><div class="ttdef"><b>Definition</b> RawNetwork.h:30</div></div>
+<div class="ttc" id="astructRawPolyline_html_a91379489974310477db8e9c17171be4e"><div class="ttname"><a href="../../d0/d01/structRawPolyline.html#a91379489974310477db8e9c17171be4e">RawPolyline::id</a></div><div class="ttdeci">std::string id</div><div class="ttdef"><b>Definition</b> RawNetwork.h:27</div></div>
+<div class="ttc" id="astructRawPolyline_html_ab8fcbc974f489b0f1b7bcd78142c4d9e"><div class="ttname"><a href="../../d0/d01/structRawPolyline.html#ab8fcbc974f489b0f1b7bcd78142c4d9e">RawPolyline::pointsUTM</a></div><div class="ttdeci">std::vector&lt; CoordinateXY &gt; pointsUTM</div><div class="ttdef"><b>Definition</b> RawNetwork.h:36</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_a02795b5ac40d9afe5fe94a3ec34902b.html">GeoParser</a></li><li class="navelem"><a class="el" href="../../dir_b5f366c770f71ecee1df61f9a225a87c.html">Pipeline</a></li><li class="navelem"><a class="el" href="../../de/d02/RawNetwork_8h.html">RawNetwork.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

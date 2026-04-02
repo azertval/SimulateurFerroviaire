@@ -1,0 +1,20 @@
+<map id="IntersectionData" name="IntersectionData">
+<area shape="rect" id="Node000001" title="Résultat de Phase2_GeometricIntersector." alt="" coords="160,696,303,781"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="75,539,244,633"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,633,187,671,192,681,188,683,182,673,168,635"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,389,180,469"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,468,135,522,131,525,107,470"/>
+<area shape="rect" id="Node000004" href="$db/d00/structIntersectionPoint.html" title="Point d&#39;intersection entre deux segments, avec paramètres de position." alt="" coords="31,233,155,319"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="95,319,95,372,90,372,90,319"/>
+<area shape="rect" id="Node000005" href="$df/d01/classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire)." alt="" coords="29,5,156,171"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="95,171,95,217,90,217,90,171"/>
+<area shape="rect" id="Node000006" href="$d0/d03/structSegmentId.html" title="Identifiant unique d&#39;un segment dans le RawNetwork." alt="" coords="187,45,305,131"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="214,133,149,211,140,223,136,219,145,208,210,129"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="179,243,361,309"/>
+<area shape="poly" id="edge9_Node000009_Node000006" title=" " alt="" coords="254,131,266,227,261,227,249,131"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="204,381,427,476"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="320,476,314,569,304,622,287,673,282,683,277,681,282,671,299,621,308,569,314,476"/>
+<area shape="rect" id="Node000008" href="$dd/d01/structGridCell.html" title="Clé de cellule de la grille spatiale de binning." alt="" coords="385,233,501,319"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="412,320,380,359,370,371,366,368,376,356,408,317"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="282,308,299,365,294,367,277,310"/>
+</map>

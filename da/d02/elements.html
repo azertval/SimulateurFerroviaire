@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire: Éléments — Modèle de domaine ferroviaire</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('da/d02/elements.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Éléments — Modèle de domaine ferroviaire</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>Table des matières</h3>
+<ul><li class="level1"><a href="#elements_overview">Vue d&#39;ensemble</a></li>
+<li class="level1"><a href="#elements_hierarchy">Hiérarchie</a><ul><li class="level2"><a href="#blockquote">&lt;/blockquote&gt;</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#interactive_element">Element</a><ul><li class="level2"><a href="#logger">Logger statique partagé</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#shunting_element">ShuntingElement</a></li>
+<li class="level1"><a href="#straight_block">StraightBlock</a><ul><li class="level2"><a href="#straight_geometry">Géométrie duale WGS84 / UTM</a></li>
+<li class="level2"><a href="#straight_topo_ids">Topologie — IDs de voisins</a></li>
+<li class="level2"><a href="#straight_resolved">Pointeurs résolus — &lt;tt&gt;StraightNeighbours&lt;/tt&gt;</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#switch_block">SwitchBlock</a><ul><li class="level2"><a href="#switch_geometry">Géométrie — jonction et tips CDC</a></li>
+<li class="level2"><a href="#switch_orientation">Orientation — rôles des branches</a></li>
+<li class="level2"><a href="#switch_double">Double aiguille — absorption du segment de liaison</a></li>
+<li class="level2"><a href="#switch_resolved">Pointeurs résolus — &lt;tt&gt;SwitchBranches&lt;/tt&gt;</a></li>
+<li class="level2"><a href="#switch_active_branch">État opérationnel — branche active</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#resolved_pointers">Pointeurs résolus — récapitulatif</a></li>
+<li class="level1"><a href="#enums">Énumérations</a></li>
+</ul>
+</div>
+<div class="textblock"><hr  />
+<h1><a class="anchor" id="elements_overview"></a>
+Vue d'ensemble</h1>
+<p>Les éléments interactifs constituent le <b>modèle de domaine ferroviaire</b>. Ils représentent les entités physiques de l'infrastructure (tronçons, aiguillages) avec leurs géométries, leur topologie et leur état opérationnel.</p>
+<div class="fragment"><div class="line">GeoParser pipeline                   TopologyRepository         HMI / Rendu</div>
+<div class="line">  Phase6_BlockExtractor  ────────►  StraightBlock  ────────►  Leaflet / TCO</div>
+<div class="line">  Phase8_SwitchOrientator ──────►  SwitchBlock    ────────►  PCCGraph (via PCCGraphBuilder)</div>
+<div class="line">  Phase7_DoubleSwitchDetector ──►  (absorbLink)</div>
+<div class="line">  Phase9_RepositoryTransfer ────►  (resolve pointers)</div>
+</div><!-- fragment --><p><b>Règle de cycle de vie :</b></p><ul>
+<li>Les éléments sont construits avec des données brutes (IDs de voisins sous forme de chaînes).</li>
+<li>Les pointeurs résolus (<code>prev/next</code>, <code>root/normal/deviation</code>) sont <b>null</b> jusqu'à <code>Phase9_RepositoryTransfer::resolve()</code> — aucun code amont ne doit y accéder.</li>
+<li><code><a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a></code> est le seul propriétaire des instances (<code>unique_ptr</code>) ; tous les pointeurs résolus sont <b>non-propriétaires</b>.</li>
+</ul>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Responsabilité unique    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d5/d00/classElement.html">Element</a>   </td><td class="markdownTableBodyNone">Interface abstraite commune — identifiant, type, logger partagé    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a>   </td><td class="markdownTableBodyNone">Étend avec un état opérationnel et les helpers <a class="el" href="../../d2/d00/classShuntingElement.html#a679c294d3ca6d857e7ffa69eaed76c92">isFree</a> / <a class="el" href="../../d2/d00/classShuntingElement.html#a6b545a802c6d06e1f8fb77a59f4ed0a4">isOccupied</a> / <a class="el" href="../../d2/d00/classShuntingElement.html#ac236019e6961a887732237cc5f1da697">isInactive</a>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a>   </td><td class="markdownTableBodyNone">Répresentation d'un bloc de circuit de voie    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>   </td><td class="markdownTableBodyNone">Répresentation d'un bloc d'aiguillage   </td></tr>
+</table>
+<hr  />
+<h1><a class="anchor" id="elements_hierarchy"></a>
+Hiérarchie</h1>
+<div class="fragment"><div class="line">Element          getId(), getType(), m_id, m_logger (static)</div>
+<div class="line">    └── ShuntingElement     getState(), isFree(), isOccupied(), isInactive(), m_state</div>
+<div class="line">            ├── StraightBlock   </div>
+<div class="line">            └── SwitchBlock     </div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;<b>Copie interdite / déplacement autorisé</b> sur toute la hiérarchie. La copie est supprimée dans <a class="el" href="../../d5/d00/classElement.html">Element</a> (risque de slicing). Le déplacement est explicitement déclaré dans <a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> car la présence du destructeur virtuel supprimerait sa génération implicite en C++11/14/17 — ce qui rendrait <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> et <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> non-déplaçables et incompatibles avec <code>make_unique</code> et le pipeline de construction. </p>
+</blockquote>
+<h2><a class="anchor" id="blockquote"></a>
+&lt;/blockquote&gt;</h2>
+<h1><a class="anchor" id="interactive_element"></a>
+Element</h1>
+<p>Classe de base <b>abstraite</b>. Définit l'interface commune à tous les éléments ferroviaires.</p>
+<div class="fragment"><div class="line">Element</div>
+<div class="line">  ├── getId()   → std::string            (pure virtual)</div>
+<div class="line">  ├── getType() → ElementType            (pure virtual)</div>
+<div class="line">  ├── m_id      : std::string            (protected)</div>
+<div class="line">  └── m_logger  : Logger                 (protected, static)</div>
+</div><!-- fragment --><h2><a class="anchor" id="logger"></a>
+Logger statique partagé</h2>
+<p><code><a class="el" href="../../d5/d00/classElement.html#aef48ade8406262ccdf85538f25c331c1" title="Logger statique partagé par TOUS les éléments interactifs.">Element::m_logger</a></code> est une <b>unique instance statique</b> partagée par toutes les classes dérivées (<a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> et <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> confondus). Cela produit un seul fichier <code>Logs/Elements.log</code> regroupant tous les événements d'infrastructure.</p>
+<p>Le mutex interne du <code><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a></code> garantit la thread-safety des écritures concurrentes.</p>
+<div class="fragment"><div class="line"><span class="comment">// Utilisation dans une classe dérivée</span></div>
+<div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#a0c30634de010bc24deacc2cb5a123bec">LOG_INFO</a>(m_logger, m_id + <span class="stringliteral">&quot; orienté NORMAL→s/1 DEVIATION→s/2&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#adb268ee8276a4b312d31ed9db04e9926">LOG_DEBUG</a>(m_logger, m_id + <span class="stringliteral">&quot; prev=&quot;</span> + m_neighbours.prev-&gt;getId());</div>
+<div class="ttc" id="aLogger_8h_html_a0c30634de010bc24deacc2cb5a123bec"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#a0c30634de010bc24deacc2cb5a123bec">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:67</div></div>
+<div class="ttc" id="aLogger_8h_html_adb268ee8276a4b312d31ed9db04e9926"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#adb268ee8276a4b312d31ed9db04e9926">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:70</div></div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="shunting_element"></a>
+ShuntingElement</h1>
+<p>Couche intermédiaire abstraite. Étend <a class="el" href="../../d5/d00/classElement.html">Element</a> avec un <b>état opérationnel</b> (<code>m_state</code>, <code>FREE</code> par défaut) et trois helpers de commodité non-virtuels basés sur <a class="el" href="../../d2/d00/classShuntingElement.html#a815975347422b2ed5b65f72c80ce701d">getState()</a>.</p>
+<div class="fragment"><div class="line">ShuntingElement</div>
+<div class="line">  ├── getState()  → ShuntingState  (pure virtual)</div>
+<div class="line">  ├── isFree()    → bool           basé sur getState()</div>
+<div class="line">  ├── isOccupied()→ bool           basé sur getState()</div>
+<div class="line">  ├── isInactive()→ bool           basé sur getState()</div>
+<div class="line">  └── m_state     : ShuntingState  (protected, FREE par défaut)</div>
+</div><!-- fragment --><p>Les helpers <a class="el" href="../../d2/d00/classShuntingElement.html#a679c294d3ca6d857e7ffa69eaed76c92">isFree()</a> / <a class="el" href="../../d2/d00/classShuntingElement.html#a6b545a802c6d06e1f8fb77a59f4ed0a4">isOccupied()</a> / <a class="el" href="../../d2/d00/classShuntingElement.html#ac236019e6961a887732237cc5f1da697">isInactive()</a> délèguent à <a class="el" href="../../d2/d00/classShuntingElement.html#a815975347422b2ed5b65f72c80ce701d">getState()</a> afin que toute sous-classe surchargeant <code>getState()</code> bénéficie automatiquement de la logique correcte.</p>
+<hr  />
+<h1><a class="anchor" id="straight_block"></a>
+StraightBlock</h1>
+<p>Modèle d'un <b>tronçon de voie droite</b>. Identifiant au format <code>"s/0"</code>, <code>"s/1"</code>, … ou <code>"s/0_c1"</code>, <code>"s/0_c2"</code>, … après découpe par le pipeline.</p>
+<h2><a class="anchor" id="straight_geometry"></a>
+Géométrie duale WGS84 / UTM</h2>
+<p>Chaque bloc maintient deux représentations de sa polyligne, pour deux usages distincts :</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Champ   </th><th class="markdownTableHeadNone">Système   </th><th class="markdownTableHeadNone">Usage    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>m_pointsWGS84</code>   </td><td class="markdownTableBodyNone">WGS-84 (lat, lon)   </td><td class="markdownTableBodyNone">Rendu <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> — <code><a class="el" href="../../d7/d03/classTopologyRenderer.html" title="Utilitaire statique d&#39;export de la topologie ferroviaire en GeoJSON.">TopologyRenderer</a></code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>m_pointsUTM</code>   </td><td class="markdownTableBodyNone">UTM (x = est, y = nord, mètres)   </td><td class="markdownTableBodyNone">Calculs métriques du pipeline   </td></tr>
+</table>
+<p>Les deux polylignes ont la même taille et le même indexage.</p>
+<p><b>Longueur géodésique :</b> <code>m_lengthMeters</code> est calculée par somme Haversine sur <code>m_pointsWGS84</code> et mise à jour automatiquement par <a class="el" href="../../da/d01/classStraightBlock.html#a127a11605e487c1bfe739fa3e75d91c9">setPointsWGS84()</a>. <a class="el" href="../../da/d01/classStraightBlock.html#ae1b0f8aea8903c1a6320c4b8a34d832c">getLengthUTM()</a> calcule la longueur euclidienne depuis <code>m_pointsUTM</code> à la demande.</p>
+<h2><a class="anchor" id="straight_topo_ids"></a>
+Topologie — IDs de voisins</h2>
+<p><code>m_neighbourIds</code> contient les IDs (chaînes) des blocs adjacents, qu'il s'agisse de <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> ou de <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>. La liste est maintenue <b>triée lexicographiquement</b> — <a class="el" href="../../da/d01/classStraightBlock.html#a31992cb0d660a2be22d99615c4be8c23">addNeighbourId()</a> insère en position correcte et rejette les doublons.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Méthode   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d01/classStraightBlock.html#a31992cb0d660a2be22d99615c4be8c23">addNeighbourId(id)</a>   </td><td class="markdownTableBodyNone">Insertion triée sans doublon    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d01/classStraightBlock.html#afb372797f7bc0e80b8dd97c781197772">replaceNeighbourId(oldId, newId)</a>   </td><td class="markdownTableBodyNone">Substitution lors de l'absorption double switch   </td></tr>
+</table>
+<h2><a class="anchor" id="straight_resolved"></a>
+Pointeurs résolus — &lt;tt&gt;StraightNeighbours&lt;/tt&gt;</h2>
+<div class="fragment"><div class="line">struct StraightNeighbours {</div>
+<div class="line">    ShuntingElement* prev;   // extrémité A — nullptr si terminus</div>
+<div class="line">    ShuntingElement* next;   // extrémité B — nullptr si terminus</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>Renseignés par <code>Phase9_RepositoryTransfer::resolve()</code> via <a class="el" href="../../da/d01/classStraightBlock.html#a63505c31a809701e48aa0d1e23dd90f7">setNeighbourPrev()</a> / <a class="el" href="../../da/d01/classStraightBlock.html#a0cba18ea201dbd4ab022c9e0f255d1f8">setNeighbourNext()</a> ou <a class="el" href="../../da/d01/classStraightBlock.html#a77cd67bf5f6e2d8b10fa845c63461c5c">setNeighbourPointers()</a>. Ils restent <code>nullptr</code> jusqu'à cette phase — aucun code antérieur ne doit les lire.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Méthode   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d01/classStraightBlock.html#a2dd3b344ef976b656134204de6ee8bc5">getNeighbours()</a>   </td><td class="markdownTableBodyNone">Retourne la struct complète    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d01/classStraightBlock.html#a63505c31a809701e48aa0d1e23dd90f7">setNeighbourPrev(elem)</a>   </td><td class="markdownTableBodyNone">Assigne l'extrémité A    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d01/classStraightBlock.html#a0cba18ea201dbd4ab022c9e0f255d1f8">setNeighbourNext(elem)</a>   </td><td class="markdownTableBodyNone">Assigne l'extrémité B    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d01/classStraightBlock.html#a77cd67bf5f6e2d8b10fa845c63461c5c">setNeighbourPointers(n)</a>   </td><td class="markdownTableBodyNone">Assigne les deux en une opération   </td></tr>
+</table>
+<hr  />
+<h1><a class="anchor" id="switch_block"></a>
+SwitchBlock</h1>
+<p>Modèle d'un <b>aiguillage ferroviaire à 3 branches</b>. Identifiant au format <code>"sw/0"</code>, <code>"sw/1"</code>, …</p>
+<p>Un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> passe par trois états successifs au fil du pipeline :</p>
+<div class="fragment"><div class="line">État 1 — Non orienté   branchIds = [&quot;s/1&quot;,&quot;s/2&quot;,&quot;s/3&quot;]   rootId=∅</div>
+<div class="line">    ↓  Phase8_SwitchOrientator::orient()</div>
+<div class="line">État 2 — Orienté       root=&quot;s/1&quot; normal=&quot;s/2&quot; deviation=&quot;s/3&quot;</div>
+<div class="line">    ↓  Phase7_DoubleSwitchDetector::absorbLink()  (si double aiguille)</div>
+<div class="line">État 3 — Double        root=&quot;s/1&quot; normal=&quot;sw/4&quot; deviation=&quot;s/3&quot;  ← sw/4 remplace s/2</div>
+</div><!-- fragment --><h2><a class="anchor" id="switch_geometry"></a>
+Géométrie — jonction et tips CDC</h2>
+<p>Le point de <b>jonction</b> (<code>m_junctionWGS84</code>, <code>m_junctionUTM</code>) est le nœud physique où convergent les trois branches.</p>
+<p>Les <b>tips CDC</b> (<code>m_tipOnRoot</code>, <code>m_tipOnNormal</code>, <code>m_tipOnDeviation</code>) sont les extrémités de chaque branche issues du fichier CDC. Ils sont de type <code>std::optional</code> car absents avant l'orientation (<code>Phase8</code>).</p>
+<p>La <b>longueur totale de traversée</b> est calculée par <a class="el" href="../../d9/d02/classSwitchBlock.html#a003ca555f7f3dfd8e8057ae23dba9381">computeTotalLength()</a> : </p><div class="fragment"><div class="line">totalLength = root_leg + max(normal_leg, deviation_leg)</div>
+</div><!-- fragment --><p> où chaque leg est la distance Haversine entre la jonction et le tip correspondant.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Requête   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a2f4787c84809cf5963674f5b202341a8">getJunctionWGS84()</a>   </td><td class="markdownTableBodyNone">Coordonnée WGS-84 du nœud de jonction    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#ac5d8ff6e8ebddd979e74f9fe12968f56">getJunctionUTM()</a>   </td><td class="markdownTableBodyNone">Coordonnée UTM du nœud de jonction    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a48bb19b7ba5a8e7a37abd0109bd717f9">getTipOnRoot()</a>   </td><td class="markdownTableBodyNone">Tip CDC branche root — <code>std::optional</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a32af9aeb69337c7f9bab1d0c61865d85">getTipOnNormal()</a>   </td><td class="markdownTableBodyNone">Tip CDC branche normale — <code>std::optional</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#adfbe6ac0c1190e220e91558dd870a2b6">getTipOnDeviation()</a>   </td><td class="markdownTableBodyNone">Tip CDC branche déviée — <code>std::optional</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#aa696e88f8a1f915c71bde5420f019e32">getTotalLengthMeters()</a>   </td><td class="markdownTableBodyNone">Longueur de traversée — <code>std::optional</code>   </td></tr>
+</table>
+<h2><a class="anchor" id="switch_orientation"></a>
+Orientation — rôles des branches</h2>
+<p>Avant <code>Phase7</code>, un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> ne connaît que la liste brute <code>m_branchIds</code>. <a class="el" href="../../d9/d02/classSwitchBlock.html#acc53cb0b921e526691300afa6eec1e92">orient()</a> assigne les rôles sémantiques <b>root / normal / deviation</b> en vérifiant que chaque ID est bien présent dans <code>m_branchIds</code> (lève <code>std::invalid_argument</code> sinon).</p>
+<p><a class="el" href="../../d9/d02/classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7">isOriented()</a> retourne <code>true</code> dès que <code>m_rootBranchId</code> est renseigné.</p>
+<p><a class="el" href="../../d9/d02/classSwitchBlock.html#affd7f73a8ed825143cf59a485d1d690b">swapNormalDeviation()</a> permute symétriquement les rôles, les tips CDC, les polylignes absorbées et les marqueurs de double switch — utilisé par <code>Phase8_SwitchOrientator</code> lors d'une correction de sens.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Méthode   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#acc53cb0b921e526691300afa6eec1e92">orient(rootId, normalId, deviationId)</a>   </td><td class="markdownTableBodyNone">Assigne les trois rôles    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#affd7f73a8ed825143cf59a485d1d690b">swapNormalDeviation()</a>   </td><td class="markdownTableBodyNone">Permutation normale ↔ deviation    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7">isOriented()</a>   </td><td class="markdownTableBodyNone">True si les rôles sont assignés   </td></tr>
+</table>
+<h2><a class="anchor" id="switch_double"></a>
+Double aiguille — absorption du segment de liaison</h2>
+<p>Quand deux aiguillages sont reliés par un court <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> de liaison, <code>Phase7_DoubleSwitchDetector</code> absorbe ce segment dans l'un des deux aiguillages.</p>
+<p><a class="el" href="../../d9/d02/classSwitchBlock.html#a676d952722f07ba8a5a5c9871f0f113f">absorbLink()</a> effectue en une seule opération :</p><ol type="1">
+<li>Remplace <code>linkId</code> par <code>partnerId</code> dans <code>m_branchIds</code></li>
+<li>Met à jour <code>m_normalBranchId</code> ou <code>m_deviationBranchId</code></li>
+<li>Met à jour le tip CDC correspondant (extrémité distale du segment absorbé)</li>
+<li>Mémorise la polyligne absorbée (WGS84 + UTM) pour le rendu</li>
+<li>Renseigne <code>m_doubleOnNormal</code> ou <code>m_doubleOnDeviation</code> avec l'ID du partenaire</li>
+</ol>
+<div class="fragment"><div class="line">Avant absorption                  Après absorption</div>
+<div class="line">sw/0 ──s/link── sw/1              sw/0 (normal→sw/1, absorbedNormal=[s/link coords])</div>
+</div><!-- fragment --><p><a class="el" href="../../d9/d02/classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e">isDouble()</a> retourne <code>true</code> si au moins un côté a absorbé un segment. <a class="el" href="../../d9/d02/classSwitchBlock.html#a72cf7392935372bed47bccc9c1feb096">getPartnerOnNormal()</a> / <a class="el" href="../../d9/d02/classSwitchBlock.html#af65a62f314ce4544ce687eacc13786e8">getPartnerOnDeviation()</a> retournent le <code>SwitchBlock*</code> partenaire via cast statique (valide uniquement si <a class="el" href="../../d9/d02/classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e">isDouble()</a> est true).</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Requête   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e">isDouble()</a>   </td><td class="markdownTableBodyNone">True si un segment de liaison a été absorbé    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#adf63b962a171de6014a94f8be882533f">getDoubleOnNormal()</a>   </td><td class="markdownTableBodyNone">ID du partenaire côté normal — <code>std::optional</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a9a6a50365fe014a6d51e4f0f2ffeacce">getDoubleOnDeviation()</a>   </td><td class="markdownTableBodyNone">ID du partenaire côté deviation — <code>std::optional</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a5eac2af2a6dc3fadfb2e8714b1807c38">getAbsorbedNormalCoordinates()</a>   </td><td class="markdownTableBodyNone">Polyligne WGS84 absorbée côté normal    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a928853c3e4278319afb861d8a3e6f5c6">getAbsorbedDeviationCoordinates()</a>   </td><td class="markdownTableBodyNone">Polyligne WGS84 absorbée côté deviation    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a8477ee066a0acd74adf581ba7a238676">getAbsorbedNormalCoordsUTM()</a>   </td><td class="markdownTableBodyNone">Polyligne UTM absorbée côté normal    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#acb48a5a703509155ccde6fc05b8a6f86">getAbsorbedDeviationCoordsUTM()</a>   </td><td class="markdownTableBodyNone">Polyligne UTM absorbée côté deviation    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a72cf7392935372bed47bccc9c1feb096">getPartnerOnNormal()</a>   </td><td class="markdownTableBodyNone"><code>SwitchBlock*</code> partenaire côté normal, nullptr sinon    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#af65a62f314ce4544ce687eacc13786e8">getPartnerOnDeviation()</a>   </td><td class="markdownTableBodyNone"><code>SwitchBlock*</code> partenaire côté deviation, nullptr sinon   </td></tr>
+</table>
+<h2><a class="anchor" id="switch_resolved"></a>
+Pointeurs résolus — &lt;tt&gt;SwitchBranches&lt;/tt&gt;</h2>
+<div class="fragment"><div class="line">struct SwitchBranches {</div>
+<div class="line">    ShuntingElement* root;       // tronc entrant     — nullptr si non résolu</div>
+<div class="line">    ShuntingElement* normal;     // sortie directe    — nullptr si non résolu</div>
+<div class="line">    ShuntingElement* deviation;  // sortie déviée     — nullptr si non résolu</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>Renseignés par <code>Phase9_RepositoryTransfer::resolve()</code>.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Mutation   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a40f62f7fa25f753f8277e3f84b97986e">setRootPointer(elem)</a>   </td><td class="markdownTableBodyNone">Assigne la branche root    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#aff79e0e44aba8ab5525e9b5fa3dc7b93">setNormalPointer(elem)</a>   </td><td class="markdownTableBodyNone">Assigne la branche normale    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a3cdf67032ce706a00a05ec752b298e0b">setDeviationPointer(elem)</a>   </td><td class="markdownTableBodyNone">Assigne la branche déviée    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#ad175b6ec2b9f3f988eb10991f726c160">setBranchPointers(branches)</a>   </td><td class="markdownTableBodyNone">Assigne les trois en une opération    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#ab199c047b49e5d158a8b7f8ffb7aa633">replaceBranchPointer(old, new)</a>   </td><td class="markdownTableBodyNone">Substitution après absorption (Phase8)   </td></tr>
+</table>
+<h2><a class="anchor" id="switch_active_branch"></a>
+État opérationnel — branche active</h2>
+<p><code>m_activeBranch</code> représente la <b>position physique</b> de l'aiguillage (<code>NORMAL</code> par défaut). Il est modifié en runtime par l'opérateur via l'IHM.</p>
+<p>Lors d'une modification, la valeur est <b>propagée automatiquement</b> aux aiguillages partenaires d'un double switch via <a class="el" href="../../d9/d02/classSwitchBlock.html#a72cf7392935372bed47bccc9c1feb096">getPartnerOnNormal()</a> / <a class="el" href="../../d9/d02/classSwitchBlock.html#af65a62f314ce4544ce687eacc13786e8">getPartnerOnDeviation()</a>, sauf si <code>propagate = false</code> est passé explicitement (pour éviter la récursion infinie lors de la réception d'une propagation).</p>
+<div class="fragment"><div class="line">Opérateur clique sur sw/0               sw/0.toggleActiveBranch()</div>
+<div class="line">  → m_activeBranch = DEVIATION               → sw/0.setActiveBranch(DEVIATION, true)</div>
+<div class="line">  → propagation vers sw/1 (partenaire)           → sw/1.setActiveBranch(DEVIATION, false)</div>
+</div><!-- fragment --><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Méthode   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#aba30776838f3363fc7e93bcb7ce7888c">getActiveBranch()</a>   </td><td class="markdownTableBodyNone">Branche active courante    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#ada66b97802d45a8b3dfbbb05011ae9b6">isDeviationActive()</a>   </td><td class="markdownTableBodyNone">Raccourci booléen    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#ae6e437d28f39ff6dc3120d5f836d0f37">setActiveBranch(branch, propagate=true)</a>   </td><td class="markdownTableBodyNone">Assigne + propage optionnellement    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html#a4d0c12c5196e0cd35fb33784c727e45b">toggleActiveBranch(propagate=true)</a>   </td><td class="markdownTableBodyNone">Alterne + propage + retourne la nouvelle valeur   </td></tr>
+</table>
+<hr  />
+<h1><a class="anchor" id="resolved_pointers"></a>
+Pointeurs résolus — récapitulatif</h1>
+<p>Les deux structs de pointeurs suivent la même convention :</p><ul>
+<li><b>Propriété</b> : <code><a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a></code> — ne jamais <code>delete</code> ces pointeurs.</li>
+<li><b>Validité</b> : garantie uniquement après <code>Phase9_RepositoryTransfer::resolve()</code>.</li>
+<li><b>Valeur nulle</b> : <code>nullptr</code> indique un terminus ou une branche non résolue.</li>
+</ul>
+<p><b><a class="el" href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html">StraightBlock::StraightNeighbours</a></b></p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Champ   </th><th class="markdownTableHeadNone">Type   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>prev</code>   </td><td class="markdownTableBodyNone"><code>ShuntingElement*</code>   </td><td class="markdownTableBodyNone">Bloc adjacent à l'extrémité A — nullptr si terminus    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>next</code>   </td><td class="markdownTableBodyNone"><code>ShuntingElement*</code>   </td><td class="markdownTableBodyNone">Bloc adjacent à l'extrémité B — nullptr si terminus   </td></tr>
+</table>
+<p><b><a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html">SwitchBlock::SwitchBranches</a></b></p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Champ   </th><th class="markdownTableHeadNone">Type   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>root</code>   </td><td class="markdownTableBodyNone"><code>ShuntingElement*</code>   </td><td class="markdownTableBodyNone">Tronc entrant — nullptr si non résolu    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>normal</code>   </td><td class="markdownTableBodyNone"><code>ShuntingElement*</code>   </td><td class="markdownTableBodyNone">Sortie directe — nullptr si non résolu    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>deviation</code>   </td><td class="markdownTableBodyNone"><code>ShuntingElement*</code>   </td><td class="markdownTableBodyNone">Sortie déviée — nullptr si non résolu   </td></tr>
+</table>
+<hr  />
+<h1><a class="anchor" id="enums"></a>
+Énumérations</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Enum   </th><th class="markdownTableHeadNone">Valeurs   </th><th class="markdownTableHeadNone">Usage    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01ae">ElementType</a>   </td><td class="markdownTableBodyNone"><code>SWITCH</code>, <code>STRAIGHT</code>   </td><td class="markdownTableBodyNone">Typage sans RTTI — dispatching dans <code><a class="el" href="../../d8/d01/classPCCGraphBuilder.html" title="Constructeur statique du PCCGraph depuis TopologyRepository.">PCCGraphBuilder</a></code> et <code><a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a></code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a>   </td><td class="markdownTableBodyNone"><code>FREE</code>, <code>OCCUPIED</code>, <code>INACTIVE</code>   </td><td class="markdownTableBodyNone">État opérationnel de l'infrastructure    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">ActiveBranch</a>   </td><td class="markdownTableBodyNone"><code>NORMAL</code>, <code>DEVIATION</code>   </td><td class="markdownTableBodyNone">Position physique de l'aiguillage — modifiée en runtime   </td></tr>
+</table>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../index.html">Simulateur Ferroviaire</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

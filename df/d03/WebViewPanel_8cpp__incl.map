@@ -1,30 +1,31 @@
 <map id="SimulateurFerroviaire/Engine/HMI/WebViewPanel/WebViewPanel.cpp" name="SimulateurFerroviaire/Engine/HMI/WebViewPanel/WebViewPanel.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="215,5,414,60"/>
-<area shape="rect" id="Node000002" href="$d6/d03/WebViewPanel_8h.html" title=" " alt="" coords="185,108,314,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="297,62,269,99,264,95,293,58"/>
-<area shape="rect" id="Node000014" title=" " alt="" coords="338,108,425,133"/>
-<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="337,58,366,95,362,99,333,62"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,189,96,214"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="221,136,93,186,91,181,219,131"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="175,269,233,295"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="219,136,187,154,172,167,161,182,157,201,161,221,171,240,184,257,180,260,167,243,156,223,151,201,156,180,168,164,183,150,216,131"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="171,189,226,214"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="244,135,216,178,211,176,240,132"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="250,189,353,214"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="259,132,288,176,284,178,255,135"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="377,189,463,214"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="275,131,384,181,382,185,273,136"/>
-<area shape="rect" id="Node000008" href="$dd/d00/Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur." alt="" coords="487,181,635,221"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="295,131,474,175,473,181,294,136"/>
-<area shape="poly" id="edge13_Node000008_Node000004" title=" " alt="" coords="488,221,477,224,247,274,246,269,475,219,487,216"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="327,269,385,295"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="513,224,400,267,398,262,511,219"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="409,269,500,295"/>
-<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="537,224,483,263,480,259,534,219"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="525,269,598,295"/>
-<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="564,222,564,255,559,255,559,222"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="623,269,687,295"/>
-<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="586,220,632,258,628,262,582,224"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="711,269,785,295"/>
-<area shape="poly" id="edge12_Node000008_Node000013" title=" " alt="" coords="607,219,709,261,707,266,605,224"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="290,5,489,60"/>
+<area shape="rect" id="Node000002" href="$d6/d03/WebViewPanel_8h.html" title=" " alt="" coords="259,108,389,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="371,62,343,99,339,95,367,58"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="413,108,499,133"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="412,58,441,95,436,99,408,62"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,269,96,295"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="273,136,214,155,153,184,106,221,70,261,66,257,102,218,151,179,212,150,272,131"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="120,269,179,295"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="263,136,217,154,196,167,178,183,167,200,159,219,153,256,147,255,154,217,162,197,174,180,193,162,215,149,261,131"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="359,189,414,214"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="335,132,371,176,367,180,331,135"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="438,189,541,214"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="349,131,454,180,452,185,347,136"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="565,189,651,214"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="373,131,554,179,564,182,562,187,553,184,371,136"/>
+<area shape="rect" id="Node000008" href="$dd/d00/Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur." alt="" coords="187,181,335,221"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="317,135,287,172,283,169,313,132"/>
+<area shape="poly" id="edge14_Node000008_Node000003" title=" " alt="" coords="212,224,95,267,94,262,210,219"/>
+<area shape="poly" id="edge13_Node000008_Node000004" title=" " alt="" coords="236,224,179,263,176,259,233,219"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="603,269,661,295"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="336,216,349,219,467,241,589,266,588,272,466,246,347,224,335,221"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="203,269,293,295"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="261,222,255,256,250,255,255,221"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="318,269,391,295"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="286,220,332,258,328,262,282,224"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="416,269,480,295"/>
+<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="307,219,409,261,407,266,305,224"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="504,269,579,295"/>
+<area shape="poly" id="edge12_Node000008_Node000013" title=" " alt="" coords="329,219,491,264,490,269,328,224"/>
 </map>

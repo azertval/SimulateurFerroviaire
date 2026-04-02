@@ -1,0 +1,7 @@
+<map id="SimulateurFerroviaire/Engine/Core/Config/ParserConfigIni.h" name="SimulateurFerroviaire/Engine/Core/Config/ParserConfigIni.h">
+<area shape="rect" id="Node000001" title="Persistence de ParserConfig via fichier .ini (SimpleIni)." alt="" coords="5,5,240,60"/>
+<area shape="rect" id="Node000002" href="$d9/d01/ParserConfig_8h.html" title="Paramètres de configuration du pipeline GeoParser." alt="" coords="11,108,125,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,62,85,98,81,95,104,59"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="149,108,208,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,59,166,95,161,98,138,62"/>
+</map>

@@ -92,43 +92,48 @@ $(document).ready(function(){initNavTree('da/d03/classGeoParsingTask.html','../.
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Fonctions membres publiques</a> &#124;
-<a href="#pub-static-methods">Fonctions membres publiques statiques</a> &#124;
+<a href="#pri-attribs">Attributs privés</a> &#124;
 <a href="../../d6/d00/classGeoParsingTask-members.html">Liste de tous les membres</a>  </div>
   <div class="headertitle"><div class="title">Référence de la classe GeoParsingTask</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Tâche asynchrone encapsulant l'exécution du <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>.  
- <a href="../../da/d03/classGeoParsingTask.html#details">Plus de détails...</a></p>
-
 <p><code>#include &lt;<a class="el" href="../../d0/d00/GeoParsingTask_8h_source.html">GeoParsingTask.h</a>&gt;</code></p>
 <div class="dynheader">
 Graphe de collaboration de GeoParsingTask:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d1/d02/classGeoParsingTask__coll__graph.svg" width="152" height="96"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d1/d02/classGeoParsingTask__coll__graph.svg" width="571" height="1140"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
-<tr class="memitem:a2f2657bdbe4afb81073307b22167e043" id="r_a2f2657bdbe4afb81073307b22167e043"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d03/classGeoParsingTask.html#a2f2657bdbe4afb81073307b22167e043">GeoParsingTask</a> ()=delete</td></tr>
-<tr class="memdesc:a2f2657bdbe4afb81073307b22167e043"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classe non instanciable — constructeur supprimé.  <br /></td></tr>
-<tr class="separator:a2f2657bdbe4afb81073307b22167e043"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab33d1f89b3f752eaa87494adc7c7bcc6" id="r_ab33d1f89b3f752eaa87494adc7c7bcc6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d03/classGeoParsingTask.html#ab33d1f89b3f752eaa87494adc7c7bcc6">GeoParsingTask</a> (HWND hwndTarget)</td></tr>
+<tr class="memdesc:ab33d1f89b3f752eaa87494adc7c7bcc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit la tâche avec la fenêtre de destination des messages.  <br /></td></tr>
+<tr class="separator:ab33d1f89b3f752eaa87494adc7c7bcc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0af221a038074db5946491d88a3a7e20" id="r_a0af221a038074db5946491d88a3a7e20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d03/classGeoParsingTask.html#a0af221a038074db5946491d88a3a7e20">start</a> (const std::string &amp;filePath, const <a class="el" href="../../dd/d03/structParserConfig.html">ParserConfig</a> &amp;config)</td></tr>
+<tr class="memdesc:a0af221a038074db5946491d88a3a7e20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance le parsing dans un thread détaché.  <br /></td></tr>
+<tr class="separator:a0af221a038074db5946491d88a3a7e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6c79fee7b3bc3c7db9755d301244bed" id="r_af6c79fee7b3bc3c7db9755d301244bed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d03/classGeoParsingTask.html#af6c79fee7b3bc3c7db9755d301244bed">cancel</a> ()</td></tr>
+<tr class="memdesc:af6c79fee7b3bc3c7db9755d301244bed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Demande l'annulation du parsing en cours.  <br /></td></tr>
+<tr class="separator:af6c79fee7b3bc3c7db9755d301244bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92e5212bdc697ebadbeaa66dad723602" id="r_a92e5212bdc697ebadbeaa66dad723602"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d03/classGeoParsingTask.html#a92e5212bdc697ebadbeaa66dad723602">isCancelling</a> () const</td></tr>
+<tr class="memdesc:a92e5212bdc697ebadbeaa66dad723602"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si une annulation a été demandée.  <br /></td></tr>
+<tr class="separator:a92e5212bdc697ebadbeaa66dad723602"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Fonctions membres publiques statiques</h2></td></tr>
-<tr class="memitem:affe9d461e96e029708ced380b63da972" id="r_affe9d461e96e029708ced380b63da972"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d03/classGeoParsingTask.html#affe9d461e96e029708ced380b63da972">launch</a> (HWND hWnd, const std::string &amp;geoJsonPath)</td></tr>
-<tr class="memdesc:affe9d461e96e029708ced380b63da972"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance le parsing GeoJSON dans un thread séparé et détaché.  <br /></td></tr>
-<tr class="separator:affe9d461e96e029708ced380b63da972"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Attributs privés</h2></td></tr>
+<tr class="memitem:a96e7eed43226f835495c7cddd4dcb1e2" id="r_a96e7eed43226f835495c7cddd4dcb1e2"><td class="memItemLeft" align="right" valign="top">HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d03/classGeoParsingTask.html#a96e7eed43226f835495c7cddd4dcb1e2">m_hwndTarget</a></td></tr>
+<tr class="memdesc:a96e7eed43226f835495c7cddd4dcb1e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fenêtre destinataire des PostMessage.  <br /></td></tr>
+<tr class="separator:a96e7eed43226f835495c7cddd4dcb1e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeea63281b1951252fb23bd9cd797d1ef" id="r_aeea63281b1951252fb23bd9cd797d1ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d03/classLogger.html">Logger</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d03/classGeoParsingTask.html#aeea63281b1951252fb23bd9cd797d1ef">m_logger</a> { &quot;GeoParser&quot; }</td></tr>
+<tr class="memdesc:aeea63281b1951252fb23bd9cd797d1ef"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>.  <br /></td></tr>
+<tr class="separator:aeea63281b1951252fb23bd9cd797d1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a034807530edd25be1918eeaa2b005e33" id="r_a034807530edd25be1918eeaa2b005e33"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; std::atomic&lt; bool &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d03/classGeoParsingTask.html#a034807530edd25be1918eeaa2b005e33">m_cancelToken</a></td></tr>
+<tr class="separator:a034807530edd25be1918eeaa2b005e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Tâche asynchrone encapsulant l'exécution du <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>. </p>
-<p>Cette classe est purement statique : elle n'a pas d'état et ne doit pas être instanciée.</p>
-<p>Usage : </p><div class="fragment"><div class="line"><a class="code hl_function" href="../../da/d03/classGeoParsingTask.html#affe9d461e96e029708ced380b63da972">GeoParsingTask::launch</a>(hWnd, <span class="stringliteral">&quot;C:/data/reseau.geojson&quot;</span>);</div>
-<div class="ttc" id="aclassGeoParsingTask_html_affe9d461e96e029708ced380b63da972"><div class="ttname"><a href="../../da/d03/classGeoParsingTask.html#affe9d461e96e029708ced380b63da972">GeoParsingTask::launch</a></div><div class="ttdeci">static void launch(HWND hWnd, const std::string &amp;geoJsonPath)</div><div class="ttdoc">Lance le parsing GeoJSON dans un thread séparé et détaché.</div><div class="ttdef"><b>Definition</b> GeoParsingTask.cpp:27</div></div>
-</div><!-- fragment --><p>Le thread lancé est détaché (<code>std::thread::detach</code>). La communication vers l'UI passe exclusivement par <code>PostMessage</code> ; le thread de parsing ne touche jamais directement aux éléments Win32. </p>
-</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
-<a id="a2f2657bdbe4afb81073307b22167e043" name="a2f2657bdbe4afb81073307b22167e043"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f2657bdbe4afb81073307b22167e043">&#9670;&#160;</a></span>GeoParsingTask()</h2>
+<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a id="ab33d1f89b3f752eaa87494adc7c7bcc6" name="ab33d1f89b3f752eaa87494adc7c7bcc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab33d1f89b3f752eaa87494adc7c7bcc6">&#9670;&#160;</a></span>GeoParsingTask()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -139,24 +144,112 @@ Fonctions membres publiques statiques</h2></td></tr>
         <tr>
           <td class="memname">GeoParsingTask::GeoParsingTask </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">HWND&#160;</td>
+          <td class="paramname"><em>hwndTarget</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Classe non instanciable — constructeur supprimé. </p>
+<p>Construit la tâche avec la fenêtre de destination des messages. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hwndTarget</td><td>Handle de <a class="el" href="../../d6/d02/classMainWindow.html">MainWindow</a> — destinataire des PostMessage. </td></tr>
+    <tr><td class="paramname">logger</td><td>Référence au logger <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
-<a id="affe9d461e96e029708ced380b63da972" name="affe9d461e96e029708ced380b63da972"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affe9d461e96e029708ced380b63da972">&#9670;&#160;</a></span>launch()</h2>
+<a id="af6c79fee7b3bc3c7db9755d301244bed" name="af6c79fee7b3bc3c7db9755d301244bed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6c79fee7b3bc3c7db9755d301244bed">&#9670;&#160;</a></span>cancel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GeoParsingTask::cancel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Demande l'annulation du parsing en cours. </p>
+<p>Positionne le cancel token partagé avec <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>. L'annulation est asynchrone — le thread se termine proprement entre deux phases et poste <code>WM_PARSING_CANCELLED</code>.</p>
+<p>No-op si aucun parsing n'est en cours. </p>
+
+</div>
+</div>
+<a id="a92e5212bdc697ebadbeaa66dad723602" name="a92e5212bdc697ebadbeaa66dad723602"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92e5212bdc697ebadbeaa66dad723602">&#9670;&#160;</a></span>isCancelling()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GeoParsingTask::isCancelling </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si une annulation a été demandée. </p>
+<dl class="section return"><dt>Renvoie</dt><dd><code>true</code> si <code><a class="el" href="../../da/d03/classGeoParsingTask.html#af6c79fee7b3bc3c7db9755d301244bed" title="Demande l&#39;annulation du parsing en cours.">cancel()</a></code> a été appelé et que le thread n'a pas encore terminé. </dd></dl>
+
+</div>
+</div>
+<a id="a0af221a038074db5946491d88a3a7e20" name="a0af221a038074db5946491d88a3a7e20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0af221a038074db5946491d88a3a7e20">&#9670;&#160;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GeoParsingTask::start </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filePath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../dd/d03/structParserConfig.html">ParserConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lance le parsing dans un thread détaché. </p>
+<p>Prend un snapshot de <code>config</code> (immuable pendant le parsing). Réinitialise le cancel token si un parsing précédent avait été annulé.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filePath</td><td>Chemin absolu vers le fichier GeoJSON. </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration du pipeline — copiée. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des données membres</h2>
+<a id="a034807530edd25be1918eeaa2b005e33" name="a034807530edd25be1918eeaa2b005e33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a034807530edd25be1918eeaa2b005e33">&#9670;&#160;</a></span>m_cancelToken</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,44 +258,64 @@ Fonctions membres publiques statiques</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void GeoParsingTask::launch </td>
-          <td>(</td>
-          <td class="paramtype">HWND&#160;</td>
-          <td class="paramname"><em>hWnd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>geoJsonPath</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">std::shared_ptr&lt;std::atomic&lt;bool&gt; &gt; GeoParsingTask::m_cancelToken</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Cancel token partagé avec le thread <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>. shared_ptr — garantit que le token reste valide même si <a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a> est détruit avant la fin du thread. </p>
+
+</div>
+</div>
+<a id="a96e7eed43226f835495c7cddd4dcb1e2" name="a96e7eed43226f835495c7cddd4dcb1e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96e7eed43226f835495c7cddd4dcb1e2">&#9670;&#160;</a></span>m_hwndTarget</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND GeoParsingTask::m_hwndTarget</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Lance le parsing GeoJSON dans un thread séparé et détaché. </p>
-<p>Le thread émet les messages suivants vers <code>hWnd</code> :</p><ul>
-<li><code>WM_PROGRESS_UPDATE</code> (WPARAM = avancement 0–100) à chaque étape.</li>
-<li><code>WM_PARSING_SUCCESS</code> à la fin d'un parsing réussi.</li>
-<li><code>WM_PARSING_ERROR</code> (LPARAM = pointeur <code>std::string</code>) en cas d'échec.</li>
-</ul>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">hWnd</td><td>Fenêtre destinataire des messages de progression. Doit rester valide pendant toute la durée du parsing. </td></tr>
-    <tr><td class="paramname">geoJsonPath</td><td>Chemin absolu vers le fichier GeoJSON à analyser.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section warning"><dt>Avertissement</dt><dd>Le <code>std::string*</code> transporté par <code>WM_PARSING_ERROR</code> doit être libéré (<code>delete</code>) par le destinataire du message. </dd></dl>
+<p>Fenêtre destinataire des PostMessage. </p>
+
+</div>
+</div>
+<a id="aeea63281b1951252fb23bd9cd797d1ef" name="aeea63281b1951252fb23bd9cd797d1ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeea63281b1951252fb23bd9cd797d1ef">&#9670;&#160;</a></span>m_logger</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d03/classLogger.html">Logger</a> GeoParsingTask::m_logger { &quot;GeoParser&quot; }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>. </p>
 
 </div>
 </div>

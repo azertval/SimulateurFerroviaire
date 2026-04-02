@@ -1,3 +1,25 @@
 <map id="GeoParsingTask" name="GeoParsingTask">
-<area shape="rect" id="Node000001" title="Tâche asynchrone encapsulant l&#39;exécution du GeoParser." alt="" coords="5,5,147,91"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="288,1009,429,1135"/>
+<area shape="rect" id="Node000002" href="$db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="175,621,356,947"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="321,946,336,993,331,995,316,948"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="37,493,115,559"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,558,118,596,166,661,162,664,114,599,90,560"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,364,136,444"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="76,458,77,493,72,493,70,458"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="179,493,280,559"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="231,559,232,597,233,605,227,605,227,598,225,559"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="161,364,303,444"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="233,458,233,493,227,493,228,458"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="163,235,301,315"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="235,328,235,364,229,364,229,328"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="151,120,313,185"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="235,199,235,235,229,235,229,199"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="183,5,281,71"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="235,85,235,120,229,120,229,85"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="311,493,395,559"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="345,560,329,607,324,605,340,558"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="399,744,545,824"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="463,825,439,901,406,986,402,996,397,994,402,984,434,899,458,824"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="419,493,565,559"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="492,559,479,728,474,727,487,559"/>
 </map>

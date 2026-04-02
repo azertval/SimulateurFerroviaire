@@ -1,0 +1,7 @@
+<map id="SimulateurFerroviaire/Engine/HMI/Dialogs/ParserSettingsDialog.h" name="SimulateurFerroviaire/Engine/HMI/Dialogs/ParserSettingsDialog.h">
+<area shape="rect" id="Node000001" title="Dialogue modal Win32 de configuration du pipeline GeoParser." alt="" coords="133,5,384,60"/>
+<area shape="rect" id="Node000002" href="$d2/d00/ParserSettingsDialog_8cpp.html" title="Implémentation du dialogue de paramètres GeoParser." alt="" coords="5,108,256,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,70,166,110,163,106,213,66"/>
+<area shape="rect" id="Node000003" href="$d3/d03/MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="281,115,495,155"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="305,66,365,113,362,117,302,71"/>
+</map>

@@ -1,26 +1,27 @@
 <map id="SimulateurFerroviaire/Modules/GeoParser/GeoParsingTask.h" name="SimulateurFerroviaire/Modules/GeoParser/GeoParsingTask.h">
-<area shape="rect" id="Node000001" title="Déclaration de la tâche de parsing GeoJSON asynchrone." alt="" coords="469,5,697,60"/>
-<area shape="rect" id="Node000002" href="$d6/d01/framework_8h.html" title=" " alt="" coords="485,108,591,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="572,61,553,97,548,95,567,59"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="870,181,929,207"/>
-<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="636,58,866,173,863,178,634,62"/>
-<area shape="rect" id="Node000003" href="$d9/d02/targetver_8h.html" title=" " alt="" coords="14,181,107,207"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="485,131,327,153,121,184,120,179,326,147,485,126"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="131,181,222,207"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="486,135,236,184,235,178,485,130"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="247,181,317,207"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="498,136,331,182,330,177,496,131"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="341,181,420,207"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="514,136,420,178,418,173,512,131"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="444,181,531,207"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="532,135,506,172,501,169,527,132"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="555,181,622,207"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="549,132,575,169,570,172,544,135"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="646,181,742,207"/>
-<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="564,131,657,173,655,178,562,136"/>
-<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="591,128,709,148,857,178,856,184,708,154,590,133"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="766,181,846,207"/>
-<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="582,131,753,176,751,181,580,136"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="5,255,116,280"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="63,207,63,241,58,241,58,207"/>
+<area shape="rect" id="Node000001" title="Tâche asynchrone d&#39;exécution du pipeline GeoParser v2." alt="" coords="122,5,350,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,115,72,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,62,76,112,74,107,179,58"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="96,115,173,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,62,160,108,156,104,205,58"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="132,196,191,221"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="227,61,174,185,169,182,222,59"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="215,196,305,221"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="242,60,259,182,254,183,237,61"/>
+<area shape="rect" id="Node000006" href="$d9/d01/ParserConfig_8h.html" title="Paramètres de configuration du pipeline GeoParser." alt="" coords="473,108,618,148"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="324,58,471,102,469,107,322,63"/>
+<area shape="rect" id="Node000007" href="$dd/d00/Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur." alt="" coords="301,108,449,148"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="276,58,337,98,334,103,274,62"/>
+<area shape="poly" id="edge12_Node000007_Node000004" title=" " alt="" coords="324,151,205,194,203,189,323,146"/>
+<area shape="poly" id="edge13_Node000007_Node000005" title=" " alt="" coords="348,150,290,190,287,186,345,146"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="729,196,788,221"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="449,143,462,145,588,168,716,193,715,198,587,173,461,151,448,148"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="329,196,420,221"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="377,148,377,182,372,182,372,148"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="445,196,518,221"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="402,146,456,185,453,190,399,150"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="543,196,607,221"/>
+<area shape="poly" id="edge10_Node000007_Node000011" title=" " alt="" coords="424,146,534,188,532,193,422,151"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="631,196,705,221"/>
+<area shape="poly" id="edge11_Node000007_Node000012" title=" " alt="" coords="446,145,618,191,616,196,444,151"/>
 </map>

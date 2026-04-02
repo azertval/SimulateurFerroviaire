@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire:  Fichier source de SimulateurFerroviaire/Modules/GeoParser/Pipeline/IntersectionMap.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d0/d00/IntersectionMap_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">IntersectionMap.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d0/d00/IntersectionMap_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="../../db/d03/CoordinateXY_8h.html">Engine/Core/Coordinates/CoordinateXY.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../d0/d03/structSegmentId.html">   22</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d0/d03/structSegmentId.html">SegmentId</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="../../d0/d03/structSegmentId.html#aa4066996b92cf49634993a1feb7dc3ba">   24</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d0/d03/structSegmentId.html#aa4066996b92cf49634993a1feb7dc3ba">polylineIndex</a> = 0; </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../d0/d03/structSegmentId.html#a254d56262b72bf2c0d0d6f1f1f4ba8b5">   25</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d0/d03/structSegmentId.html#a254d56262b72bf2c0d0d6f1f1f4ba8b5">pointIndex</a> = 0; </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d0/d03/structSegmentId.html#a1f33c33bbea331315b2611465fc9a434">   27</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="../../d0/d03/structSegmentId.html#a1f33c33bbea331315b2611465fc9a434">operator==</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../d0/d03/structSegmentId.html">SegmentId</a>&amp; o)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d0/d03/structSegmentId.html#aa4066996b92cf49634993a1feb7dc3ba">polylineIndex</a> == o.<a class="code hl_variable" href="../../d0/d03/structSegmentId.html#aa4066996b92cf49634993a1feb7dc3ba">polylineIndex</a></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            &amp;&amp; <a class="code hl_variable" href="../../d0/d03/structSegmentId.html#a254d56262b72bf2c0d0d6f1f1f4ba8b5">pointIndex</a> == o.<a class="code hl_variable" href="../../d0/d03/structSegmentId.html#a254d56262b72bf2c0d0d6f1f1f4ba8b5">pointIndex</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
+</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>};</div>
+</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="};">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="../../db/d00/structIntersectionPoint.html">   46</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../db/d00/structIntersectionPoint.html">IntersectionPoint</a></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="../../db/d00/structIntersectionPoint.html#a71beecfb7cc905e39a0744727ea19292">   48</a></span>    <a class="code hl_class" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> <a class="code hl_variable" href="../../db/d00/structIntersectionPoint.html#a71beecfb7cc905e39a0744727ea19292">point</a>; </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../db/d00/structIntersectionPoint.html#ad2c12b707a0c180dc430a8f25ee9a286">   49</a></span>    <span class="keywordtype">double</span>       <a class="code hl_variable" href="../../db/d00/structIntersectionPoint.html#ad2c12b707a0c180dc430a8f25ee9a286">t</a> = 0; </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="../../db/d00/structIntersectionPoint.html#aba1c207dd6faf8dbd901fa8689e66afd">   50</a></span>    <span class="keywordtype">double</span>       <a class="code hl_variable" href="../../db/d00/structIntersectionPoint.html#aba1c207dd6faf8dbd901fa8689e66afd">u</a> = 0; </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="../../db/d00/structIntersectionPoint.html#a61d4488a06bad513230ec79fd1b9b568">   51</a></span>    <a class="code hl_struct" href="../../d0/d03/structSegmentId.html">SegmentId</a>    <a class="code hl_variable" href="../../db/d00/structIntersectionPoint.html#a61d4488a06bad513230ec79fd1b9b568">other</a>; </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>};</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="foldopen" id="foldopen00060" data-start="{" data-end="};">
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="../../dd/d01/structGridCell.html">   60</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../dd/d01/structGridCell.html">GridCell</a></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>{</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="../../dd/d01/structGridCell.html#a97f9a127d90453918ca1fd0dedbb0ab7">   62</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="../../dd/d01/structGridCell.html#a97f9a127d90453918ca1fd0dedbb0ab7">col</a> = 0; </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="../../dd/d01/structGridCell.html#afe7a0e4f79bb1122bc782fa5c1c98b3f">   63</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="../../dd/d01/structGridCell.html#afe7a0e4f79bb1122bc782fa5c1c98b3f">row</a> = 0; </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="../../dd/d01/structGridCell.html#ace0eb9d2df9b3e12f465abc93a6d58d1">   65</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="../../dd/d01/structGridCell.html#ace0eb9d2df9b3e12f465abc93a6d58d1">operator==</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../dd/d01/structGridCell.html">GridCell</a>&amp; o)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="../../dd/d01/structGridCell.html#a97f9a127d90453918ca1fd0dedbb0ab7">col</a> == o.<a class="code hl_variable" href="../../dd/d01/structGridCell.html#a97f9a127d90453918ca1fd0dedbb0ab7">col</a> &amp;&amp; <a class="code hl_variable" href="../../dd/d01/structGridCell.html#afe7a0e4f79bb1122bc782fa5c1c98b3f">row</a> == o.<a class="code hl_variable" href="../../dd/d01/structGridCell.html#afe7a0e4f79bb1122bc782fa5c1c98b3f">row</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
+</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="};">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="../../d2/d01/structGridCellHash.html">   77</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d2/d01/structGridCellHash.html">GridCellHash</a></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>{</div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="../../d2/d01/structGridCellHash.html#ac617a1bc88f1d84a39b75944174fb6e1">   79</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="../../d2/d01/structGridCellHash.html#ac617a1bc88f1d84a39b75944174fb6e1">operator()</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../dd/d01/structGridCell.html">GridCell</a>&amp; c)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="comment">// Décalage pour gérer les indices négatifs</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keyword">const</span> <span class="keywordtype">size_t</span> a = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(c.<a class="code hl_variable" href="../../dd/d01/structGridCell.html#a97f9a127d90453918ca1fd0dedbb0ab7">col</a> + 10000);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keyword">const</span> <span class="keywordtype">size_t</span> b = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(c.<a class="code hl_variable" href="../../dd/d01/structGridCell.html#afe7a0e4f79bb1122bc782fa5c1c98b3f">row</a> + 10000);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">return</span> (a + b) * (a + b + 1) / 2 + b;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>};</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="../../d0/d00/IntersectionMap_8h.html#ab7202ff7152c720e8ccbfe5d1d0168b2">   94</a></span><span class="keyword">using </span><a class="code hl_typedef" href="../../d0/d00/IntersectionMap_8h.html#ab7202ff7152c720e8ccbfe5d1d0168b2">SpatialGrid</a> = std::unordered_map&lt;<a class="code hl_struct" href="../../dd/d01/structGridCell.html">GridCell</a>,</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    std::vector&lt;SegmentId&gt;,</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <a class="code hl_struct" href="../../d2/d01/structGridCellHash.html">GridCellHash</a>&gt;;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="foldopen" id="foldopen00105" data-start="{" data-end="};">
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="../../de/d00/structIntersectionData.html">  105</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../de/d00/structIntersectionData.html">IntersectionData</a></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>{</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="../../de/d00/structIntersectionData.html#a4b07b650402c5547143ee5e29a9b9bf6">  111</a></span>    std::unordered_map&lt;size_t, std::vector&lt;IntersectionPoint&gt;&gt; <a class="code hl_variable" href="../../de/d00/structIntersectionData.html#a4b07b650402c5547143ee5e29a9b9bf6">intersections</a>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="../../de/d00/structIntersectionData.html#a5d61821568fb7bd4e48264f20435ff91">  114</a></span>    <a class="code hl_typedef" href="../../d0/d00/IntersectionMap_8h.html#ab7202ff7152c720e8ccbfe5d1d0168b2">SpatialGrid</a> <a class="code hl_variable" href="../../de/d00/structIntersectionData.html#a5d61821568fb7bd4e48264f20435ff91">grid</a>;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="../../de/d00/structIntersectionData.html#a0e6e0f0b1478ca49254c59d01dad957a">  117</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="../../de/d00/structIntersectionData.html#a0e6e0f0b1478ca49254c59d01dad957a">cellSize</a> = 500.0;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="../../de/d00/structIntersectionData.html#a136571e2bc9e39ef76fbfd5c3f5bbcb9">  120</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../de/d00/structIntersectionData.html#a136571e2bc9e39ef76fbfd5c3f5bbcb9">totalIntersections</a> = 0;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="foldopen" id="foldopen00123" data-start="{" data-end="}">
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="../../de/d00/structIntersectionData.html#a786bfba9fcd9cdf83516f9fb83b55421">  123</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d00/structIntersectionData.html#a786bfba9fcd9cdf83516f9fb83b55421">clear</a>()</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    {</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <a class="code hl_variable" href="../../de/d00/structIntersectionData.html#a4b07b650402c5547143ee5e29a9b9bf6">intersections</a>.clear();</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <a class="code hl_variable" href="../../de/d00/structIntersectionData.html#a5d61821568fb7bd4e48264f20435ff91">grid</a>.clear();</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <a class="code hl_variable" href="../../de/d00/structIntersectionData.html#a136571e2bc9e39ef76fbfd5c3f5bbcb9">totalIntersections</a> = 0;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    }</div>
+</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>};</div>
+</div>
+<div class="ttc" id="aCoordinateXY_8h_html"><div class="ttname"><a href="../../db/d03/CoordinateXY_8h.html">CoordinateXY.h</a></div><div class="ttdoc">Représentation d'une coordonnée plane en mètres (système métrique UTM).</div></div>
+<div class="ttc" id="aIntersectionMap_8h_html_ab7202ff7152c720e8ccbfe5d1d0168b2"><div class="ttname"><a href="../../d0/d00/IntersectionMap_8h.html#ab7202ff7152c720e8ccbfe5d1d0168b2">SpatialGrid</a></div><div class="ttdeci">std::unordered_map&lt; GridCell, std::vector&lt; SegmentId &gt;, GridCellHash &gt; SpatialGrid</div><div class="ttdoc">Grille spatiale : cellule UTM → liste des segments la traversant.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:96</div></div>
+<div class="ttc" id="aclassCoordinateXY_html"><div class="ttname"><a href="../../df/d01/classCoordinateXY.html">CoordinateXY</a></div><div class="ttdoc">Coordonnée plane en mètres dans un système métrique (UTM ou similaire).</div><div class="ttdef"><b>Definition</b> CoordinateXY.h:23</div></div>
+<div class="ttc" id="astructGridCellHash_html"><div class="ttname"><a href="../../d2/d01/structGridCellHash.html">GridCellHash</a></div><div class="ttdoc">Fonction de hachage pour GridCell — Cantor pairing.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:78</div></div>
+<div class="ttc" id="astructGridCellHash_html_ac617a1bc88f1d84a39b75944174fb6e1"><div class="ttname"><a href="../../d2/d01/structGridCellHash.html#ac617a1bc88f1d84a39b75944174fb6e1">GridCellHash::operator()</a></div><div class="ttdeci">size_t operator()(const GridCell &amp;c) const</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:79</div></div>
+<div class="ttc" id="astructGridCell_html"><div class="ttname"><a href="../../dd/d01/structGridCell.html">GridCell</a></div><div class="ttdoc">Clé de cellule de la grille spatiale de binning.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:61</div></div>
+<div class="ttc" id="astructGridCell_html_a97f9a127d90453918ca1fd0dedbb0ab7"><div class="ttname"><a href="../../dd/d01/structGridCell.html#a97f9a127d90453918ca1fd0dedbb0ab7">GridCell::col</a></div><div class="ttdeci">int col</div><div class="ttdoc">Indice de colonne (axe X UTM).</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:62</div></div>
+<div class="ttc" id="astructGridCell_html_ace0eb9d2df9b3e12f465abc93a6d58d1"><div class="ttname"><a href="../../dd/d01/structGridCell.html#ace0eb9d2df9b3e12f465abc93a6d58d1">GridCell::operator==</a></div><div class="ttdeci">bool operator==(const GridCell &amp;o) const</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:65</div></div>
+<div class="ttc" id="astructGridCell_html_afe7a0e4f79bb1122bc782fa5c1c98b3f"><div class="ttname"><a href="../../dd/d01/structGridCell.html#afe7a0e4f79bb1122bc782fa5c1c98b3f">GridCell::row</a></div><div class="ttdeci">int row</div><div class="ttdoc">Indice de ligne (axe Y UTM).</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:63</div></div>
+<div class="ttc" id="astructIntersectionData_html"><div class="ttname"><a href="../../de/d00/structIntersectionData.html">IntersectionData</a></div><div class="ttdoc">Résultat de Phase2_GeometricIntersector.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:106</div></div>
+<div class="ttc" id="astructIntersectionData_html_a0e6e0f0b1478ca49254c59d01dad957a"><div class="ttname"><a href="../../de/d00/structIntersectionData.html#a0e6e0f0b1478ca49254c59d01dad957a">IntersectionData::cellSize</a></div><div class="ttdeci">double cellSize</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:117</div></div>
+<div class="ttc" id="astructIntersectionData_html_a136571e2bc9e39ef76fbfd5c3f5bbcb9"><div class="ttname"><a href="../../de/d00/structIntersectionData.html#a136571e2bc9e39ef76fbfd5c3f5bbcb9">IntersectionData::totalIntersections</a></div><div class="ttdeci">size_t totalIntersections</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:120</div></div>
+<div class="ttc" id="astructIntersectionData_html_a4b07b650402c5547143ee5e29a9b9bf6"><div class="ttname"><a href="../../de/d00/structIntersectionData.html#a4b07b650402c5547143ee5e29a9b9bf6">IntersectionData::intersections</a></div><div class="ttdeci">std::unordered_map&lt; size_t, std::vector&lt; IntersectionPoint &gt; &gt; intersections</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:111</div></div>
+<div class="ttc" id="astructIntersectionData_html_a5d61821568fb7bd4e48264f20435ff91"><div class="ttname"><a href="../../de/d00/structIntersectionData.html#a5d61821568fb7bd4e48264f20435ff91">IntersectionData::grid</a></div><div class="ttdeci">SpatialGrid grid</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:114</div></div>
+<div class="ttc" id="astructIntersectionData_html_a786bfba9fcd9cdf83516f9fb83b55421"><div class="ttname"><a href="../../de/d00/structIntersectionData.html#a786bfba9fcd9cdf83516f9fb83b55421">IntersectionData::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Vide les données — libère la mémoire après Phase 3.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:123</div></div>
+<div class="ttc" id="astructIntersectionPoint_html"><div class="ttname"><a href="../../db/d00/structIntersectionPoint.html">IntersectionPoint</a></div><div class="ttdoc">Point d'intersection entre deux segments, avec paramètres de position.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:47</div></div>
+<div class="ttc" id="astructIntersectionPoint_html_a61d4488a06bad513230ec79fd1b9b568"><div class="ttname"><a href="../../db/d00/structIntersectionPoint.html#a61d4488a06bad513230ec79fd1b9b568">IntersectionPoint::other</a></div><div class="ttdeci">SegmentId other</div><div class="ttdoc">Identifiant du segment croisé.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:51</div></div>
+<div class="ttc" id="astructIntersectionPoint_html_a71beecfb7cc905e39a0744727ea19292"><div class="ttname"><a href="../../db/d00/structIntersectionPoint.html#a71beecfb7cc905e39a0744727ea19292">IntersectionPoint::point</a></div><div class="ttdeci">CoordinateXY point</div><div class="ttdoc">Coordonnées UTM du point d'intersection.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:48</div></div>
+<div class="ttc" id="astructIntersectionPoint_html_aba1c207dd6faf8dbd901fa8689e66afd"><div class="ttname"><a href="../../db/d00/structIntersectionPoint.html#aba1c207dd6faf8dbd901fa8689e66afd">IntersectionPoint::u</a></div><div class="ttdeci">double u</div><div class="ttdoc">Position relative sur le segment croisé (0..1).</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:50</div></div>
+<div class="ttc" id="astructIntersectionPoint_html_ad2c12b707a0c180dc430a8f25ee9a286"><div class="ttname"><a href="../../db/d00/structIntersectionPoint.html#ad2c12b707a0c180dc430a8f25ee9a286">IntersectionPoint::t</a></div><div class="ttdeci">double t</div><div class="ttdoc">Position relative sur le segment source (0..1).</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:49</div></div>
+<div class="ttc" id="astructSegmentId_html"><div class="ttname"><a href="../../d0/d03/structSegmentId.html">SegmentId</a></div><div class="ttdoc">Identifiant unique d'un segment dans le RawNetwork.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:23</div></div>
+<div class="ttc" id="astructSegmentId_html_a1f33c33bbea331315b2611465fc9a434"><div class="ttname"><a href="../../d0/d03/structSegmentId.html#a1f33c33bbea331315b2611465fc9a434">SegmentId::operator==</a></div><div class="ttdeci">bool operator==(const SegmentId &amp;o) const</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:27</div></div>
+<div class="ttc" id="astructSegmentId_html_a254d56262b72bf2c0d0d6f1f1f4ba8b5"><div class="ttname"><a href="../../d0/d03/structSegmentId.html#a254d56262b72bf2c0d0d6f1f1f4ba8b5">SegmentId::pointIndex</a></div><div class="ttdeci">size_t pointIndex</div><div class="ttdoc">Indice du premier point du segment.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:25</div></div>
+<div class="ttc" id="astructSegmentId_html_aa4066996b92cf49634993a1feb7dc3ba"><div class="ttname"><a href="../../d0/d03/structSegmentId.html#aa4066996b92cf49634993a1feb7dc3ba">SegmentId::polylineIndex</a></div><div class="ttdeci">size_t polylineIndex</div><div class="ttdoc">Indice dans RawNetwork::polylines.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:24</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_a02795b5ac40d9afe5fe94a3ec34902b.html">GeoParser</a></li><li class="navelem"><a class="el" href="../../dir_b5f366c770f71ecee1df61f9a225a87c.html">Pipeline</a></li><li class="navelem"><a class="el" href="../../d0/d00/IntersectionMap_8h.html">IntersectionMap.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

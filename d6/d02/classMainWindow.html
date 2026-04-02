@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('d6/d02/classMainWindow.html','../../')
 <div class="dynheader">
 Graphe de collaboration de MainWindow:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d2/d00/classMainWindow__coll__graph.svg" width="1374" height="4330"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d2/d00/classMainWindow__coll__graph.svg" width="1644" height="4410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -116,7 +116,7 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memdesc:a49399147361e2b1d1c52c69d0cea548d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit la fenêtre principale (sans la créer physiquement).  <br /></td></tr>
 <tr class="separator:a49399147361e2b1d1c52c69d0cea548d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a627d9feed19c3096079d91d6d38b9bf9" id="r_a627d9feed19c3096079d91d6d38b9bf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9">create</a> ()</td></tr>
-<tr class="memdesc:a627d9feed19c3096079d91d6d38b9bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée et affiche la fenêtre Win32, puis initialise la <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a>.  <br /></td></tr>
+<tr class="memdesc:a627d9feed19c3096079d91d6d38b9bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée et affiche la fenêtre Win32, initialise la <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a> et charge la <a class="el" href="../../dd/d03/structParserConfig.html">ParserConfig</a> depuis le fichier .ini.  <br /></td></tr>
 <tr class="separator:a627d9feed19c3096079d91d6d38b9bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -131,37 +131,46 @@ Fonctions membres privées</h2></td></tr>
 <tr class="memdesc:ab85682874f3ab5dfa81f782f889d8556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatcher principal des messages de la fenêtre.  <br /></td></tr>
 <tr class="separator:ab85682874f3ab5dfa81f782f889d8556"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbecf0f64f48c5c868168884bab52356" id="r_afbecf0f64f48c5c868168884bab52356"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#afbecf0f64f48c5c868168884bab52356">onCommand</a> (HWND hWnd, int commandId)</td></tr>
-<tr class="memdesc:afbecf0f64f48c5c868168884bab52356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère les commandes menu (<code>WM_COMMAND</code>).  <br /></td></tr>
+<tr class="memdesc:afbecf0f64f48c5c868168884bab52356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère les commandes menu et boutons (<code>WM_COMMAND</code>).  <br /></td></tr>
 <tr class="separator:afbecf0f64f48c5c868168884bab52356"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a358c35e21b8d81e718d259a502648dd6" id="r_a358c35e21b8d81e718d259a502648dd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a358c35e21b8d81e718d259a502648dd6">onProgressUpdate</a> (int progressValue)</td></tr>
-<tr class="memdesc:a358c35e21b8d81e718d259a502648dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère la mise à jour de la progression (<code>WM_PROGRESS_UPDATE</code>).  <br /></td></tr>
-<tr class="separator:a358c35e21b8d81e718d259a502648dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5a3e64fba34c9c77f080a55f521215d" id="r_af5a3e64fba34c9c77f080a55f521215d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#af5a3e64fba34c9c77f080a55f521215d">onProgressUpdate</a> (int progress, std::wstring *label)</td></tr>
+<tr class="memdesc:af5a3e64fba34c9c77f080a55f521215d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère la mise à jour de la progression (<code>WM_PROGRESS_UPDATE</code>).  <br /></td></tr>
+<tr class="separator:af5a3e64fba34c9c77f080a55f521215d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90cae565f67d1291d690d974547041a0" id="r_a90cae565f67d1291d690d974547041a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a90cae565f67d1291d690d974547041a0">onParsingSuccess</a> (HWND hWnd)</td></tr>
 <tr class="memdesc:a90cae565f67d1291d690d974547041a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère la fin réussie du parsing (<code>WM_PARSING_SUCCESS</code>).  <br /></td></tr>
 <tr class="separator:a90cae565f67d1291d690d974547041a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4b37ea813301090c70b6e618fa24221" id="r_ab4b37ea813301090c70b6e618fa24221"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#ab4b37ea813301090c70b6e618fa24221">onParsingError</a> (HWND hWnd, LPARAM lParam)</td></tr>
 <tr class="memdesc:ab4b37ea813301090c70b6e618fa24221"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère un échec de parsing (<code>WM_PARSING_ERROR</code>).  <br /></td></tr>
 <tr class="separator:ab4b37ea813301090c70b6e618fa24221"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac72307a7be12c64c618d6bb9f48194c8" id="r_ac72307a7be12c64c618d6bb9f48194c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#ac72307a7be12c64c618d6bb9f48194c8">onParsingCancelled</a> ()</td></tr>
+<tr class="memdesc:ac72307a7be12c64c618d6bb9f48194c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère une annulation propre du parsing (<code>WM_PARSING_CANCELLED</code>).  <br /></td></tr>
+<tr class="separator:ac72307a7be12c64c618d6bb9f48194c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a889cc45fb741e12015f4af9f01acaa96" id="r_a889cc45fb741e12015f4af9f01acaa96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a889cc45fb741e12015f4af9f01acaa96">onFileOpen</a> (HWND hWnd)</td></tr>
 <tr class="memdesc:a889cc45fb741e12015f4af9f01acaa96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre le sélecteur de fichier et lance le parsing asynchrone.  <br /></td></tr>
 <tr class="separator:a889cc45fb741e12015f4af9f01acaa96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4429f521642e48894e0efce5b41bd0ae" id="r_a4429f521642e48894e0efce5b41bd0ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a4429f521642e48894e0efce5b41bd0ae">onFileExport</a> (HWND hWnd)</td></tr>
-<tr class="memdesc:a4429f521642e48894e0efce5b41bd0ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre le dialogue d'exportation et déclenche l'export GeoJSON.  <br /></td></tr>
+<tr class="memdesc:a4429f521642e48894e0efce5b41bd0ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre le dialogue d'export et déclenche l'export GeoJSON.  <br /></td></tr>
 <tr class="separator:a4429f521642e48894e0efce5b41bd0ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fc75aea11bc83f1cc48e53e52d2bdb7" id="r_a6fc75aea11bc83f1cc48e53e52d2bdb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a6fc75aea11bc83f1cc48e53e52d2bdb7">onCancelButtonClick</a> ()</td></tr>
+<tr class="memdesc:a6fc75aea11bc83f1cc48e53e52d2bdb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Demande l'annulation du parsing en cours via <a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a>.  <br /></td></tr>
+<tr class="separator:a6fc75aea11bc83f1cc48e53e52d2bdb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7139259c94bbdfe4cc4e98c6574dda93" id="r_a7139259c94bbdfe4cc4e98c6574dda93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a7139259c94bbdfe4cc4e98c6574dda93">onParserSettings</a> ()</td></tr>
+<tr class="memdesc:a7139259c94bbdfe4cc4e98c6574dda93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre le dialogue des paramètres du parser (<code>IDM_PARSER_SETTINGS</code>).  <br /></td></tr>
+<tr class="separator:a7139259c94bbdfe4cc4e98c6574dda93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74866b6b18c52698bdb52f339ad80830" id="r_a74866b6b18c52698bdb52f339ad80830"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a74866b6b18c52698bdb52f339ad80830">onSizeUpdate</a> ()</td></tr>
-<tr class="memdesc:a74866b6b18c52698bdb52f339ad80830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quand la fenêtre est redimensionnée, ajuste les éléments graphiques en conséquence.  <br /></td></tr>
+<tr class="memdesc:a74866b6b18c52698bdb52f339ad80830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelé lors d'un redimensionnement — ajuste WebView et <a class="el" href="../../d4/d03/classPCCPanel.html">PCCPanel</a>.  <br /></td></tr>
 <tr class="separator:a74866b6b18c52698bdb52f339ad80830"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71a94b472662a62e570443cff0e59ccd" id="r_a71a94b472662a62e570443cff0e59ccd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a71a94b472662a62e570443cff0e59ccd">onDestroy</a> ()</td></tr>
-<tr class="memdesc:a71a94b472662a62e570443cff0e59ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nettoie les ressources avant la destruction de la fenêtre (WM_DESTROY)  <br /></td></tr>
+<tr class="memdesc:a71a94b472662a62e570443cff0e59ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nettoie les ressources avant la destruction (<code>WM_DESTROY</code>).  <br /></td></tr>
 <tr class="separator:a71a94b472662a62e570443cff0e59ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e84464d583e27d6f978385b22a5945f" id="r_a6e84464d583e27d6f978385b22a5945f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a6e84464d583e27d6f978385b22a5945f">onWebMessage</a> (const std::string &amp;jsonMessage)</td></tr>
-<tr class="memdesc:a6e84464d583e27d6f978385b22a5945f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatcher principal des messages JSON reçus depuis <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>.  <br /></td></tr>
+<tr class="memdesc:a6e84464d583e27d6f978385b22a5945f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatcher des messages JSON reçus depuis <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>.  <br /></td></tr>
 <tr class="separator:a6e84464d583e27d6f978385b22a5945f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a242d9acf230544637908fc2cf31f1284" id="r_a242d9acf230544637908fc2cf31f1284"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a242d9acf230544637908fc2cf31f1284">onSwitchClick</a> (const std::string &amp;switchId)</td></tr>
-<tr class="memdesc:a242d9acf230544637908fc2cf31f1284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour l'état opérationnel d'un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> après un clic.  <br /></td></tr>
+<tr class="memdesc:a242d9acf230544637908fc2cf31f1284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour l'état d'un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> après un clic <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>.  <br /></td></tr>
 <tr class="separator:a242d9acf230544637908fc2cf31f1284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a4521cbfe1f7ce92f6a0e12ff836b9d" id="r_a1a4521cbfe1f7ce92f6a0e12ff836b9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a1a4521cbfe1f7ce92f6a0e12ff836b9d">onTogglePCC</a> ()</td></tr>
-<tr class="memdesc:a1a4521cbfe1f7ce92f6a0e12ff836b9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bascule la visibilité du panneau PCC.  <br /></td></tr>
+<tr class="memdesc:a1a4521cbfe1f7ce92f6a0e12ff836b9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bascule la visibilité du panneau PCC (F2 ou IDM_VIEW_PCC).  <br /></td></tr>
 <tr class="separator:a1a4521cbfe1f7ce92f6a0e12ff836b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -178,12 +187,17 @@ Attributs privés</h2></td></tr>
 <tr class="separator:a7851704517af5a0e647770d2d5bbbb41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7868dafb194e564e76bd19c6343aaf2" id="r_af7868dafb194e564e76bd19c6343aaf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#af7868dafb194e564e76bd19c6343aaf2">m_progressBar</a></td></tr>
 <tr class="separator:af7868dafb194e564e76bd19c6343aaf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af932420967655fb2b8dcda78d8fa7bf0" id="r_af932420967655fb2b8dcda78d8fa7bf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d03/classLogger.html">Logger</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a> {&quot;HMI&quot;}</td></tr>
+<tr class="memitem:ae0e8942e792e2040a5e6107d03d86c16" id="r_ae0e8942e792e2040a5e6107d03d86c16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d03/structParserConfig.html">ParserConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#ae0e8942e792e2040a5e6107d03d86c16">m_parserConfig</a></td></tr>
+<tr class="separator:ae0e8942e792e2040a5e6107d03d86c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae098fa8e64004e845c7135cd70315d61" id="r_ae098fa8e64004e845c7135cd70315d61"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#ae098fa8e64004e845c7135cd70315d61">m_parserIniPath</a></td></tr>
+<tr class="separator:ae098fa8e64004e845c7135cd70315d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a217b4468eb52494c85967669763b1962" id="r_a217b4468eb52494c85967669763b1962"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a217b4468eb52494c85967669763b1962">m_parserTask</a></td></tr>
+<tr class="separator:a217b4468eb52494c85967669763b1962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af932420967655fb2b8dcda78d8fa7bf0" id="r_af932420967655fb2b8dcda78d8fa7bf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d03/classLogger.html">Logger</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a> { &quot;HMI&quot; }</td></tr>
 <tr class="separator:af932420967655fb2b8dcda78d8fa7bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ba8e3b9ed7402c7cc1ff2cc78db9c1c" id="r_a0ba8e3b9ed7402c7cc1ff2cc78db9c1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d02/classWebViewPanel.html">WebViewPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a0ba8e3b9ed7402c7cc1ff2cc78db9c1c">m_webViewPanel</a> {<a class="el" href="../../d6/d02/classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a>}</td></tr>
+<tr class="memitem:a0ba8e3b9ed7402c7cc1ff2cc78db9c1c" id="r_a0ba8e3b9ed7402c7cc1ff2cc78db9c1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d02/classWebViewPanel.html">WebViewPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#a0ba8e3b9ed7402c7cc1ff2cc78db9c1c">m_webViewPanel</a> { <a class="el" href="../../d6/d02/classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a> }</td></tr>
 <tr class="separator:a0ba8e3b9ed7402c7cc1ff2cc78db9c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb4ab6a6334f26620a1cd0a5b6a5ec92" id="r_adb4ab6a6334f26620a1cd0a5b6a5ec92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d03/classPCCPanel.html">PCCPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#adb4ab6a6334f26620a1cd0a5b6a5ec92">m_pccPanel</a> {<a class="el" href="../../d6/d02/classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a>}</td></tr>
-<tr class="memdesc:adb4ab6a6334f26620a1cd0a5b6a5ec92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Panneau PCC superposé, togglé via F2 ou menu Vue → Panneau PCC. Créé dans <a class="el" href="../../d6/d02/classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9">create</a>, masqué par défaut.  <br /></td></tr>
+<tr class="memitem:adb4ab6a6334f26620a1cd0a5b6a5ec92" id="r_adb4ab6a6334f26620a1cd0a5b6a5ec92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d03/classPCCPanel.html">PCCPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d02/classMainWindow.html#adb4ab6a6334f26620a1cd0a5b6a5ec92">m_pccPanel</a> { <a class="el" href="../../d6/d02/classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a> }</td></tr>
 <tr class="separator:adb4ab6a6334f26620a1cd0a5b6a5ec92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
@@ -191,8 +205,8 @@ Attributs privés</h2></td></tr>
 <p>Responsabilités :</p><ul>
 <li>Créer et afficher la fenêtre principale.</li>
 <li>Gérer l'ensemble des messages Win32 entrants via <a class="el" href="../../d6/d02/classMainWindow.html#ab85682874f3ab5dfa81f782f889d8556">handleMessage</a>.</li>
-<li>Déclencher l'ouverture d'un fichier GeoJSON et le parsing asynchrone.</li>
-<li>Mettre à jour la <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a> en réponse aux messages inter-threads. </li>
+<li>Déclencher l'ouverture d'un fichier GeoJSON et le parsing asynchrone via <a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a>.</li>
+<li>Mettre à jour la <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a> (label + valeur + bouton Cancel) en réponse aux messages inter-threads. </li>
 </ul>
 </div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a49399147361e2b1d1c52c69d0cea548d" name="a49399147361e2b1d1c52c69d0cea548d"></a>
@@ -262,7 +276,7 @@ Attributs privés</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Crée et affiche la fenêtre Win32, puis initialise la <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a>. </p>
+<p>Crée et affiche la fenêtre Win32, initialise la <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a> et charge la <a class="el" href="../../dd/d03/structParserConfig.html">ParserConfig</a> depuis le fichier .ini. </p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::runtime_error</td><td>Si <code>CreateWindowW</code> retourne <code>nullptr</code>. </td></tr>
@@ -319,17 +333,34 @@ Attributs privés</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Dispatcher principal des messages de la fenêtre. </p>
-<p>Reçoit chaque message depuis <a class="el" href="../../d6/d02/classMainWindow.html#a332648d0a0caec8070b05bc27bb9a14b">windowProc</a> et le route vers le gestionnaire spécialisé approprié.</p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">hWnd</td><td>Handle de la fenêtre. </td></tr>
-    <tr><td class="paramname">message</td><td>Identifiant du message. </td></tr>
-    <tr><td class="paramname">wParam</td><td>Paramètre WPARAM. </td></tr>
-    <tr><td class="paramname">lParam</td><td>Paramètre LPARAM.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Résultat du traitement. </dd></dl>
+
+</div>
+</div>
+<a id="a6fc75aea11bc83f1cc48e53e52d2bdb7" name="a6fc75aea11bc83f1cc48e53e52d2bdb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fc75aea11bc83f1cc48e53e52d2bdb7">&#9670;&#160;</a></span>onCancelButtonClick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::onCancelButtonClick </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Demande l'annulation du parsing en cours via <a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a>. </p>
+<p>Appelé quand l'utilisateur clique sur le bouton "Annuler" (<code>IDC_CANCEL_PARSING</code>). </p>
 
 </div>
 </div>
@@ -367,8 +398,8 @@ Attributs privés</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Gère les commandes menu (<code>WM_COMMAND</code>). </p>
-<p>Traite les identifiants <code>IDM_FILE_OPEN</code>, <code>IDM_ABOUT</code> et <code>IDM_EXIT</code>.</p>
+<p>Gère les commandes menu et boutons (<code>WM_COMMAND</code>). </p>
+<p>Traite : IDM_FILE_OPEN, IDM_FILE_EXPORT, IDM_VIEW_PCC, IDM_PARSER_SETTINGS, IDM_ABOUT, IDM_EXIT, IDC_CANCEL_PARSING.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">hWnd</td><td>Handle de la fenêtre. </td></tr>
@@ -402,7 +433,7 @@ Attributs privés</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Nettoie les ressources avant la destruction de la fenêtre (WM_DESTROY) </p>
+<p>Nettoie les ressources avant la destruction (<code>WM_DESTROY</code>). </p>
 
 </div>
 </div>
@@ -430,11 +461,10 @@ Attributs privés</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Ouvre le dialogue d'exportation et déclenche l'export GeoJSON. </p>
-<p>Délègue la sélection à un dialogue d'exportation <a class="el" href="../../d5/d03/classFileOpenDialog.html">FileOpenDialog</a>, puis déclenche puis déclenche l'export via un module dédié <a class="el" href="../../d7/d03/classTopologyRenderer.html">TopologyRenderer</a></p>
+<p>Ouvre le dialogue d'export et déclenche l'export GeoJSON. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">hWnd</td><td>Handle de la fenêtre principale (propriétaire du dialogue). </td></tr>
+    <tr><td class="paramname">hWnd</td><td>Handle de la fenêtre principale. </td></tr>
   </table>
   </dd>
 </dl>
@@ -466,13 +496,68 @@ Attributs privés</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Ouvre le sélecteur de fichier et lance le parsing asynchrone. </p>
-<p>Délègue la sélection à <a class="el" href="../../d5/d03/classFileOpenDialog.html">FileOpenDialog</a>, puis déclenche <a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a> si un fichier est sélectionné.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">hWnd</td><td>Handle de la fenêtre principale (propriétaire du dialogue). </td></tr>
+    <tr><td class="paramname">hWnd</td><td>Handle de la fenêtre principale. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a7139259c94bbdfe4cc4e98c6574dda93" name="a7139259c94bbdfe4cc4e98c6574dda93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7139259c94bbdfe4cc4e98c6574dda93">&#9670;&#160;</a></span>onParserSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::onParserSettings </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ouvre le dialogue des paramètres du parser (<code>IDM_PARSER_SETTINGS</code>). </p>
+<p>Si l'utilisateur valide, sauvegarde la config dans <code>m_parserIniPath</code>. Le prochain parsing utilisera les nouveaux paramètres. </p>
+
+</div>
+</div>
+<a id="ac72307a7be12c64c618d6bb9f48194c8" name="ac72307a7be12c64c618d6bb9f48194c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac72307a7be12c64c618d6bb9f48194c8">&#9670;&#160;</a></span>onParsingCancelled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::onParsingCancelled </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gère une annulation propre du parsing (<code>WM_PARSING_CANCELLED</code>). </p>
+<p>Réinitialise la <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a> sans afficher d'erreur. </p>
 
 </div>
 </div>
@@ -511,11 +596,11 @@ Attributs privés</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gère un échec de parsing (<code>WM_PARSING_ERROR</code>). </p>
-<p>Affiche le message d'erreur transporté par <code>lParam</code>, libère la mémoire allouée par le thread de parsing, puis masque la <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a>.</p>
+<p>Affiche le message d'erreur transporté par <code>lParam</code>, libère la mémoire allouée par le thread de parsing, puis réinitialise la <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a>.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">hWnd</td><td>Handle de la fenêtre parente. </td></tr>
-    <tr><td class="paramname">lParam</td><td>Pointeur vers un <code>std::string</code> alloué par le thread de parsing. Ce pointeur est libéré ici après utilisation. </td></tr>
+    <tr><td class="paramname">lParam</td><td>Pointeur vers un <code>std::wstring</code> alloué par <a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -547,18 +632,18 @@ Attributs privés</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gère la fin réussie du parsing (<code>WM_PARSING_SUCCESS</code>). </p>
-<p>Génère le script d'injection GeoJSON <a class="el" href="../../d7/d03/classTopologyRenderer.html">TopologyRenderer</a> et l'exécute dans le WebView pour afficher la carte.</p>
+<p>Injecte le rendu GeoJSON dans le WebView et réinitialise la <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a>.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">hWnd</td><td>Handle de la fenêtre parente pour la boîte de dialogue. </td></tr>
+    <tr><td class="paramname">hWnd</td><td>Handle de la fenêtre parente. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a358c35e21b8d81e718d259a502648dd6" name="a358c35e21b8d81e718d259a502648dd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a358c35e21b8d81e718d259a502648dd6">&#9670;&#160;</a></span>onProgressUpdate()</h2>
+<a id="af5a3e64fba34c9c77f080a55f521215d" name="af5a3e64fba34c9c77f080a55f521215d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5a3e64fba34c9c77f080a55f521215d">&#9670;&#160;</a></span>onProgressUpdate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -570,8 +655,18 @@ Attributs privés</h2></td></tr>
           <td class="memname">void MainWindow::onProgressUpdate </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>progressValue</em></td><td>)</td>
+          <td class="paramname"><em>progress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::wstring *&#160;</td>
+          <td class="paramname"><em>label</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -582,10 +677,11 @@ Attributs privés</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gère la mise à jour de la progression (<code>WM_PROGRESS_UPDATE</code>). </p>
-<p>Appelé depuis le thread principal en réponse à un <code>PostMessage</code> émis par le thread de parsing.</p>
+<p>Met à jour la barre et le label. Libère le <code>std::wstring*</code> transporté dans <code>lParam</code>, alloué par <a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a>.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">progressValue</td><td>Valeur de progression (0–100). </td></tr>
+    <tr><td class="paramname">progress</td><td>Valeur de progression (0–100), depuis <code>wParam</code>. </td></tr>
+    <tr><td class="paramname">label</td><td>Pointeur vers le label de phase (propriété transférée). </td></tr>
   </table>
   </dd>
 </dl>
@@ -615,13 +711,7 @@ Attributs privés</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Quand la fenêtre est redimensionnée, ajuste les éléments graphiques en conséquence. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">None</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Appelé lors d'un redimensionnement — ajuste WebView et <a class="el" href="../../d4/d03/classPCCPanel.html">PCCPanel</a>. </p>
 
 </div>
 </div>
@@ -649,13 +739,10 @@ Attributs privés</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Met à jour l'état opérationnel d'un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> après un clic. </p>
-<p>Localise le switch par ID dans <a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a>, convertit la chaîne JS "normal"/"deviation" en ActiveBranch, et appelle setActiveBranch().</p>
-<p>Le visuel <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> est déjà à jour (mise à jour optimiste côté JS). Si à l'avenir une validation C++ peut rejeter le changement, envoyer ici un script de correction via executeScript().</p>
+<p>Met à jour l'état d'un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> après un clic <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">switchId</td><td>Identifiant du switch (ex. "sw/0"). </td></tr>
-    <tr><td class="paramname">active</td><td>"normal" ou "deviation". </td></tr>
   </table>
   </dd>
 </dl>
@@ -685,8 +772,7 @@ Attributs privés</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Bascule la visibilité du panneau PCC. </p>
-<p>Délègue à <a class="el" href="../../d4/d03/classPCCPanel.html#a1b37a13eaa0a03be291722243c4daf52">PCCPanel::toggle</a>. Appelé depuis <a class="el" href="../../d6/d02/classMainWindow.html#afbecf0f64f48c5c868168884bab52356">onCommand</a> (IDM_VIEW_PCC) et depuis le gestionnaire <code>WM_KEYDOWN</code> (touche F2). </p>
+<p>Bascule la visibilité du panneau PCC (F2 ou IDM_VIEW_PCC). </p>
 
 </div>
 </div>
@@ -714,8 +800,7 @@ Attributs privés</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Dispatcher principal des messages JSON reçus depuis <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>. </p>
-<p>Branché sur <a class="el" href="../../d3/d02/classWebViewPanel.html" title="Wrapper Win32 autour de WebView2 pour affichage HTML embarqué.">WebViewPanel</a> via setOnMessageReceived() dans <a class="el" href="../../d6/d02/classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar.">create()</a>. Parse le JSON, identifie le champ "type", et délègue au handler spécialisé. Un JSON malformé est loggé et ignoré — jamais de crash.</p>
+<p>Dispatcher des messages JSON reçus depuis <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">jsonMessage</td><td>Contenu brut du postMessage (UTF-8). </td></tr>
@@ -806,7 +891,6 @@ Attributs privés</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Nom de la classe Win32 enregistrée. </p>
 
 </div>
 </div>
@@ -829,7 +913,6 @@ Attributs privés</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Handle de l'instance Win32 de l'application. </p>
 
 </div>
 </div>
@@ -866,7 +949,7 @@ Attributs privés</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/d03/classLogger.html">Logger</a> MainWindow::m_logger {&quot;HMI&quot;}</td>
+          <td class="memname"><a class="el" href="../../db/d03/classLogger.html">Logger</a> MainWindow::m_logger { &quot;HMI&quot; }</td>
         </tr>
       </table>
   </td>
@@ -875,7 +958,7 @@ Attributs privés</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> dédié à la couche HMI, utilisé pour tracer les événements et erreurs liés à l'interface utilisateur. </p>
+<p><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> HMI. </p>
 
 </div>
 </div>
@@ -898,7 +981,75 @@ Attributs privés</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Mode d'affichage initial. </p>
+
+</div>
+</div>
+<a id="ae0e8942e792e2040a5e6107d03d86c16" name="ae0e8942e792e2040a5e6107d03d86c16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0e8942e792e2040a5e6107d03d86c16">&#9670;&#160;</a></span>m_parserConfig</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d03/structParserConfig.html">ParserConfig</a> MainWindow::m_parserConfig</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Configuration du pipeline <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>. Chargée depuis <code>m_parserIniPath</code> au démarrage (<a class="el" href="../../d6/d02/classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9">create</a>), potentiellement modifiée via <a class="el" href="../../d6/d02/classMainWindow.html#a7139259c94bbdfe4cc4e98c6574dda93">onParserSettings</a>. </p>
+
+</div>
+</div>
+<a id="ae098fa8e64004e845c7135cd70315d61" name="ae098fa8e64004e845c7135cd70315d61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae098fa8e64004e845c7135cd70315d61">&#9670;&#160;</a></span>m_parserIniPath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string MainWindow::m_parserIniPath</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Chemin du fichier .ini de configuration du parser. Initialisé par <code><a class="el" href="../../d3/d01/classParserConfigIni.html#a4db9aa616d33e0dba095485d01349fe4" title="Retourne le chemin par défaut du fichier .ini.">ParserConfigIni::defaultPath()</a></code> dans <a class="el" href="../../d6/d02/classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9">create</a>. </p>
+
+</div>
+</div>
+<a id="a217b4468eb52494c85967669763b1962" name="a217b4468eb52494c85967669763b1962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a217b4468eb52494c85967669763b1962">&#9670;&#160;</a></span>m_parserTask</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt;<a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a>&gt; MainWindow::m_parserTask</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Tâche asynchrone du pipeline <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>. Instanciée dans <a class="el" href="../../d6/d02/classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9">create</a> une fois <code>m_hWnd</code> disponible. </p>
 
 </div>
 </div>
@@ -912,7 +1063,7 @@ Attributs privés</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d4/d03/classPCCPanel.html">PCCPanel</a> MainWindow::m_pccPanel {<a class="el" href="../../d6/d02/classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a>}</td>
+          <td class="memname"><a class="el" href="../../d4/d03/classPCCPanel.html">PCCPanel</a> MainWindow::m_pccPanel { <a class="el" href="../../d6/d02/classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a> }</td>
         </tr>
       </table>
   </td>
@@ -921,8 +1072,7 @@ Attributs privés</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Panneau PCC superposé, togglé via F2 ou menu Vue → Panneau PCC. Créé dans <a class="el" href="../../d6/d02/classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9">create</a>, masqué par défaut. </p>
+<p>Panneau PCC superposé — togglé via F2 ou IDM_VIEW_PCC. </p>
 
 </div>
 </div>
@@ -968,7 +1118,6 @@ Attributs privés</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Titre de la fenêtre. </p>
 
 </div>
 </div>
@@ -982,7 +1131,7 @@ Attributs privés</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d3/d02/classWebViewPanel.html">WebViewPanel</a> MainWindow::m_webViewPanel {<a class="el" href="../../d6/d02/classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a>}</td>
+          <td class="memname"><a class="el" href="../../d3/d02/classWebViewPanel.html">WebViewPanel</a> MainWindow::m_webViewPanel { <a class="el" href="../../d6/d02/classMainWindow.html#af932420967655fb2b8dcda78d8fa7bf0">m_logger</a> }</td>
         </tr>
       </table>
   </td>

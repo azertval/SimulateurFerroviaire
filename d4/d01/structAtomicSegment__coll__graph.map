@@ -1,0 +1,11 @@
+<map id="AtomicSegment" name="AtomicSegment">
+<area shape="rect" id="Node000001" title="Segment atomique entre deux nœuds topologiques potentiels." alt="" coords="130,376,289,481"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,233,195,313"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,312,165,361,161,364,126,315"/>
+<area shape="rect" id="Node000003" href="$db/d03/classCoordinateLatLon.html" title="Coordonnée géographique WGS&#45;84 exprimée en degrés décimaux." alt="" coords="23,5,177,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="103,171,103,217,97,217,97,171"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="219,241,421,306"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="299,308,258,364,254,361,295,305"/>
+<area shape="rect" id="Node000005" href="$df/d01/classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire)." alt="" coords="257,5,383,171"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="323,171,323,225,317,225,317,171"/>
+</map>

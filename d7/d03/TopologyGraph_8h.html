@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simulateur Ferroviaire: Référence du fichier SimulateurFerroviaire/Modules/GeoParser/Graph/TopologyGraph.h</title>
+<title>Simulateur Ferroviaire: Référence du fichier SimulateurFerroviaire/Modules/GeoParser/Pipeline/TopologyGraph.h</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -96,56 +96,45 @@ $(document).ready(function(){initNavTree('d7/d03/TopologyGraph_8h.html','../../'
 </div><!--header-->
 <div class="contents">
 
-<p>Graphe planaire non-orienté de nœuds et d'arêtes ferroviaires accrochés.  
+<p>Structures de données produites par <a class="el" href="../../df/d00/classPhase4__TopologyBuilder.html">Phase4_TopologyBuilder</a>.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
-<code>#include &lt;functional&gt;</code><br />
-<code>#include &lt;optional&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
-<code>#include &lt;unordered_map&gt;</code><br />
-<code>#include &lt;utility&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &quot;<a class="el" href="../../dd/d01/TopologyEdge_8h_source.html">TopologyEdge.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../db/d03/CoordinateXY_8h_source.html">Modules/Coordinates/CoordinateXY.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d6/d03/GeoParserEnums_8h_source.html">../Enums/GeoParserEnums.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d6/d01/CoordinateLatLon_8h_source.html">Engine/Core/Coordinates/CoordinateLatLon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../db/d03/CoordinateXY_8h_source.html">Engine/Core/Coordinates/CoordinateXY.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de TopologyGraph.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../da/d01/TopologyGraph_8h__incl.svg" width="1051" height="227"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../da/d01/TopologyGraph_8h__incl.svg" width="487" height="154"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d7/d01/TopologyGraph_8h__dep__incl.svg" width="1076" height="462"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d7/d01/TopologyGraph_8h__dep__incl.svg" width="2427" height="374"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="../../d7/d03/TopologyGraph_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d00/classTopologyGraph.html">TopologyGraph</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Graphe planaire non-orienté utilisé pour la construction de la topologie ferroviaire.  <a href="../../db/d00/classTopologyGraph.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/structTopoNode.html">TopoNode</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nœud topologique du graphe planaire.  <a href="../../df/d00/structTopoNode.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d03/structTopologyGraph_1_1SnappedNodeKey.html">TopologyGraph::SnappedNodeKey</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/structTopoEdge.html">TopoEdge</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arête du graphe planaire — connexion entre deux nœuds.  <a href="../../d8/d00/structTopoEdge.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d00/structTopologyGraph_1_1SnappedNodeKeyHasher.html">TopologyGraph::SnappedNodeKeyHasher</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d01/structTopologyGraph.html">TopologyGraph</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Résultat de <a class="el" href="../../df/d00/classPhase4__TopologyBuilder.html">Phase4_TopologyBuilder</a> — graphe planaire complet.  <a href="../../df/d01/structTopologyGraph.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Graphe planaire non-orienté de nœuds et d'arêtes ferroviaires accrochés. </p>
-<p>Responsabilités :</p><ul>
-<li>Gestion des nœuds : accrochage sur grille, déduplication, fusion par proximité.</li>
-<li>Gestion des arêtes : arêtes non-orientées avec géométrie polyligne métrique.</li>
-<li>Fusion des nœuds : algorithme union-find pour les points quasi-coïncidents.</li>
-<li>Requêtes géométriques: longueur accessible, continuation colinéaire.</li>
-</ul>
-<p>Ce graphe ne contient aucune logique ferroviaire — c'est un graphe topologique pur. Les nœuds sont identifiés par des entiers consécutifs. </p>
+<div class="textblock"><p>Structures de données produites par <a class="el" href="../../df/d00/classPhase4__TopologyBuilder.html">Phase4_TopologyBuilder</a>. </p>
+<p>Graphe planaire non-orienté : nœuds topologiques + arêtes. Les nœuds sont les points de jonction du réseau (après snap des extrémités). Les arêtes correspondent aux segments atomiques de <a class="el" href="../../dc/d03/structSplitNetwork.html">SplitNetwork</a>. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_a02795b5ac40d9afe5fe94a3ec34902b.html">GeoParser</a></li><li class="navelem"><a class="el" href="../../dir_4b462584d5370934af000d31117aca14.html">Graph</a></li><li class="navelem"><a class="el" href="../../d7/d03/TopologyGraph_8h.html">TopologyGraph.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_a02795b5ac40d9afe5fe94a3ec34902b.html">GeoParser</a></li><li class="navelem"><a class="el" href="../../dir_b5f366c770f71ecee1df61f9a225a87c.html">Pipeline</a></li><li class="navelem"><a class="el" href="../../d7/d03/TopologyGraph_8h.html">TopologyGraph.h</a></li>
     <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

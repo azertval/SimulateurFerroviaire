@@ -1,29 +1,4 @@
 var searchData=
 [
-  ['d_20ensemble_0',['Vue d&apos;ensemble',['../d8/d02/pcc.html#pcc_overview',1,'']]],
-  ['data_1',['data',['../d2/d01/classTopologyRepository.html#a0179f504f5d22ea5b16926511a9cb027',1,'TopologyRepository']]],
-  ['de_20l_20application_2',['Engine — Moteur de l&apos;application',['../d3/d03/engine.html',1,'index']]],
-  ['debug_3',['DEBUG',['../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94adc30ec20708ef7b0f641ef78b7880a15',1,'Logger.h']]],
-  ['degenerate_5fsegment_5fmeters_4',['DEGENERATE_SEGMENT_METERS',['../de/d02/classGeometricTolerances.html#ac648184f176bac87f4894d107089f32c',1,'GeometricTolerances']]],
-  ['degrees_5fto_5fradians_5',['DEGREES_TO_RADIANS',['../db/d01/classGeometryUtils.html#a4669d078d612baec92a582f2995f587b',1,'GeometryUtils']]],
-  ['des_20aiguillages_6',['État opérationnel des aiguillages',['../d1/d00/modules.html#activestate',1,'']]],
-  ['description_7',['Description',['../index.html#description',1,'']]],
-  ['detectandabsorb_8',['detectAndAbsorb',['../d3/d02/classDoubleSwitchDetector.html#a73ddfcab07564847dccd93c3c3b500e4',1,'DoubleSwitchDetector']]],
-  ['detectswitches_9',['detectSwitches',['../d6/d02/classTopologyExtractor.html#abfb30b40b7194303e6c828d802dd1175',1,'TopologyExtractor']]],
-  ['deviation_10',['deviation',['../d2/d03/structSwitchBlock_1_1SwitchBranches.html#a18a59ab662838c5e08ca27798504c04f',1,'SwitchBlock::SwitchBranches::deviation'],['../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89a8ec95e82a6c348f798243a58891e546c',1,'DEVIATION:&#160;SwitchBlock.h'],['../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16a8ec95e82a6c348f798243a58891e546c',1,'DEVIATION:&#160;PCCEdge.h']]],
-  ['dialogproc_11',['dialogProc',['../db/d03/classAboutDialog.html#ac66cccf4f3997d3ae5755646782f2d48',1,'AboutDialog']]],
-  ['documentation_12',['Documentation',['../index.html#documentation',1,'']]],
-  ['double_5flink_5fmax_5fmeters_13',['DOUBLE_LINK_MAX_METERS',['../df/d01/classParserDefaultValues.html#a8ca771fe2ea1bf9fb173af902e0b1a31',1,'ParserDefaultValues']]],
-  ['double_5fswitch_5fminimum_5fcluster_14',['DOUBLE_SWITCH_MINIMUM_CLUSTER',['../dc/d01/classNodeDegreeThresholds.html#a244fd32eff82e1249c7eed1d9f1cae64',1,'NodeDegreeThresholds']]],
-  ['doubleswitchdetector_15',['doubleswitchdetector',['../d3/d02/classDoubleSwitchDetector.html#a11c7dc515bb732150671362ed36fa083',1,'DoubleSwitchDetector::DoubleSwitchDetector()'],['../d3/d02/classDoubleSwitchDetector.html',1,'DoubleSwitchDetector']]],
-  ['doubleswitchdetector_2ecpp_16',['DoubleSwitchDetector.cpp',['../dd/d02/DoubleSwitchDetector_8cpp.html',1,'']]],
-  ['doubleswitchdetector_2eh_17',['DoubleSwitchDetector.h',['../de/d00/DoubleSwitchDetector_8h.html',1,'']]],
-  ['draw_18',['draw',['../d9/d01/classTCORenderer.html#a6121818c20cecd5b7fcb6cae98de3584',1,'TCORenderer']]],
-  ['drawline_19',['drawLine',['../d9/d01/classTCORenderer.html#a5c2f3fdecee9ae3c6bfcbc416eddd256',1,'TCORenderer']]],
-  ['drawnodes_20',['drawNodes',['../d9/d01/classTCORenderer.html#a44f68c25e17a718aa3c7e242a39ec633',1,'TCORenderer']]],
-  ['drawstraightblock_21',['drawStraightBlock',['../d9/d01/classTCORenderer.html#aeb8ec4c9ab41d190bcf7516b9cf3ff36',1,'TCORenderer']]],
-  ['drawswitchblock_22',['drawSwitchBlock',['../d9/d01/classTCORenderer.html#a079e5773791a2b8b6622721c95cf0ef5',1,'TCORenderer']]],
-  ['du_20pipeline_23',['Classes du pipeline',['../d1/d00/modules.html#parsing',1,'']]],
-  ['du_20projet_24',['Architecture du projet',['../index.html#diag',1,'']]],
-  ['dumpdebugoutput_25',['dumpDebugOutput',['../db/d02/classGeoParser.html#a6b046fb217dd2d7240cde1aea4c9a5ec',1,'GeoParser']]]
+  ['4_20—_20topologybuilder_0',['Phase 4 — TopologyBuilder',['../d4/d01/geoparser.html#gp_phase4',1,'']]]
 ];

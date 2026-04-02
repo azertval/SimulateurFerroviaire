@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire:  Fichier source de SimulateurFerroviaire/Modules/GeoParser/Pipeline/Phase4_TopologyBuilder.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('da/d03/Phase4__TopologyBuilder_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Phase4_TopologyBuilder.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../da/d03/Phase4__TopologyBuilder_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="../../d6/d02/PipelineContext_8h.html">PipelineContext.h</a>&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="../../d9/d01/ParserConfig_8h.html">Engine/Core/Config/ParserConfig.h</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="../../dd/d00/Logger_8h.html">Engine/Core/Logger/Logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../df/d00/classPhase4__TopologyBuilder.html">   29</a></span><span class="keyword">class </span><a class="code hl_class" href="../../df/d00/classPhase4__TopologyBuilder.html">Phase4_TopologyBuilder</a></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../df/d00/classPhase4__TopologyBuilder.html#ae6bf7bc3ac3bcdce5e1da909d89678c0">run</a>(<a class="code hl_struct" href="../../d6/d03/structPipelineContext.html">PipelineContext</a>&amp; ctx,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keyword">const</span> <a class="code hl_struct" href="../../dd/d03/structParserConfig.html">ParserConfig</a>&amp; config,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="../../df/d00/classPhase4__TopologyBuilder.html#a12c5d3cd520c59c718fa9b6194bde56f">   47</a></span>    <a class="code hl_function" href="../../df/d00/classPhase4__TopologyBuilder.html#a12c5d3cd520c59c718fa9b6194bde56f">Phase4_TopologyBuilder</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="};">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html">   57</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html">UnionFind</a></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a9daa764d751145c1d2a99d3235cc7d57">   59</a></span>        std::vector&lt;size_t&gt; <a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a9daa764d751145c1d2a99d3235cc7d57">parent</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a4b54a16beaf1267483660e12c643e45d">   60</a></span>        std::vector&lt;int&gt;    <a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a4b54a16beaf1267483660e12c643e45d">rank_</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#ad1dd8832553bf45b059089191c720406">   69</a></span>        <span class="keyword">explicit</span> <a class="code hl_function" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#ad1dd8832553bf45b059089191c720406">UnionFind</a>(<span class="keywordtype">size_t</span> n)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            : <a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a9daa764d751145c1d2a99d3235cc7d57">parent</a>(n), <a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a4b54a16beaf1267483660e12c643e45d">rank_</a>(n, 0)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            std::iota(<a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a9daa764d751145c1d2a99d3235cc7d57">parent</a>.begin(), <a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a9daa764d751145c1d2a99d3235cc7d57">parent</a>.end(), <span class="keywordtype">size_t</span>{ 0 });</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        }</div>
+</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a7a92aa0f004aaec0d3bccd25a0a58f60">   82</a></span>        <span class="keywordtype">size_t</span> <a class="code hl_function" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a7a92aa0f004aaec0d3bccd25a0a58f60">find</a>(<span class="keywordtype">size_t</span> x)</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a9daa764d751145c1d2a99d3235cc7d57">parent</a>[x] != x)</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                <a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a9daa764d751145c1d2a99d3235cc7d57">parent</a>[x] = <a class="code hl_function" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a7a92aa0f004aaec0d3bccd25a0a58f60">find</a>(<a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a9daa764d751145c1d2a99d3235cc7d57">parent</a>[x]);  <span class="comment">// Raccourcissement récursif</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a9daa764d751145c1d2a99d3235cc7d57">parent</a>[x];</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
+</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#ac0c971b3b7c706e0fd37887206856ad4">   95</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#ac0c971b3b7c706e0fd37887206856ad4">unite</a>(<span class="keywordtype">size_t</span> a, <span class="keywordtype">size_t</span> b)</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            a = <a class="code hl_function" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a7a92aa0f004aaec0d3bccd25a0a58f60">find</a>(a); b = <a class="code hl_function" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a7a92aa0f004aaec0d3bccd25a0a58f60">find</a>(b);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <span class="keywordflow">if</span> (a == b) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a4b54a16beaf1267483660e12c643e45d">rank_</a>[a] &lt; <a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a4b54a16beaf1267483660e12c643e45d">rank_</a>[b]) std::swap(a, b);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a9daa764d751145c1d2a99d3235cc7d57">parent</a>[b] = a;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a4b54a16beaf1267483660e12c643e45d">rank_</a>[a] == <a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a4b54a16beaf1267483660e12c643e45d">rank_</a>[b]) ++<a class="code hl_variable" href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a4b54a16beaf1267483660e12c643e45d">rank_</a>[a];</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        }</div>
+</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    };</div>
+</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keyword">static</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="../../df/d00/classPhase4__TopologyBuilder.html#a253515313550722f6d8cf4fb83cf4d4f">findSnapNeighbour</a>(</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keyword">const</span> <a class="code hl_class" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>&amp; pos,</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keyword">const</span> std::unordered_map&lt;<a class="code hl_struct" href="../../dd/d01/structGridCell.html">GridCell</a>,</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        std::vector&lt;size_t&gt;,</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <a class="code hl_struct" href="../../d2/d01/structGridCellHash.html">GridCellHash</a>&gt;&amp; grid,</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keyword">const</span> std::vector&lt;CoordinateXY&gt;&amp; nodePos,</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordtype">double</span> cellSize,</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordtype">double</span> tolerance);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>};</div>
+</div>
+<div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="../../dd/d00/Logger_8h.html">Logger.h</a></div><div class="ttdoc">Système de journalisation à 5 niveaux de trace, un fichier par moteur.</div></div>
+<div class="ttc" id="aParserConfig_8h_html"><div class="ttname"><a href="../../d9/d01/ParserConfig_8h.html">ParserConfig.h</a></div><div class="ttdoc">Paramètres de configuration du pipeline GeoParser.</div></div>
+<div class="ttc" id="aPipelineContext_8h_html"><div class="ttname"><a href="../../d6/d02/PipelineContext_8h.html">PipelineContext.h</a></div><div class="ttdoc">Conteneur central des données inter-phases du pipeline GeoParser.</div></div>
+<div class="ttc" id="aclassCoordinateXY_html"><div class="ttname"><a href="../../df/d01/classCoordinateXY.html">CoordinateXY</a></div><div class="ttdoc">Coordonnée plane en mètres dans un système métrique (UTM ou similaire).</div><div class="ttdef"><b>Definition</b> CoordinateXY.h:23</div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="../../db/d03/classLogger.html">Logger</a></div><div class="ttdoc">Journaliseur associé à un moteur nommé.</div><div class="ttdef"><b>Definition</b> Logger.h:99</div></div>
+<div class="ttc" id="aclassPhase4__TopologyBuilder_html"><div class="ttname"><a href="../../df/d00/classPhase4__TopologyBuilder.html">Phase4_TopologyBuilder</a></div><div class="ttdef"><b>Definition</b> Phase4_TopologyBuilder.h:30</div></div>
+<div class="ttc" id="aclassPhase4__TopologyBuilder_html_a12c5d3cd520c59c718fa9b6194bde56f"><div class="ttname"><a href="../../df/d00/classPhase4__TopologyBuilder.html#a12c5d3cd520c59c718fa9b6194bde56f">Phase4_TopologyBuilder::Phase4_TopologyBuilder</a></div><div class="ttdeci">Phase4_TopologyBuilder()=delete</div></div>
+<div class="ttc" id="aclassPhase4__TopologyBuilder_html_a253515313550722f6d8cf4fb83cf4d4f"><div class="ttname"><a href="../../df/d00/classPhase4__TopologyBuilder.html#a253515313550722f6d8cf4fb83cf4d4f">Phase4_TopologyBuilder::findSnapNeighbour</a></div><div class="ttdeci">static size_t findSnapNeighbour(const CoordinateXY &amp;pos, const std::unordered_map&lt; GridCell, std::vector&lt; size_t &gt;, GridCellHash &gt; &amp;grid, const std::vector&lt; CoordinateXY &gt; &amp;nodePos, double cellSize, double tolerance)</div><div class="ttdoc">Cherche un nœud existant dans la snap grid à moins de tolerance.</div><div class="ttdef"><b>Definition</b> Phase4_TopologyBuilder.cpp:190</div></div>
+<div class="ttc" id="aclassPhase4__TopologyBuilder_html_ae6bf7bc3ac3bcdce5e1da909d89678c0"><div class="ttname"><a href="../../df/d00/classPhase4__TopologyBuilder.html#ae6bf7bc3ac3bcdce5e1da909d89678c0">Phase4_TopologyBuilder::run</a></div><div class="ttdeci">static void run(PipelineContext &amp;ctx, const ParserConfig &amp;config, Logger &amp;logger)</div><div class="ttdoc">Exécute la phase 4.</div><div class="ttdef"><b>Definition</b> Phase4_TopologyBuilder.cpp:20</div></div>
+<div class="ttc" id="astructGridCellHash_html"><div class="ttname"><a href="../../d2/d01/structGridCellHash.html">GridCellHash</a></div><div class="ttdoc">Fonction de hachage pour GridCell — Cantor pairing.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:78</div></div>
+<div class="ttc" id="astructGridCell_html"><div class="ttname"><a href="../../dd/d01/structGridCell.html">GridCell</a></div><div class="ttdoc">Clé de cellule de la grille spatiale de binning.</div><div class="ttdef"><b>Definition</b> IntersectionMap.h:61</div></div>
+<div class="ttc" id="astructParserConfig_html"><div class="ttname"><a href="../../dd/d03/structParserConfig.html">ParserConfig</a></div><div class="ttdoc">Configuration complète du pipeline GeoParser — POD sans logique.</div><div class="ttdef"><b>Definition</b> ParserConfig.h:16</div></div>
+<div class="ttc" id="astructPhase4__TopologyBuilder_1_1UnionFind_html"><div class="ttname"><a href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html">Phase4_TopologyBuilder::UnionFind</a></div><div class="ttdoc">Structure Union-Find interne avec path compression + union by rank.</div><div class="ttdef"><b>Definition</b> Phase4_TopologyBuilder.h:58</div></div>
+<div class="ttc" id="astructPhase4__TopologyBuilder_1_1UnionFind_html_a4b54a16beaf1267483660e12c643e45d"><div class="ttname"><a href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a4b54a16beaf1267483660e12c643e45d">Phase4_TopologyBuilder::UnionFind::rank_</a></div><div class="ttdeci">std::vector&lt; int &gt; rank_</div><div class="ttdef"><b>Definition</b> Phase4_TopologyBuilder.h:60</div></div>
+<div class="ttc" id="astructPhase4__TopologyBuilder_1_1UnionFind_html_a7a92aa0f004aaec0d3bccd25a0a58f60"><div class="ttname"><a href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a7a92aa0f004aaec0d3bccd25a0a58f60">Phase4_TopologyBuilder::UnionFind::find</a></div><div class="ttdeci">size_t find(size_t x)</div><div class="ttdoc">Trouve le représentant canonique de x — path compression.</div><div class="ttdef"><b>Definition</b> Phase4_TopologyBuilder.h:82</div></div>
+<div class="ttc" id="astructPhase4__TopologyBuilder_1_1UnionFind_html_a9daa764d751145c1d2a99d3235cc7d57"><div class="ttname"><a href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#a9daa764d751145c1d2a99d3235cc7d57">Phase4_TopologyBuilder::UnionFind::parent</a></div><div class="ttdeci">std::vector&lt; size_t &gt; parent</div><div class="ttdef"><b>Definition</b> Phase4_TopologyBuilder.h:59</div></div>
+<div class="ttc" id="astructPhase4__TopologyBuilder_1_1UnionFind_html_ac0c971b3b7c706e0fd37887206856ad4"><div class="ttname"><a href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#ac0c971b3b7c706e0fd37887206856ad4">Phase4_TopologyBuilder::UnionFind::unite</a></div><div class="ttdeci">void unite(size_t a, size_t b)</div><div class="ttdoc">Fusionne les ensembles contenant a et b — union by rank.</div><div class="ttdef"><b>Definition</b> Phase4_TopologyBuilder.h:95</div></div>
+<div class="ttc" id="astructPhase4__TopologyBuilder_1_1UnionFind_html_ad1dd8832553bf45b059089191c720406"><div class="ttname"><a href="../../d4/d01/structPhase4__TopologyBuilder_1_1UnionFind.html#ad1dd8832553bf45b059089191c720406">Phase4_TopologyBuilder::UnionFind::UnionFind</a></div><div class="ttdeci">UnionFind(size_t n)</div><div class="ttdoc">Initialise l'Union-Find pour n éléments.</div><div class="ttdef"><b>Definition</b> Phase4_TopologyBuilder.h:69</div></div>
+<div class="ttc" id="astructPipelineContext_html"><div class="ttname"><a href="../../d6/d03/structPipelineContext.html">PipelineContext</a></div><div class="ttdoc">Conteneur central du pipeline GeoParser.</div><div class="ttdef"><b>Definition</b> PipelineContext.h:51</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_a02795b5ac40d9afe5fe94a3ec34902b.html">GeoParser</a></li><li class="navelem"><a class="el" href="../../dir_b5f366c770f71ecee1df61f9a225a87c.html">Pipeline</a></li><li class="navelem"><a class="el" href="../../da/d03/Phase4__TopologyBuilder_8h.html">Phase4_TopologyBuilder.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

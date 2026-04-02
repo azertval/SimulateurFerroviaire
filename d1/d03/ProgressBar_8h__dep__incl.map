@@ -1,7 +1,9 @@
 <map id="SimulateurFerroviaire/Engine/HMI/ProgressBar.h" name="SimulateurFerroviaire/Engine/HMI/ProgressBar.h">
-<area shape="rect" id="Node000001" title="Wrapper minimaliste d&#39;une ProgressBar Win32." alt="" coords="238,5,431,45"/>
+<area shape="rect" id="Node000001" title="Barre de progression Win32 avec label de phase et bouton Cancel." alt="" coords="351,5,545,45"/>
 <area shape="rect" id="Node000002" href="$da/d00/MainWindow_8h.html" title="Déclaration de la fenêtre principale de l&#39;application." alt="" coords="235,93,434,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="337,59,337,93,332,93,332,59"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="414,56,361,95,358,91,411,52"/>
+<area shape="rect" id="Node000007" href="$d6/d00/ProgressBar_8cpp.html" title="Implémentation de la ProgressBar avec label et bouton Cancel." alt="" coords="459,93,667,133"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="486,52,539,91,536,95,483,56"/>
 <area shape="rect" id="Node000003" href="$d4/d00/Application_8h.html" title="Gestion du cycle de vie de l&#39;application Win32." alt="" coords="125,181,318,221"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="300,144,248,183,245,179,297,140"/>
 <area shape="rect" id="Node000006" href="$d3/d03/MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="342,181,557,221"/>

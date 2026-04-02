@@ -1,0 +1,13 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,55,120,80"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="168,55,307,80"/>
+<area shape="poly" id="edge6_Node000000_Node000001" title=" " alt="" coords="134,65,168,65,168,70,134,70"/>
+<area shape="rect" id="Node000002" href="$de/d00/classRailwayParserException.html" title="Classe de base pour toutes les erreurs du parseur ferroviaire." alt="" coords="355,55,533,80"/>
+<area shape="poly" id="edge7_Node000001_Node000002" title=" " alt="" coords="321,65,354,65,354,70,321,70"/>
+<area shape="rect" id="Node000003" href="$d4/d01/classInvalidGeoJsonFormatException.html" title="Levée quand le fichier GeoJSON est malformé ou ne contient aucune géométrie LineString exploitable." alt="" coords="581,5,811,31"/>
+<area shape="poly" id="edge8_Node000002_Node000003" title=" " alt="" coords="522,49,630,28,631,33,523,55"/>
+<area shape="rect" id="Node000004" href="$d3/d03/classInvalidSwitchConfigException.html" title="Levée quand un aiguillage viole une contrainte géométrique du CDC." alt="" coords="589,55,803,80"/>
+<area shape="poly" id="edge9_Node000002_Node000004" title=" " alt="" coords="547,65,589,65,589,70,547,70"/>
+<area shape="rect" id="Node000005" href="$d7/d00/classInvalidTopologyException.html" title="Levée quand la topologie du graphe parsé est structurellement incohérente." alt="" coords="602,104,790,129"/>
+<area shape="poly" id="edge10_Node000002_Node000005" title=" " alt="" coords="523,80,631,101,630,107,522,85"/>
+</map>

@@ -1,29 +1,31 @@
 <map id="SimulateurFerroviaire/Modules/PCC/PCCNode.h" name="SimulateurFerroviaire/Modules/PCC/PCCNode.h">
-<area shape="rect" id="Node000001" title="Nœud abstrait du graphe PCC représentant un bloc ferroviaire." alt="" coords="165,5,352,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="151,357,209,383"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,44,80,65,47,79,26,95,16,111,11,128,10,164,22,200,43,235,70,269,100,300,155,347,152,351,96,304,66,273,39,238,17,202,5,164,5,127,11,109,22,92,44,75,79,60,164,39"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="37,101,99,126"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="218,48,107,98,105,93,216,43"/>
-<area shape="rect" id="Node000004" href="$d1/d02/PCCEdge_8h.html" title="Connexion orientée entre deux nœuds du graphe PCC." alt="" coords="369,189,461,214"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="341,43,378,62,395,76,409,92,419,112,423,134,422,175,417,175,418,135,414,114,404,95,391,80,375,67,338,48"/>
-<area shape="rect" id="Node000005" href="$dd/d00/Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur." alt="" coords="341,269,489,309"/>
-<area shape="poly" id="edge15_Node000001_Node000005" title=" " alt="" coords="345,43,392,62,434,91,462,121,480,151,485,184,476,222,465,243,450,261,446,257,460,240,471,220,479,183,475,153,458,124,430,95,389,67,343,48"/>
-<area shape="rect" id="Node000011" href="$df/d02/ShuntingElement_8h.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="123,93,394,133"/>
-<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="261,46,261,79,256,79,256,46"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="417,214,417,255,412,255,412,214"/>
-<area shape="poly" id="edge10_Node000005_Node000002" title=" " alt="" coords="359,312,224,357,222,352,358,307"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="233,357,292,383"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="380,312,299,353,296,348,377,307"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="316,357,407,383"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="404,311,379,347,375,344,400,308"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="431,357,505,383"/>
-<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="430,308,454,344,450,347,425,311"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="529,357,593,383"/>
-<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="451,307,529,348,526,353,449,312"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="617,357,692,383"/>
-<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="473,307,607,351,606,356,471,312"/>
-<area shape="rect" id="Node000012" href="$d6/d02/InteractiveElement_8h.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="133,181,345,221"/>
-<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="257,134,249,168,244,167,252,133"/>
-<area shape="poly" id="edge13_Node000012_Node000002" title=" " alt="" coords="234,223,191,345,186,343,229,221"/>
-<area shape="poly" id="edge14_Node000012_Node000005" title=" " alt="" coords="278,219,365,261,363,266,276,224"/>
+<area shape="rect" id="Node000001" title="Nœud abstrait du graphe PCC représentant un bloc ferroviaire." alt="" coords="139,5,326,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="40,343,99,368"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,36,109,44,79,56,52,72,30,95,16,123,9,154,9,187,14,220,35,282,58,329,53,331,30,284,9,221,4,188,4,154,11,122,26,92,49,68,77,51,107,39,138,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="41,101,104,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,48,107,97,104,92,196,43"/>
+<area shape="rect" id="Node000004" href="$d1/d02/PCCEdge_8h.html" title="Connexion orientée entre deux nœuds du graphe PCC." alt="" coords="312,181,404,207"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="290,43,324,63,352,92,360,110,364,130,364,167,359,167,359,131,355,112,347,95,321,67,288,48"/>
+<area shape="rect" id="Node000005" href="$dd/d00/Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur." alt="" coords="284,255,432,295"/>
+<area shape="poly" id="edge16_Node000001_Node000005" title=" " alt="" coords="295,43,337,63,375,91,401,118,419,144,426,173,419,208,408,228,393,246,389,243,403,225,414,206,420,173,414,146,397,122,372,95,334,67,293,48"/>
+<area shape="rect" id="Node000012" href="$df/d02/ShuntingElement_8h.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="127,93,338,133"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="235,46,235,79,230,79,230,46"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="360,207,360,241,355,241,355,207"/>
+<area shape="poly" id="edge10_Node000005_Node000002" title=" " alt="" coords="289,297,113,345,111,340,287,292"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="123,343,182,368"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="309,297,196,340,194,335,307,292"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="206,343,296,368"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="333,297,280,336,276,332,330,293"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="321,343,394,368"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="360,295,360,329,355,329,355,295"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="419,343,483,368"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="382,293,428,331,425,336,378,297"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="507,343,582,368"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="403,292,505,335,503,340,401,297"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="606,343,696,368"/>
+<area shape="poly" id="edge11_Node000005_Node000011" title=" " alt="" coords="429,292,595,336,594,342,427,297"/>
+<area shape="rect" id="Node000013" href="$d5/d02/Element_8h.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="76,181,288,207"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="222,135,199,171,194,168,218,132"/>
+<area shape="poly" id="edge14_Node000013_Node000002" title=" " alt="" coords="176,208,88,333,84,329,171,205"/>
+<area shape="poly" id="edge15_Node000013_Node000005" title=" " alt="" coords="208,204,304,247,302,252,206,209"/>
 </map>

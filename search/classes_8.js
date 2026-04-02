@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mainwindow_0',['MainWindow',['../d6/d02/classMainWindow.html',1,'']]]
+  ['leaflet_0',['Leaflet',['../dd/d00/classLeaflet.html',1,'']]],
+  ['logger_1',['Logger',['../db/d03/classLogger.html',1,'']]]
 ];

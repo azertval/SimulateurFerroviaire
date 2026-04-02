@@ -118,7 +118,7 @@ Fonctions membres publiques statiques</h2></td></tr>
 <tr class="memdesc:a53552ac3e53137c8510496ae2de4a4d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère le script JavaScript d'injection GeoJSON dans le WebView.  <br /></td></tr>
 <tr class="separator:a53552ac3e53137c8510496ae2de4a4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f2e27420a27c8dd27fd4f010e4b6037" id="r_a7f2e27420a27c8dd27fd4f010e4b6037"><td class="memItemLeft" align="right" valign="top">static std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d03/classTopologyRenderer.html#a7f2e27420a27c8dd27fd4f010e4b6037">renderStraightBlock</a> (const <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> &amp;straightBlock)</td></tr>
-<tr class="memdesc:a7f2e27420a27c8dd27fd4f010e4b6037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit l'appel JS <code>renderStraightBlock(id, coords)</code> pour un bloc.  <br /></td></tr>
+<tr class="memdesc:a7f2e27420a27c8dd27fd4f010e4b6037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit l'appel JS <code>renderStraightBlock(id, Coordinates)</code> pour un bloc.  <br /></td></tr>
 <tr class="separator:a7f2e27420a27c8dd27fd4f010e4b6037"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8b9e3a9eddc5ee5835f1b6028fd2633" id="r_ad8b9e3a9eddc5ee5835f1b6028fd2633"><td class="memItemLeft" align="right" valign="top">static std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d03/classTopologyRenderer.html#ad8b9e3a9eddc5ee5835f1b6028fd2633">renderAllStraightBlocks</a> ()</td></tr>
 <tr class="memdesc:ad8b9e3a9eddc5ee5835f1b6028fd2633"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface puis redessine tous les StraightBlocks.  <br /></td></tr>
@@ -474,7 +474,7 @@ Fonctions membres privées statiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construit l'appel JS <code>renderStraightBlock(id, coords)</code> pour un bloc. </p>
+<p>Construit l'appel JS <code>renderStraightBlock(id, Coordinates)</code> pour un bloc. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">straightBlock</td><td>Bloc à rendre (ignoré si &lt; 2 coordonnées). </td></tr>
@@ -555,7 +555,7 @@ Fonctions membres privées statiques</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Instruction JavaScript.</dd></dl>
 <p>Génère l'appel JS renderSwitchBranches pour un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>.</p>
-<p>Signature JS : renderSwitchBranches(id, jLat, jLon, rootCoords, // [[lat,lon],...] ou null normalCoords, // [[lat,lon],...] ou null devCoords) // [[lat,lon],...] ou null</p>
+<p>Signature JS : renderSwitchBranches(id, jLat, jLon, rootCoordinates, // [[lat,lon],...] ou null normalCoordinates, // [[lat,lon],...] ou null devCoordinates) // [[lat,lon],...] ou null</p>
 <p>Pour les branches simples (non absorbées) : tableau à 1 point [tip]. Pour les branches absorbées (double switch) : polyligne complète. null si le tip est absent. </p>
 
 </div>
@@ -585,7 +585,7 @@ Fonctions membres privées statiques</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Génère le script JS de mise à jour visuelle d'un switch et ses partenaires. </p>
-<p>Appelé par <a class="el" href="../../d6/d02/classMainWindow.html#a242d9acf230544637908fc2cf31f1284" title="Met à jour l&#39;état opérationnel d&#39;un SwitchBlock après un clic.">MainWindow::onSwitchClick()</a> après toggleActiveBranch(). Propage automatiquement aux partenaires double switch si présents.</p>
+<p>Appelé par <a class="el" href="../../d6/d02/classMainWindow.html#a242d9acf230544637908fc2cf31f1284" title="Met à jour l&#39;état d&#39;un SwitchBlock après un clic Leaflet.">MainWindow::onSwitchClick()</a> après toggleActiveBranch(). Propage automatiquement aux partenaires double switch si présents.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">sw</td><td>Switch dont l'état vient d'être modifié. </td></tr>

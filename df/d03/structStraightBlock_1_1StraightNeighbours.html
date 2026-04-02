@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('df/d03/structStraightBlock_1_1Straight
 </div><!--header-->
 <div class="contents">
 
-<p>Voisins topologiques d'un <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a>.  
+<p>Voisins topologiques résolus (pointeurs non-propriétaires).  
  <a href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html#details">Plus de détails...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../de/d01/StraightBlock_8h_source.html">StraightBlock.h</a>&gt;</code></p>
@@ -110,13 +110,15 @@ Graphe de collaboration de StraightBlock::StraightNeighbours:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Attributs publics</h2></td></tr>
 <tr class="memitem:aedc663023d362e36b4990bfce054f9ba" id="r_aedc663023d362e36b4990bfce054f9ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html#aedc663023d362e36b4990bfce054f9ba">prev</a> = nullptr</td></tr>
+<tr class="memdesc:aedc663023d362e36b4990bfce054f9ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bloc adjacent à l'extrémité A.  <br /></td></tr>
 <tr class="separator:aedc663023d362e36b4990bfce054f9ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9edcaa8bccf67a2b2bf16e07ea667c1c" id="r_a9edcaa8bccf67a2b2bf16e07ea667c1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html#a9edcaa8bccf67a2b2bf16e07ea667c1c">next</a> = nullptr</td></tr>
+<tr class="memdesc:a9edcaa8bccf67a2b2bf16e07ea667c1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bloc adjacent à l'extrémité B.  <br /></td></tr>
 <tr class="separator:a9edcaa8bccf67a2b2bf16e07ea667c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Voisins topologiques d'un <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a>. </p>
-<p>Un straight est toujours borné par exactement deux extrémités. Chaque extrémité est soit un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>, soit un autre <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> (morceau découpé), soit nullptr (terminus). </p>
+<div class="textblock"><p>Voisins topologiques résolus (pointeurs non-propriétaires). </p>
+<p>Renseignés par <a class="el" href="../../da/d01/classPhase8__RepositoryTransfer.html#af75aa0847b36eb3a03f19074da8e470f" title="9a — Résout les pointeurs inter-blocs.">Phase8_RepositoryTransfer::resolve()</a> via <a class="el" href="../../da/d01/classStraightBlock.html#a63505c31a809701e48aa0d1e23dd90f7" title="Assigne le voisin côté extrémité A.">setNeighbourPrev()</a> / <a class="el" href="../../da/d01/classStraightBlock.html#a0cba18ea201dbd4ab022c9e0f255d1f8" title="Assigne le voisin côté extrémité B.">setNeighbourNext()</a>. </p>
 </div><h2 class="groupheader">Documentation des données membres</h2>
 <a id="a9edcaa8bccf67a2b2bf16e07ea667c1c" name="a9edcaa8bccf67a2b2bf16e07ea667c1c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9edcaa8bccf67a2b2bf16e07ea667c1c">&#9670;&#160;</a></span>next</h2>
@@ -129,7 +131,8 @@ Attributs publics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bloc adjacent à l'extrémité B (back des coordonnées). </p>
+
+<p>Bloc adjacent à l'extrémité B. </p>
 
 </div>
 </div>
@@ -144,12 +147,13 @@ Attributs publics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bloc adjacent à l'extrémité A (front des coordonnées). </p>
+
+<p>Bloc adjacent à l'extrémité A. </p>
 
 </div>
 </div>
 <hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
-<li>SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/<a class="el" href="../../de/d01/StraightBlock_8h_source.html">StraightBlock.h</a></li>
+<li>SimulateurFerroviaire/Modules/Elements/ShuntingElements/<a class="el" href="../../de/d01/StraightBlock_8h_source.html">StraightBlock.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,0 +1,21 @@
+<map id="SimulateurFerroviaire/Engine/HMI/Dialogs/ParserSettingsDialog.cpp" name="SimulateurFerroviaire/Engine/HMI/Dialogs/ParserSettingsDialog.cpp">
+<area shape="rect" id="Node000001" title="Implémentation du dialogue de paramètres GeoParser." alt="" coords="274,5,525,60"/>
+<area shape="rect" id="Node000002" href="$d4/d01/ParserSettingsDialog_8h.html" title="Dialogue modal Win32 de configuration du pipeline GeoParser." alt="" coords="175,115,344,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="361,62,289,110,286,106,358,58"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="369,115,430,141"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="402,60,402,101,397,101,397,60"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="455,115,541,141"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="429,58,477,104,474,107,426,62"/>
+<area shape="rect" id="Node000008" href="$dd/d01/ParserConfigIni_8h.html" title="Persistence de ParserConfig via fichier .ini (SimpleIni)." alt="" coords="5,108,151,148"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="310,63,157,107,155,102,308,57"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="566,115,657,141"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="460,58,574,108,572,112,458,63"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="175,203,234,229"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="254,142,222,193,217,190,250,139"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="258,203,349,229"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="268,140,293,190,289,192,263,142"/>
+<area shape="rect" id="Node000005" href="$d9/d01/ParserConfig_8h.html" title="Paramètres de configuration du pipeline GeoParser." alt="" coords="5,196,151,236"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="236,143,131,193,129,188,234,138"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="108,146,178,193,175,198,105,150"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="81,148,81,182,75,182,75,148"/>
+</map>

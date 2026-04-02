@@ -1,0 +1,7 @@
+<map id="TopoNode" name="TopoNode">
+<area shape="rect" id="Node000001" title="Nœud topologique du graphe planaire." alt="" coords="111,233,189,299"/>
+<area shape="rect" id="Node000002" href="$df/d01/classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire)." alt="" coords="5,5,132,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,170,131,217,126,219,104,172"/>
+<area shape="rect" id="Node000003" href="$db/d03/classCoordinateLatLon.html" title="Coordonnée géographique WGS&#45;84 exprimée en degrés décimaux." alt="" coords="156,5,309,171"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="218,172,202,211,195,222,190,219,197,208,213,170"/>
+</map>

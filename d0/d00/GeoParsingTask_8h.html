@@ -96,19 +96,23 @@ $(document).ready(function(){initNavTree('d0/d00/GeoParsingTask_8h.html','../../
 </div><!--header-->
 <div class="contents">
 
-<p>Déclaration de la tâche de parsing GeoJSON asynchrone.  
+<p>Tâche asynchrone d'exécution du pipeline <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a> v2.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d6/d01/framework_8h_source.html">framework.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;atomic&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;windows.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d01/ParserConfig_8h_source.html">Engine/Core/Config/ParserConfig.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../dd/d00/Logger_8h_source.html">Engine/Core/Logger/Logger.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de GeoParsingTask.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d8/d02/GeoParsingTask_8h__incl.svg" width="935" height="286"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d8/d02/GeoParsingTask_8h__incl.svg" width="794" height="227"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dc/d01/GeoParsingTask_8h__dep__incl.svg" width="478" height="168"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dc/d01/GeoParsingTask_8h__dep__incl.svg" width="692" height="344"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="../../d0/d00/GeoParsingTask_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -116,24 +120,24 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tâche asynchrone encapsulant l'exécution du <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>.  <a href="../../da/d03/classGeoParsingTask.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Déclaration de la tâche de parsing GeoJSON asynchrone. </p>
-<p>La classe <a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a> isole l'exécution du <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a> dans un thread détaché. Elle pilote la communication inter-threads via <code>PostMessage</code> pour garantir que l'UI reste toujours manipulée depuis le thread principal.</p>
-<dl class="section user"><dt>Protocole de messages</dt><dd><table class="markdownTable">
+<div class="textblock"><p>Tâche asynchrone d'exécution du pipeline <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a> v2. </p>
+<p>Lance <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a> dans un thread détaché et communique la progression vers <a class="el" href="../../d6/d02/classMainWindow.html">MainWindow</a> via <code>PostMessage</code> :</p>
+<table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Message   </th><th class="markdownTableHeadNone">WPARAM   </th><th class="markdownTableHeadNone">LPARAM    </th></tr>
+<th class="markdownTableHeadNone">Message   </th><th class="markdownTableHeadNone">Contenu    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>WM_PROGRESS_UPDATE</code>   </td><td class="markdownTableBodyNone">valeur 0–100   </td><td class="markdownTableBodyNone">—    </td></tr>
+<td class="markdownTableBodyNone">WM_PROGRESS_UPDATE   </td><td class="markdownTableBodyNone">wParam = progression 0-100    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>WM_PARSING_SUCCESS</code>   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone">—    </td></tr>
+<td class="markdownTableBodyNone">WM_PARSING_SUCCESS   </td><td class="markdownTableBodyNone">—    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>WM_PARSING_ERROR</code>   </td><td class="markdownTableBodyNone">—   </td><td class="markdownTableBodyNone"><code>std::string*</code> (à libérer par le destinataire)   </td></tr>
+<td class="markdownTableBodyNone">WM_PARSING_ERROR   </td><td class="markdownTableBodyNone">wParam = std::wstring* (à libérer)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">WM_PARSING_CANCELLED   </td><td class="markdownTableBodyNone">—   </td></tr>
 </table>
-</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Les identifiants de messages (<code>WM_USER+1/2/3</code>) doivent correspondre exactement à ceux déclarés dans <a class="el" href="../../d3/d03/MainWindow_8cpp.html">MainWindow.cpp</a>. </dd></dl>
+<dl class="section user"><dt>Annulation</dt><dd><code>cancel()</code> positionne le token atomique partagé avec <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>. Le thread <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a> lève <code>ParseCancelledException</code> entre les phases et <code><a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a></code> poste <code>WM_PARSING_CANCELLED</code>. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

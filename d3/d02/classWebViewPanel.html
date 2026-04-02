@@ -691,7 +691,7 @@ Attributs privés</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Enregistre le handler des messages JS entrants. </p>
-<p>Appelé par <a class="el" href="../../d6/d02/classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar.">MainWindow::create()</a> AVANT l'initialisation du WebView. Le callback reçoit le message brut UTF-8 envoyé depuis <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> via : window.chrome.webview.postMessage(JSON.stringify({...}))</p>
+<p>Appelé par <a class="el" href="../../d6/d02/classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, initialise la ProgressBar et charge la ParserConfig depuis le fichi...">MainWindow::create()</a> AVANT l'initialisation du WebView. Le callback reçoit le message brut UTF-8 envoyé depuis <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> via : window.chrome.webview.postMessage(JSON.stringify({...}))</p>
 <p>Exécuté sur le thread UI — accès aux objets Win32 et au modèle sûr. Si non enregistré, les messages JS sont ignorés silencieusement.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">

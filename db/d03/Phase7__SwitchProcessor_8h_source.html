@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire:  Fichier source de SimulateurFerroviaire/Modules/GeoParser/Pipeline/Phase7_SwitchProcessor.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('db/d03/Phase7__SwitchProcessor_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Phase7_SwitchProcessor.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/d03/Phase7__SwitchProcessor_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="../../d6/d02/PipelineContext_8h.html">PipelineContext.h</a>&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;<a class="code" href="../../d9/d01/ParserConfig_8h.html">Engine/Core/Config/ParserConfig.h</a>&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="../../dd/d00/Logger_8h.html">Engine/Core/Logger/Logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="../../d0/d02/classPhase7__SwitchProcessor.html">   31</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d0/d02/classPhase7__SwitchProcessor.html">Phase7_SwitchProcessor</a></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d02/classPhase7__SwitchProcessor.html#adc0ddccf266b4d0ed2fe700b60afaffb">run</a>(<a class="code hl_struct" href="../../d6/d03/structPipelineContext.html">PipelineContext</a>&amp; ctx,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">const</span> <a class="code hl_struct" href="../../dd/d03/structParserConfig.html">ParserConfig</a>&amp; config,</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../d0/d02/classPhase7__SwitchProcessor.html#a5df971be1544107b3f820757171101cd">   49</a></span>    <a class="code hl_function" href="../../d0/d02/classPhase7__SwitchProcessor.html#a5df971be1544107b3f820757171101cd">Phase7_SwitchProcessor</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// =========================================================================</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// A/B/C — Doubles aiguilles</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">// =========================================================================</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">static</span> std::vector&lt;std::pair&lt;SwitchBlock*, SwitchBlock*&gt;&gt;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <a class="code hl_function" href="../../d0/d02/classPhase7__SwitchProcessor.html#a85918afaacaa6358fce9a937ff0330e9">detectClusters</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../d0/d00/structBlockSet.html">BlockSet</a>&amp; blocks, <span class="keywordtype">double</span> radius, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">static</span> <a class="code hl_class" href="../../da/d01/classStraightBlock.html">StraightBlock</a>* <a class="code hl_function" href="../../d0/d02/classPhase7__SwitchProcessor.html#a9b5aa9ddd88d4badd9dc51ceb075e091">findLinkSegment</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../d0/d00/structBlockSet.html">BlockSet</a>&amp; blocks,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keyword">const</span> <a class="code hl_class" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>* swA,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">const</span> <a class="code hl_class" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>* swB);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d02/classPhase7__SwitchProcessor.html#af57e361536eba155920aa40429afa82b">absorbLinkSegment</a>(<a class="code hl_struct" href="../../d0/d00/structBlockSet.html">BlockSet</a>&amp; blocks,</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <a class="code hl_class" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>* swA,</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <a class="code hl_class" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>* swB,</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d02/classPhase7__SwitchProcessor.html#a4b60a15f76c30214520c3f2f7892325b">validateCDC</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../d0/d00/structBlockSet.html">BlockSet</a>&amp; blocks,</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordtype">double</span> minLength,</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="comment">// =========================================================================</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// D/E — Crossovers</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment">// =========================================================================</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keyword">static</span> std::vector&lt;std::pair&lt;SwitchBlock*, SwitchBlock*&gt;&gt;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_function" href="../../d0/d02/classPhase7__SwitchProcessor.html#acfd14fe7c7250c0d90d70c6f60d0acad">detectCrossovers</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../d0/d00/structBlockSet.html">BlockSet</a>&amp; blocks, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d02/classPhase7__SwitchProcessor.html#a2d799d48d34e5644d3add29e9082e5e6">enforceCrossoverConsistency</a>(</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <a class="code hl_struct" href="../../d0/d00/structBlockSet.html">BlockSet</a>&amp; blocks,</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keyword">const</span> std::vector&lt;std::pair&lt;SwitchBlock*, SwitchBlock*&gt;&gt;&amp; crossovers,</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="comment">// =========================================================================</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="comment">// G — Orientation géométrique root/normal/deviation</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="comment">// =========================================================================</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d02/classPhase7__SwitchProcessor.html#a9f2ffbaf9adef9cf4ea8a2d6b6a38610">orientBranches</a>(<a class="code hl_struct" href="../../d0/d00/structBlockSet.html">BlockSet</a>&amp; blocks, <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keyword">static</span> <a class="code hl_class" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> <a class="code hl_function" href="../../d0/d02/classPhase7__SwitchProcessor.html#ae8c2126d7c8376cb457a164885cede68">branchVector</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>&amp; sw,</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keyword">const</span> <a class="code hl_class" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a>* elem);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="comment">// =========================================================================</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="comment">// F — Tips CDC</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="comment">// =========================================================================</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d02/classPhase7__SwitchProcessor.html#a59eea6c0d4f6b761b9e40c17a6f1e269">computeTips</a>(<a class="code hl_struct" href="../../d0/d00/structBlockSet.html">BlockSet</a>&amp; blocks,</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="keywordtype">double</span> sideSize,</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keyword">static</span> <a class="code hl_class" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> <a class="code hl_function" href="../../d0/d02/classPhase7__SwitchProcessor.html#a7bdb6885c051280696002c76b07cf7d2">interpolateTip</a>(</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <span class="keyword">const</span> std::vector&lt;CoordinateLatLon&gt;&amp; pts,</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        <span class="keyword">const</span> <a class="code hl_class" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>&amp; junction,</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <span class="keywordtype">double</span> targetDist);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>};</div>
+</div>
+<div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="../../dd/d00/Logger_8h.html">Logger.h</a></div><div class="ttdoc">Système de journalisation à 5 niveaux de trace, un fichier par moteur.</div></div>
+<div class="ttc" id="aParserConfig_8h_html"><div class="ttname"><a href="../../d9/d01/ParserConfig_8h.html">ParserConfig.h</a></div><div class="ttdoc">Paramètres de configuration du pipeline GeoParser.</div></div>
+<div class="ttc" id="aPipelineContext_8h_html"><div class="ttname"><a href="../../d6/d02/PipelineContext_8h.html">PipelineContext.h</a></div><div class="ttdoc">Conteneur central des données inter-phases du pipeline GeoParser.</div></div>
+<div class="ttc" id="aclassCoordinateLatLon_html"><div class="ttname"><a href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a></div><div class="ttdoc">Coordonnée géographique WGS-84 exprimée en degrés décimaux.</div><div class="ttdef"><b>Definition</b> CoordinateLatLon.h:22</div></div>
+<div class="ttc" id="aclassCoordinateXY_html"><div class="ttname"><a href="../../df/d01/classCoordinateXY.html">CoordinateXY</a></div><div class="ttdoc">Coordonnée plane en mètres dans un système métrique (UTM ou similaire).</div><div class="ttdef"><b>Definition</b> CoordinateXY.h:23</div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="../../db/d03/classLogger.html">Logger</a></div><div class="ttdoc">Journaliseur associé à un moteur nommé.</div><div class="ttdef"><b>Definition</b> Logger.h:99</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html">Phase7_SwitchProcessor</a></div><div class="ttdef"><b>Definition</b> Phase7_SwitchProcessor.h:32</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html_a2d799d48d34e5644d3add29e9082e5e6"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html#a2d799d48d34e5644d3add29e9082e5e6">Phase7_SwitchProcessor::enforceCrossoverConsistency</a></div><div class="ttdeci">static void enforceCrossoverConsistency(BlockSet &amp;blocks, const std::vector&lt; std::pair&lt; SwitchBlock *, SwitchBlock * &gt; &gt; &amp;crossovers, Logger &amp;logger)</div><div class="ttdoc">E — Force la cohérence des crossovers (branches partagées → DEVIATION).</div><div class="ttdef"><b>Definition</b> Phase7_SwitchProcessor.cpp:307</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html_a4b60a15f76c30214520c3f2f7892325b"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html#a4b60a15f76c30214520c3f2f7892325b">Phase7_SwitchProcessor::validateCDC</a></div><div class="ttdeci">static void validateCDC(const BlockSet &amp;blocks, double minLength, Logger &amp;logger)</div><div class="ttdoc">C — Valide les longueurs de branches selon les critères CDC.</div><div class="ttdef"><b>Definition</b> Phase7_SwitchProcessor.cpp:216</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html_a59eea6c0d4f6b761b9e40c17a6f1e269"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html#a59eea6c0d4f6b761b9e40c17a6f1e269">Phase7_SwitchProcessor::computeTips</a></div><div class="ttdeci">static void computeTips(BlockSet &amp;blocks, double sideSize, Logger &amp;logger)</div><div class="ttdoc">F — Calcule les tips CDC des 3 branches de chaque switch.</div><div class="ttdef"><b>Definition</b> Phase7_SwitchProcessor.cpp:482</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html_a5df971be1544107b3f820757171101cd"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html#a5df971be1544107b3f820757171101cd">Phase7_SwitchProcessor::Phase7_SwitchProcessor</a></div><div class="ttdeci">Phase7_SwitchProcessor()=delete</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html_a7bdb6885c051280696002c76b07cf7d2"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html#a7bdb6885c051280696002c76b07cf7d2">Phase7_SwitchProcessor::interpolateTip</a></div><div class="ttdeci">static CoordinateLatLon interpolateTip(const std::vector&lt; CoordinateLatLon &gt; &amp;pts, const CoordinateLatLon &amp;junction, double targetDist)</div><div class="ttdoc">Interpole un point WGS84 sur une polyligne à targetDist mètres depuis l'extrémité la plus proche de j...</div><div class="ttdef"><b>Definition</b> Phase7_SwitchProcessor.cpp:513</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html_a85918afaacaa6358fce9a937ff0330e9"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html#a85918afaacaa6358fce9a937ff0330e9">Phase7_SwitchProcessor::detectClusters</a></div><div class="ttdeci">static std::vector&lt; std::pair&lt; SwitchBlock *, SwitchBlock * &gt; &gt; detectClusters(const BlockSet &amp;blocks, double radius, Logger &amp;logger)</div><div class="ttdoc">A — Détecte les paires de switches formant un double switch.</div><div class="ttdef"><b>Definition</b> Phase7_SwitchProcessor.cpp:92</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html_a9b5aa9ddd88d4badd9dc51ceb075e091"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html#a9b5aa9ddd88d4badd9dc51ceb075e091">Phase7_SwitchProcessor::findLinkSegment</a></div><div class="ttdeci">static StraightBlock * findLinkSegment(const BlockSet &amp;blocks, const SwitchBlock *swA, const SwitchBlock *swB)</div><div class="ttdoc">B — Trouve le StraightBlock de liaison entre deux switches.</div><div class="ttdef"><b>Definition</b> Phase7_SwitchProcessor.cpp:129</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html_a9f2ffbaf9adef9cf4ea8a2d6b6a38610"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html#a9f2ffbaf9adef9cf4ea8a2d6b6a38610">Phase7_SwitchProcessor::orientBranches</a></div><div class="ttdeci">static void orientBranches(BlockSet &amp;blocks, Logger &amp;logger)</div><div class="ttdoc">G — Oriente les 3 branches de chaque switch par heuristique géométrique.</div><div class="ttdef"><b>Definition</b> Phase7_SwitchProcessor.cpp:341</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html_acfd14fe7c7250c0d90d70c6f60d0acad"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html#acfd14fe7c7250c0d90d70c6f60d0acad">Phase7_SwitchProcessor::detectCrossovers</a></div><div class="ttdeci">static std::vector&lt; std::pair&lt; SwitchBlock *, SwitchBlock * &gt; &gt; detectCrossovers(const BlockSet &amp;blocks, Logger &amp;logger)</div><div class="ttdoc">D — Détecte les paires de switches en crossover.</div><div class="ttdef"><b>Definition</b> Phase7_SwitchProcessor.cpp:266</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html_adc0ddccf266b4d0ed2fe700b60afaffb"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html#adc0ddccf266b4d0ed2fe700b60afaffb">Phase7_SwitchProcessor::run</a></div><div class="ttdeci">static void run(PipelineContext &amp;ctx, const ParserConfig &amp;config, Logger &amp;logger)</div><div class="ttdoc">Exécute le traitement complet des aiguillages.</div><div class="ttdef"><b>Definition</b> Phase7_SwitchProcessor.cpp:37</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html_ae8c2126d7c8376cb457a164885cede68"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html#ae8c2126d7c8376cb457a164885cede68">Phase7_SwitchProcessor::branchVector</a></div><div class="ttdeci">static CoordinateXY branchVector(const SwitchBlock &amp;sw, const ShuntingElement *elem)</div><div class="ttdoc">Calcule le vecteur UTM unitaire de la jonction vers une branche.</div><div class="ttdef"><b>Definition</b> Phase7_SwitchProcessor.cpp:432</div></div>
+<div class="ttc" id="aclassPhase7__SwitchProcessor_html_af57e361536eba155920aa40429afa82b"><div class="ttname"><a href="../../d0/d02/classPhase7__SwitchProcessor.html#af57e361536eba155920aa40429afa82b">Phase7_SwitchProcessor::absorbLinkSegment</a></div><div class="ttdeci">static void absorbLinkSegment(BlockSet &amp;blocks, SwitchBlock *swA, SwitchBlock *swB, Logger &amp;logger)</div><div class="ttdoc">B — Absorbe le segment de liaison d'un cluster.</div><div class="ttdef"><b>Definition</b> Phase7_SwitchProcessor.cpp:160</div></div>
+<div class="ttc" id="aclassShuntingElement_html"><div class="ttname"><a href="../../d2/d00/classShuntingElement.html">ShuntingElement</a></div><div class="ttdoc">Interface abstraite pour tous les éléments de shuntage ferroviaire.</div><div class="ttdef"><b>Definition</b> ShuntingElement.h:39</div></div>
+<div class="ttc" id="aclassStraightBlock_html"><div class="ttname"><a href="../../da/d01/classStraightBlock.html">StraightBlock</a></div><div class="ttdef"><b>Definition</b> StraightBlock.h:24</div></div>
+<div class="ttc" id="aclassSwitchBlock_html"><div class="ttname"><a href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a></div><div class="ttdef"><b>Definition</b> SwitchBlock.h:41</div></div>
+<div class="ttc" id="astructBlockSet_html"><div class="ttname"><a href="../../d0/d00/structBlockSet.html">BlockSet</a></div><div class="ttdoc">Conteneur propriétaire des StraightBlock et SwitchBlock.</div><div class="ttdef"><b>Definition</b> BlockSet.h:48</div></div>
+<div class="ttc" id="astructParserConfig_html"><div class="ttname"><a href="../../dd/d03/structParserConfig.html">ParserConfig</a></div><div class="ttdoc">Configuration complète du pipeline GeoParser — POD sans logique.</div><div class="ttdef"><b>Definition</b> ParserConfig.h:16</div></div>
+<div class="ttc" id="astructPipelineContext_html"><div class="ttname"><a href="../../d6/d03/structPipelineContext.html">PipelineContext</a></div><div class="ttdoc">Conteneur central du pipeline GeoParser.</div><div class="ttdef"><b>Definition</b> PipelineContext.h:51</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_a02795b5ac40d9afe5fe94a3ec34902b.html">GeoParser</a></li><li class="navelem"><a class="el" href="../../dir_b5f366c770f71ecee1df61f9a225a87c.html">Pipeline</a></li><li class="navelem"><a class="el" href="../../db/d03/Phase7__SwitchProcessor_8h.html">Phase7_SwitchProcessor.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

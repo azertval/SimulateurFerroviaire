@@ -92,6 +92,7 @@ $(document).ready(function(){initNavTree('dd/d00/classProgressBar.html','../../'
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Fonctions membres publiques</a> &#124;
+<a href="#pub-static-methods">Fonctions membres publiques statiques</a> &#124;
 <a href="#pri-attribs">Attributs privés</a> &#124;
 <a href="../../d3/d01/classProgressBar-members.html">Liste de tous les membres</a>  </div>
   <div class="headertitle"><div class="title">Référence de la classe ProgressBar</div></div>
@@ -102,72 +103,69 @@ $(document).ready(function(){initNavTree('dd/d00/classProgressBar.html','../../'
 <div class="dynheader">
 Graphe de collaboration de ProgressBar:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d8/d03/classProgressBar__coll__graph.svg" width="128" height="136"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d8/d03/classProgressBar__coll__graph.svg" width="171" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
-<tr class="memitem:aabdebc9823af01c7567e7546d9f0016f" id="r_aabdebc9823af01c7567e7546d9f0016f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#aabdebc9823af01c7567e7546d9f0016f">ProgressBar</a> ()</td></tr>
-<tr class="memdesc:aabdebc9823af01c7567e7546d9f0016f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <br /></td></tr>
-<tr class="separator:aabdebc9823af01c7567e7546d9f0016f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a608e19274cfd76f8874e4ef6e2dcb396" id="r_a608e19274cfd76f8874e4ef6e2dcb396"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#a608e19274cfd76f8874e4ef6e2dcb396">create</a> (HWND parent, int x, int y, int width, int height)</td></tr>
-<tr class="memdesc:a608e19274cfd76f8874e4ef6e2dcb396"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée la <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a> dans une fenêtre parent.  <br /></td></tr>
-<tr class="separator:a608e19274cfd76f8874e4ef6e2dcb396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe51ef939624699306a9abd69717b0c8" id="r_afe51ef939624699306a9abd69717b0c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#afe51ef939624699306a9abd69717b0c8">create</a> (HWND hParent, HINSTANCE hInstance, int x, int y, int width, int cancelId)</td></tr>
+<tr class="memdesc:afe51ef939624699306a9abd69717b0c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée les contrôles Win32 (label, barre, bouton Cancel).  <br /></td></tr>
+<tr class="separator:afe51ef939624699306a9abd69717b0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad06234c2844ac3beb9f8e8532015c0cd" id="r_ad06234c2844ac3beb9f8e8532015c0cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#ad06234c2844ac3beb9f8e8532015c0cd">setProgress</a> (int value)</td></tr>
-<tr class="memdesc:ad06234c2844ac3beb9f8e8532015c0cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour la progression.  <br /></td></tr>
+<tr class="memdesc:ad06234c2844ac3beb9f8e8532015c0cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour la progression (0-100).  <br /></td></tr>
 <tr class="separator:ad06234c2844ac3beb9f8e8532015c0cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeafd9027796b1d9c94985ed9c7269a78" id="r_aeafd9027796b1d9c94985ed9c7269a78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#aeafd9027796b1d9c94985ed9c7269a78">setLabel</a> (const std::wstring &amp;text)</td></tr>
+<tr class="memdesc:aeafd9027796b1d9c94985ed9c7269a78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour le label de phase.  <br /></td></tr>
+<tr class="separator:aeafd9027796b1d9c94985ed9c7269a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39be10e8a9dec689523750c7dfb10384" id="r_a39be10e8a9dec689523750c7dfb10384"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#a39be10e8a9dec689523750c7dfb10384">showCancelButton</a> ()</td></tr>
+<tr class="memdesc:a39be10e8a9dec689523750c7dfb10384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le bouton Cancel — à appeler au début du parsing.  <br /></td></tr>
+<tr class="separator:a39be10e8a9dec689523750c7dfb10384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d8dce531b7fea7e49c8fffebf756cf3" id="r_a8d8dce531b7fea7e49c8fffebf756cf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#a8d8dce531b7fea7e49c8fffebf756cf3">hideCancelButton</a> ()</td></tr>
+<tr class="memdesc:a8d8dce531b7fea7e49c8fffebf756cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Masque le bouton Cancel — à appeler à la fin / erreur / annulation.  <br /></td></tr>
+<tr class="separator:a8d8dce531b7fea7e49c8fffebf756cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ccd597a098a693f9364741fc69a3de2" id="r_a9ccd597a098a693f9364741fc69a3de2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#a9ccd597a098a693f9364741fc69a3de2">reset</a> ()</td></tr>
+<tr class="memdesc:a9ccd597a098a693f9364741fc69a3de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réinitialise la barre à 0 et vide le label.  <br /></td></tr>
+<tr class="separator:a9ccd597a098a693f9364741fc69a3de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9fbcf04d7d4e8c5b3e332efcfc0d34c" id="r_ac9fbcf04d7d4e8c5b3e332efcfc0d34c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#ac9fbcf04d7d4e8c5b3e332efcfc0d34c">show</a> (bool visible)</td></tr>
 <tr class="memdesc:ac9fbcf04d7d4e8c5b3e332efcfc0d34c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Show or hide the <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a>.  <br /></td></tr>
 <tr class="separator:ac9fbcf04d7d4e8c5b3e332efcfc0d34c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Fonctions membres publiques statiques</h2></td></tr>
+<tr class="memitem:ab2f4f8223d968a02c13c3e858c3ba141" id="r_ab2f4f8223d968a02c13c3e858c3ba141"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#ab2f4f8223d968a02c13c3e858c3ba141">totalHeight</a> ()</td></tr>
+<tr class="memdesc:ab2f4f8223d968a02c13c3e858c3ba141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la hauteur totale du widget en pixels. Utile pour positionner les contrôles voisins dans <a class="el" href="../../d6/d02/classMainWindow.html" title="Fenêtre principale de l&#39;application SimulateurFerroviaire.">MainWindow</a>.  <br /></td></tr>
+<tr class="separator:ab2f4f8223d968a02c13c3e858c3ba141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Attributs privés</h2></td></tr>
-<tr class="memitem:a280b4e36516c6e294de0d97cc5a128bc" id="r_a280b4e36516c6e294de0d97cc5a128bc"><td class="memItemLeft" align="right" valign="top">HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#a280b4e36516c6e294de0d97cc5a128bc">m_hwnd</a></td></tr>
-<tr class="separator:a280b4e36516c6e294de0d97cc5a128bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44afb3ef404a316255da5d2e464f1f23" id="r_a44afb3ef404a316255da5d2e464f1f23"><td class="memItemLeft" align="right" valign="top">HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#a44afb3ef404a316255da5d2e464f1f23">m_hLabel</a> = nullptr</td></tr>
+<tr class="memdesc:a44afb3ef404a316255da5d2e464f1f23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contrôle STATIC — label de phase.  <br /></td></tr>
+<tr class="separator:a44afb3ef404a316255da5d2e464f1f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33d2e66858deb4e35becfb593714a860" id="r_a33d2e66858deb4e35becfb593714a860"><td class="memItemLeft" align="right" valign="top">HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#a33d2e66858deb4e35becfb593714a860">m_hBar</a> = nullptr</td></tr>
+<tr class="memdesc:a33d2e66858deb4e35becfb593714a860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contrôle PROGRESS_CLASS.  <br /></td></tr>
+<tr class="separator:a33d2e66858deb4e35becfb593714a860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44e03905aff491f53b4df9d94d977279" id="r_a44e03905aff491f53b4df9d94d977279"><td class="memItemLeft" align="right" valign="top">HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d00/classProgressBar.html#a44e03905aff491f53b4df9d94d977279">m_hCancel</a> = nullptr</td></tr>
+<tr class="memdesc:a44e03905aff491f53b4df9d94d977279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contrôle BUTTON "Annuler".  <br /></td></tr>
+<tr class="separator:a44e03905aff491f53b4df9d94d977279"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
-<a id="aabdebc9823af01c7567e7546d9f0016f" name="aabdebc9823af01c7567e7546d9f0016f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabdebc9823af01c7567e7546d9f0016f">&#9670;&#160;</a></span>ProgressBar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ProgressBar::ProgressBar </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Constructeur par défaut. </p>
-
-</div>
-</div>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
-<a id="a608e19274cfd76f8874e4ef6e2dcb396" name="a608e19274cfd76f8874e4ef6e2dcb396"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a608e19274cfd76f8874e4ef6e2dcb396">&#9670;&#160;</a></span>create()</h2>
+<a id="afe51ef939624699306a9abd69717b0c8" name="afe51ef939624699306a9abd69717b0c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe51ef939624699306a9abd69717b0c8">&#9670;&#160;</a></span>create()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ProgressBar::create </td>
           <td>(</td>
           <td class="paramtype">HWND&#160;</td>
-          <td class="paramname"><em>parent</em>, </td>
+          <td class="paramname"><em>hParent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HINSTANCE&#160;</td>
+          <td class="paramname"><em>hInstance</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -191,7 +189,7 @@ Attributs privés</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>height</em>&#160;</td>
+          <td class="paramname"><em>cancelId</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -199,21 +197,80 @@ Attributs privés</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Crée la <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a> dans une fenêtre parent. </p>
+<p>Crée les contrôles Win32 (label, barre, bouton Cancel). </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parent</td><td>Fenêtre parente (HWND). </td></tr>
-    <tr><td class="paramname">x</td><td>Position X. </td></tr>
-    <tr><td class="paramname">y</td><td>Position Y. </td></tr>
-    <tr><td class="paramname">width</td><td>Largeur. </td></tr>
-    <tr><td class="paramname">height</td><td>Hauteur. </td></tr>
+    <tr><td class="paramname">hParent</td><td>Fenêtre parente. </td></tr>
+    <tr><td class="paramname">hInstance</td><td>Handle d'instance Win32. </td></tr>
+    <tr><td class="paramname">x,y</td><td>Position dans la fenêtre parente. </td></tr>
+    <tr><td class="paramname">width</td><td>Largeur en pixels. </td></tr>
+    <tr><td class="paramname">cancelId</td><td>Identifiant de commande du bouton Cancel (ex. IDC_CANCEL_PARSING). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8d8dce531b7fea7e49c8fffebf756cf3" name="a8d8dce531b7fea7e49c8fffebf756cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d8dce531b7fea7e49c8fffebf756cf3">&#9670;&#160;</a></span>hideCancelButton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ProgressBar::hideCancelButton </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Masque le bouton Cancel — à appeler à la fin / erreur / annulation. </p>
+
+</div>
+</div>
+<a id="a9ccd597a098a693f9364741fc69a3de2" name="a9ccd597a098a693f9364741fc69a3de2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ccd597a098a693f9364741fc69a3de2">&#9670;&#160;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ProgressBar::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réinitialise la barre à 0 et vide le label. </p>
+
+</div>
+</div>
+<a id="aeafd9027796b1d9c94985ed9c7269a78" name="aeafd9027796b1d9c94985ed9c7269a78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeafd9027796b1d9c94985ed9c7269a78">&#9670;&#160;</a></span>setLabel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ProgressBar::setLabel </td>
+          <td>(</td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met à jour le label de phase. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>Texte affiché (ex. L"Phase 2/9 — Intersections géométriques..."). </td></tr>
   </table>
   </dd>
 </dl>
@@ -225,9 +282,6 @@ Attributs privés</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ProgressBar::setProgress </td>
@@ -237,17 +291,12 @@ Attributs privés</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Met à jour la progression. </p>
+<p>Met à jour la progression (0-100). </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>Pourcentage [0–100]. </td></tr>
+    <tr><td class="paramname">value</td><td>Valeur de progression. </td></tr>
   </table>
   </dd>
 </dl>
@@ -259,9 +308,6 @@ Attributs privés</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ProgressBar::show </td>
@@ -271,11 +317,6 @@ Attributs privés</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Show or hide the <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a>. </p>
@@ -288,9 +329,27 @@ Attributs privés</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Documentation des données membres</h2>
-<a id="a280b4e36516c6e294de0d97cc5a128bc" name="a280b4e36516c6e294de0d97cc5a128bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a280b4e36516c6e294de0d97cc5a128bc">&#9670;&#160;</a></span>m_hwnd</h2>
+<a id="a39be10e8a9dec689523750c7dfb10384" name="a39be10e8a9dec689523750c7dfb10384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39be10e8a9dec689523750c7dfb10384">&#9670;&#160;</a></span>showCancelButton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ProgressBar::showCancelButton </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le bouton Cancel — à appeler au début du parsing. </p>
+
+</div>
+</div>
+<a id="ab2f4f8223d968a02c13c3e858c3ba141" name="ab2f4f8223d968a02c13c3e858c3ba141"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2f4f8223d968a02c13c3e858c3ba141">&#9670;&#160;</a></span>totalHeight()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -299,7 +358,35 @@ Attributs privés</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">HWND ProgressBar::m_hwnd</td>
+          <td class="memname">static constexpr int ProgressBar::totalHeight </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne la hauteur totale du widget en pixels. Utile pour positionner les contrôles voisins dans <a class="el" href="../../d6/d02/classMainWindow.html" title="Fenêtre principale de l&#39;application SimulateurFerroviaire.">MainWindow</a>. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des données membres</h2>
+<a id="a33d2e66858deb4e35becfb593714a860" name="a33d2e66858deb4e35becfb593714a860"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33d2e66858deb4e35becfb593714a860">&#9670;&#160;</a></span>m_hBar</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND ProgressBar::m_hBar = nullptr</td>
         </tr>
       </table>
   </td>
@@ -308,12 +395,62 @@ Attributs privés</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Handle du contrôle <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a>. </p>
+
+<p>Contrôle PROGRESS_CLASS. </p>
 
 </div>
 </div>
-<hr/>La documentation de cette classe a été générée à partir du fichier suivant :<ul>
+<a id="a44e03905aff491f53b4df9d94d977279" name="a44e03905aff491f53b4df9d94d977279"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44e03905aff491f53b4df9d94d977279">&#9670;&#160;</a></span>m_hCancel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND ProgressBar::m_hCancel = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Contrôle BUTTON "Annuler". </p>
+
+</div>
+</div>
+<a id="a44afb3ef404a316255da5d2e464f1f23" name="a44afb3ef404a316255da5d2e464f1f23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44afb3ef404a316255da5d2e464f1f23">&#9670;&#160;</a></span>m_hLabel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND ProgressBar::m_hLabel = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Contrôle STATIC — label de phase. </p>
+
+</div>
+</div>
+<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
 <li>SimulateurFerroviaire/Engine/HMI/<a class="el" href="../../d2/d03/ProgressBar_8h_source.html">ProgressBar.h</a></li>
+<li>SimulateurFerroviaire/Engine/HMI/<a class="el" href="../../d6/d00/ProgressBar_8cpp.html">ProgressBar.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

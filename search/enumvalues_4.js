@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['normal_0',['normal',['../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89a1e23852820b9154316c7c06e2b7ba051',1,'NORMAL:&#160;SwitchBlock.h'],['../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16a1e23852820b9154316c7c06e2b7ba051',1,'NORMAL:&#160;PCCEdge.h']]]
+  ['failure_0',['FAILURE',['../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a36fc6065a3e970bc3e6b2e59da52bf2a',1,'Logger.h']]],
+  ['free_1',['FREE',['../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da88c189a42c87aa49d667fc8ab76bc323',1,'ShuntingElement.h']]]
 ];

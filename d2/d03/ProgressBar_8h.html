@@ -96,12 +96,19 @@ $(document).ready(function(){initNavTree('d2/d03/ProgressBar_8h.html','../../');
 </div><!--header-->
 <div class="contents">
 
-<p>Wrapper minimaliste d'une <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a> Win32.  
+<p>Barre de progression Win32 avec label de phase et bouton Cancel.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><div class="dynheader">
+<div class="textblock"><code>#include &lt;string&gt;</code><br />
+<code>#include &lt;windows.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de ProgressBar.h:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d8/d01/ProgressBar_8h__incl.svg" width="204" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d1/d03/ProgressBar_8h__dep__incl.svg" width="563" height="315"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d1/d03/ProgressBar_8h__dep__incl.svg" width="672" height="315"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="../../d2/d03/ProgressBar_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -112,14 +119,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Wrapper minimaliste d'une <a class="el" href="../../dd/d00/classProgressBar.html">ProgressBar</a> Win32. </p>
-<p>Cette classe encapsule le contrôle natif Windows PROGRESS_CLASS et fournit une API simple pour :</p><ul>
-<li>créer la barre</li>
-<li>mettre à jour la progression (0–100)</li>
-</ul>
-<p>⚠️ IMPORTANT :</p><ul>
-<li>Les mises à jour doivent être faites depuis le thread UI (via PostMessage recommandé). </li>
-</ul>
+<div class="textblock"><p>Barre de progression Win32 avec label de phase et bouton Cancel. </p>
+<p>Layout vertical : [Label phase — "Phase 2/9 — Intersections géométriques..."] [████████░░░░░░░░░░░░░░░░░ 33% ] [ Annuler ]</p>
+<p>Le bouton Cancel est masqué par défaut — visible uniquement pendant le parsing. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

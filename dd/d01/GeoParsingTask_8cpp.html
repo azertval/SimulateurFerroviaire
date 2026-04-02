@@ -90,106 +90,25 @@ $(document).ready(function(){initNavTree('dd/d01/GeoParsingTask_8cpp.html','../.
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Référence du fichier GeoParsingTask.cpp</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Implémentation de la tâche de parsing GeoJSON asynchrone.  
+<p>Implémentation de la tâche asynchrone <a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a> v2.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d6/d01/framework_8h_source.html">framework.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d0/d00/GeoParsingTask_8h_source.html">GeoParsingTask.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../de/d02/GeoParser_8h_source.html">Modules/GeoParser/GeoParser.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d0/d01/GeoParserException_8h_source.html">Modules/GeoParser/Exceptions/GeoParserException.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../dd/d00/Logger_8h_source.html">Engine/Core/Logger/Logger.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d0/d00/GeoParsingTask_8h_source.html">GeoParsingTask.h</a>&quot;</code><br />
 <code>#include &lt;thread&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../de/d02/GeoParser_8h_source.html">GeoParser.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../da/d03/Resource_8h_source.html">Resource.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de GeoParsingTask.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d8/d03/GeoParsingTask_8cpp__incl.svg" width="2266" height="579"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d8/d03/GeoParsingTask_8cpp__incl.svg" width="2160" height="696"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:aacda7c0aa83125b36195c5703d1b4959" id="r_aacda7c0aa83125b36195c5703d1b4959"><td class="memItemLeft" align="right" valign="top">static constexpr UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d01/GeoParsingTask_8cpp.html#aacda7c0aa83125b36195c5703d1b4959">WM_PROGRESS_UPDATE</a> = WM_USER + 1</td></tr>
-<tr class="separator:aacda7c0aa83125b36195c5703d1b4959"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7738d2c299f0b98844346bed1e13ea58" id="r_a7738d2c299f0b98844346bed1e13ea58"><td class="memItemLeft" align="right" valign="top">static constexpr UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d01/GeoParsingTask_8cpp.html#a7738d2c299f0b98844346bed1e13ea58">WM_PARSING_SUCCESS</a> = WM_USER + 2</td></tr>
-<tr class="separator:a7738d2c299f0b98844346bed1e13ea58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aceb0af3e41fadb0e741d1b18a89d1214" id="r_aceb0af3e41fadb0e741d1b18a89d1214"><td class="memItemLeft" align="right" valign="top">static constexpr UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d01/GeoParsingTask_8cpp.html#aceb0af3e41fadb0e741d1b18a89d1214">WM_PARSING_ERROR</a> = WM_USER + 3</td></tr>
-<tr class="separator:aceb0af3e41fadb0e741d1b18a89d1214"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Implémentation de la tâche de parsing GeoJSON asynchrone. </p>
-<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="../../da/d03/classGeoParsingTask.html" title="Tâche asynchrone encapsulant l&#39;exécution du GeoParser.">GeoParsingTask</a> </dd></dl>
-</div><h2 class="groupheader">Documentation des variables</h2>
-<a id="aceb0af3e41fadb0e741d1b18a89d1214" name="aceb0af3e41fadb0e741d1b18a89d1214"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aceb0af3e41fadb0e741d1b18a89d1214">&#9670;&#160;</a></span>WM_PARSING_ERROR</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr UINT WM_PARSING_ERROR = WM_USER + 3</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7738d2c299f0b98844346bed1e13ea58" name="a7738d2c299f0b98844346bed1e13ea58"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7738d2c299f0b98844346bed1e13ea58">&#9670;&#160;</a></span>WM_PARSING_SUCCESS</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr UINT WM_PARSING_SUCCESS = WM_USER + 2</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aacda7c0aa83125b36195c5703d1b4959" name="aacda7c0aa83125b36195c5703d1b4959"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aacda7c0aa83125b36195c5703d1b4959">&#9670;&#160;</a></span>WM_PROGRESS_UPDATE</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr UINT WM_PROGRESS_UPDATE = WM_USER + 1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+</div><a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Implémentation de la tâche asynchrone <a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a> v2. </p>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a> </dd></dl>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

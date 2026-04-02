@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('d8/d02/pcc.html','../../'); initResiza
 <div class="textblock"><hr  />
 <h1><a class="anchor" id="pcc_overview"></a>
 Vue d'ensemble</h1>
-<p>Le module PCC transforme le modèle topologique (<code><a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a></code> / <code><a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a></code>) en un <b>graphe logique indépendant des coordonnées GPS</b>, positionnable en schéma gauche → droite pour l'affichage TCO.</p>
+<p>Le module PCC transforme le modèle topologique (<a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> / <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>) en un <b>graphe logique indépendant des coordonnées GPS</b>, positionnable en schéma gauche → droite pour l'affichage TCO.</p>
 <div class="fragment"><div class="line">TopologyRepository      Modules/PCC       HMI/PCCPanel</div>
 <div class="line">  StraightBlock  ────┬─►  PCCNode  ────►  TCORenderer</div>
 <div class="line">  SwitchBlock    ────┘       │</div>
@@ -112,26 +112,26 @@ Vue d'ensemble</h1>
 <div class="line">                             │</div>
 <div class="line">                          PCCGraph</div>
 </div><!-- fragment --><p><b>Règle de dépendance :</b></p><ul>
-<li><code>Modules/PCC</code> lit <code><a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a></code> — seul point de couplage vers le <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>.</li>
-<li><code>HMI/PCCPanel</code> consomme <code><a class="el" href="../../d2/d00/classPCCGraph.html" title="Conteneur propriétaire du graphe PCC — nœuds, arêtes et index.">PCCGraph</a></code> uniquement — jamais <code><a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a></code> directement.</li>
+<li><code>Modules/PCC</code> lit <a class="el" href="../../d2/d01/classTopologyRepository.html">TopologyRepository</a> — seul point de couplage vers le <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>.</li>
+<li><code>HMI/PCCPanel</code> consomme <a class="el" href="../../d2/d00/classPCCGraph.html">PCCGraph</a> uniquement — jamais <a class="el" href="../../d2/d01/classTopologyRepository.html">TopologyRepository</a> directement.</li>
 </ul>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Responsabilité unique    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d1/d03/classPCCNode.html" title="Nœud abstrait du graphe PCC.">PCCNode</a></code>   </td><td class="markdownTableBodyNone">Représenter un bloc ferroviaire dans le graphe    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d1/d03/classPCCNode.html">PCCNode</a>   </td><td class="markdownTableBodyNone">Représenter un bloc ferroviaire dans le graphe    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d6/d02/classPCCStraightNode.html" title="Nœud PCC issu d&#39;un StraightBlock.">PCCStraightNode</a></code>   </td><td class="markdownTableBodyNone">Exposer les données spécifiques d'une voie droite    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d6/d02/classPCCStraightNode.html">PCCStraightNode</a>   </td><td class="markdownTableBodyNone">Exposer les données spécifiques d'une voie droite    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d2/d00/classPCCSwitchNode.html" title="Nœud PCC issu d&#39;un SwitchBlock.">PCCSwitchNode</a></code>   </td><td class="markdownTableBodyNone">Exposer les données spécifiques d'un aiguillage    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d2/d00/classPCCSwitchNode.html">PCCSwitchNode</a>   </td><td class="markdownTableBodyNone">Exposer les données spécifiques d'un aiguillage    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d2/d03/classPCCEdge.html" title="Connexion orientée entre deux PCCNode du PCCGraph.">PCCEdge</a></code>   </td><td class="markdownTableBodyNone">Représenter une connexion orientée entre deux nœuds    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d2/d03/classPCCEdge.html">PCCEdge</a>   </td><td class="markdownTableBodyNone">Représenter une connexion orientée entre deux nœuds    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d2/d00/classPCCGraph.html" title="Conteneur propriétaire du graphe PCC — nœuds, arêtes et index.">PCCGraph</a></code>   </td><td class="markdownTableBodyNone">Posséder et indexer les nœuds et arêtes    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>   </td><td class="markdownTableBodyNone">Posséder et indexer les nœuds et arêtes    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d8/d01/classPCCGraphBuilder.html" title="Constructeur statique du PCCGraph depuis TopologyRepository.">PCCGraphBuilder</a></code>   </td><td class="markdownTableBodyNone">Construire le graphe depuis <code><a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a></code>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d8/d01/classPCCGraphBuilder.html">PCCGraphBuilder</a>   </td><td class="markdownTableBodyNone">Construire le graphe depuis <a class="el" href="../../d2/d01/classTopologyRepository.html">TopologyRepository</a>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d4/d01/classPCCLayout.html" title="Calculateur de positions logiques X/Y du PCCGraph.">PCCLayout</a></code>   </td><td class="markdownTableBodyNone">Calculer les positions logiques X/Y   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d01/classPCCLayout.html">PCCLayout</a>   </td><td class="markdownTableBodyNone">Calculer les positions logiques X/Y   </td></tr>
 </table>
 <hr  />
 <h1><a class="anchor" id="pcc_nodes"></a>
@@ -160,7 +160,7 @@ Nœuds et arêtes</h1>
 <hr  />
 <h1><a class="anchor" id="pcc_graph"></a>
 PCCGraph — Conteneur</h1>
-<p><code><a class="el" href="../../d2/d00/classPCCGraph.html" title="Conteneur propriétaire du graphe PCC — nœuds, arêtes et index.">PCCGraph</a></code> possède l'ensemble des nœuds et arêtes via <code>unique_ptr</code> et expose un index de lookup O(1) par <code>sourceId</code>.</p>
+<p><a class="el" href="../../d2/d00/classPCCGraph.html">PCCGraph</a> possède l'ensemble des nœuds et arêtes via <code>unique_ptr</code> et expose un index de lookup O(1) par <code>sourceId</code>.</p>
 <div class="fragment"><div class="line">PCCGraph</div>
 <div class="line">  ├── m_nodes  : vector&lt;unique_ptr&lt;PCCNode&gt;&gt;      propriétaire</div>
 <div class="line">  ├── m_edges  : vector&lt;unique_ptr&lt;PCCEdge&gt;&gt;      propriétaire</div>
@@ -169,21 +169,21 @@ PCCGraph — Conteneur</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Méthode   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d2/d00/classPCCGraph.html#a9af744f1920e23db92570ebaf22467da" title="Crée un nœud voie droite, l&#39;indexe et le stocke.">PCCGraph::addStraightNode()</a></code>   </td><td class="markdownTableBodyNone">Crée, stocke et indexe un <code><a class="el" href="../../d6/d02/classPCCStraightNode.html" title="Nœud PCC issu d&#39;un StraightBlock.">PCCStraightNode</a></code>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d2/d00/classPCCGraph.html#a9af744f1920e23db92570ebaf22467da">addStraightNode()</a>   </td><td class="markdownTableBodyNone">Crée, stocke et indexe un <a class="el" href="../../d6/d02/classPCCStraightNode.html">PCCStraightNode</a>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d2/d00/classPCCGraph.html#ab84fbc39aef08972c827bc877230d1d9" title="Crée un nœud aiguillage, l&#39;indexe et le stocke.">PCCGraph::addSwitchNode()</a></code>   </td><td class="markdownTableBodyNone">Crée, stocke et indexe un <code><a class="el" href="../../d2/d00/classPCCSwitchNode.html" title="Nœud PCC issu d&#39;un SwitchBlock.">PCCSwitchNode</a></code>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d2/d00/classPCCGraph.html#ab84fbc39aef08972c827bc877230d1d9">addSwitchNode()</a>   </td><td class="markdownTableBodyNone">Crée, stocke et indexe un <a class="el" href="../../d2/d00/classPCCSwitchNode.html">PCCSwitchNode</a>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d2/d00/classPCCGraph.html#aca4218343fc56107fe1dc2091d98e0bb" title="Crée une arête orientée entre deux nœuds et la câble sur les deux.">PCCGraph::addEdge()</a></code>   </td><td class="markdownTableBodyNone">Crée, stocke et câble une <code><a class="el" href="../../d2/d03/classPCCEdge.html" title="Connexion orientée entre deux PCCNode du PCCGraph.">PCCEdge</a></code> sur les deux nœuds    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d2/d00/classPCCGraph.html#aca4218343fc56107fe1dc2091d98e0bb">addEdge()</a>   </td><td class="markdownTableBodyNone">Crée, stocke et câble une <a class="el" href="../../d2/d03/classPCCEdge.html">PCCEdge</a> sur les deux nœuds    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d2/d00/classPCCGraph.html#ad6c1dbca01fbb10fd32323842a650266" title="Recherche un nœud par l&#39;identifiant de son bloc source.">PCCGraph::findNode()</a></code>   </td><td class="markdownTableBodyNone">Lookup O(1) — retourne <code>nullptr</code> si absent    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d2/d00/classPCCGraph.html#ad6c1dbca01fbb10fd32323842a650266">findNode()</a>   </td><td class="markdownTableBodyNone">Lookup O(1) — retourne <code>nullptr</code> si absent    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d2/d00/classPCCGraph.html#a3d32f9f30f1d74403d0af317959b8a14" title="Vide le graphe — nœuds, arêtes et index.">PCCGraph::clear()</a></code>   </td><td class="markdownTableBodyNone">Vide nœuds, arêtes et index   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d2/d00/classPCCGraph.html#a3d32f9f30f1d74403d0af317959b8a14">clear()</a>   </td><td class="markdownTableBodyNone">Vide nœuds, arêtes et index   </td></tr>
 </table>
 <hr  />
 <h1><a class="anchor" id="pcc_builder"></a>
 PCCGraphBuilder — Construction</h1>
-<p>Classe statique. Seule classe du module qui connaît <code><a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a></code>.</p>
-<p><b>Pipeline interne de <code><a class="el" href="../../d8/d01/classPCCGraphBuilder.html#abf374147607f4e1db014ab3c96af68ad" title="Construit le PCCGraph depuis le contenu de TopologyRepository.">PCCGraphBuilder::build()</a></code> :</b></p>
+<p>Classe statique. Seule classe du module qui connaît <a class="el" href="../../d2/d01/classTopologyRepository.html">TopologyRepository</a>.</p>
+<p>**Pipeline interne de <a class="el" href="../../d8/d01/classPCCGraphBuilder.html#abf374147607f4e1db014ab3c96af68ad">PCCGraphBuilder::build()</a> :**</p>
 <div class="fragment"><div class="line">Passe 1 — buildNodes()  : crée un nœud PCC par bloc (index complet)</div>
 <div class="line">Passe 2 — buildEdges()  : résout les connexions via les IDs de voisins/branches</div>
 </div><!-- fragment --><p>Les deux passes sont séparées — toutes les arêtes référencent des nœuds par ID, l'index doit être complet avant la résolution.</p>
@@ -208,11 +208,11 @@ PCCLayout — Positionnement</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Méthode   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d4/d01/classPCCLayout.html#ab4cc295476fd4fa74b34318b127b3ab0" title="Calcule et assigne les positions logiques à tous les nœuds.">PCCLayout::compute()</a></code>   </td><td class="markdownTableBodyNone">Point d'entrée — orchestre BFS multi-sources    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d01/classPCCLayout.html#ab4cc295476fd4fa74b34318b127b3ab0">compute()</a>   </td><td class="markdownTableBodyNone">Point d'entrée — orchestre BFS multi-sources    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d4/d01/classPCCLayout.html#aa70b44899546415d337088f06365db90" title="Détecte les nœuds terminus (points de départ du schéma).">PCCLayout::findTermini()</a></code>   </td><td class="markdownTableBodyNone">Détecte les nœuds de départ (1 seul voisin, non-cible de switch)    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d01/classPCCLayout.html#aa70b44899546415d337088f06365db90">findTermini()</a>   </td><td class="markdownTableBodyNone">Détecte les nœuds de départ (1 seul voisin, non-cible de switch)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d4/d01/classPCCLayout.html#ab4f624049096886733035938bc5499fc" title="Lance un BFS linéaire depuis start et assigne les positions X/Y.">PCCLayout::runBFS()</a></code>   </td><td class="markdownTableBodyNone">BFS depuis un terminus, assigne <a class="el" href="../../d2/d03/structPCCPosition.html" title="Position logique d&#39;un nœud dans le schéma PCC.">PCCPosition</a>   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d01/classPCCLayout.html#ab4f624049096886733035938bc5499fc">runBFS()</a>   </td><td class="markdownTableBodyNone">BFS depuis un terminus, assigne <a class="el" href="../../d2/d03/structPCCPosition.html" title="Position logique d&#39;un nœud dans le schéma PCC.">PCCPosition</a>   </td></tr>
 </table>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simulateur Ferroviaire: Référence du fichier SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/StraightBlock.h</title>
+<title>Simulateur Ferroviaire: Référence du fichier SimulateurFerroviaire/Modules/Elements/ShuntingElements/StraightBlock.h</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -101,16 +101,17 @@ $(document).ready(function(){initNavTree('de/d01/StraightBlock_8h.html','../../'
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../df/d02/ShuntingElement_8h_source.html">ShuntingElement.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../df/d02/LatLon_8h_source.html">Modules/Coordinates/LatLon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d6/d01/CoordinateLatLon_8h_source.html">Engine/Core/Coordinates/CoordinateLatLon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../db/d03/CoordinateXY_8h_source.html">Engine/Core/Coordinates/CoordinateXY.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de StraightBlock.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d0/d02/StraightBlock_8h__incl.svg" width="552" height="403"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d0/d02/StraightBlock_8h__incl.svg" width="724" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d7/d03/StraightBlock_8h__dep__incl.svg" width="2163" height="652"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d7/d03/StraightBlock_8h__dep__incl.svg" width="3950" height="652"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="../../de/d01/StraightBlock_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -120,19 +121,19 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html">StraightBlock::StraightNeighbours</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voisins topologiques d'un <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a>.  <a href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voisins topologiques résolus (pointeurs non-propriétaires).  <a href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Modèle de domaine d'un bloc de voie droite (Straight). </p>
-<p>Encapsulation : tous les champs sont privés. Les mutations passent par des méthodes à intent explicite, appelées uniquement par la phase du pipeline qui en a la charge : Phase 3/4 → constructeur Phase 5b → addNeighbourId / replaceNeighbourId Phase 6d → setCoordinates (retaille le Straight côté jonction)</p>
-<p>Identifiants : Format standard : "s/0", "s/1", … Format morceau : "s/0_c1", "s/0_c2", … (après découpe Phase 5a) </p>
+<p>Identifiants : Format standard : "s/0", "s/1", … Format morceau : "s/0_c1", "s/0_c2", … (après découpe)</p>
+<p>Système de coordonnées : WGS84 — conservé pour le rendu <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> (<a class="el" href="../../d7/d03/classTopologyRenderer.html" title="Utilitaire statique d&#39;export de la topologie ferroviaire en GeoJSON.">TopologyRenderer</a>). UTM — utilisé pour tous les calculs métriques du pipeline. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_713206489b3f2e638ce64611b3101c39.html">InteractiveElements</a></li><li class="navelem"><a class="el" href="../../dir_bcc2c4a02f117a6753328819272b2e64.html">ShuntingElements</a></li><li class="navelem"><a class="el" href="../../de/d01/StraightBlock_8h.html">StraightBlock.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_fb8e195cd911b151b9db6628377989b2.html">Elements</a></li><li class="navelem"><a class="el" href="../../dir_01ea92b3d443f0d5a4492146fa716b14.html">ShuntingElements</a></li><li class="navelem"><a class="el" href="../../de/d01/StraightBlock_8h.html">StraightBlock.h</a></li>
     <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

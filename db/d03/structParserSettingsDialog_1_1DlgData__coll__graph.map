@@ -1,0 +1,9 @@
+<map id="ParserSettingsDialog::DlgData" name="ParserSettingsDialog::DlgData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="53,403,203,483"/>
+<area shape="rect" id="Node000002" href="$dd/d03/structParserConfig.html" title="Configuration complète du pipeline GeoParser — POD sans logique." alt="" coords="5,135,165,340"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,340,119,386,114,387,104,341"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="190,205,269,270"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,271,200,323,173,380,167,390,163,388,168,377,195,321,216,269"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="164,5,295,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="232,99,232,204,227,204,227,99"/>
+</map>

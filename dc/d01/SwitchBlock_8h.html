@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simulateur Ferroviaire: Référence du fichier SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/SwitchBlock.h</title>
+<title>Simulateur Ferroviaire: Référence du fichier SimulateurFerroviaire/Modules/Elements/ShuntingElements/SwitchBlock.h</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -99,21 +99,23 @@ $(document).ready(function(){initNavTree('dc/d01/SwitchBlock_8h.html','../../');
 
 <p>Modèle de domaine d'un aiguillage ferroviaire à 3 branches.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;optional&gt;</code><br />
+<div class="textblock"><code>#include &lt;array&gt;</code><br />
+<code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &quot;<a class="el" href="../../df/d02/LatLon_8h_source.html">Modules/Coordinates/LatLon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d6/d01/CoordinateLatLon_8h_source.html">Engine/Core/Coordinates/CoordinateLatLon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../db/d03/CoordinateXY_8h_source.html">Engine/Core/Coordinates/CoordinateXY.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/d02/ShuntingElement_8h_source.html">ShuntingElement.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de SwitchBlock.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d4/d01/SwitchBlock_8h__incl.svg" width="627" height="403"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d4/d01/SwitchBlock_8h__incl.svg" width="938" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d6/d01/SwitchBlock_8h__dep__incl.svg" width="2599" height="652"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d6/d01/SwitchBlock_8h__dep__incl.svg" width="3964" height="652"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="../../dc/d01/SwitchBlock_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -123,7 +125,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html">SwitchBlock::SwitchBranches</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branches topologiques d'un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>.  <a href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branches topologiques résolues (pointeurs non-propriétaires).  <a href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -136,9 +138,9 @@ Classes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Modèle de domaine d'un aiguillage ferroviaire à 3 branches. </p>
-<p>Encapsulation : tous les champs sont privés. Les mutations passent par des méthodes à intent explicite, appelées uniquement par la phase du pipeline qui en a la charge : Phase 3 → constructeur Phase 5b → addBranchId Phase 6 → orient / setTips / swapNormalDeviation / computeTotalLength Phase 7 → absorbLink</p>
+<p>Encapsulation : tous les champs sont privés. Les mutations passent par des méthodes à intent explicite.</p>
 <p>Double aiguille : Un aiguillage peut absorber le segment de liaison côté branche normale (doubleOnNormal) ou côté branche déviée (doubleOnDeviation). Un seul des deux est renseigné à la fois.</p>
-<p>absorbLink() stocke la polyligne COMPLÈTE du segment absorbé, orientée depuis la jonction de ce switch vers celle du partenaire. Cette polyligne est utilisée par le rendu WebView pour tracer la branche fusionnée avec fidélité géométrique. </p>
+<p>Système de coordonnées : WGS84 — jonction et tips pour le rendu <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>. UTM — jonction UTM pour les calculs métriques du pipeline. </p>
 </div><h2 class="groupheader">Documentation du type de l'énumération</h2>
 <a id="a7c3e8d7f97ae99a61ed27254391abc89" name="a7c3e8d7f97ae99a61ed27254391abc89"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c3e8d7f97ae99a61ed27254391abc89">&#9670;&#160;</a></span>ActiveBranch</h2>
@@ -161,8 +163,8 @@ Classes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Branche active d'un aiguillage. </p>
-<p>NORMAL : le train emprunte la voie directe (position repos). DEVIATION : le train emprunte la voie déviée (position basculée).</p>
-<p>Modifié en runtime par l'opérateur via clic <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>. N'est pas persisté entre deux parsings. </p>
+<p>NORMAL : train sur la voie directe (position repos). DEVIATION : train sur la voie déviée (position basculée).</p>
+<p>Modifié en runtime par l'opérateur via clic <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a7c3e8d7f97ae99a61ed27254391abc89a1e23852820b9154316c7c06e2b7ba051" name="a7c3e8d7f97ae99a61ed27254391abc89a1e23852820b9154316c7c06e2b7ba051"></a>NORMAL&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a7c3e8d7f97ae99a61ed27254391abc89a8ec95e82a6c348f798243a58891e546c" name="a7c3e8d7f97ae99a61ed27254391abc89a8ec95e82a6c348f798243a58891e546c"></a>DEVIATION&#160;</td><td class="fielddoc"></td></tr>
@@ -175,7 +177,7 @@ Classes</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_713206489b3f2e638ce64611b3101c39.html">InteractiveElements</a></li><li class="navelem"><a class="el" href="../../dir_bcc2c4a02f117a6753328819272b2e64.html">ShuntingElements</a></li><li class="navelem"><a class="el" href="../../dc/d01/SwitchBlock_8h.html">SwitchBlock.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_fb8e195cd911b151b9db6628377989b2.html">Elements</a></li><li class="navelem"><a class="el" href="../../dir_01ea92b3d443f0d5a4492146fa716b14.html">ShuntingElements</a></li><li class="navelem"><a class="el" href="../../dc/d01/SwitchBlock_8h.html">SwitchBlock.h</a></li>
     <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

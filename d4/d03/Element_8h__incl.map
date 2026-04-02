@@ -1,0 +1,20 @@
+<map id="SimulateurFerroviaire/Modules/Elements/Element.h" name="SimulateurFerroviaire/Modules/Elements/Element.h">
+<area shape="rect" id="Node000001" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="71,5,287,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,181,64,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,47,56,173,51,169,160,44"/>
+<area shape="rect" id="Node000003" href="$dd/d00/Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur." alt="" coords="195,93,343,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,44,241,82,238,86,197,48"/>
+<area shape="poly" id="edge8_Node000003_Node000002" title=" " alt="" coords="214,136,78,181,76,176,212,131"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="88,181,147,207"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="234,136,154,177,151,172,232,131"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="171,181,261,207"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="259,135,234,171,230,168,254,132"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="286,181,359,207"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="284,132,309,168,305,171,280,135"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="384,181,448,207"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="306,131,384,172,381,177,303,136"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="472,181,547,207"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="328,131,462,175,460,180,326,136"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="571,181,661,207"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="344,129,558,177,557,182,343,134"/>
+</map>

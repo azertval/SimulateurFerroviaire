@@ -106,15 +106,16 @@ $(document).ready(function(){initNavTree('dd/d00/Logger_8h.html','../../'); init
 <code>#include &lt;mutex&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;windows.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de Logger.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d00/Logger_8h__incl.svg" width="552" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d00/Logger_8h__incl.svg" width="667" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../da/d00/Logger_8h__dep__incl.svg" width="3942" height="946"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../da/d00/Logger_8h__dep__incl.svg" width="4455" height="946"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="../../dd/d00/Logger_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -163,12 +164,12 @@ Macros</h2></td></tr>
 <div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#a32705d9b1868f3dc5918d6af2f45575a">LOG_WARNING</a>(logger, <span class="stringliteral">&quot;Branche trop courte : &quot;</span> + branchId);</div>
 <div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#ab3dff3a4b05f59968670e28caf19134b">LOG_ERROR</a>(logger,   <span class="stringliteral">&quot;Fichier introuvable : &quot;</span> + filePath);</div>
 <div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#aa9e36992ae1067715000bbfbc36d11a1">LOG_FAILURE</a>(logger, <span class="stringliteral">&quot;Topologie nulle — arrêt immédiat&quot;</span>);</div>
-<div class="ttc" id="aLogger_8h_html_a0c30634de010bc24deacc2cb5a123bec"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#a0c30634de010bc24deacc2cb5a123bec">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:71</div></div>
-<div class="ttc" id="aLogger_8h_html_a32705d9b1868f3dc5918d6af2f45575a"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#a32705d9b1868f3dc5918d6af2f45575a">LOG_WARNING</a></div><div class="ttdeci">#define LOG_WARNING(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:77</div></div>
-<div class="ttc" id="aLogger_8h_html_aa9e36992ae1067715000bbfbc36d11a1"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#aa9e36992ae1067715000bbfbc36d11a1">LOG_FAILURE</a></div><div class="ttdeci">#define LOG_FAILURE(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:84</div></div>
-<div class="ttc" id="aLogger_8h_html_ab3dff3a4b05f59968670e28caf19134b"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#ab3dff3a4b05f59968670e28caf19134b">LOG_ERROR</a></div><div class="ttdeci">#define LOG_ERROR(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:80</div></div>
-<div class="ttc" id="aLogger_8h_html_adb268ee8276a4b312d31ed9db04e9926"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#adb268ee8276a4b312d31ed9db04e9926">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:74</div></div>
-<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="../../db/d03/classLogger.html">Logger</a></div><div class="ttdoc">Journaliseur associé à un moteur nommé.</div><div class="ttdef"><b>Definition</b> Logger.h:103</div></div>
+<div class="ttc" id="aLogger_8h_html_a0c30634de010bc24deacc2cb5a123bec"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#a0c30634de010bc24deacc2cb5a123bec">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:67</div></div>
+<div class="ttc" id="aLogger_8h_html_a32705d9b1868f3dc5918d6af2f45575a"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#a32705d9b1868f3dc5918d6af2f45575a">LOG_WARNING</a></div><div class="ttdeci">#define LOG_WARNING(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:73</div></div>
+<div class="ttc" id="aLogger_8h_html_aa9e36992ae1067715000bbfbc36d11a1"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#aa9e36992ae1067715000bbfbc36d11a1">LOG_FAILURE</a></div><div class="ttdeci">#define LOG_FAILURE(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:80</div></div>
+<div class="ttc" id="aLogger_8h_html_ab3dff3a4b05f59968670e28caf19134b"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#ab3dff3a4b05f59968670e28caf19134b">LOG_ERROR</a></div><div class="ttdeci">#define LOG_ERROR(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:76</div></div>
+<div class="ttc" id="aLogger_8h_html_adb268ee8276a4b312d31ed9db04e9926"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#adb268ee8276a4b312d31ed9db04e9926">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:70</div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="../../db/d03/classLogger.html">Logger</a></div><div class="ttdoc">Journaliseur associé à un moteur nommé.</div><div class="ttdef"><b>Definition</b> Logger.h:99</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Documentation des macros</h2>
 <a id="adb268ee8276a4b312d31ed9db04e9926" name="adb268ee8276a4b312d31ed9db04e9926"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adb268ee8276a4b312d31ed9db04e9926">&#9670;&#160;</a></span>LOG_DEBUG</h2>

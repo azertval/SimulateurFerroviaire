@@ -148,29 +148,29 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="../../d8/d02/classInteractiveElement.html" target="_top" xlink:title="Classe de base abstraite pour tous les éléments interactifs ferroviaires.">
-<polygon fill="white" stroke="transparent" points="402.04,-668.5 272.04,-668.5 272.04,-514.5 402.04,-514.5 402.04,-668.5"/>
-<text text-anchor="start" x="290.04" y="-656.5" font-family="Helvetica,sans-Serif" font-size="10.00">InteractiveElement</text>
-<text text-anchor="start" x="335.04" y="-641.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<text text-anchor="start" x="276.04" y="-626.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="289.04" y="-626.5" font-family="Helvetica,sans-Serif" font-size="10.00">InteractiveElement()</text>
-<text text-anchor="start" x="276.04" y="-611.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="289.04" y="-611.5" font-family="Helvetica,sans-Serif" font-size="10.00">~InteractiveElement()</text>
-<text text-anchor="start" x="276.04" y="-596.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="289.04" y="-596.5" font-family="Helvetica,sans-Serif" font-size="10.00">InteractiveElement()</text>
-<text text-anchor="start" x="276.04" y="-581.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="289.04" y="-581.5" font-family="Helvetica,sans-Serif" font-size="10.00">operator=()</text>
-<text text-anchor="start" x="276.04" y="-566.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="289.04" y="-566.5" font-family="Helvetica,sans-Serif" font-size="10.00">InteractiveElement()</text>
-<text text-anchor="start" x="276.04" y="-551.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="289.04" y="-551.5" font-family="Helvetica,sans-Serif" font-size="10.00">operator=()</text>
-<text text-anchor="start" x="276.04" y="-536.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="289.04" y="-536.5" font-family="Helvetica,sans-Serif" font-size="10.00">getId()</text>
-<text text-anchor="start" x="276.04" y="-521.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="289.04" y="-521.5" font-family="Helvetica,sans-Serif" font-size="10.00">getType()</text>
-<polygon fill="#666666" stroke="#666666" points="272.04,-651.5 272.04,-651.5 402.04,-651.5 402.04,-651.5 272.04,-651.5"/>
-<polygon fill="#666666" stroke="#666666" points="272.04,-636.5 272.04,-636.5 402.04,-636.5 402.04,-636.5 272.04,-636.5"/>
-<polygon fill="none" stroke="#666666" points="272.04,-514.5 272.04,-668.5 402.04,-668.5 402.04,-514.5 272.04,-514.5"/>
+<g id="a_Node000006"><a xlink:href="../../d5/d00/classElement.html" target="_top" xlink:title="Classe de base abstraite pour tous les éléments interactifs ferroviaires.">
+<polygon fill="white" stroke="transparent" points="376.54,-668.5 297.54,-668.5 297.54,-514.5 376.54,-514.5 376.54,-668.5"/>
+<text text-anchor="start" x="317.04" y="-656.5" font-family="Helvetica,sans-Serif" font-size="10.00">Element</text>
+<text text-anchor="start" x="335.54" y="-641.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<text text-anchor="start" x="302.04" y="-626.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="315.04" y="-626.5" font-family="Helvetica,sans-Serif" font-size="10.00">Element()</text>
+<text text-anchor="start" x="302.04" y="-611.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="315.04" y="-611.5" font-family="Helvetica,sans-Serif" font-size="10.00">~Element()</text>
+<text text-anchor="start" x="302.04" y="-596.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="315.04" y="-596.5" font-family="Helvetica,sans-Serif" font-size="10.00">Element()</text>
+<text text-anchor="start" x="302.04" y="-581.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="315.04" y="-581.5" font-family="Helvetica,sans-Serif" font-size="10.00">operator=()</text>
+<text text-anchor="start" x="302.04" y="-566.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="315.04" y="-566.5" font-family="Helvetica,sans-Serif" font-size="10.00">Element()</text>
+<text text-anchor="start" x="302.04" y="-551.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="315.04" y="-551.5" font-family="Helvetica,sans-Serif" font-size="10.00">operator=()</text>
+<text text-anchor="start" x="302.04" y="-536.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="315.04" y="-536.5" font-family="Helvetica,sans-Serif" font-size="10.00">getId()</text>
+<text text-anchor="start" x="302.04" y="-521.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="315.04" y="-521.5" font-family="Helvetica,sans-Serif" font-size="10.00">getType()</text>
+<polygon fill="#666666" stroke="#666666" points="298.04,-651.5 298.04,-651.5 377.04,-651.5 377.04,-651.5 298.04,-651.5"/>
+<polygon fill="#666666" stroke="#666666" points="298.04,-636.5 298.04,-636.5 377.04,-636.5 377.04,-636.5 298.04,-636.5"/>
+<polygon fill="none" stroke="#666666" points="297.54,-514.5 297.54,-668.5 376.54,-668.5 376.54,-514.5 297.54,-514.5"/>
 </a>
 </g>
 </g>
@@ -335,8 +335,8 @@
 <g id="edge7_Node000006_Node000007" class="edge">
 <title>Node7&#45;&gt;Node6</title>
 <g id="a_edge7_Node000006_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M244.09,-737.71C256.62,-718.14 269.56,-697.92 281.65,-679.02"/>
-<polygon fill="none" stroke="#63b8ff" points="281.81,-678.78 281.68,-671.57 288.28,-668.67 288.42,-675.88 281.81,-678.78"/>
+<path fill="none" stroke="#63b8ff" d="M244.09,-737.71C259.87,-713.06 276.3,-687.39 290.88,-664.61"/>
+<polygon fill="none" stroke="#63b8ff" points="290.97,-664.47 290.84,-657.26 297.44,-654.36 297.58,-661.57 290.97,-664.47"/>
 </a>
 </g>
 <text text-anchor="middle" x="299.04" y="-697" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> #m_logger</text>

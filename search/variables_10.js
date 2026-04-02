@@ -1,5 +1,19 @@
 var searchData=
 [
-  ['terminus_0',['TERMINUS',['../dc/d01/classNodeDegreeThresholds.html#ad60b04e2144d28a060486328803f1963',1,'NodeDegreeThresholds']]],
-  ['topologygraph_1',['topologyGraph',['../dc/d01/structGraphBuildResult.html#a988e927be6e037464638d72873949207',1,'GraphBuildResult']]]
+  ['segmentindex_0',['segmentIndex',['../d8/d00/structTopoEdge.html#a0b211b6ab7cd697681649d3a57aedacf',1,'TopoEdge']]],
+  ['segments_1',['segments',['../dc/d03/structSplitNetwork.html#ac4a9571d2af2d3148f54d090c130d846',1,'SplitNetwork']]],
+  ['snaptolerance_2',['snapTolerance',['../dd/d03/structParserConfig.html#a071481c2d20cc0b01a468a17448bd8c2',1,'ParserConfig']]],
+  ['splitnetwork_3',['splitNetwork',['../d6/d03/structPipelineContext.html#ac56f2ab6642e86f2707775c9219ffff5',1,'PipelineContext']]],
+  ['stats_4',['stats',['../d6/d03/structPipelineContext.html#a646f3ac61a97c1e5351a623c97fac1b5',1,'PipelineContext']]],
+  ['straightbydirectedpair_5',['straightByDirectedPair',['../d0/d00/structBlockSet.html#a963909d662eba79eb34a9a76deeaf88e',1,'BlockSet']]],
+  ['straightbyendpointpair_6',['straightByEndpointPair',['../d0/d00/structBlockSet.html#a30eaa5eb161b65f4927e6619e5c03233',1,'BlockSet']]],
+  ['straightendpoints_7',['straightEndpoints',['../d0/d00/structBlockSet.html#a0e191f16b082bb6b8c58c163dc89978d',1,'BlockSet']]],
+  ['straightindex_8',['straightIndex',['../d0/d02/classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de',1,'TopologyData']]],
+  ['straights_9',['straights',['../d0/d02/classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda',1,'TopologyData::straights'],['../d0/d00/structBlockSet.html#a1cb0cc59b4ebc4bb2895c04857a30e31',1,'BlockSet::straights']]],
+  ['straightsbynode_10',['straightsByNode',['../d0/d00/structBlockSet.html#aae75bc7eb54ffb8dfc3d5af12ad80135',1,'BlockSet']]],
+  ['switchbynode_11',['switchByNode',['../d0/d00/structBlockSet.html#a1fc1ef6b9f4067c2cfbab033638d169b',1,'BlockSet']]],
+  ['switchendpoints_12',['switchEndpoints',['../d0/d00/structBlockSet.html#a9329c6cca913d815fec1c24c6868da16',1,'BlockSet']]],
+  ['switches_13',['switches',['../d0/d02/classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9',1,'TopologyData::switches'],['../d0/d00/structBlockSet.html#a5cdc851781fd4f2074997085781bbd2a',1,'BlockSet::switches']]],
+  ['switchindex_14',['switchIndex',['../d0/d02/classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440',1,'TopologyData']]],
+  ['switchsidesize_15',['switchSideSize',['../dd/d03/structParserConfig.html#a3b28e198d5ad28d817d877d4ce1eeb4a',1,'ParserConfig']]]
 ];

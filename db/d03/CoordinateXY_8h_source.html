@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simulateur Ferroviaire:  Fichier source de SimulateurFerroviaire/Modules/Coordinates/CoordinateXY.h</title>
+<title>Simulateur Ferroviaire:  Fichier source de SimulateurFerroviaire/Engine/Core/Coordinates/CoordinateXY.h</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -128,13 +128,21 @@ $(document).ready(function(){initNavTree('db/d03/CoordinateXY_8h_source.html','.
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">return</span> !(*<span class="keyword">this</span> == other);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
 </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>};</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="../../df/d01/classCoordinateXY.html#aa83813d8fcf7bd48fdc67127b65f61ec">   50</a></span>    std::string <a class="code hl_function" href="../../df/d01/classCoordinateXY.html#aa83813d8fcf7bd48fdc67127b65f61ec">toString</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;[&quot;</span> + std::to_string(<a class="code hl_variable" href="../../df/d01/classCoordinateXY.html#a0a0eab44df93175275a4e53936dad462">x</a>) + <span class="stringliteral">&quot; ; &quot;</span> + std::to_string(<a class="code hl_variable" href="../../df/d01/classCoordinateXY.html#ad8cc600d7896c329e410cce0c1e45a70">y</a>) + <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
+</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>};</div>
 </div>
 <div class="ttc" id="aclassCoordinateXY_html"><div class="ttname"><a href="../../df/d01/classCoordinateXY.html">CoordinateXY</a></div><div class="ttdoc">Coordonnée plane en mètres dans un système métrique (UTM ou similaire).</div><div class="ttdef"><b>Definition</b> CoordinateXY.h:23</div></div>
 <div class="ttc" id="aclassCoordinateXY_html_a0a0eab44df93175275a4e53936dad462"><div class="ttname"><a href="../../df/d01/classCoordinateXY.html#a0a0eab44df93175275a4e53936dad462">CoordinateXY::x</a></div><div class="ttdeci">double x</div><div class="ttdoc">Abscisse en mètres (est pour UTM).</div><div class="ttdef"><b>Definition</b> CoordinateXY.h:25</div></div>
 <div class="ttc" id="aclassCoordinateXY_html_a0de09b8a7edbc8801eadf6d097646dcc"><div class="ttname"><a href="../../df/d01/classCoordinateXY.html#a0de09b8a7edbc8801eadf6d097646dcc">CoordinateXY::operator!=</a></div><div class="ttdeci">bool operator!=(const CoordinateXY &amp;other) const</div><div class="ttdef"><b>Definition</b> CoordinateXY.h:45</div></div>
 <div class="ttc" id="aclassCoordinateXY_html_a0e32bf57ec9cc55f2760b6bd3f62344c"><div class="ttname"><a href="../../df/d01/classCoordinateXY.html#a0e32bf57ec9cc55f2760b6bd3f62344c">CoordinateXY::CoordinateXY</a></div><div class="ttdeci">CoordinateXY()=default</div></div>
 <div class="ttc" id="aclassCoordinateXY_html_a72e2c55a2df24be332a4d3e00875e35e"><div class="ttname"><a href="../../df/d01/classCoordinateXY.html#a72e2c55a2df24be332a4d3e00875e35e">CoordinateXY::CoordinateXY</a></div><div class="ttdeci">CoordinateXY(double xValue, double yValue)</div><div class="ttdoc">Construit une coordonnée avec les valeurs fournies.</div><div class="ttdef"><b>Definition</b> CoordinateXY.h:36</div></div>
+<div class="ttc" id="aclassCoordinateXY_html_aa83813d8fcf7bd48fdc67127b65f61ec"><div class="ttname"><a href="../../df/d01/classCoordinateXY.html#aa83813d8fcf7bd48fdc67127b65f61ec">CoordinateXY::toString</a></div><div class="ttdeci">std::string toString() const</div><div class="ttdef"><b>Definition</b> CoordinateXY.h:50</div></div>
 <div class="ttc" id="aclassCoordinateXY_html_aabc7b31fd27b26535f271c9e8a273532"><div class="ttname"><a href="../../df/d01/classCoordinateXY.html#aabc7b31fd27b26535f271c9e8a273532">CoordinateXY::operator==</a></div><div class="ttdeci">bool operator==(const CoordinateXY &amp;other) const</div><div class="ttdef"><b>Definition</b> CoordinateXY.h:40</div></div>
 <div class="ttc" id="aclassCoordinateXY_html_ad8cc600d7896c329e410cce0c1e45a70"><div class="ttname"><a href="../../df/d01/classCoordinateXY.html#ad8cc600d7896c329e410cce0c1e45a70">CoordinateXY::y</a></div><div class="ttdeci">double y</div><div class="ttdoc">Ordonnée en mètres (nord pour UTM).</div><div class="ttdef"><b>Definition</b> CoordinateXY.h:26</div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -142,7 +150,7 @@ $(document).ready(function(){initNavTree('db/d03/CoordinateXY_8h_source.html','.
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_a2c10e0245c4d6d6087b65c22d77e4da.html">Coordinates</a></li><li class="navelem"><a class="el" href="../../db/d03/CoordinateXY_8h.html">CoordinateXY.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_b70de4a9b2a9f967d011983a1fdf80d1.html">Engine</a></li><li class="navelem"><a class="el" href="../../dir_db532fcf2b7ab198586d05907cd2a60c.html">Core</a></li><li class="navelem"><a class="el" href="../../dir_9b4cc9fc0cc867e59cf58f969c573d6a.html">Coordinates</a></li><li class="navelem"><a class="el" href="../../db/d03/CoordinateXY_8h.html">CoordinateXY.h</a></li>
     <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

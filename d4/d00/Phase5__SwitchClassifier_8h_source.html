@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire:  Fichier source de SimulateurFerroviaire/Modules/GeoParser/Pipeline/Phase5_SwitchClassifier.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d4/d00/Phase5__SwitchClassifier_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Phase5_SwitchClassifier.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/d00/Phase5__SwitchClassifier_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="../../d6/d02/PipelineContext_8h.html">PipelineContext.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="../../d9/d01/ParserConfig_8h.html">Engine/Core/Config/ParserConfig.h</a>&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="../../dd/d00/Logger_8h.html">Engine/Core/Logger/Logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="../../da/d00/classPhase5__SwitchClassifier.html">   24</a></span><span class="keyword">class </span><a class="code hl_class" href="../../da/d00/classPhase5__SwitchClassifier.html">Phase5_SwitchClassifier</a></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d00/classPhase5__SwitchClassifier.html#a8d897725a1a7b7bea4f4ae92af83f89f">run</a>(<a class="code hl_struct" href="../../d6/d03/structPipelineContext.html">PipelineContext</a>&amp; ctx,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">const</span> <a class="code hl_struct" href="../../dd/d03/structParserConfig.html">ParserConfig</a>&amp; config,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a>&amp; logger);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../da/d00/classPhase5__SwitchClassifier.html#a3326a20b5e54b0c468e61f7b773158fa">   42</a></span>    <a class="code hl_function" href="../../da/d00/classPhase5__SwitchClassifier.html#a3326a20b5e54b0c468e61f7b773158fa">Phase5_SwitchClassifier</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">static</span> <a class="code hl_class" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> <a class="code hl_function" href="../../da/d00/classPhase5__SwitchClassifier.html#afbde3d36374b16f8493f3888d38bb063">outVector</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../df/d01/structTopologyGraph.html">TopologyGraph</a>&amp; graph,</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                                   <span class="keywordtype">size_t</span> nodeId,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                   <span class="keywordtype">size_t</span> edgeIdx);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code hl_function" href="../../da/d00/classPhase5__SwitchClassifier.html#ac761623592d09894605569c1c17061c6">angleBetween</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>&amp; u, <span class="keyword">const</span> <a class="code hl_class" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>&amp; v);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keyword">static</span> <a class="code hl_enumeration" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653f">NodeClass</a> <a class="code hl_function" href="../../da/d00/classPhase5__SwitchClassifier.html#a384273e43233a81f5c74cb80bcb918f1">classifyDegree2</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../df/d01/structTopologyGraph.html">TopologyGraph</a>&amp; graph,</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                                      <span class="keywordtype">size_t</span> nodeId,</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                                      <span class="keywordtype">double</span> minSwitchAngle);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">static</span> <a class="code hl_enumeration" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653f">NodeClass</a> <a class="code hl_function" href="../../da/d00/classPhase5__SwitchClassifier.html#af79a69c51a15e0b4e864014b44820f13">classifyDegree3</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../df/d01/structTopologyGraph.html">TopologyGraph</a>&amp; graph,</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                                      <span class="keywordtype">size_t</span> nodeId,</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                                      <span class="keywordtype">double</span> minSwitchAngle);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>};</div>
+</div>
+<div class="ttc" id="aClassifiedNodes_8h_html_a18124f2da35491b316ac43eaae0d653f"><div class="ttname"><a href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653f">NodeClass</a></div><div class="ttdeci">NodeClass</div><div class="ttdoc">Classification topologique d'un nœud du graphe planaire.</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:21</div></div>
+<div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="../../dd/d00/Logger_8h.html">Logger.h</a></div><div class="ttdoc">Système de journalisation à 5 niveaux de trace, un fichier par moteur.</div></div>
+<div class="ttc" id="aParserConfig_8h_html"><div class="ttname"><a href="../../d9/d01/ParserConfig_8h.html">ParserConfig.h</a></div><div class="ttdoc">Paramètres de configuration du pipeline GeoParser.</div></div>
+<div class="ttc" id="aPipelineContext_8h_html"><div class="ttname"><a href="../../d6/d02/PipelineContext_8h.html">PipelineContext.h</a></div><div class="ttdoc">Conteneur central des données inter-phases du pipeline GeoParser.</div></div>
+<div class="ttc" id="aclassCoordinateXY_html"><div class="ttname"><a href="../../df/d01/classCoordinateXY.html">CoordinateXY</a></div><div class="ttdoc">Coordonnée plane en mètres dans un système métrique (UTM ou similaire).</div><div class="ttdef"><b>Definition</b> CoordinateXY.h:23</div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="../../db/d03/classLogger.html">Logger</a></div><div class="ttdoc">Journaliseur associé à un moteur nommé.</div><div class="ttdef"><b>Definition</b> Logger.h:99</div></div>
+<div class="ttc" id="aclassPhase5__SwitchClassifier_html"><div class="ttname"><a href="../../da/d00/classPhase5__SwitchClassifier.html">Phase5_SwitchClassifier</a></div><div class="ttdef"><b>Definition</b> Phase5_SwitchClassifier.h:25</div></div>
+<div class="ttc" id="aclassPhase5__SwitchClassifier_html_a3326a20b5e54b0c468e61f7b773158fa"><div class="ttname"><a href="../../da/d00/classPhase5__SwitchClassifier.html#a3326a20b5e54b0c468e61f7b773158fa">Phase5_SwitchClassifier::Phase5_SwitchClassifier</a></div><div class="ttdeci">Phase5_SwitchClassifier()=delete</div></div>
+<div class="ttc" id="aclassPhase5__SwitchClassifier_html_a384273e43233a81f5c74cb80bcb918f1"><div class="ttname"><a href="../../da/d00/classPhase5__SwitchClassifier.html#a384273e43233a81f5c74cb80bcb918f1">Phase5_SwitchClassifier::classifyDegree2</a></div><div class="ttdeci">static NodeClass classifyDegree2(const TopologyGraph &amp;graph, size_t nodeId, double minSwitchAngle)</div><div class="ttdoc">Classifie un nœud de degré 2 — indépendant de SplitNetwork.</div><div class="ttdef"><b>Definition</b> Phase5_SwitchClassifier.cpp:144</div></div>
+<div class="ttc" id="aclassPhase5__SwitchClassifier_html_a8d897725a1a7b7bea4f4ae92af83f89f"><div class="ttname"><a href="../../da/d00/classPhase5__SwitchClassifier.html#a8d897725a1a7b7bea4f4ae92af83f89f">Phase5_SwitchClassifier::run</a></div><div class="ttdeci">static void run(PipelineContext &amp;ctx, const ParserConfig &amp;config, Logger &amp;logger)</div><div class="ttdoc">Exécute la phase 5.</div><div class="ttdef"><b>Definition</b> Phase5_SwitchClassifier.cpp:21</div></div>
+<div class="ttc" id="aclassPhase5__SwitchClassifier_html_ac761623592d09894605569c1c17061c6"><div class="ttname"><a href="../../da/d00/classPhase5__SwitchClassifier.html#ac761623592d09894605569c1c17061c6">Phase5_SwitchClassifier::angleBetween</a></div><div class="ttdeci">static double angleBetween(const CoordinateXY &amp;u, const CoordinateXY &amp;v)</div><div class="ttdoc">Calcule l'angle en degrés entre deux vecteurs UTM.</div><div class="ttdef"><b>Definition</b> Phase5_SwitchClassifier.cpp:123</div></div>
+<div class="ttc" id="aclassPhase5__SwitchClassifier_html_af79a69c51a15e0b4e864014b44820f13"><div class="ttname"><a href="../../da/d00/classPhase5__SwitchClassifier.html#af79a69c51a15e0b4e864014b44820f13">Phase5_SwitchClassifier::classifyDegree3</a></div><div class="ttdeci">static NodeClass classifyDegree3(const TopologyGraph &amp;graph, size_t nodeId, double minSwitchAngle)</div><div class="ttdoc">Classifie un nœud de degré 3 — indépendant de SplitNetwork.</div><div class="ttdef"><b>Definition</b> Phase5_SwitchClassifier.cpp:170</div></div>
+<div class="ttc" id="aclassPhase5__SwitchClassifier_html_afbde3d36374b16f8493f3888d38bb063"><div class="ttname"><a href="../../da/d00/classPhase5__SwitchClassifier.html#afbde3d36374b16f8493f3888d38bb063">Phase5_SwitchClassifier::outVector</a></div><div class="ttdeci">static CoordinateXY outVector(const TopologyGraph &amp;graph, size_t nodeId, size_t edgeIdx)</div><div class="ttdoc">Calcule le vecteur sortant depuis un nœud via une arête.</div><div class="ttdef"><b>Definition</b> Phase5_SwitchClassifier.cpp:102</div></div>
+<div class="ttc" id="astructParserConfig_html"><div class="ttname"><a href="../../dd/d03/structParserConfig.html">ParserConfig</a></div><div class="ttdoc">Configuration complète du pipeline GeoParser — POD sans logique.</div><div class="ttdef"><b>Definition</b> ParserConfig.h:16</div></div>
+<div class="ttc" id="astructPipelineContext_html"><div class="ttname"><a href="../../d6/d03/structPipelineContext.html">PipelineContext</a></div><div class="ttdoc">Conteneur central du pipeline GeoParser.</div><div class="ttdef"><b>Definition</b> PipelineContext.h:51</div></div>
+<div class="ttc" id="astructTopologyGraph_html"><div class="ttname"><a href="../../df/d01/structTopologyGraph.html">TopologyGraph</a></div><div class="ttdoc">Résultat de Phase4_TopologyBuilder — graphe planaire complet.</div><div class="ttdef"><b>Definition</b> TopologyGraph.h:70</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_a02795b5ac40d9afe5fe94a3ec34902b.html">GeoParser</a></li><li class="navelem"><a class="el" href="../../dir_b5f366c770f71ecee1df61f9a225a87c.html">Pipeline</a></li><li class="navelem"><a class="el" href="../../d4/d00/Phase5__SwitchClassifier_8h.html">Phase5_SwitchClassifier.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

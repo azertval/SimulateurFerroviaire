@@ -1,0 +1,15 @@
+<map id="SplitNetwork" name="SplitNetwork">
+<area shape="rect" id="Node000001" title="Résultat de Phase3_NetworkSplitter — ensemble des segments atomiques." alt="" coords="160,672,259,777"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="101,544,318,609"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,610,212,655,207,655,207,610"/>
+<area shape="rect" id="Node000003" href="$de/d01/structAtomicSegment.html" title="Segment atomique entre deux nœuds topologiques potentiels." alt="" coords="130,376,289,481"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="212,482,212,527,207,527,207,482"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,233,195,313"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="130,312,165,361,161,364,126,315"/>
+<area shape="rect" id="Node000005" href="$db/d03/classCoordinateLatLon.html" title="Coordonnée géographique WGS&#45;84 exprimée en degrés décimaux." alt="" coords="23,5,177,171"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="103,171,103,217,97,217,97,171"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="219,241,421,306"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="299,308,258,364,254,361,295,305"/>
+<area shape="rect" id="Node000007" href="$df/d01/classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire)." alt="" coords="257,5,383,171"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="323,171,323,225,317,225,317,171"/>
+</map>

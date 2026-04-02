@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['doubleswitchdetector_2ecpp_0',['DoubleSwitchDetector.cpp',['../dd/d02/DoubleSwitchDetector_8cpp.html',1,'']]],
-  ['doubleswitchdetector_2eh_1',['DoubleSwitchDetector.h',['../de/d00/DoubleSwitchDetector_8h.html',1,'']]]
+  ['classifiednodes_2eh_0',['ClassifiedNodes.h',['../d4/d00/ClassifiedNodes_8h.html',1,'']]],
+  ['coordinatelatlon_2eh_1',['CoordinateLatLon.h',['../d6/d01/CoordinateLatLon_8h.html',1,'']]],
+  ['coordinatexy_2eh_2',['CoordinateXY.h',['../db/d03/CoordinateXY_8h.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['edgeindex_0',['EdgeIndex',['../db/d00/classTopologyGraph.html#a1d78914a5caa8a9c7655397477fa1092',1,'TopologyGraph']]]
+  ['spatialgrid_0',['SpatialGrid',['../d0/d00/IntersectionMap_8h.html#ab7202ff7152c720e8ccbfe5d1d0168b2',1,'IntersectionMap.h']]]
 ];

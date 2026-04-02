@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['utm_5ffalse_5feasting_0',['utm_false_easting',['../d3/d00/classGeographicProjection.html#a3bfb30783df19255c7f614b26088c0f4',1,'GeographicProjection::UTM_FALSE_EASTING'],['../db/d01/classGeometryUtils.html#a7bdc5d3c45630a244e7f82f53afa19a5',1,'GeometryUtils::UTM_FALSE_EASTING']]],
-  ['utm_5ffalse_5fnorthing_5fsouth_1',['utm_false_northing_south',['../d3/d00/classGeographicProjection.html#a170119ead4ab619947f7cda1dc67521e',1,'GeographicProjection::UTM_FALSE_NORTHING_SOUTH'],['../db/d01/classGeometryUtils.html#a60a1eaeaaa2ea664956e255502fc7e7d',1,'GeometryUtils::UTM_FALSE_NORTHING_SOUTH']]],
-  ['utm_5fscale_5ffactor_2',['utm_scale_factor',['../d3/d00/classGeographicProjection.html#a213147daeed5a4d6fe82e982bea59fed',1,'GeographicProjection::UTM_SCALE_FACTOR'],['../db/d01/classGeometryUtils.html#acff318b1df11d2b382346ce48c1b7abb',1,'GeometryUtils::UTM_SCALE_FACTOR']]],
-  ['utmzonenumber_3',['utmZoneNumber',['../dc/d01/structGraphBuildResult.html#a97599d471cf5311b3a4b8dcdad7ce1dc',1,'GraphBuildResult']]]
+  ['t_0',['t',['../db/d00/structIntersectionPoint.html#ad2c12b707a0c180dc430a8f25ee9a286',1,'IntersectionPoint']]],
+  ['topograph_1',['topoGraph',['../d6/d03/structPipelineContext.html#a9b509b5b5b2c773feafe427c9d4c0639',1,'PipelineContext']]],
+  ['totalintersections_2',['totalIntersections',['../de/d00/structIntersectionData.html#a136571e2bc9e39ef76fbfd5c3f5bbcb9',1,'IntersectionData']]]
 ];

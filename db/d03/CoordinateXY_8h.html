@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simulateur Ferroviaire: Référence du fichier SimulateurFerroviaire/Modules/Coordinates/CoordinateXY.h</title>
+<title>Simulateur Ferroviaire: Référence du fichier SimulateurFerroviaire/Engine/Core/Coordinates/CoordinateXY.h</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('db/d03/CoordinateXY_8h.html','../../')
 <div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d00/CoordinateXY_8h__dep__incl.svg" width="1387" height="667"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d00/CoordinateXY_8h__dep__incl.svg" width="4320" height="755"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="../../db/d03/CoordinateXY_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -114,7 +114,7 @@ Classes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Représentation d'une coordonnée plane en mètres (système métrique UTM). </p>
-<p>Utilisé en interne par le pipeline pour tous les calculs métriques (construction du graphe, accrochage sur grille, interpolation, angles). Les coordonnées publiques (sorties du parseur) sont toujours en <a class="el" href="../../d4/d01/classLatLon.html" title="Coordonnée géographique WGS-84 exprimée en degrés décimaux.">LatLon</a> WGS-84.</p>
+<p>Utilisé en interne par le pipeline pour tous les calculs métriques (construction du graphe, accrochage sur grille, interpolation, angles). Les coordonnées publiques (sorties du parseur) sont toujours en <a class="el" href="../../db/d03/classCoordinateLatLon.html" title="Coordonnée géographique WGS-84 exprimée en degrés décimaux.">CoordinateLatLon</a> WGS-84.</p>
 <p>Exemple : </p><div class="fragment"><div class="line"><a class="code hl_class" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> metricPoint{ 652345.0, 5862234.0 };  <span class="comment">// UTM zone 31N</span></div>
 <div class="line"><span class="keywordtype">double</span> x = metricPoint.<a class="code hl_variable" href="../../df/d01/classCoordinateXY.html#a0a0eab44df93175275a4e53936dad462">x</a>;</div>
 <div class="line"><span class="keywordtype">double</span> y = metricPoint.y;</div>
@@ -125,7 +125,7 @@ Classes</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_a2c10e0245c4d6d6087b65c22d77e4da.html">Coordinates</a></li><li class="navelem"><a class="el" href="../../db/d03/CoordinateXY_8h.html">CoordinateXY.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_b70de4a9b2a9f967d011983a1fdf80d1.html">Engine</a></li><li class="navelem"><a class="el" href="../../dir_db532fcf2b7ab198586d05907cd2a60c.html">Core</a></li><li class="navelem"><a class="el" href="../../dir_9b4cc9fc0cc867e59cf58f969c573d6a.html">Coordinates</a></li><li class="navelem"><a class="el" href="../../db/d03/CoordinateXY_8h.html">CoordinateXY.h</a></li>
     <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

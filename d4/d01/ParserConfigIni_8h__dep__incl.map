@@ -1,0 +1,17 @@
+<map id="SimulateurFerroviaire/Engine/Core/Config/ParserConfigIni.h" name="SimulateurFerroviaire/Engine/Core/Config/ParserConfigIni.h">
+<area shape="rect" id="Node000001" title="Persistence de ParserConfig via fichier .ini (SimpleIni)." alt="" coords="272,5,507,60"/>
+<area shape="rect" id="Node000002" href="$dc/d03/ParserConfigIni_8cpp.html" title="Implémentation de la persistence .ini de ParserConfig." alt="" coords="5,108,240,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="308,67,193,110,191,105,306,62"/>
+<area shape="rect" id="Node000003" href="$d2/d00/ParserSettingsDialog_8cpp.html" title="Implémentation du dialogue de paramètres GeoParser." alt="" coords="264,108,515,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="392,74,392,108,387,108,387,74"/>
+<area shape="rect" id="Node000004" href="$da/d00/MainWindow_8h.html" title="Déclaration de la fenêtre principale de l&#39;application." alt="" coords="539,115,738,155"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="468,63,593,113,591,118,466,67"/>
+<area shape="rect" id="Node000005" href="$d4/d00/Application_8h.html" title="Gestion du cycle de vie de l&#39;application Win32." alt="" coords="427,211,621,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="607,166,549,213,545,209,603,162"/>
+<area shape="rect" id="Node000008" href="$d3/d03/MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="645,211,859,251"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="674,162,731,209,727,213,671,166"/>
+<area shape="rect" id="Node000006" href="$d2/d02/Application_8cpp.html" title="Implémentation du cycle de vie de l&#39;application Win32." alt="" coords="308,299,516,339"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="490,261,438,301,435,296,486,257"/>
+<area shape="rect" id="Node000007" href="$db/d00/SimulateurFerroviaire_8cpp.html" title="Point d&#39;entrée unique de l&#39;application Win32." alt="" coords="540,299,735,339"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="561,257,614,296,611,301,558,261"/>
+</map>

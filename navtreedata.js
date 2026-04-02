@@ -39,21 +39,74 @@ var NAVTREE =
         [ "Panneau PCC", "d3/d03/engine.html#pcc_panel", null ],
         [ "TCORenderer", "d3/d03/engine.html#tco", null ],
         [ "Binding bidirectionnel Leaflet ↔ C++", "d3/d03/engine.html#binding", null ]
-      ] ]
+      ] ],
+      [ "Coordonnées", "d3/d03/engine.html#Coordinates", null ]
     ] ],
-    [ "Modules — Fonctionnalités métier", "d1/d00/modules.html", [
-      [ "GeoParser — Pipeline principal", "d1/d00/modules.html#geoparser", [
-        [ "Tâche asynchrone", "d1/d00/modules.html#task", null ],
-        [ "Pipeline global", "d1/d00/modules.html#pipeline", null ],
-        [ "Classes du pipeline", "d1/d00/modules.html#parsing", null ]
+    [ "GeoParser — Pipeline", "d4/d01/geoparser.html", [
+      [ "GeoParser", "d4/d01/geoparser.html#geoparser", [
+        [ "Architecture du pipeline", "d4/d01/geoparser.html#pipeline_arch", null ],
+        [ "Phases", "d4/d01/geoparser.html#pipeline", null ],
+        [ "Libération mémoire inter-phases", "d4/d01/geoparser.html#memory", null ],
+        [ "Tâche asynchrone", "d4/d01/geoparser.html#task", null ],
+        [ "Structures de données du pipeline", "d4/d01/geoparser.html#pipeline_data", null ]
       ] ],
-      [ "Éléments interactifs", "d1/d00/modules.html#elements", [
-        [ "Hiérarchie", "d1/d00/modules.html#hierarchy", null ],
-        [ "Pointeurs résolus post-parsing", "d1/d00/modules.html#pointers", null ],
-        [ "État opérationnel des aiguillages", "d1/d00/modules.html#activestate", null ],
-        [ "Énumérations clés", "d1/d00/modules.html#enums", null ]
+      [ "Architecture des fichiers", "d4/d01/geoparser.html#gp_files", null ],
+      [ "ParserConfig — Paramètres", "d4/d01/geoparser.html#gp_config", null ],
+      [ "PipelineContext — Transporteur inter-phases", "d4/d01/geoparser.html#gp_context", null ],
+      [ "GeoParser — Orchestrateur", "d4/d01/geoparser.html#gp_orchestrator", null ],
+      [ "Phases du pipeline", "d4/d01/geoparser.html#gp_phases", [
+        [ "Phase 1 — GeoLoader", "d4/d01/geoparser.html#gp_phase1", null ],
+        [ "Phase 2 — GeometricIntersector", "d4/d01/geoparser.html#gp_phase2", [
+          [ "Algorithme de Cramer", "d4/d01/geoparser.html#algorithme-de-cramer", null ]
+        ] ],
+        [ "</blockquote>", "d4/d01/geoparser.html#blockquote-1", null ],
+        [ "Phase 3 — NetworkSplitter", "d4/d01/geoparser.html#gp_phase3", null ],
+        [ "Phase 4 — TopologyBuilder", "d4/d01/geoparser.html#gp_phase4", [
+          [ "Union-Find — principe", "d4/d01/geoparser.html#union-find--principe", null ]
+        ] ],
+        [ "</blockquote>", "d4/d01/geoparser.html#blockquote-2", null ],
+        [ "Phase 5 — SwitchClassifier", "d4/d01/geoparser.html#gp_phase5", null ],
+        [ "Phase 6 — BlockExtractor", "d4/d01/geoparser.html#gp_phase6", [
+          [ "Déduplication — par arêtes (et non par paire de nœuds)", "d4/d01/geoparser.html#déduplication--par-arêtes-et-non-par-paire-de-nœuds", null ],
+          [ "Subdivision par longueur cumulée", "d4/d01/geoparser.html#subdivision-par-longueur-cumulée", null ],
+          [ "Index directionnels dans BlockSet", "d4/d01/geoparser.html#index-directionnels-dans-blockset", null ],
+          [ "Chaînage des sous-blocs", "d4/d01/geoparser.html#chaînage-des-sous-blocs", null ]
+        ] ],
+        [ "Phase 7 — SwitchProcessor", "d4/d01/geoparser.html#gp_phase7", [
+          [ "Sous-phases G → A → B → C → D → E → F", "d4/d01/geoparser.html#sous-phases-g--a--b--c--d--e--f", null ],
+          [ "G — Orientation géométrique", "d4/d01/geoparser.html#g--orientation-géométrique", null ],
+          [ "F — Tips CDC", "d4/d01/geoparser.html#f--tips-cdc", null ]
+        ] ],
+        [ "Phase 8 — RepositoryTransfer", "d4/d01/geoparser.html#gp_phase8", [
+          [ "resolveStraight — préservation de la chaîne", "d4/d01/geoparser.html#resolvestraight--préservation-de-la-chaîne", null ]
+        ] ]
       ] ],
-      [ "Coordonnées", "d1/d00/modules.html#coords", null ]
+      [ "GeoParsingTask — Intégration async", "d4/d01/geoparser.html#gp_task", null ],
+      [ "ParserSettingsDialog", "d4/d01/geoparser.html#gp_dialog", null ]
+    ] ],
+    [ "Éléments — Modèle de domaine ferroviaire", "da/d02/elements.html", [
+      [ "Vue d'ensemble", "da/d02/elements.html#elements_overview", null ],
+      [ "Hiérarchie", "da/d02/elements.html#elements_hierarchy", [
+        [ "</blockquote>", "da/d02/elements.html#blockquote", null ]
+      ] ],
+      [ "Element", "da/d02/elements.html#interactive_element", [
+        [ "Logger statique partagé", "da/d02/elements.html#logger", null ]
+      ] ],
+      [ "ShuntingElement", "da/d02/elements.html#shunting_element", null ],
+      [ "StraightBlock", "da/d02/elements.html#straight_block", [
+        [ "Géométrie duale WGS84 / UTM", "da/d02/elements.html#straight_geometry", null ],
+        [ "Topologie — IDs de voisins", "da/d02/elements.html#straight_topo_ids", null ],
+        [ "Pointeurs résolus — <tt>StraightNeighbours</tt>", "da/d02/elements.html#straight_resolved", null ]
+      ] ],
+      [ "SwitchBlock", "da/d02/elements.html#switch_block", [
+        [ "Géométrie — jonction et tips CDC", "da/d02/elements.html#switch_geometry", null ],
+        [ "Orientation — rôles des branches", "da/d02/elements.html#switch_orientation", null ],
+        [ "Double aiguille — absorption du segment de liaison", "da/d02/elements.html#switch_double", null ],
+        [ "Pointeurs résolus — <tt>SwitchBranches</tt>", "da/d02/elements.html#switch_resolved", null ],
+        [ "État opérationnel — branche active", "da/d02/elements.html#switch_active_branch", null ]
+      ] ],
+      [ "Pointeurs résolus — récapitulatif", "da/d02/elements.html#resolved_pointers", null ],
+      [ "Énumérations", "da/d02/elements.html#enums", null ]
     ] ],
     [ "Module PCC — Graphe logique et rendu TCO", "d8/d02/pcc.html", [
       [ "Vue d'ensemble", "d8/d02/pcc.html#pcc_overview", null ],
@@ -75,8 +128,7 @@ var NAVTREE =
       [ "Membres de classe", "functions.html", [
         [ "Tout", "functions.html", "functions_dup" ],
         [ "Fonctions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Définitions de type", "functions_type.html", null ]
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Fichiers", "files.html", [
@@ -84,7 +136,6 @@ var NAVTREE =
       [ "Membres de fichier", "globals.html", [
         [ "Tout", "globals.html", null ],
         [ "Fonctions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Définitions de type", "globals_type.html", null ],
         [ "Énumérations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
@@ -96,9 +147,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d4/d01/classLatLon.html#a72ddde59606bc3160a064f74654bd88b",
-"d9/d02/classSwitchBlock.html#af65a62f314ce4544ce687eacc13786e8",
-"df/d01/classCoordinateXY.html#ad8cc600d7896c329e410cce0c1e45a70"
+"d3/d03/structClassifiedNodes.html#a18796cbc0f592d94e78791fc69d06e78",
+"d8/d02/pcc.html",
+"db/d02/classPhase2__GeometricIntersector.html#aef7463182a4e0a92d01ecf2f08349733",
+"functions_t.html"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

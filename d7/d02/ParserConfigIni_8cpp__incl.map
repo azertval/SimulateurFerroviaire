@@ -1,0 +1,15 @@
+<map id="SimulateurFerroviaire/Engine/Core/Config/ParserConfigIni.cpp" name="SimulateurFerroviaire/Engine/Core/Config/ParserConfigIni.cpp">
+<area shape="rect" id="Node000001" title="Implémentation de la persistence .ini de ParserConfig." alt="" coords="229,5,464,60"/>
+<area shape="rect" id="Node000002" href="$dd/d01/ParserConfigIni_8h.html" title="Persistence de ParserConfig via fichier .ini (SimpleIni)." alt="" coords="52,115,183,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="283,63,159,113,157,108,281,58"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="207,108,348,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="329,62,301,99,297,96,325,59"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="373,115,459,141"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="368,59,401,102,397,106,364,62"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="484,115,575,141"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="399,58,496,107,494,112,397,62"/>
+<area shape="rect" id="Node000003" href="$d9/d01/ParserConfig_8h.html" title="Paramètres de configuration du pipeline GeoParser." alt="" coords="5,196,120,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="111,142,81,186,76,183,107,139"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="144,196,203,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="128,139,159,183,155,186,123,142"/>
+</map>

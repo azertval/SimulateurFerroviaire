@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['doubleswitchdetector_0',['DoubleSwitchDetector',['../d3/d02/classDoubleSwitchDetector.html',1,'']]]
+  ['dlgdata_0',['DlgData',['../d6/d03/structParserSettingsDialog_1_1DlgData.html',1,'ParserSettingsDialog']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['warning_0',['WARNING',['../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94a059e9861e0400dfbe05c98a841f3f96b',1,'Logger.h']]]
+  ['root_0',['ROOT',['../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16aea2adde5c377cb5e09d14b71935c6f32',1,'PCCEdge.h']]]
 ];

@@ -1,0 +1,22 @@
+<map id="SimulateurFerroviaire/Modules/Elements/Element.cpp" name="SimulateurFerroviaire/Modules/Elements/Element.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="63,5,294,45"/>
+<area shape="rect" id="Node000002" href="$d5/d02/Element_8h.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="135,93,223,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,46,181,79,176,79,176,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,255,64,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="170,121,56,246,52,243,166,117"/>
+<area shape="rect" id="Node000004" href="$dd/d00/Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur." alt="" coords="195,167,343,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="194,117,239,156,235,160,190,121"/>
+<area shape="poly" id="edge9_Node000004_Node000003" title=" " alt="" coords="214,209,78,254,76,249,212,204"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="88,255,147,280"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="234,209,154,250,151,246,232,204"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="171,255,261,280"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="259,208,234,244,230,241,254,205"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="286,255,359,280"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="284,205,309,241,305,244,280,208"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="384,255,448,280"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="306,204,384,246,381,250,303,209"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="472,255,547,280"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="328,204,462,248,460,253,326,209"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="571,255,661,280"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="344,202,558,250,557,255,343,207"/>
+</map>

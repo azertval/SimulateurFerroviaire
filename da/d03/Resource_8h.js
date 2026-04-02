@@ -1,9 +1,20 @@
 var Resource_8h =
 [
+    [ "IDC_BTN_RESET", "da/d03/Resource_8h.html#a90a3e632fe75cb47abeee46a827b89f9", null ],
+    [ "IDC_CANCEL_PARSING", "da/d03/Resource_8h.html#a4c20433305f70b9e01b0dc2367d62278", null ],
+    [ "IDC_EDIT_DOUBLE_SWITCH_RADIUS", "da/d03/Resource_8h.html#a26167b140bf0b9cd8384fc8bdffa6de5", null ],
+    [ "IDC_EDIT_INTERSECTION_EPSILON", "da/d03/Resource_8h.html#a541b66def565f9df00a5a2c9ec4ae683", null ],
+    [ "IDC_EDIT_JUNCTION_TRIM_MARGIN", "da/d03/Resource_8h.html#a5a741ada41af8cb1dbb4de1859f966f3", null ],
+    [ "IDC_EDIT_MAX_SEGMENT_LENGTH", "da/d03/Resource_8h.html#a0e1334bba0174f338b5435343e3dd5e6", null ],
+    [ "IDC_EDIT_MIN_BRANCH_LENGTH", "da/d03/Resource_8h.html#af98f7853d910eb3141e92cd1407799f6", null ],
+    [ "IDC_EDIT_MIN_SWITCH_ANGLE", "da/d03/Resource_8h.html#af2339040dfa2e64051b4e80111ef7687", null ],
+    [ "IDC_EDIT_MIN_SWITCH_SIDE_SIZE", "da/d03/Resource_8h.html#a488154b0529d22430f8924c5cda1ac75", null ],
+    [ "IDC_EDIT_SNAP_TOLERANCE", "da/d03/Resource_8h.html#a13d030cb0ff3f8b476bf36f097327bb1", null ],
     [ "IDC_MYICON", "da/d03/Resource_8h.html#abb326bd165140b31acf04b893ef655ca", null ],
     [ "IDC_SIMULATEURFERROVIAIRE", "da/d03/Resource_8h.html#ab85b2542c93de32f653bc8a14863bc72", null ],
     [ "IDC_STATIC", "da/d03/Resource_8h.html#ac93033490bc8943cfc82ec3b40e5cd74", null ],
     [ "IDD_ABOUTBOX", "da/d03/Resource_8h.html#a77a06326b569136edbb6c766bc98c33c", null ],
+    [ "IDD_PARSER_SETTINGS", "da/d03/Resource_8h.html#a8bf43543cbfe1d9550e79e07a7534dd0", null ],
     [ "IDD_SIMULATEURFERROVIAIRE_DIALOG", "da/d03/Resource_8h.html#a8d06a4ca3811a9aa3a67c1e4f39b5c29", null ],
     [ "IDI_SIMULATEURFERROVIAIRE", "da/d03/Resource_8h.html#ae3516914ff50804e0c5a9c8c6c21a7cc", null ],
     [ "IDI_SMALL", "da/d03/Resource_8h.html#a861a8cb71616b4615a5823bcf4bff6e3", null ],
@@ -11,7 +22,12 @@ var Resource_8h =
     [ "IDM_EXIT", "da/d03/Resource_8h.html#a79aeed168a959b22b32169e25f8c1f4d", null ],
     [ "IDM_FILE_EXPORT", "da/d03/Resource_8h.html#a10cd94d5a021115bc9939074e7999ba9", null ],
     [ "IDM_FILE_OPEN", "da/d03/Resource_8h.html#a63f11a94634314702967ce111b40fa2f", null ],
+    [ "IDM_PARSER_SETTINGS", "da/d03/Resource_8h.html#a3dad314a72ad250467db45309236fe15", null ],
     [ "IDM_VIEW_PCC", "da/d03/Resource_8h.html#a4bcc3b7b1b8ea131ff5e8275dee486e6", null ],
     [ "IDR_MAINFRAME", "da/d03/Resource_8h.html#a9772c84d39896ad00b9aeb34b15d324d", null ],
-    [ "IDS_APP_TITLE", "da/d03/Resource_8h.html#a636c9aea2a8d16b73e43df39b3e0e7bd", null ]
+    [ "IDS_APP_TITLE", "da/d03/Resource_8h.html#a636c9aea2a8d16b73e43df39b3e0e7bd", null ],
+    [ "WM_PARSING_CANCELLED", "da/d03/Resource_8h.html#a5b50b812b39a8465124b3e40a4735bc1", null ],
+    [ "WM_PARSING_ERROR", "da/d03/Resource_8h.html#a704f6e99d098c355c21cdca762857f48", null ],
+    [ "WM_PARSING_SUCCESS", "da/d03/Resource_8h.html#a96c4d6b8e1c89f12dfa7a074919283e1", null ],
+    [ "WM_PROGRESS_UPDATE", "da/d03/Resource_8h.html#a8c67ef9c571595c6b69fa88943827619", null ]
 ];

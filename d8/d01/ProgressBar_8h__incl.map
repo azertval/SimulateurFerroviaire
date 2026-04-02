@@ -1,0 +1,7 @@
+<map id="SimulateurFerroviaire/Engine/HMI/ProgressBar.h" name="SimulateurFerroviaire/Engine/HMI/ProgressBar.h">
+<area shape="rect" id="Node000001" title="Barre de progression Win32 avec label de phase et bouton Cancel." alt="" coords="5,5,199,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="23,93,82,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,47,69,83,65,80,88,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="106,93,197,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="116,44,139,80,135,83,112,47"/>
+</map>

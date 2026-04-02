@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('d2/d03/structSwitchBlock_1_1SwitchBran
 </div><!--header-->
 <div class="contents">
 
-<p>Branches topologiques d'un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>.  
+<p>Branches topologiques résolues (pointeurs non-propriétaires).  
  <a href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html#details">Plus de détails...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../dc/d01/SwitchBlock_8h_source.html">SwitchBlock.h</a>&gt;</code></p>
@@ -110,15 +110,17 @@ Graphe de collaboration de SwitchBlock::SwitchBranches:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Attributs publics</h2></td></tr>
 <tr class="memitem:ab5e0217ec069bb25c1e3c3af1eb2e38a" id="r_ab5e0217ec069bb25c1e3c3af1eb2e38a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html#ab5e0217ec069bb25c1e3c3af1eb2e38a">root</a> = nullptr</td></tr>
+<tr class="memdesc:ab5e0217ec069bb25c1e3c3af1eb2e38a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tronc entrant.  <br /></td></tr>
 <tr class="separator:ab5e0217ec069bb25c1e3c3af1eb2e38a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa79a430cbe4719df2cd2962b70e0f5c2" id="r_aa79a430cbe4719df2cd2962b70e0f5c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html#aa79a430cbe4719df2cd2962b70e0f5c2">normal</a> = nullptr</td></tr>
+<tr class="memdesc:aa79a430cbe4719df2cd2962b70e0f5c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sortie directe.  <br /></td></tr>
 <tr class="separator:aa79a430cbe4719df2cd2962b70e0f5c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18a59ab662838c5e08ca27798504c04f" id="r_a18a59ab662838c5e08ca27798504c04f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html#a18a59ab662838c5e08ca27798504c04f">deviation</a> = nullptr</td></tr>
+<tr class="memdesc:a18a59ab662838c5e08ca27798504c04f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sortie déviée.  <br /></td></tr>
 <tr class="separator:a18a59ab662838c5e08ca27798504c04f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Branches topologiques d'un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>. </p>
-<p>Après orientation (Phase 6), chaque switch expose exactement 3 branches. Pour un double switch, normal ou deviation pointe vers le <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> partenaire. </p>
+<div class="textblock"><p>Branches topologiques résolues (pointeurs non-propriétaires). </p>
 </div><h2 class="groupheader">Documentation des données membres</h2>
 <a id="a18a59ab662838c5e08ca27798504c04f" name="a18a59ab662838c5e08ca27798504c04f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a18a59ab662838c5e08ca27798504c04f">&#9670;&#160;</a></span>deviation</h2>
@@ -131,7 +133,8 @@ Attributs publics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bloc sur la branche déviée. </p>
+
+<p>Sortie déviée. </p>
 
 </div>
 </div>
@@ -146,7 +149,8 @@ Attributs publics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bloc sur la branche normale (sortie directe). </p>
+
+<p>Sortie directe. </p>
 
 </div>
 </div>
@@ -161,12 +165,13 @@ Attributs publics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bloc sur la branche root (tronc entrant). </p>
+
+<p>Tronc entrant. </p>
 
 </div>
 </div>
 <hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
-<li>SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/<a class="el" href="../../dc/d01/SwitchBlock_8h_source.html">SwitchBlock.h</a></li>
+<li>SimulateurFerroviaire/Modules/Elements/ShuntingElements/<a class="el" href="../../dc/d01/SwitchBlock_8h_source.html">SwitchBlock.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

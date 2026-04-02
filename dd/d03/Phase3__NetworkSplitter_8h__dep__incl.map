@@ -1,0 +1,7 @@
+<map id="SimulateurFerroviaire/Modules/GeoParser/Pipeline/Phase3_NetworkSplitter.h" name="SimulateurFerroviaire/Modules/GeoParser/Pipeline/Phase3_NetworkSplitter.h">
+<area shape="rect" id="Node000001" title="Phase 3 du pipeline — découpe des segments aux intersections." alt="" coords="151,5,357,60"/>
+<area shape="rect" id="Node000002" href="$d7/d03/GeoParser_8cpp.html" title="Implémentation de l&#39;orchestrateur GeoParser v2." alt="" coords="5,115,252,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,71,154,117,151,113,209,67"/>
+<area shape="rect" id="Node000003" href="$da/d03/Phase3__NetworkSplitter_8cpp.html" title="Implémentation de la phase 3 — découpe des segments." alt="" coords="277,108,485,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="300,67,349,106,346,110,297,71"/>
+</map>

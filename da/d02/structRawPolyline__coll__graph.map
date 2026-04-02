@@ -1,0 +1,15 @@
+<map id="RawPolyline" name="RawPolyline">
+<area shape="rect" id="Node000001" title="Une polyligne GeoJSON avec ses coordonnées en double système." alt="" coords="187,376,282,441"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="35,241,114,306"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,304,186,363,182,367,111,308"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,48,136,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="74,142,77,241,71,241,69,142"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="140,233,329,313"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="237,313,237,360,232,360,232,313"/>
+<area shape="rect" id="Node000005" href="$db/d03/classCoordinateLatLon.html" title="Coordonnée géographique WGS&#45;84 exprimée en degrés décimaux." alt="" coords="161,5,314,171"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="239,171,238,217,233,217,233,171"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="354,241,555,306"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="413,308,344,354,298,380,295,375,341,350,410,304"/>
+<area shape="rect" id="Node000007" href="$df/d01/classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire)." alt="" coords="391,5,518,171"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="457,171,457,225,452,225,452,171"/>
+</map>

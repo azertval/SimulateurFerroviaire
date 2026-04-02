@@ -94,7 +94,6 @@ $(document).ready(function(){initNavTree('da/d01/classStraightBlock.html','../..
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Fonctions membres publiques</a> &#124;
 <a href="#pri-methods">Fonctions membres privées</a> &#124;
-<a href="#pri-static-methods">Fonctions membres privées statiques</a> &#124;
 <a href="#pri-attribs">Attributs privés</a> &#124;
 <a href="../../da/d03/classStraightBlock-members.html">Liste de tous les membres</a>  </div>
   <div class="headertitle"><div class="title">Référence de la classe StraightBlock</div></div>
@@ -105,62 +104,86 @@ $(document).ready(function(){initNavTree('da/d01/classStraightBlock.html','../..
 <div class="dynheader">
 Graphe d'héritage de StraightBlock:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d02/classStraightBlock__inherit__graph.svg" width="216" height="983"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d02/classStraightBlock__inherit__graph.svg" width="211" height="1123"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Graphe de collaboration de StraightBlock:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d0/d03/classStraightBlock__coll__graph.svg" width="844" height="2116"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d0/d03/classStraightBlock__coll__graph.svg" width="1063" height="2251"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html">StraightNeighbours</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voisins topologiques d'un <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a>.  <a href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voisins topologiques résolus (pointeurs non-propriétaires).  <a href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a8efe465dfa6a2c5a6afc2125246194fd" id="r_a8efe465dfa6a2c5a6afc2125246194fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a8efe465dfa6a2c5a6afc2125246194fd">StraightBlock</a> ()=default</td></tr>
 <tr class="separator:a8efe465dfa6a2c5a6afc2125246194fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b5d2078a32199b21c8ab3117fc6c01f" id="r_a6b5d2078a32199b21c8ab3117fc6c01f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a6b5d2078a32199b21c8ab3117fc6c01f">StraightBlock</a> (std::string blockId, std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; blockCoords, std::vector&lt; std::string &gt; initialNeighbourIds={})</td></tr>
-<tr class="memdesc:a6b5d2078a32199b21c8ab3117fc6c01f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> et calcule immédiatement sa longueur géodésique.  <br /></td></tr>
-<tr class="separator:a6b5d2078a32199b21c8ab3117fc6c01f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a956ed4153e56a47ed1d30351680f3c3f" id="r_a956ed4153e56a47ed1d30351680f3c3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a956ed4153e56a47ed1d30351680f3c3f">StraightBlock</a> (std::string blockId, std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; pointsWGS84, std::vector&lt; std::string &gt; neighbourIds={})</td></tr>
+<tr class="memdesc:a956ed4153e56a47ed1d30351680f3c3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> avec géométrie WGS84 et calcule sa longueur.  <br /></td></tr>
+<tr class="separator:a956ed4153e56a47ed1d30351680f3c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a295060fddd0675834ce4755ae4787780" id="r_a295060fddd0675834ce4755ae4787780"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a295060fddd0675834ce4755ae4787780">getId</a> () const override</td></tr>
 <tr class="memdesc:a295060fddd0675834ce4755ae4787780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'identifiant unique de l'élément (ex. "sw/3", "s/12").  <br /></td></tr>
 <tr class="separator:a295060fddd0675834ce4755ae4787780"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94738c34cc95d85601f50d1cec5b35cc" id="r_a94738c34cc95d85601f50d1cec5b35cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d02/InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731">InteractiveElementType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a94738c34cc95d85601f50d1cec5b35cc">getType</a> () const override</td></tr>
-<tr class="memdesc:a94738c34cc95d85601f50d1cec5b35cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le type de l'élément.  <br /></td></tr>
-<tr class="separator:a94738c34cc95d85601f50d1cec5b35cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05109472a2451538d6042a94357363c5" id="r_a05109472a2451538d6042a94357363c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01ae">ElementType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a05109472a2451538d6042a94357363c5">getType</a> () const override</td></tr>
+<tr class="memdesc:a05109472a2451538d6042a94357363c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le type de l'élément.  <br /></td></tr>
+<tr class="separator:a05109472a2451538d6042a94357363c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd0966525c8cea98f39099a1a04df0f6" id="r_afd0966525c8cea98f39099a1a04df0f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#afd0966525c8cea98f39099a1a04df0f6">getState</a> () const override</td></tr>
 <tr class="memdesc:afd0966525c8cea98f39099a1a04df0f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'état opérationnel courant de l'élément.  <br /></td></tr>
 <tr class="separator:afd0966525c8cea98f39099a1a04df0f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a183acded75c8cde4f38aa904d5f868f1" id="r_a183acded75c8cde4f38aa904d5f868f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a183acded75c8cde4f38aa904d5f868f1">setState</a> (<a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a> state)</td></tr>
 <tr class="separator:a183acded75c8cde4f38aa904d5f868f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a646d3135d365dcb832ff66b1304c6850" id="r_a646d3135d365dcb832ff66b1304c6850"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a646d3135d365dcb832ff66b1304c6850">getCoordinates</a> () const</td></tr>
-<tr class="separator:a646d3135d365dcb832ff66b1304c6850"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafa70f4c9291e8a16aac2145dca90497" id="r_aafa70f4c9291e8a16aac2145dca90497"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#aafa70f4c9291e8a16aac2145dca90497">getNeighbourIds</a> () const</td></tr>
-<tr class="separator:aafa70f4c9291e8a16aac2145dca90497"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77cd67bf5f6e2d8b10fa845c63461c5c" id="r_a77cd67bf5f6e2d8b10fa845c63461c5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a77cd67bf5f6e2d8b10fa845c63461c5c">setNeighbourPointers</a> (<a class="el" href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html">StraightNeighbours</a> neighbours)</td></tr>
-<tr class="memdesc:a77cd67bf5f6e2d8b10fa845c63461c5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre les pointeurs prev/next après parsing.  <br /></td></tr>
-<tr class="separator:a77cd67bf5f6e2d8b10fa845c63461c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dd3b344ef976b656134204de6ee8bc5" id="r_a2dd3b344ef976b656134204de6ee8bc5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html">StraightNeighbours</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a2dd3b344ef976b656134204de6ee8bc5">getNeighbours</a> () const</td></tr>
-<tr class="memdesc:a2dd3b344ef976b656134204de6ee8bc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les voisins résolus. Nullptr si non encore initialisé.  <br /></td></tr>
-<tr class="separator:a2dd3b344ef976b656134204de6ee8bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4f522c73c0b77e3205dc9997b192625" id="r_af4f522c73c0b77e3205dc9997b192625"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#af4f522c73c0b77e3205dc9997b192625">getPointsWGS84</a> () const</td></tr>
+<tr class="memdesc:af4f522c73c0b77e3205dc9997b192625"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polyligne WGS-84 ordonnée. Premier point = extrémité A. Dernier point = extrémité B.  <br /></td></tr>
+<tr class="separator:af4f522c73c0b77e3205dc9997b192625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98497f5e4babe17ccbd098d511a62be4" id="r_a98497f5e4babe17ccbd098d511a62be4"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a98497f5e4babe17ccbd098d511a62be4">getPointsUTM</a> () const</td></tr>
+<tr class="memdesc:a98497f5e4babe17ccbd098d511a62be4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polyligne projetée en UTM (x = est, y = nord, mètres). Même taille et même index que <a class="el" href="../../da/d01/classStraightBlock.html#af4f522c73c0b77e3205dc9997b192625" title="Polyligne WGS-84 ordonnée. Premier point = extrémité A. Dernier point = extrémité B.">getPointsWGS84()</a>. Vide si non renseigné par le pipeline v2.  <br /></td></tr>
+<tr class="separator:a98497f5e4babe17ccbd098d511a62be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad30426def1a29f3121ad49dc8bddbb63" id="r_ad30426def1a29f3121ad49dc8bddbb63"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#ad30426def1a29f3121ad49dc8bddbb63">getPointsUTMRef</a> ()</td></tr>
+<tr class="memdesc:ad30426def1a29f3121ad49dc8bddbb63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Référence modifiable sur la polyligne UTM. Utilisée par Phase8_SwitchOrientator::trimStraightOverlaps().  <br /></td></tr>
+<tr class="separator:ad30426def1a29f3121ad49dc8bddbb63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebdce1e1b66d6b39376ae1a66c2d2d9e" id="r_aebdce1e1b66d6b39376ae1a66c2d2d9e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#aebdce1e1b66d6b39376ae1a66c2d2d9e">getLengthMeters</a> () const</td></tr>
+<tr class="memdesc:aebdce1e1b66d6b39376ae1a66c2d2d9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur géodésique Haversine en mètres (depuis pointsWGS84). Mise à jour par <a class="el" href="../../da/d01/classStraightBlock.html#a127a11605e487c1bfe739fa3e75d91c9" title="Remplace la polyligne WGS84 et recalcule la longueur géodésique.">setPointsWGS84()</a>.  <br /></td></tr>
 <tr class="separator:aebdce1e1b66d6b39376ae1a66c2d2d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1b0f8aea8903c1a6320c4b8a34d832c" id="r_ae1b0f8aea8903c1a6320c4b8a34d832c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#ae1b0f8aea8903c1a6320c4b8a34d832c">getLengthUTM</a> () const</td></tr>
+<tr class="memdesc:ae1b0f8aea8903c1a6320c4b8a34d832c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur euclidienne en mètres depuis les coordonnées UTM. Retourne 0 si pointsUTM est vide ou contient moins de 2 points.  <br /></td></tr>
+<tr class="separator:ae1b0f8aea8903c1a6320c4b8a34d832c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafa70f4c9291e8a16aac2145dca90497" id="r_aafa70f4c9291e8a16aac2145dca90497"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#aafa70f4c9291e8a16aac2145dca90497">getNeighbourIds</a> () const</td></tr>
+<tr class="memdesc:aafa70f4c9291e8a16aac2145dca90497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiants des blocs adjacents (<a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> ou <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>). Triés lexicographiquement — <a class="el" href="../../da/d01/classStraightBlock.html#a31992cb0d660a2be22d99615c4be8c23" title="Ajoute un voisin en maintenant l&#39;ordre lexicographique. Pas de doublon.">addNeighbourId()</a> maintient l'ordre.  <br /></td></tr>
+<tr class="separator:aafa70f4c9291e8a16aac2145dca90497"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dd3b344ef976b656134204de6ee8bc5" id="r_a2dd3b344ef976b656134204de6ee8bc5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html">StraightNeighbours</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a2dd3b344ef976b656134204de6ee8bc5">getNeighbours</a> () const</td></tr>
+<tr class="memdesc:a2dd3b344ef976b656134204de6ee8bc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les voisins résolus. nullptr si non encore initialisé.  <br /></td></tr>
+<tr class="separator:a2dd3b344ef976b656134204de6ee8bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a174fe1fb5ff751a0bcb97fd537cfbac9" id="r_a174fe1fb5ff751a0bcb97fd537cfbac9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a174fe1fb5ff751a0bcb97fd537cfbac9">toString</a> () const</td></tr>
-<tr class="memdesc:a174fe1fb5ff751a0bcb97fd537cfbac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Représentation textuelle pour le débogage. Format : Straight(id=s/0, len=342.5m, coords=7, neighbours=[sw/0, sw/1])  <br /></td></tr>
+<tr class="memdesc:a174fe1fb5ff751a0bcb97fd537cfbac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Représentation textuelle pour le débogage.  <br /></td></tr>
 <tr class="separator:a174fe1fb5ff751a0bcb97fd537cfbac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a24a076bb00c595953950a375182407" id="r_a7a24a076bb00c595953950a375182407"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a7a24a076bb00c595953950a375182407">setId</a> (std::string id)</td></tr>
+<tr class="memdesc:a7a24a076bb00c595953950a375182407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne l'identifiant du bloc. Appelé par <a class="el" href="../../df/d00/classPhase6__BlockExtractor.html">Phase6_BlockExtractor</a> lors de la création du bloc.  <br /></td></tr>
+<tr class="separator:a7a24a076bb00c595953950a375182407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a127a11605e487c1bfe739fa3e75d91c9" id="r_a127a11605e487c1bfe739fa3e75d91c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a127a11605e487c1bfe739fa3e75d91c9">setPointsWGS84</a> (std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; points)</td></tr>
+<tr class="memdesc:a127a11605e487c1bfe739fa3e75d91c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace la polyligne WGS84 et recalcule la longueur géodésique.  <br /></td></tr>
+<tr class="separator:a127a11605e487c1bfe739fa3e75d91c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8634f899d4c9d62940a50226a6339ae9" id="r_a8634f899d4c9d62940a50226a6339ae9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a8634f899d4c9d62940a50226a6339ae9">setPointsUTM</a> (std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; points)</td></tr>
+<tr class="memdesc:a8634f899d4c9d62940a50226a6339ae9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne la polyligne UTM.  <br /></td></tr>
+<tr class="separator:a8634f899d4c9d62940a50226a6339ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31992cb0d660a2be22d99615c4be8c23" id="r_a31992cb0d660a2be22d99615c4be8c23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a31992cb0d660a2be22d99615c4be8c23">addNeighbourId</a> (const std::string &amp;id)</td></tr>
 <tr class="memdesc:a31992cb0d660a2be22d99615c4be8c23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un voisin en maintenant l'ordre lexicographique. Pas de doublon.  <br /></td></tr>
 <tr class="separator:a31992cb0d660a2be22d99615c4be8c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb372797f7bc0e80b8dd97c781197772" id="r_afb372797f7bc0e80b8dd97c781197772"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#afb372797f7bc0e80b8dd97c781197772">replaceNeighbourId</a> (const std::string &amp;oldId, const std::string &amp;newId)</td></tr>
-<tr class="memdesc:afb372797f7bc0e80b8dd97c781197772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace un ID de voisin par un autre. Utilisé en Phase 7 lors de l'absorption du segment de liaison.  <br /></td></tr>
+<tr class="memdesc:afb372797f7bc0e80b8dd97c781197772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace un ID de voisin par un autre. Utilisé lors de l'absorption du segment de liaison double switch.  <br /></td></tr>
 <tr class="separator:afb372797f7bc0e80b8dd97c781197772"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1516c424b471658598a77daaf1e55ce6" id="r_a1516c424b471658598a77daaf1e55ce6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a1516c424b471658598a77daaf1e55ce6">setCoordinates</a> (std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; coords)</td></tr>
-<tr class="memdesc:a1516c424b471658598a77daaf1e55ce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace la polyligne et recalcule la longueur géodésique.  <br /></td></tr>
-<tr class="separator:a1516c424b471658598a77daaf1e55ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63505c31a809701e48aa0d1e23dd90f7" id="r_a63505c31a809701e48aa0d1e23dd90f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a63505c31a809701e48aa0d1e23dd90f7">setNeighbourPrev</a> (<a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *elem)</td></tr>
+<tr class="memdesc:a63505c31a809701e48aa0d1e23dd90f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne le voisin côté extrémité A.  <br /></td></tr>
+<tr class="separator:a63505c31a809701e48aa0d1e23dd90f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cba18ea201dbd4ab022c9e0f255d1f8" id="r_a0cba18ea201dbd4ab022c9e0f255d1f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a0cba18ea201dbd4ab022c9e0f255d1f8">setNeighbourNext</a> (<a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *elem)</td></tr>
+<tr class="memdesc:a0cba18ea201dbd4ab022c9e0f255d1f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne le voisin côté extrémité B.  <br /></td></tr>
+<tr class="separator:a0cba18ea201dbd4ab022c9e0f255d1f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77cd67bf5f6e2d8b10fa845c63461c5c" id="r_a77cd67bf5f6e2d8b10fa845c63461c5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a77cd67bf5f6e2d8b10fa845c63461c5c">setNeighbourPointers</a> (<a class="el" href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html">StraightNeighbours</a> neighbours)</td></tr>
+<tr class="memdesc:a77cd67bf5f6e2d8b10fa845c63461c5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre les pointeurs prev/next en une seule opération.  <br /></td></tr>
+<tr class="separator:a77cd67bf5f6e2d8b10fa845c63461c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classShuntingElement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classShuntingElement')"><img src="../../closed.png" alt="-"/>&#160;Fonctions membres publiques hérités de <a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a></td></tr>
 <tr class="memitem:acb088c612e8db99dbd162ba65743c4ff inherit pub_methods_classShuntingElement" id="r_acb088c612e8db99dbd162ba65743c4ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d00/classShuntingElement.html#acb088c612e8db99dbd162ba65743c4ff">ShuntingElement</a> ()=default</td></tr>
 <tr class="separator:acb088c612e8db99dbd162ba65743c4ff inherit pub_methods_classShuntingElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,38 +202,34 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:ac236019e6961a887732237cc5f1da697 inherit pub_methods_classShuntingElement" id="r_ac236019e6961a887732237cc5f1da697"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d00/classShuntingElement.html#ac236019e6961a887732237cc5f1da697">isInactive</a> () const</td></tr>
 <tr class="memdesc:ac236019e6961a887732237cc5f1da697 inherit pub_methods_classShuntingElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne true si l'élément est hors service.  <br /></td></tr>
 <tr class="separator:ac236019e6961a887732237cc5f1da697 inherit pub_methods_classShuntingElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classInteractiveElement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classInteractiveElement')"><img src="../../closed.png" alt="-"/>&#160;Fonctions membres publiques hérités de <a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a></td></tr>
-<tr class="memitem:a731ea8f6e5caddfff044ae50feefdbf7 inherit pub_methods_classInteractiveElement" id="r_a731ea8f6e5caddfff044ae50feefdbf7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a731ea8f6e5caddfff044ae50feefdbf7">InteractiveElement</a> ()=default</td></tr>
-<tr class="separator:a731ea8f6e5caddfff044ae50feefdbf7 inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8567360038147b2c97943e307eb0eef3 inherit pub_methods_classInteractiveElement" id="r_a8567360038147b2c97943e307eb0eef3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a8567360038147b2c97943e307eb0eef3">~InteractiveElement</a> ()=default</td></tr>
-<tr class="separator:a8567360038147b2c97943e307eb0eef3 inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a534f8d7be8cfe37ddbec1c134b68898c inherit pub_methods_classInteractiveElement" id="r_a534f8d7be8cfe37ddbec1c134b68898c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a534f8d7be8cfe37ddbec1c134b68898c">InteractiveElement</a> (const <a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a> &amp;)=delete</td></tr>
-<tr class="memdesc:a534f8d7be8cfe37ddbec1c134b68898c inherit pub_methods_classInteractiveElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interdit la copie — risque de slicing.  <br /></td></tr>
-<tr class="separator:a534f8d7be8cfe37ddbec1c134b68898c inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb14dc9e4c66a1b52e0605ba1ab29ed7 inherit pub_methods_classInteractiveElement" id="r_acb14dc9e4c66a1b52e0605ba1ab29ed7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#acb14dc9e4c66a1b52e0605ba1ab29ed7">operator=</a> (const <a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a> &amp;)=delete</td></tr>
-<tr class="separator:acb14dc9e4c66a1b52e0605ba1ab29ed7 inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a8f196ea573c4fdf1983ce154aa193a inherit pub_methods_classInteractiveElement" id="r_a9a8f196ea573c4fdf1983ce154aa193a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a9a8f196ea573c4fdf1983ce154aa193a">InteractiveElement</a> (<a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a> &amp;&amp;)=default</td></tr>
-<tr class="memdesc:a9a8f196ea573c4fdf1983ce154aa193a inherit pub_methods_classInteractiveElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplacement autorisé — requis par le pipeline de construction.  <br /></td></tr>
-<tr class="separator:a9a8f196ea573c4fdf1983ce154aa193a inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a351db854d008d418dd6a4825ac822bc2 inherit pub_methods_classInteractiveElement" id="r_a351db854d008d418dd6a4825ac822bc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a351db854d008d418dd6a4825ac822bc2">operator=</a> (<a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a> &amp;&amp;)=default</td></tr>
-<tr class="separator:a351db854d008d418dd6a4825ac822bc2 inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classElement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classElement')"><img src="../../closed.png" alt="-"/>&#160;Fonctions membres publiques hérités de <a class="el" href="../../d5/d00/classElement.html">Element</a></td></tr>
+<tr class="memitem:a084081001b0f14ae12d612c866df861c inherit pub_methods_classElement" id="r_a084081001b0f14ae12d612c866df861c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#a084081001b0f14ae12d612c866df861c">Element</a> ()=default</td></tr>
+<tr class="separator:a084081001b0f14ae12d612c866df861c inherit pub_methods_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa153979c5d46fff8e2b9ee8b48dd863f inherit pub_methods_classElement" id="r_aa153979c5d46fff8e2b9ee8b48dd863f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#aa153979c5d46fff8e2b9ee8b48dd863f">~Element</a> ()=default</td></tr>
+<tr class="separator:aa153979c5d46fff8e2b9ee8b48dd863f inherit pub_methods_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11d861303a5ffa3797861b3108ce1d63 inherit pub_methods_classElement" id="r_a11d861303a5ffa3797861b3108ce1d63"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#a11d861303a5ffa3797861b3108ce1d63">Element</a> (const <a class="el" href="../../d5/d00/classElement.html">Element</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a11d861303a5ffa3797861b3108ce1d63 inherit pub_methods_classElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interdit la copie — risque de slicing.  <br /></td></tr>
+<tr class="separator:a11d861303a5ffa3797861b3108ce1d63 inherit pub_methods_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa711d7fa3156e1f7b6458ed511f146f7 inherit pub_methods_classElement" id="r_aa711d7fa3156e1f7b6458ed511f146f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d00/classElement.html">Element</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#aa711d7fa3156e1f7b6458ed511f146f7">operator=</a> (const <a class="el" href="../../d5/d00/classElement.html">Element</a> &amp;)=delete</td></tr>
+<tr class="separator:aa711d7fa3156e1f7b6458ed511f146f7 inherit pub_methods_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af81d21cc1799b387dcf2916b3b597651 inherit pub_methods_classElement" id="r_af81d21cc1799b387dcf2916b3b597651"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#af81d21cc1799b387dcf2916b3b597651">Element</a> (<a class="el" href="../../d5/d00/classElement.html">Element</a> &amp;&amp;)=default</td></tr>
+<tr class="memdesc:af81d21cc1799b387dcf2916b3b597651 inherit pub_methods_classElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplacement autorisé — requis par le pipeline de construction.  <br /></td></tr>
+<tr class="separator:af81d21cc1799b387dcf2916b3b597651 inherit pub_methods_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fc8b51b7d9283a94b53543b42d87838 inherit pub_methods_classElement" id="r_a7fc8b51b7d9283a94b53543b42d87838"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d00/classElement.html">Element</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#a7fc8b51b7d9283a94b53543b42d87838">operator=</a> (<a class="el" href="../../d5/d00/classElement.html">Element</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:a7fc8b51b7d9283a94b53543b42d87838 inherit pub_methods_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Fonctions membres privées</h2></td></tr>
 <tr class="memitem:a2c39df55b662a55c1de75659619bbacb" id="r_a2c39df55b662a55c1de75659619bbacb"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb">computeGeodesicLength</a> () const</td></tr>
-<tr class="memdesc:a2c39df55b662a55c1de75659619bbacb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la longueur géodésique totale depuis m_coordinates.  <br /></td></tr>
+<tr class="memdesc:a2c39df55b662a55c1de75659619bbacb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la longueur géodésique totale depuis m_pointsWGS84. Somme des distances Haversine entre chaque paire de points consécutifs.  <br /></td></tr>
 <tr class="separator:a2c39df55b662a55c1de75659619bbacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Fonctions membres privées statiques</h2></td></tr>
-<tr class="memitem:a6ea1987662d295db433b819aceaa67cd" id="r_a6ea1987662d295db433b819aceaa67cd"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a6ea1987662d295db433b819aceaa67cd">haversineDistanceMeters</a> (const <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &amp;a, const <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &amp;b)</td></tr>
-<tr class="memdesc:a6ea1987662d295db433b819aceaa67cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la distance de Haversine entre deux points WGS-84.  <br /></td></tr>
-<tr class="separator:a6ea1987662d295db433b819aceaa67cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Attributs privés</h2></td></tr>
-<tr class="memitem:a7e0ddf2a4dfdd7b44d685f843d4c368d" id="r_a7e0ddf2a4dfdd7b44d685f843d4c368d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a7e0ddf2a4dfdd7b44d685f843d4c368d">m_coordinates</a></td></tr>
-<tr class="separator:a7e0ddf2a4dfdd7b44d685f843d4c368d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30ff7d5bce2fc2a312a435998e0acf78" id="r_a30ff7d5bce2fc2a312a435998e0acf78"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a30ff7d5bce2fc2a312a435998e0acf78">m_pointsWGS84</a></td></tr>
+<tr class="separator:a30ff7d5bce2fc2a312a435998e0acf78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1259513429ea15d34fbf19ba30255f41" id="r_a1259513429ea15d34fbf19ba30255f41"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a1259513429ea15d34fbf19ba30255f41">m_pointsUTM</a></td></tr>
+<tr class="separator:a1259513429ea15d34fbf19ba30255f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b14748902c7b5f4fad5936d0249817e" id="r_a9b14748902c7b5f4fad5936d0249817e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a9b14748902c7b5f4fad5936d0249817e">m_neighbourIds</a></td></tr>
 <tr class="separator:a9b14748902c7b5f4fad5936d0249817e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafd6bb8db6f9da57bd1179a2dc8342ed" id="r_aafd6bb8db6f9da57bd1179a2dc8342ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d03/structStraightBlock_1_1StraightNeighbours.html">StraightNeighbours</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#aafd6bb8db6f9da57bd1179a2dc8342ed">m_neighbours</a></td></tr>
@@ -223,14 +242,14 @@ Membres hérités additionnels</h2></td></tr>
 <tr class="inherit_header pro_attribs_classShuntingElement"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classShuntingElement')"><img src="../../closed.png" alt="-"/>&#160;Attributs protégés hérités de <a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a></td></tr>
 <tr class="memitem:a6853292ff1ab21bf1441b86e169a3ee2 inherit pro_attribs_classShuntingElement" id="r_a6853292ff1ab21bf1441b86e169a3ee2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d00/classShuntingElement.html#a6853292ff1ab21bf1441b86e169a3ee2">m_state</a> = <a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da88c189a42c87aa49d667fc8ab76bc323">ShuntingState::FREE</a></td></tr>
 <tr class="separator:a6853292ff1ab21bf1441b86e169a3ee2 inherit pro_attribs_classShuntingElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classInteractiveElement"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classInteractiveElement')"><img src="../../closed.png" alt="-"/>&#160;Attributs protégés hérités de <a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a></td></tr>
-<tr class="memitem:a3fa6f7a3b734f17c31de52c8d3183221 inherit pro_attribs_classInteractiveElement" id="r_a3fa6f7a3b734f17c31de52c8d3183221"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a3fa6f7a3b734f17c31de52c8d3183221">m_id</a></td></tr>
-<tr class="memdesc:a3fa6f7a3b734f17c31de52c8d3183221 inherit pro_attribs_classInteractiveElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">id de l'element  <br /></td></tr>
-<tr class="separator:a3fa6f7a3b734f17c31de52c8d3183221 inherit pro_attribs_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_static_attribs_classInteractiveElement"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_classInteractiveElement')"><img src="../../closed.png" alt="-"/>&#160;Attributs protégés statiques hérités de <a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a></td></tr>
-<tr class="memitem:a92de0811b888277b54be4a6dae22c08b inherit pro_static_attribs_classInteractiveElement" id="r_a92de0811b888277b54be4a6dae22c08b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d03/classLogger.html">Logger</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a92de0811b888277b54be4a6dae22c08b">m_logger</a></td></tr>
-<tr class="memdesc:a92de0811b888277b54be4a6dae22c08b inherit pro_static_attribs_classInteractiveElement"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> statique partagé par TOUS les éléments interactifs.  <br /></td></tr>
-<tr class="separator:a92de0811b888277b54be4a6dae22c08b inherit pro_static_attribs_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classElement"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classElement')"><img src="../../closed.png" alt="-"/>&#160;Attributs protégés hérités de <a class="el" href="../../d5/d00/classElement.html">Element</a></td></tr>
+<tr class="memitem:aa63a2f40f251308e122f0f107c4dc7df inherit pro_attribs_classElement" id="r_aa63a2f40f251308e122f0f107c4dc7df"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#aa63a2f40f251308e122f0f107c4dc7df">m_id</a></td></tr>
+<tr class="memdesc:aa63a2f40f251308e122f0f107c4dc7df inherit pro_attribs_classElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">id de l'element  <br /></td></tr>
+<tr class="separator:aa63a2f40f251308e122f0f107c4dc7df inherit pro_attribs_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_classElement"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_classElement')"><img src="../../closed.png" alt="-"/>&#160;Attributs protégés statiques hérités de <a class="el" href="../../d5/d00/classElement.html">Element</a></td></tr>
+<tr class="memitem:aef48ade8406262ccdf85538f25c331c1 inherit pro_static_attribs_classElement" id="r_aef48ade8406262ccdf85538f25c331c1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d03/classLogger.html">Logger</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#aef48ade8406262ccdf85538f25c331c1">m_logger</a></td></tr>
+<tr class="memdesc:aef48ade8406262ccdf85538f25c331c1 inherit pro_static_attribs_classElement"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> statique partagé par TOUS les éléments interactifs.  <br /></td></tr>
+<tr class="separator:aef48ade8406262ccdf85538f25c331c1 inherit pro_static_attribs_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a8efe465dfa6a2c5a6afc2125246194fd" name="a8efe465dfa6a2c5a6afc2125246194fd"></a>
@@ -258,8 +277,8 @@ Membres hérités additionnels</h2></td></tr>
 
 </div>
 </div>
-<a id="a6b5d2078a32199b21c8ab3117fc6c01f" name="a6b5d2078a32199b21c8ab3117fc6c01f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b5d2078a32199b21c8ab3117fc6c01f">&#9670;&#160;</a></span>StraightBlock() <span class="overload">[2/2]</span></h2>
+<a id="a956ed4153e56a47ed1d30351680f3c3f" name="a956ed4153e56a47ed1d30351680f3c3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a956ed4153e56a47ed1d30351680f3c3f">&#9670;&#160;</a></span>StraightBlock() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -273,14 +292,14 @@ Membres hérités additionnels</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt;&#160;</td>
-          <td class="paramname"><em>blockCoords</em>, </td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td>
+          <td class="paramname"><em>pointsWGS84</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
-          <td class="paramname"><em>initialNeighbourIds</em> = <code>{}</code>&#160;</td>
+          <td class="paramname"><em>neighbourIds</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -290,12 +309,12 @@ Membres hérités additionnels</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construit un <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> et calcule immédiatement sa longueur géodésique. </p>
+<p>Construit un <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> avec géométrie WGS84 et calcule sa longueur. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">blockId</td><td>Identifiant unique (ex. "s/0"). </td></tr>
-    <tr><td class="paramname">blockCoords</td><td>Polyligne WGS-84 ordonnée (≥ 2 points). </td></tr>
-    <tr><td class="paramname">initialNeighbourIds</td><td>Voisins connus à la construction (optionnel). </td></tr>
+    <tr><td class="paramname">pointsWGS84</td><td>Polyligne WGS-84 ordonnée (≥ 2 points). </td></tr>
+    <tr><td class="paramname">neighbourIds</td><td>Voisins connus à la construction (optionnel). </td></tr>
   </table>
   </dd>
 </dl>
@@ -346,34 +365,7 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Calcule la longueur géodésique totale depuis m_coordinates. </p>
-<p>Somme des distances Haversine entre chaque paire de points consécutifs. Retourne 0 si m_coordinates contient moins de 2 points. </p>
-
-</div>
-</div>
-<a id="a646d3135d365dcb832ff66b1304c6850" name="a646d3135d365dcb832ff66b1304c6850"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a646d3135d365dcb832ff66b1304c6850">&#9670;&#160;</a></span>getCoordinates()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; &amp; StraightBlock::getCoordinates </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Polyligne WGS-84 ordonnée. Premier point : extrémité A. Dernier : extrémité B. </p>
+<p>Calcule la longueur géodésique totale depuis m_pointsWGS84. Somme des distances Haversine entre chaque paire de points consécutifs. </p>
 
 </div>
 </div>
@@ -402,7 +394,7 @@ Membres hérités additionnels</h2></td></tr>
 
 <p>Retourne l'identifiant unique de l'élément (ex. "sw/3", "s/12"). </p>
 
-<p>Implémente <a class="el" href="../../d8/d02/classInteractiveElement.html#a6e4de24603c935ed0c9151c738239c9b">InteractiveElement</a>.</p>
+<p>Implémente <a class="el" href="../../d5/d00/classElement.html#a9aae657a532fd6132404151a351e55db">Element</a>.</p>
 
 </div>
 </div>
@@ -428,7 +420,27 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Longueur géodésique en mètres (Haversine), mise à jour par <a class="el" href="../../da/d01/classStraightBlock.html#a1516c424b471658598a77daaf1e55ce6" title="Remplace la polyligne et recalcule la longueur géodésique.">setCoordinates()</a>. </p>
+
+<p>Longueur géodésique Haversine en mètres (depuis pointsWGS84). Mise à jour par <a class="el" href="../../da/d01/classStraightBlock.html#a127a11605e487c1bfe739fa3e75d91c9" title="Remplace la polyligne WGS84 et recalcule la longueur géodésique.">setPointsWGS84()</a>. </p>
+
+</div>
+</div>
+<a id="ae1b0f8aea8903c1a6320c4b8a34d832c" name="ae1b0f8aea8903c1a6320c4b8a34d832c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1b0f8aea8903c1a6320c4b8a34d832c">&#9670;&#160;</a></span>getLengthUTM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double StraightBlock::getLengthUTM </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Longueur euclidienne en mètres depuis les coordonnées UTM. Retourne 0 si pointsUTM est vide ou contient moins de 2 points. </p>
 
 </div>
 </div>
@@ -454,7 +466,8 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Identifiants des blocs adjacents (<a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> ou <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>). Toujours triés lexicographiquement — addNeighbourId maintient l'ordre. </p>
+
+<p>Identifiants des blocs adjacents (<a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> ou <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>). Triés lexicographiquement — <a class="el" href="../../da/d01/classStraightBlock.html#a31992cb0d660a2be22d99615c4be8c23" title="Ajoute un voisin en maintenant l&#39;ordre lexicographique. Pas de doublon.">addNeighbourId()</a> maintient l'ordre. </p>
 
 </div>
 </div>
@@ -481,7 +494,88 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Retourne les voisins résolus. Nullptr si non encore initialisé. </p>
+<p>Retourne les voisins résolus. nullptr si non encore initialisé. </p>
+
+</div>
+</div>
+<a id="a98497f5e4babe17ccbd098d511a62be4" name="a98497f5e4babe17ccbd098d511a62be4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98497f5e4babe17ccbd098d511a62be4">&#9670;&#160;</a></span>getPointsUTM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; &amp; StraightBlock::getPointsUTM </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Polyligne projetée en UTM (x = est, y = nord, mètres). Même taille et même index que <a class="el" href="../../da/d01/classStraightBlock.html#af4f522c73c0b77e3205dc9997b192625" title="Polyligne WGS-84 ordonnée. Premier point = extrémité A. Dernier point = extrémité B.">getPointsWGS84()</a>. Vide si non renseigné par le pipeline v2. </p>
+
+</div>
+</div>
+<a id="ad30426def1a29f3121ad49dc8bddbb63" name="ad30426def1a29f3121ad49dc8bddbb63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad30426def1a29f3121ad49dc8bddbb63">&#9670;&#160;</a></span>getPointsUTMRef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; &amp; StraightBlock::getPointsUTMRef </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Référence modifiable sur la polyligne UTM. Utilisée par Phase8_SwitchOrientator::trimStraightOverlaps(). </p>
+
+</div>
+</div>
+<a id="af4f522c73c0b77e3205dc9997b192625" name="af4f522c73c0b77e3205dc9997b192625"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4f522c73c0b77e3205dc9997b192625">&#9670;&#160;</a></span>getPointsWGS84()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp; StraightBlock::getPointsWGS84 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Polyligne WGS-84 ordonnée. Premier point = extrémité A. Dernier point = extrémité B. </p>
 
 </div>
 </div>
@@ -515,8 +609,8 @@ Membres hérités additionnels</h2></td></tr>
 
 </div>
 </div>
-<a id="a94738c34cc95d85601f50d1cec5b35cc" name="a94738c34cc95d85601f50d1cec5b35cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94738c34cc95d85601f50d1cec5b35cc">&#9670;&#160;</a></span>getType()</h2>
+<a id="a05109472a2451538d6042a94357363c5" name="a05109472a2451538d6042a94357363c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05109472a2451538d6042a94357363c5">&#9670;&#160;</a></span>getType()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -525,7 +619,7 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d6/d02/InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731">InteractiveElementType</a> StraightBlock::getType </td>
+          <td class="memname"><a class="el" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01ae">ElementType</a> StraightBlock::getType </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -539,56 +633,9 @@ Membres hérités additionnels</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Retourne le type de l'élément. </p>
-<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="../../d6/d02/InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731a4239f063a3d4fb9d38a0182be6e39e76">InteractiveElementType::SWITCH</a> ou <a class="el" href="../../d6/d02/InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731a8c5e50fab3748e9c53a6863b3dce1401">InteractiveElementType::STRAIGHT</a>. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01aea4239f063a3d4fb9d38a0182be6e39e76">ElementType::SWITCH</a> ou <a class="el" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01aea8c5e50fab3748e9c53a6863b3dce1401">ElementType::STRAIGHT</a>. </dd></dl>
 
-<p>Implémente <a class="el" href="../../d8/d02/classInteractiveElement.html#a8ff2705adce5c5c4d9a056dbf80cc79e">InteractiveElement</a>.</p>
-
-</div>
-</div>
-<a id="a6ea1987662d295db433b819aceaa67cd" name="a6ea1987662d295db433b819aceaa67cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ea1987662d295db433b819aceaa67cd">&#9670;&#160;</a></span>haversineDistanceMeters()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">double StraightBlock::haversineDistanceMeters </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &amp;&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &amp;&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Calcule la distance de Haversine entre deux points WGS-84. </p>
-<p>Formule exacte sur sphère de rayon 6 371 000 m. Utilisée en interne par <a class="el" href="../../da/d01/classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb" title="Calcule la longueur géodésique totale depuis m_coordinates.">computeGeodesicLength()</a>.</p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">a</td><td>Premier point (latitude, longitude en degrés décimaux). </td></tr>
-    <tr><td class="paramname">b</td><td>Second point. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Distance en mètres. </dd></dl>
+<p>Implémente <a class="el" href="../../d5/d00/classElement.html#ae718a7a155a724fb91e8f925c81ac5ec">Element</a>.</p>
 
 </div>
 </div>
@@ -618,28 +665,75 @@ Membres hérités additionnels</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Remplace un ID de voisin par un autre. Utilisé en Phase 7 lors de l'absorption du segment de liaison. </p>
+<p>Remplace un ID de voisin par un autre. Utilisé lors de l'absorption du segment de liaison double switch. </p>
 
 </div>
 </div>
-<a id="a1516c424b471658598a77daaf1e55ce6" name="a1516c424b471658598a77daaf1e55ce6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1516c424b471658598a77daaf1e55ce6">&#9670;&#160;</a></span>setCoordinates()</h2>
+<a id="a7a24a076bb00c595953950a375182407" name="a7a24a076bb00c595953950a375182407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a24a076bb00c595953950a375182407">&#9670;&#160;</a></span>setId()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void StraightBlock::setCoordinates </td>
+          <td class="memname">void StraightBlock::setId </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt;&#160;</td>
-          <td class="paramname"><em>coords</em></td><td>)</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Remplace la polyligne et recalcule la longueur géodésique. </p>
-<p>Appelé par trimStraightOverlaps() pour retirer le chevauchement entre la branche du switch et le début (ou la fin) du Straight. </p>
+<p>Assigne l'identifiant du bloc. Appelé par <a class="el" href="../../df/d00/classPhase6__BlockExtractor.html">Phase6_BlockExtractor</a> lors de la création du bloc. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Identifiant unique (ex. "s/0"). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0cba18ea201dbd4ab022c9e0f255d1f8" name="a0cba18ea201dbd4ab022c9e0f255d1f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cba18ea201dbd4ab022c9e0f255d1f8">&#9670;&#160;</a></span>setNeighbourNext()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StraightBlock::setNeighbourNext </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assigne le voisin côté extrémité B. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elem</td><td>Pointeur non-propriétaire. nullptr si terminus. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -659,10 +753,104 @@ Membres hérités additionnels</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enregistre les pointeurs prev/next après parsing. </p>
+<p>Enregistre les pointeurs prev/next en une seule opération. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">neighbours</td><td>Struct contenant les deux extrémités résolues. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a63505c31a809701e48aa0d1e23dd90f7" name="a63505c31a809701e48aa0d1e23dd90f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63505c31a809701e48aa0d1e23dd90f7">&#9670;&#160;</a></span>setNeighbourPrev()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StraightBlock::setNeighbourPrev </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assigne le voisin côté extrémité A. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elem</td><td>Pointeur non-propriétaire. nullptr si terminus. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8634f899d4c9d62940a50226a6339ae9" name="a8634f899d4c9d62940a50226a6339ae9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8634f899d4c9d62940a50226a6339ae9">&#9670;&#160;</a></span>setPointsUTM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StraightBlock::setPointsUTM </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td>
+          <td class="paramname"><em>points</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assigne la polyligne UTM. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">points</td><td>Points projetés en UTM (même taille que pointsWGS84). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a127a11605e487c1bfe739fa3e75d91c9" name="a127a11605e487c1bfe739fa3e75d91c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a127a11605e487c1bfe739fa3e75d91c9">&#9670;&#160;</a></span>setPointsWGS84()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StraightBlock::setPointsWGS84 </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td>
+          <td class="paramname"><em>points</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remplace la polyligne WGS84 et recalcule la longueur géodésique. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">points</td><td>Polyligne WGS-84 ordonnée (≥ 2 points). </td></tr>
   </table>
   </dd>
 </dl>
@@ -710,34 +898,11 @@ Membres hérités additionnels</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Représentation textuelle pour le débogage. Format : Straight(id=s/0, len=342.5m, coords=7, neighbours=[sw/0, sw/1]) </p>
+<p>Représentation textuelle pour le débogage. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Documentation des données membres</h2>
-<a id="a7e0ddf2a4dfdd7b44d685f843d4c368d" name="a7e0ddf2a4dfdd7b44d685f843d4c368d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e0ddf2a4dfdd7b44d685f843d4c368d">&#9670;&#160;</a></span>m_coordinates</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="../../d4/d01/classLatLon.html">LatLon</a>&gt; StraightBlock::m_coordinates</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Polyligne WGS-84 ordonnée du bloc. Premier point : extrémité A. Dernier point : extrémité B. Modifiable uniquement via <a class="el" href="../../da/d01/classStraightBlock.html#a1516c424b471658598a77daaf1e55ce6" title="Remplace la polyligne et recalcule la longueur géodésique.">setCoordinates()</a> (Phase 6d) — recalcule automatiquement m_lengthMeters. </p>
-
-</div>
-</div>
 <a id="a236b3c910803c6fab940a196829becb4" name="a236b3c910803c6fab940a196829becb4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a236b3c910803c6fab940a196829becb4">&#9670;&#160;</a></span>m_lengthMeters</h2>
 
@@ -757,7 +922,7 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Longueur géodésique totale en mètres, calculée par Haversine. Mise à jour automatiquement à la construction et à chaque appel à <a class="el" href="../../da/d01/classStraightBlock.html#a1516c424b471658598a77daaf1e55ce6" title="Remplace la polyligne et recalcule la longueur géodésique.">setCoordinates()</a>. Ne pas modifier directement — utiliser <a class="el" href="../../da/d01/classStraightBlock.html#a1516c424b471658598a77daaf1e55ce6" title="Remplace la polyligne et recalcule la longueur géodésique.">setCoordinates()</a> pour garantir la cohérence. </p>
+<p>Longueur géodésique totale en mètres (Haversine sur m_pointsWGS84). Mise à jour automatiquement par <a class="el" href="../../da/d01/classStraightBlock.html#a127a11605e487c1bfe739fa3e75d91c9" title="Remplace la polyligne WGS84 et recalcule la longueur géodésique.">setPointsWGS84()</a>. </p>
 
 </div>
 </div>
@@ -780,7 +945,7 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>IDs des blocs adjacents (<a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> ou <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>). Toujours trié lexicographiquement — <a class="el" href="../../da/d01/classStraightBlock.html#a31992cb0d660a2be22d99615c4be8c23" title="Ajoute un voisin en maintenant l&#39;ordre lexicographique. Pas de doublon.">addNeighbourId()</a> maintient l'invariant. Peuplé en Phase 5b, muté en Phase 7 via <a class="el" href="../../da/d01/classStraightBlock.html#afb372797f7bc0e80b8dd97c781197772" title="Remplace un ID de voisin par un autre. Utilisé en Phase 7 lors de l&#39;absorption du segment de liaison.">replaceNeighbourId()</a>. </p>
+<p>IDs des blocs adjacents (<a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> ou <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>). Trié lexicographiquement — <a class="el" href="../../da/d01/classStraightBlock.html#a31992cb0d660a2be22d99615c4be8c23" title="Ajoute un voisin en maintenant l&#39;ordre lexicographique. Pas de doublon.">addNeighbourId()</a> maintient l'invariant. </p>
 
 </div>
 </div>
@@ -803,13 +968,59 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Pointeurs non-propriétaires vers les blocs adjacents (<a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> ou <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a>). Parallèle à m_neighbourIds — même ordre, même contenu sous forme de pointeurs. Propriété du <a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a> — ne pas delete. </p>
+<p>Pointeurs non-propriétaires vers les blocs adjacents. Renseignés par <a class="el" href="../../da/d01/classPhase8__RepositoryTransfer.html#af75aa0847b36eb3a03f19074da8e470f" title="9a — Résout les pointeurs inter-blocs.">Phase8_RepositoryTransfer::resolve()</a>. Propriété de <a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a> — ne pas delete. </p>
+
+</div>
+</div>
+<a id="a1259513429ea15d34fbf19ba30255f41" name="a1259513429ea15d34fbf19ba30255f41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1259513429ea15d34fbf19ba30255f41">&#9670;&#160;</a></span>m_pointsUTM</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>&gt; StraightBlock::m_pointsUTM</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Polyligne UTM (x = est, y = nord, mètres). Même taille et même index que m_pointsWGS84. Renseigné par le pipeline v2 (<a class="el" href="../../df/d00/classPhase6__BlockExtractor.html">Phase6_BlockExtractor</a>). </p>
+
+</div>
+</div>
+<a id="a30ff7d5bce2fc2a312a435998e0acf78" name="a30ff7d5bce2fc2a312a435998e0acf78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30ff7d5bce2fc2a312a435998e0acf78">&#9670;&#160;</a></span>m_pointsWGS84</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>&gt; StraightBlock::m_pointsWGS84</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Polyligne WGS-84 ordonnée (latitude, longitude). Premier point = extrémité A. Dernier point = extrémité B. Modifiable via <a class="el" href="../../da/d01/classStraightBlock.html#a127a11605e487c1bfe739fa3e75d91c9" title="Remplace la polyligne WGS84 et recalcule la longueur géodésique.">setPointsWGS84()</a> — recalcule automatiquement m_lengthMeters. </p>
 
 </div>
 </div>
 <hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
-<li>SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/<a class="el" href="../../de/d01/StraightBlock_8h_source.html">StraightBlock.h</a></li>
-<li>SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/<a class="el" href="../../d9/d01/StraightBlock_8cpp.html">StraightBlock.cpp</a></li>
+<li>SimulateurFerroviaire/Modules/Elements/ShuntingElements/<a class="el" href="../../de/d01/StraightBlock_8h_source.html">StraightBlock.h</a></li>
+<li>SimulateurFerroviaire/Modules/Elements/ShuntingElements/<a class="el" href="../../d9/d01/StraightBlock_8cpp.html">StraightBlock.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

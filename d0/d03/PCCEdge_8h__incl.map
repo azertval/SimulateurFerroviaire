@@ -1,17 +1,19 @@
 <map id="SimulateurFerroviaire/Modules/PCC/PCCEdge.h" name="SimulateurFerroviaire/Modules/PCC/PCCEdge.h">
-<area shape="rect" id="Node000001" title="Connexion orientée entre deux nœuds du graphe PCC." alt="" coords="194,5,379,45"/>
-<area shape="rect" id="Node000002" href="$dd/d00/Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur." alt="" coords="213,93,361,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="289,46,289,79,284,79,284,46"/>
+<area shape="rect" id="Node000001" title="Connexion orientée entre deux nœuds du graphe PCC." alt="" coords="241,5,426,45"/>
+<area shape="rect" id="Node000002" href="$dd/d00/Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur." alt="" coords="259,93,407,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="336,46,336,79,331,79,331,46"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="5,181,64,207"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="227,136,78,182,76,177,226,131"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="261,136,78,184,76,179,259,131"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="88,181,179,207"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="251,136,169,177,167,173,249,131"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="286,136,176,179,174,174,284,131"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="203,181,277,207"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="278,135,256,171,252,168,273,132"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="312,136,266,174,263,170,309,132"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="301,181,365,207"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="300,132,322,168,317,171,296,135"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="336,134,336,167,331,167,331,134"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="389,181,464,207"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="321,131,395,172,393,177,319,136"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="358,132,404,170,400,174,354,136"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="488,181,547,207"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="343,131,476,176,474,181,341,136"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="378,131,479,173,477,178,376,136"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="571,181,661,207"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="402,131,562,175,561,180,400,136"/>
 </map>

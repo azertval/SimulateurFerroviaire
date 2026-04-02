@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire:  Fichier source de SimulateurFerroviaire/Modules/Elements/Element.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d5/d02/Element_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Element.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d5/d02/Element_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="../../dd/d00/Logger_8h.html">Engine/Core/Logger/Logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01ae">   17</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01ae">ElementType</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_enumvalue" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01aea4239f063a3d4fb9d38a0182be6e39e76">SWITCH</a>,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_enumvalue" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01aea8c5e50fab3748e9c53a6863b3dce1401">STRAIGHT</a></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
+</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="../../d5/d00/classElement.html">   33</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d5/d00/classElement.html">Element</a></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>{</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// -------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// Construction / Destruction</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// -------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="../../d5/d00/classElement.html#a084081001b0f14ae12d612c866df861c">   41</a></span>    <a class="code hl_function" href="../../d5/d00/classElement.html#a084081001b0f14ae12d612c866df861c">Element</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../d5/d00/classElement.html#aa153979c5d46fff8e2b9ee8b48dd863f">   42</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="../../d5/d00/classElement.html#aa153979c5d46fff8e2b9ee8b48dd863f">~Element</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="../../d5/d00/classElement.html#a11d861303a5ffa3797861b3108ce1d63">   45</a></span>    <a class="code hl_function" href="../../d5/d00/classElement.html#a11d861303a5ffa3797861b3108ce1d63">Element</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d5/d00/classElement.html">Element</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="../../d5/d00/classElement.html#aa711d7fa3156e1f7b6458ed511f146f7">   46</a></span>    <a class="code hl_class" href="../../d5/d00/classElement.html">Element</a>&amp; <a class="code hl_function" href="../../d5/d00/classElement.html#aa711d7fa3156e1f7b6458ed511f146f7">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d5/d00/classElement.html">Element</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../d5/d00/classElement.html#af81d21cc1799b387dcf2916b3b597651">   49</a></span>    <a class="code hl_function" href="../../d5/d00/classElement.html#af81d21cc1799b387dcf2916b3b597651">Element</a>(<a class="code hl_class" href="../../d5/d00/classElement.html">Element</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="../../d5/d00/classElement.html#a7fc8b51b7d9283a94b53543b42d87838">   50</a></span>    <a class="code hl_class" href="../../d5/d00/classElement.html">Element</a>&amp; <a class="code hl_function" href="../../d5/d00/classElement.html#a7fc8b51b7d9283a94b53543b42d87838">operator=</a>(<a class="code hl_class" href="../../d5/d00/classElement.html">Element</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// -------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// Interface virtuelle pure</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// -------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="../../d5/d00/classElement.html#a9aae657a532fd6132404151a351e55db">   59</a></span>    [[nodiscard]] <span class="keyword">virtual</span> std::string <a class="code hl_function" href="../../d5/d00/classElement.html#a9aae657a532fd6132404151a351e55db">getId</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="../../d5/d00/classElement.html#ae718a7a155a724fb91e8f925c81ac5ec">   65</a></span>    [[nodiscard]] <span class="keyword">virtual</span> <a class="code hl_enumeration" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01ae">ElementType</a> <a class="code hl_function" href="../../d5/d00/classElement.html#ae718a7a155a724fb91e8f925c81ac5ec">getType</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>protected :</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="../../d5/d00/classElement.html#aa63a2f40f251308e122f0f107c4dc7df">   71</a></span>    std::string <a class="code hl_variable" href="../../d5/d00/classElement.html#aa63a2f40f251308e122f0f107c4dc7df">m_id</a>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="../../d5/d00/classElement.html#aef48ade8406262ccdf85538f25c331c1">   88</a></span>    <span class="keyword">static</span> <a class="code hl_class" href="../../db/d03/classLogger.html">Logger</a> <a class="code hl_variable" href="../../d5/d00/classElement.html#aef48ade8406262ccdf85538f25c331c1">m_logger</a>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>};</div>
+</div>
+<div class="ttc" id="aElement_8h_html_a16b11be27a8e9362dd122c4d879e01ae"><div class="ttname"><a href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01ae">ElementType</a></div><div class="ttdeci">ElementType</div><div class="ttdoc">Types d'éléments interactifs ferroviaires.</div><div class="ttdef"><b>Definition</b> Element.h:18</div></div>
+<div class="ttc" id="aElement_8h_html_a16b11be27a8e9362dd122c4d879e01aea4239f063a3d4fb9d38a0182be6e39e76"><div class="ttname"><a href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01aea4239f063a3d4fb9d38a0182be6e39e76">ElementType::SWITCH</a></div><div class="ttdeci">@ SWITCH</div></div>
+<div class="ttc" id="aElement_8h_html_a16b11be27a8e9362dd122c4d879e01aea8c5e50fab3748e9c53a6863b3dce1401"><div class="ttname"><a href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01aea8c5e50fab3748e9c53a6863b3dce1401">ElementType::STRAIGHT</a></div><div class="ttdeci">@ STRAIGHT</div></div>
+<div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="../../dd/d00/Logger_8h.html">Logger.h</a></div><div class="ttdoc">Système de journalisation à 5 niveaux de trace, un fichier par moteur.</div></div>
+<div class="ttc" id="aclassElement_html"><div class="ttname"><a href="../../d5/d00/classElement.html">Element</a></div><div class="ttdoc">Classe de base abstraite pour tous les éléments interactifs ferroviaires.</div><div class="ttdef"><b>Definition</b> Element.h:34</div></div>
+<div class="ttc" id="aclassElement_html_a084081001b0f14ae12d612c866df861c"><div class="ttname"><a href="../../d5/d00/classElement.html#a084081001b0f14ae12d612c866df861c">Element::Element</a></div><div class="ttdeci">Element()=default</div></div>
+<div class="ttc" id="aclassElement_html_a11d861303a5ffa3797861b3108ce1d63"><div class="ttname"><a href="../../d5/d00/classElement.html#a11d861303a5ffa3797861b3108ce1d63">Element::Element</a></div><div class="ttdeci">Element(const Element &amp;)=delete</div><div class="ttdoc">Interdit la copie — risque de slicing.</div></div>
+<div class="ttc" id="aclassElement_html_a7fc8b51b7d9283a94b53543b42d87838"><div class="ttname"><a href="../../d5/d00/classElement.html#a7fc8b51b7d9283a94b53543b42d87838">Element::operator=</a></div><div class="ttdeci">Element &amp; operator=(Element &amp;&amp;)=default</div></div>
+<div class="ttc" id="aclassElement_html_a9aae657a532fd6132404151a351e55db"><div class="ttname"><a href="../../d5/d00/classElement.html#a9aae657a532fd6132404151a351e55db">Element::getId</a></div><div class="ttdeci">virtual std::string getId() const =0</div><div class="ttdoc">Retourne l'identifiant unique de l'élément (ex. &quot;sw/3&quot;, &quot;s/12&quot;).</div></div>
+<div class="ttc" id="aclassElement_html_aa153979c5d46fff8e2b9ee8b48dd863f"><div class="ttname"><a href="../../d5/d00/classElement.html#aa153979c5d46fff8e2b9ee8b48dd863f">Element::~Element</a></div><div class="ttdeci">virtual ~Element()=default</div></div>
+<div class="ttc" id="aclassElement_html_aa63a2f40f251308e122f0f107c4dc7df"><div class="ttname"><a href="../../d5/d00/classElement.html#aa63a2f40f251308e122f0f107c4dc7df">Element::m_id</a></div><div class="ttdeci">std::string m_id</div><div class="ttdoc">id de l'element</div><div class="ttdef"><b>Definition</b> Element.h:71</div></div>
+<div class="ttc" id="aclassElement_html_aa711d7fa3156e1f7b6458ed511f146f7"><div class="ttname"><a href="../../d5/d00/classElement.html#aa711d7fa3156e1f7b6458ed511f146f7">Element::operator=</a></div><div class="ttdeci">Element &amp; operator=(const Element &amp;)=delete</div></div>
+<div class="ttc" id="aclassElement_html_ae718a7a155a724fb91e8f925c81ac5ec"><div class="ttname"><a href="../../d5/d00/classElement.html#ae718a7a155a724fb91e8f925c81ac5ec">Element::getType</a></div><div class="ttdeci">virtual ElementType getType() const =0</div><div class="ttdoc">Retourne le type de l'élément.</div></div>
+<div class="ttc" id="aclassElement_html_aef48ade8406262ccdf85538f25c331c1"><div class="ttname"><a href="../../d5/d00/classElement.html#aef48ade8406262ccdf85538f25c331c1">Element::m_logger</a></div><div class="ttdeci">static Logger m_logger</div><div class="ttdoc">Logger statique partagé par TOUS les éléments interactifs.</div><div class="ttdef"><b>Definition</b> Element.h:88</div></div>
+<div class="ttc" id="aclassElement_html_af81d21cc1799b387dcf2916b3b597651"><div class="ttname"><a href="../../d5/d00/classElement.html#af81d21cc1799b387dcf2916b3b597651">Element::Element</a></div><div class="ttdeci">Element(Element &amp;&amp;)=default</div><div class="ttdoc">Déplacement autorisé — requis par le pipeline de construction.</div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="../../db/d03/classLogger.html">Logger</a></div><div class="ttdoc">Journaliseur associé à un moteur nommé.</div><div class="ttdef"><b>Definition</b> Logger.h:99</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_fb8e195cd911b151b9db6628377989b2.html">Elements</a></li><li class="navelem"><a class="el" href="../../d5/d02/Element_8h.html">Element.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

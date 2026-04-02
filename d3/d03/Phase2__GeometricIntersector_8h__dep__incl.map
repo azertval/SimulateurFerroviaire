@@ -1,0 +1,7 @@
+<map id="SimulateurFerroviaire/Modules/GeoParser/Pipeline/Phase2_GeometricIntersector.h" name="SimulateurFerroviaire/Modules/GeoParser/Pipeline/Phase2_GeometricIntersector.h">
+<area shape="rect" id="Node000001" title="Phase 2 du pipeline — calcul des intersections géométriques." alt="" coords="149,5,378,60"/>
+<area shape="rect" id="Node000002" href="$d7/d03/GeoParser_8cpp.html" title="Implémentation de l&#39;orchestrateur GeoParser v2." alt="" coords="5,115,252,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,70,156,117,153,113,216,66"/>
+<area shape="rect" id="Node000003" href="$da/d03/Phase2__GeometricIntersector_8cpp.html" title="Implémentation de la phase 2 — intersections géométriques." alt="" coords="276,108,520,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="311,66,364,106,361,110,308,70"/>
+</map>

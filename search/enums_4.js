@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['shuntingstate_0',['ShuntingState',['../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d',1,'ShuntingElement.h']]]
+  ['pccedgerole_0',['PCCEdgeRole',['../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16',1,'PCCEdge.h']]],
+  ['pccnodetype_1',['PCCNodeType',['../d6/d01/PCCNode_8h.html#af93fcb2ad2b069741b5401d03bc198b3',1,'PCCNode.h']]]
 ];

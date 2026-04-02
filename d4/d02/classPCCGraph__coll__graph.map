@@ -2,46 +2,46 @@
 <area shape="rect" id="Node000001" title="Conteneur propriétaire du graphe PCC — nœuds, arêtes et index." alt="" coords="341,2592,489,2977"/>
 <area shape="rect" id="Node000002" href="$db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="144,621,325,947"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,860,97,911,53,971,35,1004,20,1038,11,1074,8,1111,8,2491,10,2519,17,2545,41,2592,76,2634,121,2670,172,2700,225,2724,326,2759,324,2764,223,2729,170,2704,118,2674,73,2638,36,2595,12,2547,5,2519,3,2491,3,1111,6,1073,15,1036,30,1001,48,968,93,908,141,857"/>
-<area shape="rect" id="Node000013" href="$d1/d03/classPCCNode.html" title="Nœud abstrait du graphe PCC." alt="" coords="327,1545,452,1891"/>
-<area shape="poly" id="edge23_Node000013_Node000002" title=" " alt="" coords="223,947,219,1066,222,1201,236,1343,248,1414,264,1482,288,1548,321,1610,316,1613,284,1550,259,1483,242,1415,230,1344,217,1202,214,1066,218,947"/>
-<area shape="rect" id="Node000015" href="$d8/d02/classInteractiveElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="367,1009,540,1215"/>
-<area shape="poly" id="edge17_Node000015_Node000002" title=" " alt="" coords="328,919,378,994,374,997,323,922"/>
+<area shape="rect" id="Node000013" href="$d1/d03/classPCCNode.html" title="Nœud abstrait du graphe PCC." alt="" coords="323,1545,448,1891"/>
+<area shape="poly" id="edge23_Node000013_Node000002" title=" " alt="" coords="223,947,220,1066,223,1201,236,1343,248,1414,264,1482,287,1546,317,1606,312,1609,282,1548,259,1483,243,1415,231,1344,217,1202,214,1066,218,947"/>
+<area shape="rect" id="Node000015" href="$d5/d00/classElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="417,1009,522,1215"/>
+<area shape="poly" id="edge17_Node000015_Node000002" title=" " alt="" coords="328,910,409,1023,405,1026,323,913"/>
 <area shape="rect" id="Node000018" href="$d2/d03/classPCCEdge.html" title="Connexion orientée entre deux PCCNode du PCCGraph." alt="" coords="111,1968,219,2193"/>
 <area shape="poly" id="edge22_Node000018_Node000002" title=" " alt="" coords="161,948,139,1028,132,1069,129,1111,129,1719,135,1839,148,1951,142,1952,130,1839,124,1719,124,1111,126,1069,133,1027,156,946"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="505,493,583,559"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="505,535,441,552,406,566,375,585,338,618,335,614,372,581,404,561,439,547,504,530"/>
-<area shape="poly" id="edge13_Node000013_Node000003" title=" " alt="" coords="556,558,572,621,586,701,591,783,591,1381,588,1420,579,1457,566,1493,549,1528,509,1592,465,1646,461,1642,504,1589,545,1526,561,1491,574,1456,582,1419,585,1381,585,783,581,702,567,622,551,559"/>
-<area shape="poly" id="edge16_Node000015_Node000003" title=" " alt="" coords="538,560,524,622,492,817,469,993,464,992,487,817,519,621,533,558"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="502,493,581,559"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="502,535,437,551,403,566,371,585,338,614,335,610,368,581,400,561,435,546,501,530"/>
+<area shape="poly" id="edge13_Node000013_Node000003" title=" " alt="" coords="555,558,572,621,587,701,591,783,591,1381,587,1420,579,1458,565,1495,548,1530,506,1594,461,1648,457,1644,502,1591,543,1527,560,1493,573,1456,582,1419,585,1381,585,783,581,702,567,622,550,559"/>
+<area shape="poly" id="edge16_Node000015_Node000003" title=" " alt="" coords="536,559,524,622,498,817,481,993,476,993,493,817,519,621,531,558"/>
 <area shape="rect" id="Node000021" title=" " alt="" coords="622,2041,810,2121"/>
-<area shape="poly" id="edge28_Node000021_Node000003" title=" " alt="" coords="585,557,628,597,671,650,690,681,705,713,715,747,719,783,719,1719,719,2024,713,2024,713,1719,713,783,710,748,700,715,685,683,667,653,624,601,582,561"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="479,364,609,444"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="547,458,547,493,541,493,541,458"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="191,493,292,559"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="243,559,242,605,237,605,238,559"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="170,364,313,444"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="244,458,244,493,239,493,239,458"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="173,235,310,315"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="244,328,244,364,239,364,239,328"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="160,120,323,185"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="244,199,244,235,239,235,239,199"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="192,5,291,71"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="244,85,244,120,239,120,239,85"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="65,493,149,559"/>
-<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="118,558,132,596,139,613,134,615,127,598,113,560"/>
+<area shape="poly" id="edge28_Node000021_Node000003" title=" " alt="" coords="583,556,626,596,670,650,689,680,705,713,715,747,719,783,719,1719,719,2024,713,2024,713,1719,713,783,710,748,700,715,685,683,666,653,622,600,579,560"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="476,364,607,444"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="544,458,544,493,539,493,539,458"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="187,493,288,559"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="240,559,239,605,234,605,234,559"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="166,364,309,444"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="240,458,240,493,235,493,235,458"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="169,235,306,315"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="240,328,240,364,235,364,235,328"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="156,120,319,185"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="240,199,240,235,235,235,235,199"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="188,5,287,71"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="240,85,240,120,235,120,235,85"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="61,493,145,559"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="115,558,129,596,139,616,134,619,124,598,110,560"/>
 <area shape="rect" id="Node000011" title=" " alt="" coords="379,2345,549,2425"/>
 <area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="462,2426,443,2576,438,2576,457,2425"/>
 <area shape="rect" id="Node000012" title=" " alt="" coords="397,2048,598,2113"/>
 <area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="496,2114,473,2330,467,2329,491,2113"/>
-<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="443,1890,486,2031,481,2033,438,1892"/>
-<area shape="poly" id="edge21_Node000018_Node000013" title=" " alt="" coords="328,1779,271,1842,244,1878,220,1916,202,1954,197,1952,215,1913,239,1875,267,1839,324,1776"/>
-<area shape="poly" id="edge29_Node000021_Node000013" title=" " alt="" coords="454,1787,672,2027,668,2031,450,1791"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="441,1890,485,2031,480,2033,436,1892"/>
+<area shape="poly" id="edge21_Node000018_Node000013" title=" " alt="" coords="325,1781,269,1843,220,1916,202,1954,197,1952,215,1913,265,1840,321,1777"/>
+<area shape="poly" id="edge29_Node000021_Node000013" title=" " alt="" coords="450,1786,671,2027,667,2030,446,1790"/>
 <area shape="rect" id="Node000014" href="$d2/d00/classShuntingElement.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire." alt="" coords="389,1277,550,1483"/>
-<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="448,1483,437,1530,432,1528,443,1482"/>
-<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="463,1228,466,1277,461,1277,458,1229"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="446,1484,435,1530,430,1528,441,1482"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="472,1228,472,1277,467,1277,467,1228"/>
 <area shape="rect" id="Node000016" href="$d2/d03/structPCCPosition.html" title="Position logique d&#39;un nœud dans le schéma PCC." alt="" coords="273,1337,365,1423"/>
-<area shape="poly" id="edge18_Node000013_Node000016" title=" " alt="" coords="325,1423,339,1521,340,1528,335,1530,333,1522,320,1424"/>
+<area shape="poly" id="edge18_Node000013_Node000016" title=" " alt="" coords="325,1423,339,1521,340,1528,335,1529,333,1522,320,1424"/>
 <area shape="rect" id="Node000017" title=" " alt="" coords="265,2256,447,2321"/>
-<area shape="poly" id="edge19_Node000013_Node000017" title=" " alt="" coords="334,2257,319,2227,308,2194,296,2131,294,2081,298,2031,308,1968,321,1906,326,1907,313,1968,304,2032,299,2081,302,2131,313,2193,324,2225,339,2254"/>
+<area shape="poly" id="edge19_Node000013_Node000017" title=" " alt="" coords="334,2257,319,2227,308,2194,298,2122,298,2048,307,1975,320,1906,326,1907,312,1976,304,2048,303,2121,313,2193,324,2225,339,2254"/>
 <area shape="poly" id="edge20_Node000017_Node000018" title=" " alt="" coords="181,2192,191,2213,203,2230,250,2251,248,2256,200,2234,186,2215,176,2195"/>
 <area shape="rect" id="Node000020" title=" " alt="" coords="42,2256,241,2321"/>
 <area shape="poly" id="edge26_Node000020_Node000018" title=" " alt="" coords="142,2194,140,2232,140,2240,135,2240,135,2232,136,2193"/>

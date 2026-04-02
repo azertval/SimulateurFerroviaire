@@ -1,0 +1,7 @@
+<map id="IntersectionPoint" name="IntersectionPoint">
+<area shape="rect" id="Node000001" title="Point d&#39;intersection entre deux segments, avec paramètres de position." alt="" coords="80,233,204,319"/>
+<area shape="rect" id="Node000002" href="$df/d01/classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire)." alt="" coords="5,5,132,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,170,122,217,117,219,99,172"/>
+<area shape="rect" id="Node000003" href="$d0/d03/structSegmentId.html" title="Identifiant unique d&#39;un segment dans le RawNetwork." alt="" coords="157,45,274,131"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,132,172,210,169,219,164,217,168,208,198,130"/>
+</map>

@@ -96,19 +96,17 @@ $(document).ready(function(){initNavTree('de/d02/GeoParser_8h.html','../../'); i
 </div><!--header-->
 <div class="contents">
 
-<p>Orchestrateur principal du pipeline GeoJSON ferroviaire.  
+<p>Orchestrateur du pipeline <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a> v2.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;string&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;functional&gt;</code><br />
-<code>#include &quot;<a class="el" href="../../de/d01/StraightBlock_8h_source.html">Modules/InteractiveElements/ShuntingElements/StraightBlock.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../dc/d01/SwitchBlock_8h_source.html">Modules/InteractiveElements/ShuntingElements/SwitchBlock.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d6/d03/GeoParserEnums_8h_source.html">./Enums/GeoParserEnums.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;functional&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d01/ParserConfig_8h_source.html">Engine/Core/Config/ParserConfig.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/d00/Logger_8h_source.html">Engine/Core/Logger/Logger.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d6/d02/PipelineContext_8h_source.html">Pipeline/PipelineContext.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de GeoParser.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d8/d00/GeoParser_8h__incl.svg" width="1002" height="476"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d8/d00/GeoParser_8h__incl.svg" width="1878" height="623"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
@@ -122,14 +120,14 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d01/structGeoParser_1_1CancelledException.html">GeoParser::CancelledException</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Orchestrateur principal du pipeline GeoJSON ferroviaire. </p>
-<p>Pipeline exécuté : Phase 1-2 : <a class="el" href="../../db/d02/classGraphBuilder.html" title="Charge un fichier GeoJSON et construit le TopologyGraph métrique.">GraphBuilder</a> Phase 3-5 : <a class="el" href="../../d6/d02/classTopologyExtractor.html" title="Extrait la topologie ferroviaire (Switch + Straight) depuis un TopologyGraph.">TopologyExtractor</a> Phase 6 : <a class="el" href="../../db/d02/classSwitchOrientator.html" title="Oriente les aiguillages ferroviaires (root / normal / deviation / tips CDC) et supprime les chevauche...">SwitchOrientator</a> Phase 7-8 : <a class="el" href="../../d3/d02/classDoubleSwitchDetector.html">DoubleSwitchDetector</a></p>
-<p>Fournit également :</p><ul>
-<li>résultats (switches / straights)</li>
-<li>callback de progression UI </li>
-</ul>
+<div class="textblock"><p>Orchestrateur du pipeline <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a> v2. </p>
+<p>Possède le <a class="el" href="../../d6/d03/structPipelineContext.html">PipelineContext</a> et la <a class="el" href="../../dd/d03/structParserConfig.html">ParserConfig</a>. Enchaîne les phases et reporte la progression via callback.</p>
+<dl class="section user"><dt>Ajout d'une phase</dt><dd>Ajouter l'appel <code>PhaseN::run(m_ctx, m_config, m_logger)</code> dans parse() — <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a> ne connaît pas les détails des phases (OCP).</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Instanciation interdite depuis l'extérieur du thread de parsing. Utiliser <a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a>. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

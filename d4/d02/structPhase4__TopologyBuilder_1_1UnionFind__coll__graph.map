@@ -1,0 +1,7 @@
+<map id="Phase4_TopologyBuilder::UnionFind" name="Phase4_TopologyBuilder::UnionFind">
+<area shape="rect" id="Node000001" title="Structure Union&#45;Find interne avec path compression + union by rank." alt="" coords="77,133,249,253"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,156,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,70,126,118,122,120,95,72"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="181,5,311,71"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="231,72,205,120,200,118,227,70"/>
+</map>

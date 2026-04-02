@@ -1,0 +1,7 @@
+<map id="SimulateurFerroviaire/Modules/GeoParser/Pipeline/Phase1_GeoLoader.h" name="SimulateurFerroviaire/Modules/GeoParser/Pipeline/Phase1_GeoLoader.h">
+<area shape="rect" id="Node000001" title="Phase 1 du pipeline — chargement GeoJSON → RawNetwork." alt="" coords="151,5,357,60"/>
+<area shape="rect" id="Node000002" href="$d7/d03/GeoParser_8cpp.html" title="Implémentation de l&#39;orchestrateur GeoParser v2." alt="" coords="5,115,252,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,71,154,117,151,113,209,67"/>
+<area shape="rect" id="Node000003" href="$d1/d00/Phase1__GeoLoader_8cpp.html" title="Implémentation de la phase 1 — GeoJSON → RawNetwork." alt="" coords="276,108,483,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="299,67,348,106,345,110,296,71"/>
+</map>

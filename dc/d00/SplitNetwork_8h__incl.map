@@ -1,0 +1,9 @@
+<map id="SimulateurFerroviaire/Modules/GeoParser/Pipeline/SplitNetwork.h" name="SimulateurFerroviaire/Modules/GeoParser/Pipeline/SplitNetwork.h">
+<area shape="rect" id="Node000001" title="Structures de données produites par Phase3_NetworkSplitter." alt="" coords="80,5,287,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,115,68,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,62,68,110,65,106,141,58"/>
+<area shape="rect" id="Node000003" href="$d6/d01/CoordinateLatLon_8h.html" title="Représentation d&#39;une coordonnée géographique WGS&#45;84 (latitude, longitude)." alt="" coords="92,108,275,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="186,60,186,94,181,94,181,60"/>
+<area shape="rect" id="Node000004" href="$db/d03/CoordinateXY_8h.html" title="Représentation d&#39;une coordonnée plane en mètres (système métrique UTM)." alt="" coords="299,108,481,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="243,58,337,100,335,105,240,62"/>
+</map>

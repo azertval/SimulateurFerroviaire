@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire:  Fichier source de SimulateurFerroviaire/Modules/GeoParser/Pipeline/ClassifiedNodes.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d4/d00/ClassifiedNodes_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ClassifiedNodes.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/d00/ClassifiedNodes_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653f">   20</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653f">NodeClass</a> : uint8_t</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653faa60fa4ca41f91140a80531d4fcda8e11">TERMINUS</a>,  </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa8c5e50fab3748e9c53a6863b3dce1401">STRAIGHT</a>,  </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa4239f063a3d4fb9d38a0182be6e39e76">SWITCH</a>,    </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa48e8b789f56df1f5d120d5a8714f1088">CROSSING</a>,  </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa5c8781cb597c806ca9f578e950a4b49f">ISOLATED</a>,  </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa0c5cfe2fb0fcdfbc406958f409f6cf4d">AMBIGUOUS</a>  </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>};</div>
+</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="../../d3/d03/structClassifiedNodes.html">   37</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d3/d03/structClassifiedNodes.html">ClassifiedNodes</a></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../d3/d03/structClassifiedNodes.html#a4c0e804a14dab192191cf2baee4fd766">   40</a></span>    std::unordered_map&lt;size_t, NodeClass&gt; <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a4c0e804a14dab192191cf2baee4fd766">classification</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="../../d3/d03/structClassifiedNodes.html#a18796cbc0f592d94e78791fc69d06e78">   43</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a18796cbc0f592d94e78791fc69d06e78">countTerminus</a> = 0;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="../../d3/d03/structClassifiedNodes.html#a351fd3598ae0edd39d434289d6f425f6">   44</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a351fd3598ae0edd39d434289d6f425f6">countStraight</a> = 0;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="../../d3/d03/structClassifiedNodes.html#a46dcb7b0f4b12da8a23e6ee3d5552cf0">   45</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a46dcb7b0f4b12da8a23e6ee3d5552cf0">countSwitch</a> = 0;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="../../d3/d03/structClassifiedNodes.html#aac19f1384915aba9955159ecfe904998">   46</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#aac19f1384915aba9955159ecfe904998">countCrossing</a> = 0;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="../../d3/d03/structClassifiedNodes.html#a0ec4e07a561937011ded6974ca1fcb6c">   47</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a0ec4e07a561937011ded6974ca1fcb6c">countIsolated</a> = 0;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="../../d3/d03/structClassifiedNodes.html#ade9f3807440a0c32e1797aa79eed54f7">   48</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#ade9f3807440a0c32e1797aa79eed54f7">countAmbiguous</a> = 0;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="../../d3/d03/structClassifiedNodes.html#ac45dd0e4699408f3ef520561f644b650">   57</a></span>    [[nodiscard]] <a class="code hl_enumeration" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653f">NodeClass</a> <a class="code hl_function" href="../../d3/d03/structClassifiedNodes.html#ac45dd0e4699408f3ef520561f644b650">getClass</a>(<span class="keywordtype">size_t</span> nodeId)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">const</span> <span class="keyword">auto</span> it = <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a4c0e804a14dab192191cf2baee4fd766">classification</a>.find(nodeId);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">return</span> (it != <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a4c0e804a14dab192191cf2baee4fd766">classification</a>.end()) ? it-&gt;second : <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa0c5cfe2fb0fcdfbc406958f409f6cf4d">NodeClass::AMBIGUOUS</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="../../d3/d03/structClassifiedNodes.html#add7777ac99ff61351366c5bbf9c91762">   69</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../d3/d03/structClassifiedNodes.html#add7777ac99ff61351366c5bbf9c91762">classify</a>(<span class="keywordtype">size_t</span> nodeId, <a class="code hl_enumeration" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653f">NodeClass</a> cls)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a4c0e804a14dab192191cf2baee4fd766">classification</a>[nodeId] = cls;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">switch</span> (cls)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653faa60fa4ca41f91140a80531d4fcda8e11">NodeClass::TERMINUS</a>:  ++<a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a18796cbc0f592d94e78791fc69d06e78">countTerminus</a>;  <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa8c5e50fab3748e9c53a6863b3dce1401">NodeClass::STRAIGHT</a>:  ++<a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a351fd3598ae0edd39d434289d6f425f6">countStraight</a>;  <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa4239f063a3d4fb9d38a0182be6e39e76">NodeClass::SWITCH</a>:    ++<a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a46dcb7b0f4b12da8a23e6ee3d5552cf0">countSwitch</a>;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa48e8b789f56df1f5d120d5a8714f1088">NodeClass::CROSSING</a>:  ++<a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#aac19f1384915aba9955159ecfe904998">countCrossing</a>;  <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa5c8781cb597c806ca9f578e950a4b49f">NodeClass::ISOLATED</a>:  ++<a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a0ec4e07a561937011ded6974ca1fcb6c">countIsolated</a>;  <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa0c5cfe2fb0fcdfbc406958f409f6cf4d">NodeClass::AMBIGUOUS</a>: ++<a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#ade9f3807440a0c32e1797aa79eed54f7">countAmbiguous</a>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
+</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="foldopen" id="foldopen00084" data-start="{" data-end="}">
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="../../d3/d03/structClassifiedNodes.html#ab2feb7ba3a8484cb61e6e803aa49fe23">   84</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../d3/d03/structClassifiedNodes.html#ab2feb7ba3a8484cb61e6e803aa49fe23">clear</a>()</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a4c0e804a14dab192191cf2baee4fd766">classification</a>.clear();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a18796cbc0f592d94e78791fc69d06e78">countTerminus</a> = <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a351fd3598ae0edd39d434289d6f425f6">countStraight</a> = <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a46dcb7b0f4b12da8a23e6ee3d5552cf0">countSwitch</a> = 0;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#aac19f1384915aba9955159ecfe904998">countCrossing</a> = <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#a0ec4e07a561937011ded6974ca1fcb6c">countIsolated</a> = <a class="code hl_variable" href="../../d3/d03/structClassifiedNodes.html#ade9f3807440a0c32e1797aa79eed54f7">countAmbiguous</a> = 0;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
+</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>};</div>
+</div>
+<div class="ttc" id="aClassifiedNodes_8h_html_a18124f2da35491b316ac43eaae0d653f"><div class="ttname"><a href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653f">NodeClass</a></div><div class="ttdeci">NodeClass</div><div class="ttdoc">Classification topologique d'un nœud du graphe planaire.</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:21</div></div>
+<div class="ttc" id="aClassifiedNodes_8h_html_a18124f2da35491b316ac43eaae0d653fa0c5cfe2fb0fcdfbc406958f409f6cf4d"><div class="ttname"><a href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa0c5cfe2fb0fcdfbc406958f409f6cf4d">NodeClass::AMBIGUOUS</a></div><div class="ttdeci">@ AMBIGUOUS</div><div class="ttdoc">Degré &gt; 4 ou géométrie anormale — WARNING en Phase 5.</div></div>
+<div class="ttc" id="aClassifiedNodes_8h_html_a18124f2da35491b316ac43eaae0d653fa4239f063a3d4fb9d38a0182be6e39e76"><div class="ttname"><a href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa4239f063a3d4fb9d38a0182be6e39e76">NodeClass::SWITCH</a></div><div class="ttdeci">@ SWITCH</div><div class="ttdoc">Degré 3 — aiguillage, bifurcation géométrique réelle.</div></div>
+<div class="ttc" id="aClassifiedNodes_8h_html_a18124f2da35491b316ac43eaae0d653fa48e8b789f56df1f5d120d5a8714f1088"><div class="ttname"><a href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa48e8b789f56df1f5d120d5a8714f1088">NodeClass::CROSSING</a></div><div class="ttdeci">@ CROSSING</div><div class="ttdoc">Degré 4 — croisement plat, ignoré en Phase 6.</div></div>
+<div class="ttc" id="aClassifiedNodes_8h_html_a18124f2da35491b316ac43eaae0d653fa5c8781cb597c806ca9f578e950a4b49f"><div class="ttname"><a href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa5c8781cb597c806ca9f578e950a4b49f">NodeClass::ISOLATED</a></div><div class="ttdeci">@ ISOLATED</div><div class="ttdoc">Degré 0 — nœud sans arête (données incomplètes).</div></div>
+<div class="ttc" id="aClassifiedNodes_8h_html_a18124f2da35491b316ac43eaae0d653fa8c5e50fab3748e9c53a6863b3dce1401"><div class="ttname"><a href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653fa8c5e50fab3748e9c53a6863b3dce1401">NodeClass::STRAIGHT</a></div><div class="ttdeci">@ STRAIGHT</div><div class="ttdoc">Degré 2, angle ≈ 180° — continuation de voie droite.</div></div>
+<div class="ttc" id="aClassifiedNodes_8h_html_a18124f2da35491b316ac43eaae0d653faa60fa4ca41f91140a80531d4fcda8e11"><div class="ttname"><a href="../../d4/d00/ClassifiedNodes_8h.html#a18124f2da35491b316ac43eaae0d653faa60fa4ca41f91140a80531d4fcda8e11">NodeClass::TERMINUS</a></div><div class="ttdeci">@ TERMINUS</div><div class="ttdoc">Degré 1 — extrémité de voie, pas de suite.</div></div>
+<div class="ttc" id="astructClassifiedNodes_html"><div class="ttname"><a href="../../d3/d03/structClassifiedNodes.html">ClassifiedNodes</a></div><div class="ttdoc">Résultat de Phase5_SwitchClassifier.</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:38</div></div>
+<div class="ttc" id="astructClassifiedNodes_html_a0ec4e07a561937011ded6974ca1fcb6c"><div class="ttname"><a href="../../d3/d03/structClassifiedNodes.html#a0ec4e07a561937011ded6974ca1fcb6c">ClassifiedNodes::countIsolated</a></div><div class="ttdeci">size_t countIsolated</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:47</div></div>
+<div class="ttc" id="astructClassifiedNodes_html_a18796cbc0f592d94e78791fc69d06e78"><div class="ttname"><a href="../../d3/d03/structClassifiedNodes.html#a18796cbc0f592d94e78791fc69d06e78">ClassifiedNodes::countTerminus</a></div><div class="ttdeci">size_t countTerminus</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:43</div></div>
+<div class="ttc" id="astructClassifiedNodes_html_a351fd3598ae0edd39d434289d6f425f6"><div class="ttname"><a href="../../d3/d03/structClassifiedNodes.html#a351fd3598ae0edd39d434289d6f425f6">ClassifiedNodes::countStraight</a></div><div class="ttdeci">size_t countStraight</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:44</div></div>
+<div class="ttc" id="astructClassifiedNodes_html_a46dcb7b0f4b12da8a23e6ee3d5552cf0"><div class="ttname"><a href="../../d3/d03/structClassifiedNodes.html#a46dcb7b0f4b12da8a23e6ee3d5552cf0">ClassifiedNodes::countSwitch</a></div><div class="ttdeci">size_t countSwitch</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:45</div></div>
+<div class="ttc" id="astructClassifiedNodes_html_a4c0e804a14dab192191cf2baee4fd766"><div class="ttname"><a href="../../d3/d03/structClassifiedNodes.html#a4c0e804a14dab192191cf2baee4fd766">ClassifiedNodes::classification</a></div><div class="ttdeci">std::unordered_map&lt; size_t, NodeClass &gt; classification</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:40</div></div>
+<div class="ttc" id="astructClassifiedNodes_html_aac19f1384915aba9955159ecfe904998"><div class="ttname"><a href="../../d3/d03/structClassifiedNodes.html#aac19f1384915aba9955159ecfe904998">ClassifiedNodes::countCrossing</a></div><div class="ttdeci">size_t countCrossing</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:46</div></div>
+<div class="ttc" id="astructClassifiedNodes_html_ab2feb7ba3a8484cb61e6e803aa49fe23"><div class="ttname"><a href="../../d3/d03/structClassifiedNodes.html#ab2feb7ba3a8484cb61e6e803aa49fe23">ClassifiedNodes::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Vide la classification — libère la mémoire après Phase 6.</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:84</div></div>
+<div class="ttc" id="astructClassifiedNodes_html_ac45dd0e4699408f3ef520561f644b650"><div class="ttname"><a href="../../d3/d03/structClassifiedNodes.html#ac45dd0e4699408f3ef520561f644b650">ClassifiedNodes::getClass</a></div><div class="ttdeci">NodeClass getClass(size_t nodeId) const</div><div class="ttdoc">Retourne la classe d'un nœud.</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:57</div></div>
+<div class="ttc" id="astructClassifiedNodes_html_add7777ac99ff61351366c5bbf9c91762"><div class="ttname"><a href="../../d3/d03/structClassifiedNodes.html#add7777ac99ff61351366c5bbf9c91762">ClassifiedNodes::classify</a></div><div class="ttdeci">void classify(size_t nodeId, NodeClass cls)</div><div class="ttdoc">Enregistre la classe d'un nœud et incrémente le compteur.</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:69</div></div>
+<div class="ttc" id="astructClassifiedNodes_html_ade9f3807440a0c32e1797aa79eed54f7"><div class="ttname"><a href="../../d3/d03/structClassifiedNodes.html#ade9f3807440a0c32e1797aa79eed54f7">ClassifiedNodes::countAmbiguous</a></div><div class="ttdeci">size_t countAmbiguous</div><div class="ttdef"><b>Definition</b> ClassifiedNodes.h:48</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d428d88fda432bf3dacc8225448b283a.html">SimulateurFerroviaire</a></li><li class="navelem"><a class="el" href="../../dir_387a2147fe1fbdf0efef36368214e4d3.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_a02795b5ac40d9afe5fe94a3ec34902b.html">GeoParser</a></li><li class="navelem"><a class="el" href="../../dir_b5f366c770f71ecee1df61f9a225a87c.html">Pipeline</a></li><li class="navelem"><a class="el" href="../../d4/d00/ClassifiedNodes_8h.html">ClassifiedNodes.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

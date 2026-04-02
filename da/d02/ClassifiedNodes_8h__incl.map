@@ -1,0 +1,9 @@
+<map id="SimulateurFerroviaire/Modules/GeoParser/Pipeline/ClassifiedNodes.h" name="SimulateurFerroviaire/Modules/GeoParser/Pipeline/ClassifiedNodes.h">
+<area shape="rect" id="Node000001" title="Structures de données produites par Phase5_SwitchClassifier." alt="" coords="84,5,291,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,108,129,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,62,96,102,93,98,149,58"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="154,108,221,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="190,60,190,94,185,94,185,60"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="245,108,316,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="218,58,260,96,256,100,214,62"/>
+</map>

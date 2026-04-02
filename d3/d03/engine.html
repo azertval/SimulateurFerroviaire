@@ -103,6 +103,7 @@ $(document).ready(function(){initNavTree('d3/d03/engine.html','../../'); initRes
 <li class="level2"><a href="#binding">Binding bidirectionnel Leaflet ↔ C++</a></li>
 </ul>
 </li>
+<li class="level1"><a href="#Coordinates">Coordonnées</a></li>
 </ul>
 </div>
 <div class="textblock"><hr  />
@@ -126,13 +127,13 @@ Core — Cœur applicatif</h1>
 <h2><a class="anchor" id="data"></a>
 TopologyData</h2>
 <blockquote class="doxtable">
-<p>&zwj;<b>Pourquoi <code>std::unique_ptr</code> ?</b> Les blocs sont polymorphes (<code>InteractiveElement*</code>). Le stockage par valeur entraînerait du slicing et interdirait le déplacement. Le stockage par <code>std::unique_ptr</code> garantit :</p><ul>
+<p>&zwj;<b>Pourquoi <code>std::unique_ptr</code> ?</b> Les blocs sont polymorphes (<code>Element*</code>). Le stockage par valeur entraînerait du slicing et interdirait le déplacement. Le stockage par <code>std::unique_ptr</code> garantit :</p><ul>
 <li>polymorphisme correct (destructeur virtuel respecté),</li>
 <li>propriété exclusive et cycle de vie déterministe,</li>
 <li>interdiction de copie accidentelle. </li>
 </ul>
 </blockquote>
-<p><code><a class="el" href="../../d0/d02/classTopologyData.html" title="Conteneur partagé entre tous les modules métier et la couche HMI.">TopologyData</a></code> expose deux index construits en fin de pipeline via <code><a class="el" href="../../d0/d02/classTopologyData.html#a041d3a1f56a467d32ade5f30e8536692" title="Construit les index id→ptr depuis les vecteurs.">TopologyData::buildIndex()</a></code> :</p>
+<p><a class="el" href="../../d0/d02/classTopologyData.html">TopologyData</a> expose deux index construits en fin de pipeline via <a class="el" href="../../d0/d02/classTopologyData.html#a041d3a1f56a467d32ade5f30e8536692">buildIndex()</a> :</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Index   </th><th class="markdownTableHeadNone">Type   </th><th class="markdownTableHeadNone">Usage    </th></tr>
@@ -142,7 +143,7 @@ TopologyData</h2>
 <td class="markdownTableBodyNone"><code><a class="el" href="../../d0/d02/classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de">TopologyData::straightIndex</a></code>   </td><td class="markdownTableBodyNone"><code>std::unordered_map&lt;string, StraightBlock*&gt;</code>   </td><td class="markdownTableBodyNone">Lookup O(1) par ID   </td></tr>
 </table>
 <blockquote class="doxtable">
-<p>&zwj;<code><a class="el" href="../../d0/d02/classTopologyData.html#a041d3a1f56a467d32ade5f30e8536692" title="Construit les index id→ptr depuis les vecteurs.">TopologyData::buildIndex()</a></code> doit être appelé après que toutes les adresses sont stables. <code><a class="el" href="../../d0/d02/classTopologyData.html#a7b9b3e5cfb26df1cb199ac4d859a7a1f" title="Vide les listes et les index (remise à zéro entre deux parsings).">TopologyData::clear()</a></code> vide également les index. </p>
+<p>&zwj;<a class="el" href="../../d0/d02/classTopologyData.html#a041d3a1f56a467d32ade5f30e8536692">buildIndex()</a> doit être appelé après que toutes les adresses sont stables. <a class="el" href="../../d0/d02/classTopologyData.html#a7b9b3e5cfb26df1cb199ac4d859a7a1f">clear()</a> vide également les index. </p>
 </blockquote>
 <h2><a class="anchor" id="renderer"></a>
 TopologyRenderer</h2>
@@ -150,21 +151,21 @@ TopologyRenderer</h2>
 <li>Sérialise <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> → feature GeoJSON <code>LineString</code></li>
 <li>Sérialise <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> → feature GeoJSON <code>Point</code></li>
 <li>Génère les scripts JavaScript d'injection pour le WebView <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a></li>
-<li>Met à jour le rendu d'un switch et de ses partenaires via <code>TopologyRenderer::updateSwitchBlocks(sw)</code></li>
+<li>Met à jour le rendu d'un switch et de ses partenaires via <a class="el" href="../../d7/d03/classTopologyRenderer.html#acf7559914d95f6d59c37106a11bd0df7">updateSwitchBlocks(sw)</a></li>
 </ul>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Méthode   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d7/d03/classTopologyRenderer.html#ad8b9e3a9eddc5ee5835f1b6028fd2633" title="Efface puis redessine tous les StraightBlocks.">TopologyRenderer::renderAllStraightBlocks()</a></code>   </td><td class="markdownTableBodyNone">Efface et redessine tous les StraightBlocks    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d7/d03/classTopologyRenderer.html#ad8b9e3a9eddc5ee5835f1b6028fd2633">renderAllStraightBlocks()</a>   </td><td class="markdownTableBodyNone">Efface et redessine tous les <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d7/d03/classTopologyRenderer.html#a82bdf3d4be07c75f7ff3e637b17d5f67" title="Efface puis redessine les branches de tous les switches.">TopologyRenderer::renderAllSwitchBranches()</a></code>   </td><td class="markdownTableBodyNone">Efface et redessine toutes les branches de switch    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d7/d03/classTopologyRenderer.html#a82bdf3d4be07c75f7ff3e637b17d5f67">renderAllSwitchBranches()</a>   </td><td class="markdownTableBodyNone">Efface et redessine toutes les branches de switch    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d7/d03/classTopologyRenderer.html#adc1a75eb69d37d7b15c7dc013fa32f0d" title="Efface puis redessine tous les marqueurs de jonction.">TopologyRenderer::renderAllSwitchBlocksJunctions()</a></code>   </td><td class="markdownTableBodyNone">Efface et redessine tous les marqueurs de jonction    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d7/d03/classTopologyRenderer.html#adc1a75eb69d37d7b15c7dc013fa32f0d">renderAllSwitchBlocksJunctions()</a>   </td><td class="markdownTableBodyNone">Efface et redessine tous les marqueurs de jonction    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d7/d03/classTopologyRenderer.html#acf7559914d95f6d59c37106a11bd0df7" title="Génère le script JS de mise à jour visuelle d&#39;un switch et ses partenaires.">TopologyRenderer::updateSwitchBlocks()</a></code>   </td><td class="markdownTableBodyNone">Met à jour visuellement un switch et ses partenaires double    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d7/d03/classTopologyRenderer.html#acf7559914d95f6d59c37106a11bd0df7">updateSwitchBlocks()</a>   </td><td class="markdownTableBodyNone">Met à jour visuellement un switch et ses partenaires double    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d7/d03/classTopologyRenderer.html#a5691412733606ec4139cac02585bd718" title="Exporte la topologie ferroviaire dans un fichier GeoJSON.">TopologyRenderer::exportToFile()</a></code>   </td><td class="markdownTableBodyNone">Export GeoJSON complet vers un fichier   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d7/d03/classTopologyRenderer.html#a5691412733606ec4139cac02585bd718">exportToFile()</a>   </td><td class="markdownTableBodyNone">Export GeoJSON complet vers un fichier   </td></tr>
 </table>
 <hr  />
 <h1><a class="anchor" id="hmi"></a>
@@ -208,17 +209,17 @@ Panneau PCC</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Méthode   </th><th class="markdownTableHeadNone">Déclencheur    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d4/d03/classPCCPanel.html#a8c381e0a06238c65ab19fdeba3c93608" title="Enregistre la classe Win32 et crée la fenêtre enfant masquée.">PCCPanel::create()</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d6/d02/classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, puis initialise la ProgressBar.">MainWindow::create()</a></code> — après <code><a class="el" href="../../d3/d02/classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1" title="Initialise WebView2 dans une fenêtre Win32 existante.">WebViewPanel::create()</a></code>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d03/classPCCPanel.html#a8c381e0a06238c65ab19fdeba3c93608">PCCPanel::create()</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d6/d02/classMainWindow.html#a627d9feed19c3096079d91d6d38b9bf9" title="Crée et affiche la fenêtre Win32, initialise la ProgressBar et charge la ParserConfig depuis le fichi...">MainWindow::create()</a></code> — après <code><a class="el" href="../../d3/d02/classWebViewPanel.html#a49887c0d1a400c93f002085a8994ece1" title="Initialise WebView2 dans une fenêtre Win32 existante.">WebViewPanel::create()</a></code>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d4/d03/classPCCPanel.html#a1b37a13eaa0a03be291722243c4daf52" title="Alterne la visibilité du panneau (masqué ↔ visible).">PCCPanel::toggle()</a></code>   </td><td class="markdownTableBodyNone">F2 ou <code>IDM_VIEW_PCC</code> — place le panneau en <code>HWND_TOP</code>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d03/classPCCPanel.html#a1b37a13eaa0a03be291722243c4daf52">PCCPanel::toggle()</a>   </td><td class="markdownTableBodyNone">F2 ou <code>IDM_VIEW_PCC</code> — place le panneau en <code>HWND_TOP</code>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d4/d03/classPCCPanel.html#afddac4ff78519cb2a37e74b62ba76d3b" title="Redimensionne le panneau pour couvrir toute la zone cliente du parent.">PCCPanel::resize()</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d6/d02/classMainWindow.html#a74866b6b18c52698bdb52f339ad80830" title="Quand la fenêtre est redimensionnée, ajuste les éléments graphiques en conséquence.">MainWindow::onSizeUpdate()</a></code>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d03/classPCCPanel.html#afddac4ff78519cb2a37e74b62ba76d3b">PCCPanel::resize()</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d6/d02/classMainWindow.html#a74866b6b18c52698bdb52f339ad80830" title="Appelé lors d&#39;un redimensionnement — ajuste WebView et PCCPanel.">MainWindow::onSizeUpdate()</a></code>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d4/d03/classPCCPanel.html#ace0b131cb0cdfc453c5ae7d3d90686af" title="Force un rafraîchissement du dessin TCO.">PCCPanel::refresh()</a></code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d6/d02/classMainWindow.html#a90cae565f67d1291d690d974547041a0" title="Gère la fin réussie du parsing (WM_PARSING_SUCCESS).">MainWindow::onParsingSuccess()</a></code>   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d03/classPCCPanel.html#ace0b131cb0cdfc453c5ae7d3d90686af">PCCPanel::refresh()</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d6/d02/classMainWindow.html#a90cae565f67d1291d690d974547041a0" title="Gère la fin réussie du parsing (WM_PARSING_SUCCESS).">MainWindow::onParsingSuccess()</a></code>   </td></tr>
 </table>
 <h2><a class="anchor" id="tco"></a>
 TCORenderer</h2>
-<p>Classe utilitaire statique. Consomme <code>const <a class="el" href="../../d2/d00/classPCCGraph.html" title="Conteneur propriétaire du graphe PCC — nœuds, arêtes et index.">PCCGraph</a>&amp;</code> — n'accède pas à <code><a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a></code>.</p>
+<p>Classe utilitaire statique. Consomme <code>const <a class="el" href="../../d2/d00/classPCCGraph.html" title="Conteneur propriétaire du graphe PCC — nœuds, arêtes et index.">PCCGraph</a>&amp;</code> — n'accède pas à <a class="el" href="../../d2/d01/classTopologyRepository.html">TopologyRepository</a>.</p>
 <p><b>Conventions de couleurs (style TCO SNCF) :</b></p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -242,18 +243,18 @@ TCORenderer</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Méthode   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d9/d01/classTCORenderer.html#a6121818c20cecd5b7fcb6cae98de3584">TCORenderer::draw()</a></code>   </td><td class="markdownTableBodyNone">Point d'entrée — fond + arêtes + nœuds    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d01/classTCORenderer.html#a6121818c20cecd5b7fcb6cae98de3584">draw()</a>   </td><td class="markdownTableBodyNone">Point d'entrée — fond + arêtes + nœuds    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d9/d01/classTCORenderer.html#a71d5b47b88c8e22bada0455a82f741ff">TCORenderer::computeProjection()</a></code>   </td><td class="markdownTableBodyNone">Calcul bornes X/Y logiques et taille des cellules    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d01/classTCORenderer.html#a71d5b47b88c8e22bada0455a82f741ff">computeProjection()</a>   </td><td class="markdownTableBodyNone">Calcul bornes X/Y logiques et taille des cellules    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>TCORenderer::drawEdges()</code>   </td><td class="markdownTableBodyNone">Un segment GDI par <a class="el" href="../../d2/d03/classPCCEdge.html">PCCEdge</a>, colorisé par rôle et état    </td></tr>
+<td class="markdownTableBodyNone">drawEdges()   </td><td class="markdownTableBodyNone">Un segment GDI par <a class="el" href="../../d2/d03/classPCCEdge.html">PCCEdge</a>, colorisé par rôle et état    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code><a class="el" href="../../d9/d01/classTCORenderer.html#a44f68c25e17a718aa3c7e242a39ec633">TCORenderer::drawNodes()</a></code>   </td><td class="markdownTableBodyNone">Un disque GDI par <a class="el" href="../../d1/d03/classPCCNode.html">PCCNode</a>   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d01/classTCORenderer.html#a44f68c25e17a718aa3c7e242a39ec633">drawNodes()</a>   </td><td class="markdownTableBodyNone">Un disque GDI par <a class="el" href="../../d1/d03/classPCCNode.html">PCCNode</a>   </td></tr>
 </table>
 <h2><a class="anchor" id="binding"></a>
 Binding bidirectionnel Leaflet ↔ C++</h2>
-<p><b>C++ → <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a></b> : <code><a class="el" href="../../d3/d02/classWebViewPanel.html#a5890da7c431554b9e864759f293dac1f" title="Exécute un script JavaScript dans le contexte de la page chargée.">WebViewPanel::executeScript()</a></code> injecte des appels JS générés par <code><a class="el" href="../../d7/d03/classTopologyRenderer.html" title="Utilitaire statique d&#39;export de la topologie ferroviaire en GeoJSON.">TopologyRenderer</a></code>.</p>
-<p><b><a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> → C++</b> : <code>window.chrome.webview.postMessage()</code> → <code><a class="el" href="../../d3/d02/classWebViewPanel.html#ac77338c39cc87b2fb7b7bde9da2004b1" title="Callback statique déclenché à la réception d&#39;un message JavaScript.">WebViewPanel::onWebMessageReceived()</a></code> → <code><a class="el" href="../../d6/d02/classMainWindow.html#a6e84464d583e27d6f978385b22a5945f" title="Dispatcher principal des messages JSON reçus depuis Leaflet.">MainWindow::onWebMessage()</a></code>.</p>
+<p><b>C++ → <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a></b> : <code><a class="el" href="../../d3/d02/classWebViewPanel.html#a5890da7c431554b9e864759f293dac1f" title="Exécute un script JavaScript dans le contexte de la page chargée.">WebViewPanel::executeScript()</a></code> injecte des appels JS générés par <a class="el" href="../../d7/d03/classTopologyRenderer.html">TopologyRenderer</a>.</p>
+<p><b><a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> → C++</b> : <code>window.chrome.webview.postMessage()</code> → <code><a class="el" href="../../d3/d02/classWebViewPanel.html#ac77338c39cc87b2fb7b7bde9da2004b1" title="Callback statique déclenché à la réception d&#39;un message JavaScript.">WebViewPanel::onWebMessageReceived()</a></code> → <code><a class="el" href="../../d6/d02/classMainWindow.html#a6e84464d583e27d6f978385b22a5945f" title="Dispatcher des messages JSON reçus depuis Leaflet.">MainWindow::onWebMessage()</a></code>.</p>
 <div class="fragment"><div class="line">Clic sur jonction switch</div>
 <div class="line">  → postMessage({type:&quot;switch_click&quot;, id:&quot;sw/0&quot;})</div>
 <div class="line">  → MainWindow::onSwitchClick()         [switchIndex.find() O(1)]</div>
@@ -265,7 +266,18 @@ Binding bidirectionnel Leaflet ↔ C++</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">type   </th><th class="markdownTableHeadNone">Champs   </th><th class="markdownTableHeadNone">Handler C++    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>switch_click</code>   </td><td class="markdownTableBodyNone"><code>id</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d6/d02/classMainWindow.html#a242d9acf230544637908fc2cf31f1284" title="Met à jour l&#39;état opérationnel d&#39;un SwitchBlock après un clic.">MainWindow::onSwitchClick()</a></code>   </td></tr>
+<td class="markdownTableBodyNone"><code>switch_click</code>   </td><td class="markdownTableBodyNone"><code>id</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d6/d02/classMainWindow.html#a242d9acf230544637908fc2cf31f1284" title="Met à jour l&#39;état d&#39;un SwitchBlock après un clic Leaflet.">MainWindow::onSwitchClick()</a></code>   </td></tr>
+</table>
+<hr  />
+<h1><a class="anchor" id="Coordinates"></a>
+Coordonnées</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Système    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>   </td><td class="markdownTableBodyNone">Géographique WGS-84 (latitude, longitude)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>   </td><td class="markdownTableBodyNone">Métrique UTM (x = est, y = nord)   </td></tr>
 </table>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

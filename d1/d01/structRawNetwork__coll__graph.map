@@ -1,0 +1,20 @@
+<map id="RawNetwork" name="RawNetwork">
+<area shape="rect" id="Node000001" title="Résultat de Phase1_GeoLoader — ensemble des polylignes du GeoJSON." alt="" coords="346,632,486,717"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="445,241,523,306"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="490,306,493,364,493,440,484,525,476,568,464,609,460,619,455,617,459,607,471,567,479,524,487,440,488,364,485,306"/>
+<area shape="rect" id="Node000005" href="$d0/d01/structRawPolyline.html" title="Une polyligne GeoJSON avec ses coordonnées en double système." alt="" coords="277,376,371,441"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="457,308,408,354,387,371,383,366,405,350,453,304"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="419,48,549,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="487,142,487,241,481,241,481,142"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="249,504,442,569"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="364,568,389,616,384,618,359,571"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="332,441,340,487,335,488,327,442"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,233,195,313"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="155,311,215,350,263,376,261,381,212,354,152,316"/>
+<area shape="rect" id="Node000007" href="$db/d03/classCoordinateLatLon.html" title="Coordonnée géographique WGS&#45;84 exprimée en degrés décimaux." alt="" coords="23,5,177,171"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="103,171,103,217,97,217,97,171"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="219,241,421,306"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="323,306,324,352,324,360,319,360,319,352,318,306"/>
+<area shape="rect" id="Node000009" href="$df/d01/classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire)." alt="" coords="257,5,383,171"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="323,171,323,225,317,225,317,171"/>
+</map>

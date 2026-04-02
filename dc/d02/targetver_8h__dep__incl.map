@@ -1,55 +1,49 @@
 <map id="SimulateurFerroviaire/targetver.h" name="SimulateurFerroviaire/targetver.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1007,5,1169,45"/>
-<area shape="rect" id="Node000002" href="$d6/d01/framework_8h.html" title=" " alt="" coords="1007,93,1169,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1091,59,1091,93,1085,93,1085,59"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="861,5,1024,45"/>
+<area shape="rect" id="Node000002" href="$d6/d01/framework_8h.html" title=" " alt="" coords="861,93,1024,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="945,59,945,93,940,93,940,59"/>
 <area shape="rect" id="Node000003" href="$d2/d02/Application_8cpp.html" title="Implémentation du cycle de vie de l&#39;application Win32." alt="" coords="5,475,213,515"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="993,116,821,118,615,126,513,135,420,147,342,163,285,184,220,223,197,243,177,265,145,317,116,388,110,410,107,433,109,474,104,475,102,433,105,409,111,386,141,314,173,261,193,239,217,219,283,179,341,158,419,141,512,129,614,121,821,112,993,111"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="848,118,706,123,542,133,390,153,330,167,285,184,221,223,177,265,146,317,116,388,110,410,107,433,109,474,104,475,102,433,105,409,111,386,141,314,173,262,217,219,283,179,328,162,389,147,542,128,706,117,847,113"/>
 <area shape="rect" id="Node000004" href="$d4/d00/Application_8h.html" title="Gestion du cycle de vie de l&#39;application Win32." alt="" coords="126,387,319,427"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="993,121,818,129,615,142,437,160,375,171,340,184,315,204,294,229,261,287,240,343,229,387,224,386,235,342,256,284,289,226,311,201,337,179,374,166,436,155,614,136,818,123,993,115"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="848,117,717,120,568,130,496,139,432,150,378,165,340,184,315,205,294,230,261,287,240,343,229,387,224,386,235,342,256,285,289,227,311,201,337,179,377,160,431,145,495,134,567,125,716,115,847,112"/>
 <area shape="rect" id="Node000005" href="$db/d00/SimulateurFerroviaire_8cpp.html" title="Point d&#39;entrée unique de l&#39;application Win32." alt="" coords="248,475,443,515"/>
-<area shape="poly" id="edge34_Node000002_Node000005" title=" " alt="" coords="993,122,666,145,516,162,464,173,435,184,403,213,380,249,363,290,353,333,345,414,346,474,341,475,339,414,348,332,358,288,375,247,399,209,432,179,463,168,515,157,666,139,993,117"/>
+<area shape="poly" id="edge30_Node000002_Node000005" title=" " alt="" coords="848,119,738,125,617,136,508,155,465,168,435,184,404,213,380,250,364,291,353,333,345,415,346,475,341,475,340,415,348,332,359,289,376,247,399,210,432,179,463,163,507,150,616,131,737,119,848,114"/>
 <area shape="rect" id="Node000006" href="$d6/d00/AboutDialog_8cpp.html" title="Implémentation de la boîte de dialogue &quot;À propos&quot;." alt="" coords="395,291,659,331"/>
-<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="993,120,842,127,671,140,525,158,476,170,450,183,442,196,441,209,445,223,452,238,476,266,502,289,499,293,472,270,448,241,440,225,436,210,437,194,446,179,474,165,524,153,670,134,841,122,993,115"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="848,123,607,146,503,163,468,173,450,183,442,195,441,207,450,235,471,266,499,289,495,293,468,269,446,237,436,207,437,194,446,179,466,168,502,158,606,141,847,118"/>
 <area shape="rect" id="Node000007" href="$d7/d01/AboutDialog_8h.html" title="Déclaration de la boîte de dialogue &quot;À propos&quot;." alt="" coords="461,189,710,229"/>
-<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="993,135,687,191,686,186,993,130"/>
-<area shape="rect" id="Node000008" href="$d3/d03/MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="1073,387,1287,427"/>
-<area shape="poly" id="edge18_Node000002_Node000008" title=" " alt="" coords="994,130,886,152,841,167,811,183,776,220,756,258,752,278,753,297,760,317,774,337,793,352,821,364,897,383,986,394,1073,400,1072,406,985,400,896,388,819,369,790,356,770,340,756,319,748,298,747,277,751,257,772,217,808,179,839,162,885,147,993,125"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="858,139,658,191,657,186,857,134"/>
+<area shape="rect" id="Node000008" href="$d3/d03/MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="930,387,1145,427"/>
+<area shape="poly" id="edge18_Node000002_Node000008" title=" " alt="" coords="871,141,839,159,811,183,779,222,759,260,754,278,755,297,761,317,774,337,797,354,835,368,930,389,929,394,833,373,795,359,770,340,757,319,750,298,749,278,754,258,775,219,807,179,836,155,869,137"/>
 <area shape="rect" id="Node000009" href="$dd/d02/FileOpenDialog_8cpp.html" title="Implémentation du sélecteur de fichier GeoJSON natif Win32." alt="" coords="785,284,999,339"/>
-<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="994,129,891,150,850,165,825,183,818,195,817,207,824,233,841,259,863,282,859,286,837,263,819,236,811,207,813,193,821,180,848,160,890,145,993,124"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="871,142,845,159,825,183,819,196,817,208,825,235,840,260,860,282,856,286,836,264,820,237,812,208,814,195,820,180,841,155,868,137"/>
 <area shape="rect" id="Node000010" href="$da/d01/FileOpenDialog_8h.html" title="Déclaration du sélecteur de fichier GeoJSON." alt="" coords="835,181,1050,236"/>
-<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="1048,143,985,183,982,179,1045,139"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="945,147,945,181,940,181,940,147"/>
 <area shape="rect" id="Node000011" href="$d7/d00/FileSaveDialog_8cpp.html" title="Implémentation du sélecteur de fichier GeoJSON natif Win32." alt="" coords="1074,284,1286,339"/>
-<area shape="poly" id="edge14_Node000002_Node000011" title=" " alt="" coords="1092,147,1099,190,1114,235,1131,260,1151,282,1147,285,1127,263,1110,237,1094,191,1087,147"/>
+<area shape="poly" id="edge14_Node000002_Node000011" title=" " alt="" coords="997,137,1030,157,1063,179,1158,282,1154,285,1060,183,1027,161,994,142"/>
 <area shape="rect" id="Node000012" href="$d2/d02/FileSaveDialog_8h.html" title="Déclaration du sélecteur de sauvegarde de fichier GeoJSON." alt="" coords="1125,181,1337,236"/>
-<area shape="poly" id="edge15_Node000002_Node000012" title=" " alt="" coords="1130,139,1192,179,1189,183,1127,143"/>
+<area shape="poly" id="edge15_Node000002_Node000012" title=" " alt="" coords="1015,135,1150,179,1149,184,1013,140"/>
 <area shape="rect" id="Node000013" href="$da/d00/MainWindow_8h.html" title="Déclaration de la fenêtre principale de l&#39;application." alt="" coords="1359,291,1558,331"/>
-<area shape="poly" id="edge19_Node000002_Node000013" title=" " alt="" coords="1184,122,1267,142,1310,158,1350,179,1392,225,1446,290,1442,293,1388,228,1346,183,1308,163,1266,148,1183,128"/>
+<area shape="poly" id="edge19_Node000002_Node000013" title=" " alt="" coords="1038,120,1212,142,1293,159,1349,179,1392,224,1446,290,1442,293,1388,228,1347,184,1291,164,1211,148,1037,125"/>
 <area shape="rect" id="Node000014" href="$d4/d03/PCCPanel_8cpp.html" title="Implémentation du panneau PCC superposé togglable." alt="" coords="1581,284,1747,339"/>
-<area shape="poly" id="edge22_Node000002_Node000014" title=" " alt="" coords="1183,115,1291,121,1409,133,1516,151,1558,164,1589,179,1615,202,1634,229,1659,283,1654,285,1630,232,1611,205,1587,184,1556,169,1515,157,1408,138,1290,126,1183,120"/>
+<area shape="poly" id="edge22_Node000002_Node000014" title=" " alt="" coords="1038,112,1178,114,1339,124,1417,133,1487,144,1546,160,1589,179,1615,201,1635,229,1659,283,1654,285,1630,231,1611,205,1587,184,1544,165,1486,150,1416,138,1338,129,1177,120,1038,117"/>
 <area shape="rect" id="Node000015" href="$d5/d00/PCCPanel_8h.html" title="Panneau PCC superposé togglable, affiché par&#45;dessus la carte Leaflet." alt="" coords="1411,181,1576,236"/>
-<area shape="poly" id="edge23_Node000002_Node000015" title=" " alt="" coords="1183,132,1393,179,1411,183,1410,188,1391,184,1182,137"/>
+<area shape="poly" id="edge23_Node000002_Node000015" title=" " alt="" coords="1038,123,1204,146,1393,179,1411,183,1410,188,1391,184,1203,151,1038,129"/>
 <area shape="rect" id="Node000016" href="$d4/d02/TCORenderer_8cpp.html" title="Renderer GDI TCO — style SNCF, blocs fixes." alt="" coords="1771,284,1936,339"/>
-<area shape="poly" id="edge26_Node000002_Node000016" title=" " alt="" coords="1183,114,1357,121,1559,133,1734,152,1795,164,1830,179,1847,203,1856,231,1860,259,1859,284,1854,284,1854,259,1851,232,1842,205,1826,183,1794,169,1734,157,1559,138,1357,126,1183,120"/>
+<area shape="poly" id="edge26_Node000002_Node000016" title=" " alt="" coords="1038,113,1245,117,1493,127,1610,136,1711,147,1787,161,1813,170,1830,179,1847,203,1856,230,1860,259,1859,284,1854,284,1854,259,1851,232,1842,205,1826,183,1811,175,1786,166,1710,152,1610,141,1492,133,1245,122,1038,118"/>
 <area shape="rect" id="Node000017" href="$d8/d02/TCORenderer_8h.html" title="Renderer GDI du schéma TCO — style SNCF, blocs fixes." alt="" coords="1651,181,1816,236"/>
-<area shape="poly" id="edge27_Node000002_Node000017" title=" " alt="" coords="1183,120,1390,142,1512,158,1632,179,1651,183,1650,188,1632,184,1511,164,1390,147,1183,125"/>
-<area shape="rect" id="Node000018" href="$dd/d01/GeoParsingTask_8cpp.html" title="Implémentation de la tâche de parsing GeoJSON asynchrone." alt="" coords="1961,284,2189,339"/>
-<area shape="poly" id="edge30_Node000002_Node000018" title=" " alt="" coords="1184,115,1347,122,1542,134,1727,153,1802,165,1859,179,1887,190,1907,203,1951,234,2031,281,2029,286,1948,238,1904,207,1885,195,1858,184,1801,170,1726,158,1541,139,1346,127,1183,120"/>
-<area shape="rect" id="Node000019" href="$d0/d00/GeoParsingTask_8h.html" title="Déclaration de la tâche de parsing GeoJSON asynchrone." alt="" coords="1961,181,2189,236"/>
-<area shape="poly" id="edge31_Node000002_Node000019" title=" " alt="" coords="1184,116,1515,137,1723,155,1932,179,1961,183,1960,188,1932,184,1723,161,1515,143,1183,122"/>
+<area shape="poly" id="edge27_Node000002_Node000017" title=" " alt="" coords="1038,117,1306,137,1470,154,1632,179,1651,182,1650,188,1632,184,1469,160,1306,142,1038,122"/>
 <area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="188,437,136,477,133,472,185,433"/>
 <area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="262,432,320,472,317,477,259,437"/>
 <area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="570,242,540,293,535,290,565,239"/>
-<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="620,236,673,282,699,313,711,325,729,336,791,356,880,372,1073,394,1072,400,879,377,790,361,727,341,708,329,695,316,669,286,616,240"/>
-<area shape="poly" id="edge13_Node000010_Node000008" title=" " alt="" coords="978,245,1063,337,1102,363,1141,384,1138,389,1099,368,1060,341,974,248"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="620,236,673,282,699,312,711,324,729,336,778,358,830,374,931,394,929,399,829,380,776,363,727,341,708,329,695,316,669,286,616,240"/>
+<area shape="poly" id="edge13_Node000010_Node000008" title=" " alt="" coords="985,244,1013,283,1024,310,1032,338,1039,386,1034,387,1027,339,1019,312,1008,285,980,247"/>
 <area shape="poly" id="edge12_Node000010_Node000009" title=" " alt="" coords="926,249,908,285,903,283,921,247"/>
-<area shape="poly" id="edge17_Node000012_Node000008" title=" " alt="" coords="1274,244,1289,262,1300,283,1308,312,1306,325,1300,340,1273,369,1240,389,1238,384,1270,365,1295,337,1301,324,1303,312,1295,285,1284,265,1270,247"/>
+<area shape="poly" id="edge17_Node000012_Node000008" title=" " alt="" coords="1273,244,1291,266,1304,291,1309,316,1299,340,1276,358,1238,373,1145,394,1144,389,1237,368,1273,353,1295,337,1303,316,1299,293,1286,269,1269,248"/>
 <area shape="poly" id="edge16_Node000012_Node000011" title=" " alt="" coords="1214,249,1196,285,1191,283,1209,247"/>
 <area shape="poly" id="edge20_Node000013_Node000004" title=" " alt="" coords="1346,335,1298,341,1020,367,745,386,320,405,320,400,744,381,1019,362,1297,336,1345,330"/>
-<area shape="poly" id="edge21_Node000013_Node000008" title=" " alt="" coords="1390,338,1237,389,1235,384,1389,333"/>
+<area shape="poly" id="edge21_Node000013_Node000008" title=" " alt="" coords="1361,337,1342,341,1124,389,1123,384,1341,336,1360,332"/>
 <area shape="poly" id="edge24_Node000015_Node000013" title=" " alt="" coords="1482,250,1468,292,1463,290,1477,248"/>
 <area shape="poly" id="edge25_Node000015_Node000014" title=" " alt="" coords="1551,240,1621,281,1618,286,1548,245"/>
 <area shape="poly" id="edge28_Node000017_Node000014" title=" " alt="" coords="1710,249,1684,285,1680,282,1705,246"/>
 <area shape="poly" id="edge29_Node000017_Node000016" title=" " alt="" coords="1777,243,1824,282,1820,286,1773,247"/>
-<area shape="poly" id="edge32_Node000019_Node000008" title=" " alt="" coords="2161,241,2185,259,2204,283,2215,312,2213,327,2203,341,2185,353,2155,363,2068,380,1951,392,1815,400,1527,408,1288,409,1288,404,1527,403,1815,395,1951,387,2067,374,2154,358,2183,348,2199,337,2208,325,2209,313,2199,285,2181,263,2158,245"/>
-<area shape="poly" id="edge33_Node000019_Node000018" title=" " alt="" coords="2077,250,2077,284,2072,284,2072,250"/>
 </map>

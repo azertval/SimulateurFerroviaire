@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['latlon_0',['LatLon',['../d4/d01/classLatLon.html',1,'']]],
-  ['leaflet_1',['Leaflet',['../dd/d00/classLeaflet.html',1,'']]],
-  ['logger_2',['Logger',['../db/d03/classLogger.html',1,'']]]
+  ['intersectiondata_0',['IntersectionData',['../de/d00/structIntersectionData.html',1,'']]],
+  ['intersectionpoint_1',['IntersectionPoint',['../db/d00/structIntersectionPoint.html',1,'']]],
+  ['invalidgeojsonformatexception_2',['InvalidGeoJsonFormatException',['../d4/d01/classInvalidGeoJsonFormatException.html',1,'']]],
+  ['invalidswitchconfigexception_3',['InvalidSwitchConfigException',['../d3/d03/classInvalidSwitchConfigException.html',1,'']]],
+  ['invalidtopologyexception_4',['InvalidTopologyException',['../d7/d00/classInvalidTopologyException.html',1,'']]]
 ];

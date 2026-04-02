@@ -6,7 +6,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="314,1566,299,1503,287,1435,281,1381,276,1328,267,1259,265,1251,271,1250,272,1258,282,1327,287,1381,292,1434,304,1502,319,1564"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="463,493,542,559"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="544,553,590,593,638,646,660,677,677,710,688,746,692,783,692,1401,688,1455,680,1478,666,1504,645,1536,620,1566,564,1620,505,1664,449,1699,446,1694,502,1660,561,1615,616,1562,641,1533,662,1501,676,1475,683,1454,687,1401,687,783,683,747,672,712,655,680,634,649,587,597,541,557"/>
-<area shape="rect" id="Node000006" href="$d8/d02/classInteractiveElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="368,1019,541,1225"/>
+<area shape="rect" id="Node000006" href="$d5/d00/classElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires." alt="" coords="402,1019,507,1225"/>
 <area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="503,559,467,1003,462,1003,498,559"/>
 <area shape="rect" id="Node000007" href="$db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé." alt="" coords="149,621,331,947"/>
 <area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="464,541,420,558,378,585,343,619,339,615,374,581,418,553,462,536"/>
@@ -17,7 +17,7 @@
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="457,1238,457,1297,452,1297,452,1238"/>
 <area shape="poly" id="edge19_Node000001_Node000007" title=" " alt="" coords="243,947,243,993,237,993,237,947"/>
 <area shape="poly" id="edge18_Node000002_Node000007" title=" " alt="" coords="152,918,117,978,83,1045,53,1118,28,1194,13,1272,9,1351,12,1390,19,1428,31,1465,46,1501,69,1537,96,1570,127,1600,160,1627,230,1672,294,1704,292,1709,227,1676,157,1631,123,1604,92,1574,64,1541,42,1504,26,1467,14,1429,7,1391,4,1351,8,1272,23,1193,48,1116,78,1043,112,975,147,915"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="333,926,383,1004,379,1007,329,928"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="333,926,395,1023,391,1026,329,928"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="64,493,165,559"/>
 <area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="127,558,143,596,147,605,142,608,138,598,122,560"/>
 <area shape="rect" id="Node000009" title=" " alt="" coords="43,364,186,444"/>

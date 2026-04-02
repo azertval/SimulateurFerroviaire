@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Branches topologiques d&#39;un SwitchBlock.">
+<g id="a_Node000001"><a xlink:title="Branches topologiques résolues (pointeurs non&#45;propriétaires).">
 <polygon fill="#999999" stroke="transparent" points="376.5,-49 223.5,-49 223.5,0 376.5,0 376.5,-49"/>
 <text text-anchor="start" x="229" y="-36.5" font-family="Helvetica,sans-Serif" font-size="10.00">SwitchBlock::SwitchBranches</text>
 <text text-anchor="start" x="298.5" y="-21.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
@@ -68,29 +68,29 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="../../d8/d02/classInteractiveElement.html" target="_top" xlink:title="Classe de base abstraite pour tous les éléments interactifs ferroviaires.">
-<polygon fill="white" stroke="transparent" points="365,-463 235,-463 235,-309 365,-309 365,-463"/>
-<text text-anchor="start" x="253" y="-451" font-family="Helvetica,sans-Serif" font-size="10.00">InteractiveElement</text>
-<text text-anchor="start" x="298" y="-436" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<text text-anchor="start" x="239" y="-421" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="252" y="-421" font-family="Helvetica,sans-Serif" font-size="10.00">InteractiveElement()</text>
-<text text-anchor="start" x="239" y="-406" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="252" y="-406" font-family="Helvetica,sans-Serif" font-size="10.00">~InteractiveElement()</text>
-<text text-anchor="start" x="239" y="-391" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="252" y="-391" font-family="Helvetica,sans-Serif" font-size="10.00">InteractiveElement()</text>
-<text text-anchor="start" x="239" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="252" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">operator=()</text>
-<text text-anchor="start" x="239" y="-361" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="252" y="-361" font-family="Helvetica,sans-Serif" font-size="10.00">InteractiveElement()</text>
-<text text-anchor="start" x="239" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="252" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00">operator=()</text>
-<text text-anchor="start" x="239" y="-331" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="252" y="-331" font-family="Helvetica,sans-Serif" font-size="10.00">getId()</text>
-<text text-anchor="start" x="239" y="-316" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="252" y="-316" font-family="Helvetica,sans-Serif" font-size="10.00">getType()</text>
-<polygon fill="#666666" stroke="#666666" points="235,-446 235,-446 365,-446 365,-446 235,-446"/>
-<polygon fill="#666666" stroke="#666666" points="235,-431 235,-431 365,-431 365,-431 235,-431"/>
-<polygon fill="none" stroke="#666666" points="235,-309 235,-463 365,-463 365,-309 235,-309"/>
+<g id="a_Node000003"><a xlink:href="../../d5/d00/classElement.html" target="_top" xlink:title="Classe de base abstraite pour tous les éléments interactifs ferroviaires.">
+<polygon fill="white" stroke="transparent" points="339.5,-463 260.5,-463 260.5,-309 339.5,-309 339.5,-463"/>
+<text text-anchor="start" x="280" y="-451" font-family="Helvetica,sans-Serif" font-size="10.00">Element</text>
+<text text-anchor="start" x="298.5" y="-436" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<text text-anchor="start" x="265" y="-421" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="278" y="-421" font-family="Helvetica,sans-Serif" font-size="10.00">Element()</text>
+<text text-anchor="start" x="265" y="-406" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="278" y="-406" font-family="Helvetica,sans-Serif" font-size="10.00">~Element()</text>
+<text text-anchor="start" x="265" y="-391" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="278" y="-391" font-family="Helvetica,sans-Serif" font-size="10.00">Element()</text>
+<text text-anchor="start" x="265" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="278" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">operator=()</text>
+<text text-anchor="start" x="265" y="-361" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="278" y="-361" font-family="Helvetica,sans-Serif" font-size="10.00">Element()</text>
+<text text-anchor="start" x="265" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="278" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00">operator=()</text>
+<text text-anchor="start" x="265" y="-331" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="278" y="-331" font-family="Helvetica,sans-Serif" font-size="10.00">getId()</text>
+<text text-anchor="start" x="265" y="-316" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="278" y="-316" font-family="Helvetica,sans-Serif" font-size="10.00">getType()</text>
+<polygon fill="#666666" stroke="#666666" points="261,-446 261,-446 340,-446 340,-446 261,-446"/>
+<polygon fill="#666666" stroke="#666666" points="261,-431 261,-431 340,-431 340,-431 261,-431"/>
+<polygon fill="none" stroke="#666666" points="260.5,-309 260.5,-463 339.5,-463 339.5,-309 260.5,-309"/>
 </a>
 </g>
 </g>

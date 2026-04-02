@@ -1,0 +1,7 @@
+<map id="SimulateurFerroviaire/Modules/GeoParser/Pipeline/Phase7_SwitchProcessor.h" name="SimulateurFerroviaire/Modules/GeoParser/Pipeline/Phase7_SwitchProcessor.h">
+<area shape="rect" id="Node000001" title="Phase 7 du pipeline — traitement complet des aiguillages." alt="" coords="152,5,359,60"/>
+<area shape="rect" id="Node000002" href="$d7/d03/GeoParser_8cpp.html" title="Implémentation de l&#39;orchestrateur GeoParser v2." alt="" coords="5,115,252,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,71,154,117,151,113,210,67"/>
+<area shape="rect" id="Node000003" href="$d3/d01/Phase7__SwitchProcessor_8cpp.html" title="Implémentation du traitement complet des aiguillages." alt="" coords="276,108,488,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="301,67,351,106,347,110,298,71"/>
+</map>

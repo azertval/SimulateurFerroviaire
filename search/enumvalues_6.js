@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['root_0',['ROOT',['../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16aea2adde5c377cb5e09d14b71935c6f32',1,'PCCEdge.h']]]
+  ['normal_0',['normal',['../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89a1e23852820b9154316c7c06e2b7ba051',1,'NORMAL:&#160;SwitchBlock.h'],['../d1/d02/PCCEdge_8h.html#a9a8d762dd6dbdb3a831d977a55344d16a1e23852820b9154316c7c06e2b7ba051',1,'NORMAL:&#160;PCCEdge.h']]]
 ];

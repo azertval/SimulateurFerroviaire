@@ -1,0 +1,19 @@
+<map id="TopologyGraph" name="TopologyGraph">
+<area shape="rect" id="Node000001" title="Résultat de Phase4_TopologyBuilder — graphe planaire complet." alt="" coords="281,544,419,669"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="61,409,239,474"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,472,270,537,267,541,187,476"/>
+<area shape="rect" id="Node000003" href="$df/d00/structTopoNode.html" title="Nœud topologique du graphe planaire." alt="" coords="111,253,189,319"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="153,319,153,392,147,392,147,319"/>
+<area shape="rect" id="Node000004" href="$df/d01/classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire)." alt="" coords="5,5,132,171"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="105,170,133,237,128,239,100,172"/>
+<area shape="rect" id="Node000005" href="$db/d03/classCoordinateLatLon.html" title="Coordonnée géographique WGS&#45;84 exprimée en degrés décimaux." alt="" coords="156,5,309,171"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="209,172,194,210,179,240,174,238,189,208,204,170"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="263,409,437,474"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="353,474,353,527,347,527,347,474"/>
+<area shape="rect" id="Node000007" href="$d8/d00/structTopoEdge.html" title="Arête du graphe planaire — connexion entre deux nœuds." alt="" coords="289,233,411,339"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="353,339,353,392,347,392,347,339"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="461,401,628,481"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="500,484,433,540,430,535,496,480"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="469,253,620,319"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="547,319,547,385,542,385,542,319"/>
+</map>

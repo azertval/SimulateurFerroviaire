@@ -104,117 +104,176 @@ $(document).ready(function(){initNavTree('d9/d02/classSwitchBlock.html','../../'
 <div class="dynheader">
 Graphe d'héritage de SwitchBlock:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d1/d02/classSwitchBlock__inherit__graph.svg" width="240" height="1623"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d1/d02/classSwitchBlock__inherit__graph.svg" width="272" height="2038"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Graphe de collaboration de SwitchBlock:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d01/classSwitchBlock__coll__graph.svg" width="1071" height="2746"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d01/classSwitchBlock__coll__graph.svg" width="1434" height="3130"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html">SwitchBranches</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branches topologiques d'un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>.  <a href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branches topologiques résolues (pointeurs non-propriétaires).  <a href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:ad6536f8891b40359de7e09db486294ba" id="r_ad6536f8891b40359de7e09db486294ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ad6536f8891b40359de7e09db486294ba">SwitchBlock</a> ()=default</td></tr>
 <tr class="separator:ad6536f8891b40359de7e09db486294ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39e05d6618d01419d30e1051584272bc" id="r_a39e05d6618d01419d30e1051584272bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a39e05d6618d01419d30e1051584272bc">SwitchBlock</a> (std::string switchId, <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> junctionCoord, std::vector&lt; std::string &gt; initialBranchIds={})</td></tr>
-<tr class="memdesc:a39e05d6618d01419d30e1051584272bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> positionné à junctionCoord.  <br /></td></tr>
-<tr class="separator:a39e05d6618d01419d30e1051584272bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8590c2f2c6557f23e3b3fa3c53c049c2" id="r_a8590c2f2c6557f23e3b3fa3c53c049c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a8590c2f2c6557f23e3b3fa3c53c049c2">SwitchBlock</a> (std::string switchId, <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> junctionWGS84, std::vector&lt; std::string &gt; branchIds={})</td></tr>
+<tr class="memdesc:a8590c2f2c6557f23e3b3fa3c53c049c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> positionné à junctionWGS84.  <br /></td></tr>
+<tr class="separator:a8590c2f2c6557f23e3b3fa3c53c049c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbf269599ac24cd670976368ae00b39f" id="r_adbf269599ac24cd670976368ae00b39f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#adbf269599ac24cd670976368ae00b39f">getId</a> () const override</td></tr>
 <tr class="memdesc:adbf269599ac24cd670976368ae00b39f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'identifiant unique de l'élément (ex. "sw/3", "s/12").  <br /></td></tr>
 <tr class="separator:adbf269599ac24cd670976368ae00b39f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac56312a01711bfd3d16adef8310c799c" id="r_ac56312a01711bfd3d16adef8310c799c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d02/InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731">InteractiveElementType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ac56312a01711bfd3d16adef8310c799c">getType</a> () const override</td></tr>
-<tr class="memdesc:ac56312a01711bfd3d16adef8310c799c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le type de l'élément.  <br /></td></tr>
-<tr class="separator:ac56312a01711bfd3d16adef8310c799c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a063cb4c4dfe06b991ac4e9fc27e55afc" id="r_a063cb4c4dfe06b991ac4e9fc27e55afc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01ae">ElementType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a063cb4c4dfe06b991ac4e9fc27e55afc">getType</a> () const override</td></tr>
+<tr class="memdesc:a063cb4c4dfe06b991ac4e9fc27e55afc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le type de l'élément.  <br /></td></tr>
+<tr class="separator:a063cb4c4dfe06b991ac4e9fc27e55afc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab85b6d12ec1450f7fc688dfe172ff91d" id="r_ab85b6d12ec1450f7fc688dfe172ff91d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ab85b6d12ec1450f7fc688dfe172ff91d">getState</a> () const override</td></tr>
 <tr class="memdesc:ab85b6d12ec1450f7fc688dfe172ff91d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'état opérationnel courant de l'élément.  <br /></td></tr>
 <tr class="separator:ab85b6d12ec1450f7fc688dfe172ff91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a770519c0fcf8ab5b0a6f699ddf1d3a4b" id="r_a770519c0fcf8ab5b0a6f699ddf1d3a4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a770519c0fcf8ab5b0a6f699ddf1d3a4b">setState</a> (<a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a> state)</td></tr>
 <tr class="separator:a770519c0fcf8ab5b0a6f699ddf1d3a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad175b6ec2b9f3f988eb10991f726c160" id="r_ad175b6ec2b9f3f988eb10991f726c160"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ad175b6ec2b9f3f988eb10991f726c160">setBranchPointers</a> (<a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html">SwitchBranches</a> branches)</td></tr>
-<tr class="memdesc:ad175b6ec2b9f3f988eb10991f726c160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre les pointeurs root/normal/deviation après parsing.  <br /></td></tr>
-<tr class="separator:ad175b6ec2b9f3f988eb10991f726c160"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d8ed60c4fa6c012210b3d643a590680" id="r_a0d8ed60c4fa6c012210b3d643a590680"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html">SwitchBranches</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a0d8ed60c4fa6c012210b3d643a590680">getBranches</a> () const</td></tr>
-<tr class="memdesc:a0d8ed60c4fa6c012210b3d643a590680"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les branches résolues. Nullptr si non encore initialisé.  <br /></td></tr>
-<tr class="separator:a0d8ed60c4fa6c012210b3d643a590680"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17420e8225a0637a6d38b73bee7d2526" id="r_a17420e8225a0637a6d38b73bee7d2526"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a17420e8225a0637a6d38b73bee7d2526">getJunctionCoordinate</a> () const</td></tr>
-<tr class="separator:a17420e8225a0637a6d38b73bee7d2526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f4787c84809cf5963674f5b202341a8" id="r_a2f4787c84809cf5963674f5b202341a8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a2f4787c84809cf5963674f5b202341a8">getJunctionWGS84</a> () const</td></tr>
+<tr class="memdesc:a2f4787c84809cf5963674f5b202341a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordonnée WGS-84 du point de jonction physique.  <br /></td></tr>
+<tr class="separator:a2f4787c84809cf5963674f5b202341a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5d8ff6e8ebddd979e74f9fe12968f56" id="r_ac5d8ff6e8ebddd979e74f9fe12968f56"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ac5d8ff6e8ebddd979e74f9fe12968f56">getJunctionUTM</a> () const</td></tr>
+<tr class="memdesc:ac5d8ff6e8ebddd979e74f9fe12968f56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordonnée UTM du point de jonction (x = est, y = nord, mètres).  <br /></td></tr>
+<tr class="separator:ac5d8ff6e8ebddd979e74f9fe12968f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48bb19b7ba5a8e7a37abd0109bd717f9" id="r_a48bb19b7ba5a8e7a37abd0109bd717f9"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a48bb19b7ba5a8e7a37abd0109bd717f9">getTipOnRoot</a> () const</td></tr>
+<tr class="separator:a48bb19b7ba5a8e7a37abd0109bd717f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32af9aeb69337c7f9bab1d0c61865d85" id="r_a32af9aeb69337c7f9bab1d0c61865d85"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a32af9aeb69337c7f9bab1d0c61865d85">getTipOnNormal</a> () const</td></tr>
+<tr class="separator:a32af9aeb69337c7f9bab1d0c61865d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfbe6ac0c1190e220e91558dd870a2b6" id="r_adfbe6ac0c1190e220e91558dd870a2b6"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#adfbe6ac0c1190e220e91558dd870a2b6">getTipOnDeviation</a> () const</td></tr>
+<tr class="separator:adfbe6ac0c1190e220e91558dd870a2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eac2af2a6dc3fadfb2e8714b1807c38" id="r_a5eac2af2a6dc3fadfb2e8714b1807c38"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a5eac2af2a6dc3fadfb2e8714b1807c38">getAbsorbedNormalCoordinates</a> () const</td></tr>
+<tr class="memdesc:a5eac2af2a6dc3fadfb2e8714b1807c38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polyligne absorbée côté normal (double switch). Vide si non applicable.  <br /></td></tr>
+<tr class="separator:a5eac2af2a6dc3fadfb2e8714b1807c38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a928853c3e4278319afb861d8a3e6f5c6" id="r_a928853c3e4278319afb861d8a3e6f5c6"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a928853c3e4278319afb861d8a3e6f5c6">getAbsorbedDeviationCoordinates</a> () const</td></tr>
+<tr class="memdesc:a928853c3e4278319afb861d8a3e6f5c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polyligne absorbée côté deviation (double switch). Vide si non applicable.  <br /></td></tr>
+<tr class="separator:a928853c3e4278319afb861d8a3e6f5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8477ee066a0acd74adf581ba7a238676" id="r_a8477ee066a0acd74adf581ba7a238676"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a8477ee066a0acd74adf581ba7a238676">getAbsorbedNormalCoordsUTM</a> () const</td></tr>
+<tr class="memdesc:a8477ee066a0acd74adf581ba7a238676"><td class="mdescLeft">&#160;</td><td class="mdescRight">UTM absorbée côté deviation (double switch). Vide si non applicable.  <br /></td></tr>
+<tr class="separator:a8477ee066a0acd74adf581ba7a238676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb48a5a703509155ccde6fc05b8a6f86" id="r_acb48a5a703509155ccde6fc05b8a6f86"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#acb48a5a703509155ccde6fc05b8a6f86">getAbsorbedDeviationCoordsUTM</a> () const</td></tr>
+<tr class="memdesc:acb48a5a703509155ccde6fc05b8a6f86"><td class="mdescLeft">&#160;</td><td class="mdescRight">UTM absorbée côté deviation (double switch). Vide si non applicable.  <br /></td></tr>
+<tr class="separator:acb48a5a703509155ccde6fc05b8a6f86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa696e88f8a1f915c71bde5420f019e32" id="r_aa696e88f8a1f915c71bde5420f019e32"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#aa696e88f8a1f915c71bde5420f019e32">getTotalLengthMeters</a> () const</td></tr>
+<tr class="memdesc:aa696e88f8a1f915c71bde5420f019e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur physique de traversée en mètres. Absent si tips manquants.  <br /></td></tr>
+<tr class="separator:aa696e88f8a1f915c71bde5420f019e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3df4225adcb5d9121388c7b90fcd1af2" id="r_a3df4225adcb5d9121388c7b90fcd1af2"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a3df4225adcb5d9121388c7b90fcd1af2">getBranchIds</a> () const</td></tr>
+<tr class="memdesc:a3df4225adcb5d9121388c7b90fcd1af2"><td class="mdescLeft">&#160;</td><td class="mdescRight">IDs des StraightBlocks connectés à la jonction. Peuplé lors de la construction du graphe.  <br /></td></tr>
 <tr class="separator:a3df4225adcb5d9121388c7b90fcd1af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87eba553e6478990869ad5b1d9c4f4a7" id="r_a87eba553e6478990869ad5b1d9c4f4a7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a87eba553e6478990869ad5b1d9c4f4a7">isOriented</a> () const</td></tr>
+<tr class="memdesc:a87eba553e6478990869ad5b1d9c4f4a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">True si les rôles root/normal/deviation sont assignés.  <br /></td></tr>
 <tr class="separator:a87eba553e6478990869ad5b1d9c4f4a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13b991ec872f7ace3af3e00db8b12e3e" id="r_a13b991ec872f7ace3af3e00db8b12e3e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e">isDouble</a> () const</td></tr>
-<tr class="separator:a13b991ec872f7ace3af3e00db8b12e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55d04c13a5fba252ba2b840f6835a2a4" id="r_a55d04c13a5fba252ba2b840f6835a2a4"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a55d04c13a5fba252ba2b840f6835a2a4">getRootBranchId</a> () const</td></tr>
+<tr class="memdesc:a55d04c13a5fba252ba2b840f6835a2a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID de la branche root. Absent si non orienté.  <br /></td></tr>
 <tr class="separator:a55d04c13a5fba252ba2b840f6835a2a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6838d033ec39e85a94c98a9559fcc532" id="r_a6838d033ec39e85a94c98a9559fcc532"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a6838d033ec39e85a94c98a9559fcc532">getNormalBranchId</a> () const</td></tr>
+<tr class="memdesc:a6838d033ec39e85a94c98a9559fcc532"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID de la branche normale. Absent si non orienté.  <br /></td></tr>
 <tr class="separator:a6838d033ec39e85a94c98a9559fcc532"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ed34ef4ccea6e43e2c0d456f5eb29c0" id="r_a6ed34ef4ccea6e43e2c0d456f5eb29c0"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a6ed34ef4ccea6e43e2c0d456f5eb29c0">getDeviationBranchId</a> () const</td></tr>
+<tr class="memdesc:a6ed34ef4ccea6e43e2c0d456f5eb29c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID de la branche déviée. Absent si non orienté.  <br /></td></tr>
 <tr class="separator:a6ed34ef4ccea6e43e2c0d456f5eb29c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e408b95d90214d1db3d880d0c8e7527" id="r_a5e408b95d90214d1db3d880d0c8e7527"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a5e408b95d90214d1db3d880d0c8e7527">getTipOnRoot</a> () const</td></tr>
-<tr class="separator:a5e408b95d90214d1db3d880d0c8e7527"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6735b53a83425ebf379eb210a5237ba" id="r_ad6735b53a83425ebf379eb210a5237ba"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ad6735b53a83425ebf379eb210a5237ba">getTipOnNormal</a> () const</td></tr>
-<tr class="separator:ad6735b53a83425ebf379eb210a5237ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b66c9a47909473ed1952a1f6dfb7183" id="r_a6b66c9a47909473ed1952a1f6dfb7183"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a6b66c9a47909473ed1952a1f6dfb7183">getTipOnDeviation</a> () const</td></tr>
-<tr class="separator:a6b66c9a47909473ed1952a1f6dfb7183"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf63b962a171de6014a94f8be882533f" id="r_adf63b962a171de6014a94f8be882533f"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#adf63b962a171de6014a94f8be882533f">getDoubleOnNormal</a> () const</td></tr>
-<tr class="memdesc:adf63b962a171de6014a94f8be882533f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID du partenaire si le lien absorbé était côté branche NORMALE.  <br /></td></tr>
+<tr class="memdesc:adf63b962a171de6014a94f8be882533f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID du partenaire double switch côté normal. Absent si non applicable.  <br /></td></tr>
 <tr class="separator:adf63b962a171de6014a94f8be882533f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a6a50365fe014a6d51e4f0f2ffeacce" id="r_a9a6a50365fe014a6d51e4f0f2ffeacce"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a9a6a50365fe014a6d51e4f0f2ffeacce">getDoubleOnDeviation</a> () const</td></tr>
-<tr class="memdesc:a9a6a50365fe014a6d51e4f0f2ffeacce"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID du partenaire si le lien absorbé était côté branche DEVIEE.  <br /></td></tr>
+<tr class="memdesc:a9a6a50365fe014a6d51e4f0f2ffeacce"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID du partenaire double switch côté deviation. Absent si non applicable.  <br /></td></tr>
 <tr class="separator:a9a6a50365fe014a6d51e4f0f2ffeacce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13b991ec872f7ace3af3e00db8b12e3e" id="r_a13b991ec872f7ace3af3e00db8b12e3e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e">isDouble</a> () const</td></tr>
+<tr class="memdesc:a13b991ec872f7ace3af3e00db8b12e3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">True si un segment de liaison a été absorbé (double aiguille).  <br /></td></tr>
+<tr class="separator:a13b991ec872f7ace3af3e00db8b12e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d8ed60c4fa6c012210b3d643a590680" id="r_a0d8ed60c4fa6c012210b3d643a590680"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html">SwitchBranches</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a0d8ed60c4fa6c012210b3d643a590680">getBranches</a> () const</td></tr>
+<tr class="memdesc:a0d8ed60c4fa6c012210b3d643a590680"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les branches résolues. nullptr si non initialisé.  <br /></td></tr>
+<tr class="separator:a0d8ed60c4fa6c012210b3d643a590680"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97817af93750b4bb24f27537d38de8d2" id="r_a97817af93750b4bb24f27537d38de8d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a97817af93750b4bb24f27537d38de8d2">getRootBlock</a> () const</td></tr>
+<tr class="memdesc:a97817af93750b4bb24f27537d38de8d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès direct à la branche root. nullptr si non résolue.  <br /></td></tr>
+<tr class="separator:a97817af93750b4bb24f27537d38de8d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5a7ab0a36a37a6fc72afbea99a98087" id="r_ad5a7ab0a36a37a6fc72afbea99a98087"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ad5a7ab0a36a37a6fc72afbea99a98087">getNormalBlock</a> () const</td></tr>
+<tr class="memdesc:ad5a7ab0a36a37a6fc72afbea99a98087"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès direct à la branche normale. nullptr si non résolue.  <br /></td></tr>
+<tr class="separator:ad5a7ab0a36a37a6fc72afbea99a98087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a497fb704382429dd293e826d207e33a0" id="r_a497fb704382429dd293e826d207e33a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a497fb704382429dd293e826d207e33a0">getDeviationBlock</a> () const</td></tr>
+<tr class="memdesc:a497fb704382429dd293e826d207e33a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès direct à la branche déviée. nullptr si non résolue.  <br /></td></tr>
+<tr class="separator:a497fb704382429dd293e826d207e33a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72cf7392935372bed47bccc9c1feb096" id="r_a72cf7392935372bed47bccc9c1feb096"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a72cf7392935372bed47bccc9c1feb096">getPartnerOnNormal</a> () const</td></tr>
-<tr class="memdesc:a72cf7392935372bed47bccc9c1feb096"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le switch partenaire côté normal, ou nullptr. Cast valide uniquement si <a class="el" href="../../d9/d02/classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e">isDouble()</a> &amp;&amp; <a class="el" href="../../d9/d02/classSwitchBlock.html#adf63b962a171de6014a94f8be882533f" title="ID du partenaire si le lien absorbé était côté branche NORMALE.">getDoubleOnNormal()</a>.  <br /></td></tr>
+<tr class="memdesc:a72cf7392935372bed47bccc9c1feb096"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le switch partenaire côté normal, ou nullptr. Cast valide uniquement si <a class="el" href="../../d9/d02/classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e" title="True si un segment de liaison a été absorbé (double aiguille).">isDouble()</a> &amp;&amp; <a class="el" href="../../d9/d02/classSwitchBlock.html#adf63b962a171de6014a94f8be882533f" title="ID du partenaire double switch côté normal. Absent si non applicable.">getDoubleOnNormal()</a>.  <br /></td></tr>
 <tr class="separator:a72cf7392935372bed47bccc9c1feb096"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af65a62f314ce4544ce687eacc13786e8" id="r_af65a62f314ce4544ce687eacc13786e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#af65a62f314ce4544ce687eacc13786e8">getPartnerOnDeviation</a> () const</td></tr>
 <tr class="memdesc:af65a62f314ce4544ce687eacc13786e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le switch partenaire côté deviation, ou nullptr.  <br /></td></tr>
 <tr class="separator:af65a62f314ce4544ce687eacc13786e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e0096ec969222b7244af2ad26f2be12" id="r_a1e0096ec969222b7244af2ad26f2be12"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a1e0096ec969222b7244af2ad26f2be12">getAbsorbedNormalCoords</a> () const</td></tr>
-<tr class="memdesc:a1e0096ec969222b7244af2ad26f2be12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polyligne complète du segment absorbé côté normal.  <br /></td></tr>
-<tr class="separator:a1e0096ec969222b7244af2ad26f2be12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaca37431800ae6145596cc436d93ab92" id="r_aaca37431800ae6145596cc436d93ab92"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#aaca37431800ae6145596cc436d93ab92">getAbsorbedDeviationCoords</a> () const</td></tr>
-<tr class="memdesc:aaca37431800ae6145596cc436d93ab92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polyligne complète du segment absorbé côté deviation.  <br /></td></tr>
-<tr class="separator:aaca37431800ae6145596cc436d93ab92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa696e88f8a1f915c71bde5420f019e32" id="r_aa696e88f8a1f915c71bde5420f019e32"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#aa696e88f8a1f915c71bde5420f019e32">getTotalLengthMeters</a> () const</td></tr>
-<tr class="separator:aa696e88f8a1f915c71bde5420f019e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba30776838f3363fc7e93bcb7ce7888c" id="r_aba30776838f3363fc7e93bcb7ce7888c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">ActiveBranch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#aba30776838f3363fc7e93bcb7ce7888c">getActiveBranch</a> () const</td></tr>
+<tr class="memdesc:aba30776838f3363fc7e93bcb7ce7888c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branche actuellement active (NORMAL par défaut).  <br /></td></tr>
 <tr class="separator:aba30776838f3363fc7e93bcb7ce7888c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c252f2bb90dbe50b8c9d8e8de0fc5b5" id="r_a4c252f2bb90dbe50b8c9d8e8de0fc5b5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a4c252f2bb90dbe50b8c9d8e8de0fc5b5">activeBranchToString</a> () const</td></tr>
-<tr class="memdesc:a4c252f2bb90dbe50b8c9d8e8de0fc5b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit l'état ActiveBranch courant en chaîne lisible. Utilisé exclusivement par les appels de log.  <br /></td></tr>
-<tr class="separator:a4c252f2bb90dbe50b8c9d8e8de0fc5b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada66b97802d45a8b3dfbbb05011ae9b6" id="r_ada66b97802d45a8b3dfbbb05011ae9b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ada66b97802d45a8b3dfbbb05011ae9b6">isDeviationActive</a> () const</td></tr>
+<tr class="memdesc:ada66b97802d45a8b3dfbbb05011ae9b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raccourci — évite la comparaison explicite.  <br /></td></tr>
 <tr class="separator:ada66b97802d45a8b3dfbbb05011ae9b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c252f2bb90dbe50b8c9d8e8de0fc5b5" id="r_a4c252f2bb90dbe50b8c9d8e8de0fc5b5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a4c252f2bb90dbe50b8c9d8e8de0fc5b5">activeBranchToString</a> () const</td></tr>
+<tr class="memdesc:a4c252f2bb90dbe50b8c9d8e8de0fc5b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit ActiveBranch en chaîne lisible pour les logs.  <br /></td></tr>
+<tr class="separator:a4c252f2bb90dbe50b8c9d8e8de0fc5b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a81608dca0e1a59b20f6f0c480435c5" id="r_a7a81608dca0e1a59b20f6f0c480435c5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a7a81608dca0e1a59b20f6f0c480435c5">toString</a> () const</td></tr>
 <tr class="memdesc:a7a81608dca0e1a59b20f6f0c480435c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Représentation textuelle pour le débogage.  <br /></td></tr>
 <tr class="separator:a7a81608dca0e1a59b20f6f0c480435c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0357dc6806b4b9a533785ae7ffbcfc8" id="r_ae0357dc6806b4b9a533785ae7ffbcfc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ae0357dc6806b4b9a533785ae7ffbcfc8">setId</a> (std::string id)</td></tr>
+<tr class="memdesc:ae0357dc6806b4b9a533785ae7ffbcfc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne l'identifiant du bloc. Appelé par <a class="el" href="../../df/d00/classPhase6__BlockExtractor.html">Phase6_BlockExtractor</a> lors de la création du bloc.  <br /></td></tr>
+<tr class="separator:ae0357dc6806b4b9a533785ae7ffbcfc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cece092fdfcee39d93af199b51f7e8d" id="r_a6cece092fdfcee39d93af199b51f7e8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a6cece092fdfcee39d93af199b51f7e8d">setRootBranchId</a> (std::string id)</td></tr>
+<tr class="separator:a6cece092fdfcee39d93af199b51f7e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dd6bae8e08339dc8bda18cbb2ba90d7" id="r_a8dd6bae8e08339dc8bda18cbb2ba90d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a8dd6bae8e08339dc8bda18cbb2ba90d7">setNormalBranchId</a> (std::string id)</td></tr>
+<tr class="separator:a8dd6bae8e08339dc8bda18cbb2ba90d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2dc9ab343496ffbc04b50085072f786" id="r_ac2dc9ab343496ffbc04b50085072f786"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ac2dc9ab343496ffbc04b50085072f786">setDeviationBranchId</a> (std::string id)</td></tr>
+<tr class="separator:ac2dc9ab343496ffbc04b50085072f786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a9c890e678df3f50966fb184fdd4a8e" id="r_a0a9c890e678df3f50966fb184fdd4a8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a0a9c890e678df3f50966fb184fdd4a8e">setJunctionWGS84</a> (<a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> coord)</td></tr>
+<tr class="memdesc:a0a9c890e678df3f50966fb184fdd4a8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne la position de jonction en WGS84.  <br /></td></tr>
+<tr class="separator:a0a9c890e678df3f50966fb184fdd4a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17a6c050b375ce05cc2593c42758d26e" id="r_a17a6c050b375ce05cc2593c42758d26e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a17a6c050b375ce05cc2593c42758d26e">setJunctionUTM</a> (<a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> coord)</td></tr>
+<tr class="memdesc:a17a6c050b375ce05cc2593c42758d26e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne la position de jonction en UTM.  <br /></td></tr>
+<tr class="separator:a17a6c050b375ce05cc2593c42758d26e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a3ef523de2587f296532b5577b9afab" id="r_a2a3ef523de2587f296532b5577b9afab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a2a3ef523de2587f296532b5577b9afab">setTips</a> (std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; tipRoot, std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; tipNormal, std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; tipDeviation)</td></tr>
+<tr class="memdesc:a2a3ef523de2587f296532b5577b9afab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne les trois tips CDC en une seule opération.  <br /></td></tr>
+<tr class="separator:a2a3ef523de2587f296532b5577b9afab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a887a1418c2de3393581a3c50c8949280" id="r_a887a1418c2de3393581a3c50c8949280"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a887a1418c2de3393581a3c50c8949280">setAbsorbedCoords</a> (const std::string &amp;side, std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; coords)</td></tr>
+<tr class="memdesc:a887a1418c2de3393581a3c50c8949280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stocke les coordonnées absorbées d'un double switch.  <br /></td></tr>
+<tr class="separator:a887a1418c2de3393581a3c50c8949280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af60b9a9bfb1223cdb1da385d4aff13cd" id="r_af60b9a9bfb1223cdb1da385d4aff13cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#af60b9a9bfb1223cdb1da385d4aff13cd">addBranchId</a> (const std::string &amp;id)</td></tr>
+<tr class="memdesc:af60b9a9bfb1223cdb1da385d4aff13cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un ID de branche. Pas de doublon.  <br /></td></tr>
 <tr class="separator:af60b9a9bfb1223cdb1da385d4aff13cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc53cb0b921e526691300afa6eec1e92" id="r_acc53cb0b921e526691300afa6eec1e92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#acc53cb0b921e526691300afa6eec1e92">orient</a> (std::string rootId, std::string normalId, std::string deviationId)</td></tr>
 <tr class="memdesc:acc53cb0b921e526691300afa6eec1e92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne les rôles root / normal / deviation.  <br /></td></tr>
 <tr class="separator:acc53cb0b921e526691300afa6eec1e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb09c2dc6dd9b40c71aa79ecef918e14" id="r_aeb09c2dc6dd9b40c71aa79ecef918e14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#aeb09c2dc6dd9b40c71aa79ecef918e14">setTips</a> (std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; tipRoot, std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; tipNormal, std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; tipDeviation)</td></tr>
-<tr class="memdesc:aeb09c2dc6dd9b40c71aa79ecef918e14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne les trois tips CDC en une seule opération.  <br /></td></tr>
-<tr class="separator:aeb09c2dc6dd9b40c71aa79ecef918e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affd7f73a8ed825143cf59a485d1d690b" id="r_affd7f73a8ed825143cf59a485d1d690b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#affd7f73a8ed825143cf59a485d1d690b">swapNormalDeviation</a> ()</td></tr>
-<tr class="memdesc:affd7f73a8ed825143cf59a485d1d690b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Échange normal ↔ deviation (rôles + tips + polylignes absorbées).  <br /></td></tr>
+<tr class="memdesc:affd7f73a8ed825143cf59a485d1d690b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Échange normal ↔ deviation (rôles + tips + polylignes absorbées + doubles).  <br /></td></tr>
 <tr class="separator:affd7f73a8ed825143cf59a485d1d690b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a676d952722f07ba8a5a5c9871f0f113f" id="r_a676d952722f07ba8a5a5c9871f0f113f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a676d952722f07ba8a5a5c9871f0f113f">absorbLink</a> (const std::string &amp;linkId, const std::string &amp;partnerId, std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; linkCoordsWGS84, std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; linkCoordsUTM)</td></tr>
+<tr class="memdesc:a676d952722f07ba8a5a5c9871f0f113f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Absorbe le segment de liaison d'un double aiguille.  <br /></td></tr>
+<tr class="separator:a676d952722f07ba8a5a5c9871f0f113f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab199c047b49e5d158a8b7f8ffb7aa633" id="r_ab199c047b49e5d158a8b7f8ffb7aa633"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ab199c047b49e5d158a8b7f8ffb7aa633">replaceBranchPointer</a> (<a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *oldElem, <a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *newElem)</td></tr>
+<tr class="memdesc:ab199c047b49e5d158a8b7f8ffb7aa633"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace un pointeur de branche par un autre.  <br /></td></tr>
+<tr class="separator:ab199c047b49e5d158a8b7f8ffb7aa633"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a003ca555f7f3dfd8e8057ae23dba9381" id="r_a003ca555f7f3dfd8e8057ae23dba9381"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a003ca555f7f3dfd8e8057ae23dba9381">computeTotalLength</a> ()</td></tr>
-<tr class="memdesc:a003ca555f7f3dfd8e8057ae23dba9381"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule et mémorise totalLengthMeters. Formule : root_leg + max(normal_leg, deviation_leg). No-op si non orienté.  <br /></td></tr>
+<tr class="memdesc:a003ca555f7f3dfd8e8057ae23dba9381"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule et mémorise la longueur totale de traversée. Formule : root_leg + max(normal_leg, deviation_leg). No-op si non orienté ou tips absents.  <br /></td></tr>
 <tr class="separator:a003ca555f7f3dfd8e8057ae23dba9381"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a483a3345227b3c4fbfbdc44915a580" id="r_a8a483a3345227b3c4fbfbdc44915a580"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a8a483a3345227b3c4fbfbdc44915a580">absorbLink</a> (const std::string &amp;linkId, const std::string &amp;partnerId, std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; linkCoords)</td></tr>
-<tr class="memdesc:a8a483a3345227b3c4fbfbdc44915a580"><td class="mdescLeft">&#160;</td><td class="mdescRight">Absorbe le segment de liaison d'un double aiguille.  <br /></td></tr>
-<tr class="separator:a8a483a3345227b3c4fbfbdc44915a580"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33f10f3d58cb4802c2a45583cb9e216c" id="r_a33f10f3d58cb4802c2a45583cb9e216c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a33f10f3d58cb4802c2a45583cb9e216c">setActiveBranch</a> (<a class="el" href="../../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">ActiveBranch</a> branch, const bool propagate=true)</td></tr>
-<tr class="memdesc:a33f10f3d58cb4802c2a45583cb9e216c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne la branche active.  <br /></td></tr>
-<tr class="separator:a33f10f3d58cb4802c2a45583cb9e216c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49ee6b32f553615447b412e58afca21a" id="r_a49ee6b32f553615447b412e58afca21a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">ActiveBranch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a49ee6b32f553615447b412e58afca21a">toggleActiveBranch</a> (const bool propagate=true)</td></tr>
-<tr class="memdesc:a49ee6b32f553615447b412e58afca21a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alterne entre NORMAL et DEVIATION. Équivalent à setActiveBranch(!current).  <br /></td></tr>
-<tr class="separator:a49ee6b32f553615447b412e58afca21a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40f62f7fa25f753f8277e3f84b97986e" id="r_a40f62f7fa25f753f8277e3f84b97986e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a40f62f7fa25f753f8277e3f84b97986e">setRootPointer</a> (<a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *elem)</td></tr>
+<tr class="memdesc:a40f62f7fa25f753f8277e3f84b97986e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne le pointeur de la branche root.  <br /></td></tr>
+<tr class="separator:a40f62f7fa25f753f8277e3f84b97986e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff79e0e44aba8ab5525e9b5fa3dc7b93" id="r_aff79e0e44aba8ab5525e9b5fa3dc7b93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#aff79e0e44aba8ab5525e9b5fa3dc7b93">setNormalPointer</a> (<a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *elem)</td></tr>
+<tr class="memdesc:aff79e0e44aba8ab5525e9b5fa3dc7b93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne le pointeur de la branche normale.  <br /></td></tr>
+<tr class="separator:aff79e0e44aba8ab5525e9b5fa3dc7b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cdf67032ce706a00a05ec752b298e0b" id="r_a3cdf67032ce706a00a05ec752b298e0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a3cdf67032ce706a00a05ec752b298e0b">setDeviationPointer</a> (<a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *elem)</td></tr>
+<tr class="memdesc:a3cdf67032ce706a00a05ec752b298e0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne le pointeur de la branche déviée.  <br /></td></tr>
+<tr class="separator:a3cdf67032ce706a00a05ec752b298e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad175b6ec2b9f3f988eb10991f726c160" id="r_ad175b6ec2b9f3f988eb10991f726c160"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ad175b6ec2b9f3f988eb10991f726c160">setBranchPointers</a> (<a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html">SwitchBranches</a> branches)</td></tr>
+<tr class="memdesc:ad175b6ec2b9f3f988eb10991f726c160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre les branches en une seule opération.  <br /></td></tr>
+<tr class="separator:ad175b6ec2b9f3f988eb10991f726c160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6e437d28f39ff6dc3120d5f836d0f37" id="r_ae6e437d28f39ff6dc3120d5f836d0f37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ae6e437d28f39ff6dc3120d5f836d0f37">setActiveBranch</a> (<a class="el" href="../../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">ActiveBranch</a> branch, bool propagate=true)</td></tr>
+<tr class="memdesc:ae6e437d28f39ff6dc3120d5f836d0f37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigne la branche active.  <br /></td></tr>
+<tr class="separator:ae6e437d28f39ff6dc3120d5f836d0f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d0c12c5196e0cd35fb33784c727e45b" id="r_a4d0c12c5196e0cd35fb33784c727e45b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">ActiveBranch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a4d0c12c5196e0cd35fb33784c727e45b">toggleActiveBranch</a> (bool propagate=true)</td></tr>
+<tr class="memdesc:a4d0c12c5196e0cd35fb33784c727e45b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alterne entre NORMAL et DEVIATION.  <br /></td></tr>
+<tr class="separator:a4d0c12c5196e0cd35fb33784c727e45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classShuntingElement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classShuntingElement')"><img src="../../closed.png" alt="-"/>&#160;Fonctions membres publiques hérités de <a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a></td></tr>
 <tr class="memitem:acb088c612e8db99dbd162ba65743c4ff inherit pub_methods_classShuntingElement" id="r_acb088c612e8db99dbd162ba65743c4ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d00/classShuntingElement.html#acb088c612e8db99dbd162ba65743c4ff">ShuntingElement</a> ()=default</td></tr>
 <tr class="separator:acb088c612e8db99dbd162ba65743c4ff inherit pub_methods_classShuntingElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -233,32 +292,50 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:ac236019e6961a887732237cc5f1da697 inherit pub_methods_classShuntingElement" id="r_ac236019e6961a887732237cc5f1da697"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d00/classShuntingElement.html#ac236019e6961a887732237cc5f1da697">isInactive</a> () const</td></tr>
 <tr class="memdesc:ac236019e6961a887732237cc5f1da697 inherit pub_methods_classShuntingElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne true si l'élément est hors service.  <br /></td></tr>
 <tr class="separator:ac236019e6961a887732237cc5f1da697 inherit pub_methods_classShuntingElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classInteractiveElement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classInteractiveElement')"><img src="../../closed.png" alt="-"/>&#160;Fonctions membres publiques hérités de <a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a></td></tr>
-<tr class="memitem:a731ea8f6e5caddfff044ae50feefdbf7 inherit pub_methods_classInteractiveElement" id="r_a731ea8f6e5caddfff044ae50feefdbf7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a731ea8f6e5caddfff044ae50feefdbf7">InteractiveElement</a> ()=default</td></tr>
-<tr class="separator:a731ea8f6e5caddfff044ae50feefdbf7 inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8567360038147b2c97943e307eb0eef3 inherit pub_methods_classInteractiveElement" id="r_a8567360038147b2c97943e307eb0eef3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a8567360038147b2c97943e307eb0eef3">~InteractiveElement</a> ()=default</td></tr>
-<tr class="separator:a8567360038147b2c97943e307eb0eef3 inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a534f8d7be8cfe37ddbec1c134b68898c inherit pub_methods_classInteractiveElement" id="r_a534f8d7be8cfe37ddbec1c134b68898c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a534f8d7be8cfe37ddbec1c134b68898c">InteractiveElement</a> (const <a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a> &amp;)=delete</td></tr>
-<tr class="memdesc:a534f8d7be8cfe37ddbec1c134b68898c inherit pub_methods_classInteractiveElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interdit la copie — risque de slicing.  <br /></td></tr>
-<tr class="separator:a534f8d7be8cfe37ddbec1c134b68898c inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb14dc9e4c66a1b52e0605ba1ab29ed7 inherit pub_methods_classInteractiveElement" id="r_acb14dc9e4c66a1b52e0605ba1ab29ed7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#acb14dc9e4c66a1b52e0605ba1ab29ed7">operator=</a> (const <a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a> &amp;)=delete</td></tr>
-<tr class="separator:acb14dc9e4c66a1b52e0605ba1ab29ed7 inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a8f196ea573c4fdf1983ce154aa193a inherit pub_methods_classInteractiveElement" id="r_a9a8f196ea573c4fdf1983ce154aa193a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a9a8f196ea573c4fdf1983ce154aa193a">InteractiveElement</a> (<a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a> &amp;&amp;)=default</td></tr>
-<tr class="memdesc:a9a8f196ea573c4fdf1983ce154aa193a inherit pub_methods_classInteractiveElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplacement autorisé — requis par le pipeline de construction.  <br /></td></tr>
-<tr class="separator:a9a8f196ea573c4fdf1983ce154aa193a inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a351db854d008d418dd6a4825ac822bc2 inherit pub_methods_classInteractiveElement" id="r_a351db854d008d418dd6a4825ac822bc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a351db854d008d418dd6a4825ac822bc2">operator=</a> (<a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a> &amp;&amp;)=default</td></tr>
-<tr class="separator:a351db854d008d418dd6a4825ac822bc2 inherit pub_methods_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classElement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classElement')"><img src="../../closed.png" alt="-"/>&#160;Fonctions membres publiques hérités de <a class="el" href="../../d5/d00/classElement.html">Element</a></td></tr>
+<tr class="memitem:a084081001b0f14ae12d612c866df861c inherit pub_methods_classElement" id="r_a084081001b0f14ae12d612c866df861c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#a084081001b0f14ae12d612c866df861c">Element</a> ()=default</td></tr>
+<tr class="separator:a084081001b0f14ae12d612c866df861c inherit pub_methods_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa153979c5d46fff8e2b9ee8b48dd863f inherit pub_methods_classElement" id="r_aa153979c5d46fff8e2b9ee8b48dd863f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#aa153979c5d46fff8e2b9ee8b48dd863f">~Element</a> ()=default</td></tr>
+<tr class="separator:aa153979c5d46fff8e2b9ee8b48dd863f inherit pub_methods_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11d861303a5ffa3797861b3108ce1d63 inherit pub_methods_classElement" id="r_a11d861303a5ffa3797861b3108ce1d63"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#a11d861303a5ffa3797861b3108ce1d63">Element</a> (const <a class="el" href="../../d5/d00/classElement.html">Element</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a11d861303a5ffa3797861b3108ce1d63 inherit pub_methods_classElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interdit la copie — risque de slicing.  <br /></td></tr>
+<tr class="separator:a11d861303a5ffa3797861b3108ce1d63 inherit pub_methods_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa711d7fa3156e1f7b6458ed511f146f7 inherit pub_methods_classElement" id="r_aa711d7fa3156e1f7b6458ed511f146f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d00/classElement.html">Element</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#aa711d7fa3156e1f7b6458ed511f146f7">operator=</a> (const <a class="el" href="../../d5/d00/classElement.html">Element</a> &amp;)=delete</td></tr>
+<tr class="separator:aa711d7fa3156e1f7b6458ed511f146f7 inherit pub_methods_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af81d21cc1799b387dcf2916b3b597651 inherit pub_methods_classElement" id="r_af81d21cc1799b387dcf2916b3b597651"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#af81d21cc1799b387dcf2916b3b597651">Element</a> (<a class="el" href="../../d5/d00/classElement.html">Element</a> &amp;&amp;)=default</td></tr>
+<tr class="memdesc:af81d21cc1799b387dcf2916b3b597651 inherit pub_methods_classElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplacement autorisé — requis par le pipeline de construction.  <br /></td></tr>
+<tr class="separator:af81d21cc1799b387dcf2916b3b597651 inherit pub_methods_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fc8b51b7d9283a94b53543b42d87838 inherit pub_methods_classElement" id="r_a7fc8b51b7d9283a94b53543b42d87838"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d00/classElement.html">Element</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#a7fc8b51b7d9283a94b53543b42d87838">operator=</a> (<a class="el" href="../../d5/d00/classElement.html">Element</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:a7fc8b51b7d9283a94b53543b42d87838 inherit pub_methods_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Fonctions membres privées statiques</h2></td></tr>
-<tr class="memitem:ab77747c7b8747d9909c9ee2233fa7ba5" id="r_ab77747c7b8747d9909c9ee2233fa7ba5"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ab77747c7b8747d9909c9ee2233fa7ba5">haversineDistanceMeters</a> (const <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &amp;a, const <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &amp;b)</td></tr>
-<tr class="memdesc:ab77747c7b8747d9909c9ee2233fa7ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la distance de Haversine entre deux points WGS-84.  <br /></td></tr>
-<tr class="separator:ab77747c7b8747d9909c9ee2233fa7ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae6b3b5fa59f27e1754fe0d0d6d7fb96" id="r_aae6b3b5fa59f27e1754fe0d0d6d7fb96"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#aae6b3b5fa59f27e1754fe0d0d6d7fb96">haversineDistanceMeters</a> (const <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &amp;a, const <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &amp;b)</td></tr>
+<tr class="memdesc:aae6b3b5fa59f27e1754fe0d0d6d7fb96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la distance de Haversine entre deux points WGS-84.  <br /></td></tr>
+<tr class="separator:aae6b3b5fa59f27e1754fe0d0d6d7fb96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Attributs privés</h2></td></tr>
-<tr class="memitem:adc792c8b048aa0f84a1c0fc4b22422fb" id="r_adc792c8b048aa0f84a1c0fc4b22422fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d01/classLatLon.html">LatLon</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#adc792c8b048aa0f84a1c0fc4b22422fb">m_junctionCoordinate</a></td></tr>
-<tr class="separator:adc792c8b048aa0f84a1c0fc4b22422fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6053968fccea0e95e2356a871a90e563" id="r_a6053968fccea0e95e2356a871a90e563"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a6053968fccea0e95e2356a871a90e563">m_junctionWGS84</a></td></tr>
+<tr class="separator:a6053968fccea0e95e2356a871a90e563"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6825e5daeb1bfc94d99e86b915b54d5" id="r_af6825e5daeb1bfc94d99e86b915b54d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#af6825e5daeb1bfc94d99e86b915b54d5">m_junctionUTM</a></td></tr>
+<tr class="separator:af6825e5daeb1bfc94d99e86b915b54d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb9088468ad756a3c05f3445a0db04be" id="r_adb9088468ad756a3c05f3445a0db04be"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#adb9088468ad756a3c05f3445a0db04be">m_tipOnRoot</a></td></tr>
+<tr class="separator:adb9088468ad756a3c05f3445a0db04be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4afa5b9197d956b9db502dda3cee2420" id="r_a4afa5b9197d956b9db502dda3cee2420"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a4afa5b9197d956b9db502dda3cee2420">m_tipOnNormal</a></td></tr>
+<tr class="separator:a4afa5b9197d956b9db502dda3cee2420"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa37da8c89dc8918627710735b9a700d1" id="r_aa37da8c89dc8918627710735b9a700d1"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#aa37da8c89dc8918627710735b9a700d1">m_tipOnDeviation</a></td></tr>
+<tr class="separator:aa37da8c89dc8918627710735b9a700d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3cdb18e8b0bd85f0f59e2b0ede354d7" id="r_ac3cdb18e8b0bd85f0f59e2b0ede354d7"><td class="memItemLeft" align="right" valign="top">std::optional&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ac3cdb18e8b0bd85f0f59e2b0ede354d7">m_totalLengthMeters</a></td></tr>
+<tr class="separator:ac3cdb18e8b0bd85f0f59e2b0ede354d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67c2be697cf09dd129ed374e970577bf" id="r_a67c2be697cf09dd129ed374e970577bf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a67c2be697cf09dd129ed374e970577bf">m_absorbedNormalCoords</a></td></tr>
+<tr class="separator:a67c2be697cf09dd129ed374e970577bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406cdf517edc0836c3bf8de21ce50b80" id="r_a406cdf517edc0836c3bf8de21ce50b80"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a406cdf517edc0836c3bf8de21ce50b80">m_absorbedDeviationCoords</a></td></tr>
+<tr class="separator:a406cdf517edc0836c3bf8de21ce50b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0823949b710a86985e7adfcd4070e42f" id="r_a0823949b710a86985e7adfcd4070e42f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a0823949b710a86985e7adfcd4070e42f">m_absorbedNormalCoordsUTM</a></td></tr>
+<tr class="separator:a0823949b710a86985e7adfcd4070e42f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a312405ce281d00368bf60efde045bc82" id="r_a312405ce281d00368bf60efde045bc82"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a312405ce281d00368bf60efde045bc82">m_absorbedDeviationCoordsUTM</a></td></tr>
+<tr class="separator:a312405ce281d00368bf60efde045bc82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68019ea0ca0f3ae1fe0e0a0a8ee1753d" id="r_a68019ea0ca0f3ae1fe0e0a0a8ee1753d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a68019ea0ca0f3ae1fe0e0a0a8ee1753d">m_branchIds</a></td></tr>
 <tr class="separator:a68019ea0ca0f3ae1fe0e0a0a8ee1753d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f9824f6c1cfd88922d19b57008f844c" id="r_a8f9824f6c1cfd88922d19b57008f844c"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a8f9824f6c1cfd88922d19b57008f844c">m_rootBranchId</a></td></tr>
@@ -267,24 +344,12 @@ Attributs privés</h2></td></tr>
 <tr class="separator:a6cc6b880a4a436fd747a9f9796760753"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5eebd760584ad79bbc0b360bf7775833" id="r_a5eebd760584ad79bbc0b360bf7775833"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a5eebd760584ad79bbc0b360bf7775833">m_deviationBranchId</a></td></tr>
 <tr class="separator:a5eebd760584ad79bbc0b360bf7775833"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add51e60b1730f3e9adfc28ecad289be4" id="r_add51e60b1730f3e9adfc28ecad289be4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html">SwitchBranches</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#add51e60b1730f3e9adfc28ecad289be4">m_branches</a></td></tr>
-<tr class="separator:add51e60b1730f3e9adfc28ecad289be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21ee427a48ed4e0210f98d617dfe3940" id="r_a21ee427a48ed4e0210f98d617dfe3940"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a21ee427a48ed4e0210f98d617dfe3940">m_tipOnRoot</a></td></tr>
-<tr class="separator:a21ee427a48ed4e0210f98d617dfe3940"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a12f7274710c0378ce3daa7e563598b" id="r_a8a12f7274710c0378ce3daa7e563598b"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a8a12f7274710c0378ce3daa7e563598b">m_tipOnNormal</a></td></tr>
-<tr class="separator:a8a12f7274710c0378ce3daa7e563598b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82c9708d8c70130c48b3db07f173e778" id="r_a82c9708d8c70130c48b3db07f173e778"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a82c9708d8c70130c48b3db07f173e778">m_tipOnDeviation</a></td></tr>
-<tr class="separator:a82c9708d8c70130c48b3db07f173e778"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3cdb18e8b0bd85f0f59e2b0ede354d7" id="r_ac3cdb18e8b0bd85f0f59e2b0ede354d7"><td class="memItemLeft" align="right" valign="top">std::optional&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#ac3cdb18e8b0bd85f0f59e2b0ede354d7">m_totalLengthMeters</a></td></tr>
-<tr class="separator:ac3cdb18e8b0bd85f0f59e2b0ede354d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6af3dad7d1aafb2afc5d154889951d24" id="r_a6af3dad7d1aafb2afc5d154889951d24"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a6af3dad7d1aafb2afc5d154889951d24">m_doubleOnNormal</a></td></tr>
 <tr class="separator:a6af3dad7d1aafb2afc5d154889951d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a754da66938c52613b109018f839ba5f2" id="r_a754da66938c52613b109018f839ba5f2"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a754da66938c52613b109018f839ba5f2">m_doubleOnDeviation</a></td></tr>
 <tr class="separator:a754da66938c52613b109018f839ba5f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec87b6655540fe1d6035f5899aec4784" id="r_aec87b6655540fe1d6035f5899aec4784"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#aec87b6655540fe1d6035f5899aec4784">m_absorbedNormalCoords</a></td></tr>
-<tr class="separator:aec87b6655540fe1d6035f5899aec4784"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a424d466b5b31a2ce40f2a556a720022c" id="r_a424d466b5b31a2ce40f2a556a720022c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a424d466b5b31a2ce40f2a556a720022c">m_absorbedDeviationCoords</a></td></tr>
-<tr class="separator:a424d466b5b31a2ce40f2a556a720022c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add51e60b1730f3e9adfc28ecad289be4" id="r_add51e60b1730f3e9adfc28ecad289be4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d03/structSwitchBlock_1_1SwitchBranches.html">SwitchBranches</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#add51e60b1730f3e9adfc28ecad289be4">m_branches</a></td></tr>
+<tr class="separator:add51e60b1730f3e9adfc28ecad289be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75e110bf2f676901210977fda95d5e9d" id="r_a75e110bf2f676901210977fda95d5e9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">ActiveBranch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d02/classSwitchBlock.html#a75e110bf2f676901210977fda95d5e9d">m_activeBranch</a> = <a class="el" href="../../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89a1e23852820b9154316c7c06e2b7ba051">ActiveBranch::NORMAL</a></td></tr>
 <tr class="separator:a75e110bf2f676901210977fda95d5e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -293,14 +358,14 @@ Membres hérités additionnels</h2></td></tr>
 <tr class="inherit_header pro_attribs_classShuntingElement"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classShuntingElement')"><img src="../../closed.png" alt="-"/>&#160;Attributs protégés hérités de <a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a></td></tr>
 <tr class="memitem:a6853292ff1ab21bf1441b86e169a3ee2 inherit pro_attribs_classShuntingElement" id="r_a6853292ff1ab21bf1441b86e169a3ee2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d00/classShuntingElement.html#a6853292ff1ab21bf1441b86e169a3ee2">m_state</a> = <a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da88c189a42c87aa49d667fc8ab76bc323">ShuntingState::FREE</a></td></tr>
 <tr class="separator:a6853292ff1ab21bf1441b86e169a3ee2 inherit pro_attribs_classShuntingElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classInteractiveElement"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classInteractiveElement')"><img src="../../closed.png" alt="-"/>&#160;Attributs protégés hérités de <a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a></td></tr>
-<tr class="memitem:a3fa6f7a3b734f17c31de52c8d3183221 inherit pro_attribs_classInteractiveElement" id="r_a3fa6f7a3b734f17c31de52c8d3183221"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a3fa6f7a3b734f17c31de52c8d3183221">m_id</a></td></tr>
-<tr class="memdesc:a3fa6f7a3b734f17c31de52c8d3183221 inherit pro_attribs_classInteractiveElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">id de l'element  <br /></td></tr>
-<tr class="separator:a3fa6f7a3b734f17c31de52c8d3183221 inherit pro_attribs_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_static_attribs_classInteractiveElement"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_classInteractiveElement')"><img src="../../closed.png" alt="-"/>&#160;Attributs protégés statiques hérités de <a class="el" href="../../d8/d02/classInteractiveElement.html">InteractiveElement</a></td></tr>
-<tr class="memitem:a92de0811b888277b54be4a6dae22c08b inherit pro_static_attribs_classInteractiveElement" id="r_a92de0811b888277b54be4a6dae22c08b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d03/classLogger.html">Logger</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d02/classInteractiveElement.html#a92de0811b888277b54be4a6dae22c08b">m_logger</a></td></tr>
-<tr class="memdesc:a92de0811b888277b54be4a6dae22c08b inherit pro_static_attribs_classInteractiveElement"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> statique partagé par TOUS les éléments interactifs.  <br /></td></tr>
-<tr class="separator:a92de0811b888277b54be4a6dae22c08b inherit pro_static_attribs_classInteractiveElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classElement"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classElement')"><img src="../../closed.png" alt="-"/>&#160;Attributs protégés hérités de <a class="el" href="../../d5/d00/classElement.html">Element</a></td></tr>
+<tr class="memitem:aa63a2f40f251308e122f0f107c4dc7df inherit pro_attribs_classElement" id="r_aa63a2f40f251308e122f0f107c4dc7df"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#aa63a2f40f251308e122f0f107c4dc7df">m_id</a></td></tr>
+<tr class="memdesc:aa63a2f40f251308e122f0f107c4dc7df inherit pro_attribs_classElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">id de l'element  <br /></td></tr>
+<tr class="separator:aa63a2f40f251308e122f0f107c4dc7df inherit pro_attribs_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_classElement"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_classElement')"><img src="../../closed.png" alt="-"/>&#160;Attributs protégés statiques hérités de <a class="el" href="../../d5/d00/classElement.html">Element</a></td></tr>
+<tr class="memitem:aef48ade8406262ccdf85538f25c331c1 inherit pro_static_attribs_classElement" id="r_aef48ade8406262ccdf85538f25c331c1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d03/classLogger.html">Logger</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d00/classElement.html#aef48ade8406262ccdf85538f25c331c1">m_logger</a></td></tr>
+<tr class="memdesc:aef48ade8406262ccdf85538f25c331c1 inherit pro_static_attribs_classElement"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> statique partagé par TOUS les éléments interactifs.  <br /></td></tr>
+<tr class="separator:aef48ade8406262ccdf85538f25c331c1 inherit pro_static_attribs_classElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="ad6536f8891b40359de7e09db486294ba" name="ad6536f8891b40359de7e09db486294ba"></a>
@@ -328,8 +393,8 @@ Membres hérités additionnels</h2></td></tr>
 
 </div>
 </div>
-<a id="a39e05d6618d01419d30e1051584272bc" name="a39e05d6618d01419d30e1051584272bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39e05d6618d01419d30e1051584272bc">&#9670;&#160;</a></span>SwitchBlock() <span class="overload">[2/2]</span></h2>
+<a id="a8590c2f2c6557f23e3b3fa3c53c049c2" name="a8590c2f2c6557f23e3b3fa3c53c049c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8590c2f2c6557f23e3b3fa3c53c049c2">&#9670;&#160;</a></span>SwitchBlock() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -343,14 +408,14 @@ Membres hérités additionnels</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d4/d01/classLatLon.html">LatLon</a>&#160;</td>
-          <td class="paramname"><em>junctionCoord</em>, </td>
+          <td class="paramtype"><a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>&#160;</td>
+          <td class="paramname"><em>junctionWGS84</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
-          <td class="paramname"><em>initialBranchIds</em> = <code>{}</code>&#160;</td>
+          <td class="paramname"><em>branchIds</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -360,12 +425,12 @@ Membres hérités additionnels</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construit un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> positionné à junctionCoord. </p>
+<p>Construit un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> positionné à junctionWGS84. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">switchId</td><td>Identifiant unique (ex. "sw/0"). </td></tr>
-    <tr><td class="paramname">junctionCoord</td><td>Coordonnée WGS-84 du point de jonction. </td></tr>
-    <tr><td class="paramname">initialBranchIds</td><td>Branches connues à la création (optionnel). </td></tr>
+    <tr><td class="paramname">junctionWGS84</td><td>Coordonnée WGS-84 du point de jonction. </td></tr>
+    <tr><td class="paramname">branchIds</td><td>Branches connues à la création (optionnel). </td></tr>
   </table>
   </dd>
 </dl>
@@ -373,8 +438,8 @@ Membres hérités additionnels</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
-<a id="a8a483a3345227b3c4fbfbdc44915a580" name="a8a483a3345227b3c4fbfbdc44915a580"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a483a3345227b3c4fbfbdc44915a580">&#9670;&#160;</a></span>absorbLink()</h2>
+<a id="a676d952722f07ba8a5a5c9871f0f113f" name="a676d952722f07ba8a5a5c9871f0f113f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a676d952722f07ba8a5a5c9871f0f113f">&#9670;&#160;</a></span>absorbLink()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -394,8 +459,14 @@ Membres hérités additionnels</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt;&#160;</td>
-          <td class="paramname"><em>linkCoords</em>&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td>
+          <td class="paramname"><em>linkCoordsWGS84</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt;&#160;</td>
+          <td class="paramname"><em>linkCoordsUTM</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -406,16 +477,13 @@ Membres hérités additionnels</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Absorbe le segment de liaison d'un double aiguille. </p>
-<ul>
-<li>Remplace linkId par partnerId dans m_branchIds.</li>
-<li>Si linkId était la branche normale : • met à jour normalBranchId • stocke linkCoords (orientée depuis cette jonction) dans m_absorbedNormalCoords • tipOnNormal = linkCoords.back() (jonction du partenaire) • renseigne m_doubleOnNormal</li>
-<li>Idem côté deviation.</li>
-</ul>
+<p>Remplace linkId par partnerId dans m_branchIds, met à jour la branchId correspondante et les tips CDC.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">linkId</td><td>ID du <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> intermédiaire absorbé. </td></tr>
-    <tr><td class="paramname">partnerId</td><td>ID de l'aiguillage partenaire. </td></tr>
-    <tr><td class="paramname">linkCoords</td><td>Polyligne complète du segment absorbé, orientée depuis LA JONCTION DE CE SWITCH vers celle du partenaire. Premier point ≈ jonction de ce switch. Dernier point = jonction du partenaire (nouveau tip CDC). </td></tr>
+    <tr><td class="paramname">linkId</td><td>ID du <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> absorbé. </td></tr>
+    <tr><td class="paramname">partnerId</td><td>ID du <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> partenaire. </td></tr>
+    <tr><td class="paramname">linkCoordsWGS84</td><td>Polyligne du segment absorbé (orientée depuis cette jonction). </td></tr>
+    <tr><td class="paramname">linkCoordsUTM</td><td>Coordonnée XY du segment absorbé </td></tr>
   </table>
   </dd>
 </dl>
@@ -445,7 +513,7 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Convertit l'état ActiveBranch courant en chaîne lisible. Utilisé exclusivement par les appels de log. </p>
+<p>Convertit ActiveBranch en chaîne lisible pour les logs. </p>
 
 </div>
 </div>
@@ -464,7 +532,8 @@ Membres hérités additionnels</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Ajoute un ID de branche (<a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> adjacent). Pas de doublon. </p>
+
+<p>Ajoute un ID de branche. Pas de doublon. </p>
 
 </div>
 </div>
@@ -483,12 +552,12 @@ Membres hérités additionnels</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calcule et mémorise totalLengthMeters. Formule : root_leg + max(normal_leg, deviation_leg). No-op si non orienté. </p>
+<p>Calcule et mémorise la longueur totale de traversée. Formule : root_leg + max(normal_leg, deviation_leg). No-op si non orienté ou tips absents. </p>
 
 </div>
 </div>
-<a id="aaca37431800ae6145596cc436d93ab92" name="aaca37431800ae6145596cc436d93ab92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaca37431800ae6145596cc436d93ab92">&#9670;&#160;</a></span>getAbsorbedDeviationCoords()</h2>
+<a id="a928853c3e4278319afb861d8a3e6f5c6" name="a928853c3e4278319afb861d8a3e6f5c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a928853c3e4278319afb861d8a3e6f5c6">&#9670;&#160;</a></span>getAbsorbedDeviationCoordinates()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -497,7 +566,7 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; &amp; SwitchBlock::getAbsorbedDeviationCoords </td>
+          <td class="memname">const std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp; SwitchBlock::getAbsorbedDeviationCoordinates </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -510,13 +579,12 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Polyligne complète du segment absorbé côté deviation. </p>
-<p>Même sémantique que <a class="el" href="../../d9/d02/classSwitchBlock.html#a1e0096ec969222b7244af2ad26f2be12" title="Polyligne complète du segment absorbé côté normal.">getAbsorbedNormalCoords()</a>. </p>
+<p>Polyligne absorbée côté deviation (double switch). Vide si non applicable. </p>
 
 </div>
 </div>
-<a id="a1e0096ec969222b7244af2ad26f2be12" name="a1e0096ec969222b7244af2ad26f2be12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e0096ec969222b7244af2ad26f2be12">&#9670;&#160;</a></span>getAbsorbedNormalCoords()</h2>
+<a id="acb48a5a703509155ccde6fc05b8a6f86" name="acb48a5a703509155ccde6fc05b8a6f86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb48a5a703509155ccde6fc05b8a6f86">&#9670;&#160;</a></span>getAbsorbedDeviationCoordsUTM()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -525,7 +593,7 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; &amp; SwitchBlock::getAbsorbedNormalCoords </td>
+          <td class="memname">const std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; &amp; SwitchBlock::getAbsorbedDeviationCoordsUTM </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -538,8 +606,61 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Polyligne complète du segment absorbé côté normal. </p>
-<p>Orientée depuis la jonction de CE switch vers celle du partenaire. Vide si ce switch n'est pas un double côté normal. Utilisée par le rendu WebView pour tracer la branche fusionnée. </p>
+<p>UTM absorbée côté deviation (double switch). Vide si non applicable. </p>
+
+</div>
+</div>
+<a id="a5eac2af2a6dc3fadfb2e8714b1807c38" name="a5eac2af2a6dc3fadfb2e8714b1807c38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eac2af2a6dc3fadfb2e8714b1807c38">&#9670;&#160;</a></span>getAbsorbedNormalCoordinates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp; SwitchBlock::getAbsorbedNormalCoordinates </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Polyligne absorbée côté normal (double switch). Vide si non applicable. </p>
+
+</div>
+</div>
+<a id="a8477ee066a0acd74adf581ba7a238676" name="a8477ee066a0acd74adf581ba7a238676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8477ee066a0acd74adf581ba7a238676">&#9670;&#160;</a></span>getAbsorbedNormalCoordsUTM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; &amp; SwitchBlock::getAbsorbedNormalCoordsUTM </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>UTM absorbée côté deviation (double switch). Vide si non applicable. </p>
 
 </div>
 </div>
@@ -565,7 +686,8 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Retourne la branche actuellement active (NORMAL par défaut). </p>
+
+<p>Branche actuellement active (NORMAL par défaut). </p>
 
 </div>
 </div>
@@ -592,7 +714,7 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Retourne les branches résolues. Nullptr si non encore initialisé. </p>
+<p>Retourne les branches résolues. nullptr si non initialisé. </p>
 
 </div>
 </div>
@@ -618,7 +740,35 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>IDs des StraightBlocks connectés à la jonction. Peuplé en Phase 5b, muté en Phase 7 lors de l'absorption du segment de liaison. </p>
+
+<p>IDs des StraightBlocks connectés à la jonction. Peuplé lors de la construction du graphe. </p>
+
+</div>
+</div>
+<a id="a497fb704382429dd293e826d207e33a0" name="a497fb704382429dd293e826d207e33a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a497fb704382429dd293e826d207e33a0">&#9670;&#160;</a></span>getDeviationBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> * SwitchBlock::getDeviationBlock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Accès direct à la branche déviée. nullptr si non résolue. </p>
 
 </div>
 </div>
@@ -644,7 +794,8 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>ID du <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> de sortie déviée. Pour un double switch côté deviation : ID du partenaire (après absorption Phase 7). Absent si non orienté. </p>
+
+<p>ID de la branche déviée. Absent si non orienté. </p>
 
 </div>
 </div>
@@ -671,7 +822,7 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>ID du partenaire si le lien absorbé était côté branche DEVIEE. </p>
+<p>ID du partenaire double switch côté deviation. Absent si non applicable. </p>
 
 </div>
 </div>
@@ -698,7 +849,7 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>ID du partenaire si le lien absorbé était côté branche NORMALE. </p>
+<p>ID du partenaire double switch côté normal. Absent si non applicable. </p>
 
 </div>
 </div>
@@ -727,12 +878,12 @@ Membres hérités additionnels</h2></td></tr>
 
 <p>Retourne l'identifiant unique de l'élément (ex. "sw/3", "s/12"). </p>
 
-<p>Implémente <a class="el" href="../../d8/d02/classInteractiveElement.html#a6e4de24603c935ed0c9151c738239c9b">InteractiveElement</a>.</p>
+<p>Implémente <a class="el" href="../../d5/d00/classElement.html#a9aae657a532fd6132404151a351e55db">Element</a>.</p>
 
 </div>
 </div>
-<a id="a17420e8225a0637a6d38b73bee7d2526" name="a17420e8225a0637a6d38b73bee7d2526"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17420e8225a0637a6d38b73bee7d2526">&#9670;&#160;</a></span>getJunctionCoordinate()</h2>
+<a id="ac5d8ff6e8ebddd979e74f9fe12968f56" name="ac5d8ff6e8ebddd979e74f9fe12968f56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5d8ff6e8ebddd979e74f9fe12968f56">&#9670;&#160;</a></span>getJunctionUTM()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -741,7 +892,7 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &amp; SwitchBlock::getJunctionCoordinate </td>
+          <td class="memname">const <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &amp; SwitchBlock::getJunctionUTM </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -753,7 +904,62 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Coordonnée UTM du point de jonction (x = est, y = nord, mètres). </p>
+
+</div>
+</div>
+<a id="a2f4787c84809cf5963674f5b202341a8" name="a2f4787c84809cf5963674f5b202341a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f4787c84809cf5963674f5b202341a8">&#9670;&#160;</a></span>getJunctionWGS84()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &amp; SwitchBlock::getJunctionWGS84 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 <p>Coordonnée WGS-84 du point de jonction physique. </p>
+
+</div>
+</div>
+<a id="ad5a7ab0a36a37a6fc72afbea99a98087" name="ad5a7ab0a36a37a6fc72afbea99a98087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5a7ab0a36a37a6fc72afbea99a98087">&#9670;&#160;</a></span>getNormalBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> * SwitchBlock::getNormalBlock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Accès direct à la branche normale. nullptr si non résolue. </p>
 
 </div>
 </div>
@@ -779,7 +985,8 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>ID du <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> de sortie principale. Pour un double switch côté normal : ID du partenaire (après absorption Phase 7). Absent si non orienté. </p>
+
+<p>ID de la branche normale. Absent si non orienté. </p>
 
 </div>
 </div>
@@ -833,7 +1040,34 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Retourne le switch partenaire côté normal, ou nullptr. Cast valide uniquement si <a class="el" href="../../d9/d02/classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e">isDouble()</a> &amp;&amp; <a class="el" href="../../d9/d02/classSwitchBlock.html#adf63b962a171de6014a94f8be882533f" title="ID du partenaire si le lien absorbé était côté branche NORMALE.">getDoubleOnNormal()</a>. </p>
+<p>Retourne le switch partenaire côté normal, ou nullptr. Cast valide uniquement si <a class="el" href="../../d9/d02/classSwitchBlock.html#a13b991ec872f7ace3af3e00db8b12e3e" title="True si un segment de liaison a été absorbé (double aiguille).">isDouble()</a> &amp;&amp; <a class="el" href="../../d9/d02/classSwitchBlock.html#adf63b962a171de6014a94f8be882533f" title="ID du partenaire double switch côté normal. Absent si non applicable.">getDoubleOnNormal()</a>. </p>
+
+</div>
+</div>
+<a id="a97817af93750b4bb24f27537d38de8d2" name="a97817af93750b4bb24f27537d38de8d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97817af93750b4bb24f27537d38de8d2">&#9670;&#160;</a></span>getRootBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> * SwitchBlock::getRootBlock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Accès direct à la branche root. nullptr si non résolue. </p>
 
 </div>
 </div>
@@ -859,7 +1093,8 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>ID du <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> entrant dans la jonction (branche tronc). Absent si non orienté. </p>
+
+<p>ID de la branche root. Absent si non orienté. </p>
 
 </div>
 </div>
@@ -893,8 +1128,8 @@ Membres hérités additionnels</h2></td></tr>
 
 </div>
 </div>
-<a id="a6b66c9a47909473ed1952a1f6dfb7183" name="a6b66c9a47909473ed1952a1f6dfb7183"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b66c9a47909473ed1952a1f6dfb7183">&#9670;&#160;</a></span>getTipOnDeviation()</h2>
+<a id="adfbe6ac0c1190e220e91558dd870a2b6" name="adfbe6ac0c1190e220e91558dd870a2b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfbe6ac0c1190e220e91558dd870a2b6">&#9670;&#160;</a></span>getTipOnDeviation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -903,7 +1138,7 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; &amp; SwitchBlock::getTipOnDeviation </td>
+          <td class="memname">const std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp; SwitchBlock::getTipOnDeviation </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -915,12 +1150,12 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Point CDC sur la branche deviation. Pour un double switch côté deviation : extrémité distale de la polyligne absorbée. </p>
+<p>Point CDC côté deviation. Absent si non orienté. </p>
 
 </div>
 </div>
-<a id="ad6735b53a83425ebf379eb210a5237ba" name="ad6735b53a83425ebf379eb210a5237ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6735b53a83425ebf379eb210a5237ba">&#9670;&#160;</a></span>getTipOnNormal()</h2>
+<a id="a32af9aeb69337c7f9bab1d0c61865d85" name="a32af9aeb69337c7f9bab1d0c61865d85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32af9aeb69337c7f9bab1d0c61865d85">&#9670;&#160;</a></span>getTipOnNormal()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -929,7 +1164,7 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; &amp; SwitchBlock::getTipOnNormal </td>
+          <td class="memname">const std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp; SwitchBlock::getTipOnNormal </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -941,12 +1176,12 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Point CDC sur la branche normal. Pour un double switch côté normal : extrémité distale de la polyligne absorbée (= jonction du partenaire). </p>
+<p>Point CDC côté normal. Absent si non orienté. </p>
 
 </div>
 </div>
-<a id="a5e408b95d90214d1db3d880d0c8e7527" name="a5e408b95d90214d1db3d880d0c8e7527"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e408b95d90214d1db3d880d0c8e7527">&#9670;&#160;</a></span>getTipOnRoot()</h2>
+<a id="a48bb19b7ba5a8e7a37abd0109bd717f9" name="a48bb19b7ba5a8e7a37abd0109bd717f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48bb19b7ba5a8e7a37abd0109bd717f9">&#9670;&#160;</a></span>getTipOnRoot()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -955,7 +1190,7 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt; &amp; SwitchBlock::getTipOnRoot </td>
+          <td class="memname">const std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp; SwitchBlock::getTipOnRoot </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -967,7 +1202,7 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Point CDC à ~branchTipDistance depuis la jonction sur la branche root. </p>
+<p>Point CDC côté root. Absent si non orienté. </p>
 
 </div>
 </div>
@@ -994,10 +1229,12 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Longueur physique de traversée en mètres. Absent si tips manquants. </p>
+
 </div>
 </div>
-<a id="ac56312a01711bfd3d16adef8310c799c" name="ac56312a01711bfd3d16adef8310c799c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac56312a01711bfd3d16adef8310c799c">&#9670;&#160;</a></span>getType()</h2>
+<a id="a063cb4c4dfe06b991ac4e9fc27e55afc" name="a063cb4c4dfe06b991ac4e9fc27e55afc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a063cb4c4dfe06b991ac4e9fc27e55afc">&#9670;&#160;</a></span>getType()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1006,7 +1243,7 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d6/d02/InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731">InteractiveElementType</a> SwitchBlock::getType </td>
+          <td class="memname"><a class="el" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01ae">ElementType</a> SwitchBlock::getType </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1020,14 +1257,14 @@ Membres hérités additionnels</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Retourne le type de l'élément. </p>
-<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="../../d6/d02/InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731a4239f063a3d4fb9d38a0182be6e39e76">InteractiveElementType::SWITCH</a> ou <a class="el" href="../../d6/d02/InteractiveElement_8h.html#aa8e844514505f9c12eaa13dfb8045731a8c5e50fab3748e9c53a6863b3dce1401">InteractiveElementType::STRAIGHT</a>. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01aea4239f063a3d4fb9d38a0182be6e39e76">ElementType::SWITCH</a> ou <a class="el" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01aea8c5e50fab3748e9c53a6863b3dce1401">ElementType::STRAIGHT</a>. </dd></dl>
 
-<p>Implémente <a class="el" href="../../d8/d02/classInteractiveElement.html#a8ff2705adce5c5c4d9a056dbf80cc79e">InteractiveElement</a>.</p>
+<p>Implémente <a class="el" href="../../d5/d00/classElement.html#ae718a7a155a724fb91e8f925c81ac5ec">Element</a>.</p>
 
 </div>
 </div>
-<a id="ab77747c7b8747d9909c9ee2233fa7ba5" name="ab77747c7b8747d9909c9ee2233fa7ba5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab77747c7b8747d9909c9ee2233fa7ba5">&#9670;&#160;</a></span>haversineDistanceMeters()</h2>
+<a id="aae6b3b5fa59f27e1754fe0d0d6d7fb96" name="aae6b3b5fa59f27e1754fe0d0d6d7fb96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae6b3b5fa59f27e1754fe0d0d6d7fb96">&#9670;&#160;</a></span>haversineDistanceMeters()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1038,13 +1275,13 @@ Membres hérités additionnels</h2></td></tr>
         <tr>
           <td class="memname">double SwitchBlock::haversineDistanceMeters </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &amp;&#160;</td>
           <td class="paramname"><em>a</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &amp;&#160;</td>
           <td class="paramname"><em>b</em>&#160;</td>
         </tr>
         <tr>
@@ -1061,11 +1298,10 @@ Membres hérités additionnels</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calcule la distance de Haversine entre deux points WGS-84. </p>
-<p>Formule exacte sur sphère de rayon 6 371 000 m. Utilisée en interne par <a class="el" href="../../d9/d02/classSwitchBlock.html#a003ca555f7f3dfd8e8057ae23dba9381" title="Calcule et mémorise totalLengthMeters. Formule : root_leg + max(normal_leg, deviation_leg)....">computeTotalLength()</a>.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>Premier point (latitude, longitude en degrés décimaux). </td></tr>
-    <tr><td class="paramname">b</td><td>Second point. </td></tr>
+    <tr><td class="paramname">a</td><td>Premier point. </td></tr>
+    <tr><td class="paramname">b</td><td>Second point.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1095,7 +1331,8 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Raccourci — évite la comparaison explicite à l'appelant. </p>
+
+<p>Raccourci — évite la comparaison explicite. </p>
 
 </div>
 </div>
@@ -1121,7 +1358,8 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>True si Phase 7 a absorbé un segment de liaison (double aiguille). Un des deux champs m_doubleOnNormal ou m_doubleOnDeviation est renseigné. </p>
+
+<p>True si un segment de liaison a été absorbé (double aiguille). </p>
 
 </div>
 </div>
@@ -1147,7 +1385,8 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>True si Phase 6 a assigné root / normal / deviation. </p>
+
+<p>True si les rôles root/normal/deviation sont assignés. </p>
 
 </div>
 </div>
@@ -1193,8 +1432,84 @@ Membres hérités additionnels</h2></td></tr>
 
 </div>
 </div>
-<a id="a33f10f3d58cb4802c2a45583cb9e216c" name="a33f10f3d58cb4802c2a45583cb9e216c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33f10f3d58cb4802c2a45583cb9e216c">&#9670;&#160;</a></span>setActiveBranch()</h2>
+<a id="ab199c047b49e5d158a8b7f8ffb7aa633" name="ab199c047b49e5d158a8b7f8ffb7aa633"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab199c047b49e5d158a8b7f8ffb7aa633">&#9670;&#160;</a></span>replaceBranchPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchBlock::replaceBranchPointer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td>
+          <td class="paramname"><em>oldElem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td>
+          <td class="paramname"><em>newElem</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remplace un pointeur de branche par un autre. </p>
+<p>Appelé par Phase7_DoubleSwitchDetector::absorbLinkSegment() après suppression du segment de liaison.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oldElem</td><td>Ancien bloc pointé (ex. le <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> absorbé). </td></tr>
+    <tr><td class="paramname">newElem</td><td>Nouveau bloc (ex. le <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> partenaire). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a887a1418c2de3393581a3c50c8949280" name="a887a1418c2de3393581a3c50c8949280"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a887a1418c2de3393581a3c50c8949280">&#9670;&#160;</a></span>setAbsorbedCoords()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchBlock::setAbsorbedCoords </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>side</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td>
+          <td class="paramname"><em>coords</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stocke les coordonnées absorbées d'un double switch. </p>
+<p>Appelé par Phase7_DoubleSwitchDetector::absorbLinkSegment().</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">side</td><td>Branche absorbée ("normal" ou "deviation"). </td></tr>
+    <tr><td class="paramname">coords</td><td>Polyligne WGS84 du segment absorbé. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae6e437d28f39ff6dc3120d5f836d0f37" name="ae6e437d28f39ff6dc3120d5f836d0f37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6e437d28f39ff6dc3120d5f836d0f37">&#9670;&#160;</a></span>setActiveBranch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1208,7 +1523,7 @@ Membres hérités additionnels</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bool&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>propagate</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
@@ -1220,7 +1535,13 @@ Membres hérités additionnels</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Assigne la branche active. </p>
-<p>Appelé par <a class="el" href="../../d6/d02/classMainWindow.html#a242d9acf230544637908fc2cf31f1284" title="Met à jour l&#39;état opérationnel d&#39;un SwitchBlock après un clic.">MainWindow::onSwitchClick()</a> en réponse à un clic <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>. Ne touche pas à la topologie — uniquement l'état opérationnel. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">branch</td><td>Branche à activer. </td></tr>
+    <tr><td class="paramname">propagate</td><td>Si true, propage aux partenaires double switch. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1240,10 +1561,292 @@ Membres hérités additionnels</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enregistre les pointeurs root/normal/deviation après parsing. </p>
+<p>Enregistre les branches en une seule opération. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">branches</td><td>Struct contenant les trois branches résolues. </td></tr>
+    <tr><td class="paramname">branches</td><td>Struct contenant les trois pointeurs résolus. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac2dc9ab343496ffbc04b50085072f786" name="ac2dc9ab343496ffbc04b50085072f786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2dc9ab343496ffbc04b50085072f786">&#9670;&#160;</a></span>setDeviationBranchId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchBlock::setDeviationBranchId </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3cdf67032ce706a00a05ec752b298e0b" name="a3cdf67032ce706a00a05ec752b298e0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cdf67032ce706a00a05ec752b298e0b">&#9670;&#160;</a></span>setDeviationPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchBlock::setDeviationPointer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assigne le pointeur de la branche déviée. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elem</td><td>Pointeur non-propriétaire. nullptr si non résolu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae0357dc6806b4b9a533785ae7ffbcfc8" name="ae0357dc6806b4b9a533785ae7ffbcfc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0357dc6806b4b9a533785ae7ffbcfc8">&#9670;&#160;</a></span>setId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchBlock::setId </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assigne l'identifiant du bloc. Appelé par <a class="el" href="../../df/d00/classPhase6__BlockExtractor.html">Phase6_BlockExtractor</a> lors de la création du bloc. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Identifiant unique (ex. "sw/0"). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a17a6c050b375ce05cc2593c42758d26e" name="a17a6c050b375ce05cc2593c42758d26e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17a6c050b375ce05cc2593c42758d26e">&#9670;&#160;</a></span>setJunctionUTM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchBlock::setJunctionUTM </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>&#160;</td>
+          <td class="paramname"><em>coord</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assigne la position de jonction en UTM. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coord</td><td>Coordonnée UTM (x = est, y = nord, mètres). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0a9c890e678df3f50966fb184fdd4a8e" name="a0a9c890e678df3f50966fb184fdd4a8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a9c890e678df3f50966fb184fdd4a8e">&#9670;&#160;</a></span>setJunctionWGS84()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchBlock::setJunctionWGS84 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>&#160;</td>
+          <td class="paramname"><em>coord</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assigne la position de jonction en WGS84. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coord</td><td>Coordonnée WGS-84 (latitude, longitude). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8dd6bae8e08339dc8bda18cbb2ba90d7" name="a8dd6bae8e08339dc8bda18cbb2ba90d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dd6bae8e08339dc8bda18cbb2ba90d7">&#9670;&#160;</a></span>setNormalBranchId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchBlock::setNormalBranchId </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff79e0e44aba8ab5525e9b5fa3dc7b93" name="aff79e0e44aba8ab5525e9b5fa3dc7b93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff79e0e44aba8ab5525e9b5fa3dc7b93">&#9670;&#160;</a></span>setNormalPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchBlock::setNormalPointer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assigne le pointeur de la branche normale. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elem</td><td>Pointeur non-propriétaire. nullptr si non résolu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6cece092fdfcee39d93af199b51f7e8d" name="a6cece092fdfcee39d93af199b51f7e8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cece092fdfcee39d93af199b51f7e8d">&#9670;&#160;</a></span>setRootBranchId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchBlock::setRootBranchId </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a40f62f7fa25f753f8277e3f84b97986e" name="a40f62f7fa25f753f8277e3f84b97986e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40f62f7fa25f753f8277e3f84b97986e">&#9670;&#160;</a></span>setRootPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchBlock::setRootPointer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assigne le pointeur de la branche root. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elem</td><td>Pointeur non-propriétaire. nullptr si non résolu. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1276,8 +1879,8 @@ Membres hérités additionnels</h2></td></tr>
 
 </div>
 </div>
-<a id="aeb09c2dc6dd9b40c71aa79ecef918e14" name="aeb09c2dc6dd9b40c71aa79ecef918e14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb09c2dc6dd9b40c71aa79ecef918e14">&#9670;&#160;</a></span>setTips()</h2>
+<a id="a2a3ef523de2587f296532b5577b9afab" name="a2a3ef523de2587f296532b5577b9afab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a3ef523de2587f296532b5577b9afab">&#9670;&#160;</a></span>setTips()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1285,19 +1888,19 @@ Membres hérités additionnels</h2></td></tr>
         <tr>
           <td class="memname">void SwitchBlock::setTips </td>
           <td>(</td>
-          <td class="paramtype">std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt;&#160;</td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td>
           <td class="paramname"><em>tipRoot</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt;&#160;</td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td>
           <td class="paramname"><em>tipNormal</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::optional&lt; <a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> &gt;&#160;</td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td>
           <td class="paramname"><em>tipDeviation</em>&#160;</td>
         </tr>
         <tr>
@@ -1309,6 +1912,14 @@ Membres hérités additionnels</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Assigne les trois tips CDC en une seule opération. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tipRoot</td><td>Tip côté root. </td></tr>
+    <tr><td class="paramname">tipNormal</td><td>Tip côté normal. </td></tr>
+    <tr><td class="paramname">tipDeviation</td><td>Tip côté deviation. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1327,12 +1938,12 @@ Membres hérités additionnels</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Échange normal ↔ deviation (rôles + tips + polylignes absorbées). </p>
+<p>Échange normal ↔ deviation (rôles + tips + polylignes absorbées + doubles). </p>
 
 </div>
 </div>
-<a id="a49ee6b32f553615447b412e58afca21a" name="a49ee6b32f553615447b412e58afca21a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49ee6b32f553615447b412e58afca21a">&#9670;&#160;</a></span>toggleActiveBranch()</h2>
+<a id="a4d0c12c5196e0cd35fb33784c727e45b" name="a4d0c12c5196e0cd35fb33784c727e45b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d0c12c5196e0cd35fb33784c727e45b">&#9670;&#160;</a></span>toggleActiveBranch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1340,15 +1951,21 @@ Membres hérités additionnels</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="../../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">ActiveBranch</a> SwitchBlock::toggleActiveBranch </td>
           <td>(</td>
-          <td class="paramtype">const bool&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>propagate</em> = <code>true</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Alterne entre NORMAL et DEVIATION. Équivalent à setActiveBranch(!current). </p>
-<dl class="section return"><dt>Renvoie</dt><dd>m_activeBranch </dd></dl>
+<p>Alterne entre NORMAL et DEVIATION. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">propagate</td><td>Si true, propage aux partenaires double switch.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Nouvelle valeur de m_activeBranch. </dd></dl>
 
 </div>
 </div>
@@ -1372,8 +1989,8 @@ Membres hérités additionnels</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentation des données membres</h2>
-<a id="a424d466b5b31a2ce40f2a556a720022c" name="a424d466b5b31a2ce40f2a556a720022c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a424d466b5b31a2ce40f2a556a720022c">&#9670;&#160;</a></span>m_absorbedDeviationCoords</h2>
+<a id="a406cdf517edc0836c3bf8de21ce50b80" name="a406cdf517edc0836c3bf8de21ce50b80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a406cdf517edc0836c3bf8de21ce50b80">&#9670;&#160;</a></span>m_absorbedDeviationCoords</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1382,7 +1999,7 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="../../d4/d01/classLatLon.html">LatLon</a>&gt; SwitchBlock::m_absorbedDeviationCoords</td>
+          <td class="memname">std::vector&lt;<a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>&gt; SwitchBlock::m_absorbedDeviationCoords</td>
         </tr>
       </table>
   </td>
@@ -1391,12 +2008,12 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Polyligne complète du segment absorbé côté deviation, orientée depuis la jonction de ce switch vers le partenaire. </p>
+<p>Polyligne absorbée côté deviation (double switch). </p>
 
 </div>
 </div>
-<a id="aec87b6655540fe1d6035f5899aec4784" name="aec87b6655540fe1d6035f5899aec4784"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec87b6655540fe1d6035f5899aec4784">&#9670;&#160;</a></span>m_absorbedNormalCoords</h2>
+<a id="a312405ce281d00368bf60efde045bc82" name="a312405ce281d00368bf60efde045bc82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a312405ce281d00368bf60efde045bc82">&#9670;&#160;</a></span>m_absorbedDeviationCoordsUTM</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1405,7 +2022,7 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="../../d4/d01/classLatLon.html">LatLon</a>&gt; SwitchBlock::m_absorbedNormalCoords</td>
+          <td class="memname">std::vector&lt;<a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>&gt; SwitchBlock::m_absorbedDeviationCoordsUTM</td>
         </tr>
       </table>
   </td>
@@ -1414,7 +2031,51 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Polyligne complète du segment absorbé côté normal, orientée depuis la jonction de ce switch vers le partenaire. Vide si non applicable. </p>
+
+</div>
+</div>
+<a id="a67c2be697cf09dd129ed374e970577bf" name="a67c2be697cf09dd129ed374e970577bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67c2be697cf09dd129ed374e970577bf">&#9670;&#160;</a></span>m_absorbedNormalCoords</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>&gt; SwitchBlock::m_absorbedNormalCoords</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Polyligne absorbée côté normal (double switch). </p>
+
+</div>
+</div>
+<a id="a0823949b710a86985e7adfcd4070e42f" name="a0823949b710a86985e7adfcd4070e42f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0823949b710a86985e7adfcd4070e42f">&#9670;&#160;</a></span>m_absorbedNormalCoordsUTM</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>&gt; SwitchBlock::m_absorbedNormalCoordsUTM</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1437,7 +2098,7 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Position opérationnelle courante. NORMAL par défaut. </p>
+<p>Branche actuellement active. NORMAL par défaut. </p>
 
 </div>
 </div>
@@ -1460,7 +2121,7 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Branches topologiques résolues après parsing. </p>
+<p>Branches topologiques résolues. nullptr si non initialisées. </p>
 
 </div>
 </div>
@@ -1483,7 +2144,7 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>IDs des StraightBlocks connectés à la jonction. Peuplé en Phase 5b via <a class="el" href="../../d9/d02/classSwitchBlock.html#af60b9a9bfb1223cdb1da385d4aff13cd">addBranchId()</a>. Muté en Phase 7 lors de l'absorption du segment de liaison (double switch). </p>
+<p>IDs des StraightBlocks connectés. </p>
 
 </div>
 </div>
@@ -1506,7 +2167,7 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>ID du <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> de sortie déviée. Absent tant que Phase 6 n'a pas orienté le switch. Remplacé par l'ID du partenaire en Phase 7 si le switch est un double côté deviation. </p>
+<p>ID de la branche déviée. Absent si non orienté. </p>
 
 </div>
 </div>
@@ -1529,7 +2190,7 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>ID du partenaire si le lien absorbé était côté branche DEVIEE. </p>
+<p>ID du partenaire double switch côté deviation. </p>
 
 </div>
 </div>
@@ -1552,12 +2213,12 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>ID du partenaire si le lien absorbé était côté branche NORMALE. </p>
+<p>ID du partenaire double switch côté normal. </p>
 
 </div>
 </div>
-<a id="adc792c8b048aa0f84a1c0fc4b22422fb" name="adc792c8b048aa0f84a1c0fc4b22422fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc792c8b048aa0f84a1c0fc4b22422fb">&#9670;&#160;</a></span>m_junctionCoordinate</h2>
+<a id="af6825e5daeb1bfc94d99e86b915b54d5" name="af6825e5daeb1bfc94d99e86b915b54d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6825e5daeb1bfc94d99e86b915b54d5">&#9670;&#160;</a></span>m_junctionUTM</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1566,7 +2227,30 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d4/d01/classLatLon.html">LatLon</a> SwitchBlock::m_junctionCoordinate</td>
+          <td class="memname"><a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> SwitchBlock::m_junctionUTM</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Coordonnée UTM du point de jonction (x = est, y = nord, mètres). </p>
+
+</div>
+</div>
+<a id="a6053968fccea0e95e2356a871a90e563" name="a6053968fccea0e95e2356a871a90e563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6053968fccea0e95e2356a871a90e563">&#9670;&#160;</a></span>m_junctionWGS84</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> SwitchBlock::m_junctionWGS84</td>
         </tr>
       </table>
   </td>
@@ -1598,7 +2282,7 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>ID du <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> de sortie principale (continuation directe du tronc). Absent tant que Phase 6 n'a pas orienté le switch. Remplacé par l'ID du partenaire en Phase 7 si le switch est un double côté normal. </p>
+<p>ID de la branche normale. Absent si non orienté. </p>
 
 </div>
 </div>
@@ -1621,35 +2305,12 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>ID du <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> entrant dans la jonction (côté tronc de l'aiguillage). Absent tant que Phase 6 n'a pas orienté le switch. </p>
+<p>ID de la branche root. Absent si non orienté. </p>
 
 </div>
 </div>
-<a id="a82c9708d8c70130c48b3db07f173e778" name="a82c9708d8c70130c48b3db07f173e778"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82c9708d8c70130c48b3db07f173e778">&#9670;&#160;</a></span>m_tipOnDeviation</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::optional&lt;<a class="el" href="../../d4/d01/classLatLon.html">LatLon</a>&gt; SwitchBlock::m_tipOnDeviation</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Point CDC WGS-84 côté deviation. Pour un double switch côté deviation : jonction du partenaire. Absent si le switch n'est pas orienté. </p>
-
-</div>
-</div>
-<a id="a8a12f7274710c0378ce3daa7e563598b" name="a8a12f7274710c0378ce3daa7e563598b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a12f7274710c0378ce3daa7e563598b">&#9670;&#160;</a></span>m_tipOnNormal</h2>
+<a id="aa37da8c89dc8918627710735b9a700d1" name="aa37da8c89dc8918627710735b9a700d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa37da8c89dc8918627710735b9a700d1">&#9670;&#160;</a></span>m_tipOnDeviation</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1658,7 +2319,7 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt;<a class="el" href="../../d4/d01/classLatLon.html">LatLon</a>&gt; SwitchBlock::m_tipOnNormal</td>
+          <td class="memname">std::optional&lt;<a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>&gt; SwitchBlock::m_tipOnDeviation</td>
         </tr>
       </table>
   </td>
@@ -1667,12 +2328,12 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Point CDC WGS-84 côté normal. Pour un double switch côté normal : jonction du partenaire (extrémité du segment absorbé). Absent si le switch n'est pas orienté. </p>
+<p>Tip CDC côté deviation. Absent si non orienté. </p>
 
 </div>
 </div>
-<a id="a21ee427a48ed4e0210f98d617dfe3940" name="a21ee427a48ed4e0210f98d617dfe3940"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21ee427a48ed4e0210f98d617dfe3940">&#9670;&#160;</a></span>m_tipOnRoot</h2>
+<a id="a4afa5b9197d956b9db502dda3cee2420" name="a4afa5b9197d956b9db502dda3cee2420"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4afa5b9197d956b9db502dda3cee2420">&#9670;&#160;</a></span>m_tipOnNormal</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1681,7 +2342,7 @@ Membres hérités additionnels</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt;<a class="el" href="../../d4/d01/classLatLon.html">LatLon</a>&gt; SwitchBlock::m_tipOnRoot</td>
+          <td class="memname">std::optional&lt;<a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>&gt; SwitchBlock::m_tipOnNormal</td>
         </tr>
       </table>
   </td>
@@ -1690,7 +2351,30 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Point CDC WGS-84 interpolé à ~branchTipDistance depuis la jonction, côté root. Sert de référence géométrique pour les vérifications d'écartement de voies. Absent si le switch n'est pas orienté. </p>
+<p>Tip CDC côté normal. Absent si non orienté. </p>
+
+</div>
+</div>
+<a id="adb9088468ad756a3c05f3445a0db04be" name="adb9088468ad756a3c05f3445a0db04be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb9088468ad756a3c05f3445a0db04be">&#9670;&#160;</a></span>m_tipOnRoot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt;<a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>&gt; SwitchBlock::m_tipOnRoot</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Tip CDC côté root. Absent si non orienté. </p>
 
 </div>
 </div>
@@ -1713,13 +2397,13 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Longueur physique totale de traversée en mètres. Formule : root_leg + max(normal_leg, deviation_leg). Calculée par <a class="el" href="../../d9/d02/classSwitchBlock.html#a003ca555f7f3dfd8e8057ae23dba9381" title="Calcule et mémorise totalLengthMeters. Formule : root_leg + max(normal_leg, deviation_leg)....">computeTotalLength()</a> après Phase 6. Absent si les tips CDC ne sont pas tous disponibles. </p>
+<p>Longueur physique de traversée (root_leg + max(normal, deviation)). Absent si tips non disponibles. </p>
 
 </div>
 </div>
 <hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
-<li>SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/<a class="el" href="../../dc/d01/SwitchBlock_8h_source.html">SwitchBlock.h</a></li>
-<li>SimulateurFerroviaire/Modules/InteractiveElements/ShuntingElements/<a class="el" href="../../d0/d02/SwitchBlock_8cpp.html">SwitchBlock.cpp</a></li>
+<li>SimulateurFerroviaire/Modules/Elements/ShuntingElements/<a class="el" href="../../dc/d01/SwitchBlock_8h_source.html">SwitchBlock.h</a></li>
+<li>SimulateurFerroviaire/Modules/Elements/ShuntingElements/<a class="el" href="../../d0/d02/SwitchBlock_8cpp.html">SwitchBlock.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

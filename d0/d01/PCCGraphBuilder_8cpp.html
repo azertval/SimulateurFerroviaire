@@ -103,10 +103,17 @@ $(document).ready(function(){initNavTree('d0/d01/PCCGraphBuilder_8cpp.html','../
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de PCCGraphBuilder.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../da/d00/PCCGraphBuilder_8cpp__incl.svg" width="1287" height="711"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../da/d00/PCCGraphBuilder_8cpp__incl.svg" width="1562" height="696"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Implémentation du constructeur du graphe PCC. </p>
+<dl class="section user"><dt>Correction v2 — chaînes de sous-blocs non câblées</dt><dd>La refonte du parser (<a class="el" href="../../df/d00/classPhase6__BlockExtractor.html">Phase6_BlockExtractor</a> v2) a remplacé le système d'identifiants (<code>m_neighbourIds</code> / <code>addNeighbourId</code>) par des pointeurs directs (<code>m_neighbours</code> / <code>setNeighbourPrev</code> / <code>setNeighbourNext</code>).</dd></dl>
+<p>L'ancienne implémentation de <code>buildEdges</code> utilisait <code><a class="el" href="../../da/d01/classStraightBlock.html#aafa70f4c9291e8a16aac2145dca90497" title="Identifiants des blocs adjacents (StraightBlock ou SwitchBlock). Triés lexicographiquement — addNeigh...">StraightBlock::getNeighbourIds()</a></code> pour créer les arêtes STRAIGHT entre blocs adjacents. Cette liste est désormais vide pour tous les sous-blocs produits par subdivision (<code>maxSegmentLength</code>), ce qui rompait les chaînes : </p><div class="fragment"><div class="line">s/0_0  [sw/0]───[s/0_0]   [s/0_1]   [s/0_2]  …  [s/0_11]───[sw/4]</div>
+<div class="line">                  ←── chaîne absente du graphe ───→</div>
+</div><!-- fragment --><p>Correction : <code>buildEdges</code> utilise désormais <code><a class="el" href="../../da/d01/classStraightBlock.html#a2dd3b344ef976b656134204de6ee8bc5" title="Retourne les voisins résolus. nullptr si non encore initialisé.">StraightBlock::getNeighbours()</a></code> (les pointeurs résolus par <a class="el" href="../../da/d01/classPhase8__RepositoryTransfer.html">Phase8_RepositoryTransfer</a>) pour créer les arêtes STRAIGHT. Cette approche couvre les deux cas :</p><ul>
+<li>Connexions internes de la chaîne (sous-blocs de subdivision).</li>
+<li>Connexions externe switch↔straight (ignorées ici — créées depuis le switch).</li>
+</ul>
 <dl class="section see"><dt>Voir également</dt><dd><a class="el" href="../../d8/d01/classPCCGraphBuilder.html" title="Constructeur statique du PCCGraph depuis TopologyRepository.">PCCGraphBuilder</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
