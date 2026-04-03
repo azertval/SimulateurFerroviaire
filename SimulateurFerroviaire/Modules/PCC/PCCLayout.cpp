@@ -221,16 +221,15 @@ int PCCLayout::runBFS(PCCGraph& graph,
             if (neighbour.role == PCCEdgeRole::DEVIATION)
             {
                 auto* swNeigh = dynamic_cast<PCCSwitchNode*>(neighbour.node);
-                if (swNeigh)
+                auto* swNode = dynamic_cast<PCCSwitchNode*>(node);  // nœud courant
+                if (swNeigh && swNode)  // double switch : switch → switch direct
                 {
-                    // Aiguille double — même colonne X, Y décalé.
                     nextX = x;
                     nextY = y + side;
                     nextArrivedViaDev = true;
                 }
-                else
+                else  // straight→switch ou switch→straight via déviation
                 {
-                    // Branche déviée ordinaire.
                     nextX = x + 1;
                     nextY = y + side;
                     nextArrivedViaDev = false;

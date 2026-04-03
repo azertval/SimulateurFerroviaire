@@ -344,7 +344,7 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
         const int      width = normalIsActive ? LINE_WIDTH_ACTIVE : LINE_WIDTH_INACTIVE;
         PenScope pen(hdc, col, width);
         pen.moveTo({ junctionX, center.y });
-        pen.lineTo({ normalBorderX - dirToNormal * halfGap, center.y });
+        pen.lineTo({ normalBorderX + dirToNormal * halfGap, center.y });
     }
 
     // =========================================================================
