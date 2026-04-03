@@ -15,6 +15,21 @@
  * a été redimensionnée (@c m_lastRect changé) ou si le graphe a été
  * reconstruit (@c m_projDirty = true dans @ref rebuild).
  *
+ * @par Navigation (zoom / pan) — v3
+ * La vue est pilotée par trois scalaires : @c m_zoom, @c m_panX, @c m_panY.
+ * Ils sont appliqués via @c SetWorldTransform sur le HDC dans @ref onPaint,
+ * après remplissage du fond en espace écran mais avant l'appel à TCORenderer.
+ *
+ *  - **Zoom** : @c Ctrl+Molette, centré sur la position courante de la souris.
+ *    La formule conserve le point sous le curseur fixe :
+ *    @code
+ *      ratio    = newZoom / oldZoom
+ *      newPanX  = cursorX - (cursorX - panX) * ratio
+ *    @endcode
+ *  - **Pan** : glisser-déposer bouton gauche (drag & drop).
+ *    @c SetCapture / @c ReleaseCapture garantissent la capture hors fenêtre.
+ *  - **Reset** : double-clic gauche remet zoom = 1, pan = (0, 0).
+ *
  * @par Cycle de vie
  *  -# @ref create — enregistre la classe Win32 et crée la fenêtre enfant.
  *  -# @ref toggle — alterne visibilité.
@@ -33,6 +48,8 @@
 #include "TCORenderer.h"
 #include "Engine/Core/Logger/Logger.h"
 #include "Modules/PCC/PCCGraph.h"
+
+#include <algorithm>   // std::clamp
 
 class PCCPanel
 {
@@ -103,9 +120,43 @@ private:
      * recalcule via @c TCORenderer::computeProjection uniquement si
      * @c m_projDirty est vrai ou si la taille de la fenêtre a changé.
      *
+     * Applique ensuite la world transform GDI (@c SetWorldTransform) pour le
+     * zoom (@c m_zoom) et le pan (@c m_panX / @c m_panY) avant d'appeler
+     * @c TCORenderer::draw avec @c fillBackground = false (fond déjà rempli).
+     *
      * @param hWnd Handle de la fenêtre à peindre.
      */
     void onPaint(HWND hWnd);
+
+    /**
+     * @brief Gère @c WM_MOUSEWHEEL avec Ctrl — zoom centré sur le curseur.
+     *
+     * Sans Ctrl, le message est transmis à @c DefWindowProcW (scroll natif).
+     */
+    void onMouseWheel(HWND hWnd, WPARAM wParam, LPARAM lParam);
+
+    /**
+     * @brief Démarre un drag & drop (pan) — @c WM_LBUTTONDOWN.
+     * Appelle @c SetCapture pour continuer à recevoir WM_MOUSEMOVE hors fenêtre.
+     */
+    void onLButtonDown(HWND hWnd, LPARAM lParam);
+
+    /**
+     * @brief Déplace la vue pendant le drag — @c WM_MOUSEMOVE.
+     * No-op si @c m_isDragging est faux.
+     */
+    void onMouseMove(HWND hWnd, LPARAM lParam);
+
+    /**
+     * @brief Termine le drag — @c WM_LBUTTONUP.
+     * Appelle @c ReleaseCapture.
+     */
+    void onLButtonUp(HWND hWnd);
+
+    /**
+     * @brief Réinitialise zoom = 1, pan = (0, 0) — @c WM_LBUTTONDBLCLK.
+     */
+    void resetView();
 
     /**
      * @brief Reconstruit le graphe PCC depuis @ref TopologyRepository.
@@ -165,8 +216,55 @@ private:
     bool m_projDirty = true;
 
     // =========================================================================
+    // Membres — état de la vue (zoom / pan)
+    // =========================================================================
+
+    /**
+     * Facteur de zoom courant (1.0 = aucun zoom).
+     * Appliqué via SetWorldTransform dans onPaint.
+     * Borné dans [ZOOM_MIN, ZOOM_MAX].
+     */
+    float m_zoom = 1.0f;
+
+    /**
+     * Décalage horizontal de la vue en pixels écran.
+     * Positif = contenu décalé vers la droite.
+     */
+    float m_panX = 0.0f;
+
+    /**
+     * Décalage vertical de la vue en pixels écran.
+     * Positif = contenu décalé vers le bas.
+     */
+    float m_panY = 0.0f;
+
+    // =========================================================================
+    // Membres — état du drag (pan par glisser-déposer)
+    // =========================================================================
+
+    /** Vrai pendant qu'un drag LMB est en cours. */
+    bool  m_isDragging = false;
+
+    /** Position curseur (client) au moment du LButtonDown. */
+    POINT m_dragAnchor = {};
+
+    /** Valeur de m_panX au début du drag — référence pour le delta. */
+    float m_panXAtDrag = 0.0f;
+
+    /** Valeur de m_panY au début du drag — référence pour le delta. */
+    float m_panYAtDrag = 0.0f;
+
+    // =========================================================================
     // Constantes
     // =========================================================================
 
     static constexpr wchar_t CLASS_NAME[] = L"PCCPanelClass";
-};
+
+    /** Facteur multiplicatif par cran de molette (12 %). */
+    static constexpr float ZOOM_STEP   = 0.12f;
+
+    /** Zoom minimal — empêche d'inverser la vue ou de zoomer à l'infini. */
+    static constexpr float ZOOM_MIN    = 0.05f;
+
+    /** Zoom maximal — limite le grossissement. */
+    static constexpr float ZOOM_MAX    = 20.0f;};

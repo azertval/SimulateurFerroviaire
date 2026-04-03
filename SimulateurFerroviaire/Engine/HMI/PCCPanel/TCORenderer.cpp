@@ -100,11 +100,19 @@ namespace
 void TCORenderer::draw(HDC hdc, const RECT& rect,
     const PCCGraph& graph,
     const Projection& proj,
-    Logger& logger)
+    Logger& logger,
+    bool fillBackground)
 {
-    HBRUSH bgBrush = CreateSolidBrush(COLORS.background);
-    FillRect(hdc, &rect, bgBrush);
-    DeleteObject(bgBrush);
+    // Remplissage du fond ignoré si fillBackground == false.
+    // PCCPanel met fillBackground = false quand il remplit le fond lui-même
+    // avant d'activer la world transform (zoom / pan) — évite de recouvrir
+    // la zone noire après transformation.
+    if (fillBackground)
+    {
+        HBRUSH bgBrush = CreateSolidBrush(COLORS.background);
+        FillRect(hdc, &rect, bgBrush);
+        DeleteObject(bgBrush);
+    }
 
     if (graph.isEmpty())
     {

@@ -87,16 +87,21 @@ public:
      * La projection est passée depuis le cache de PCCPanel — computeProjection()
      * n'est plus appelé en interne.
      *
-     * @param hdc    Contexte de dessin GDI.
-     * @param rect   Rectangle client (pour FillRect uniquement).
-     * @param graph  Graphe PCC.
-     * @param proj   Projection précalculée par PCCPanel.
-     * @param logger Logger.
+     * @param hdc            Contexte de dessin GDI.
+     * @param rect           Rectangle client (pour FillRect uniquement).
+     * @param graph          Graphe PCC.
+     * @param proj           Projection précalculée par PCCPanel.
+     * @param logger         Logger.
+     * @param fillBackground Si false, le remplissage du fond est ignoré.
+     *                       Mettre à false quand PCCPanel remplit le fond
+     *                       avant d'appliquer une world transform (zoom/pan),
+     *                       afin d'éviter de recouvrir la zone avec la transform active.
      */
     static void draw(HDC hdc, const RECT& rect,
         const PCCGraph& graph,
         const Projection& proj,
-        Logger& logger);
+        Logger& logger,
+        bool fillBackground = true);
 
     TCORenderer() = delete;
 
