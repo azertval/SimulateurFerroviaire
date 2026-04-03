@@ -37,7 +37,7 @@ void PCCLayout::compute(PCCGraph& graph, Logger& logger)
             continue;
 
         int maxX = runBFS(graph, terminus, visited, offsetX, logger);
-        offsetX = maxX + 2;
+        offsetX = maxX + 15;
     }
 
     for (const auto& nodePtr : graph.getNodes())
@@ -48,9 +48,12 @@ void PCCLayout::compute(PCCGraph& graph, Logger& logger)
             LOG_WARNING(logger, "Nœud non couvert : "
                 + node->getSourceId() + ", BFS de secours lancé.");
             int maxX = runBFS(graph, node, visited, offsetX, logger);
-            offsetX = maxX + 2;
+            offsetX = maxX + 15;
         }
     }
+    // Post-traitement : correction des branches convergentes de longueurs inégales.
+    // Doit être appelé après le BFS complet — positions finales requises.
+    fixCollapsedBranches(graph, logger);
 
     LOG_INFO(logger, "Compute — terminé.");
 }
@@ -288,4 +291,206 @@ int PCCLayout::runBFS(PCCGraph& graph,
         + " (offsetX=" + std::to_string(offsetX) + ").");
 
     return maxX;
+}
+
+// =============================================================================
+// Post-traitement — correction des branches convergentes de longueurs inégales
+// =============================================================================
+
+void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
+{
+    // Un switch sw/B a une branche "de longueur nulle" quand sa cible via
+    // DEVIATION (ou NORMAL) se trouve au même X que lui-même mais à un Y
+    // différent : devBorderX == center.x → aucune extension horizontale.
+    //
+    // Cause : les deux chemins (normal et dévié) depuis sw/A vers sw/B ont
+    // des longueurs différentes, et le BFS les place au même X final.
+    //
+    // Solution : décaler sw/B + tout son sous-graphe aval (via ROOT)
+    // de +1 jusqu'à ce qu'aucun switch ne soit dans cet état.
+    // On itère en cas de corrections en chaîne (plusieurs diamonds).
+
+    bool changed = true;
+    int  pass = 0;
+
+    while (changed)
+    {
+        changed = false;
+        ++pass;
+
+        for (const auto& nodePtr : graph.getNodes())
+        {
+            if (nodePtr->getNodeType() != PCCNodeType::SWITCH) continue;
+            auto* sw = static_cast<PCCSwitchNode*>(nodePtr.get());
+
+            const int swX = sw->getPosition().x;
+            const int swY = sw->getPosition().y;
+
+            // Détection : une branche (DEVIATION ou NORMAL) atterrit au même X
+            // que sw mais à un Y différent → longueur nulle dans le renderer.
+            bool collapsed = false;
+
+            const PCCEdge* devEdge = sw->getDeviationEdge();
+            if (devEdge && devEdge->getTo())
+            {
+                const PCCNode* tgt = devEdge->getTo();
+                if (tgt->getPosition().x == swX
+                    && tgt->getPosition().y != swY)
+                    collapsed = true;
+            }
+
+            if (!collapsed)
+            {
+                const PCCEdge* normEdge = sw->getNormalEdge();
+                if (normEdge && normEdge->getTo())
+                {
+                    const PCCNode* tgt = normEdge->getTo();
+                    if (tgt->getPosition().x == swX
+                        && tgt->getPosition().y != swY)
+                        collapsed = true;
+                }
+            }
+
+            if (!collapsed) continue;
+
+            // ---------------------------------------------------------------
+            // Collecte du sous-graphe aval : sw + tout ce qui est accessible
+            // via son arête ROOT en avançant vers les X croissants.
+            //
+            // On ne touche PAS les nœuds du réseau de branches déviées
+            // Condition : strictement vers la droite (x > curr.x).
+            // Cela exclut les cibles de deviation au meme X (le collapse)
+            // et empeche tout retour en amont — garantit la convergence.
+            std::unordered_set<PCCNode*> toShift;
+            toShift.insert(sw);
+
+            // ---------------------------------------------------------------
+            // Phase 1 : collecte backbone aval (x > currX) + doubles (meme X).
+            // Capture le troncon principal et les switches aval.
+            // ---------------------------------------------------------------
+            const PCCEdge* rootEdge = sw->getRootEdge();
+            if (rootEdge && rootEdge->getTo())
+            {
+                PCCNode* rootTarget = rootEdge->getTo();
+                toShift.insert(rootTarget);
+
+                std::queue<PCCNode*> q;
+                q.push(rootTarget);
+
+                while (!q.empty())
+                {
+                    PCCNode* curr = q.front();
+                    q.pop();
+
+                    const int  currX = curr->getPosition().x;
+                    const bool currIsSwitch = (curr->getNodeType() == PCCNodeType::SWITCH);
+
+                    for (PCCEdge* edge : curr->getEdges())
+                    {
+                        PCCNode* nb = (edge->getFrom() == curr)
+                            ? edge->getTo() : edge->getFrom();
+                        if (!nb || toShift.count(nb)) continue;
+
+                        const int  nbX = nb->getPosition().x;
+                        const bool nbIsSwitch = (nb->getNodeType() == PCCNodeType::SWITCH);
+
+                        // Cas 1 : voisin strictement en aval (x croissant).
+                        const bool isDownstream = (nbX > currX);
+
+                        // Cas 2 : partenaire de double aiguille (meme X, deux switches).
+                        const bool isDoubleSwitchPartner =
+                            (nbX == currX) && currIsSwitch && nbIsSwitch;
+
+                        if (isDownstream || isDoubleSwitchPartner)
+                        {
+                            toShift.insert(nb);
+                            q.push(nb);
+                        }
+                    }
+                }
+            }
+
+            // ---------------------------------------------------------------
+            // Phase 2 : voies deviees des switches aval (x > swX, deux sens).
+            //
+            // Un switch aval sw/C a pu etre place a x=39. Sa voie deviee
+            // s'etend de x=37 a x=40. La Phase 1 (x > currX=39) capture x=40
+            // mais rate x=37 et x=38 (a gauche du switch, meme si > swX).
+            //
+            // La Phase 2 utilise swX comme seuil global : pour chaque switch
+            // deja dans toShift, on ajoute tous ses voisins straight avec
+            // x > swX, puis on BFS leur chaine avec le meme seuil.
+            //
+            // Protection anti-regression : la voie deviee du diamond source
+            // (sw/A -> sw/B) a x <= swX et est donc exclue.
+            // ---------------------------------------------------------------
+            bool devPhaseChanged = true;
+            while (devPhaseChanged)
+            {
+                devPhaseChanged = false;
+                const std::vector<PCCNode*> snapshot(toShift.begin(), toShift.end());
+
+                for (PCCNode* swNode : snapshot)
+                {
+                    if (swNode->getNodeType() != PCCNodeType::SWITCH) continue;
+
+                    for (PCCEdge* edge : swNode->getEdges())
+                    {
+                        PCCNode* nb = (edge->getFrom() == swNode)
+                            ? edge->getTo() : edge->getFrom();
+                        if (!nb || toShift.count(nb)) continue;
+                        if (nb->getNodeType() == PCCNodeType::SWITCH) continue;
+                        if (nb->getPosition().x <= swX) continue;
+
+                        // Nouveau noeud de voie deviee — BFS du segment complet
+                        std::queue<PCCNode*> devQ;
+                        toShift.insert(nb);
+                        devQ.push(nb);
+                        devPhaseChanged = true;
+
+                        while (!devQ.empty())
+                        {
+                            PCCNode* curr = devQ.front();
+                            devQ.pop();
+
+                            for (PCCEdge* e : curr->getEdges())
+                            {
+                                PCCNode* next = (e->getFrom() == curr)
+                                    ? e->getTo() : e->getFrom();
+                                if (!next || toShift.count(next)) continue;
+                                if (next->getNodeType() == PCCNodeType::SWITCH) continue;
+                                if (next->getPosition().x > swX)
+                                {
+                                    toShift.insert(next);
+                                    devQ.push(next);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Décalage de +1 sur le sous-graphe complet (backbone + voies deviees).
+            for (PCCNode* node : toShift)
+            {
+                auto pos = node->getPosition();
+                pos.x += 1;
+                node->setPosition(pos);
+            }
+
+            LOG_DEBUG(logger, "fixCollapsedBranches pass=" + std::to_string(pass)
+                + " : " + sw->getSourceId()
+                + " + " + std::to_string(toShift.size() - 1)
+                + " noeuds aval decales +1"
+                + " (swX: " + std::to_string(swX)
+                + " -> " + std::to_string(swX + 1) + ")");
+
+            changed = true;
+            break; // Redémarre le scan — une correction peut en révéler d'autres
+        }
+    }
+
+    if (pass > 1)
+        LOG_DEBUG(logger, "fixCollapsedBranches terminé — "
+            + std::to_string(pass - 1) + " passe(s).");
 }
