@@ -192,27 +192,37 @@ void PCCGraphBuilder::computeDeviationSides(PCCGraph& graph,
         if (nodePtr->getNodeType() != PCCNodeType::SWITCH) continue;
 
         auto* sw = static_cast<PCCSwitchNode*>(nodePtr.get());
-
         const SwitchBlock* source = sw->getSwitchSource();
         if (!source->isOriented()) continue;
 
-        // Tip déviation UTM requis — absent si la branche est manquante
-        const auto& tipUTM = source->getTipOnDeviationUTM();
-        if (!tipUTM.has_value()) continue;
+        const auto& tipDevUTM = source->getTipOnDeviationUTM();
+        const auto& tipRootUTM = source->getTipOnRootUTM();
+        if (!tipDevUTM.has_value() || !tipRootUTM.has_value()) continue;
 
-        // Comparaison sur l'axe Y UTM (y croissant = nord = side +1).
-        // Sémantiquement identique à la comparaison de latitudes WGS84,
-        // mais sans ambiguïté degré/radian et sans dépendance au WGS84.
         const CoordinateXY& junc = source->getJunctionUTM();
-        const int side = (tipUTM->y > junc.y) ? 1 : -1;
+
+        // Vecteur jonction → tip root (direction de la voie principale)
+        const double rootX = tipRootUTM->x - junc.x;
+        const double rootY = tipRootUTM->y - junc.y;
+
+        // Vecteur jonction → tip deviation
+        const double devX = tipDevUTM->x - junc.x;
+        const double devY = tipDevUTM->y - junc.y;
+
+        // Produit vectoriel 2D (composante Z) :
+        // > 0 → déviation à gauche de root  → side = +1
+        // < 0 → déviation à droite de root  → side = -1
+        // Indépendant de l'orientation absolue nord/sud de la voie.
+        const double cross = rootX * devY - rootY * devX;
+        const int side = (cross > 0.0) ? 1 : -1;
+
         sw->setDeviationSide(side);
 
         LOG_DEBUG(logger, sw->getSourceId() + " deviationSide="
             + std::to_string(side)
-            + " (Δy UTM=" + std::to_string(tipUTM->y - junc.y) + " m)");
+            + " (cross=" + std::to_string(cross) + ")");
     }
 }
-
 
 // =============================================================================
 // Helper — clé canonique de paire
