@@ -18,8 +18,9 @@ var searchData=
   ['findnode_15',['findNode',['../d2/d00/classPCCGraph.html#ad6c1dbca01fbb10fd32323842a650266',1,'PCCGraph']]],
   ['findsnapneighbour_16',['findSnapNeighbour',['../df/d00/classPhase4__TopologyBuilder.html#a253515313550722f6d8cf4fb83cf4d4f',1,'Phase4_TopologyBuilder']]],
   ['findtermini_17',['findTermini',['../d4/d01/classPCCLayout.html#aa70b44899546415d337088f06365db90',1,'PCCLayout']]],
-  ['formatlogline_18',['formatLogLine',['../db/d03/classLogger.html#a8f0182d5ff94d8b9585a1e75e7b02f1e',1,'Logger']]],
-  ['framework_2eh_19',['framework.h',['../d6/d01/framework_8h.html',1,'']]],
-  ['free_20',['FREE',['../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da88c189a42c87aa49d667fc8ab76bc323',1,'ShuntingElement.h']]],
-  ['frontiernodeid_21',['frontierNodeId',['../db/d03/structBlockEndpoint.html#adbda5112d9e642850eb76cd1bed0a211',1,'BlockEndpoint']]]
+  ['fixcollapsedbranches_18',['fixCollapsedBranches',['../d4/d01/classPCCLayout.html#a5c5833e9751c11c0d025e39430cf647e',1,'PCCLayout']]],
+  ['formatlogline_19',['formatLogLine',['../db/d03/classLogger.html#a8f0182d5ff94d8b9585a1e75e7b02f1e',1,'Logger']]],
+  ['framework_2eh_20',['framework.h',['../d6/d01/framework_8h.html',1,'']]],
+  ['free_21',['FREE',['../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da88c189a42c87aa49d667fc8ab76bc323',1,'ShuntingElement.h']]],
+  ['frontiernodeid_22',['frontierNodeId',['../db/d03/structBlockEndpoint.html#adbda5112d9e642850eb76cd1bed0a211',1,'BlockEndpoint']]]
 ];

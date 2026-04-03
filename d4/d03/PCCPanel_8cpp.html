@@ -105,10 +105,11 @@ $(document).ready(function(){initNavTree('d4/d03/PCCPanel_8cpp.html','../../'); 
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de PCCPanel.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d9/d01/PCCPanel_8cpp__incl.svg" width="2044" height="696"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d9/d01/PCCPanel_8cpp__incl.svg" width="2290" height="770"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Implémentation du panneau PCC superposé togglable. </p>
+<p>Modification v2 : onPaint() met en cache la projection TCO. computeProjection() n'est recalculé que si la RECT a changé (resize) ou si m_projDirty est vrai (nouveau parsing via rebuild()).</p>
 <dl class="section see"><dt>Voir également</dt><dd><a class="el" href="../../d4/d03/classPCCPanel.html">PCCPanel</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

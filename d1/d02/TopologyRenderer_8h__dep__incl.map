@@ -1,6 +1,6 @@
 <map id="SimulateurFerroviaire/Engine/Core/Topology/TopologyRenderer.h" name="SimulateurFerroviaire/Engine/Core/Topology/TopologyRenderer.h">
 <area shape="rect" id="Node000001" title="Exporteur de topologie ferroviaire au format GeoJSON." alt="" coords="115,5,281,60"/>
-<area shape="rect" id="Node000002" href="$de/d02/TopologyRenderer_8cpp.html" title="Implémentation de l&#39;exporteur GeoJSON." alt="" coords="5,108,175,163"/>
+<area shape="rect" id="Node000002" href="$de/d02/TopologyRenderer_8cpp.html" title="Implémentation de l&#39;exporteur GeoJSON et du générateur de scripts JS." alt="" coords="5,108,175,163"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,72,120,110,116,106,158,68"/>
 <area shape="rect" id="Node000003" href="$d3/d03/MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="199,115,413,155"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="238,68,287,113,284,117,235,71"/>

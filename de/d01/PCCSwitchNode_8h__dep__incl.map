@@ -1,41 +1,42 @@
 <map id="SimulateurFerroviaire/Modules/PCC/PCCSwitchNode.h" name="SimulateurFerroviaire/Modules/PCC/PCCSwitchNode.h">
-<area shape="rect" id="Node000001" title="Nœud PCC représentant un SwitchBlock." alt="" coords="495,5,726,45"/>
-<area shape="rect" id="Node000002" href="$d4/d02/TCORenderer_8cpp.html" title="Renderer GDI TCO — style SNCF, blocs fixes." alt="" coords="20,284,185,339"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="483,50,372,73,258,103,207,121,162,140,127,161,104,183,93,207,90,233,97,283,91,284,84,233,88,205,99,180,123,157,159,135,205,116,257,98,371,68,481,45"/>
-<area shape="rect" id="Node000003" href="$d8/d02/TCORenderer_8h.html" title="Renderer GDI du schéma TCO — style SNCF, blocs fixes." alt="" coords="113,181,279,236"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="556,53,257,184,255,179,554,48"/>
-<area shape="rect" id="Node000005" href="$d8/d00/PCCGraph_8h.html" title="Conteneur propriétaire du graphe PCC." alt="" coords="515,93,707,133"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="613,59,613,93,608,93,608,59"/>
-<area shape="rect" id="Node000016" href="$d3/d02/PCCLayout_8cpp.html" title="Implémentation du calculateur de positions logiques PCC." alt="" coords="1046,291,1258,331"/>
-<area shape="poly" id="edge21_Node000001_Node000016" title=" " alt="" coords="740,40,869,61,1005,91,1068,109,1123,130,1167,154,1197,180,1204,194,1207,209,1202,240,1187,269,1170,293,1166,290,1183,266,1196,238,1202,209,1199,195,1193,183,1164,158,1121,135,1066,114,1004,96,868,66,739,45"/>
-<area shape="rect" id="Node000017" href="$d7/d00/PCCSwitchNode_8cpp.html" title="Implémentation du nœud PCC pour aiguillage." alt="" coords="1257,93,1503,133"/>
-<area shape="poly" id="edge22_Node000001_Node000017" title=" " alt="" coords="740,37,1239,91,1257,93,1257,98,1238,96,740,42"/>
-<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="164,248,129,286,125,282,160,245"/>
-<area shape="rect" id="Node000004" href="$d4/d03/PCCPanel_8cpp.html" title="Implémentation du panneau PCC superposé togglable." alt="" coords="457,284,623,339"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="293,235,458,283,457,289,291,240"/>
-<area shape="poly" id="edge13_Node000005_Node000003" title=" " alt="" coords="502,138,291,184,280,187,278,182,290,179,500,133"/>
-<area shape="rect" id="Node000006" href="$d5/d00/PCCPanel_8h.html" title="Panneau PCC superposé togglable, affiché par&#45;dessus la carte Leaflet." alt="" coords="303,181,468,236"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="553,141,450,184,448,179,551,136"/>
-<area shape="rect" id="Node000012" href="$d9/d00/PCCGraph_8cpp.html" title="Implémentation du conteneur propriétaire du graphe PCC." alt="" coords="754,189,961,229"/>
-<area shape="poly" id="edge14_Node000005_Node000012" title=" " alt="" coords="674,136,808,186,807,191,672,141"/>
-<area shape="rect" id="Node000013" href="$db/d02/PCCGraphBuilder_8h.html" title="Constructeur du graphe PCC depuis TopologyRepository." alt="" coords="492,189,729,229"/>
-<area shape="poly" id="edge15_Node000005_Node000013" title=" " alt="" coords="613,147,613,189,608,189,608,147"/>
-<area shape="rect" id="Node000015" href="$d6/d01/PCCLayout_8h.html" title="Calcul des positions logiques X/Y du graphe PCC par parcours BFS." alt="" coords="985,189,1183,229"/>
-<area shape="poly" id="edge18_Node000005_Node000015" title=" " alt="" coords="720,131,974,179,1007,186,1006,191,973,184,719,136"/>
-<area shape="poly" id="edge12_Node000006_Node000004" title=" " alt="" coords="439,241,501,282,498,286,436,246"/>
-<area shape="rect" id="Node000007" href="$da/d00/MainWindow_8h.html" title="Déclaration de la fenêtre principale de l&#39;application." alt="" coords="235,291,434,331"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="368,250,347,292,342,290,363,247"/>
-<area shape="rect" id="Node000008" href="$d4/d00/Application_8h.html" title="Gestion du cycle de vie de l&#39;application Win32." alt="" coords="125,387,318,427"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="303,342,246,389,243,385,299,338"/>
-<area shape="rect" id="Node000011" href="$d3/d03/MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="342,387,557,427"/>
-<area shape="poly" id="edge11_Node000007_Node000011" title=" " alt="" coords="370,338,428,385,424,389,367,342"/>
-<area shape="rect" id="Node000009" href="$d2/d02/Application_8cpp.html" title="Implémentation du cycle de vie de l&#39;application Win32." alt="" coords="5,475,213,515"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="187,437,136,477,133,472,184,433"/>
-<area shape="rect" id="Node000010" href="$db/d00/SimulateurFerroviaire_8cpp.html" title="Point d&#39;entrée unique de l&#39;application Win32." alt="" coords="237,475,432,515"/>
-<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="259,433,311,472,308,477,256,437"/>
-<area shape="poly" id="edge16_Node000013_Node000004" title=" " alt="" coords="592,241,561,285,556,282,587,238"/>
-<area shape="rect" id="Node000014" href="$d0/d01/PCCGraphBuilder_8cpp.html" title="Implémentation du constructeur du graphe PCC." alt="" coords="647,291,899,331"/>
-<area shape="poly" id="edge17_Node000013_Node000014" title=" " alt="" coords="654,234,744,289,741,294,651,238"/>
-<area shape="poly" id="edge19_Node000015_Node000004" title=" " alt="" coords="996,234,974,239,879,254,805,262,731,270,637,287,624,289,623,284,635,281,730,265,804,256,878,248,973,233,995,229"/>
-<area shape="poly" id="edge20_Node000015_Node000016" title=" " alt="" coords="1107,239,1141,290,1137,293,1102,242"/>
+<area shape="rect" id="Node000001" title="Nœud PCC représentant un SwitchBlock." alt="" coords="361,5,591,45"/>
+<area shape="rect" id="Node000002" href="$d4/d02/TCORenderer_8cpp.html" title="Renderer GDI TCO — style SNCF, blocs fixes." alt="" coords="12,284,177,339"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="355,51,293,70,230,98,171,135,145,157,122,183,109,207,101,233,96,284,91,283,95,232,104,205,118,180,141,154,168,131,227,93,291,65,353,46"/>
+<area shape="rect" id="Node000003" href="$d8/d02/TCORenderer_8h.html" title="Renderer GDI du schéma TCO — style SNCF, blocs fixes." alt="" coords="132,181,297,236"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="434,55,370,96,250,183,247,179,366,91,431,50"/>
+<area shape="rect" id="Node000011" href="$d8/d00/PCCGraph_8h.html" title="Conteneur propriétaire du graphe PCC." alt="" coords="380,93,572,133"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="479,59,479,93,473,93,473,59"/>
+<area shape="rect" id="Node000016" href="$d3/d02/PCCLayout_8cpp.html" title="Implémentation du calculateur de positions logiques PCC." alt="" coords="975,291,1187,331"/>
+<area shape="poly" id="edge22_Node000001_Node000016" title=" " alt="" coords="605,40,737,60,878,90,943,109,1000,130,1046,153,1077,180,1091,207,1095,237,1094,267,1089,291,1084,290,1088,266,1090,238,1086,209,1073,183,1043,158,998,135,941,114,876,96,736,66,604,45"/>
+<area shape="rect" id="Node000017" href="$d7/d00/PCCSwitchNode_8cpp.html" title="Implémentation du nœud PCC pour aiguillage." alt="" coords="1137,93,1383,133"/>
+<area shape="poly" id="edge23_Node000001_Node000017" title=" " alt="" coords="605,36,1119,91,1137,93,1137,98,1118,96,605,42"/>
+<area shape="poly" id="edge11_Node000003_Node000002" title=" " alt="" coords="175,247,128,286,124,282,171,243"/>
+<area shape="rect" id="Node000004" href="$d4/d03/PCCPanel_8cpp.html" title="Implémentation du panneau PCC superposé togglable." alt="" coords="463,387,628,441"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="215,250,220,296,229,318,242,337,265,357,288,369,310,375,333,377,384,377,413,378,446,384,463,388,462,394,445,389,413,384,384,382,333,382,309,380,286,374,262,361,238,340,224,320,215,297,209,250"/>
+<area shape="rect" id="Node000005" href="$d5/d00/PCCPanel_8h.html" title="Panneau PCC superposé togglable, affiché par&#45;dessus la carte Leaflet." alt="" coords="252,284,417,339"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="258,243,305,282,302,286,255,247"/>
+<area shape="poly" id="edge10_Node000005_Node000004" title=" " alt="" coords="403,342,492,384,489,389,401,347"/>
+<area shape="rect" id="Node000006" href="$da/d00/MainWindow_8h.html" title="Déclaration de la fenêtre principale de l&#39;application." alt="" coords="235,394,434,434"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="337,353,337,394,332,394,332,353"/>
+<area shape="rect" id="Node000007" href="$d4/d00/Application_8h.html" title="Gestion du cycle de vie de l&#39;application Win32." alt="" coords="125,489,318,529"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="303,445,246,491,243,487,299,441"/>
+<area shape="rect" id="Node000010" href="$d3/d03/MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="342,489,557,529"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="370,440,428,487,424,491,367,445"/>
+<area shape="rect" id="Node000008" href="$d2/d02/Application_8cpp.html" title="Implémentation du cycle de vie de l&#39;application Win32." alt="" coords="5,577,213,617"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="187,540,136,579,133,575,184,536"/>
+<area shape="rect" id="Node000009" href="$db/d00/SimulateurFerroviaire_8cpp.html" title="Point d&#39;entrée unique de l&#39;application Win32." alt="" coords="237,577,432,617"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="259,536,311,575,308,579,256,540"/>
+<area shape="poly" id="edge14_Node000011_Node000003" title=" " alt="" coords="411,140,289,184,287,179,410,135"/>
+<area shape="poly" id="edge13_Node000011_Node000005" title=" " alt="" coords="412,142,385,160,362,183,349,207,341,234,336,284,331,284,336,233,344,205,358,180,381,156,409,138"/>
+<area shape="rect" id="Node000012" href="$d9/d00/PCCGraph_8cpp.html" title="Implémentation du conteneur propriétaire du graphe PCC." alt="" coords="373,189,579,229"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="479,147,479,189,473,189,473,147"/>
+<area shape="rect" id="Node000013" href="$db/d02/PCCGraphBuilder_8h.html" title="Constructeur du graphe PCC depuis TopologyRepository." alt="" coords="604,189,841,229"/>
+<area shape="poly" id="edge16_Node000011_Node000013" title=" " alt="" coords="539,136,674,186,672,191,537,141"/>
+<area shape="rect" id="Node000015" href="$d6/d01/PCCLayout_8h.html" title="Calcul des positions logiques X/Y du graphe PCC par parcours BFS." alt="" coords="865,189,1063,229"/>
+<area shape="poly" id="edge19_Node000011_Node000015" title=" " alt="" coords="586,130,854,179,887,186,886,191,853,184,585,135"/>
+<area shape="poly" id="edge17_Node000013_Node000004" title=" " alt="" coords="655,237,619,258,587,286,572,310,561,336,550,387,545,386,556,335,567,307,583,282,616,253,652,232"/>
+<area shape="rect" id="Node000014" href="$d0/d01/PCCGraphBuilder_8cpp.html" title="Implémentation du constructeur du graphe PCC." alt="" coords="597,291,849,331"/>
+<area shape="poly" id="edge18_Node000013_Node000014" title=" " alt="" coords="725,243,725,291,720,291,720,243"/>
+<area shape="poly" id="edge20_Node000015_Node000004" title=" " alt="" coords="950,242,914,293,890,319,863,341,806,370,744,390,684,403,629,411,628,405,683,398,743,385,804,365,860,336,887,315,910,290,945,239"/>
+<area shape="poly" id="edge21_Node000015_Node000016" title=" " alt="" coords="998,236,1061,289,1058,293,995,240"/>
 </map>

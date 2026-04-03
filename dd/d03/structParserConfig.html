@@ -127,12 +127,12 @@ Attributs publics</h2></td></tr>
 <tr class="memitem:a99a73f2f29a85be2bbb50db7e1c6f025" id="r_a99a73f2f29a85be2bbb50db7e1c6f025"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d03/structParserConfig.html#a99a73f2f29a85be2bbb50db7e1c6f025">doubleSwitchRadius</a> = 100.0</td></tr>
 <tr class="memdesc:a99a73f2f29a85be2bbb50db7e1c6f025"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rayon de détection du segment de liaison double switch (m).  <br /></td></tr>
 <tr class="separator:a99a73f2f29a85be2bbb50db7e1c6f025"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b28e198d5ad28d817d877d4ce1eeb4a" id="r_a3b28e198d5ad28d817d877d4ce1eeb4a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d03/structParserConfig.html#a3b28e198d5ad28d817d877d4ce1eeb4a">switchSideSize</a> = 25.0</td></tr>
+<tr class="memdesc:a3b28e198d5ad28d817d877d4ce1eeb4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur des branches CDC de l'aiguillage depuis la jonction (m).  <br /></td></tr>
+<tr class="separator:a3b28e198d5ad28d817d877d4ce1eeb4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f43ec7016704dbf505c82cbed81315f" id="r_a6f43ec7016704dbf505c82cbed81315f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d03/structParserConfig.html#a6f43ec7016704dbf505c82cbed81315f">minBranchLength</a> = 25.0</td></tr>
 <tr class="memdesc:a6f43ec7016704dbf505c82cbed81315f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur minimale d'une branche switch pour validation CDC (m).  <br /></td></tr>
 <tr class="separator:a6f43ec7016704dbf505c82cbed81315f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b28e198d5ad28d817d877d4ce1eeb4a" id="r_a3b28e198d5ad28d817d877d4ce1eeb4a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d03/structParserConfig.html#a3b28e198d5ad28d817d877d4ce1eeb4a">switchSideSize</a> = 15.0</td></tr>
-<tr class="memdesc:a3b28e198d5ad28d817d877d4ce1eeb4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur des branches CDC de l'aiguillage depuis la jonction (m).  <br /></td></tr>
-<tr class="separator:a3b28e198d5ad28d817d877d4ce1eeb4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Configuration complète du pipeline <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a> — POD sans logique. </p>
@@ -265,14 +265,14 @@ Attributs publics</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double ParserConfig::switchSideSize = 15.0</td>
+          <td class="memname">double ParserConfig::switchSideSize = 25.0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Longueur des branches CDC de l'aiguillage depuis la jonction (m). </p>
 <p>Définit la distance à laquelle les tips CDC (root, normal, deviation) sont interpolés sur la géométrie WGS84 de chaque branche. Correspond à la longueur physique d'un côté de l'aiguille.</p>
-<dl class="section user"><dt>Valeur typique</dt><dd>15.0 m — longueur standard d'un côté d'aiguille ferroviaire. </dd></dl>
+<dl class="section user"><dt>Valeur typique</dt><dd>25.0 m — longueur standard d'un côté d'aiguille ferroviaire. </dd></dl>
 
 </div>
 </div>

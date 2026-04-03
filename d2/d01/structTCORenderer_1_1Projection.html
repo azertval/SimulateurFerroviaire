@@ -96,10 +96,15 @@ $(document).ready(function(){initNavTree('d2/d01/structTCORenderer_1_1Projection
   <div class="headertitle"><div class="title">Référence de la structure TCORenderer::Projection</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Paramètres de projection logique → écran.  
+ <a href="../../d2/d01/structTCORenderer_1_1Projection.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d8/d02/TCORenderer_8h_source.html">TCORenderer.h</a>&gt;</code></p>
 <div class="dynheader">
 Graphe de collaboration de TCORenderer::Projection:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../df/d01/structTCORenderer_1_1Projection__coll__graph.svg" width="183" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../df/d01/structTCORenderer_1_1Projection__coll__graph.svg" width="183" height="316"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -124,8 +129,18 @@ Attributs publics</h2></td></tr>
 <tr class="separator:abacc6e0e3a5a23208012c6ceb6b0077d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec1b426df72609bf70a6f916b1fe0a2a" id="r_aec1b426df72609bf70a6f916b1fe0a2a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d01/structTCORenderer_1_1Projection.html#aec1b426df72609bf70a6f916b1fe0a2a">centerY</a> = 0</td></tr>
 <tr class="separator:aec1b426df72609bf70a6f916b1fe0a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c3d5e941d91d581889045f5c4dfc64c" id="r_a1c3d5e941d91d581889045f5c4dfc64c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d01/structTCORenderer_1_1Projection.html#a1c3d5e941d91d581889045f5c4dfc64c">halfGap</a> = 0</td></tr>
+<tr class="separator:a1c3d5e941d91d581889045f5c4dfc64c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa97a3e7fd1c5fb153bd856e5cd8642f2" id="r_aa97a3e7fd1c5fb153bd856e5cd8642f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d01/structTCORenderer_1_1Projection.html#aa97a3e7fd1c5fb153bd856e5cd8642f2">stub</a> = 0</td></tr>
+<tr class="separator:aa97a3e7fd1c5fb153bd856e5cd8642f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4259e500f7ddd01aa2d1eeb41e37fc55" id="r_a4259e500f7ddd01aa2d1eeb41e37fc55"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d01/structTCORenderer_1_1Projection.html#a4259e500f7ddd01aa2d1eeb41e37fc55">inactiveGap</a> = 0</td></tr>
+<tr class="separator:a4259e500f7ddd01aa2d1eeb41e37fc55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des données membres</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Paramètres de projection logique → écran. </p>
+<p>Calculé une seule fois par <a class="el" href="../../d9/d01/classTCORenderer.html#a71d5b47b88c8e22bada0455a82f741ff" title="Calcule la projection logique → écran depuis le graphe et la RECT.">computeProjection()</a> et mis en cache dans <a class="el" href="../../d4/d03/classPCCPanel.html#af66a33e5bbe5e1173058b5b7d8e04c29">PCCPanel::m_cachedProj</a>. Invalide après resize ou rebuild().</p>
+<p>Les champs stub/inactiveGap/halfGap sont dérivés de cellWidth et précalculés dans <a class="el" href="../../d9/d01/classTCORenderer.html#a71d5b47b88c8e22bada0455a82f741ff" title="Calcule la projection logique → écran depuis le graphe et la RECT.">computeProjection()</a> — évite N recalculs par paint. </p>
+</div><h2 class="groupheader">Documentation des données membres</h2>
 <a id="a9d60f4d46db9b2f06af1ed7fca344628" name="a9d60f4d46db9b2f06af1ed7fca344628"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9d60f4d46db9b2f06af1ed7fca344628">&#9670;&#160;</a></span>cellHeight</h2>
 
@@ -168,6 +183,21 @@ Attributs publics</h2></td></tr>
 
 </div>
 </div>
+<a id="a1c3d5e941d91d581889045f5c4dfc64c" name="a1c3d5e941d91d581889045f5c4dfc64c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c3d5e941d91d581889045f5c4dfc64c">&#9670;&#160;</a></span>halfGap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TCORenderer::Projection::halfGap = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Demi-gap entre blocs adjacents (pixels). = BLOCK_GAP_PX / 2, arrondi. </p>
+
+</div>
+</div>
 <a id="ad8bb57b43a2e99582f4e42d93b5c4594" name="ad8bb57b43a2e99582f4e42d93b5c4594"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad8bb57b43a2e99582f4e42d93b5c4594">&#9670;&#160;</a></span>height</h2>
 
@@ -179,6 +209,21 @@ Attributs publics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4259e500f7ddd01aa2d1eeb41e37fc55" name="a4259e500f7ddd01aa2d1eeb41e37fc55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4259e500f7ddd01aa2d1eeb41e37fc55">&#9670;&#160;</a></span>inactiveGap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TCORenderer::Projection::inactiveGap = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Gap côté jonction de la branche inactive (pixels). = max(4, cellWidth * INACTIVE_GAP_RATIO). </p>
 
 </div>
 </div>
@@ -249,6 +294,21 @@ Attributs publics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa97a3e7fd1c5fb153bd856e5cd8642f2" name="aa97a3e7fd1c5fb153bd856e5cd8642f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa97a3e7fd1c5fb153bd856e5cd8642f2">&#9670;&#160;</a></span>stub</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TCORenderer::Projection::stub = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Longueur du stub horizontal en fin de branche déviée (pixels). = max(4, cellWidth * STUB_RATIO). </p>
 
 </div>
 </div>

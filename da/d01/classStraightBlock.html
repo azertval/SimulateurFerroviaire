@@ -121,10 +121,8 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a8efe465dfa6a2c5a6afc2125246194fd" id="r_a8efe465dfa6a2c5a6afc2125246194fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a8efe465dfa6a2c5a6afc2125246194fd">StraightBlock</a> ()=default</td></tr>
+<tr class="memdesc:a8efe465dfa6a2c5a6afc2125246194fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <br /></td></tr>
 <tr class="separator:a8efe465dfa6a2c5a6afc2125246194fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a956ed4153e56a47ed1d30351680f3c3f" id="r_a956ed4153e56a47ed1d30351680f3c3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a956ed4153e56a47ed1d30351680f3c3f">StraightBlock</a> (std::string blockId, std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; pointsWGS84, std::vector&lt; std::string &gt; neighbourIds={})</td></tr>
-<tr class="memdesc:a956ed4153e56a47ed1d30351680f3c3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> avec géométrie WGS84 et calcule sa longueur.  <br /></td></tr>
-<tr class="separator:a956ed4153e56a47ed1d30351680f3c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a295060fddd0675834ce4755ae4787780" id="r_a295060fddd0675834ce4755ae4787780"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a295060fddd0675834ce4755ae4787780">getId</a> () const override</td></tr>
 <tr class="memdesc:a295060fddd0675834ce4755ae4787780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'identifiant unique de l'élément (ex. "sw/3", "s/12").  <br /></td></tr>
 <tr class="separator:a295060fddd0675834ce4755ae4787780"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,7 +141,7 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memdesc:a98497f5e4babe17ccbd098d511a62be4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polyligne projetée en UTM (x = est, y = nord, mètres). Même taille et même index que <a class="el" href="../../da/d01/classStraightBlock.html#af4f522c73c0b77e3205dc9997b192625" title="Polyligne WGS-84 ordonnée. Premier point = extrémité A. Dernier point = extrémité B.">getPointsWGS84()</a>. Vide si non renseigné par le pipeline v2.  <br /></td></tr>
 <tr class="separator:a98497f5e4babe17ccbd098d511a62be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad30426def1a29f3121ad49dc8bddbb63" id="r_ad30426def1a29f3121ad49dc8bddbb63"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#ad30426def1a29f3121ad49dc8bddbb63">getPointsUTMRef</a> ()</td></tr>
-<tr class="memdesc:ad30426def1a29f3121ad49dc8bddbb63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Référence modifiable sur la polyligne UTM. Utilisée par Phase8_SwitchOrientator::trimStraightOverlaps().  <br /></td></tr>
+<tr class="memdesc:ad30426def1a29f3121ad49dc8bddbb63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Référence modifiable sur la polyligne UTM. Utilisée par Phase7_SwitchProcessor::trimStraightOverlaps().  <br /></td></tr>
 <tr class="separator:ad30426def1a29f3121ad49dc8bddbb63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebdce1e1b66d6b39376ae1a66c2d2d9e" id="r_aebdce1e1b66d6b39376ae1a66c2d2d9e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#aebdce1e1b66d6b39376ae1a66c2d2d9e">getLengthMeters</a> () const</td></tr>
 <tr class="memdesc:aebdce1e1b66d6b39376ae1a66c2d2d9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur géodésique Haversine en mètres (depuis pointsWGS84). Mise à jour par <a class="el" href="../../da/d01/classStraightBlock.html#a127a11605e487c1bfe739fa3e75d91c9" title="Remplace la polyligne WGS84 et recalcule la longueur géodésique.">setPointsWGS84()</a>.  <br /></td></tr>
@@ -236,6 +234,8 @@ Attributs privés</h2></td></tr>
 <tr class="separator:aafd6bb8db6f9da57bd1179a2dc8342ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a236b3c910803c6fab940a196829becb4" id="r_a236b3c910803c6fab940a196829becb4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a236b3c910803c6fab940a196829becb4">m_lengthMeters</a> = 0.0</td></tr>
 <tr class="separator:a236b3c910803c6fab940a196829becb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29110a32db90ebb2e84b932e32f0f40c" id="r_a29110a32db90ebb2e84b932e32f0f40c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d01/classStraightBlock.html#a29110a32db90ebb2e84b932e32f0f40c">m_state</a> = <a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da88c189a42c87aa49d667fc8ab76bc323">ShuntingState::FREE</a></td></tr>
+<tr class="separator:a29110a32db90ebb2e84b932e32f0f40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Membres hérités additionnels</h2></td></tr>
@@ -253,7 +253,7 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 <h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a8efe465dfa6a2c5a6afc2125246194fd" name="a8efe465dfa6a2c5a6afc2125246194fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8efe465dfa6a2c5a6afc2125246194fd">&#9670;&#160;</a></span>StraightBlock() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8efe465dfa6a2c5a6afc2125246194fd">&#9670;&#160;</a></span>StraightBlock()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -275,49 +275,8 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a956ed4153e56a47ed1d30351680f3c3f" name="a956ed4153e56a47ed1d30351680f3c3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a956ed4153e56a47ed1d30351680f3c3f">&#9670;&#160;</a></span>StraightBlock() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">StraightBlock::StraightBlock </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>blockId</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt;&#160;</td>
-          <td class="paramname"><em>pointsWGS84</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
-          <td class="paramname"><em>neighbourIds</em> = <code>{}</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Construit un <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> avec géométrie WGS84 et calcule sa longueur. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">blockId</td><td>Identifiant unique (ex. "s/0"). </td></tr>
-    <tr><td class="paramname">pointsWGS84</td><td>Polyligne WGS-84 ordonnée (≥ 2 points). </td></tr>
-    <tr><td class="paramname">neighbourIds</td><td>Voisins connus à la construction (optionnel). </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Constructeur par défaut. </p>
+<p>Le pipeline v2 (<a class="el" href="../../df/d00/classPhase6__BlockExtractor.html">Phase6_BlockExtractor</a>) crée les blocs via ce constructeur puis renseigne la géométrie et la topologie via les setters dédiés. Le constructeur paramétré v1 a été supprimé — il n'est plus appelé. </p>
 
 </div>
 </div>
@@ -548,7 +507,7 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Référence modifiable sur la polyligne UTM. Utilisée par Phase8_SwitchOrientator::trimStraightOverlaps(). </p>
+<p>Référence modifiable sur la polyligne UTM. Utilisée par Phase7_SwitchProcessor::trimStraightOverlaps(). </p>
 
 </div>
 </div>
@@ -968,7 +927,7 @@ Membres hérités additionnels</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Pointeurs non-propriétaires vers les blocs adjacents. Renseignés par <a class="el" href="../../da/d01/classPhase8__RepositoryTransfer.html#af75aa0847b36eb3a03f19074da8e470f" title="9a — Résout les pointeurs inter-blocs.">Phase8_RepositoryTransfer::resolve()</a>. Propriété de <a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a> — ne pas delete. </p>
+<p>Pointeurs non-propriétaires vers les blocs adjacents. Renseignés par Phase9_RepositoryTransfer::resolve(). Propriété de <a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a> — ne pas delete. </p>
 
 </div>
 </div>
@@ -1015,6 +974,29 @@ Membres hérités additionnels</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Polyligne WGS-84 ordonnée (latitude, longitude). Premier point = extrémité A. Dernier point = extrémité B. Modifiable via <a class="el" href="../../da/d01/classStraightBlock.html#a127a11605e487c1bfe739fa3e75d91c9" title="Remplace la polyligne WGS84 et recalcule la longueur géodésique.">setPointsWGS84()</a> — recalcule automatiquement m_lengthMeters. </p>
+
+</div>
+</div>
+<a id="a29110a32db90ebb2e84b932e32f0f40c" name="a29110a32db90ebb2e84b932e32f0f40c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29110a32db90ebb2e84b932e32f0f40c">&#9670;&#160;</a></span>m_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a> StraightBlock::m_state = <a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833da88c189a42c87aa49d667fc8ab76bc323">ShuntingState::FREE</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>État opérationnel courant. </p>
 
 </div>
 </div>

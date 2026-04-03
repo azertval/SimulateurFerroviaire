@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('d4/d01/classPCCLayout.html','../../');
 <div class="dynheader">
 Graphe de collaboration de PCCLayout:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d00/classPCCLayout__coll__graph.svg" width="122" height="136"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d00/classPCCLayout__coll__graph.svg" width="190" height="156"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -136,6 +136,9 @@ Fonctions membres privées statiques</h2></td></tr>
 <tr class="memitem:ab4f624049096886733035938bc5499fc" id="r_ab4f624049096886733035938bc5499fc"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d01/classPCCLayout.html#ab4f624049096886733035938bc5499fc">runBFS</a> (<a class="el" href="../../d2/d00/classPCCGraph.html">PCCGraph</a> &amp;graph, <a class="el" href="../../d1/d03/classPCCNode.html">PCCNode</a> *start, std::unordered_set&lt; <a class="el" href="../../d1/d03/classPCCNode.html">PCCNode</a> * &gt; &amp;visited, int offsetX, <a class="el" href="../../db/d03/classLogger.html">Logger</a> &amp;logger)</td></tr>
 <tr class="memdesc:ab4f624049096886733035938bc5499fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance un BFS linéaire depuis <code>start</code> et assigne les positions X/Y.  <br /></td></tr>
 <tr class="separator:ab4f624049096886733035938bc5499fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c5833e9751c11c0d025e39430cf647e" id="r_a5c5833e9751c11c0d025e39430cf647e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d01/classPCCLayout.html#a5c5833e9751c11c0d025e39430cf647e">fixCollapsedBranches</a> (<a class="el" href="../../d2/d00/classPCCGraph.html">PCCGraph</a> &amp;graph, <a class="el" href="../../db/d03/classLogger.html">Logger</a> &amp;logger)</td></tr>
+<tr class="memdesc:a5c5833e9751c11c0d025e39430cf647e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Corrige les branches convergentes de longueurs inégales (post-BFS).  <br /></td></tr>
+<tr class="separator:a5c5833e9751c11c0d025e39430cf647e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Calculateur de positions logiques X/Y du <a class="el" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>. </p>
@@ -203,6 +206,7 @@ Fonctions membres privées statiques</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calcule et assigne les positions logiques à tous les nœuds. </p>
+<p>Enchaîne : findTermini → runBFS (multi-sources) → fixCollapsedBranches.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">graph</td><td>Graphe dont les positions seront calculées. Modifié en place. </td></tr>
@@ -248,7 +252,6 @@ Fonctions membres privées statiques</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Détecte les nœuds terminus (points de départ du schéma). </p>
-<p>Un terminus est absent des cibles d'arêtes switch (ROOT/NORMAL/DEVIATION) et ne possède qu'un seul voisin. Si aucun terminus n'est trouvé (graphe circulaire), retourne le premier nœud de la collection.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">graph</td><td>Graphe à analyser. </td></tr>
@@ -257,6 +260,56 @@ Fonctions membres privées statiques</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Liste des nœuds terminus. Jamais vide si le graphe est non vide. </dd></dl>
+
+</div>
+</div>
+<a id="a5c5833e9751c11c0d025e39430cf647e" name="a5c5833e9751c11c0d025e39430cf647e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c5833e9751c11c0d025e39430cf647e">&#9670;&#160;</a></span>fixCollapsedBranches()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCCLayout::fixCollapsedBranches </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d2/d00/classPCCGraph.html">PCCGraph</a> &amp;&#160;</td>
+          <td class="paramname"><em>graph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/d03/classLogger.html">Logger</a> &amp;&#160;</td>
+          <td class="paramname"><em>logger</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Corrige les branches convergentes de longueurs inégales (post-BFS). </p>
+<p>Détecte tout switch dont une branche DEVIATION ou NORMAL atterrit au même X que lui-même mais à un Y différent (branche visuellement nulle). Décale ce switch et tout son sous-graphe aval (via ROOT) de +1 cellule. Itère jusqu'à convergence pour traiter les corrections en chaîne.</p>
+<dl class="section user"><dt>Exemple</dt><dd><div class="fragment"><div class="line">sw/A[32,0] ─── sw/3[33,0] ─── s/5[34,0] ─── sw/B[35,0]   (1 bloc normal)</div>
+<div class="line">    \                                               /</div>
+<div class="line">     s/10[33,-1] ─── s/21[34,-1] ─── s/6[35,-1]   (3 blocs déviation)</div>
+</div><!-- fragment --> → s/6 et sw/B sont au même X=35 → sw/B décalé à [36,0], s/4_0 etc. suivent.</dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">graph</td><td>Graphe à corriger. Modifié en place. </td></tr>
+    <tr><td class="paramname">logger</td><td>Référence au logger HMI. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -318,12 +371,12 @@ Fonctions membres privées statiques</h2></td></tr>
     <tr><td class="paramname">graph</td><td>Graphe dont les positions sont calculées. </td></tr>
     <tr><td class="paramname">start</td><td>Nœud de départ du BFS. </td></tr>
     <tr><td class="paramname">visited</td><td>Ensemble des nœuds déjà traités. Modifié en place. </td></tr>
-    <tr><td class="paramname">offsetX</td><td>Décalage X de la composante (séparation entre composantes). </td></tr>
+    <tr><td class="paramname">offsetX</td><td>Décalage X de la composante. </td></tr>
     <tr><td class="paramname">logger</td><td>Référence au logger HMI. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Le X maximal atteint — utilisé pour espacer les composantes. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le X maximal atteint. </dd></dl>
 
 </div>
 </div>

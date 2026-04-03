@@ -2,7 +2,6 @@ var classStraightBlock =
 [
     [ "StraightNeighbours", "df/d03/structStraightBlock_1_1StraightNeighbours.html", "df/d03/structStraightBlock_1_1StraightNeighbours" ],
     [ "StraightBlock", "da/d01/classStraightBlock.html#a8efe465dfa6a2c5a6afc2125246194fd", null ],
-    [ "StraightBlock", "da/d01/classStraightBlock.html#a956ed4153e56a47ed1d30351680f3c3f", null ],
     [ "addNeighbourId", "da/d01/classStraightBlock.html#a31992cb0d660a2be22d99615c4be8c23", null ],
     [ "computeGeodesicLength", "da/d01/classStraightBlock.html#a2c39df55b662a55c1de75659619bbacb", null ],
     [ "getId", "da/d01/classStraightBlock.html#a295060fddd0675834ce4755ae4787780", null ],
@@ -28,5 +27,6 @@ var classStraightBlock =
     [ "m_neighbourIds", "da/d01/classStraightBlock.html#a9b14748902c7b5f4fad5936d0249817e", null ],
     [ "m_neighbours", "da/d01/classStraightBlock.html#aafd6bb8db6f9da57bd1179a2dc8342ed", null ],
     [ "m_pointsUTM", "da/d01/classStraightBlock.html#a1259513429ea15d34fbf19ba30255f41", null ],
-    [ "m_pointsWGS84", "da/d01/classStraightBlock.html#a30ff7d5bce2fc2a312a435998e0acf78", null ]
+    [ "m_pointsWGS84", "da/d01/classStraightBlock.html#a30ff7d5bce2fc2a312a435998e0acf78", null ],
+    [ "m_state", "da/d01/classStraightBlock.html#a29110a32db90ebb2e84b932e32f0f40c", null ]
 ];

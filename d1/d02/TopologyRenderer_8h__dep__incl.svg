@@ -22,7 +22,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="../../de/d02/TopologyRenderer_8cpp.html" target="_top" xlink:title="Implémentation de l&#39;exporteur GeoJSON.">
+<g id="a_Node000002"><a xlink:href="../../de/d02/TopologyRenderer_8cpp.html" target="_top" xlink:title="Implémentation de l&#39;exporteur GeoJSON et du générateur de scripts JS.">
 <polygon fill="white" stroke="#666666" points="127,-41 0,-41 0,0 127,0 127,-41"/>
 <text text-anchor="start" x="8" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">SimulateurFerroviaire</text>
 <text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">/Engine/Core/Topology</text>

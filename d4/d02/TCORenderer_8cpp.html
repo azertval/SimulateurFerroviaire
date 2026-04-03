@@ -110,13 +110,12 @@ Graphe des dépendances par inclusion de TCORenderer.cpp:</div>
 </div>
 </div><a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Renderer GDI TCO — style SNCF, blocs fixes. </p>
-<p>Choix validés :</p><ul>
-<li>Gap 6px entre tous les blocs (straights et switches).</li>
-<li>Switch : root + branche active se touchent à la jonction (0 gap).</li>
-<li>Branche inactive : gap côté jonction, va jusqu'au bord de cellule.</li>
-<li>Branche active : couleur d'état de la voie (blanc/rouge/gris).</li>
-<li>Branche inactive : gris foncé (#404040).</li>
-<li>cellHeight plafonné à cellWidth/2 (diagonales ~30°).</li>
+<p>Optimisations v2 :</p><ul>
+<li>static_cast dans drawNodes (Famille C) — RTTI supprimé.</li>
+<li>PenScope RAII (Famille D) — un seul pen GDI par branche.</li>
+<li>stub/inactiveGap/halfGap précalculés dans Projection (Famille E).</li>
+<li>computeProjection() exposée publiquement pour le cache <a class="el" href="../../d4/d03/classPCCPanel.html">PCCPanel</a> (Famille F).</li>
+<li>draw() reçoit une Projection précalculée — computeProjection() non rappelé.</li>
 </ul>
 <dl class="section see"><dt>Voir également</dt><dd><a class="el" href="../../d9/d01/classTCORenderer.html">TCORenderer</a> </dd></dl>
 </div></div><!-- contents -->

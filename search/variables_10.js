@@ -11,9 +11,10 @@ var searchData=
   ['straightindex_8',['straightIndex',['../d0/d02/classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de',1,'TopologyData']]],
   ['straights_9',['straights',['../d0/d02/classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda',1,'TopologyData::straights'],['../d0/d00/structBlockSet.html#a1cb0cc59b4ebc4bb2895c04857a30e31',1,'BlockSet::straights']]],
   ['straightsbynode_10',['straightsByNode',['../d0/d00/structBlockSet.html#aae75bc7eb54ffb8dfc3d5af12ad80135',1,'BlockSet']]],
-  ['switchbynode_11',['switchByNode',['../d0/d00/structBlockSet.html#a1fc1ef6b9f4067c2cfbab033638d169b',1,'BlockSet']]],
-  ['switchendpoints_12',['switchEndpoints',['../d0/d00/structBlockSet.html#a9329c6cca913d815fec1c24c6868da16',1,'BlockSet']]],
-  ['switches_13',['switches',['../d0/d02/classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9',1,'TopologyData::switches'],['../d0/d00/structBlockSet.html#a5cdc851781fd4f2074997085781bbd2a',1,'BlockSet::switches']]],
-  ['switchindex_14',['switchIndex',['../d0/d02/classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440',1,'TopologyData']]],
-  ['switchsidesize_15',['switchSideSize',['../dd/d03/structParserConfig.html#a3b28e198d5ad28d817d877d4ce1eeb4a',1,'ParserConfig']]]
+  ['stub_11',['stub',['../d2/d01/structTCORenderer_1_1Projection.html#aa97a3e7fd1c5fb153bd856e5cd8642f2',1,'TCORenderer::Projection']]],
+  ['switchbynode_12',['switchByNode',['../d0/d00/structBlockSet.html#a1fc1ef6b9f4067c2cfbab033638d169b',1,'BlockSet']]],
+  ['switchendpoints_13',['switchEndpoints',['../d0/d00/structBlockSet.html#a9329c6cca913d815fec1c24c6868da16',1,'BlockSet']]],
+  ['switches_14',['switches',['../d0/d02/classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9',1,'TopologyData::switches'],['../d0/d00/structBlockSet.html#a5cdc851781fd4f2074997085781bbd2a',1,'BlockSet::switches']]],
+  ['switchindex_15',['switchIndex',['../d0/d02/classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440',1,'TopologyData']]],
+  ['switchsidesize_16',['switchSideSize',['../dd/d03/structParserConfig.html#a3b28e198d5ad28d817d877d4ce1eeb4a',1,'ParserConfig']]]
 ];

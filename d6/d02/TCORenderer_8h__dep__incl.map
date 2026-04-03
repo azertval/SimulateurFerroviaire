@@ -1,7 +1,20 @@
 <map id="SimulateurFerroviaire/Engine/HMI/PCCPanel/TCORenderer.h" name="SimulateurFerroviaire/Engine/HMI/PCCPanel/TCORenderer.h">
-<area shape="rect" id="Node000001" title="Renderer GDI du schéma TCO — style SNCF, blocs fixes." alt="" coords="100,5,265,60"/>
-<area shape="rect" id="Node000002" href="$d4/d03/PCCPanel_8cpp.html" title="Implémentation du panneau PCC superposé togglable." alt="" coords="5,108,171,163"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,72,115,110,111,106,147,68"/>
-<area shape="rect" id="Node000003" href="$d4/d02/TCORenderer_8cpp.html" title="Renderer GDI TCO — style SNCF, blocs fixes." alt="" coords="195,108,360,163"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="219,68,255,106,251,110,215,72"/>
+<area shape="rect" id="Node000001" title="Renderer GDI du schéma TCO — style SNCF, blocs fixes." alt="" coords="165,5,331,60"/>
+<area shape="rect" id="Node000002" href="$d4/d03/PCCPanel_8cpp.html" title="Implémentation du panneau PCC superposé togglable." alt="" coords="45,211,211,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,70,172,88,156,109,144,134,136,161,131,211,125,210,131,160,139,133,151,107,168,85,189,66"/>
+<area shape="rect" id="Node000003" href="$d5/d00/PCCPanel_8h.html" title="Panneau PCC superposé togglable, affiché par&#45;dessus la carte Leaflet." alt="" coords="165,108,331,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="251,74,251,108,245,108,245,74"/>
+<area shape="rect" id="Node000009" href="$d4/d02/TCORenderer_8cpp.html" title="Renderer GDI TCO — style SNCF, blocs fixes." alt="" coords="355,108,520,163"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="311,64,389,105,386,110,308,69"/>
+<area shape="poly" id="edge8_Node000003_Node000002" title=" " alt="" coords="208,174,161,213,158,209,204,169"/>
+<area shape="rect" id="Node000004" href="$da/d00/MainWindow_8h.html" title="Déclaration de la fenêtre principale de l&#39;application." alt="" coords="235,218,434,258"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="282,172,320,216,316,219,278,175"/>
+<area shape="rect" id="Node000005" href="$d4/d00/Application_8h.html" title="Gestion du cycle de vie de l&#39;application Win32." alt="" coords="125,313,318,353"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="303,269,246,315,243,311,299,265"/>
+<area shape="rect" id="Node000008" href="$d3/d03/MainWindow_8cpp.html" title="Implémentation de la fenêtre principale." alt="" coords="342,313,557,353"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="370,264,428,311,424,315,367,269"/>
+<area shape="rect" id="Node000006" href="$d2/d02/Application_8cpp.html" title="Implémentation du cycle de vie de l&#39;application Win32." alt="" coords="5,401,213,441"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="187,364,136,403,133,399,184,360"/>
+<area shape="rect" id="Node000007" href="$db/d00/SimulateurFerroviaire_8cpp.html" title="Point d&#39;entrée unique de l&#39;application Win32." alt="" coords="237,401,432,441"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="259,360,311,399,308,403,256,364"/>
 </map>

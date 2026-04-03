@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('d4/d03/classPCCPanel.html','../../'); 
 <div class="dynheader">
 Graphe de collaboration de PCCPanel:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d9/d03/classPCCPanel__coll__graph.svg" width="966" height="3351"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d9/d03/classPCCPanel__coll__graph.svg" width="924" height="3691"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -132,11 +132,25 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Fonctions membres privées</h2></td></tr>
 <tr class="memitem:a4eb1ec290785cae336ff1f8e6bf0aafc" id="r_a4eb1ec290785cae336ff1f8e6bf0aafc"><td class="memItemLeft" align="right" valign="top">LRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#a4eb1ec290785cae336ff1f8e6bf0aafc">handleMessage</a> (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)</td></tr>
-<tr class="memdesc:a4eb1ec290785cae336ff1f8e6bf0aafc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatcher principal des messages de la fenêtre.  <br /></td></tr>
 <tr class="separator:a4eb1ec290785cae336ff1f8e6bf0aafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8eecf984fba3d3b3bc86ea61b095e098" id="r_a8eecf984fba3d3b3bc86ea61b095e098"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#a8eecf984fba3d3b3bc86ea61b095e098">onPaint</a> (HWND hWnd)</td></tr>
 <tr class="memdesc:a8eecf984fba3d3b3bc86ea61b095e098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestionnaire de <code>WM_PAINT</code> — délègue le dessin à <a class="el" href="../../d9/d01/classTCORenderer.html">TCORenderer</a>.  <br /></td></tr>
 <tr class="separator:a8eecf984fba3d3b3bc86ea61b095e098"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04f72e7d35201ef49ca8cddc2de2ac38" id="r_a04f72e7d35201ef49ca8cddc2de2ac38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#a04f72e7d35201ef49ca8cddc2de2ac38">onMouseWheel</a> (HWND hWnd, WPARAM wParam, LPARAM lParam)</td></tr>
+<tr class="memdesc:a04f72e7d35201ef49ca8cddc2de2ac38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère <code>WM_MOUSEWHEEL</code> avec Ctrl — zoom centré sur le curseur.  <br /></td></tr>
+<tr class="separator:a04f72e7d35201ef49ca8cddc2de2ac38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad27f5caac9db3d98ce90af1409e1c5c8" id="r_ad27f5caac9db3d98ce90af1409e1c5c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#ad27f5caac9db3d98ce90af1409e1c5c8">onLButtonDown</a> (HWND hWnd, LPARAM lParam)</td></tr>
+<tr class="memdesc:ad27f5caac9db3d98ce90af1409e1c5c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Démarre un drag &amp; drop (pan) — <code>WM_LBUTTONDOWN</code>. Appelle <code>SetCapture</code> pour continuer à recevoir WM_MOUSEMOVE hors fenêtre.  <br /></td></tr>
+<tr class="separator:ad27f5caac9db3d98ce90af1409e1c5c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7d0fe3b3b99e77c5335b5a8287ae27c" id="r_aa7d0fe3b3b99e77c5335b5a8287ae27c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#aa7d0fe3b3b99e77c5335b5a8287ae27c">onMouseMove</a> (HWND hWnd, LPARAM lParam)</td></tr>
+<tr class="memdesc:aa7d0fe3b3b99e77c5335b5a8287ae27c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplace la vue pendant le drag — <code>WM_MOUSEMOVE</code>. No-op si <code>m_isDragging</code> est faux.  <br /></td></tr>
+<tr class="separator:aa7d0fe3b3b99e77c5335b5a8287ae27c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af91adc83ae3149638af4107d48ef60fb" id="r_af91adc83ae3149638af4107d48ef60fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#af91adc83ae3149638af4107d48ef60fb">onLButtonUp</a> (HWND hWnd)</td></tr>
+<tr class="memdesc:af91adc83ae3149638af4107d48ef60fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Termine le drag — <code>WM_LBUTTONUP</code>. Appelle <code>ReleaseCapture</code>.  <br /></td></tr>
+<tr class="separator:af91adc83ae3149638af4107d48ef60fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76a95979f5fe50a43e424e7a5d5e1aee" id="r_a76a95979f5fe50a43e424e7a5d5e1aee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#a76a95979f5fe50a43e424e7a5d5e1aee">resetView</a> ()</td></tr>
+<tr class="memdesc:a76a95979f5fe50a43e424e7a5d5e1aee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réinitialise zoom = 1, pan = (0, 0) — <code>WM_LBUTTONDBLCLK</code>.  <br /></td></tr>
+<tr class="separator:a76a95979f5fe50a43e424e7a5d5e1aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5855fdd8a7724cd85723c2eb2d8c30c" id="r_ab5855fdd8a7724cd85723c2eb2d8c30c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#ab5855fdd8a7724cd85723c2eb2d8c30c">rebuild</a> ()</td></tr>
 <tr class="memdesc:ab5855fdd8a7724cd85723c2eb2d8c30c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconstruit le graphe PCC depuis <a class="el" href="../../d2/d01/classTopologyRepository.html">TopologyRepository</a>.  <br /></td></tr>
 <tr class="separator:ab5855fdd8a7724cd85723c2eb2d8c30c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,7 +158,6 @@ Fonctions membres privées</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Fonctions membres privées statiques</h2></td></tr>
 <tr class="memitem:ae4dd813f545a2e6aca3b63302a011603" id="r_ae4dd813f545a2e6aca3b63302a011603"><td class="memItemLeft" align="right" valign="top">static LRESULT CALLBACK&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#ae4dd813f545a2e6aca3b63302a011603">windowProc</a> (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)</td></tr>
-<tr class="memdesc:ae4dd813f545a2e6aca3b63302a011603"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procédure de fenêtre statique, point d'entrée imposé par Win32.  <br /></td></tr>
 <tr class="separator:ae4dd813f545a2e6aca3b63302a011603"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -159,11 +172,37 @@ Attributs privés</h2></td></tr>
 <tr class="separator:a24e4ee6bf5097c29a65ab3fda090a3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa25138775b8c426acc66b58e2ec87abb" id="r_aa25138775b8c426acc66b58e2ec87abb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d00/classPCCGraph.html">PCCGraph</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#aa25138775b8c426acc66b58e2ec87abb">m_graph</a></td></tr>
 <tr class="separator:aa25138775b8c426acc66b58e2ec87abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93a12c437632f15d97d167ada032c170" id="r_a93a12c437632f15d97d167ada032c170"><td class="memItemLeft" align="right" valign="top">RECT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#a93a12c437632f15d97d167ada032c170">m_lastRect</a> = {}</td></tr>
+<tr class="separator:a93a12c437632f15d97d167ada032c170"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af66a33e5bbe5e1173058b5b7d8e04c29" id="r_af66a33e5bbe5e1173058b5b7d8e04c29"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d01/structTCORenderer_1_1Projection.html">TCORenderer::Projection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#af66a33e5bbe5e1173058b5b7d8e04c29">m_cachedProj</a> = {}</td></tr>
+<tr class="separator:af66a33e5bbe5e1173058b5b7d8e04c29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83a3a30bee7f5cfb75ba7bdd0db3d817" id="r_a83a3a30bee7f5cfb75ba7bdd0db3d817"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#a83a3a30bee7f5cfb75ba7bdd0db3d817">m_projDirty</a> = true</td></tr>
+<tr class="separator:a83a3a30bee7f5cfb75ba7bdd0db3d817"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7724cbb19aea301177f4c1460960a31" id="r_af7724cbb19aea301177f4c1460960a31"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#af7724cbb19aea301177f4c1460960a31">m_zoom</a> = 1.0f</td></tr>
+<tr class="separator:af7724cbb19aea301177f4c1460960a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab485bdf6471c36cb991303909f5cb672" id="r_ab485bdf6471c36cb991303909f5cb672"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#ab485bdf6471c36cb991303909f5cb672">m_panX</a> = 0.0f</td></tr>
+<tr class="separator:ab485bdf6471c36cb991303909f5cb672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1404f225f34ec5f017865e4ba0402100" id="r_a1404f225f34ec5f017865e4ba0402100"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#a1404f225f34ec5f017865e4ba0402100">m_panY</a> = 0.0f</td></tr>
+<tr class="separator:a1404f225f34ec5f017865e4ba0402100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc655753a29b3239ee599a86f5073e71" id="r_afc655753a29b3239ee599a86f5073e71"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#afc655753a29b3239ee599a86f5073e71">m_isDragging</a> = false</td></tr>
+<tr class="separator:afc655753a29b3239ee599a86f5073e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9217ae9c6f39db4b39812bba151ad59c" id="r_a9217ae9c6f39db4b39812bba151ad59c"><td class="memItemLeft" align="right" valign="top">POINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#a9217ae9c6f39db4b39812bba151ad59c">m_dragAnchor</a> = {}</td></tr>
+<tr class="separator:a9217ae9c6f39db4b39812bba151ad59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f86bb82dfbce7ec99edeb189468fffd" id="r_a7f86bb82dfbce7ec99edeb189468fffd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#a7f86bb82dfbce7ec99edeb189468fffd">m_panXAtDrag</a> = 0.0f</td></tr>
+<tr class="separator:a7f86bb82dfbce7ec99edeb189468fffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64a396ef6437c574ba33231bbde1c468" id="r_a64a396ef6437c574ba33231bbde1c468"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#a64a396ef6437c574ba33231bbde1c468">m_panYAtDrag</a> = 0.0f</td></tr>
+<tr class="separator:a64a396ef6437c574ba33231bbde1c468"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Attributs privés statiques</h2></td></tr>
 <tr class="memitem:a420594fd5d5ca10e1ed0f66e563a89ae" id="r_a420594fd5d5ca10e1ed0f66e563a89ae"><td class="memItemLeft" align="right" valign="top">static constexpr wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#a420594fd5d5ca10e1ed0f66e563a89ae">CLASS_NAME</a> [] = L&quot;PCCPanelClass&quot;</td></tr>
 <tr class="separator:a420594fd5d5ca10e1ed0f66e563a89ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81e0d958dff481bcc8d68de97711c259" id="r_a81e0d958dff481bcc8d68de97711c259"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#a81e0d958dff481bcc8d68de97711c259">ZOOM_STEP</a> = 0.12f</td></tr>
+<tr class="separator:a81e0d958dff481bcc8d68de97711c259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5a23848998a8cfbd4e2ab1caa12f133" id="r_aa5a23848998a8cfbd4e2ab1caa12f133"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#aa5a23848998a8cfbd4e2ab1caa12f133">ZOOM_MIN</a> = 0.05f</td></tr>
+<tr class="separator:aa5a23848998a8cfbd4e2ab1caa12f133"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6ceb14148cdc773feb1904bf6aa4ca5" id="r_ab6ceb14148cdc773feb1904bf6aa4ca5"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d03/classPCCPanel.html#ab6ceb14148cdc773feb1904bf6aa4ca5">ZOOM_MAX</a> = 20.0f</td></tr>
+<tr class="separator:ab6ceb14148cdc773feb1904bf6aa4ca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="acbe525df1e21f605f713ee1358bbf19a" name="acbe525df1e21f605f713ee1358bbf19a"></a>
@@ -228,12 +267,10 @@ Attributs privés statiques</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Enregistre la classe Win32 et crée la fenêtre enfant masquée. </p>
-<p>La fenêtre est positionnée à (0, 0) avec les dimensions de la zone cliente de <code>hParent</code>. Elle est masquée (<code>SW_HIDE</code>) jusqu'au premier appel à <a class="el" href="../../d4/d03/classPCCPanel.html#a1b37a13eaa0a03be291722243c4daf52">toggle</a>.</p>
-<p>L'enregistrement de la classe est idempotent : si <code>RegisterClassExW</code> retourne <code>ERROR_CLASS_ALREADY_EXISTS</code>, l'erreur est ignorée.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">hParent</td><td>Handle de la fenêtre parente (<a class="el" href="../../d6/d02/classMainWindow.html">MainWindow</a>). </td></tr>
-    <tr><td class="paramname">hInstance</td><td>Handle de l'instance Win32 de l'application.</td></tr>
+    <tr><td class="paramname">hInstance</td><td>Handle de l'instance Win32 de l'application. </td></tr>
   </table>
   </dd>
 </dl>
@@ -292,19 +329,6 @@ Attributs privés statiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Dispatcher principal des messages de la fenêtre. </p>
-<p>Route <code>WM_PAINT</code> vers <a class="el" href="../../d4/d03/classPCCPanel.html#a8eecf984fba3d3b3bc86ea61b095e098">onPaint</a> et <code>WM_ERASEBKGND</code> vers un handler no-op (supprime le flickering). Tous les autres messages sont transmis à <code>DefWindowProcW</code>.</p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">hWnd</td><td>Handle de la fenêtre. </td></tr>
-    <tr><td class="paramname">msg</td><td>Identifiant du message Win32. </td></tr>
-    <tr><td class="paramname">wParam</td><td>Paramètre WPARAM. </td></tr>
-    <tr><td class="paramname">lParam</td><td>Paramètre LPARAM.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Résultat du traitement du message. </dd></dl>
-
 </div>
 </div>
 <a id="ab68408423409418ffc1de2d37fbb8e40" name="ab68408423409418ffc1de2d37fbb8e40"></a>
@@ -323,7 +347,156 @@ Attributs privés statiques</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Indique si le panneau est actuellement visible. </p>
-<dl class="section return"><dt>Renvoie</dt><dd><code>true</code> si la fenêtre existe et est visible (<code>IsWindowVisible</code>), <code>false</code> sinon. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd><code>true</code> si la fenêtre existe et est visible. </dd></dl>
+
+</div>
+</div>
+<a id="ad27f5caac9db3d98ce90af1409e1c5c8" name="ad27f5caac9db3d98ce90af1409e1c5c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad27f5caac9db3d98ce90af1409e1c5c8">&#9670;&#160;</a></span>onLButtonDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCCPanel::onLButtonDown </td>
+          <td>(</td>
+          <td class="paramtype">HWND&#160;</td>
+          <td class="paramname"><em>hWnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPARAM&#160;</td>
+          <td class="paramname"><em>lParam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Démarre un drag &amp; drop (pan) — <code>WM_LBUTTONDOWN</code>. Appelle <code>SetCapture</code> pour continuer à recevoir WM_MOUSEMOVE hors fenêtre. </p>
+
+</div>
+</div>
+<a id="af91adc83ae3149638af4107d48ef60fb" name="af91adc83ae3149638af4107d48ef60fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af91adc83ae3149638af4107d48ef60fb">&#9670;&#160;</a></span>onLButtonUp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCCPanel::onLButtonUp </td>
+          <td>(</td>
+          <td class="paramtype">HWND&#160;</td>
+          <td class="paramname"><em>hWnd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Termine le drag — <code>WM_LBUTTONUP</code>. Appelle <code>ReleaseCapture</code>. </p>
+
+</div>
+</div>
+<a id="aa7d0fe3b3b99e77c5335b5a8287ae27c" name="aa7d0fe3b3b99e77c5335b5a8287ae27c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7d0fe3b3b99e77c5335b5a8287ae27c">&#9670;&#160;</a></span>onMouseMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCCPanel::onMouseMove </td>
+          <td>(</td>
+          <td class="paramtype">HWND&#160;</td>
+          <td class="paramname"><em>hWnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPARAM&#160;</td>
+          <td class="paramname"><em>lParam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Déplace la vue pendant le drag — <code>WM_MOUSEMOVE</code>. No-op si <code>m_isDragging</code> est faux. </p>
+
+</div>
+</div>
+<a id="a04f72e7d35201ef49ca8cddc2de2ac38" name="a04f72e7d35201ef49ca8cddc2de2ac38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04f72e7d35201ef49ca8cddc2de2ac38">&#9670;&#160;</a></span>onMouseWheel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCCPanel::onMouseWheel </td>
+          <td>(</td>
+          <td class="paramtype">HWND&#160;</td>
+          <td class="paramname"><em>hWnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">WPARAM&#160;</td>
+          <td class="paramname"><em>wParam</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPARAM&#160;</td>
+          <td class="paramname"><em>lParam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gère <code>WM_MOUSEWHEEL</code> avec Ctrl — zoom centré sur le curseur. </p>
+<p>Sans Ctrl, le message est transmis à <code>DefWindowProcW</code> (scroll natif). </p>
 
 </div>
 </div>
@@ -352,7 +525,8 @@ Attributs privés statiques</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gestionnaire de <code>WM_PAINT</code> — délègue le dessin à <a class="el" href="../../d9/d01/classTCORenderer.html">TCORenderer</a>. </p>
-<p>Ouvre un <code>BeginPaint</code> / <code>EndPaint</code>, interroge <code>GetClientRect</code> pour obtenir les dimensions courantes, puis appelle <code><a class="el" href="../../d9/d01/classTCORenderer.html#a6121818c20cecd5b7fcb6cae98de3584">TCORenderer::draw</a></code>. Aucune logique de dessin n'est présente ici.</p>
+<p>Utilise le cache de projection (<code>m_cachedProj</code>) : recalcule via <code><a class="el" href="../../d9/d01/classTCORenderer.html#a71d5b47b88c8e22bada0455a82f741ff" title="Calcule la projection logique → écran depuis le graphe et la RECT.">TCORenderer::computeProjection</a></code> uniquement si <code>m_projDirty</code> est vrai ou si la taille de la fenêtre a changé.</p>
+<p>Applique ensuite la world transform GDI (<code>SetWorldTransform</code>) pour le zoom (<code>m_zoom</code>) et le pan (<code>m_panX</code> / <code>m_panY</code>) avant d'appeler <code><a class="el" href="../../d9/d01/classTCORenderer.html#a3b3fc4bd144c7b87e73bb7ffcc499c79" title="Point d&#39;entrée du rendu — remplit le fond puis dessine tous les nœuds.">TCORenderer::draw</a></code> avec <code>fillBackground</code> = false (fond déjà rempli).</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">hWnd</td><td>Handle de la fenêtre à peindre. </td></tr>
@@ -386,11 +560,7 @@ Attributs privés statiques</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reconstruit le graphe PCC depuis <a class="el" href="../../d2/d01/classTopologyRepository.html">TopologyRepository</a>. </p>
-<p>Appelle successivement :</p><ol type="1">
-<li><a class="el" href="../../d8/d01/classPCCGraphBuilder.html#abf374147607f4e1db014ab3c96af68ad">PCCGraphBuilder::build</a> — crée nœuds et arêtes.</li>
-<li><a class="el" href="../../d4/d01/classPCCLayout.html#ab4cc295476fd4fa74b34318b127b3ab0">PCCLayout::compute</a> — calcule les positions X/Y.</li>
-</ol>
-<p>No-op si <a class="el" href="../../d2/d01/classTopologyRepository.html">TopologyRepository</a> est vide. </p>
+<p>Appelle successivement <a class="el" href="../../d8/d01/classPCCGraphBuilder.html#abf374147607f4e1db014ab3c96af68ad">PCCGraphBuilder::build</a> et <a class="el" href="../../d4/d01/classPCCLayout.html#ab4cc295476fd4fa74b34318b127b3ab0">PCCLayout::compute</a>. Invalide le cache de projection (<code>m_projDirty</code> = true). No-op si <a class="el" href="../../d2/d01/classTopologyRepository.html">TopologyRepository</a> est vide. </p>
 
 </div>
 </div>
@@ -410,8 +580,34 @@ Attributs privés statiques</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Force un rafraîchissement du dessin TCO. </p>
-<p>Invalide l'intégralité du rectangle client via <code>InvalidateRect</code>, ce qui provoque un <code>WM_PAINT</code> au prochain cycle de messages. N'effectue rien si le panneau est masqué ou non créé.</p>
-<p>À appeler depuis <a class="el" href="../../d6/d02/classMainWindow.html#a90cae565f67d1291d690d974547041a0">MainWindow::onParsingSuccess</a> pour mettre à jour le schéma après chargement d'un fichier GeoJSON. </p>
+<p>Reconstruit le graphe puis invalide la fenêtre si visible. À appeler depuis <a class="el" href="../../d6/d02/classMainWindow.html#a90cae565f67d1291d690d974547041a0">MainWindow::onParsingSuccess</a>. </p>
+
+</div>
+</div>
+<a id="a76a95979f5fe50a43e424e7a5d5e1aee" name="a76a95979f5fe50a43e424e7a5d5e1aee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76a95979f5fe50a43e424e7a5d5e1aee">&#9670;&#160;</a></span>resetView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PCCPanel::resetView </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Réinitialise zoom = 1, pan = (0, 0) — <code>WM_LBUTTONDBLCLK</code>. </p>
 
 </div>
 </div>
@@ -431,8 +627,7 @@ Attributs privés statiques</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Redimensionne le panneau pour couvrir toute la zone cliente du parent. </p>
-<p>Interroge <code>GetClientRect</code> sur la fenêtre parente et applique les dimensions via <code>SetWindowPos</code>. À appeler depuis le gestionnaire <code>WM_SIZE</code> de <a class="el" href="../../d6/d02/classMainWindow.html">MainWindow</a>.</p>
-<p>Aucune action si <a class="el" href="../../d4/d03/classPCCPanel.html#a8c381e0a06238c65ab19fdeba3c93608">create</a> n'a pas été appelé. </p>
+<p>À appeler depuis le gestionnaire <code>WM_SIZE</code> de <a class="el" href="../../d6/d02/classMainWindow.html">MainWindow</a>. </p>
 
 </div>
 </div>
@@ -452,7 +647,7 @@ Attributs privés statiques</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Alterne la visibilité du panneau (masqué ↔ visible). </p>
-<p>Lors d'une transition masqué → visible, redimensionne d'abord le panneau via <a class="el" href="../../d4/d03/classPCCPanel.html#afddac4ff78519cb2a37e74b62ba76d3b">resize</a>, puis invalide le rectangle pour déclencher un <code>WM_PAINT</code> immédiat. Aucune action si <a class="el" href="../../d4/d03/classPCCPanel.html#a8c381e0a06238c65ab19fdeba3c93608">create</a> n'a pas été appelé. </p>
+<p>Lors d'une transition masqué → visible, redimensionne d'abord le panneau puis invalide le rectangle pour un <code>WM_PAINT</code> immédiat. </p>
 
 </div>
 </div>
@@ -502,19 +697,6 @@ Attributs privés statiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Procédure de fenêtre statique, point d'entrée imposé par Win32. </p>
-<p>Lors du premier message (<code>WM_NCCREATE</code>), stocke le pointeur <code>this</code> (passé via <code>CREATESTRUCT::lpCreateParams</code>) dans <code>GWLP_USERDATA</code>, puis délègue chaque message à <a class="el" href="../../d4/d03/classPCCPanel.html#a4eb1ec290785cae336ff1f8e6bf0aafc">handleMessage</a>.</p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">hWnd</td><td>Handle de la fenêtre. </td></tr>
-    <tr><td class="paramname">msg</td><td>Identifiant du message Win32. </td></tr>
-    <tr><td class="paramname">wParam</td><td>Paramètre WPARAM. </td></tr>
-    <tr><td class="paramname">lParam</td><td>Paramètre LPARAM.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Résultat du traitement du message. </dd></dl>
-
 </div>
 </div>
 <h2 class="groupheader">Documentation des données membres</h2>
@@ -537,7 +719,52 @@ Attributs privés statiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Nom de la classe Win32 enregistrée pour <a class="el" href="../../d4/d03/classPCCPanel.html">PCCPanel</a>. </p>
+
+</div>
+</div>
+<a id="af66a33e5bbe5e1173058b5b7d8e04c29" name="af66a33e5bbe5e1173058b5b7d8e04c29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af66a33e5bbe5e1173058b5b7d8e04c29">&#9670;&#160;</a></span>m_cachedProj</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/d01/structTCORenderer_1_1Projection.html">TCORenderer::Projection</a> PCCPanel::m_cachedProj = {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Projection logique → écran mise en cache. Valide tant que m_projDirty est false et que la RECT n'a pas changé. </p>
+
+</div>
+</div>
+<a id="a9217ae9c6f39db4b39812bba151ad59c" name="a9217ae9c6f39db4b39812bba151ad59c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9217ae9c6f39db4b39812bba151ad59c">&#9670;&#160;</a></span>m_dragAnchor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">POINT PCCPanel::m_dragAnchor = {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Position curseur (client) au moment du LButtonDown. </p>
 
 </div>
 </div>
@@ -560,7 +787,7 @@ Attributs privés statiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Graphe PCC possédé par ce panneau. Membre valeur — durée de vie identique à <a class="el" href="../../d4/d03/classPCCPanel.html">PCCPanel</a>. Reconstruit à chaque appel à <a class="el" href="../../d4/d03/classPCCPanel.html#ab5855fdd8a7724cd85723c2eb2d8c30c">rebuild</a>. Déclaré après <a class="el" href="../../d4/d03/classPCCPanel.html#a24e4ee6bf5097c29a65ab3fda090a3b5">m_logger</a> — reçoit m_logger dans son constructeur. </p>
+<p>Graphe PCC possédé par ce panneau. Reconstruit à chaque appel à <a class="el" href="../../d4/d03/classPCCPanel.html#ab5855fdd8a7724cd85723c2eb2d8c30c">rebuild</a>. Déclaré après <a class="el" href="../../d4/d03/classPCCPanel.html#a24e4ee6bf5097c29a65ab3fda090a3b5">m_logger</a> — reçoit m_logger dans son constructeur. </p>
 
 </div>
 </div>
@@ -583,7 +810,6 @@ Attributs privés statiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Handle de l'instance Win32 de l'application. </p>
 
 </div>
 </div>
@@ -606,7 +832,6 @@ Attributs privés statiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Handle de la fenêtre parente (<a class="el" href="../../d6/d02/classMainWindow.html">MainWindow</a>). </p>
 
 </div>
 </div>
@@ -629,7 +854,52 @@ Attributs privés statiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Handle Win32 de la fenêtre enfant (valide après <a class="el" href="../../d4/d03/classPCCPanel.html#a8c381e0a06238c65ab19fdeba3c93608">create</a>). </p>
+
+</div>
+</div>
+<a id="afc655753a29b3239ee599a86f5073e71" name="afc655753a29b3239ee599a86f5073e71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc655753a29b3239ee599a86f5073e71">&#9670;&#160;</a></span>m_isDragging</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PCCPanel::m_isDragging = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vrai pendant qu'un drag LMB est en cours. </p>
+
+</div>
+</div>
+<a id="a93a12c437632f15d97d167ada032c170" name="a93a12c437632f15d97d167ada032c170"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93a12c437632f15d97d167ada032c170">&#9670;&#160;</a></span>m_lastRect</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RECT PCCPanel::m_lastRect = {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Dernière RECT passée à computeProjection. Comparée à la RECT courante dans onPaint pour détecter un resize. </p>
 
 </div>
 </div>
@@ -653,6 +923,213 @@ Attributs privés statiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> HMI partagé, fourni par <a class="el" href="../../d6/d02/classMainWindow.html">MainWindow</a>. Déclaré avant <a class="el" href="../../d4/d03/classPCCPanel.html#aa25138775b8c426acc66b58e2ec87abb">m_graph</a> — transmis au constructeur de <a class="el" href="../../d2/d00/classPCCGraph.html" title="Conteneur propriétaire du graphe PCC — nœuds, arêtes et index.">PCCGraph</a>. </p>
+
+</div>
+</div>
+<a id="ab485bdf6471c36cb991303909f5cb672" name="ab485bdf6471c36cb991303909f5cb672"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab485bdf6471c36cb991303909f5cb672">&#9670;&#160;</a></span>m_panX</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PCCPanel::m_panX = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Décalage horizontal de la vue en pixels écran. Positif = contenu décalé vers la droite. </p>
+
+</div>
+</div>
+<a id="a7f86bb82dfbce7ec99edeb189468fffd" name="a7f86bb82dfbce7ec99edeb189468fffd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f86bb82dfbce7ec99edeb189468fffd">&#9670;&#160;</a></span>m_panXAtDrag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PCCPanel::m_panXAtDrag = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur de m_panX au début du drag — référence pour le delta. </p>
+
+</div>
+</div>
+<a id="a1404f225f34ec5f017865e4ba0402100" name="a1404f225f34ec5f017865e4ba0402100"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1404f225f34ec5f017865e4ba0402100">&#9670;&#160;</a></span>m_panY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PCCPanel::m_panY = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Décalage vertical de la vue en pixels écran. Positif = contenu décalé vers le bas. </p>
+
+</div>
+</div>
+<a id="a64a396ef6437c574ba33231bbde1c468" name="a64a396ef6437c574ba33231bbde1c468"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64a396ef6437c574ba33231bbde1c468">&#9670;&#160;</a></span>m_panYAtDrag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PCCPanel::m_panYAtDrag = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur de m_panY au début du drag — référence pour le delta. </p>
+
+</div>
+</div>
+<a id="a83a3a30bee7f5cfb75ba7bdd0db3d817" name="a83a3a30bee7f5cfb75ba7bdd0db3d817"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83a3a30bee7f5cfb75ba7bdd0db3d817">&#9670;&#160;</a></span>m_projDirty</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PCCPanel::m_projDirty = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Indicateur d'invalidation du cache. Mis à true par <a class="el" href="../../d4/d03/classPCCPanel.html#ab5855fdd8a7724cd85723c2eb2d8c30c" title="Reconstruit le graphe PCC depuis TopologyRepository.">rebuild()</a> (nouveau parsing) et lors du premier paint. Remis à false après recalcul dans <a class="el" href="../../d4/d03/classPCCPanel.html#a8eecf984fba3d3b3bc86ea61b095e098" title="Gestionnaire de WM_PAINT — délègue le dessin à TCORenderer.">onPaint()</a>. </p>
+
+</div>
+</div>
+<a id="af7724cbb19aea301177f4c1460960a31" name="af7724cbb19aea301177f4c1460960a31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7724cbb19aea301177f4c1460960a31">&#9670;&#160;</a></span>m_zoom</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PCCPanel::m_zoom = 1.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Facteur de zoom courant (1.0 = aucun zoom). Appliqué via SetWorldTransform dans onPaint. Borné dans [ZOOM_MIN, ZOOM_MAX]. </p>
+
+</div>
+</div>
+<a id="ab6ceb14148cdc773feb1904bf6aa4ca5" name="ab6ceb14148cdc773feb1904bf6aa4ca5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ceb14148cdc773feb1904bf6aa4ca5">&#9670;&#160;</a></span>ZOOM_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float PCCPanel::ZOOM_MAX = 20.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Zoom maximal — limite le grossissement. </p>
+
+</div>
+</div>
+<a id="aa5a23848998a8cfbd4e2ab1caa12f133" name="aa5a23848998a8cfbd4e2ab1caa12f133"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5a23848998a8cfbd4e2ab1caa12f133">&#9670;&#160;</a></span>ZOOM_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float PCCPanel::ZOOM_MIN = 0.05f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Zoom minimal — empêche d'inverser la vue ou de zoomer à l'infini. </p>
+
+</div>
+</div>
+<a id="a81e0d958dff481bcc8d68de97711c259" name="a81e0d958dff481bcc8d68de97711c259"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81e0d958dff481bcc8d68de97711c259">&#9670;&#160;</a></span>ZOOM_STEP</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float PCCPanel::ZOOM_STEP = 0.12f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Facteur multiplicatif par cran de molette (12 %). </p>
 
 </div>
 </div>

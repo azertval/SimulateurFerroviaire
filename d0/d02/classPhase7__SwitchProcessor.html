@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('d0/d02/classPhase7__SwitchProcessor.ht
 <div class="dynheader">
 Graphe de collaboration de Phase7_SwitchProcessor:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d7/d02/classPhase7__SwitchProcessor__coll__graph.svg" width="243" height="296"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d7/d02/classPhase7__SwitchProcessor__coll__graph.svg" width="243" height="316"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -149,6 +149,9 @@ Fonctions membres privées statiques</h2></td></tr>
 <tr class="memitem:a7bdb6885c051280696002c76b07cf7d2" id="r_a7bdb6885c051280696002c76b07cf7d2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/classPhase7__SwitchProcessor.html#a7bdb6885c051280696002c76b07cf7d2">interpolateTip</a> (const std::vector&lt; <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &gt; &amp;pts, const <a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a> &amp;junction, double targetDist)</td></tr>
 <tr class="memdesc:a7bdb6885c051280696002c76b07cf7d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpole un point WGS84 sur une polyligne à <code>targetDist</code> mètres depuis l'extrémité la plus proche de <code>junction</code>.  <br /></td></tr>
 <tr class="separator:a7bdb6885c051280696002c76b07cf7d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a74aff76e739f3670838178e83209d9" id="r_a0a74aff76e739f3670838178e83209d9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/classPhase7__SwitchProcessor.html#a0a74aff76e739f3670838178e83209d9">interpolateTipUTM</a> (const std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; &amp;pts, const <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &amp;junctionUTM, double targetDist)</td></tr>
+<tr class="memdesc:a0a74aff76e739f3670838178e83209d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpole un point UTM sur une polyligne à <code>targetDist</code> mètres depuis l'extrémité la plus proche de <code>junctionUTM</code>.  <br /></td></tr>
+<tr class="separator:a0a74aff76e739f3670838178e83209d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a5df971be1544107b3f820757171101cd" name="a5df971be1544107b3f820757171101cd"></a>
@@ -546,6 +549,60 @@ Fonctions membres privées statiques</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Point WGS84 interpolé, ou extrémité distale si branche trop courte. </dd></dl>
+
+</div>
+</div>
+<a id="a0a74aff76e739f3670838178e83209d9" name="a0a74aff76e739f3670838178e83209d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a74aff76e739f3670838178e83209d9">&#9670;&#160;</a></span>interpolateTipUTM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> Phase7_SwitchProcessor::interpolateTipUTM </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>pts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a> &amp;&#160;</td>
+          <td class="paramname"><em>junctionUTM</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>targetDist</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Interpole un point UTM sur une polyligne à <code>targetDist</code> mètres depuis l'extrémité la plus proche de <code>junctionUTM</code>. </p>
+<p>Utilise la distance euclidienne (std::hypot) — pas de Haversine. Même logique que <a class="el" href="../../d0/d02/classPhase7__SwitchProcessor.html#a7bdb6885c051280696002c76b07cf7d2" title="Interpole un point WGS84 sur une polyligne à targetDist mètres depuis l&#39;extrémité la plus proche de j...">interpolateTip()</a> mais sur <a class="el" href="../../df/d01/classCoordinateXY.html" title="Coordonnée plane en mètres dans un système métrique (UTM ou similaire).">CoordinateXY</a>.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pts</td><td>Polyligne UTM du <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a>. </td></tr>
+    <tr><td class="paramname">junctionUTM</td><td>Position de la jonction en UTM. </td></tr>
+    <tr><td class="paramname">targetDist</td><td>Distance cible en mètres UTM. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Point UTM interpolé, ou extrémité distale si branche trop courte. </dd></dl>
 
 </div>
 </div>

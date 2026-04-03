@@ -9,6 +9,7 @@ var classPhase7__SwitchProcessor =
     [ "enforceCrossoverConsistency", "d0/d02/classPhase7__SwitchProcessor.html#a2d799d48d34e5644d3add29e9082e5e6", null ],
     [ "findLinkSegment", "d0/d02/classPhase7__SwitchProcessor.html#a9b5aa9ddd88d4badd9dc51ceb075e091", null ],
     [ "interpolateTip", "d0/d02/classPhase7__SwitchProcessor.html#a7bdb6885c051280696002c76b07cf7d2", null ],
+    [ "interpolateTipUTM", "d0/d02/classPhase7__SwitchProcessor.html#a0a74aff76e739f3670838178e83209d9", null ],
     [ "orientBranches", "d0/d02/classPhase7__SwitchProcessor.html#a9f2ffbaf9adef9cf4ea8a2d6b6a38610", null ],
     [ "run", "d0/d02/classPhase7__SwitchProcessor.html#adc0ddccf266b4d0ed2fe700b60afaffb", null ],
     [ "validateCDC", "d0/d02/classPhase7__SwitchProcessor.html#a4b60a15f76c30214520c3f2f7892325b", null ]

@@ -110,7 +110,7 @@ Graphe des dépendances par inclusion de TCORenderer.h:</div>
 </div><div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d6/d02/TCORenderer_8h__dep__incl.svg" width="366" height="168"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d6/d02/TCORenderer_8h__dep__incl.svg" width="563" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="../../d8/d02/TCORenderer_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -120,13 +120,22 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d01/classTCORenderer.html">TCORenderer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d01/structTCORenderer_1_1Projection.html">TCORenderer::Projection</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Paramètres de projection logique → écran.  <a href="../../d2/d01/structTCORenderer_1_1Projection.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Renderer GDI du schéma TCO — style SNCF, blocs fixes. </p>
 <dl class="section user"><dt>Rendu par bloc fixe</dt><dd>Chaque nœud occupe une cellule de même largeur, séparées par un gap.<ul>
 <li>Straight : trait horizontal plein.</li>
-<li>Switch : root + branche active (couleur état voie) + branche inactive (gris foncé, raccourcie côté jonction). </li>
+<li>Switch : root + branche active (couleur état voie) + branche inactive (gris foncé, raccourcie côté jonction).</li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt>Optimisations</dt><dd><ul>
+<li>static_cast dans drawNodes (getNodeType() garantit le type).</li>
+<li>PenScope RAII dans le namespace anonyme du .cpp — un seul pen par groupe.</li>
+<li>Projection étendue avec stub/inactiveGap/halfGap précalculés.</li>
+<li>computeProjection() exposée publiquement pour le cache de <a class="el" href="../../d4/d03/classPCCPanel.html">PCCPanel</a>.</li>
+<li>draw() reçoit une Projection précalculée depuis <a class="el" href="../../d4/d03/classPCCPanel.html">PCCPanel</a>. </li>
 </ul>
 </dd></dl>
 </div></div><!-- contents -->

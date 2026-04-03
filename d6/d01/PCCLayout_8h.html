@@ -134,7 +134,11 @@ Classes</h2></td></tr>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Rôle   </th><th class="markdownTableHeadNone">ΔX   </th><th class="markdownTableHeadNone">ΔY    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">STRAIGHT / NORMAL / ROOT standard   </td><td class="markdownTableBodyNone">+1   </td><td class="markdownTableBodyNone">0 (Y constant)    </td></tr>
+<td class="markdownTableBodyNone">STRAIGHT / ROOT standard   </td><td class="markdownTableBodyNone">+1   </td><td class="markdownTableBodyNone">0 (Y constant)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">NORMAL standard   </td><td class="markdownTableBodyNone">+1   </td><td class="markdownTableBodyNone">0 (Y constant)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">NORMAL → SwitchNode (aiguille double)   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">±côté géo    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">ROOT forward + arrivée par déviation   </td><td class="markdownTableBodyNone">-1   </td><td class="markdownTableBodyNone">0 (upstream)    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -145,8 +149,9 @@ Classes</h2></td></tr>
 </li>
 </ol>
 </dd></dl>
-<dl class="section user"><dt>Détection "arrivée par déviation"</dt><dd>Le flag <code>arrivedViaDeviation</code> est stocké dans BFSItem et propagé à chaque nœud enqueué. Il est levé dès qu'un voisin est atteint via une arête DEVIATION. Quand un switch est dépilé avec ce flag à true, sa voie ROOT est traitée comme upstream (x-1) plutôt que downstream (x+1). Ce mécanisme couvre l'aiguille simple et la double aiguille sans distinction de cas.</dd></dl>
-<dl class="section user"><dt>Côté géographique</dt><dd>Le côté (±1) est calculé <b>une seule fois</b> par <a class="el" href="../../d8/d01/classPCCGraphBuilder.html#a2128658a25ce447feac28a22f8b796b2" title="Calcule le côté géographique de la déviation pour chaque switch.">PCCGraphBuilder::computeDeviationSides</a> à partir des lat/lon et stocké dans <a class="el" href="../../d2/d00/classPCCSwitchNode.html#ac6abceed1291d2bbbd1ed10fd8b38b06">PCCSwitchNode::getDeviationSide()</a>. C'est la <b>seule</b> donnée GPS utilisée pendant le layout.</dd></dl>
+<dl class="section user"><dt>Détection "arrivée par déviation"</dt><dd>Le flag <code>arrivedViaDeviation</code> est stocké dans BFSItem et propagé à chaque nœud enqueué. Il est levé dès qu'un voisin est atteint via une arête DEVIATION. Quand un switch est dépilé avec ce flag à true, sa voie ROOT est traitée comme upstream (x-1) plutôt que downstream (x+1).</dd></dl>
+<dl class="section user"><dt>Côté géographique</dt><dd>Le côté (±1) est calculé <b>une seule fois</b> par <a class="el" href="../../d8/d01/classPCCGraphBuilder.html#a2128658a25ce447feac28a22f8b796b2" title="Calcule le côté géographique de la déviation pour chaque switch.">PCCGraphBuilder::computeDeviationSides</a> à partir des coordonnées UTM et stocké dans <a class="el" href="../../d2/d00/classPCCSwitchNode.html#ac6abceed1291d2bbbd1ed10fd8b38b06">PCCSwitchNode::getDeviationSide()</a>. C'est la <b>seule</b> donnée GPS tolérée dans ce calcul.</dd></dl>
+<dl class="section user"><dt>Post-traitement — branches convergentes de longueurs inégales</dt><dd>Après le BFS, fixCollapsedBranches détecte tout switch dont une branche (DEVIATION ou NORMAL) atterrit au même X que lui-même (longueur visuelle nulle). Il décale ce switch et tout son sous-graphe aval (via ROOT) de +1 cellule, jusqu'à ce qu'aucun cas subsiste. La logique de <a class="el" href="../../d9/d01/classTCORenderer.html#ab4ba39f86898d6ac91d8b5a6f1b774f1">TCORenderer::drawStraightBlock</a> (extension au mi-chemin vers les voisins de même Y) et de <a class="el" href="../../d9/d01/classTCORenderer.html#a785fd9a94e8d53856635b5bc4f6ad19d">TCORenderer::drawSwitchBlock</a> gèrent alors le rendu automatiquement, sans modification du renderer.</dd></dl>
 <dl class="section user"><dt>Graphes déconnectés</dt><dd>Un BFS est lancé depuis chaque terminus de chaque composante. Un décalage X est appliqué entre composantes pour éviter les superpositions.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Classe entièrement statique — instanciation interdite. </dd></dl>
 </div></div><!-- contents -->

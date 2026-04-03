@@ -16,8 +16,8 @@
 <text text-anchor="start" x="401" y="-366.5" font-family="Helvetica,sans-Serif" font-size="10.00">StraightBlock</text>
 <text text-anchor="start" x="365.5" y="-351.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
 <text text-anchor="start" x="376" y="-351.5" font-family="Helvetica,sans-Serif" font-size="10.00">m_lengthMeters</text>
-<text text-anchor="start" x="363" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="376" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00">StraightBlock()</text>
+<text text-anchor="start" x="365.5" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="376" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00">m_state</text>
 <text text-anchor="start" x="363" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
 <text text-anchor="start" x="376" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00">StraightBlock()</text>
 <text text-anchor="start" x="363" y="-306.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
@@ -63,8 +63,8 @@
 <text text-anchor="start" x="365.5" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
 <text text-anchor="start" x="376" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">computeGeodesicLength()</text>
 <polygon fill="#666666" stroke="#666666" points="359,-361.5 359,-361.5 509,-361.5 509,-361.5 359,-361.5"/>
-<polygon fill="#666666" stroke="#666666" points="359,-346.5 359,-346.5 374,-346.5 374,-346.5 359,-346.5"/>
-<polygon fill="#666666" stroke="#666666" points="374,-346.5 374,-346.5 509,-346.5 509,-346.5 374,-346.5"/>
+<polygon fill="#666666" stroke="#666666" points="359,-331.5 359,-331.5 374,-331.5 374,-331.5 359,-331.5"/>
+<polygon fill="#666666" stroke="#666666" points="374,-331.5 374,-331.5 509,-331.5 509,-331.5 374,-331.5"/>
 <polygon fill="none" stroke="#666666" points="359,0 359,-379 509,-379 509,0 359,0"/>
 </a>
 </g>
