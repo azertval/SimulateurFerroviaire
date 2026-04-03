@@ -117,11 +117,11 @@ void PCCGraphBuilder::buildEdges(PCCGraph& graph,
                 // deux switches différents pointant vers le même straight auraient
                 // des clés canoniques différentes de toute façon.
                 // → clé canonique pour les cas standard (évite les doublons réels).
-                const bool isSwitchDeviation = (role == PCCEdgeRole::DEVIATION)
-                    && (branchNode->getNodeType() == PCCNodeType::SWITCH);
+                const bool isSwitchToSwitch =
+                    (branchNode->getNodeType() == PCCNodeType::SWITCH);
 
-                const std::string key = isSwitchDeviation
-                    ? (source->getId() + ">" + branch->getId())   // dirigée
+                const std::string key = isSwitchToSwitch
+                    ? (source->getId() + ">" + branch->getId())    // dirigée
                     : makeEdgeKey(source->getId(), branch->getId()); // canonique
 
                 if (processedSwitchEdges.count(key)) return;

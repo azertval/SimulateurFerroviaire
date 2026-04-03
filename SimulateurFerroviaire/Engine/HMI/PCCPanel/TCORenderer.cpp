@@ -343,8 +343,30 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
         const COLORREF col = normalIsActive ? stateColor : COLORS.branchOff;
         const int      width = normalIsActive ? LINE_WIDTH_ACTIVE : LINE_WIDTH_INACTIVE;
         PenScope pen(hdc, col, width);
-        pen.moveTo({ junctionX, center.y });
-        pen.lineTo({ normalBorderX + dirToNormal * halfGap, center.y });
+
+        const bool normalTargetIsSwitch = normEdge
+            && normEdge->getTo()
+            && normEdge->getTo()->getNodeType() == PCCNodeType::SWITCH;
+
+        if (normalTargetIsSwitch)
+        {
+            // Double liaison sw↔sw via NORMAL : demi-diagonale vers le point milieu.
+            const PCCNode* partner = normEdge->getTo();
+            const POINT    partCenter = project(
+                partner->getPosition().x, partner->getPosition().y, proj);
+            const POINT midPt = {
+                (center.x + partCenter.x) / 2,
+                (center.y + partCenter.y) / 2
+            };
+            pen.moveTo({ junctionX, center.y });
+            pen.lineTo(midPt);
+        }
+        else
+        {
+            // Cas standard : branche normale horizontale.
+            pen.moveTo({ junctionX, center.y });
+            pen.lineTo({ normalBorderX + dirToNormal * halfGap, center.y });
+        }
     }
 
     // =========================================================================
