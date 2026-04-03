@@ -189,6 +189,9 @@ POINT TCORenderer::project(int logicalX, int logicalY, const Projection& proj)
 void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
     const PCCGraph& graph, Logger& logger)
 {
+    int straightCount = 0;
+    int switchCount = 0;
+
     for (const auto& nodePtr : graph.getNodes())
     {
         const PCCNode* node = nodePtr.get();
@@ -196,15 +199,37 @@ void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
         if (node->getNodeType() == PCCNodeType::SWITCH)
         {
             // static_cast : sûr — getNodeType() == SWITCH garantit PCCSwitchNode.
-            // dynamic_cast retiré : vérification RTTI redondante et coûteuse.
-            drawSwitchBlock(hdc, proj,
-                static_cast<const PCCSwitchNode*>(node));
+            const auto* sw = static_cast<const PCCSwitchNode*>(node);
+
+            auto edgeDest = [](const PCCEdge* e) -> std::string {
+                return e && e->getTo() ? e->getTo()->getSourceId() : "null";
+                };
+
+            LOG_DEBUG(logger, "drawSwitch " + node->getSourceId()
+                + " pos=[" + std::to_string(node->getPosition().x)
+                + "," + std::to_string(node->getPosition().y) + "]"
+                + " isDouble=" + (sw->getSwitchSource()->isDouble() ? "true" : "false")
+                + " root=" + edgeDest(sw->getRootEdge())
+                + " normal=" + edgeDest(sw->getNormalEdge())
+                + " dev=" + edgeDest(sw->getDeviationEdge()));
+
+            drawSwitchBlock(hdc, proj, sw, logger);
+            ++switchCount;
         }
         else
         {
-            drawStraightBlock(hdc, proj, node);
+            LOG_DEBUG(logger, "drawStraight " + node->getSourceId()
+                + " pos=[" + std::to_string(node->getPosition().x)
+                + "," + std::to_string(node->getPosition().y) + "]");
+
+            drawStraightBlock(hdc, proj, node, logger);
+            ++straightCount;
         }
     }
+
+    LOG_DEBUG(logger, "drawNodes termine — "
+        + std::to_string(straightCount) + " straight(s), "
+        + std::to_string(switchCount) + " switch(es).");
 }
 
 
@@ -213,7 +238,7 @@ void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
 // =============================================================================
 
 void TCORenderer::drawStraightBlock(HDC hdc, const Projection& proj,
-    const PCCNode* node)
+    const PCCNode* node, Logger& logger)
 {
     const POINT center = project(
         node->getPosition().x, node->getPosition().y, proj);
@@ -251,7 +276,7 @@ void TCORenderer::drawStraightBlock(HDC hdc, const Projection& proj,
 // =============================================================================
 
 void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
-    const PCCSwitchNode* sw)
+    const PCCSwitchNode* sw, Logger& logger)
 {
     // Constantes depuis Projection — précalculées dans computeProjection (Famille E)
     const int halfGap = proj.halfGap;
@@ -293,13 +318,20 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
 
     const bool isDouble = sw->getSwitchSource()->isDouble();
 
+    LOG_DEBUG(logger, sw->getSourceId()
+        + " junctionX=" + std::to_string(junctionX)
+        + " root=" + (rootEdge ? std::to_string(rootBorderX) : "no-edge")
+        + " normal=" + (normEdge ? std::to_string(normalBorderX) : "no-edge")
+        + " dev=" + (devEdge ? std::to_string(devBorderX) : "no-edge")
+        + " isDouble=" + (isDouble ? "true" : "false"));
+
     // =========================================================================
     // Branche root (Famille D — PenScope par branche)
     // =========================================================================
     {
-        const COLORREF col = normalIsActive ? stateColor : COLORS.branchOff;
-        const int      width = normalIsActive ? LINE_WIDTH_ACTIVE : LINE_WIDTH_INACTIVE;
-        PenScope pen(hdc, col, width);
+        // Root : toujours actif — le train passe toujours par la racine,
+        // quelle que soit la branche sélectionnée (NORMAL ou DEVIATION).
+        PenScope pen(hdc, stateColor, LINE_WIDTH_ACTIVE);
         pen.moveTo({ rootBorderX + dirFromRoot * halfGap, center.y });
         pen.lineTo({ junctionX, center.y });
     }
@@ -343,9 +375,12 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
 
         PenScope pen(hdc, devColor, devWidth);
 
-        if (isDouble)
+        if (isDouble && devEdge && devEdge->getTo())
         {
-            // Double switch : diagonale vers le milieu avec le partenaire
+            // Double switch : diagonale vers le milieu avec le partenaire.
+            LOG_DEBUG(logger, sw->getSourceId() + " dev-double → " + devEdge->getTo()->getSourceId());
+            // Guard null : devEdge peut être absent si l'arête n'a pas été
+            // créée dans le graphe PCC (branche absorbée sans entrée résoluble).
             const PCCNode* partner = devEdge->getTo();
             const POINT    partCenter = project(
                 partner->getPosition().x, partner->getPosition().y, proj);
@@ -357,7 +392,7 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
             pen.moveTo(pStart);
             pen.lineTo(midPt);
         }
-        else
+        else if (!isDouble)
         {
             // Switch simple : diagonale + stub horizontal
             int devY = center.y - proj.cellHeight;
@@ -369,13 +404,30 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
                     : center.y - sw->getDeviationSide() * proj.cellHeight;
             }
 
-            const int endX = devBorderX - dirToDev * halfGap;
-            const POINT pStubBeg = { endX - dirToDev * STUB, devY };
-            const POINT pStubEnd = { endX,                    devY };
+            // Direction réelle jonction → devBorderX — indépendante de dirFromRoot.
+            // dirToDev = -dirFromRoot supposait que la déviation est toujours du côté
+            // opposé à la racine, ce qui est faux quand root et deviation partagent
+            // le même côté (ex. sw/5 : root=droite, deviation=gauche-haut).
+            const int stubDir = (devBorderX >= junctionX) ? 1 : -1;
+
+            const int endX = devBorderX - stubDir * halfGap;
+            const POINT pStubBeg = { endX - stubDir * STUB, devY };
+            const POINT pStubEnd = { endX,                   devY };
+
+            LOG_DEBUG(logger, sw->getSourceId()
+                + " dev-simple stubDir=" + std::to_string(stubDir)
+                + " endX=" + std::to_string(endX)
+                + " pStubBeg=" + std::to_string(pStubBeg.x)
+                + " devY=" + std::to_string(devY));
 
             pen.moveTo(pStart);
             pen.lineTo(pStubBeg);
             pen.lineTo(pStubEnd);
+        }
+        // Si isDouble && devEdge absent : pas de dessin de la déviation
+        else if (isDouble)
+        {
+            LOG_DEBUG(logger, sw->getSourceId() + " dev-double SKIP — devEdge null");
         }
     }
 }

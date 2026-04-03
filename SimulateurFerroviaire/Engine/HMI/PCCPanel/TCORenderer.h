@@ -8,7 +8,7 @@
  *  - Switch   : root + branche active (couleur état voie) + branche
  *               inactive (gris foncé, raccourcie côté jonction).
  *
- * @par Optimisations v2
+ * @par Optimisations
  *  - static_cast dans drawNodes (getNodeType() garantit le type).
  *  - PenScope RAII dans le namespace anonyme du .cpp — un seul pen par groupe.
  *  - Projection étendue avec stub/inactiveGap/halfGap précalculés.
@@ -128,7 +128,7 @@ private:
      * @param node  Nœud straight à dessiner.
      */
     static void drawStraightBlock(HDC hdc, const Projection& proj,
-        const PCCNode* node);
+        const PCCNode* node, Logger& logger);
 
     /**
      * @brief Dessine un nœud SwitchBlock (root + normal + déviation).
@@ -141,7 +141,7 @@ private:
      * @param sw   Nœud switch à dessiner.
      */
     static void drawSwitchBlock(HDC hdc, const Projection& proj,
-        const PCCSwitchNode* sw);
+        const PCCSwitchNode* sw, Logger& logger);
 
     /**
      * @brief Retourne la couleur GDI correspondant à un état ShuntingState.
