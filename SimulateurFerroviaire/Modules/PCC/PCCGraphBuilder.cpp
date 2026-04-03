@@ -109,7 +109,21 @@ void PCCGraphBuilder::buildEdges(PCCGraph& graph,
                 PCCNode* branchNode = graph.findNode(branch->getId());
                 if (!branchNode) return;
 
-                const std::string key = makeEdgeKey(source->getId(), branch->getId());
+                // Double liaison sw↔sw : les deux arêtes dirigées sont nécessaires
+                // (sw/A→sw/B ET sw/B→sw/A) pour que chaque switch ait son deviationEdge.
+                // → clé dirigée pour ne pas dédoublonner ces deux arêtes distinctes.
+                //
+                // Crossover sw→straight←sw : une seule arête par switch suffit,
+                // deux switches différents pointant vers le même straight auraient
+                // des clés canoniques différentes de toute façon.
+                // → clé canonique pour les cas standard (évite les doublons réels).
+                const bool isSwitchDeviation = (role == PCCEdgeRole::DEVIATION)
+                    && (branchNode->getNodeType() == PCCNodeType::SWITCH);
+
+                const std::string key = isSwitchDeviation
+                    ? (source->getId() + ">" + branch->getId())   // dirigée
+                    : makeEdgeKey(source->getId(), branch->getId()); // canonique
+
                 if (processedSwitchEdges.count(key)) return;
                 processedSwitchEdges.insert(key);
 
