@@ -130,7 +130,7 @@ void PCCPanel::rebuild()
 
 
 // =============================================================================
-// Zoom (Ctrl + molette)
+// Zoom (molette)
 // =============================================================================
 
 void PCCPanel::onMouseWheel(HWND hWnd, WPARAM wParam, LPARAM lParam)
