@@ -9,6 +9,27 @@
  * Le rendu du schéma TCO est entièrement délégué à @ref TCORenderer, appelé
  * dans @c WM_PAINT. PCCPanel ne contient aucune logique de dessin.
  *
+ * @par Cache de projection (optimisation v2)
+ * La projection logique → écran (@ref TCORenderer::Projection) est mise en
+ * cache dans @c m_cachedProj. Elle est recalculée uniquement si la fenêtre
+ * a été redimensionnée (@c m_lastRect changé) ou si le graphe a été
+ * reconstruit (@c m_projDirty = true dans @ref rebuild).
+ *
+ * @par Navigation (zoom / pan) — v3
+ * La vue est pilotée par trois scalaires : @c m_zoom, @c m_panX, @c m_panY.
+ * Ils sont appliqués via @c SetWorldTransform sur le HDC dans @ref onPaint,
+ * après remplissage du fond en espace écran mais avant l'appel à TCORenderer.
+ *
+ *  - **Zoom** : @c Ctrl+Molette, centré sur la position courante de la souris.
+ *    La formule conserve le point sous le curseur fixe :
+ *    @code
+ *      ratio    = newZoom / oldZoom
+ *      newPanX  = cursorX - (cursorX - panX) * ratio
+ *    @endcode
+ *  - **Pan** : glisser-déposer bouton gauche (drag & drop).
+ *    @c SetCapture / @c ReleaseCapture garantissent la capture hors fenêtre.
+ *  - **Reset** : double-clic gauche remet zoom = 1, pan = (0, 0).
+ *
  * @par Cycle de vie
  *  -# @ref create — enregistre la classe Win32 et crée la fenêtre enfant.
  *  -# @ref toggle — alterne visibilité.
@@ -24,12 +45,16 @@
  */
 #pragma once
 #include "framework.h"
+#include "TCORenderer.h"
 #include "Engine/Core/Logger/Logger.h"
 #include "Modules/PCC/PCCGraph.h"
+
+#include <algorithm>   // std::clamp
 
 class PCCPanel
 {
 public:
+
     /**
      * @brief Construit le PCCPanel avec un logger externe.
      *
@@ -41,16 +66,8 @@ public:
     /**
      * @brief Enregistre la classe Win32 et crée la fenêtre enfant masquée.
      *
-     * La fenêtre est positionnée à (0, 0) avec les dimensions de la zone
-     * cliente de @p hParent. Elle est masquée (@c SW_HIDE) jusqu'au premier
-     * appel à @ref toggle.
-     *
-     * L'enregistrement de la classe est idempotent : si @c RegisterClassExW
-     * retourne @c ERROR_CLASS_ALREADY_EXISTS, l'erreur est ignorée.
-     *
      * @param hParent   Handle de la fenêtre parente (@ref MainWindow).
      * @param hInstance Handle de l'instance Win32 de l'application.
-     *
      * @throws std::runtime_error Si @c CreateWindowExW retourne @c nullptr.
      */
     void create(HWND hParent, HINSTANCE hInstance);
@@ -59,40 +76,28 @@ public:
      * @brief Alterne la visibilité du panneau (masqué ↔ visible).
      *
      * Lors d'une transition masqué → visible, redimensionne d'abord le
-     * panneau via @ref resize, puis invalide le rectangle pour déclencher
-     * un @c WM_PAINT immédiat. Aucune action si @ref create n'a pas été
-     * appelé.
+     * panneau puis invalide le rectangle pour un @c WM_PAINT immédiat.
      */
     void toggle();
 
     /**
      * @brief Redimensionne le panneau pour couvrir toute la zone cliente du parent.
      *
-     * Interroge @c GetClientRect sur la fenêtre parente et applique les
-     * dimensions via @c SetWindowPos. À appeler depuis le gestionnaire
-     * @c WM_SIZE de @ref MainWindow.
-     *
-     * Aucune action si @ref create n'a pas été appelé.
+     * À appeler depuis le gestionnaire @c WM_SIZE de @ref MainWindow.
      */
     void resize();
 
     /**
      * @brief Force un rafraîchissement du dessin TCO.
      *
-     * Invalide l'intégralité du rectangle client via @c InvalidateRect,
-     * ce qui provoque un @c WM_PAINT au prochain cycle de messages.
-     * N'effectue rien si le panneau est masqué ou non créé.
-     *
-     * À appeler depuis @ref MainWindow::onParsingSuccess pour mettre à
-     * jour le schéma après chargement d'un fichier GeoJSON.
+     * Reconstruit le graphe puis invalide la fenêtre si visible.
+     * À appeler depuis @ref MainWindow::onParsingSuccess.
      */
     void refresh();
 
     /**
      * @brief Indique si le panneau est actuellement visible.
-     *
-     * @return @c true si la fenêtre existe et est visible (@c IsWindowVisible),
-     *         @c false sinon.
+     * @return @c true si la fenêtre existe et est visible.
      */
     bool isVisible() const;
 
@@ -102,71 +107,77 @@ private:
     // WndProc
     // =========================================================================
 
-    /**
-     * @brief Procédure de fenêtre statique, point d'entrée imposé par Win32.
-     *
-     * Lors du premier message (@c WM_NCCREATE), stocke le pointeur @c this
-     * (passé via @c CREATESTRUCT::lpCreateParams) dans @c GWLP_USERDATA,
-     * puis délègue chaque message à @ref handleMessage.
-     *
-     * @param hWnd    Handle de la fenêtre.
-     * @param msg     Identifiant du message Win32.
-     * @param wParam  Paramètre WPARAM.
-     * @param lParam  Paramètre LPARAM.
-     *
-     * @return Résultat du traitement du message.
-     */
-    static LRESULT CALLBACK windowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+    static LRESULT CALLBACK windowProc(HWND hWnd, UINT msg,
+        WPARAM wParam, LPARAM lParam);
 
-    /**
-     * @brief Dispatcher principal des messages de la fenêtre.
-     *
-     * Route @c WM_PAINT vers @ref onPaint et @c WM_ERASEBKGND vers un
-     * handler no-op (supprime le flickering). Tous les autres messages
-     * sont transmis à @c DefWindowProcW.
-     *
-     * @param hWnd    Handle de la fenêtre.
-     * @param msg     Identifiant du message Win32.
-     * @param wParam  Paramètre WPARAM.
-     * @param lParam  Paramètre LPARAM.
-     *
-     * @return Résultat du traitement du message.
-     */
-    LRESULT handleMessage(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+    LRESULT handleMessage(HWND hWnd, UINT msg,
+        WPARAM wParam, LPARAM lParam);
 
     /**
      * @brief Gestionnaire de @c WM_PAINT — délègue le dessin à @ref TCORenderer.
      *
-     * Ouvre un @c BeginPaint / @c EndPaint, interroge @c GetClientRect pour
-     * obtenir les dimensions courantes, puis appelle @c TCORenderer::draw.
-     * Aucune logique de dessin n'est présente ici.
+     * Utilise le cache de projection (@c m_cachedProj) :
+     * recalcule via @c TCORenderer::computeProjection uniquement si
+     * @c m_projDirty est vrai ou si la taille de la fenêtre a changé.
+     *
+     * Applique ensuite la world transform GDI (@c SetWorldTransform) pour le
+     * zoom (@c m_zoom) et le pan (@c m_panX / @c m_panY) avant d'appeler
+     * @c TCORenderer::draw avec @c fillBackground = false (fond déjà rempli).
      *
      * @param hWnd Handle de la fenêtre à peindre.
      */
     void onPaint(HWND hWnd);
 
     /**
-    * @brief Reconstruit le graphe PCC depuis @ref TopologyRepository.
-    *
-    * Appelle successivement :
-    *  -# @ref PCCGraphBuilder::build — crée nœuds et arêtes.
-    *  -# @ref PCCLayout::compute — calcule les positions X/Y.
-    *
-    * No-op si @ref TopologyRepository est vide.
-    */
+     * @brief Gère @c WM_MOUSEWHEEL avec Ctrl — zoom centré sur le curseur.
+     *
+     * Sans Ctrl, le message est transmis à @c DefWindowProcW (scroll natif).
+     */
+    void onMouseWheel(HWND hWnd, WPARAM wParam, LPARAM lParam);
+
+    /**
+     * @brief Démarre un drag & drop (pan) — @c WM_LBUTTONDOWN.
+     * Appelle @c SetCapture pour continuer à recevoir WM_MOUSEMOVE hors fenêtre.
+     */
+    void onLButtonDown(HWND hWnd, LPARAM lParam);
+
+    /**
+     * @brief Déplace la vue pendant le drag — @c WM_MOUSEMOVE.
+     * No-op si @c m_isDragging est faux.
+     */
+    void onMouseMove(HWND hWnd, LPARAM lParam);
+
+    /**
+     * @brief Termine le drag — @c WM_LBUTTONUP.
+     * Appelle @c ReleaseCapture.
+     */
+    void onLButtonUp(HWND hWnd);
+
+    /**
+     * @brief Réinitialise zoom = 1, pan = (0, 0) — @c WM_LBUTTONDBLCLK.
+     */
+    void resetView();
+
+    /**
+     * @brief Reconstruit le graphe PCC depuis @ref TopologyRepository.
+     *
+     * Appelle successivement @ref PCCGraphBuilder::build et @ref PCCLayout::compute.
+     * Invalide le cache de projection (@c m_projDirty = true).
+     * No-op si @ref TopologyRepository est vide.
+     */
     void rebuild();
 
     // =========================================================================
-    // Membres
+    // Membres — fenêtre Win32
     // =========================================================================
-    /** Handle Win32 de la fenêtre enfant (valide après @ref create). */
-    HWND m_hWnd = nullptr;
 
-    /** Handle de la fenêtre parente (@ref MainWindow). */
-    HWND m_hParent = nullptr;
-
-    /** Handle de l'instance Win32 de l'application. */
+    HWND      m_hWnd = nullptr;
+    HWND      m_hParent = nullptr;
     HINSTANCE m_hInstance = nullptr;
+
+    // =========================================================================
+    // Membres — données
+    // =========================================================================
 
     /**
      * Logger HMI partagé, fourni par @ref MainWindow.
@@ -176,12 +187,84 @@ private:
 
     /**
      * Graphe PCC possédé par ce panneau.
-     * Membre valeur — durée de vie identique à PCCPanel.
      * Reconstruit à chaque appel à @ref rebuild.
      * Déclaré après @ref m_logger — reçoit m_logger dans son constructeur.
      */
     PCCGraph m_graph;
 
-    /** Nom de la classe Win32 enregistrée pour @ref PCCPanel. */
+    // =========================================================================
+    // Membres — cache de projection (Famille F)
+    // =========================================================================
+
+    /**
+     * Dernière RECT passée à computeProjection.
+     * Comparée à la RECT courante dans onPaint pour détecter un resize.
+     */
+    RECT m_lastRect = {};
+
+    /**
+     * Projection logique → écran mise en cache.
+     * Valide tant que m_projDirty est false et que la RECT n'a pas changé.
+     */
+    TCORenderer::Projection m_cachedProj = {};
+
+    /**
+     * Indicateur d'invalidation du cache.
+     * Mis à true par rebuild() (nouveau parsing) et lors du premier paint.
+     * Remis à false après recalcul dans onPaint().
+     */
+    bool m_projDirty = true;
+
+    // =========================================================================
+    // Membres — état de la vue (zoom / pan)
+    // =========================================================================
+
+    /**
+     * Facteur de zoom courant (1.0 = aucun zoom).
+     * Appliqué via SetWorldTransform dans onPaint.
+     * Borné dans [ZOOM_MIN, ZOOM_MAX].
+     */
+    float m_zoom = 1.0f;
+
+    /**
+     * Décalage horizontal de la vue en pixels écran.
+     * Positif = contenu décalé vers la droite.
+     */
+    float m_panX = 0.0f;
+
+    /**
+     * Décalage vertical de la vue en pixels écran.
+     * Positif = contenu décalé vers le bas.
+     */
+    float m_panY = 0.0f;
+
+    // =========================================================================
+    // Membres — état du drag (pan par glisser-déposer)
+    // =========================================================================
+
+    /** Vrai pendant qu'un drag LMB est en cours. */
+    bool  m_isDragging = false;
+
+    /** Position curseur (client) au moment du LButtonDown. */
+    POINT m_dragAnchor = {};
+
+    /** Valeur de m_panX au début du drag — référence pour le delta. */
+    float m_panXAtDrag = 0.0f;
+
+    /** Valeur de m_panY au début du drag — référence pour le delta. */
+    float m_panYAtDrag = 0.0f;
+
+    // =========================================================================
+    // Constantes
+    // =========================================================================
+
     static constexpr wchar_t CLASS_NAME[] = L"PCCPanelClass";
-};
+
+    /** Facteur multiplicatif par cran de molette (12 %). */
+    static constexpr float ZOOM_STEP   = 0.12f;
+
+    /** Zoom minimal — empêche d'inverser la vue ou de zoomer à l'infini. */
+    static constexpr float ZOOM_MIN    = 0.05f;
+
+    /** Zoom maximal — limite le grossissement. */
+    static constexpr float ZOOM_MAX    = 20.0f;};

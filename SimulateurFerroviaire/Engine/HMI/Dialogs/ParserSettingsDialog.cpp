@@ -126,8 +126,8 @@ void ParserSettingsDialog::populateFields(HWND hDlg, const ParserConfig& cfg)
     setField(IDC_EDIT_MIN_SWITCH_ANGLE, cfg.minSwitchAngle);
     setField(IDC_EDIT_JUNCTION_TRIM_MARGIN, cfg.junctionTrimMargin);
     setField(IDC_EDIT_DOUBLE_SWITCH_RADIUS, cfg.doubleSwitchRadius);
-    setField(IDC_EDIT_MIN_BRANCH_LENGTH, cfg.minBranchLength);
     setField(IDC_EDIT_MIN_SWITCH_SIDE_SIZE, cfg.switchSideSize);
+    setField(IDC_EDIT_MIN_BRANCH_LENGTH, cfg.minBranchLength);
 }
 
 ParserConfig ParserSettingsDialog::readFields(HWND hDlg)

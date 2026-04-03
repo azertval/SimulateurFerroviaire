@@ -100,6 +100,7 @@ void SwitchBlock::swapNormalDeviation()
 {
     std::swap(m_normalBranchId, m_deviationBranchId);
     std::swap(m_tipOnNormal, m_tipOnDeviation);
+    std::swap(m_tipOnNormalUTM, m_tipOnDeviationUTM);
     std::swap(m_absorbedNormalCoords, m_absorbedDeviationCoords);
     std::swap(m_absorbedNormalCoordsUTM, m_absorbedDeviationCoordsUTM);
     std::swap(m_doubleOnNormal, m_doubleOnDeviation);
@@ -257,6 +258,20 @@ std::string SwitchBlock::toString() const
             << ", tipNormal=" << tip(m_tipOnNormal)
             << ", tipDeviation=" << tip(m_tipOnDeviation);
 
+        auto tipUTM = [](const std::optional<CoordinateXY>& t) -> std::string
+            {
+                if (!t) return "—";
+                std::ostringstream b;
+                b << std::fixed;
+                b.precision(1);
+                b << "(" << t->x << ", " << t->y << ")";
+                return b.str();
+            };
+
+        s << ", tipRootUTM=" << tipUTM(m_tipOnRootUTM)
+            << ", tipNormalUTM=" << tipUTM(m_tipOnNormalUTM)
+            << ", tipDeviationUTM=" << tipUTM(m_tipOnDeviationUTM);
+
         // Longueur totale
         if (m_totalLengthMeters)
         {
@@ -276,6 +291,17 @@ std::string SwitchBlock::toString() const
     return s.str();
 }
 
+void SwitchBlock::setTipsUTM(
+    std::optional<CoordinateXY> tipRoot,
+    std::optional<CoordinateXY> tipNormal,
+    std::optional<CoordinateXY> tipDeviation)
+{
+    // Même structure que setTips() — assignation directe sans calcul.
+    // Les valeurs viennent de Phase7_SwitchProcessor::interpolateTipUTM.
+    m_tipOnRootUTM = std::move(tipRoot);
+    m_tipOnNormalUTM = std::move(tipNormal);
+    m_tipOnDeviationUTM = std::move(tipDeviation);
+}
 
 // =============================================================================
 // Helpers privés

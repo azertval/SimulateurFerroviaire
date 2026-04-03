@@ -81,6 +81,18 @@ struct ParserConfig
      */
     double doubleSwitchRadius = 100.0;
 
+    /**
+     * @brief Longueur des branches CDC de l'aiguillage depuis la jonction (m).
+     *
+     * Définit la distance à laquelle les tips CDC (root, normal, deviation)
+     * sont interpolés sur la géométrie WGS84 de chaque branche.
+     * Correspond à la longueur physique d'un côté de l'aiguille.
+     *
+     * @par Valeur typique
+     * 25.0 m — longueur standard d'un côté d'aiguille ferroviaire.
+     */
+    double switchSideSize = 25.0;
+
     // =========================================================================
     // [CDC]
     // =========================================================================
@@ -92,16 +104,4 @@ struct ParserConfig
      * 25.0 m.
      */
     double minBranchLength = 25.0;
-
-    /**
-     * @brief Longueur des branches CDC de l'aiguillage depuis la jonction (m).
-     *
-     * Définit la distance à laquelle les tips CDC (root, normal, deviation)
-     * sont interpolés sur la géométrie WGS84 de chaque branche.
-     * Correspond à la longueur physique d'un côté de l'aiguille.
-     *
-     * @par Valeur typique
-     * 15.0 m — longueur standard d'un côté d'aiguille ferroviaire.
-     */
-    double switchSideSize = 15.0;
 };

@@ -223,6 +223,50 @@ public:
     void setDeviationBranchId(std::string id) { m_deviationBranchId = std::move(id); }
 
     /**
+     * @brief Point CDC côté root en UTM. Absent si non orienté.
+     * Miroir UTM de getTipOnRoot().
+     */
+    [[nodiscard]] const std::optional<CoordinateXY>& getTipOnRootUTM() const
+    {
+        return m_tipOnRootUTM;
+    }
+
+    /**
+     * @brief Point CDC côté normal en UTM. Absent si non orienté.
+     * Miroir UTM de getTipOnNormal().
+     */
+    [[nodiscard]] const std::optional<CoordinateXY>& getTipOnNormalUTM() const
+    {
+        return m_tipOnNormalUTM;
+    }
+
+    /**
+     * @brief Point CDC côté déviation en UTM. Absent si non orienté.
+     * Miroir UTM de getTipOnDeviation().
+     */
+    [[nodiscard]] const std::optional<CoordinateXY>& getTipOnDeviationUTM() const
+    {
+        return m_tipOnDeviationUTM;
+    }
+
+    // SwitchBlock.h — section mutations géométrie
+
+    /**
+     * @brief Assigne les trois tips CDC en coordonnées UTM.
+     *
+     * Appelé par Phase7_SwitchProcessor::computeTips en parallèle de setTips().
+     * Les trois champs sont assignés en une seule opération pour garantir la
+     * cohérence (soit tous présents, soit tous absents).
+     *
+     * @param tipRoot      Tip côté root (CoordinateXY UTM).
+     * @param tipNormal    Tip côté normal (CoordinateXY UTM).
+     * @param tipDeviation Tip côté déviation (CoordinateXY UTM).
+     */
+    void setTipsUTM(std::optional<CoordinateXY> tipRoot,
+        std::optional<CoordinateXY> tipNormal,
+        std::optional<CoordinateXY> tipDeviation);
+
+    /**
      * @brief Assigne la position de jonction en WGS84.
      *
      * @param coord  Coordonnée WGS-84 (latitude, longitude).
@@ -401,6 +445,15 @@ private:
 
     std::vector<CoordinateXY>     m_absorbedNormalCoordsUTM;
     std::vector<CoordinateXY>     m_absorbedDeviationCoordsUTM;
+
+    /** Tip CDC côté root en UTM. Absent si non orienté. */
+    std::optional<CoordinateXY> m_tipOnRootUTM;
+
+    /** Tip CDC côté normal en UTM. Absent si non orienté. */
+    std::optional<CoordinateXY> m_tipOnNormalUTM;
+
+    /** Tip CDC côté déviation en UTM. Absent si non orienté. */
+    std::optional<CoordinateXY> m_tipOnDeviationUTM;
 
     // =========================================================================
     // Champs — topologie IDs

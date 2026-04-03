@@ -2,13 +2,12 @@
  * @file  TCORenderer.cpp
  * @brief Renderer GDI TCO — style SNCF, blocs fixes.
  *
- * Choix validés :
- *  - Gap 6px entre tous les blocs (straights et switches).
- *  - Switch : root + branche active se touchent à la jonction (0 gap).
- *  - Branche inactive : gap côté jonction, va jusqu'au bord de cellule.
- *  - Branche active : couleur d'état de la voie (blanc/rouge/gris).
- *  - Branche inactive : gris foncé (#404040).
- *  - cellHeight plafonné à cellWidth/2 (diagonales ~30°).
+ * Optimisations v2 :
+ *  - static_cast dans drawNodes (Famille C) — RTTI supprimé.
+ *  - PenScope RAII (Famille D) — un seul pen GDI par branche.
+ *  - stub/inactiveGap/halfGap précalculés dans Projection (Famille E).
+ *  - computeProjection() exposée publiquement pour le cache PCCPanel (Famille F).
+ *  - draw() reçoit une Projection précalculée — computeProjection() non rappelé.
  *
  * @see TCORenderer
  */
@@ -24,7 +23,7 @@
 
 
  // =============================================================================
- // Constantes
+ // Constantes et helpers locaux
  // =============================================================================
 
 namespace
@@ -35,7 +34,7 @@ namespace
         COLORREF free = RGB(220, 220, 220);
         COLORREF occupied = RGB(220, 50, 50);
         COLORREF inactive = RGB(80, 80, 80);
-        COLORREF branchOff = RGB(64, 64, 64);   // branche inactive (#404040)
+        COLORREF branchOff = RGB(64, 64, 64);  // branche inactive #404040
     };
 
     const TCOColors COLORS;
@@ -43,28 +42,77 @@ namespace
     constexpr int    LINE_WIDTH_ACTIVE = 3;
     constexpr int    LINE_WIDTH_INACTIVE = 2;
     constexpr int    MARGIN_PX = 40;
-
-    // Gap entre blocs adjacents (en pixels fixes)
     constexpr double BLOCK_GAP_PX = 6.0;
-
-    // Bout droit horizontal en fin de déviation (fraction de cellWidth)
     constexpr double STUB_RATIO = 0.20;
+    constexpr double INACTIVE_GAP_RATIO = 0.10;
 
-    // Gap de la branche inactive côté jonction (fraction de cellWidth)
-    constexpr double INACTIVE_GAP_RATIO = 0.1;
-}
+    // =========================================================================
+    // PenScope — wrapper RAII autour d'un HPEN GDI (Famille D)
+    //
+    // Crée et installe le pen dans le constructeur, le restaure et le libère
+    // dans le destructeur. Garantit l'absence de fuite GDI.
+    // Non copiable — un handle GDI appartient à un seul scope.
+    // =========================================================================
+    struct PenScope
+    {
+        /**
+         * @brief Crée un pen PS_SOLID et l'installe sur le HDC.
+         * @param hdc    Contexte de dessin cible.
+         * @param color  Couleur du trait (COLORREF).
+         * @param width  Épaisseur du trait en pixels.
+         */
+        PenScope(HDC hdc, COLORREF color, int width)
+            : m_hdc(hdc)
+            , m_pen(CreatePen(PS_SOLID, width, color))
+            , m_old(static_cast<HPEN>(SelectObject(hdc, m_pen)))
+        {
+        }
+
+        /** @brief Restaure l'ancien pen et libère le pen créé (RAII). */
+        ~PenScope()
+        {
+            SelectObject(m_hdc, m_old);
+            DeleteObject(m_pen);
+        }
+
+        /** @brief Déplace le curseur GDI sans tracer. */
+        void moveTo(POINT p) const { MoveToEx(m_hdc, p.x, p.y, nullptr); }
+
+        /** @brief Trace une ligne depuis la position courante jusqu'à p. */
+        void lineTo(POINT p) const { LineTo(m_hdc, p.x, p.y); }
+
+        PenScope(const PenScope&) = delete;
+        PenScope& operator=(const PenScope&) = delete;
+
+    private:
+        HDC   m_hdc;
+        HPEN  m_pen;
+        HPEN  m_old;
+    };
+
+} // namespace
 
 
 // =============================================================================
-// Point d'entrée
+// Point d'entrée (Famille F — reçoit la projection depuis PCCPanel)
 // =============================================================================
 
 void TCORenderer::draw(HDC hdc, const RECT& rect,
-    const PCCGraph& graph, Logger& logger)
+    const PCCGraph& graph,
+    const Projection& proj,
+    Logger& logger,
+    bool fillBackground)
 {
-    HBRUSH bgBrush = CreateSolidBrush(COLORS.background);
-    FillRect(hdc, &rect, bgBrush);
-    DeleteObject(bgBrush);
+    // Remplissage du fond ignoré si fillBackground == false.
+    // PCCPanel met fillBackground = false quand il remplit le fond lui-même
+    // avant d'activer la world transform (zoom / pan) — évite de recouvrir
+    // la zone noire après transformation.
+    if (fillBackground)
+    {
+        HBRUSH bgBrush = CreateSolidBrush(COLORS.background);
+        FillRect(hdc, &rect, bgBrush);
+        DeleteObject(bgBrush);
+    }
 
     if (graph.isEmpty())
     {
@@ -72,8 +120,7 @@ void TCORenderer::draw(HDC hdc, const RECT& rect,
         return;
     }
 
-    const Projection proj = computeProjection(rect, graph, logger);
-
+    // proj vient du cache PCCPanel — computeProjection() non rappelé ici.
     drawNodes(hdc, proj, graph, logger);
 
     LOG_DEBUG(logger, std::to_string(graph.nodeCount()) + " blocs dessinés.");
@@ -81,7 +128,7 @@ void TCORenderer::draw(HDC hdc, const RECT& rect,
 
 
 // =============================================================================
-// Projection
+// Projection (Famille E — stub/inactiveGap/halfGap précalculés)
 // =============================================================================
 
 TCORenderer::Projection TCORenderer::computeProjection(
@@ -119,9 +166,17 @@ TCORenderer::Projection TCORenderer::computeProjection(
     const double midLogicalY = (minY + maxY) / 2.0;
     proj.centerY = static_cast<int>(proj.height / 2.0 + midLogicalY * proj.cellHeight);
 
+    // --- Constantes dérivées de cellWidth (Famille E) ---
+    // Précalculées une fois ici — évite N recalculs identiques dans drawSwitchBlock.
+    proj.halfGap = static_cast<int>(BLOCK_GAP_PX / 2.0);
+    proj.stub = std::max(4, static_cast<int>(proj.cellWidth * STUB_RATIO));
+    proj.inactiveGap = std::max(4, static_cast<int>(proj.cellWidth * INACTIVE_GAP_RATIO));
+
     LOG_DEBUG(logger, "Projection — cellule "
         + std::to_string(proj.cellWidth) + "x"
-        + std::to_string(proj.cellHeight) + "px.");
+        + std::to_string(proj.cellHeight) + "px"
+        + " | stub=" + std::to_string(proj.stub)
+        + " halfGap=" + std::to_string(proj.halfGap));
 
     return proj;
 }
@@ -136,55 +191,72 @@ POINT TCORenderer::project(int logicalX, int logicalY, const Projection& proj)
 
 
 // =============================================================================
-// Dessin de tous les nœuds
+// Dessin de tous les nœuds (Famille C — static_cast)
 // =============================================================================
 
 void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
     const PCCGraph& graph, Logger& logger)
 {
+    int straightCount = 0;
+    int switchCount = 0;
+
     for (const auto& nodePtr : graph.getNodes())
     {
         const PCCNode* node = nodePtr.get();
 
         if (node->getNodeType() == PCCNodeType::SWITCH)
         {
-            if (auto* sw = dynamic_cast<const PCCSwitchNode*>(node))
-                drawSwitchBlock(hdc, proj, sw);
+            // static_cast : sûr — getNodeType() == SWITCH garantit PCCSwitchNode.
+            const auto* sw = static_cast<const PCCSwitchNode*>(node);
+
+            auto edgeDest = [](const PCCEdge* e) -> std::string {
+                return e && e->getTo() ? e->getTo()->getSourceId() : "null";
+                };
+
+            LOG_DEBUG(logger, "drawSwitch " + node->getSourceId()
+                + " pos=[" + std::to_string(node->getPosition().x)
+                + "," + std::to_string(node->getPosition().y) + "]"
+                + " isDoubleOnDev=" + (sw->getSwitchSource()->getDoubleOnDeviation().has_value() ? "true" : "false")
+                + " root=" + edgeDest(sw->getRootEdge())
+                + " normal=" + edgeDest(sw->getNormalEdge())
+                + " dev=" + edgeDest(sw->getDeviationEdge()));
+
+            drawSwitchBlock(hdc, proj, sw, logger);
+            ++switchCount;
         }
         else
         {
-            drawStraightBlock(hdc, proj, node);
+            LOG_DEBUG(logger, "drawStraight " + node->getSourceId()
+                + " pos=[" + std::to_string(node->getPosition().x)
+                + "," + std::to_string(node->getPosition().y) + "]");
+
+            drawStraightBlock(hdc, proj, node, logger);
+            ++straightCount;
         }
     }
+
+    LOG_DEBUG(logger, "drawNodes termine — "
+        + std::to_string(straightCount) + " straight(s), "
+        + std::to_string(switchCount) + " switch(es).");
 }
 
 
 // =============================================================================
-// Straight — trait horizontal avec gap aux deux bords
-//
-//    |←————————— cellWidth ——————————→|
-//    gap ══════════════════════════ gap
-//
+// Straight — trait horizontal avec gap (Famille D — PenScope)
 // =============================================================================
 
 void TCORenderer::drawStraightBlock(HDC hdc, const Projection& proj,
-    const PCCNode* node)
+    const PCCNode* node, Logger& logger)
 {
-    const int halfCell = proj.cellWidth / 2;
-    const int halfGap = static_cast<int>(BLOCK_GAP_PX / 2.0);
-
     const POINT center = project(
         node->getPosition().x, node->getPosition().y, proj);
 
     const COLORREF color = stateToColor(node->getSource()->getState());
 
-    // Bornes par défaut : 1 cellule fixe
-    int leftX = center.x - halfCell;
-    int rightX = center.x + halfCell;
+    int leftX = center.x - proj.cellWidth / 2;
+    int rightX = center.x + proj.cellWidth / 2;
 
-    // Ajuster les bornes vers le mi-chemin de chaque voisin sur le même Y.
-    // Permet de couvrir correctement les cas où un voisin est à 2+ cellules
-    // (ex. straight entre deux switches séparés par un double).
+    // Ajuste les bornes vers le mi-chemin de chaque voisin sur le même Y
     for (const PCCEdge* edge : node->getEdges())
     {
         const PCCNode* nb = (edge->getFrom() == node)
@@ -192,62 +264,41 @@ void TCORenderer::drawStraightBlock(HDC hdc, const Projection& proj,
         if (!nb || nb->getPosition().y != node->getPosition().y)
             continue;
 
-        const POINT nbPt = project(nb->getPosition().x, nb->getPosition().y, proj);
+        const POINT nbPt = project(
+            nb->getPosition().x, nb->getPosition().y, proj);
         const int mid = (center.x + nbPt.x) / 2;
 
-        if (nbPt.x < center.x)
-            leftX = std::min(leftX, mid);
-        else if (nbPt.x > center.x)
-            rightX = std::max(rightX, mid);
+        if (nbPt.x < center.x) leftX = std::min(leftX, mid);
+        else if (nbPt.x > center.x) rightX = std::max(rightX, mid);
     }
 
-    const POINT left = { leftX + halfGap, center.y };
-    const POINT right = { rightX - halfGap, center.y };
-    drawLine(hdc, left, right, color, LINE_WIDTH_ACTIVE);
+    // PenScope : creation unique pour ce straight — destructeur en fin de bloc
+    PenScope pen(hdc, color, LINE_WIDTH_ACTIVE);
+    pen.moveTo({ leftX + proj.halfGap, center.y });
+    pen.lineTo({ rightX - proj.halfGap, center.y });
 }
 
 
 // =============================================================================
-// Switch — symbole d'aiguillage
-//
-//    Normal actif :
-//    |←————————— cellWidth ——————————→|
-//                          __________
-//                   ╱  (stub)   |gap
-//                gap    
-//    gap ══════════════════════════ gap
-//     (root)    ↑     (active)
-//            jonction
-//
-//    Deviation actif :
-//    |←————————— cellWidth ——————————→|
-//                          __________
-//                       ╱  (stub)    |gap
-//    gap ═══════ gap________________ gap
-//     (root)         (inactive)
-//
+// Switch — symbole d'aiguillage (Famille D + E)
 // =============================================================================
 
 void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
-    const PCCSwitchNode* sw)
+    const PCCSwitchNode* sw, Logger& logger)
 {
-    const int halfGap = static_cast<int>(BLOCK_GAP_PX / 2.0);
-    const int STUB = std::max(4, static_cast<int>(proj.cellWidth * STUB_RATIO));
-    const int INACTIVE_GAP = std::max(4, static_cast<int>(proj.cellWidth * INACTIVE_GAP_RATIO));
+    // Constantes depuis Projection — précalculées dans computeProjection (Famille E)
+    const int halfGap = proj.halfGap;
+    const int STUB = proj.stub;
+    const int INACT_GAP = proj.inactiveGap;
 
     const POINT center = project(
         sw->getPosition().x, sw->getPosition().y, proj);
 
-    // -----------------------------------------------------------------
-    // Couleurs
-    // -----------------------------------------------------------------
     const COLORREF stateColor = stateToColor(sw->getSource()->getState());
     const ActiveBranch active = sw->getSwitchSource()->getActiveBranch();
     const bool normalIsActive = (active == ActiveBranch::NORMAL);
 
-    // -----------------------------------------------------------------
-    // Helper : calcule le X du bord de la branche (mi-chemin vers la cible)
-    // -----------------------------------------------------------------
+    // Helper : X du bord de branche (mi-chemin vers la cible)
     auto edgeXToward = [&](const PCCEdge* edge) -> int
         {
             if (!edge || !edge->getTo()) return center.x;
@@ -257,112 +308,153 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
             return (center.x + tgt.x) / 2;
         };
 
-    // -----------------------------------------------------------------
-    // Jonction : point où root se divise en normal / déviation.
-    //
-    // Placée à STUB_RATIO * cellWidth depuis le bord root (et non au
-    // centre de la cellule). Cela donne au symbole une forme en Y
-    // typique des schémas ferroviaires : courte queue root, puis fourche.
-    // -----------------------------------------------------------------
     const PCCEdge* rootEdge = sw->getRootEdge();
+    const PCCEdge* normEdge = sw->getNormalEdge();
+    const PCCEdge* devEdge = sw->getDeviationEdge();
+
     const int rootBorderX = edgeXToward(rootEdge);
+    const int normalBorderX = edgeXToward(normEdge);
+    const int devBorderX = edgeXToward(devEdge);
+
+    // Direction racine → jonction (±1)
     const int dirFromRoot = (rootBorderX < center.x) ? 1 : -1;
+    const int dirToNormal = -dirFromRoot;
+    const int dirToDev = -dirFromRoot;
+
+    // X de jonction = bord racine + STUB vers la jonction
     const int junctionX = rootBorderX + dirFromRoot * STUB;
 
-    // -----------------------------------------------------------------
-    // 1. Root : bord → jonction
-    // -----------------------------------------------------------------
+    // Vérifie si la cible de chaque branche est un switch (double liaison sw↔sw).
+    // Même logique pour normal et deviation — symétrie complète.
+    const bool devTargetIsSwitch = devEdge
+        && devEdge->getTo()
+        && devEdge->getTo()->getNodeType() == PCCNodeType::SWITCH;
+
+    LOG_DEBUG(logger, sw->getSourceId()
+        + " junctionX=" + std::to_string(junctionX)
+        + " root=" + (rootEdge ? std::to_string(rootBorderX) : "no-edge")
+        + " normal=" + (normEdge ? std::to_string(normalBorderX) : "no-edge")
+        + " dev=" + (devEdge ? std::to_string(devBorderX) : "no-edge")
+        + " devTargetIsSwitch=" + (devTargetIsSwitch ? "true" : "false"));
+
+    // =========================================================================
+    // Branche root (Famille D — PenScope par branche)
+    // =========================================================================
     {
-        const POINT pA = { rootBorderX + dirFromRoot * halfGap, center.y };
-        const POINT pB = { junctionX,                            center.y };
-        drawLine(hdc, pA, pB, stateColor, LINE_WIDTH_ACTIVE);
+        // Root : toujours actif — le train passe toujours par la racine,
+        // quelle que soit la branche sélectionnée (NORMAL ou DEVIATION).
+        PenScope pen(hdc, stateColor, LINE_WIDTH_ACTIVE);
+        pen.moveTo({ rootBorderX + dirFromRoot * halfGap, center.y });
+        pen.lineTo({ junctionX, center.y });
     }
 
-    // -----------------------------------------------------------------
-    // 2. Normal : jonction → bord (ou jonction+gap → bord si inactive)
-    // -----------------------------------------------------------------
-    const PCCEdge* normalEdge = sw->getNormalEdge();
+    // =========================================================================
+    // Branche normale
+    // =========================================================================
     {
-        const int normalBorderX = edgeXToward(normalEdge);
-        const int dirToNormal = (normalBorderX > junctionX) ? 1 : -1;
+        const COLORREF col = normalIsActive ? stateColor : COLORS.branchOff;
+        const int      width = normalIsActive ? LINE_WIDTH_ACTIVE : LINE_WIDTH_INACTIVE;
+        PenScope pen(hdc, col, width);
 
-        const int startX = normalIsActive
-            ? junctionX
-            : junctionX + dirToNormal * INACTIVE_GAP;
+        const bool normalTargetIsSwitch = normEdge
+            && normEdge->getTo()
+            && normEdge->getTo()->getNodeType() == PCCNodeType::SWITCH;
 
-        const POINT pA = { startX,                                  center.y };
-        const POINT pB = { normalBorderX - dirToNormal * halfGap,   center.y };
-
-        drawLine(hdc, pA, pB,
-            normalIsActive ? stateColor : COLORS.branchOff,
-            normalIsActive ? LINE_WIDTH_ACTIVE : LINE_WIDTH_INACTIVE);
+        if (normalTargetIsSwitch)
+        {
+            // Double liaison sw↔sw via NORMAL : demi-diagonale vers le point milieu.
+            const PCCNode* partner = normEdge->getTo();
+            const POINT    partCenter = project(
+                partner->getPosition().x, partner->getPosition().y, proj);
+            const POINT midPt = {
+                (center.x + partCenter.x) / 2,
+                (center.y + partCenter.y) / 2
+            };
+            pen.moveTo({ junctionX, center.y });
+            pen.lineTo(midPt);
+        }
+        else
+        {
+            // Cas standard : branche normale horizontale.
+            pen.moveTo({ junctionX, center.y });
+            pen.lineTo({ normalBorderX + dirToNormal * halfGap, center.y });
+        }
     }
 
-    // -----------------------------------------------------------------
-    // 3. Deviation
-    // -----------------------------------------------------------------
-    const PCCEdge* devEdge = sw->getDeviationEdge();
+    // =========================================================================
+    // Branche déviation
+    // =========================================================================
     {
         const COLORREF devColor = normalIsActive ? COLORS.branchOff : stateColor;
         const int      devWidth = normalIsActive ? LINE_WIDTH_INACTIVE : LINE_WIDTH_ACTIVE;
 
-        const bool isDouble = devEdge
-            && devEdge->getTo()
-            && devEdge->getTo()->getNodeType() == PCCNodeType::SWITCH;
-
-        // Direction vers la cible déviation
-        int devBorderX = edgeXToward(devEdge);
-        int dirToDev = (devBorderX > junctionX) ? 1 : -1;
+        // Direction verticale de la déviation (écran : Y inversé)
+        const int devScreenDir = [&]() -> int
+            {
+                if (devEdge && devEdge->getTo())
+                {
+                    const int tgtLogY = devEdge->getTo()->getPosition().y;
+                    if (tgtLogY != sw->getPosition().y)
+                        return (tgtLogY > sw->getPosition().y) ? -1 : 1;
+                }
+                return -sw->getDeviationSide();
+            }();
 
         // Point de départ Y (branche inactive : léger retrait depuis la jonction)
-        const int devScreenDir = [&]() -> int {
-            if (devEdge && devEdge->getTo()) {
-                const int tgtLogY = devEdge->getTo()->getPosition().y;
-                if (tgtLogY != sw->getPosition().y)
-                    return (tgtLogY > sw->getPosition().y) ? -1 : 1; // Y écran inversé
-            }
-            return -sw->getDeviationSide();
-            }();
         const int startY = normalIsActive
-            ? center.y + devScreenDir * INACTIVE_GAP
+            ? center.y + devScreenDir * INACT_GAP
             : center.y;
 
         const POINT pStart = { junctionX, startY };
 
-        if (isDouble)
-        {
-            // Double : diagonale vers le point milieu avec le partenaire
-            const PCCNode* partner = devEdge->getTo();
-            const POINT partnerCenter = project(
-                partner->getPosition().x, partner->getPosition().y, proj);
+        PenScope pen(hdc, devColor, devWidth);
 
+        if (devTargetIsSwitch)
+        {
+            // Double liaison sw↔sw via DEVIATION : demi-diagonale vers le point milieu.
+            // Symétrique du cas normalTargetIsSwitch pour la branche normale.
+            LOG_DEBUG(logger, sw->getSourceId() + " dev-double → " + devEdge->getTo()->getSourceId());
+            const PCCNode* partner = devEdge->getTo();
+            const POINT    partCenter = project(
+                partner->getPosition().x, partner->getPosition().y, proj);
             const POINT midPt = {
-                (center.x + partnerCenter.x) / 2,
-                (center.y + partnerCenter.y) / 2
+                (center.x + partCenter.x) / 2,
+                (center.y + partCenter.y) / 2
             };
-            drawLine(hdc, pStart, midPt, devColor, devWidth);
+            pen.moveTo(pStart);
+            pen.lineTo(midPt);
+        }
+        else if (devEdge && devEdge->getTo())
+        {
+            // Déviation simple (straight) : diagonale + stub horizontal.
+            int devY = center.y - proj.cellHeight;
+            {
+                const int tgtLogY = devEdge->getTo()->getPosition().y;
+                devY = (tgtLogY != sw->getPosition().y)
+                    ? project(0, tgtLogY, proj).y
+                    : center.y - sw->getDeviationSide() * proj.cellHeight;
+            }
+
+            // Direction réelle jonction → devBorderX — indépendante de dirFromRoot.
+            const int stubDir = (devBorderX >= junctionX) ? 1 : -1;
+
+            const int endX = devBorderX - stubDir * halfGap;
+            const POINT pStubBeg = { endX - stubDir * STUB, devY };
+            const POINT pStubEnd = { endX,                   devY };
+
+            LOG_DEBUG(logger, sw->getSourceId()
+                + " dev-simple stubDir=" + std::to_string(stubDir)
+                + " endX=" + std::to_string(endX)
+                + " pStubBeg=" + std::to_string(pStubBeg.x)
+                + " devY=" + std::to_string(devY));
+
+            pen.moveTo(pStart);
+            pen.lineTo(pStubBeg);
+            pen.lineTo(pStubEnd);
         }
         else
         {
-            // Y de la déviation
-            int devY = center.y - proj.cellHeight;
-            if (devEdge && devEdge->getTo())
-            {
-                const int tgtLogY = devEdge->getTo()->getPosition().y;
-                if (tgtLogY != sw->getPosition().y)
-                    devY = project(0, tgtLogY, proj).y;
-                else
-                    devY = center.y - sw->getDeviationSide() * proj.cellHeight;
-            }
-
-            const int endX = devBorderX - dirToDev * halfGap;
-
-            // Standard : diagonale + bout droit
-            const POINT pStubBeg = { endX - dirToDev * STUB, devY };
-            const POINT pStubEnd = { endX,                     devY };
-
-            drawLine(hdc, pStart, pStubBeg, devColor, devWidth);
-            drawLine(hdc, pStubBeg, pStubEnd, devColor, devWidth);
+            LOG_DEBUG(logger, sw->getSourceId() + " dev SKIP — devEdge null");
         }
     }
 }
@@ -381,15 +473,4 @@ COLORREF TCORenderer::stateToColor(ShuntingState state)
     case ShuntingState::FREE:
     default:                      return COLORS.free;
     }
-}
-
-void TCORenderer::drawLine(HDC hdc, POINT from, POINT to,
-    COLORREF color, int lineWidth)
-{
-    HPEN pen = CreatePen(PS_SOLID, lineWidth, color);
-    HPEN oldPen = static_cast<HPEN>(SelectObject(hdc, pen));
-    MoveToEx(hdc, from.x, from.y, nullptr);
-    LineTo(hdc, to.x, to.y);
-    SelectObject(hdc, oldPen);
-    DeleteObject(pen);
 }

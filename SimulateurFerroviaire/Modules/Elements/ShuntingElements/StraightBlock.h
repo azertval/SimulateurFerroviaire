@@ -28,26 +28,22 @@ public:
     // Construction
     // =========================================================================
 
-    StraightBlock() = default;
-
     /**
-     * @brief Construit un StraightBlock avec géométrie WGS84 et calcule sa longueur.
+     * @brief Constructeur par défaut.
      *
-     * @param blockId          Identifiant unique (ex. "s/0").
-     * @param pointsWGS84      Polyligne WGS-84 ordonnée (≥ 2 points).
-     * @param neighbourIds     Voisins connus à la construction (optionnel).
+     * Le pipeline v2 (Phase6_BlockExtractor) crée les blocs via ce constructeur
+     * puis renseigne la géométrie et la topologie via les setters dédiés.
+     * Le constructeur paramétré v1 a été supprimé — il n'est plus appelé.
      */
-    StraightBlock(std::string                   blockId,
-        std::vector<CoordinateLatLon> pointsWGS84,
-        std::vector<std::string>      neighbourIds = {});
+    StraightBlock() = default;
 
     // =========================================================================
     // Interface ShuntingElement
     // =========================================================================
 
-    [[nodiscard]] std::string            getId()    const override { return m_id; }
-    [[nodiscard]] ElementType getType()  const override { return ElementType::STRAIGHT; }
-    [[nodiscard]] ShuntingState          getState() const override { return m_state; }
+    [[nodiscard]] std::string   getId()    const override { return m_id; }
+    [[nodiscard]] ElementType   getType()  const override { return ElementType::STRAIGHT; }
+    [[nodiscard]] ShuntingState getState() const override { return m_state; }
 
     void setState(ShuntingState state) { m_state = state; }
 
@@ -70,7 +66,7 @@ public:
 
     /**
      * @brief Référence modifiable sur la polyligne UTM.
-     * Utilisée par Phase8_SwitchOrientator::trimStraightOverlaps().
+     * Utilisée par Phase7_SwitchProcessor::trimStraightOverlaps().
      */
     [[nodiscard]] std::vector<CoordinateXY>& getPointsUTMRef() { return m_pointsUTM; }
 
@@ -99,7 +95,7 @@ public:
     /**
      * @brief Voisins topologiques résolus (pointeurs non-propriétaires).
      *
-     * Renseignés par Phase8_RepositoryTransfer::resolve() via
+     * Renseignés par Phase9_RepositoryTransfer::resolve() via
      * setNeighbourPrev() / setNeighbourNext().
      */
     struct StraightNeighbours
@@ -209,7 +205,7 @@ private:
 
     /**
      * Pointeurs non-propriétaires vers les blocs adjacents.
-     * Renseignés par Phase8_RepositoryTransfer::resolve().
+     * Renseignés par Phase9_RepositoryTransfer::resolve().
      * Propriété de TopologyRepository — ne pas delete.
      */
     StraightNeighbours m_neighbours;
@@ -219,6 +215,9 @@ private:
      * Mise à jour automatiquement par setPointsWGS84().
      */
     double m_lengthMeters = 0.0;
+
+    /** État opérationnel courant. */
+    ShuntingState m_state = ShuntingState::FREE;
 
     /**
      * @brief Calcule la longueur géodésique totale depuis m_pointsWGS84.
