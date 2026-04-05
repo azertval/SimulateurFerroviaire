@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire: Engine Core</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d4/d02/page_engine.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Engine Core</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>Table des matières</h3>
+<ul><ul><li class="level2"><a href="#engine_overview">Vue d&#39;ensemble</a></li>
+<li class="level2"><a href="#engine_logger">Logger</a><ul><li class="level3"><a href="#concept">Concept</a></li>
+<li class="level3"><a href="#niveaux-de-sévérité">Niveaux de sévérité</a></li>
+<li class="level3"><a href="#format-dune-ligne">Format d&#39;une ligne</a></li>
+<li class="level3"><a href="#macros-dinjection">Macros d&#39;injection</a></li>
+<li class="level3"><a href="#règle-dunicité">Règle d&#39;unicité</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#engine_config">ParserConfig</a><ul><li class="level3"><a href="#paramètres">Paramètres</a></li>
+<li class="level3"><a href="#persistance-ini">Persistance INI</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#engine_coords">Coordonnées</a><ul><li class="level3"><a href="#wgs-84--ref-coordinatelatlon">WGS-84 — @ref CoordinateLatLon</a></li>
+<li class="level3"><a href="#utm-zone-30n--ref-coordinatexy">UTM zone 30N — @ref CoordinateXY</a></li>
+<li class="level3"><a href="#haversine">Haversine</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#engine_topo">Topologie — TopologyRepository</a><ul><li class="level3"><a href="#topologyrepository">TopologyRepository</a></li>
+<li class="level3"><a href="#topologydata">TopologyData</a></li>
+<li class="level3"><a href="#topologyrenderer">TopologyRenderer</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#engine_refs">Références croisées</a></li>
+</ul>
+</ul>
+</div>
+<div class="textblock"><hr  />
+<h2><a class="anchor" id="engine_overview"></a>
+Vue d'ensemble</h2>
+<p><b>Engine Core</b> regroupe les services <b>transversaux</b> utilisés par tous les autres modules. Il ne contient aucune logique métier ferroviaire — seulement des briques d'infrastructure réutilisables.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Sous-module   </th><th class="markdownTableHeadNone">Dossier   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d02/page_engine.html#engine_logger">Logger</a>   </td><td class="markdownTableBodyNone"><code>Engine/Core/Logger/</code>   </td><td class="markdownTableBodyNone">Journalisation à 5 niveaux    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d02/page_engine.html#engine_config">ParserConfig</a>   </td><td class="markdownTableBodyNone"><code>Engine/Core/Config/</code>   </td><td class="markdownTableBodyNone">Paramètres du pipeline    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d02/page_engine.html#engine_coords">Coordonnées</a>   </td><td class="markdownTableBodyNone"><code>Engine/Core/Coordinates/</code>   </td><td class="markdownTableBodyNone">WGS-84 et UTM    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d4/d02/page_engine.html#engine_topo">Topologie</a>   </td><td class="markdownTableBodyNone"><code>Engine/Core/Topology/</code>   </td><td class="markdownTableBodyNone">Repository, rendu   </td></tr>
+</table>
+<hr  />
+<h2><a class="anchor" id="engine_logger"></a>
+Logger</h2>
+<h3><a class="anchor" id="concept"></a>
+Concept</h3>
+<p><a class="el" href="../../db/d03/classLogger.html">Logger</a> fournit un canal de journalisation <b>par moteur</b> : chaque instance est associée à un nom de moteur (ex. <code>"GeoParser"</code>, <code>"HMI"</code>) et écrit dans <code>Logs/&lt;nomDuMoteur&gt;.log</code>. Les traces sont simultanément envoyées à la <b>sortie de débogage Visual Studio</b> via <code>OutputDebugStringA</code>.</p>
+<p>Les écritures sont protégées par un <code>std::mutex</code> — le <a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> est utilisable depuis plusieurs threads sans synchronisation externe.</p>
+<h3><a class="anchor" id="niveaux-de-sévérité"></a>
+Niveaux de sévérité</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Niveau   </th><th class="markdownTableHeadNone">Macro   </th><th class="markdownTableHeadNone">Utilisation    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>DEBUG</code>   </td><td class="markdownTableBodyNone"><code>LOG_DEBUG</code>   </td><td class="markdownTableBodyNone">Valeurs intermédiaires, état interne    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>INFO</code>   </td><td class="markdownTableBodyNone"><code>LOG_INFO</code>   </td><td class="markdownTableBodyNone">Événements nominaux (fin de phase, résultats)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>WARNING</code>   </td><td class="markdownTableBodyNone"><code>LOG_WARNING</code>   </td><td class="markdownTableBodyNone">Anomalie non-bloquante (données douteuses, repli)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>ERROR</code>   </td><td class="markdownTableBodyNone"><code>LOG_ERROR</code>   </td><td class="markdownTableBodyNone">Erreur bloquante récupérable    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>FAILURE</code>   </td><td class="markdownTableBodyNone"><code>LOG_FAILURE</code>   </td><td class="markdownTableBodyNone">Erreur fatale — journalise <b>puis</b> lève <code>std::runtime_error</code>   </td></tr>
+</table>
+<p>Le niveau minimum de filtrage est configurable via <code>setMinimumLogLevel()</code>. En production, positionner à <code>INFO</code> supprime les traces <code>DEBUG</code> sans modifier le code.</p>
+<h3><a class="anchor" id="format-dune-ligne"></a>
+Format d'une ligne</h3>
+<div class="fragment"><div class="line">[HH:MM:SS] [NIVEAU  ] {NomDeClasse} [NomDeFonction] &quot;Ligne : XX&quot; : Message</div>
+</div><!-- fragment --><p>Exemple : </p><div class="fragment"><div class="line">[14:23:01] [INFO   ] {GeoParser} [parse] &quot;Ligne : 47&quot; : Phase 3 terminée — 1842 segments.</div>
+</div><!-- fragment --><h3><a class="anchor" id="macros-dinjection"></a>
+Macros d'injection</h3>
+<p>Sur MSVC, <code>__FUNCTION__</code> retourne <code>"NomDeClasse::NomDeFonction"</code>. Les macros <code>LOG_*</code> transmettent <code>__FUNCTION__</code> et <code>__LINE__</code> au <a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a>, qui extrait automatiquement le nom de classe et le nom de méthode pour les inclure dans chaque ligne.</p>
+<div class="fragment"><div class="line"><span class="comment">// Utilisation type :</span></div>
+<div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#a0c30634de010bc24deacc2cb5a123bec">LOG_INFO</a>(m_logger,    <span class="stringliteral">&quot;Fichier chargé : &quot;</span> + filePath);</div>
+<div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#adb268ee8276a4b312d31ed9db04e9926">LOG_DEBUG</a>(m_logger,   <span class="stringliteral">&quot;Nœud &quot;</span> + std::to_string(<span class="keywordtype">id</span>) + <span class="stringliteral">&quot; créé.&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#a32705d9b1868f3dc5918d6af2f45575a">LOG_WARNING</a>(m_logger, <span class="stringliteral">&quot;Branche trop courte ignorée : &quot;</span> + branchId);</div>
+<div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#ab3dff3a4b05f59968670e28caf19134b">LOG_ERROR</a>(m_logger,   <span class="stringliteral">&quot;Fichier introuvable : &quot;</span> + path);</div>
+<div class="line"><a class="code hl_define" href="../../dd/d00/Logger_8h.html#aa9e36992ae1067715000bbfbc36d11a1">LOG_FAILURE</a>(m_logger, <span class="stringliteral">&quot;Topologie nulle — arrêt immédiat&quot;</span>);</div>
+<div class="ttc" id="aLogger_8h_html_a0c30634de010bc24deacc2cb5a123bec"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#a0c30634de010bc24deacc2cb5a123bec">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:67</div></div>
+<div class="ttc" id="aLogger_8h_html_a32705d9b1868f3dc5918d6af2f45575a"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#a32705d9b1868f3dc5918d6af2f45575a">LOG_WARNING</a></div><div class="ttdeci">#define LOG_WARNING(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:73</div></div>
+<div class="ttc" id="aLogger_8h_html_aa9e36992ae1067715000bbfbc36d11a1"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#aa9e36992ae1067715000bbfbc36d11a1">LOG_FAILURE</a></div><div class="ttdeci">#define LOG_FAILURE(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:80</div></div>
+<div class="ttc" id="aLogger_8h_html_ab3dff3a4b05f59968670e28caf19134b"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#ab3dff3a4b05f59968670e28caf19134b">LOG_ERROR</a></div><div class="ttdeci">#define LOG_ERROR(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:76</div></div>
+<div class="ttc" id="aLogger_8h_html_adb268ee8276a4b312d31ed9db04e9926"><div class="ttname"><a href="../../dd/d00/Logger_8h.html#adb268ee8276a4b312d31ed9db04e9926">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG(logger, message)</div><div class="ttdef"><b>Definition</b> Logger.h:70</div></div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;**<code>LOG_FAILURE</code>** journalise le message puis appelle <code><a class="el" href="../../db/d03/classLogger.html#afe4d1f662b8e4018d0da19a81039dd5b" title="Provoque l&#39;arrêt immédiat de l&#39;application après affichage d&#39;une boîte de dialogue.">Logger::triggerFatalCrash()</a></code>, qui lève <code>std::runtime_error</code>. Il ne retourne jamais — ne pas l'utiliser dans des destructeurs. </p>
+</blockquote>
+<h3><a class="anchor" id="règle-dunicité"></a>
+Règle d'unicité</h3>
+<p>Un fichier de log = une instance de <a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a>. Les instances ne sont <b>pas copiables</b> (constructeur de copie supprimé). Partager un logger entre plusieurs objets se fait par <b>référence</b> ou <b>pointeur</b> — jamais par valeur.</p>
+<hr  />
+<h2><a class="anchor" id="engine_config"></a>
+ParserConfig</h2>
+<h3><a class="anchor" id="paramètres"></a>
+Paramètres</h3>
+<p><a class="el" href="../../dd/d03/structParserConfig.html">ParserConfig</a> est un agrégat de paramètres numériques qui gouvernent le comportement du <a class="el" href="../../de/d01/page_geoparser.html">pipeline GeoParser</a>. Tous les champs ont des valeurs par défaut compilées.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Champ   </th><th class="markdownTableHeadNone">Type   </th><th class="markdownTableHeadNone">Défaut   </th><th class="markdownTableHeadNone">Signification    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>snapTolerance</code>   </td><td class="markdownTableBodyNone"><code>double</code>   </td><td class="markdownTableBodyNone">1,0 m   </td><td class="markdownTableBodyNone">Distance de fusion de deux extrémités    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>intersectionEpsilon</code>   </td><td class="markdownTableBodyNone"><code>double</code>   </td><td class="markdownTableBodyNone">0,5 m   </td><td class="markdownTableBodyNone">Tolérance pour les intersections géométriques    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>minSwitchAngle</code>   </td><td class="markdownTableBodyNone"><code>double</code>   </td><td class="markdownTableBodyNone">5,0 °   </td><td class="markdownTableBodyNone">Angle minimal d'une bifurcation pour être classée SWITCH    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>minBranchLength</code>   </td><td class="markdownTableBodyNone"><code>double</code>   </td><td class="markdownTableBodyNone">0,5 m   </td><td class="markdownTableBodyNone">Longueur minimale d'une branche d'aiguillage    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>maxSegmentLength</code>   </td><td class="markdownTableBodyNone"><code>double</code>   </td><td class="markdownTableBodyNone">200,0 m   </td><td class="markdownTableBodyNone">Longueur au-delà de laquelle un straight est subdivisé    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>junctionTrimMargin</code>   </td><td class="markdownTableBodyNone"><code>double</code>   </td><td class="markdownTableBodyNone">3,0 m   </td><td class="markdownTableBodyNone">Recul des tips CDC depuis la jonction    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>switchSideSize</code>   </td><td class="markdownTableBodyNone"><code>double</code>   </td><td class="markdownTableBodyNone">15,0 m   </td><td class="markdownTableBodyNone">Demi-longueur des stubs CDC    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>doubleSwitchRadius</code>   </td><td class="markdownTableBodyNone"><code>double</code>   </td><td class="markdownTableBodyNone">20,0 m   </td><td class="markdownTableBodyNone">Rayon de détection des aiguilles doubles   </td></tr>
+</table>
+<h3><a class="anchor" id="persistance-ini"></a>
+Persistance INI</h3>
+<p><a class="el" href="../../d3/d01/classParserConfigIni.html">ParserConfigIni</a> gère la sérialisation dans un fichier <code>.ini</code> simple (format <code>clé=valeur</code>, un paramètre par ligne). Le chemin par défaut est retourné par <code><a class="el" href="../../d3/d01/classParserConfigIni.html#a4db9aa616d33e0dba095485d01349fe4" title="Retourne le chemin par défaut du fichier .ini.">ParserConfigIni::defaultPath()</a></code>. <code>load()</code> retourne les valeurs par défaut si le fichier est absent ou illisible ; <code>save()</code> crée le fichier si nécessaire.</p>
+<hr  />
+<h2><a class="anchor" id="engine_coords"></a>
+Coordonnées</h2>
+<p>Le projet utilise <b>deux systèmes de coordonnées</b> selon le contexte :</p>
+<h3><a class="anchor" id="wgs-84--ref-coordinatelatlon"></a>
+WGS-84 — @ref CoordinateLatLon</h3>
+<p>Coordonnées géographiques standards (<code>latitude</code>, <code>longitude</code> en degrés décimaux). Utilisées pour :</p><ul>
+<li>le stockage dans les fichiers GeoJSON source ;</li>
+<li>les polylignes des <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> et la jonction des <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> destinées au rendu <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> ;</li>
+<li>les tips CDC pour <code><a class="el" href="../../d7/d03/classTopologyRenderer.html" title="Utilitaire statique d&#39;export de la topologie ferroviaire en GeoJSON.">TopologyRenderer</a></code>.</li>
+</ul>
+<h3><a class="anchor" id="utm-zone-30n--ref-coordinatexy"></a>
+UTM zone 30N — @ref CoordinateXY</h3>
+<p>Coordonnées planes métriques (<code>x</code> = est, <code>y</code> = nord, en mètres). Utilisées pour <b>tous les calculs métriques</b> du pipeline (distances, angles, intersections, subdivisions). La projection UTM est effectuée par les phases amont du pipeline.</p>
+<blockquote class="doxtable">
+<p>&zwj;<b>Règle de cohabitation :</b> les deux collections (<code>pointsWGS84</code> / <code>pointsUTM</code>) dans <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> ont toujours le même nombre de points et les mêmes indices. Opérer toujours sur <code>UTM</code> pour les calculs ; utiliser <code>WGS84</code> uniquement pour le rendu. </p>
+</blockquote>
+<h3><a class="anchor" id="haversine"></a>
+Haversine</h3>
+<p>La fonction <code>haversineDistanceMeters(a, b)</code> calcule la <b>distance géodésique</b> entre deux points WGS-84. Elle est utilisée par Phase 7 pour interpoler les tips CDC à distance <code>switchSideSize</code> de la jonction, et pour calculer <code><a class="el" href="../../da/d01/classStraightBlock.html#aebdce1e1b66d6b39376ae1a66c2d2d9e" title="Longueur géodésique Haversine en mètres (depuis pointsWGS84). Mise à jour par setPointsWGS84().">StraightBlock::getLengthMeters()</a></code>.</p>
+<hr  />
+<h2><a class="anchor" id="engine_topo"></a>
+Topologie — TopologyRepository</h2>
+<h3><a class="anchor" id="topologyrepository"></a>
+TopologyRepository</h3>
+<p>Singleton global (<code><a class="el" href="../../d2/d01/classTopologyRepository.html#adb001f817a74b4b81e05d0d22517f509" title="Retourne l&#39;instance unique du repository (création paresseuse).">TopologyRepository::instance()</a></code>) qui détient le <a class="el" href="../../d0/d02/classTopologyData.html">TopologyData</a> produit par le <a class="el" href="../../de/d01/page_geoparser.html">pipeline</a>. Il expose :</p>
+<ul>
+<li><code>data()</code> — référence constante vers les vecteurs de blocs et les index.</li>
+<li><code>load(data)</code> — transfert par déplacement depuis le pipeline (appelé par <code><a class="el" href="../../da/d01/classPhase8__RepositoryTransfer.html#ad5599646250e12144b1b8fe65d5c4813" title="9b — Transfère les blocs vers TopologyRepository.">Phase8_RepositoryTransfer::transfer()</a></code>).</li>
+<li><code>clear()</code> — réinitialisation avant un nouveau parsing.</li>
+</ul>
+<p>Après <code>load()</code>, les adresses des blocs sont <b>stables</b> : aucun vecteur ne se réalloue. Les pointeurs non-propriétaires distribués par <a class="el" href="../../d8/d01/classPCCGraphBuilder.html">PCCGraphBuilder</a> restent valides jusqu'au prochain <code>clear()</code>.</p>
+<h3><a class="anchor" id="topologydata"></a>
+TopologyData</h3>
+<p><a class="el" href="../../d0/d02/classTopologyData.html">TopologyData</a> est le conteneur central :</p>
+<div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code hl_class" href="../../d0/d02/classTopologyData.html">TopologyData</a> {</div>
+<div class="line">    vector&lt;unique_ptr&lt;StraightBlock&gt;&gt; <a class="code hl_variable" href="../../d0/d02/classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">straights</a>;  <span class="comment">// ownership</span></div>
+<div class="line">    vector&lt;unique_ptr&lt;SwitchBlock&gt;&gt;   <a class="code hl_variable" href="../../d0/d02/classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">switches</a>;   <span class="comment">// ownership</span></div>
+<div class="line">    unordered_map&lt;string, StraightBlock*&gt; <a class="code hl_variable" href="../../d0/d02/classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de">straightIndex</a>;  <span class="comment">// lookup O(1)</span></div>
+<div class="line">    unordered_map&lt;string, SwitchBlock*&gt;   <a class="code hl_variable" href="../../d0/d02/classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440">switchIndex</a>;    <span class="comment">// lookup O(1)</span></div>
+<div class="line">};</div>
+<div class="ttc" id="aclassTopologyData_html"><div class="ttname"><a href="../../d0/d02/classTopologyData.html">TopologyData</a></div><div class="ttdoc">Conteneur partagé entre tous les modules métier et la couche HMI.</div><div class="ttdef"><b>Definition</b> TopologyData.h:29</div></div>
+<div class="ttc" id="aclassTopologyData_html_a6711e20e90cd67e3adfa2e4a3fbc1440"><div class="ttname"><a href="../../d0/d02/classTopologyData.html#a6711e20e90cd67e3adfa2e4a3fbc1440">TopologyData::switchIndex</a></div><div class="ttdeci">std::unordered_map&lt; std::string, SwitchBlock * &gt; switchIndex</div><div class="ttdef"><b>Definition</b> TopologyData.h:38</div></div>
+<div class="ttc" id="aclassTopologyData_html_a6eedc9d9675f2138bbc64c4fafea14f9"><div class="ttname"><a href="../../d0/d02/classTopologyData.html#a6eedc9d9675f2138bbc64c4fafea14f9">TopologyData::switches</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; SwitchBlock &gt; &gt; switches</div><div class="ttdef"><b>Definition</b> TopologyData.h:32</div></div>
+<div class="ttc" id="aclassTopologyData_html_a80b183b2d8dcdfc2df1d5d4b879356de"><div class="ttname"><a href="../../d0/d02/classTopologyData.html#a80b183b2d8dcdfc2df1d5d4b879356de">TopologyData::straightIndex</a></div><div class="ttdeci">std::unordered_map&lt; std::string, StraightBlock * &gt; straightIndex</div><div class="ttdef"><b>Definition</b> TopologyData.h:39</div></div>
+<div class="ttc" id="aclassTopologyData_html_acc5bc8a5b0b2f0a137a0fcc7045e8eda"><div class="ttname"><a href="../../d0/d02/classTopologyData.html#acc5bc8a5b0b2f0a137a0fcc7045e8eda">TopologyData::straights</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; StraightBlock &gt; &gt; straights</div><div class="ttdef"><b>Definition</b> TopologyData.h:31</div></div>
+</div><!-- fragment --><p><code>buildIndex()</code> construit les maps <code>id → ptr</code> après le transfert. Il doit être appelé une seule fois, après stabilisation des adresses.</p>
+<h3><a class="anchor" id="topologyrenderer"></a>
+TopologyRenderer</h3>
+<p><a class="el" href="../../d7/d03/classTopologyRenderer.html">TopologyRenderer</a> génère les <b>scripts JavaScript</b> injectés dans la page <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> via <code><a class="el" href="../../d3/d02/classWebViewPanel.html#a5890da7c431554b9e864759f293dac1f" title="Exécute un script JavaScript dans le contexte de la page chargée.">WebViewPanel::executeScript()</a></code>. Il opère exclusivement sur les collections WGS-84 des blocs.</p>
+<p>Point d'entrée principal : <code>renderAllTopology()</code> — produit en une passe les appels <code>clearStraightBlocks()</code>, <code>renderStraightBlock()</code>, <code>clearSwitchBranches()</code>, <code>renderSwitchBranches()</code>, <code>clearSwitches()</code>, <code>renderSwitch()</code>.</p>
+<p><code>updateSwitchBlocks(sw)</code> produit les appels <code>switchApplyState()</code> pour mettre à jour visuellement un aiguillage après <code>toggleActiveBranch()</code>.</p>
+<hr  />
+<h2><a class="anchor" id="engine_refs"></a>
+Références croisées</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Fichier   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../db/d03/classLogger.html">Logger</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../dd/d00/Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur.">Engine/Core/Logger/Logger.h</a></code>   </td><td class="markdownTableBodyNone">Journalisation multi-niveaux    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../dd/d00/Logger_8h.html#a9cf4d2a890c8688e0fe1bc38fa88de94">LogLevel</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../dd/d00/Logger_8h.html" title="Système de journalisation à 5 niveaux de trace, un fichier par moteur.">Engine/Core/Logger/Logger.h</a></code>   </td><td class="markdownTableBodyNone">Enum de sévérité    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../dd/d03/structParserConfig.html">ParserConfig</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d9/d01/ParserConfig_8h.html" title="Paramètres de configuration du pipeline GeoParser.">Engine/Core/Config/ParserConfig.h</a></code>   </td><td class="markdownTableBodyNone">Paramètres numériques    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d3/d01/classParserConfigIni.html">ParserConfigIni</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../dd/d01/ParserConfigIni_8h.html" title="Persistence de ParserConfig via fichier .ini (SimpleIni).">Engine/Core/Config/ParserConfigIni.h</a></code>   </td><td class="markdownTableBodyNone">Persistance INI    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../db/d03/classCoordinateLatLon.html">CoordinateLatLon</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d6/d01/CoordinateLatLon_8h.html" title="Représentation d&#39;une coordonnée géographique WGS-84 (latitude, longitude).">Engine/Core/Coordinates/CoordinateLatLon.h</a></code>   </td><td class="markdownTableBodyNone">WGS-84    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../df/d01/classCoordinateXY.html">CoordinateXY</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../db/d03/CoordinateXY_8h.html" title="Représentation d&#39;une coordonnée plane en mètres (système métrique UTM).">Engine/Core/Coordinates/CoordinateXY.h</a></code>   </td><td class="markdownTableBodyNone">UTM (x,y mètres)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d2/d01/classTopologyRepository.html">TopologyRepository</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../de/d00/TopologyRepository_8h.html" title="Singleton de stockage des données topologiques ferroviaires.">Engine/Core/Topology/TopologyRepository.h</a></code>   </td><td class="markdownTableBodyNone">Singleton détenteur    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d0/d02/classTopologyData.html">TopologyData</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d6/d02/TopologyData_8h.html" title="Conteneur central des données topologiques ferroviaires.">Engine/Core/Topology/TopologyData.h</a></code>   </td><td class="markdownTableBodyNone">Vecteurs + index    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d7/d03/classTopologyRenderer.html">TopologyRenderer</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d2/d01/TopologyRenderer_8h.html" title="Exporteur de topologie ferroviaire au format GeoJSON.">Engine/Core/Topology/TopologyRenderer.h</a></code>   </td><td class="markdownTableBodyNone">Rendu <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> JS   </td></tr>
+</table>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

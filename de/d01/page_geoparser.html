@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire: Pipeline GeoParser v2</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('de/d01/page_geoparser.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Pipeline GeoParser v2</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>Table des matières</h3>
+<ul><ul><li class="level2"><a href="#geo_overview">Vue d&#39;ensemble</a><ul><li class="level3"><a href="#ordre-dexécution-immuable">Ordre d&#39;exécution (immuable)</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#blockquote-1">&lt;/blockquote&gt;</a></li>
+<li class="level2"><a href="#geo_context">PipelineContext</a></li>
+<li class="level2"><a href="#geo_phases">Phases détaillées</a><ul><li class="level3"><a href="#geo_p1">Phase 1 — GeoLoader</a></li>
+<li class="level3"><a href="#geo_p2">Phase 2 — GeometricIntersector</a></li>
+<li class="level3"><a href="#geo_p3">Phase 3 — NetworkSplitter</a></li>
+<li class="level3"><a href="#geo_p4">Phase 4 — TopologyBuilder</a></li>
+<li class="level3"><a href="#geo_p5">Phase 5 — SwitchClassifier</a></li>
+<li class="level3"><a href="#geo_p6">Phase 6 — BlockExtractor</a><ul><li class="level4"><a href="#extraction-des-straights">Extraction des straights</a></li>
+<li class="level4"><a href="#extraction-des-switches">Extraction des switches</a></li>
+<li class="level4"><a href="#index-produits">Index produits</a></li>
+</ul>
+</li>
+<li class="level3"><a href="#geo_p8a">Phase 8a — RepositoryTransfer::resolve()</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#blockquote-2">&lt;/blockquote&gt;</a><ul><li class="level3"><a href="#geo_p7">Phase 7 — SwitchProcessor</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#blockquote-3">&lt;/blockquote&gt;</a><ul><li class="level3"><a href="#geo_p8b">Phase 8b — RepositoryTransfer::transfer()</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#geo_task">Exécution asynchrone — GeoParsingTask</a></li>
+<li class="level2"><a href="#geo_progress">Progression rapportée</a></li>
+<li class="level2"><a href="#geo_refs">Références croisées</a></li>
+</ul>
+</ul>
+</div>
+<div class="textblock"><hr  />
+<h2><a class="anchor" id="geo_overview"></a>
+Vue d'ensemble</h2>
+<p>Le <b>pipeline <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a> v2</b> transforme un fichier GeoJSON contenant la géométrie brute d'un réseau ferroviaire (polylignes OSM) en une topologie structurée de blocs (<a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a>, <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>) prête à être consommée par le <a class="el" href="../../db/d01/page_pcc.html">module PCC</a> et le rendu WebView.</p>
+<p>Le pipeline est <b>séquentiel</b> et se déroule en 8 phases numérotées, chacune encapsulée dans une classe statique <code>PhaseN_Xxx</code>. Les données intermédiaires transitent via le <a class="el" href="../../d6/d03/structPipelineContext.html">PipelineContext</a>, qui est l'unique objet partagé entre les phases.</p>
+<h3><a class="anchor" id="ordre-dexécution-immuable"></a>
+Ordre d'exécution (immuable)</h3>
+<div class="fragment"><div class="line">Phase1  → Phase2  → Phase3  → Phase4  → Phase5  → Phase6</div>
+<div class="line">   GeoLoader  Intersector  Splitter  TopoBuilder  Classifier  Extractor</div>
+<div class="line"> </div>
+<div class="line">Phase8::resolve()  →  Phase7  →  Phase8::transfer()</div>
+<div class="line">  ResolvePtrs         SwitchProc    TransferToRepo</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;<b>Invariant critique :</b> <code>Phase8::resolve()</code> doit précéder <code>Phase7</code> (le processeur d'aiguillages a besoin des pointeurs résolus pour le recul des tips CDC). <code>Phase8::transfer()</code> doit toujours être <b>en dernier</b>. </p>
+</blockquote>
+<h2><a class="anchor" id="blockquote-1"></a>
+&lt;/blockquote&gt;</h2>
+<h2><a class="anchor" id="geo_context"></a>
+PipelineContext</h2>
+<p><a class="el" href="../../d6/d03/structPipelineContext.html">PipelineContext</a> est le sac de données partagé entre toutes les phases. Il évolue à chaque phase : les champs produits par une phase deviennent des entrées de la suivante. Certains champs sont explicitement libérés par la phase qui les a consommés (ex. <code>topoGraph</code>, <code>classifiedNodes</code>, <code>splitNetwork</code> sont effacés en fin de Phase 6 pour libérer la mémoire).</p>
+<p>Structure simplifiée :</p>
+<div class="fragment"><div class="line">PipelineContext</div>
+<div class="line">├── filePath         : string           (Phase 1 → lecture)</div>
+<div class="line">├── rawFeatures      : vector&lt;GeoFeature&gt;  (Phase 1 → sortie)</div>
+<div class="line">├── splitNetwork     : SplitNetwork     (Phase 3 → sortie, libéré Phase 6)</div>
+<div class="line">├── topoGraph        : TopoGraph        (Phase 4 → sortie, libéré Phase 6)</div>
+<div class="line">├── classifiedNodes  : ClassifiedNodes  (Phase 5 → sortie, libéré Phase 6)</div>
+<div class="line">└── blocks           : BlockSet         (Phase 6 → sortie, Phase 8 → transfert)</div>
+</div><!-- fragment --><hr  />
+<h2><a class="anchor" id="geo_phases"></a>
+Phases détaillées</h2>
+<h3><a class="anchor" id="geo_p1"></a>
+Phase 1 — GeoLoader</h3>
+<p><b>Classe :</b> <a class="el" href="../../dd/d00/classPhase1__GeoLoader.html">Phase1_GeoLoader</a></p>
+<p>Charge le fichier GeoJSON depuis le disque et désérialise chaque <code>Feature</code> de type <code>LineString</code> en une liste de <code>GeoFeature</code> (polyligne WGS-84).</p>
+<p>Les features non-linéaires (points, polygones) sont ignorées avec un warning.</p>
+<p><b>Entrées :</b> <code>ctx.filePath</code> <b>Sorties :</b> <code>ctx.rawFeatures</code></p>
+<hr  />
+<h3><a class="anchor" id="geo_p2"></a>
+Phase 2 — GeometricIntersector</h3>
+<p><b>Classe :</b> <a class="el" href="../../db/d02/classPhase2__GeometricIntersector.html">Phase2_GeometricIntersector</a></p>
+<p>Détecte et matérialise les <b>intersections géométriques</b> entre segments de polylignes distincts qui se croisent sans partager de nœud commun dans le GeoJSON source.</p>
+<p>Pour chaque paire de segments, un test d'intersection 2D (sur coordonnées UTM) est effectué. Si l'intersection tombe dans le segment (hors extrémités à <code>intersectionEpsilon</code> près), un <b>nouveau point</b> est inséré dans les deux polylignes à la position exacte de croisement.</p>
+<p><b>Paramètre clé :</b> <code>config.intersectionEpsilon</code></p>
+<p><b>Entrées :</b> <code>ctx.rawFeatures</code> <b>Sorties :</b> <code>ctx.rawFeatures</code> (modifiées in place)</p>
+<hr  />
+<h3><a class="anchor" id="geo_p3"></a>
+Phase 3 — NetworkSplitter</h3>
+<p><b>Classe :</b> <a class="el" href="../../dd/d02/classPhase3__NetworkSplitter.html">Phase3_NetworkSplitter</a></p>
+<p><b>Fusionne</b> les extrémités proches (<code>snapTolerance</code>) en un nœud unique, puis <b>découpe</b> les polylignes aux points de fusion pour obtenir un réseau d'<b>segments atomiques</b> (un segment = deux extrémités, pas de nœud interne).</p>
+<p>À l'issue de cette phase, tout point présent à l'intérieur d'une polyligne est forcément une extrémité d'un autre segment.</p>
+<p><b>Paramètre clé :</b> <code>config.snapTolerance</code></p>
+<p><b>Entrées :</b> <code>ctx.rawFeatures</code> <b>Sorties :</b> <code>ctx.splitNetwork</code> (collection de <code><a class="el" href="../../de/d01/structAtomicSegment.html" title="Segment atomique entre deux nœuds topologiques potentiels.">AtomicSegment</a></code>)</p>
+<hr  />
+<h3><a class="anchor" id="geo_p4"></a>
+Phase 4 — TopologyBuilder</h3>
+<p><b>Classe :</b> <a class="el" href="../../df/d00/classPhase4__TopologyBuilder.html">Phase4_TopologyBuilder</a></p>
+<p>Construit le <b>graphe topologique</b> (<code>TopoGraph</code>) à partir du réseau atomique. Chaque nœud du graphe correspond à une extrémité physique unique (après snap) ; chaque arête correspond à un <code><a class="el" href="../../de/d01/structAtomicSegment.html" title="Segment atomique entre deux nœuds topologiques potentiels.">AtomicSegment</a></code>.</p>
+<p>Le graphe est non-orienté : les adjacences sont bidirectionnelles.</p>
+<p><b>Entrées :</b> <code>ctx.splitNetwork</code> <b>Sorties :</b> <code>ctx.topoGraph</code></p>
+<hr  />
+<h3><a class="anchor" id="geo_p5"></a>
+Phase 5 — SwitchClassifier</h3>
+<p><b>Classe :</b> <a class="el" href="../../da/d00/classPhase5__SwitchClassifier.html">Phase5_SwitchClassifier</a></p>
+<p>Classifie chaque nœud du graphe en l'une des trois catégories :</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"><code>NodeClass</code>   </th><th class="markdownTableHeadNone">Degré   </th><th class="markdownTableHeadNone">Condition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>ENDPOINT</code>   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">Terminus de ligne    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>STRAIGHT</code>   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">Nœud de passage — pas d'intersection    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>SWITCH</code>   </td><td class="markdownTableBodyNone">3+   </td><td class="markdownTableBodyNone">Bifurcation — angle entre branches ≥ <code>minSwitchAngle</code>   </td></tr>
+</table>
+<p>Un nœud de degré 3 dont toutes les branches sont colinéaires (angle &lt; seuil) est reclassifié en <code>STRAIGHT</code> pour éviter de créer un aiguillage fantôme sur une légère imperfection géométrique OSM.</p>
+<p><b>Paramètres clés :</b> <code>config.minSwitchAngle</code>, <code>config.minBranchLength</code></p>
+<p><b>Entrées :</b> <code>ctx.topoGraph</code> <b>Sorties :</b> <code>ctx.classifiedNodes</code></p>
+<hr  />
+<h3><a class="anchor" id="geo_p6"></a>
+Phase 6 — BlockExtractor</h3>
+<p><b>Classe :</b> <a class="el" href="../../df/d00/classPhase6__BlockExtractor.html">Phase6_BlockExtractor</a></p>
+<p>Produit les <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> et <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> à partir du graphe classifié.</p>
+<h4><a class="anchor" id="extraction-des-straights"></a>
+Extraction des straights</h4>
+<p>DFS entre nœuds frontières (classe ≠ <code>STRAIGHT</code>). La déduplication repose sur les <b>indices d'arêtes</b> (<code>usedEdges</code>) et non sur la clé de paire de nœuds : cette approche permet de créer deux straights distincts entre les mêmes deux nœuds frontières dans les configurations <b>crossover</b> (voie double).</p>
+<p>Si la longueur totale UTM du straight assemblé dépasse <code>maxSegmentLength</code>, il est <b>subdivisé</b> en <em>N</em> sous-blocs chaînés via <code>prev</code>/<code>next</code>. Seuls les sous-blocs de tête et de queue possèdent des <code><a class="el" href="../../db/d03/structBlockEndpoint.html" title="Extrémité d&#39;un bloc — nœud frontière + ID du bloc voisin.">BlockEndpoint</a></code> avec <code>frontierNodeId</code> valide (≠ <code>SIZE_MAX</code>).</p>
+<h4><a class="anchor" id="extraction-des-switches"></a>
+Extraction des switches</h4>
+<p>Un <a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> par nœud <code>SWITCH</code>. Pour chaque branche, une traversal des nœuds intermédiaires remonte jusqu'au nœud frontière adjacent, puis <code>straightByDirectedPair</code> (multi-valué) fournit le <a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> adjacent. Un ensemble <code>usedStraights</code> local garantit qu'un même straight n'est pas attribué à deux branches du même switch (cas crossover).</p>
+<h4><a class="anchor" id="index-produits"></a>
+Index produits</h4>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Index   </th><th class="markdownTableHeadNone">Clé   </th><th class="markdownTableHeadNone">Valeur    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>straightsByNode</code>   </td><td class="markdownTableBodyNone"><code>nodeId</code>   </td><td class="markdownTableBodyNone"><code>vector&lt;StraightBlock*&gt;</code> (multi-valué)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>straightByEndpointPair</code>   </td><td class="markdownTableBodyNone"><code>Cantor(min,max)</code>   </td><td class="markdownTableBodyNone"><code>StraightBlock*</code> premier depuis A    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>straightByDirectedPair</code>   </td><td class="markdownTableBodyNone"><code>from*1e6 + to</code>   </td><td class="markdownTableBodyNone"><code>vector&lt;StraightBlock*&gt;</code> (multi-valué)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>switchByNode</code>   </td><td class="markdownTableBodyNone"><code>nodeId</code>   </td><td class="markdownTableBodyNone"><code>SwitchBlock*</code>   </td></tr>
+</table>
+<p><b>Libération mémoire :</b> <code>topoGraph</code>, <code>classifiedNodes</code>, <code>splitNetwork</code> sont vidés en fin de phase.</p>
+<hr  />
+<h3><a class="anchor" id="geo_p8a"></a>
+Phase 8a — RepositoryTransfer::resolve()</h3>
+<p><b>Classe :</b> <a class="el" href="../../da/d01/classPhase8__RepositoryTransfer.html">Phase8_RepositoryTransfer</a>, méthode <code>resolve()</code></p>
+<p>Résout les <b>pointeurs inter-blocs</b> en deux passes :</p>
+<ol type="1">
+<li><b>Passe 1 — StraightBlocks :</b> Pour chaque endpoint d'un straight avec <code>frontierNodeId</code> valide, cherche le voisin dans <code>switchByNode</code> ou <code>straightsByNode</code> et appelle <code>setNeighbourPrev/Next</code>. Les endpoints internes (<code>frontierNodeId == SIZE_MAX</code>) sont ignorés — la chaîne prev/next posée par Phase 6 est préservée.</li>
+<li><b>Passe 2 — SwitchBlocks :</b> Résout les pointeurs <code>root</code>, <code>normal</code>, <code>deviation</code> depuis les IDs stockés dans les endpoints de branches.</li>
+</ol>
+<blockquote class="doxtable">
+<p>&zwj;<b>Correctif v2 :</b> La vérification de <code>frontierNodeId != SIZE_MAX</code> avant tout appel à <code>setNeighbour*</code> est essentielle pour ne pas écraser la chaîne de subdivision posée par Phase 6. </p>
+</blockquote>
+<h2><a class="anchor" id="blockquote-2"></a>
+&lt;/blockquote&gt;</h2>
+<h3><a class="anchor" id="geo_p7"></a>
+Phase 7 — SwitchProcessor</h3>
+<p><b>Classe :</b> <a class="el" href="../../d0/d02/classPhase7__SwitchProcessor.html">Phase7_SwitchProcessor</a></p>
+<p>Traite les aiguillages en plusieurs sous-phases séquentielles (G→A→B→C→D→E→F) :</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Sous-phase   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">G — DoubleSwitchDetector   </td><td class="markdownTableBodyNone">Détecte les paires d'aiguilles doubles et marque l'absorption    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">A — OrientationResolver   </td><td class="markdownTableBodyNone">Identifie root/normal/deviation par analyse angulaire    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">B — CDCTipInterpolator   </td><td class="markdownTableBodyNone">Interpole les tips CDC à distance <code>switchSideSize</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">C — StraightTrimmer   </td><td class="markdownTableBodyNone">Recule les extrémités des straights adjacents    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">D — OverlapResolver   </td><td class="markdownTableBodyNone">Résout les chevauchements restants    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">E — BranchValidator   </td><td class="markdownTableBodyNone">Valide la cohérence des branches    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">F — DoubleAbsorber   </td><td class="markdownTableBodyNone">Absorbe les coordonnées du segment de liaison   </td></tr>
+</table>
+<p><b>Paramètres clés :</b> <code>config.junctionTrimMargin</code>, <code>config.switchSideSize</code>, <code>config.doubleSwitchRadius</code></p>
+<blockquote class="doxtable">
+<p>&zwj;<b>Issue connue (différé) :</b> <code>DoubleSwitchDetector</code> échoue sur certaines configurations de crossover où la branche déviation du premier switch pointe vers le straight de liaison plutôt que vers le second switch. </p>
+</blockquote>
+<h2><a class="anchor" id="blockquote-3"></a>
+&lt;/blockquote&gt;</h2>
+<h3><a class="anchor" id="geo_p8b"></a>
+Phase 8b — RepositoryTransfer::transfer()</h3>
+<p><b>Classe :</b> <a class="el" href="../../da/d01/classPhase8__RepositoryTransfer.html">Phase8_RepositoryTransfer</a>, méthode <code>transfer()</code></p>
+<p>Transfère l'ownership des blocs depuis <code>ctx.blocks</code> vers <a class="el" href="../../d2/d01/classTopologyRepository.html">TopologyRepository</a> par déplacement (<code>std::move</code>). Appelle ensuite <code><a class="el" href="../../d0/d02/classTopologyData.html#a041d3a1f56a467d32ade5f30e8536692" title="Construit les index id→ptr depuis les vecteurs.">TopologyData::buildIndex()</a></code> pour construire les maps <code>id → ptr</code>.</p>
+<p>Après <code>transfer()</code>, le <code><a class="el" href="../../d6/d03/structPipelineContext.html" title="Conteneur central du pipeline GeoParser.">PipelineContext</a></code> est vide et le <code><a class="el" href="../../d2/d01/classTopologyRepository.html" title="Singleton fournissant un accès global unique à TopologyData.">TopologyRepository</a></code> est le seul détenteur des blocs.</p>
+<hr  />
+<h2><a class="anchor" id="geo_task"></a>
+Exécution asynchrone — GeoParsingTask</h2>
+<p><a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a> encapsule l'exécution du pipeline dans un <b>thread séparé</b> pour ne pas bloquer le thread UI Win32. Elle :</p>
+<ul>
+<li>Instancie un <a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a> avec la <a class="el" href="../../dd/d03/structParserConfig.html">ParserConfig</a> courante.</li>
+<li>Lance <code>parse()</code> dans <code>std::async</code>.</li>
+<li>Poste des messages <code>WM_PROGRESS_UPDATE</code>, <code>WM_PARSING_SUCCESS</code> ou <code>WM_PARSING_ERROR</code> vers la <code>HWND</code> de la <code><a class="el" href="../../d6/d02/classMainWindow.html" title="Fenêtre principale de l&#39;application SimulateurFerroviaire.">MainWindow</a></code>.</li>
+<li>Expose un <code>cancelToken</code> (<code>shared_ptr&lt;atomic&lt;bool&gt;&gt;</code>) vérifié entre chaque phase — l'annulation propre lève <code><a class="el" href="../../d9/d01/structGeoParser_1_1CancelledException.html">GeoParser::CancelledException</a></code>.</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="geo_progress"></a>
+Progression rapportée</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Phase   </th><th class="markdownTableHeadNone">Progression    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Phase 1   </td><td class="markdownTableBodyNone">0 %    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Phase 2   </td><td class="markdownTableBodyNone">5 %    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Phase 3   </td><td class="markdownTableBodyNone">30 %    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Phase 4   </td><td class="markdownTableBodyNone">45 %    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Phase 5   </td><td class="markdownTableBodyNone">58 %    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Phase 6   </td><td class="markdownTableBodyNone">65 %    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Phase 8a + Phase 7   </td><td class="markdownTableBodyNone">75 %    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Phase 8b   </td><td class="markdownTableBodyNone">90 %    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Terminé   </td><td class="markdownTableBodyNone">100 %   </td></tr>
+</table>
+<hr  />
+<h2><a class="anchor" id="geo_refs"></a>
+Références croisées</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe   </th><th class="markdownTableHeadNone">Fichier   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../db/d02/classGeoParser.html">GeoParser</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../de/d02/GeoParser_8h.html" title="Orchestrateur du pipeline GeoParser v2.">Modules/GeoParser/GeoParser.h</a></code>   </td><td class="markdownTableBodyNone">Orchestrateur    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d03/classGeoParsingTask.html">GeoParsingTask</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d0/d00/GeoParsingTask_8h.html" title="Tâche asynchrone d&#39;exécution du pipeline GeoParser v2.">Modules/GeoParser/GeoParsingTask.h</a></code>   </td><td class="markdownTableBodyNone">Thread asynchrone    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d6/d03/structPipelineContext.html">PipelineContext</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d6/d02/PipelineContext_8h.html" title="Conteneur central des données inter-phases du pipeline GeoParser.">Modules/GeoParser/Pipeline/PipelineContext.h</a></code>   </td><td class="markdownTableBodyNone">Données partagées    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d0/d00/structBlockSet.html">BlockSet</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d2/d01/BlockSet_8h.html" title="Structures de données produites par Phase6_BlockExtractor.">Modules/GeoParser/Pipeline/BlockSet.h</a></code>   </td><td class="markdownTableBodyNone">Blocs produits par Phase 6    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../db/d03/structBlockEndpoint.html">BlockEndpoint</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d2/d01/BlockSet_8h.html" title="Structures de données produites par Phase6_BlockExtractor.">Modules/GeoParser/Pipeline/BlockSet.h</a></code>   </td><td class="markdownTableBodyNone">Extrémité d'un bloc    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../dd/d00/classPhase1__GeoLoader.html">Phase1_GeoLoader</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d3/d03/Phase1__GeoLoader_8h.html" title="Phase 1 du pipeline — chargement GeoJSON → RawNetwork.">Modules/GeoParser/Pipeline/Phase1_GeoLoader.h</a></code>   </td><td class="markdownTableBodyNone">Chargement GeoJSON    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../db/d02/classPhase2__GeometricIntersector.html">Phase2_GeometricIntersector</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d1/d02/Phase2__GeometricIntersector_8h.html" title="Phase 2 du pipeline — calcul des intersections géométriques.">Modules/GeoParser/Pipeline/Phase2_GeometricIntersector.h</a></code>   </td><td class="markdownTableBodyNone">Intersections    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../dd/d02/classPhase3__NetworkSplitter.html">Phase3_NetworkSplitter</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../da/d03/Phase3__NetworkSplitter_8h.html" title="Phase 3 du pipeline — découpe des segments aux intersections.">Modules/GeoParser/Pipeline/Phase3_NetworkSplitter.h</a></code>   </td><td class="markdownTableBodyNone">Découpe et snap    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../df/d00/classPhase4__TopologyBuilder.html">Phase4_TopologyBuilder</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../da/d03/Phase4__TopologyBuilder_8h.html" title="Phase 4 du pipeline — construction du graphe planaire.">Modules/GeoParser/Pipeline/Phase4_TopologyBuilder.h</a></code>   </td><td class="markdownTableBodyNone">Graphe topologique    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d00/classPhase5__SwitchClassifier.html">Phase5_SwitchClassifier</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d4/d00/Phase5__SwitchClassifier_8h.html" title="Phase 5 du pipeline — classification topologique des nœuds.">Modules/GeoParser/Pipeline/Phase5_SwitchClassifier.h</a></code>   </td><td class="markdownTableBodyNone">Classification nœuds    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../df/d00/classPhase6__BlockExtractor.html">Phase6_BlockExtractor</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../df/d03/Phase6__BlockExtractor_8h.html" title="Phase 6 du pipeline — extraction des blocs ferroviaires.">Modules/GeoParser/Pipeline/Phase6_BlockExtractor.h</a></code>   </td><td class="markdownTableBodyNone">Extraction des blocs    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d0/d02/classPhase7__SwitchProcessor.html">Phase7_SwitchProcessor</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../db/d03/Phase7__SwitchProcessor_8h.html" title="Phase 7 du pipeline — traitement complet des aiguillages.">Modules/GeoParser/Pipeline/Phase7_SwitchProcessor.h</a></code>   </td><td class="markdownTableBodyNone">Traitement aiguillages    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d01/classPhase8__RepositoryTransfer.html">Phase8_RepositoryTransfer</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d4/d00/Phase8__RepositoryTransfer_8h.html" title="Phase 9 du pipeline — résolution des pointeurs et transfert vers TopologyRepository.">Modules/GeoParser/Pipeline/Phase8_RepositoryTransfer.h</a></code>   </td><td class="markdownTableBodyNone">Résolution + transfert    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../dd/d03/structParserConfig.html">ParserConfig</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d9/d01/ParserConfig_8h.html" title="Paramètres de configuration du pipeline GeoParser.">Engine/Core/Config/ParserConfig.h</a></code>   </td><td class="markdownTableBodyNone">Paramètres pipeline   </td></tr>
+</table>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

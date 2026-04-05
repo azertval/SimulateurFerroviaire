@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulateur Ferroviaire: Éléments interactifs ferroviaires</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulateur Ferroviaire
+   </div>
+   <div id="projectbrief">Reconstruction et visualisation d&#39;un réseau ferroviaire à partir de données GeoJSON — Win32 / WebView2 / Leaflet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d3/d03/page_elements.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Éléments interactifs ferroviaires</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>Table des matières</h3>
+<ul><ul><li class="level2"><a href="#elem_overview">Vue d&#39;ensemble</a></li>
+<li class="level2"><a href="#elem_hierarchy">Hiérarchie de classes</a></li>
+<li class="level2"><a href="#elem_element">Element</a><ul><li class="level3"><a href="#logger-partagé">Logger partagé</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#elem_shunting">ShuntingElement</a></li>
+<li class="level2"><a href="#blockquote-4">&lt;/blockquote&gt;</a></li>
+<li class="level2"><a href="#elem_straight">StraightBlock</a><ul><li class="level3"><a href="#géométrie">Géométrie</a></li>
+<li class="level3"><a href="#chaîne-prevnext">Chaîne prev/next</a></li>
+<li class="level3"><a href="#voisins-topologiques">Voisins topologiques</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#elem_switch">SwitchBlock</a><ul><li class="level3"><a href="#anatomie-dun-aiguillage">Anatomie d&#39;un aiguillage</a></li>
+<li class="level3"><a href="#état-actif">État actif</a></li>
+<li class="level3"><a href="#tips-cdc">Tips CDC</a></li>
+<li class="level3"><a href="#double-aiguille">Double aiguille</a></li>
+<li class="level3"><a href="#orientation">Orientation</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#elem_refs">Références croisées</a></li>
+</ul>
+</ul>
+</div>
+<div class="textblock"><hr  />
+<h2><a class="anchor" id="elem_overview"></a>
+Vue d'ensemble</h2>
+<p>Le module <b>Elements</b> constitue le <b>modèle de domaine</b> du simulateur. Il fournit la hiérarchie de classes représentant les objets physiques de l'infrastructure ferroviaire — sections de voie et aiguillages — dans leur état opérationnel courant.</p>
+<p>Ces classes sont produites par le <a class="el" href="../../de/d01/page_geoparser.html">pipeline GeoParser</a>, stockées dans <a class="el" href="../../d0/d02/classTopologyData.html">TopologyData</a> et consommées par le <a class="el" href="../../db/d01/page_pcc.html">module PCC</a> et le rendu WebView.</p>
+<hr  />
+<h2><a class="anchor" id="elem_hierarchy"></a>
+Hiérarchie de classes</h2>
+<div class="fragment"><div class="line">Element                     (classe abstraite — id, type)</div>
+<div class="line">└── ShuntingElement         (ajoute getState() / ShuntingState)</div>
+<div class="line">    ├── StraightBlock       (section de voie droite)</div>
+<div class="line">    └── SwitchBlock         (aiguillage 3 branches)</div>
+</div><!-- fragment --><p>La hiérarchie est délibérément plate : deux niveaux d'abstraction suffisent pour couvrir l'ensemble de l'infrastructure cible.</p>
+<hr  />
+<h2><a class="anchor" id="elem_element"></a>
+Element</h2>
+<p><a class="el" href="../../d5/d00/classElement.html">Element</a> est la racine abstraite. Elle impose deux contrats minimaux :</p>
+<ul>
+<li>**<code>getId()</code>** — identifiant unique sous la forme <code>"s/N"</code> (straight) ou <code>"sw/N"</code> (switch), attribué par le pipeline lors de la Phase 6.</li>
+<li>**<code>getType()</code>** — discriminant <code><a class="el" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01aea8c5e50fab3748e9c53a6863b3dce1401">ElementType::STRAIGHT</a></code> ou <code><a class="el" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01aea4239f063a3d4fb9d38a0182be6e39e76">ElementType::SWITCH</a></code>, utilisé pour éviter le <code>dynamic_cast</code> dans le code de rendu critique.</li>
+</ul>
+<p>La copie est interdite (risque de <em>slicing</em>). Le déplacement est autorisé pour les constructions par <code>make_unique</code> et les insertions en vecteur.</p>
+<h3><a class="anchor" id="logger-partagé"></a>
+Logger partagé</h3>
+<p>Tous les éléments partagent un unique <code><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a> m_logger("Elements")</code> déclaré <b>statique</b> dans <code><a class="el" href="../../d5/d00/classElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires.">Element</a></code>. Cela garantit qu'un seul fichier <code>Logs/Elements.log</code> est créé, même en présence de centaines d'instances. Le mutex interne au <code><a class="el" href="../../db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a></code> assure la thread-safety.</p>
+<hr  />
+<h2><a class="anchor" id="elem_shunting"></a>
+ShuntingElement</h2>
+<p><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> étend <code><a class="el" href="../../d5/d00/classElement.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires.">Element</a></code> avec la notion d'<b>état opérationnel</b> :</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"><a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a>   </th><th class="markdownTableHeadNone">Signification    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>FREE</code>   </td><td class="markdownTableBodyNone">Élément libre, opérationnel (défaut)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>OCCUPIED</code>   </td><td class="markdownTableBodyNone">Un véhicule est présent sur l'élément    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>INACTIVE</code>   </td><td class="markdownTableBodyNone">Hors service — panne ou maintenance   </td></tr>
+</table>
+<p>Les accesseurs de commodité <code>isFree()</code>, <code>isOccupied()</code>, <code>isInactive()</code> évitent les comparaisons répétitives avec l'enum.</p>
+<p>L'état est mutable en runtime par l'opérateur (clic <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> sur un aiguillage) ou par la simulation. Les mutations passent par <code>setState()</code>.</p>
+<blockquote class="doxtable">
+<p>&zwj;<b>Note de conception :</b> Le destructeur virtuel de <code><a class="el" href="../../d2/d00/classShuntingElement.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire.">ShuntingElement</a></code> supprimerait la génération implicite des opérateurs de déplacement en C++17. Ils sont donc réexplicitement déclarés <code>= default</code> pour maintenir la déplaçabilité requise par <code>std::unique_ptr</code> et <code>std::vector</code>. </p>
+</blockquote>
+<h2><a class="anchor" id="blockquote-4"></a>
+&lt;/blockquote&gt;</h2>
+<h2><a class="anchor" id="elem_straight"></a>
+StraightBlock</h2>
+<p><a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a> représente une <b>section de voie droite</b> (tronçon entre deux nœuds frontières, ou entre deux sous-blocs de subdivision).</p>
+<h3><a class="anchor" id="géométrie"></a>
+Géométrie</h3>
+<p>Chaque straight porte deux polylignes parallèles :</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Collection   </th><th class="markdownTableHeadNone">Système   </th><th class="markdownTableHeadNone">Usage    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>pointsWGS84</code>   </td><td class="markdownTableBodyNone">WGS-84 (lat/lon)   </td><td class="markdownTableBodyNone">Rendu <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> via <code><a class="el" href="../../d7/d03/classTopologyRenderer.html" title="Utilitaire statique d&#39;export de la topologie ferroviaire en GeoJSON.">TopologyRenderer</a></code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>pointsUTM</code>   </td><td class="markdownTableBodyNone">UTM zone 30N (x=est, y=nord, mètres)   </td><td class="markdownTableBodyNone">Calculs métriques pipeline   </td></tr>
+</table>
+<p>Les deux collections ont <b>toujours la même taille</b> et les mêmes indices : <code>pointsWGS84[i]</code> et <code>pointsUTM[i]</code> désignent le même point physique.</p>
+<p><code>getLengthMeters()</code> retourne la longueur Haversine calculée sur WGS-84. <code>getLengthUTM()</code> retourne la longueur euclidienne calculée sur UTM.</p>
+<h3><a class="anchor" id="chaîne-prevnext"></a>
+Chaîne prev/next</h3>
+<p>Quand <code>maxSegmentLength</code> est dépassé, le pipeline subdivise un straight en <em>N</em> sous-blocs. Les sous-blocs sont chaînés par des pointeurs non-propriétaires :</p>
+<div class="fragment"><div class="line">s/0_c0 ──next──► s/0_c1 ──next──► s/0_c2</div>
+<div class="line">       ◄──prev──          ◄──prev──</div>
+</div><!-- fragment --><p>Ces pointeurs sont posés par <a class="el" href="../../df/d00/classPhase6__BlockExtractor.html#a0c5afd2c4533a4e1ab409218a0a6f45c">Phase6_BlockExtractor::registerStraight</a> <b>avant</b> la résolution de Phase 8. Seuls les sous-blocs de tête et de queue ont des endpoints avec un <code>frontierNodeId</code> valide.</p>
+<h3><a class="anchor" id="voisins-topologiques"></a>
+Voisins topologiques</h3>
+<p><code>getNeighbourNext()</code> / <code>getNeighbourPrev()</code> retournent les blocs adjacents (straight ou switch) après résolution par <a class="el" href="../../da/d01/classPhase8__RepositoryTransfer.html">Phase8_RepositoryTransfer</a>. <code>getPCCNeighbours()</code> expose les deux sans distinguer next/prev — utilisé par <a class="el" href="../../d8/d01/classPCCGraphBuilder.html">PCCGraphBuilder</a> pour construire les arêtes STRAIGHT.</p>
+<hr  />
+<h2><a class="anchor" id="elem_switch"></a>
+SwitchBlock</h2>
+<p><a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a> représente un <b>aiguillage ferroviaire à 3 branches</b>.</p>
+<h3><a class="anchor" id="anatomie-dun-aiguillage"></a>
+Anatomie d'un aiguillage</h3>
+<div class="fragment"><div class="line">              ← root</div>
+<div class="line">             /</div>
+<div class="line">jonction ───┤</div>
+<div class="line">             \</div>
+<div class="line">              ← normal     (voie directe, position repos)</div>
+<div class="line">               \</div>
+<div class="line">                ← deviation (voie déviée, position basculée)</div>
+</div><!-- fragment --><p>Le point de <b>jonction</b> (<code>junctionWGS84</code> / <code>junctionUTM</code>) est la position physique de l'aiguillage sur la carte.</p>
+<p>Chaque branche est identifiée par l'ID du bloc adjacent (<code>rootId</code>, <code>normalId</code>, <code>deviationId</code>) et par un pointeur résolu (<code>root</code>, <code>normal</code>, <code>deviation</code>) vers le <a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a> correspondant.</p>
+<h3><a class="anchor" id="état-actif"></a>
+État actif</h3>
+<p><a class="el" href="../../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">ActiveBranch</a> indique la voie ouverte :</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Valeur   </th><th class="markdownTableHeadNone">Signification   </th><th class="markdownTableHeadNone">Couleur TCO    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NORMAL</code>   </td><td class="markdownTableBodyNone">Voie directe — position repos   </td><td class="markdownTableBodyNone">Trait horizontal plein    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>DEVIATION</code>   </td><td class="markdownTableBodyNone">Voie déviée — position basculée   </td><td class="markdownTableBodyNone">Branche oblique active   </td></tr>
+</table>
+<p><code>toggleActiveBranch(propagate)</code> inverse l'état et propage aux partenaires double-aiguille si <code>propagate == true</code>.</p>
+<h3><a class="anchor" id="tips-cdc"></a>
+Tips CDC</h3>
+<p>Les <b>tips CDC</b> (<em>Centre De Contre</em>) sont les extrémités des stubs de l'aiguillage sur le schéma TCO. Ils sont interpolés par <a class="el" href="../../d0/d02/classPhase7__SwitchProcessor.html">Phase7_SwitchProcessor</a> à distance <code>switchSideSize</code> de la jonction, en direction de chaque branche :</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Accesseur   </th><th class="markdownTableHeadNone">Branche    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>getTipOnRoot()</code> / <code>getTipOnRootUTM()</code>   </td><td class="markdownTableBodyNone">Branche root    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>getTipOnNormal()</code> / <code>getTipOnNormalUTM()</code>   </td><td class="markdownTableBodyNone">Branche normale    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>getTipOnDeviation()</code> / <code>getTipOnDeviationUTM()</code>   </td><td class="markdownTableBodyNone">Branche déviée   </td></tr>
+</table>
+<h3><a class="anchor" id="double-aiguille"></a>
+Double aiguille</h3>
+<p>Un switch peut <b>absorber</b> le segment de liaison de son partenaire :</p>
+<div class="fragment"><div class="line">sw/A ──────────────────── sw/B</div>
+<div class="line">     ↑ segment absorbé ↑</div>
+</div><!-- fragment --><p>L'absorption est stockée dans <code>doubleOnNormal</code> ou <code>doubleOnDeviation</code> (ID du partenaire) et dans <code>absorbedNormalCoords</code> / <code>absorbedDeviationCoords</code> (polyligne WGS-84 absorbée pour le rendu <a class="el" href="../../dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a>).</p>
+<p><code>isDouble()</code> retourne <code>true</code> si l'une des deux absorptions est renseignée.</p>
+<h3><a class="anchor" id="orientation"></a>
+Orientation</h3>
+<p>Un switch est <b>orienté</b> après exécution de <a class="el" href="../../d0/d02/classPhase7__SwitchProcessor.html">Phase7_SwitchProcessor</a>. <code>isOriented()</code> conditionne le rendu des branches dans <code><a class="el" href="../../d9/d01/classTCORenderer.html">TCORenderer</a></code> et <code><a class="el" href="../../d7/d03/classTopologyRenderer.html" title="Utilitaire statique d&#39;export de la topologie ferroviaire en GeoJSON.">TopologyRenderer</a></code>.</p>
+<hr  />
+<h2><a class="anchor" id="elem_refs"></a>
+Références croisées</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Classe / enum   </th><th class="markdownTableHeadNone">Fichier   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d5/d00/classElement.html">Element</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d5/d02/Element_8h.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires.">Modules/Elements/Element.h</a></code>   </td><td class="markdownTableBodyNone">Base abstraite    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d5/d02/Element_8h.html#a16b11be27a8e9362dd122c4d879e01ae">ElementType</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../d5/d02/Element_8h.html" title="Classe de base abstraite pour tous les éléments interactifs ferroviaires.">Modules/Elements/Element.h</a></code>   </td><td class="markdownTableBodyNone">Discriminant SWITCH/STRAIGHT    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../d2/d00/classShuntingElement.html">ShuntingElement</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../df/d02/ShuntingElement_8h.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire.">Modules/Elements/ShuntingElements/ShuntingElement.h</a></code>   </td><td class="markdownTableBodyNone">Ajoute getState()    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../df/d02/ShuntingElement_8h.html#ad532a85a5d658a547e31b33193d9833d">ShuntingState</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../df/d02/ShuntingElement_8h.html" title="Interface abstraite pour tous les éléments de shuntage ferroviaire.">Modules/Elements/ShuntingElements/ShuntingElement.h</a></code>   </td><td class="markdownTableBodyNone">FREE/OCCUPIED/INACTIVE    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../da/d01/classStraightBlock.html">StraightBlock</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../de/d01/StraightBlock_8h.html" title="Modèle de domaine d&#39;un bloc de voie droite (Straight).">Modules/Elements/ShuntingElements/StraightBlock.h</a></code>   </td><td class="markdownTableBodyNone">Section de voie    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="../../d9/d02/classSwitchBlock.html">SwitchBlock</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../dc/d01/SwitchBlock_8h.html" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches.">Modules/Elements/ShuntingElements/SwitchBlock.h</a></code>   </td><td class="markdownTableBodyNone">Aiguillage 3 branches    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="../../dc/d01/SwitchBlock_8h.html#a7c3e8d7f97ae99a61ed27254391abc89">ActiveBranch</a>   </td><td class="markdownTableBodyNone"><code><a class="el" href="../../dc/d01/SwitchBlock_8h.html" title="Modèle de domaine d&#39;un aiguillage ferroviaire à 3 branches.">Modules/Elements/ShuntingElements/SwitchBlock.h</a></code>   </td><td class="markdownTableBodyNone">NORMAL/DEVIATION   </td></tr>
+</table>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

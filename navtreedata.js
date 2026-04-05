@@ -25,65 +25,7 @@
 var NAVTREE =
 [
   [ "Simulateur Ferroviaire", "index.html", [
-    [ "Description", "index.html#description", null ],
-    [ "Architecture du projet", "index.html#diag", null ],
-    [ "Documentation", "index.html#documentation", null ],
-    [ "Licence", "index.html#licence", null ],
-    [ "Auteur", "index.html#auteur", null ],
-    [ "Engine — Moteur de l'application", "d3/d03/engine.html", [
-      [ "Core — Cœur applicatif", "d3/d03/engine.html#core", [
-        [ "TopologyData", "d3/d03/engine.html#data", null ],
-        [ "TopologyRenderer", "d3/d03/engine.html#renderer", null ]
-      ] ],
-      [ "HMI — Interface utilisateur", "d3/d03/engine.html#hmi", [
-        [ "Panneau PCC", "d3/d03/engine.html#pcc_panel", null ],
-        [ "TCORenderer", "d3/d03/engine.html#tco", null ],
-        [ "Binding bidirectionnel Leaflet ↔ C++", "d3/d03/engine.html#binding", null ]
-      ] ],
-      [ "Coordonnées", "d3/d03/engine.html#Coordinates", null ]
-    ] ],
-    [ "GeoParser — Pipeline", "d4/d01/geoparser.html", [
-      [ "GeoParser", "d4/d01/geoparser.html#geoparser", [
-        [ "Architecture du pipeline", "d4/d01/geoparser.html#pipeline_arch", null ],
-        [ "Phases", "d4/d01/geoparser.html#pipeline", null ],
-        [ "Libération mémoire inter-phases", "d4/d01/geoparser.html#memory", null ],
-        [ "Tâche asynchrone", "d4/d01/geoparser.html#task", null ],
-        [ "Structures de données du pipeline", "d4/d01/geoparser.html#pipeline_data", null ]
-      ] ],
-      [ "Architecture des fichiers", "d4/d01/geoparser.html#gp_files", null ],
-      [ "ParserConfig — Paramètres", "d4/d01/geoparser.html#gp_config", null ],
-      [ "PipelineContext — Transporteur inter-phases", "d4/d01/geoparser.html#gp_context", null ],
-      [ "GeoParser — Orchestrateur", "d4/d01/geoparser.html#gp_orchestrator", null ],
-      [ "Phases du pipeline", "d4/d01/geoparser.html#gp_phases", [
-        [ "Phase 1 — GeoLoader", "d4/d01/geoparser.html#gp_phase1", null ],
-        [ "Phase 2 — GeometricIntersector", "d4/d01/geoparser.html#gp_phase2", [
-          [ "Algorithme de Cramer", "d4/d01/geoparser.html#algorithme-de-cramer", null ]
-        ] ],
-        [ "</blockquote>", "d4/d01/geoparser.html#blockquote-1", null ],
-        [ "Phase 3 — NetworkSplitter", "d4/d01/geoparser.html#gp_phase3", null ],
-        [ "Phase 4 — TopologyBuilder", "d4/d01/geoparser.html#gp_phase4", [
-          [ "Union-Find — principe", "d4/d01/geoparser.html#union-find--principe", null ]
-        ] ],
-        [ "</blockquote>", "d4/d01/geoparser.html#blockquote-2", null ],
-        [ "Phase 5 — SwitchClassifier", "d4/d01/geoparser.html#gp_phase5", null ],
-        [ "Phase 6 — BlockExtractor", "d4/d01/geoparser.html#gp_phase6", [
-          [ "Déduplication — par arêtes (et non par paire de nœuds)", "d4/d01/geoparser.html#déduplication--par-arêtes-et-non-par-paire-de-nœuds", null ],
-          [ "Subdivision par longueur cumulée", "d4/d01/geoparser.html#subdivision-par-longueur-cumulée", null ],
-          [ "Index directionnels dans BlockSet", "d4/d01/geoparser.html#index-directionnels-dans-blockset", null ],
-          [ "Chaînage des sous-blocs", "d4/d01/geoparser.html#chaînage-des-sous-blocs", null ]
-        ] ],
-        [ "Phase 7 — SwitchProcessor", "d4/d01/geoparser.html#gp_phase7", [
-          [ "Sous-phases G → A → B → C → D → E → F", "d4/d01/geoparser.html#sous-phases-g--a--b--c--d--e--f", null ],
-          [ "G — Orientation géométrique", "d4/d01/geoparser.html#g--orientation-géométrique", null ],
-          [ "F — Tips CDC", "d4/d01/geoparser.html#f--tips-cdc", null ]
-        ] ],
-        [ "Phase 8 — RepositoryTransfer", "d4/d01/geoparser.html#gp_phase8", [
-          [ "resolveStraight — préservation de la chaîne", "d4/d01/geoparser.html#resolvestraight--préservation-de-la-chaîne", null ]
-        ] ]
-      ] ],
-      [ "GeoParsingTask — Intégration async", "d4/d01/geoparser.html#gp_task", null ],
-      [ "ParserSettingsDialog", "d4/d01/geoparser.html#gp_dialog", null ]
-    ] ],
+    [ "SimulateurFerroviaire — Documentation technique", "index.html", null ],
     [ "Éléments — Modèle de domaine ferroviaire", "da/d02/elements.html", [
       [ "Vue d'ensemble", "da/d02/elements.html#elements_overview", null ],
       [ "Hiérarchie", "da/d02/elements.html#elements_hierarchy", [
@@ -108,13 +50,11 @@ var NAVTREE =
       [ "Pointeurs résolus — récapitulatif", "da/d02/elements.html#resolved_pointers", null ],
       [ "Énumérations", "da/d02/elements.html#enums", null ]
     ] ],
-    [ "Module PCC — Graphe logique et rendu TCO", "d8/d02/pcc.html", [
-      [ "Vue d'ensemble", "d8/d02/pcc.html#pcc_overview", null ],
-      [ "Nœuds et arêtes", "d8/d02/pcc.html#pcc_nodes", null ],
-      [ "PCCGraph — Conteneur", "d8/d02/pcc.html#pcc_graph", null ],
-      [ "PCCGraphBuilder — Construction", "d8/d02/pcc.html#pcc_builder", null ],
-      [ "PCCLayout — Positionnement", "d8/d02/pcc.html#pcc_layout", null ]
-    ] ],
+    [ "Engine Core", "d4/d02/page_engine.html", null ],
+    [ "Pipeline GeoParser v2", "de/d01/page_geoparser.html", null ],
+    [ "Interface graphique (HMI)", "d1/d01/page_hmi.html", null ],
+    [ "Éléments interactifs ferroviaires", "d3/d03/page_elements.html", null ],
+    [ "Module PCC / TCO", "db/d01/page_pcc.html", null ],
     [ "Références", "d5/d01/references.html", [
       [ "Références externes", "d5/d01/references.html#rextern", [
         [ "C++ moderne", "d5/d01/references.html#cpp", null ],
@@ -147,10 +87,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d3/d03/engine.html#renderer",
-"d7/d03/classTopologyRenderer.html#ab35534539fde31c290ce7e531fce86fe",
-"da/d03/classGeoParsingTask.html#af6c79fee7b3bc3c7db9755d301244bed",
-"functions_func_f.html"
+"d3/d03/structClassifiedNodes.html#a4c0e804a14dab192191cf2baee4fd766",
+"d9/d02/classSwitchBlock.html#a063cb4c4dfe06b991ac4e9fc27e55afc",
+"db/d03/classLogger.html",
+"functions_vars_o.html"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

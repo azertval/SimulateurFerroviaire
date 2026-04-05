@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simulateur Ferroviaire: Simulateur Ferroviaire</title>
+<title>Simulateur Ferroviaire: SimulateurFerroviaire — Documentation technique</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -90,66 +90,134 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Simulateur Ferroviaire </div></div>
+  <div class="headertitle"><div class="title">SimulateurFerroviaire — Documentation technique </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table des matières</h3>
-<ul><li class="level1"><a href="#description">Description</a></li>
-<li class="level1"><a href="#diag">Architecture du projet</a></li>
-<li class="level1"><a href="#documentation">Documentation</a></li>
-<li class="level1"><a href="#licence">Licence</a></li>
-<li class="level1"><a href="#auteur">Auteur</a></li>
+<ul><ul><li class="level2"><a href="#mainpage_intro">Présentation</a></li>
+<li class="level2"><a href="#mainpage_modules">Modules</a></li>
+<li class="level2"><a href="#mainpage_flux">Flux de données</a></li>
+<li class="level2"><a href="#mainpage_quickstart">Démarrage rapide</a><ul><li class="level3"><a href="#charger-un-geojson">Charger un GeoJSON</a></li>
+<li class="level3"><a href="#ajuster-les-paramètres-du-pipeline">Ajuster les paramètres du pipeline</a></li>
+<li class="level3"><a href="#interagir-avec-la-topologie">Interagir avec la topologie</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#mainpage_conventions">Conventions de code</a></li>
+<li class="level2"><a href="#mainpage_seealso">Voir aussi</a></li>
+</ul>
 </ul>
 </div>
 <div class="textblock"><hr  />
-<h1><a class="anchor" id="description"></a>
-Description</h1>
-<p>Reconstruction et visualisation d'un réseau ferroviaire à partir de données GeoJSON.</p>
-<p>Le projet repose sur un pipeline de parsing permettant de :</p><ul>
-<li>Charger des données géographiques (WGS-84 / GeoJSON)</li>
-<li>Construire un graphe topologique métrique (UTM)</li>
-<li>Extraire les blocs ferroviaires (voies droites + aiguillages)</li>
-<li>Orienter et valider les aiguillages (root / normal / deviation)</li>
-<li>Détecter les doubles aiguilles et absorber les segments de liaison</li>
-<li>Résoudre les pointeurs inter-blocs et construire les index de lookup</li>
-<li>Stocker le modèle dans un singleton partagé et le visualiser dans un WebView</li>
-<li>Permettre une interaction bidirectionnelle <a class="el" href="dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> ↔ C++ (clic → mise à jour modèle → rendu)</li>
-<li>Afficher une vue PCC type TCO SNCF superposée à la carte, togglable via F2</li>
-</ul>
+<h2><a class="anchor" id="mainpage_intro"></a>
+Présentation</h2>
+<p><b>SimulateurFerroviaire</b> est un simulateur ferroviaire Win32/C++ ciblant la ligne <b>Saujon – La Tremblade</b> (Charente-Maritime). Il reconstitue la topologie réelle du réseau à partir de données géographiques ouvertes (GeoJSON OpenStreetMap) et en produit une représentation schématique interactive conforme aux standards SNCF de contrôle du mouvement (PCC/TCO).</p>
+<p>L'application est développée sous <b>Visual Studio 2022</b>, compilée en <b>x64</b> sur <b>Windows 11</b>, avec les bibliothèques système Win32, WebView2 (COM) et GDI.</p>
 <hr  />
-<h1><a class="anchor" id="diag"></a>
-Architecture du projet</h1>
-<div class="image">
-<object type="image/svg+xml" data="architecture.svg" style="pointer-events: none;"></object>
-<div class="caption">
-Architecture SimulateurFerroviaire</div></div>
-    <hr  />
-<h1><a class="anchor" id="documentation"></a>
-Documentation</h1>
+<h2><a class="anchor" id="mainpage_modules"></a>
+Modules</h2>
+<p>Le projet est découpé en quatre grandes zones fonctionnelles, reflétées dans l'arborescence des sources :</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Module   </th><th class="markdownTableHeadNone">Espace de noms / dossier   </th><th class="markdownTableHeadNone">Rôle    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="d3/d03/page_elements.html">Éléments interactifs</a>   </td><td class="markdownTableBodyNone"><code>Modules/Elements/</code>   </td><td class="markdownTableBodyNone">Modèle de domaine — blocs de voie et aiguillages    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="de/d01/page_geoparser.html">GeoParser v2</a>   </td><td class="markdownTableBodyNone"><code>Modules/GeoParser/</code>   </td><td class="markdownTableBodyNone">Pipeline de conversion GeoJSON → topologie    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="db/d01/page_pcc.html">PCC / TCO</a>   </td><td class="markdownTableBodyNone"><code>Modules/PCC/</code>   </td><td class="markdownTableBodyNone">Graphe logique et rendu du tableau de contrôle    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="d4/d02/page_engine.html">Engine Core</a>   </td><td class="markdownTableBodyNone"><code>Engine/Core/</code>   </td><td class="markdownTableBodyNone"><a class="el" href="db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a>, coordonnées, topologie, configuration    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="d1/d01/page_hmi.html">HMI</a>   </td><td class="markdownTableBodyNone"><code>Engine/HMI/</code>   </td><td class="markdownTableBodyNone">Fenêtre principale, WebView2, panneau PCC   </td></tr>
+</table>
+<hr  />
+<h2><a class="anchor" id="mainpage_flux"></a>
+Flux de données</h2>
+<div class="fragment"><div class="line">Fichier GeoJSON</div>
+<div class="line">      │</div>
+<div class="line">      ▼</div>
+<div class="line">┌─────────────────┐</div>
+<div class="line">│  GeoParser v2   │   8 phases de transformation</div>
+<div class="line">│  (pipeline)     │──────────────────────────────────► TopologyRepository</div>
+<div class="line">└─────────────────┘                                         (singleton)</div>
+<div class="line">                                                               │</div>
+<div class="line">                    ┌──────────────────────────────────────────┤</div>
+<div class="line">                    │                                          │</div>
+<div class="line">                    ▼                                          ▼</div>
+<div class="line">            ┌──────────────┐                       ┌─────────────────┐</div>
+<div class="line">            │  PCCPanel    │◄──── PCCGraphBuilder   │  WebViewPanel   │</div>
+<div class="line">            │  (Win32/GDI) │       + PCCLayout      │  (Leaflet.js)   │</div>
+<div class="line">            │  TCORenderer │                        │  TopologyRender │</div>
+<div class="line">            └──────────────┘                        └─────────────────┘</div>
+</div><!-- fragment --><p>L'unique point de partage entre les modules est le singleton <a class="el" href="d2/d01/classTopologyRepository.html">TopologyRepository</a>, qui expose un <a class="el" href="d0/d02/classTopologyData.html">TopologyData</a> immuable après le parsing.</p>
+<hr  />
+<h2><a class="anchor" id="mainpage_quickstart"></a>
+Démarrage rapide</h2>
+<h3><a class="anchor" id="charger-un-geojson"></a>
+Charger un GeoJSON</h3>
+<ol type="1">
+<li>Lancer l'application.</li>
+<li>Fichier → Ouvrir (<code>Ctrl+O</code>) → sélectionner un fichier <code>.geojson</code>.</li>
+<li>La barre de progression affiche l'avancement des 8 phases du pipeline.</li>
+<li>En cas de succès, la carte <a class="el" href="dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> affiche la topologie et le panneau PCC est disponible via <code>F2</code>.</li>
+</ol>
+<h3><a class="anchor" id="ajuster-les-paramètres-du-pipeline"></a>
+Ajuster les paramètres du pipeline</h3>
+<p>Menu <b>Fichier → Paramètres du parser</b> (<code>Ctrl+P</code>) ouvre <a class="el" href="d9/d03/classParserSettingsDialog.html">ParserSettingsDialog</a>. Les valeurs sont persistées dans <code>parser_config.ini</code> (voir <a class="el" href="d3/d01/classParserConfigIni.html">ParserConfigIni</a>).</p>
+<p>Paramètres clés :</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Paramètre   </th><th class="markdownTableHeadNone">Défaut   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>snapTolerance</code>   </td><td class="markdownTableBodyNone">1,0 m   </td><td class="markdownTableBodyNone">Distance maximale entre deux extrémités pour les fusionner    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>maxSegmentLength</code>   </td><td class="markdownTableBodyNone">200,0 m   </td><td class="markdownTableBodyNone">Longueur au-delà de laquelle un straight est subdivisé    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>minSwitchAngle</code>   </td><td class="markdownTableBodyNone">5,0 °   </td><td class="markdownTableBodyNone">Angle minimum pour qu'une bifurcation soit classée SWITCH    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>junctionTrimMargin</code>   </td><td class="markdownTableBodyNone">3,0 m   </td><td class="markdownTableBodyNone">Recul des tips CDC depuis la jonction    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>switchSideSize</code>   </td><td class="markdownTableBodyNone">15,0 m   </td><td class="markdownTableBodyNone">Demi-longueur des stubs pour l'interpolation des tips    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>doubleSwitchRadius</code>   </td><td class="markdownTableBodyNone">20,0 m   </td><td class="markdownTableBodyNone">Rayon de détection des aiguilles doubles   </td></tr>
+</table>
+<h3><a class="anchor" id="interagir-avec-la-topologie"></a>
+Interagir avec la topologie</h3>
 <ul>
-<li><a class="el" href="d3/d03/engine.html">Engine — Moteur de l'application</a> — Moteur de l'application</li>
-<li><a class="el" href="d4/d01/geoparser.html#geoparser">GeoParser</a> — Module de parsing GeoJson</li>
-<li><a class="el" href="da/d02/elements.html">Éléments — Modèle de domaine ferroviaire</a> — Module Éléments — Modèle de domaine ferroviaire</li>
-<li><a class="el" href="d8/d02/pcc.html">Module PCC — Graphe logique et rendu TCO</a> — Module PCC</li>
-<li><a class="el" href="d5/d01/references.html">Références</a> — Références externes</li>
+<li><b>Clic sur un aiguillage</b> dans la carte <a class="el" href="dd/d00/classLeaflet.html" title="Utilitaire statique de génération du code HTML Leaflet.">Leaflet</a> → bascule <code>NORMAL</code> ↔ <code>DEVIATION</code> et propage aux partenaires double-aiguille.</li>
+<li><b>Panneau PCC</b> (<code>F2</code>) → TCO schématique zoomable/pannable (molette + glisser).</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="licence"></a>
-Licence</h1>
-<p>Ce projet est distribué sous licence :</p>
-<p><b>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</b></p>
-<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+<h2><a class="anchor" id="mainpage_conventions"></a>
+Conventions de code</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Élément   </th><th class="markdownTableHeadNone">Convention    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Noms de variables et fonctions   </td><td class="markdownTableBodyNone"><b>Anglais</b>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Docstrings Doxygen   </td><td class="markdownTableBodyNone"><b>Français</b>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Système de coordonnées métrique   </td><td class="markdownTableBodyNone"><b>UTM zone 30N</b>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Système de coordonnées géographique   </td><td class="markdownTableBodyNone"><b>WGS-84</b>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Gestion d'erreur fatale   </td><td class="markdownTableBodyNone"><code>LOG_FAILURE</code> → <code>std::runtime_error</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Ownership des blocs   </td><td class="markdownTableBodyNone"><code>std::unique_ptr</code> dans <code><a class="el" href="d0/d02/classTopologyData.html" title="Conteneur partagé entre tous les modules métier et la couche HMI.">TopologyData</a></code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Pointeurs non-propriétaires   </td><td class="markdownTableBodyNone">Pointeurs bruts annotés <code>non-propriétaire</code>   </td></tr>
+</table>
+<hr  />
+<h2><a class="anchor" id="mainpage_seealso"></a>
+Voir aussi</h2>
 <ul>
-<li>Partager — copier et redistribuer le matériel</li>
-<li>Adapter — remixer, transformer et créer à partir du matériel</li>
-<li>Attribution requise</li>
-<li>Usage commercial interdit</li>
-<li>Redistribution sous la même licence</li>
+<li><a class="el" href="de/d01/page_geoparser.html">Pipeline GeoParser v2</a> — pipeline de transformation GeoJSON</li>
+<li><a class="el" href="db/d01/page_pcc.html">Module PCC / TCO</a> — graphe PCC et rendu TCO</li>
+<li><a class="el" href="d3/d03/page_elements.html">Éléments interactifs ferroviaires</a> — hiérarchie des blocs ferroviaires</li>
+<li><a class="el" href="d4/d02/page_engine.html">Engine Core</a> — services transversaux (<a class="el" href="db/d03/classLogger.html" title="Journaliseur associé à un moteur nommé.">Logger</a>, coordonnées, config)</li>
+<li><a class="el" href="d1/d01/page_hmi.html">Interface graphique (HMI)</a> — interface graphique Win32 / WebView2 </li>
 </ul>
-<hr  />
-<h1><a class="anchor" id="auteur"></a>
-Auteur</h1>
-<p>© 2026 Valentin Eloy </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

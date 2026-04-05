@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['5_20—_20switchclassifier_0',['Phase 5 — SwitchClassifier',['../d4/d01/geoparser.html#gp_phase5',1,'']]]
+  ['5_20—_20switchclassifier_0',['Phase 5 — SwitchClassifier',['../de/d01/page_geoparser.html#geo_p5',1,'']]]
 ];
