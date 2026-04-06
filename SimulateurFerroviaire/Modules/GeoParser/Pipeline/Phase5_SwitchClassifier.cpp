@@ -62,9 +62,10 @@ void Phase5_SwitchClassifier::run(PipelineContext& ctx,
             break;
 
         case 4:
-            cls = NodeClass::CROSSING;
-            LOG_DEBUG(logger, "Nœud " + std::to_string(node.id)
-                + " — CROSSING (croisement plat, ignoré).");
+            cls = classifyDegree4(ctx.topoGraph, node.id, config.minSwitchAngle);
+            if (cls == NodeClass::AMBIGUOUS)
+                LOG_WARNING(logger, "Nœud " + std::to_string(node.id)
+                    + " — AMBIGUOUS deg=4 (paires non colinéaires, pas un croisement valide).");
             break;
 
         default:
@@ -190,5 +191,54 @@ NodeClass Phase5_SwitchClassifier::classifyDegree3(
         return NodeClass::SWITCH;
 
     // Trois arêtes quasiment colinéaires — bruit topologique
+    return NodeClass::AMBIGUOUS;
+}
+
+// =============================================================================
+// Classification degré 4
+// =============================================================================
+
+NodeClass Phase5_SwitchClassifier::classifyDegree4(
+    const TopologyGraph& graph,
+    size_t nodeId,
+    double minSwitchAngle)
+{
+    const auto& adj = graph.adjacency[nodeId];
+    if (adj.size() != 4) return NodeClass::AMBIGUOUS;
+
+    // Vecteurs sortants depuis le nœud
+    const CoordinateXY v0 = outVector(graph, nodeId, adj[0]);
+    const CoordinateXY v1 = outVector(graph, nodeId, adj[1]);
+    const CoordinateXY v2 = outVector(graph, nodeId, adj[2]);
+    const CoordinateXY v3 = outVector(graph, nodeId, adj[3]);
+
+    const std::array<CoordinateXY, 4> vecs = { v0, v1, v2, v3 };
+
+    // 3 partitions possibles en 2 paires
+    // P0 : {0,2} | {1,3}
+    // P1 : {0,1} | {2,3}
+    // P2 : {0,3} | {1,2}
+    const std::array<std::array<size_t, 4>, 3> partitions = { {
+        { 0, 2, 1, 3 },
+        { 0, 1, 2, 3 },
+        { 0, 3, 1, 2 }
+    } };
+
+    double bestScore = -1.0;
+    for (const auto& p : partitions)
+    {
+        const double score =
+            angleBetween(vecs[p[0]], vecs[p[1]]) +
+            angleBetween(vecs[p[2]], vecs[p[3]]);
+        if (score > bestScore)
+            bestScore = score;
+    }
+
+    // Seuil : chaque paire doit être aussi colinéaire qu'un STRAIGHT
+    const double threshold = 2.0 * (180.0 - minSwitchAngle);
+
+    if (bestScore >= threshold)
+        return NodeClass::CROSSING;
+
     return NodeClass::AMBIGUOUS;
 }

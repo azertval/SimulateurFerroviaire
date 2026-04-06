@@ -11,7 +11,7 @@
 
 #include "Modules/Elements/ShuntingElements/StraightBlock.h"
 #include "Modules/Elements/ShuntingElements/SwitchBlock.h"
-#include "Modules/Elements/ShuntingElements/CrossBlock/CrossBlock.h"
+#include "Modules/Elements/ShuntingElements/CrossBlocks/CrossBlock.h"
 #include "Engine/Core/Logger/Logger.h"
 #include "External/nlohmann/json.hpp"
 

@@ -126,7 +126,7 @@ Phase7_SwitchProcessor::detectClusters(const BlockSet& blocks,
 // B — Recherche du segment de liaison
 // =============================================================================
 
-StraightBlock* Phase7_SwitchProcessor::findLinkSegment(
+std::vector<StraightBlock*> Phase7_SwitchProcessor::findLinkSegments(
     const BlockSet& blocks,
     const SwitchBlock* swA,
     const SwitchBlock* swB)
@@ -142,14 +142,22 @@ StraightBlock* Phase7_SwitchProcessor::findLinkSegment(
     const auto brA = branchesOf(swA);
     const auto brB = branchesOf(swB);
 
+    std::vector<StraightBlock*> links;
+
     for (ShuntingElement* elemA : brA)
     {
         if (!elemA) continue;
         for (ShuntingElement* elemB : brB)
-            if (elemA == elemB)
-                return dynamic_cast<StraightBlock*>(elemA);
+        {
+            if (elemA != elemB) continue;
+            auto* st = dynamic_cast<StraightBlock*>(elemA);
+            // Évite les doublons si une branche root/normal/deviation
+            // pointe accidentellement deux fois vers le même bloc
+            if (st && std::find(links.begin(), links.end(), st) == links.end())
+                links.push_back(st);
+        }
     }
-    return nullptr;
+    return links;
 }
 
 
@@ -162,51 +170,63 @@ void Phase7_SwitchProcessor::absorbLinkSegment(BlockSet& blocks,
     SwitchBlock* swB,
     Logger& logger)
 {
-    StraightBlock* link = findLinkSegment(blocks, swA, swB);
+    // Collecte TOUS les liens avant toute modification :
+    // replaceBranchPointer() décale les pointeurs et rendrait une
+    // recherche incrémentale aveugle au second lien.
+    const auto links = findLinkSegments(blocks, swA, swB);
 
-    if (!link)
+    if (links.empty())
     {
         LOG_WARNING(logger, "Segment de liaison introuvable entre "
             + swA->getId() + " et " + swB->getId() + " — absorption ignorée.");
         return;
     }
 
-    LOG_DEBUG(logger, "Absorption " + link->getId() + " : "
-        + std::to_string(link->getPointsUTM().size()) + " point(s), "
-        + swA->getId() + " ↔ " + swB->getId());
-
-    const auto wgs84 = link->getPointsWGS84();
-    const auto utm = link->getPointsUTM();
-
-    swA->absorbLink(link->getId(), swB->getId(), wgs84, utm);
-    swB->absorbLink(link->getId(), swA->getId(), wgs84, utm);
-
-    swA->replaceBranchPointer(link, swB);
-    swB->replaceBranchPointer(link, swA);
-
-    // Purge straightEndpoints (index parallèle à straights)
-    const auto idxIt = std::find_if(
-        blocks.straights.begin(), blocks.straights.end(),
-        [link](const std::unique_ptr<StraightBlock>& s) { return s.get() == link; });
-
-    if (idxIt != blocks.straights.end())
+    for (StraightBlock* link : links)
     {
-        const size_t idx = static_cast<size_t>(idxIt - blocks.straights.begin());
-        blocks.straightEndpoints.erase(blocks.straightEndpoints.begin() + idx);
-    }
+        LOG_DEBUG(logger, "Absorption " + link->getId() + " : "
+            + std::to_string(link->getPointsUTM().size()) + " point(s), "
+            + swA->getId() + " ↔ " + swB->getId());
 
-    // Suppression — unique_ptr détruit link ici
-    blocks.straights.erase(
-        std::remove_if(blocks.straights.begin(), blocks.straights.end(),
+        const auto wgs84 = link->getPointsWGS84();
+        const auto utm = link->getPointsUTM();
+
+        swA->absorbLink(link->getId(), swB->getId(), wgs84, utm);
+        swB->absorbLink(link->getId(), swA->getId(), wgs84, utm);
+
+        swA->replaceBranchPointer(link, swB);
+        swB->replaceBranchPointer(link, swA);
+
+        // Purge straightEndpoints (index parallèle à straights)
+        const auto idxIt = std::find_if(
+            blocks.straights.begin(), blocks.straights.end(),
             [link](const std::unique_ptr<StraightBlock>& s)
-            { return s.get() == link; }),
-        blocks.straights.end());
+            { return s.get() == link; });
 
-    // Reconstruction des index après modification
-    blocks.rebuildStraightIndex();
+        if (idxIt != blocks.straights.end())
+        {
+            const size_t idx = static_cast<size_t>(
+                idxIt - blocks.straights.begin());
+            blocks.straightEndpoints.erase(
+                blocks.straightEndpoints.begin() + idx);
+        }
 
-    LOG_DEBUG(logger, "Absorbé : " + swA->getId() + " ↔ " + swB->getId());
+        LOG_DEBUG(logger, "Absorbé : " + link->getId()
+            + "  " + swA->getId() + " ↔ " + swB->getId());
+        // Suppression — unique_ptr détruit link ici
+        blocks.straights.erase(
+            std::remove_if(blocks.straights.begin(), blocks.straights.end(),
+                [link](const std::unique_ptr<StraightBlock>& s)
+                { return s.get() == link; }),
+            blocks.straights.end());
+
+        // Reconstruction après chaque suppression pour garder
+        // straightEndpoints cohérent avec straights
+        blocks.rebuildStraightIndex();
+
+    }
 }
+
 
 
 // =============================================================================
@@ -483,6 +503,15 @@ void Phase7_SwitchProcessor::computeTips(BlockSet& blocks,
     double sideSize,
     Logger& logger)
 {
+    // Règle universelle : un tip CDC n'est interpolable que sur un StraightBlock.
+    // Branche → SwitchBlock  (double switch)  : pas de tip
+    // Branche → CrossBlock   (TJD / crossing) : pas de tip
+    // Branche → nullptr                        : pas de tip
+    auto hasTip = [](const ShuntingElement* branch) -> bool
+        {
+            return branch && branch->getType() == ElementType::STRAIGHT;
+        };
+
     for (const auto& sw : blocks.switches)
     {
         if (!sw->isOriented()) continue;
@@ -490,43 +519,47 @@ void Phase7_SwitchProcessor::computeTips(BlockSet& blocks,
         const CoordinateLatLon& junctionWGS84 = sw->getJunctionWGS84();
         const CoordinateXY& junctionUTM = sw->getJunctionUTM();
 
-        // --- Tips WGS84 (existant) ---
+        const ShuntingElement* root = sw->getRootBlock();
+        const ShuntingElement* normal = sw->getNormalBlock();
+        const ShuntingElement* deviation = sw->getDeviationBlock();
+
+        // --- Tips WGS84 ---
         auto makeTipWGS84 = [&](const ShuntingElement* elem)
             -> std::optional<CoordinateLatLon>
             {
-                if (!elem) return std::nullopt;
-                const auto* st = dynamic_cast<const StraightBlock*>(elem);
-                if (!st || st->getPointsWGS84().size() < 2) return std::nullopt;
+                if (!hasTip(elem)) return std::nullopt;
+                const auto* st = static_cast<const StraightBlock*>(elem);
+                if (st->getPointsWGS84().size() < 2) return std::nullopt;
                 return interpolateTip(st->getPointsWGS84(), junctionWGS84, sideSize);
             };
 
-        // --- Tips UTM (nouveau) ---
+        // --- Tips UTM ---
         auto makeTipUTM = [&](const ShuntingElement* elem)
             -> std::optional<CoordinateXY>
             {
-                if (!elem) return std::nullopt;
-                const auto* st = dynamic_cast<const StraightBlock*>(elem);
-                // Un straight sans UTM ne peut pas produire de tip UTM
-                if (!st || st->getPointsUTM().size() < 2) return std::nullopt;
+                if (!hasTip(elem)) return std::nullopt;
+                const auto* st = static_cast<const StraightBlock*>(elem);
+                if (st->getPointsUTM().size() < 2) return std::nullopt;
                 return interpolateTipUTM(st->getPointsUTM(), junctionUTM, sideSize);
             };
 
-        // Assignation WGS84 — inchangée
         sw->setTips(
-            makeTipWGS84(sw->getRootBlock()),
-            makeTipWGS84(sw->getNormalBlock()),
-            makeTipWGS84(sw->getDeviationBlock()));
+            makeTipWGS84(root),
+            makeTipWGS84(normal),
+            makeTipWGS84(deviation));
 
-        // Assignation UTM — nouvelle, même passe
         sw->setTipsUTM(
-            makeTipUTM(sw->getRootBlock()),
-            makeTipUTM(sw->getNormalBlock()),
-            makeTipUTM(sw->getDeviationBlock()));
+            makeTipUTM(root),
+            makeTipUTM(normal),
+            makeTipUTM(deviation));
 
         sw->computeTotalLength();
 
-        LOG_DEBUG(logger, sw->getId() + " — tips WGS84 + UTM calculés ("
-            + std::to_string(static_cast<int>(sideSize)) + " m).");
+        LOG_DEBUG(logger, sw->getId() + " — tips calculés"
+            + " root=" + (hasTip(root) ? "✓" : "—")
+            + " normal=" + (hasTip(normal) ? "✓" : "—")
+            + " deviation=" + (hasTip(deviation) ? "✓" : "—")
+            + " (" + std::to_string(static_cast<int>(sideSize)) + " m).");
     }
 }
 

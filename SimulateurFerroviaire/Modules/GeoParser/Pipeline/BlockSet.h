@@ -12,8 +12,8 @@
 
 #include "Modules/Elements/ShuntingElements/StraightBlock.h"
 #include "Modules/Elements/ShuntingElements/SwitchBlock.h"
-#include "Modules/Elements/ShuntingElements/CrossBlock/StraightCrossBlock.h"
-#include "Modules/Elements/ShuntingElements/CrossBlock/SwitchCrossBlock.h"
+#include "Modules/Elements/ShuntingElements/CrossBlocks/StraightCrossBlock.h"
+#include "Modules/Elements/ShuntingElements/CrossBlocks/SwitchCrossBlock.h"
 
 /**
  * @struct BlockEndpoint

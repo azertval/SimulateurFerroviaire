@@ -32,11 +32,13 @@
 #include "PCCNode.h"
 #include "PCCStraightNode.h"
 #include "PCCSwitchNode.h"
+#include "PCCCrossingNode.h"
 
 #include "Engine/Core/Logger/Logger.h"
 
 #include "Modules/Elements/ShuntingElements/StraightBlock.h"
 #include "Modules/Elements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/CrossBlocks/CrossBlock.h"
 
  /**
   * @class PCCGraph
@@ -117,6 +119,25 @@ public:
      *         (propagé depuis @ref PCCSwitchNode).
      */
     PCCNode* addSwitchNode(SwitchBlock* source);
+
+    /**
+     * @brief Crée un nœud de croisement, l'indexe et le stocke.
+     *
+     * Crée un @ref PCCCrossingNode depuis @p source, le stocke dans
+     * @ref m_nodes (ownership exclusif), l'indexe dans @ref m_index,
+     * et retourne un pointeur non-propriétaire vers le nœud créé.
+     *
+     * @param source  Pointeur non-propriétaire vers le @ref CrossBlock source.
+     *                Ne doit pas être nullptr.
+     *
+     * @return Pointeur non-propriétaire vers le nœud créé.
+     *         Jamais nullptr si @p source est valide.
+     *
+     * @throws std::invalid_argument Si @p source est nullptr
+     *         (propagé depuis @ref PCCSwitchNode).
+     */
+    PCCNode* addCrossingNode(CrossBlock* source);
+
 
     /**
      * @brief Crée une arête orientée entre deux nœuds et la câble sur les deux.

@@ -37,7 +37,7 @@
   *  - STRAIGHT : nœud issu d'un @ref StraightBlock.
   *  - SWITCH   : nœud issu d'un @ref SwitchBlock.
   */
-enum class PCCNodeType { STRAIGHT, SWITCH };
+enum class PCCNodeType { STRAIGHT, SWITCH, CROSSING };
 
 /**
  * @brief Position logique d'un nœud dans le schéma PCC.

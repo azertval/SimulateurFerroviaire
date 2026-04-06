@@ -63,7 +63,7 @@ private:
     /**
      * @brief B — Trouve le StraightBlock de liaison entre deux switches.
      */
-    static StraightBlock* findLinkSegment(const BlockSet& blocks,
+    static std::vector<StraightBlock*> findLinkSegments(const BlockSet& blocks,
         const SwitchBlock* swA,
         const SwitchBlock* swB);
 

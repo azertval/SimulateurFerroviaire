@@ -111,8 +111,10 @@ void SwitchBlock::absorbLink(const std::string& linkId,
     std::vector<CoordinateLatLon> linkCoordsWGS84,
     std::vector<CoordinateXY>     linkCoordsUTM)
 {
-    for (auto& bid : m_branchIds)
-        if (bid == linkId) { bid = partnerId; break; }
+    m_branchIds.erase(
+        std::remove(m_branchIds.begin(), m_branchIds.end(), linkId),
+        m_branchIds.end());
+    addBranchId(partnerId);
 
     const CoordinateLatLon tipFar = linkCoordsWGS84.empty()
         ? m_junctionWGS84
@@ -165,17 +167,19 @@ void SwitchBlock::replaceBranchPointer(ShuntingElement* oldElem,
 // Mutations — état opérationnel
 // =============================================================================
 
-void SwitchBlock::setActiveBranch(ActiveBranch branch, bool propagate)
+void SwitchBlock::setActiveBranch(ActiveBranch branch, SwitchBlock* origin)
 {
     m_activeBranch = branch;
     LOG_DEBUG(m_logger, m_id + " set → " + activeBranchToString());
 
-    if (!propagate) return;
-    if (auto* p = getPartnerOnNormal())    p->setActiveBranch(branch, false);
-    if (auto* p = getPartnerOnDeviation()) p->setActiveBranch(branch, false);
+    if (auto* p = getPartnerOnNormal())
+        if (p != origin) p->setActiveBranch(branch, this);
+
+    if (auto* p = getPartnerOnDeviation())
+        if (p != origin) p->setActiveBranch(branch, this);
 }
 
-ActiveBranch SwitchBlock::toggleActiveBranch(bool propagate)
+ActiveBranch SwitchBlock::toggleActiveBranch(SwitchBlock* origin)
 {
     m_activeBranch = (m_activeBranch == ActiveBranch::NORMAL)
         ? ActiveBranch::DEVIATION
@@ -183,15 +187,14 @@ ActiveBranch SwitchBlock::toggleActiveBranch(bool propagate)
 
     LOG_DEBUG(m_logger, m_id + " toggled → " + activeBranchToString());
 
-    if (propagate)
-    {
-        if (auto* p = getPartnerOnNormal())    p->setActiveBranch(m_activeBranch, false);
-        if (auto* p = getPartnerOnDeviation()) p->setActiveBranch(m_activeBranch, false);
-    }
+    SwitchBlock* pN = getPartnerOnNormal();
+    SwitchBlock* pD = getPartnerOnDeviation();
+
+    if (pN && pN != origin) pN->setActiveBranch(m_activeBranch, this);
+    if (pD && pD != origin && pD != pN) pD->setActiveBranch(m_activeBranch, this);
 
     return m_activeBranch;
 }
-
 
 // =============================================================================
 // Affichage
@@ -217,11 +220,9 @@ std::string SwitchBlock::toString() const
     {
         s << ", [DOUBLE:";
         if (m_doubleOnNormal)
-            s << " normal→" << *m_doubleOnNormal
-            << "(" << m_absorbedNormalCoords.size() << " pts)";
+            s << " normal→" << *m_doubleOnNormal;
         if (m_doubleOnDeviation)
-            s << " deviation→" << *m_doubleOnDeviation
-            << "(" << m_absorbedDeviationCoords.size() << " pts)";
+            s << " deviation→" << *m_doubleOnDeviation;
         s << "]";
     }
 

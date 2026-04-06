@@ -51,9 +51,15 @@ void Phase6_BlockExtractor::run(PipelineContext& ctx,
     LOG_INFO(logger, "Extraction des blocs ferroviaires.");
 
     // Straights en premier — construit straightByDirectedPair
-    // dont extractSwitches a besoin pour résoudre les endpoints
+    // dont extractSwitches et extractCrossings ont besoin
     extractStraights(ctx, config, logger);
+
+    // Switches — nécessite straightByDirectedPair complet
     extractSwitches(ctx, logger);
+
+    // Crossings — nécessite straightByDirectedPair ET switchesByNode complets
+    // Doit être appelé AVANT clear() — utilise topoGraph et classifiedNodes
+    extractCrossings(ctx, logger);
 
     ctx.endTimer(t0, "Phase6_BlockExtractor",
         ctx.topoGraph.nodes.size(),
@@ -61,9 +67,11 @@ void Phase6_BlockExtractor::run(PipelineContext& ctx,
 
     LOG_INFO(logger,
         std::to_string(ctx.blocks.switches.size()) + " SwitchBlock(s), "
-        + std::to_string(ctx.blocks.straights.size()) + " StraightBlock(s).");
+        + std::to_string(ctx.blocks.straights.size()) + " StraightBlock(s), "
+        + std::to_string(ctx.blocks.crossings.size()) + " CrossBlock(s).");
 
     // Libération mémoire — sources plus nécessaires après Phase 6
+    // ATTENTION : ne pas déplacer ces clear() avant extractCrossings()
     ctx.topoGraph.clear();
     ctx.classifiedNodes.clear();
     ctx.splitNetwork.clear();

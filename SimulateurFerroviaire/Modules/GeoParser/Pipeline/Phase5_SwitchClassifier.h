@@ -94,4 +94,23 @@ private:
     static NodeClass classifyDegree3(const TopologyGraph& graph,
                                       size_t nodeId,
                                       double minSwitchAngle);
+
+    /**
+     * @brief Classifie un nœud de degré 4 — vérifie la colinéarité des paires.
+     *
+     * Teste les 3 partitions possibles des 4 arêtes en 2 paires.La partition
+     * retenue est celle qui maximise la somme des angles entre branches de chaque
+     * paire(critère de colinéarité).Si le score dépasse le seuil
+     * (180° - minSwitchAngle) × 2, le nœud est classifié CROSSING.
+     * Sinon, AMBIGUOUS.
+     *
+     * @param graph          Graphe topologique.
+     * @param nodeId         Nœud à classifier.
+     * @param minSwitchAngle Angle minimal de bifurcation(degrés).
+     *
+     * @return @c NodeClass::CROSSING ou @c NodeClass::AMBIGUOUS.
+     */
+    static NodeClass classifyDegree4(const TopologyGraph & graph,
+        size_t nodeId,
+        double minSwitchAngle);
 };

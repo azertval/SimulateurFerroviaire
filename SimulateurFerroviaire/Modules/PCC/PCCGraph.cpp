@@ -35,6 +35,15 @@ PCCNode* PCCGraph::addSwitchNode(SwitchBlock* source)
     return raw;
 }
 
+PCCNode* PCCGraph::addCrossingNode(CrossBlock* source)
+{
+    auto node = std::make_unique<PCCCrossingNode>(source, m_logger);
+    PCCNode* raw = node.get();
+    m_index[source->getId()] = raw;
+    m_nodes.push_back(std::move(node));
+    return raw;
+}
+
 PCCEdge* PCCGraph::addEdge(PCCNode* from, PCCNode* to, PCCEdgeRole role)
 {
     // PCCEdge::PCCEdge lève std::invalid_argument si from ou to == nullptr

@@ -6,9 +6,9 @@
  * méthodes à intent explicite.
  *
  * Double aiguille :
- *   Un aiguillage peut absorber le segment de liaison côté branche normale
- *   (doubleOnNormal) ou côté branche déviée (doubleOnDeviation).
- *   Un seul des deux est renseigné à la fois.
+ *   Un aiguillage peut absorber un segment de liaison côté branche normale
+ *   (doubleOnNormal), côté branche déviée (doubleOnDeviation), ou les deux
+ *   simultanément (cas TJD — Traversée Jonction Double).
  *
  * Système de coordonnées :
  *   WGS84 — jonction et tips pour le rendu Leaflet.
@@ -393,22 +393,28 @@ public:
     // Mutations — état opérationnel
     // =========================================================================
 
-    /**
-     * @brief Assigne la branche active.
+   /**
+     * @brief Assigne la branche active et propage à toute la chaîne de doubles.
      *
-     * @param branch    Branche à activer.
-     * @param propagate Si true, propage aux partenaires double switch.
+     * Traverse récursivement tous les partenaires doubleOnNormal et
+     * doubleOnDeviation en évitant de repropager vers l'appelant (origin).
+     * Couvre les chaînes de longueur arbitraire sans boucle infinie.
+     *
+     * @param branch  Branche à activer (NORMAL ou DEVIATION).
+     * @param origin  Switch depuis lequel la propagation provient.
+     *                nullptr pour l'appel initial (depuis l'opérateur).
      */
-    void setActiveBranch(ActiveBranch branch, bool propagate = true);
+    void setActiveBranch(ActiveBranch branch, SwitchBlock* origin = nullptr);
 
     /**
-     * @brief Alterne entre NORMAL et DEVIATION.
+     * @brief Bascule la branche active et propage à toute la chaîne.
      *
-     * @param propagate Si true, propage aux partenaires double switch.
+     * @param origin  Switch depuis lequel la propagation provient.
+     *                nullptr pour l'appel initial.
      *
-     * @return Nouvelle valeur de m_activeBranch.
+     * @return Nouvelle branche active.
      */
-    ActiveBranch toggleActiveBranch(bool propagate = true);
+    ActiveBranch toggleActiveBranch(SwitchBlock* origin = nullptr);
 
 private:
 

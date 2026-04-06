@@ -72,6 +72,9 @@ void PCCGraphBuilder::buildNodes(PCCGraph& graph,
     for (const auto& sw : topo.switches)
         graph.addSwitchNode(sw.get());
 
+    for (const auto& cr : topo.crossings)
+        graph.addCrossingNode(cr.get());
+
     LOG_DEBUG(logger, std::to_string(graph.nodeCount()) + " nœuds indexés.");
 }
 
@@ -134,6 +137,31 @@ void PCCGraphBuilder::buildEdges(PCCGraph& graph,
         addSwitchEdge(source->getRootBlock(), PCCEdgeRole::ROOT);
         addSwitchEdge(source->getNormalBlock(), PCCEdgeRole::NORMAL);
         addSwitchEdge(source->getDeviationBlock(), PCCEdgeRole::DEVIATION);
+    }
+
+    std::unordered_set<std::string> processedCrossEdges;
+
+    for (const auto& crPtr : topo.crossings)
+    {
+        PCCNode* crNode = graph.findNode(crPtr->getId());
+        if (!crNode) continue;
+
+        auto addCrossEdge = [&](ShuntingElement* branch)
+            {
+                if (!branch) return;
+                PCCNode* bNode = graph.findNode(branch->getId());
+                if (!bNode) return;
+                const std::string key = makeEdgeKey(crPtr->getId(), branch->getId());
+                if (processedCrossEdges.count(key)) return;
+                processedCrossEdges.insert(key);
+                graph.addEdge(crNode, bNode, PCCEdgeRole::CROSSING);
+                ++edgeCount;
+            };
+
+        addCrossEdge(crPtr->getBranchA());
+        addCrossEdge(crPtr->getBranchB());
+        addCrossEdge(crPtr->getBranchC());
+        addCrossEdge(crPtr->getBranchD());
     }
 
     // -------------------------------------------------------------------------

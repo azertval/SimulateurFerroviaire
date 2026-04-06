@@ -60,7 +60,7 @@ private:
      * @brief Passe 1 — crée un nœud PCC pour chaque bloc de la topologie.
      *
      * Parcourt @ref TopologyData::straights et @ref TopologyData::switches
-     * et appelle @ref PCCGraph::addStraightNode / @ref PCCGraph::addSwitchNode
+     * et appelle @ref PCCGraph::addStraightNode / @ref PCCGraph::addSwitchNode / @ref PCCGraph::addCrossingNode
      * pour chaque bloc. L'index est complet à la fin de cette passe.
      *
      * @param graph  Graphe en cours de construction.

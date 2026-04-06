@@ -35,7 +35,8 @@ enum class PCCEdgeRole
     STRAIGHT,
     ROOT,
     NORMAL,
-    DEVIATION
+    DEVIATION,
+    CROSSING
 };
 
 /**
