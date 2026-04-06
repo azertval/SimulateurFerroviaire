@@ -1,13 +1,6 @@
 /**
  * @file  BlockSet.h
  * @brief Structures de données produites par @ref Phase6_BlockExtractor.
- *
- * @par straightByDirectedPair — multi-valué depuis la v2
- * La clé directionnelle (from * 1'000'000 + to) peut désormais pointer
- * vers plusieurs StraightBlock* lorsque deux straights relient les mêmes
- * nœuds frontières (cas crossover / voie double).
- * Avant la correction, la seconde insertion écrasait la première, ce qui
- * faisait apparaître le même straight en normal ET deviation d'un switch.
  */
 #pragma once
 
@@ -19,6 +12,8 @@
 
 #include "Modules/Elements/ShuntingElements/StraightBlock.h"
 #include "Modules/Elements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/CrossBlock/StraightCrossBlock.h"
+#include "Modules/Elements/ShuntingElements/CrossBlock/SwitchCrossBlock.h"
 
 /**
  * @struct BlockEndpoint
@@ -52,6 +47,7 @@ struct BlockSet
 
     std::vector<std::unique_ptr<StraightBlock>> straights;
     std::vector<std::unique_ptr<SwitchBlock>>   switches;
+    std::vector<std::unique_ptr<CrossBlock>>   crossings;
 
     // =========================================================================
     // Index de lookup
@@ -64,7 +60,10 @@ struct BlockSet
     std::unordered_map<size_t, std::vector<StraightBlock*>> straightsByNode;
 
     /** nodeId → SwitchBlock* correspondant. */
-    std::unordered_map<size_t, SwitchBlock*> switchByNode;
+    std::unordered_map<size_t, SwitchBlock*> switchesByNode;
+
+    /** nodeId → CrossBlock* correspondant. */
+    std::unordered_map<size_t, CrossBlock*> crossingsByNode;
 
     /**
      * Cantor(min(A,B), max(A,B)) → premier StraightBlock* depuis A.
@@ -107,6 +106,10 @@ struct BlockSet
     /** Index parallèle à @c switches — 3 endpoints par switch. */
     std::vector<std::array<BlockEndpoint, 3>>            switchEndpoints;
 
+
+    /** Index parallèle à @c crossings — 4 endpoints par switch. */
+    std::vector<std::array<BlockEndpoint, 4>>            crossingEndpoints;
+
     // =========================================================================
     // Utilitaires
     // =========================================================================
@@ -115,17 +118,20 @@ struct BlockSet
     {
         straights.clear();               straights.shrink_to_fit();
         switches.clear();                switches.shrink_to_fit();
+        crossings.clear();                crossings.shrink_to_fit();
         straightsByNode.clear();
-        switchByNode.clear();
+        switchesByNode.clear();
+        crossingsByNode.clear();
         straightByEndpointPair.clear();
         straightByDirectedPair.clear();
         straightEndpoints.clear();
         switchEndpoints.clear();
+        crossingEndpoints.clear();
     }
 
     [[nodiscard]] size_t totalCount() const
     {
-        return straights.size() + switches.size();
+        return straights.size() + switches.size() + crossings.size();
     }
 
     /**

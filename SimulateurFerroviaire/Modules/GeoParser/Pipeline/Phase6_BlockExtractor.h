@@ -98,6 +98,28 @@ private:
     static void extractSwitches(PipelineContext& ctx, Logger& logger);
 
     /**
+     * @brief Extrait les CrossBlock depuis les nœuds NodeClass::CROSSING.
+     *
+     * Pour chaque nœud CROSSING du graphe topologique :
+     *  -# DFS depuis les 4 arêtes adjacentes vers les nœuds frontières.
+     *  -# Lookup des StraightBlock* adjacents via @c straightByDirectedPair.
+     *  -# Partition angulaire des 4 branches en 2 paires traversantes colinéaires.
+     *  -# Détection de variante : si les 4 frontières sont NodeClass::SWITCH
+     *     → @ref SwitchCrossBlock, sinon → @ref StraightCrossBlock.
+     *  -# Enregistrement dans @c ctx.blocks.crossings, @c crossingByNode
+     *     et @c crossingEndpoints.
+     *
+     * Doit être appelée après @c extractSwitches() — requiert
+     * @c straightByDirectedPair et @c switchByNode complets.
+     *
+     * @param ctx     Contexte pipeline. Lit topoGraph + classifiedNodes +
+     *                straightByDirectedPair + switchByNode. Écrit crossings,
+     *                crossingByNode, crossingEndpoints.
+     * @param logger  Référence au logger GeoParser.
+     */
+    static void extractCrossings(PipelineContext& ctx, Logger& logger);
+
+    /**
      * @brief Crée un ou plusieurs StraightBlock depuis la géométrie assemblée.
      *
      * Si @c totalLength > @p maxLen, subdivise en @c N sous-blocs chaînés
@@ -163,4 +185,28 @@ private:
 
     /** @brief Calcule la longueur UTM d'une polyligne. */
     static double computeLength(const std::vector<CoordinateXY>& pts);
+
+    /**
+     * @brief Calcule l'angle en degrés entre deux vecteurs UTM.
+     *
+     * @param u  Premier vecteur UTM.
+     * @param v  Second vecteur UTM.
+     *
+     * @return Angle en degrés ∈ [0°, 180°]. 0° si un vecteur est nul.
+     */
+    static double angleDeg(const CoordinateXY& u, const CoordinateXY& v);
+
+    /**
+     * @brief Calcule le vecteur UTM sortant depuis un nœud via une arête.
+     *
+     * Dupliqué depuis Phase5_SwitchClassifier::outVector pour éviter le
+     * couplage inter-phases (Phase 5 est libérée avant Phase 6).
+     *
+     * @param graph    Graphe topologique.
+     * @param nodeId   Nœud de départ.
+     * @param edgeIdx  Indice de l'arête dans @c graph.edges.
+     *
+     * @return Vecteur UTM sortant (non normalisé). {0,0} si arête invalide.
+     */
+    static CoordinateXY outVecCross(const TopologyGraph& graph, size_t nodeId, size_t edgeIdx);
 };

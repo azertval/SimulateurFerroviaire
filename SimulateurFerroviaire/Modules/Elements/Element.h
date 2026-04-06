@@ -17,7 +17,8 @@
 enum class ElementType
 {
     SWITCH,
-    STRAIGHT
+    STRAIGHT,
+    CROSSING
 };
 
 /**

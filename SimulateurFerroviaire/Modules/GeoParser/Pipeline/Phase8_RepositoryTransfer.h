@@ -32,34 +32,45 @@ class Phase8_RepositoryTransfer
 public:
 
     /**
-     * @brief 9a — Résout les pointeurs inter-blocs.
+     * @brief 8a — Résout les pointeurs inter-blocs.
      *
-     * Construit un index ID → bloc*, puis résout @c prev/@c next des
-     * @ref StraightBlock et @c root/@c normal/@c deviation des
-     * @ref SwitchBlock depuis les @ref BlockEndpoint enregistrés en Phase 6.
+     * Enchaîne deux passes :
      *
-     * @par Précondition
-     * @c ctx.blocks doit être peuplé (Phase 6) et les doubles aiguilles
-     * absorbées (Phase 8). Les @c BlockEndpoint::neighbourId doivent être
-     * renseignés (remplis automatiquement par Phase 6 via les nœuds frontières).
+     * @par Passe 1 — Renseignement des neighbourId des StraightBlocks
+     * Pour chaque endpoint d'un @ref StraightBlock, recherche le bloc voisin
+     * dans l'ordre de priorité suivant :
+     *  -# @c switchByNode   — voisin SwitchBlock
+     *  -# @c crossingByNode — voisin CrossBlock
+     *  -# @c straightsByNode — voisin StraightBlock adjacent
      *
-     * @param ctx     Contexte pipeline. Modifie les pointeurs dans ctx.blocks.
+     * Les sous-blocs internes (@c frontierNodeId == @c SIZE_MAX) produisent
+     * un @c neighbourId vide — la Passe 2 ne les modifiera pas, préservant
+     * la chaîne prev/next posée par @ref Phase6_BlockExtractor::registerStraight.
+     *
+     * @par Passe 2 — Résolution des pointeurs depuis l'index ID → bloc*
+     * Construit l'index via @ref buildBlockIndex (couvrant straights, switches
+     * et crossings), puis appelle @ref resolveStraight, @ref resolveSwitch et
+     * @ref resolveCrossing pour chaque bloc correspondant.
+     *
+     * @param ctx     Contexte pipeline. Modifie les pointeurs dans @c ctx.blocks.
      * @param logger  Référence au logger GeoParser.
      */
     static void resolve(PipelineContext& ctx, Logger& logger);
 
     /**
-     * @brief 9b — Transfère les blocs vers TopologyRepository.
-     *
-     * @par Précondition
-     * @c resolve() et @ref Phase8_SwitchOrientator::run() doivent avoir été
-     * appelés avant ce transfert.
+     * @brief 9b — Transfère les blocs vers @ref TopologyRepository.
      *
      * Vide @ref TopologyRepository via @c clear(), transfère les
-     * @c unique_ptr via @c std::move, appelle @c buildIndex() et libère
+     * @c unique_ptr de straights, switches et crossings via @c std::move
+     * (O(1), adresses stables), appelle @c buildIndex() et libère
      * @c ctx.blocks.
      *
-     * @param ctx     Contexte pipeline. Transfère ctx.blocks → TopologyRepository.
+     * @par Précondition
+     * @ref resolve() et @ref Phase7_SwitchProcessor::run() doivent avoir été
+     * appelés avant ce transfert. Les pointeurs non-propriétaires distribués
+     * pendant la Passe 2 restent valides après le move.
+     *
+     * @param ctx     Contexte pipeline. Transfère @c ctx.blocks → @ref TopologyRepository.
      * @param logger  Référence au logger GeoParser.
      */
     static void transfer(PipelineContext& ctx, Logger& logger);
@@ -69,14 +80,16 @@ public:
 private:
 
     /**
-     * @brief Construit l'index ID → ShuntingElement* depuis ctx.blocks.
+     * @brief Construit l'index ID → @ref ShuntingElement* depuis @c ctx.blocks.
      *
-     * Utilisé en Passe 1 de @c resolve() pour permettre la résolution
-     * des pointeurs en Passe 2.
+     * Couvre les trois catégories de blocs : @ref StraightBlock,
+     * @ref SwitchBlock et @ref CrossBlock. Utilisé en Passe 2 de @ref resolve()
+     * pour permettre la résolution des pointeurs inter-blocs en O(1).
      *
-     * @param blocks  Ensemble des blocs.
+     * @param blocks  Ensemble des blocs produits par @ref Phase6_BlockExtractor.
      *
-     * @return Map ID → ShuntingElement* (non-propriétaire).
+     * @return Map ID → @ref ShuntingElement* (non-propriétaire).
+     *         Valide tant que @c blocks est en vie et non modifié.
      */
     static std::unordered_map<std::string, ShuntingElement*>
         buildBlockIndex(const BlockSet& blocks);
@@ -108,6 +121,28 @@ private:
     static void resolveSwitch(
         SwitchBlock& sw,
         const std::array<BlockEndpoint, 3>& eps,
+        const std::unordered_map<std::string, ShuntingElement*>& index,
+        Logger& logger);
+
+    /**
+     * @brief Résout les pointeurs de branches A/B/C/D d'un CrossBlock.
+     *
+     * Pour chaque endpoint, recherche l'ID voisin dans l'index commun
+     * (StraightBlock* + SwitchBlock* + CrossBlock*) et assigne le pointeur
+     * non-propriétaire correspondant via setBranchAPointer … setBranchDPointer.
+     *
+     * Un endpoint avec neighbourId vide produit un pointeur nullptr sans warning
+     * (cas terminus — ne doit pas survenir sur un nœud CROSSING bien formé).
+     * Un ID introuvable dans l'index produit un WARNING et un pointeur nullptr.
+     *
+     * @param cr      CrossBlock à résoudre. Modifié en place.
+     * @param eps     Tableau de 4 endpoints dans l'ordre A, B, C, D.
+     * @param index   Index ID → ShuntingElement* couvrant straights,
+     *                switches et crossings (construit par buildBlockIndex()).
+     * @param logger  Référence au logger GeoParser.
+     */
+    static void resolveCrossing(CrossBlock& cr,
+        const std::array<BlockEndpoint, 4>& eps,
         const std::unordered_map<std::string, ShuntingElement*>& index,
         Logger& logger);
 };

@@ -27,7 +27,7 @@
 
 
 // =============================================================================
-// 9a — Résolution des pointeurs
+// 8a — Résolution des pointeurs
 // =============================================================================
 
 void Phase8_RepositoryTransfer::resolve(PipelineContext& ctx,
@@ -37,13 +37,17 @@ void Phase8_RepositoryTransfer::resolve(PipelineContext& ctx,
 
     LOG_INFO(logger, "Résolution des pointeurs inter-blocs — "
         + std::to_string(ctx.blocks.straights.size()) + " straight(s), "
-        + std::to_string(ctx.blocks.switches.size()) + " switch(es).");
+        + std::to_string(ctx.blocks.switches.size()) + " switch(es), "
+        + std::to_string(ctx.blocks.crossings.size()) + " crossing(s).");
 
     // -------------------------------------------------------------------------
     // Passe 1 — Renseignement des neighbourId des StraightBlocks
     // -------------------------------------------------------------------------
     // Les SwitchBlocks ont déjà leurs neighbourId renseignés par
     // Phase6_BlockExtractor::extractSwitches() — on ne les traite pas ici.
+    // 
+    // Les CrossBlocks ont déjà leurs neighbourId renseignés par
+    // Phase6_BlockExtractor::extractCrossBlocks() — on ne les traite pas ici.
     //
     // Pour les sous-blocs internes (frontierNodeId == SIZE_MAX), les deux
     // lookups échoueront naturellement et neighbourId restera vide.
@@ -56,54 +60,39 @@ void Phase8_RepositoryTransfer::resolve(PipelineContext& ctx,
 
         auto& [epA, epB] = ctx.blocks.straightEndpoints[i];
 
-        // Côté epA — cherche switch en priorité, puis straight
-        {
-            auto itSw = ctx.blocks.switchByNode.find(epA.frontierNodeId);
-            if (itSw != ctx.blocks.switchByNode.end())
+        auto fillEndpoint = [&](BlockEndpoint& ep)
             {
-                epA.neighbourId = itSw->second->getId();
-            }
-            else
-            {
-                // Terminus ou straight adjacent — lookup dans straightsByNode
-                const auto itSt = ctx.blocks.straightsByNode.find(epA.frontierNodeId);
+                // Switch prioritaire
+                auto itSw = ctx.blocks.switchesByNode.find(ep.frontierNodeId);
+                if (itSw != ctx.blocks.switchesByNode.end())
+                {
+                    ep.neighbourId = itSw->second->getId();
+                    return;
+                }
+                // Crossing
+                auto itCr = ctx.blocks.crossingsByNode.find(ep.frontierNodeId);
+                if (itCr != ctx.blocks.crossingsByNode.end())
+                {
+                    ep.neighbourId = itCr->second->getId();
+                    return;
+                }
+                // Straight adjacent
+                const auto itSt = ctx.blocks.straightsByNode.find(ep.frontierNodeId);
                 if (itSt != ctx.blocks.straightsByNode.end())
                 {
                     for (StraightBlock* candidate : itSt->second)
                     {
                         if (candidate != ctx.blocks.straights[i].get())
                         {
-                            epA.neighbourId = candidate->getId();
+                            ep.neighbourId = candidate->getId();
                             break;
                         }
                     }
                 }
-            }
-        }
+            };
 
-        // Côté epB
-        {
-            auto itSw = ctx.blocks.switchByNode.find(epB.frontierNodeId);
-            if (itSw != ctx.blocks.switchByNode.end())
-            {
-                epB.neighbourId = itSw->second->getId();
-            }
-            else
-            {
-                const auto itSt = ctx.blocks.straightsByNode.find(epB.frontierNodeId);
-                if (itSt != ctx.blocks.straightsByNode.end())
-                {
-                    for (StraightBlock* candidate : itSt->second)
-                    {
-                        if (candidate != ctx.blocks.straights[i].get())
-                        {
-                            epB.neighbourId = candidate->getId();
-                            break;
-                        }
-                    }
-                }
-            }
-        }
+        fillEndpoint(epA);
+        fillEndpoint(epB);
     }
 
     // -------------------------------------------------------------------------
@@ -122,8 +111,14 @@ void Phase8_RepositoryTransfer::resolve(PipelineContext& ctx,
     {
         if (i >= ctx.blocks.switchEndpoints.size()) break;
         resolveSwitch(*ctx.blocks.switches[i],
-            ctx.blocks.switchEndpoints[i],
-            index, logger);
+            ctx.blocks.switchEndpoints[i], index, logger);
+    }
+
+    for (size_t i = 0; i < ctx.blocks.crossings.size(); ++i)
+    {
+        if (i >= ctx.blocks.crossingEndpoints.size()) break;
+        resolveCrossing(*ctx.blocks.crossings[i],
+            ctx.blocks.crossingEndpoints[i], index, logger);
     }
 
     ctx.endTimer(t0, "Phase8_resolve", ctx.blocks.totalCount(), 0);
@@ -133,7 +128,7 @@ void Phase8_RepositoryTransfer::resolve(PipelineContext& ctx,
 
 
 // =============================================================================
-// 9b — Transfert vers TopologyRepository
+// 8b — Transfert vers TopologyRepository
 // =============================================================================
 
 void Phase8_RepositoryTransfer::transfer(PipelineContext& ctx,
@@ -143,38 +138,44 @@ void Phase8_RepositoryTransfer::transfer(PipelineContext& ctx,
 
     const size_t stCount = ctx.blocks.straights.size();
     const size_t swCount = ctx.blocks.switches.size();
+    const size_t crCount = ctx.blocks.crossings.size();
 
     LOG_INFO(logger, "Transfert vers TopologyRepository — "
         + std::to_string(swCount) + " SwitchBlock(s), "
-        + std::to_string(stCount) + " StraightBlock(s).");
+        + std::to_string(stCount) + " StraightBlock(s), "
+        + std::to_string(crCount) + " CrossBlock(s).");
 
     for (const auto& st : ctx.blocks.straights)
         LOG_DEBUG(logger, st->toString());
     for (const auto& sw : ctx.blocks.switches)
         LOG_DEBUG(logger, sw->toString());
+    for (const auto& cr : ctx.blocks.crossings)
+        LOG_DEBUG(logger, cr->toString());
 
     TopologyData& data = TopologyRepository::instance().data();
-
-    // Vide l'ancien contenu — obligatoire avant chaque nouveau parsing
     data.clear();
 
-    // Transfert O(1) via std::move — les adresses des blocs sont inchangées
     data.straights = std::move(ctx.blocks.straights);
-    data.switches  = std::move(ctx.blocks.switches);
-    // Après le move : ctx.blocks.straights et ctx.blocks.switches sont vides.
-    // Les StraightBlock* / SwitchBlock* non-propriétaires restent valides.
+    data.switches = std::move(ctx.blocks.switches);
+    data.crossings = std::move(ctx.blocks.crossings);
+    // Après move : les raw pointers non-propriétaires distribués restent valides.
 
-    // Construction des index de lookup O(1) — APRÈS le move (adresses finales)
     data.buildIndex();
 
-    ctx.endTimer(t0, "Phase8_transfer", stCount + swCount, 0);
+    ctx.endTimer(t0, "Phase8_transfer", stCount + swCount + crCount, 0);
 
-    // Libération des structures intermédiaires de BlockSet
     ctx.blocks.clear();
+
+    // Comptage TJD pour le log de synthèse
+    size_t tjdCount = 0;
+    for (const auto& cr : data.crossings)
+        if (cr->isTJD()) ++tjdCount;
 
     LOG_INFO(logger, "=== Transfert terminé — "
         + std::to_string(data.switches.size()) + " SwitchBlock(s), "
-        + std::to_string(data.straights.size()) + " StraightBlock(s) ===");
+        + std::to_string(data.straights.size()) + " StraightBlock(s), "
+        + std::to_string(data.crossings.size()) + " CrossBlock(s) ("
+        + std::to_string(tjdCount) + " TJD) ===");
 }
 
 
@@ -193,6 +194,9 @@ Phase8_RepositoryTransfer::buildBlockIndex(const BlockSet& blocks)
 
     for (const auto& sw : blocks.switches)
         index[sw->getId()] = sw.get();
+
+    for (const auto& cr : blocks.crossings)
+        index[cr->getId()] = cr.get();
 
     return index;
 }
@@ -269,4 +273,23 @@ void Phase8_RepositoryTransfer::resolveSwitch(
     if (root)      sw.setRootBranchId(eps[0].neighbourId);
     if (normal)    sw.setNormalBranchId(eps[1].neighbourId);
     if (deviation) sw.setDeviationBranchId(eps[2].neighbourId);
+}
+
+void Phase8_RepositoryTransfer::resolveCrossing(CrossBlock& cr,
+    const std::array<BlockEndpoint, 4>& eps,
+    const std::unordered_map<std::string, ShuntingElement*>& index,
+    Logger& logger)
+{
+    auto resolve = [&](const BlockEndpoint& ep) -> ShuntingElement*
+        {
+            if (ep.neighbourId.empty()) return nullptr;
+            const auto it = index.find(ep.neighbourId);
+            if (it == index.end()) { LOG_WARNING(logger,cr.getId() + " - voisin :" 
+            + ep.neighbourId + " introuvable"); return nullptr; }
+            return it->second;
+        };
+    cr.setBranchAPointer(resolve(eps[0]));
+    cr.setBranchBPointer(resolve(eps[1]));
+    cr.setBranchCPointer(resolve(eps[2]));
+    cr.setBranchDPointer(resolve(eps[3]));
 }

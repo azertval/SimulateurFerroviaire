@@ -12,6 +12,7 @@
 
 #include "Modules/Elements/ShuntingElements/StraightBlock.h"
 #include "Modules/Elements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/CrossBlock/CrossBlock.h"
 
  /**
   * @class TopologyData
@@ -30,6 +31,7 @@ class TopologyData
 public:
     std::vector<std::unique_ptr<StraightBlock>> straights;
     std::vector<std::unique_ptr<SwitchBlock>>   switches;
+    std::vector<std::unique_ptr<CrossBlock>>   crossings;
 
     /**
      * Index de lookup rapide id → ptr, construit après résolution des pointeurs.
@@ -37,6 +39,7 @@ public:
      */
     std::unordered_map<std::string, SwitchBlock*>   switchIndex;
     std::unordered_map<std::string, StraightBlock*> straightIndex;
+    std::unordered_map<std::string, CrossBlock*> crossingsIndex;
 
     /**
      * @brief Vide les listes et les index (remise à zéro entre deux parsings).
@@ -45,8 +48,10 @@ public:
     {
         straights.clear();
         switches.clear();
+        crossings.clear();
         switchIndex.clear();
         straightIndex.clear();
+        crossingsIndex.clear();
     }
 
     /**
@@ -61,6 +66,7 @@ public:
     {
         switchIndex.clear();
         straightIndex.clear();
+        crossingsIndex.clear();
 
         switchIndex.reserve(switches.size());
         for (auto& sw : switches)
@@ -69,5 +75,9 @@ public:
         straightIndex.reserve(straights.size());
         for (auto& st : straights)
             straightIndex[st->getId()] = st.get();
+
+        crossingsIndex.reserve(crossings.size());
+        for (auto& cr : crossings)
+            crossingsIndex[cr->getId()] = cr.get();
     }
 };

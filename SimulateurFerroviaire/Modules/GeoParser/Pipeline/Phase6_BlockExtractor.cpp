@@ -34,6 +34,9 @@
 #include <array>
 #include <cmath>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 // =============================================================================
 // Point d'entrée
@@ -332,7 +335,7 @@ void Phase6_BlockExtractor::extractSwitches(PipelineContext& ctx,
         sw->setJunctionWGS84(node.posWGS84);
 
         SwitchBlock* rawPtr = sw.get();
-        ctx.blocks.switchByNode[node.id] = rawPtr;
+        ctx.blocks.switchesByNode[node.id] = rawPtr;
 
         std::array<BlockEndpoint, 3> endpoints{};
         const auto& adj = ctx.topoGraph.adjacency[node.id];
@@ -388,8 +391,8 @@ void Phase6_BlockExtractor::extractSwitches(PipelineContext& ctx,
             {
                 // Connexion directe sw↔sw (ex. double switch avant absorption)
                 // ou nœud non connecté à un straight connu.
-                const auto itSw = ctx.blocks.switchByNode.find(curr);
-                if (itSw != ctx.blocks.switchByNode.end())
+                const auto itSw = ctx.blocks.switchesByNode.find(curr);
+                if (itSw != ctx.blocks.switchesByNode.end())
                     endpoints[bi].neighbourId = itSw->second->getId();
             }
         }
@@ -402,6 +405,183 @@ void Phase6_BlockExtractor::extractSwitches(PipelineContext& ctx,
     LOG_DEBUG(logger, std::to_string(switchIndex) + " SwitchBlock(s) créé(s).");
 }
 
+// =============================================================================
+// extractCrossings — une CrossBlock par nœud NodeClass::CROSSING
+// =============================================================================
+void Phase6_BlockExtractor::extractCrossings(PipelineContext& ctx, Logger& logger)
+{
+    size_t crIndex = 0;
+
+    for (const auto& node : ctx.topoGraph.nodes)
+    {
+        if (ctx.classifiedNodes.getClass(node.id) != NodeClass::CROSSING)
+            continue;
+
+        const auto& adj = ctx.topoGraph.adjacency[node.id];
+        if (adj.size() != 4)
+        {
+            LOG_WARNING(logger, "Nœud CROSSING " + std::to_string(node.id)
+                + " — degré inattendu " + std::to_string(adj.size()) + ", ignoré.");
+            continue;
+        }
+
+        // -----------------------------------------------------------------
+        // Étape 1 : DFS vers les 4 nœuds frontières + lookup StraightBlock*
+        // -----------------------------------------------------------------
+        std::array<size_t, 4>          frontierNodes{};
+        std::array<StraightBlock*, 4>  branchStraights{};
+
+        std::unordered_set<StraightBlock*> usedStraights;
+
+        for (size_t bi = 0; bi < 4; ++bi)
+        {
+            const TopoEdge& firstEdge = ctx.topoGraph.edges[adj[bi]];
+            size_t curr = firstEdge.opposite(node.id);
+            size_t prevEdge = adj[bi];
+
+            // Traversée des nœuds STRAIGHT jusqu'au prochain frontière
+            while (!isFrontier(ctx, curr))
+            {
+                const auto& currAdj = ctx.topoGraph.adjacency[curr];
+                for (size_t eidx : currAdj)
+                {
+                    if (eidx == prevEdge) continue;
+                    prevEdge = eidx;
+                    curr = ctx.topoGraph.edges[eidx].opposite(curr);
+                    break;
+                }
+            }
+            frontierNodes[bi] = curr;
+
+            // Lookup directionnel — premier straight non utilisé
+            const auto key = directedKey(node.id, curr);
+            const auto it = ctx.blocks.straightByDirectedPair.find(key);
+            StraightBlock* chosen = nullptr;
+            if (it != ctx.blocks.straightByDirectedPair.end())
+            {
+                for (StraightBlock* st : it->second)
+                {
+                    if (!usedStraights.count(st))
+                    {
+                        chosen = st;
+                        usedStraights.insert(st);
+                        break;
+                    }
+                }
+            }
+            if (!chosen)
+                LOG_WARNING(logger, "cr/" + std::to_string(crIndex)
+                    + " branche " + std::to_string(bi) + " — straight introuvable.");
+            branchStraights[bi] = chosen;
+        }
+
+        // -----------------------------------------------------------------
+        // Étape 2 : Partition angulaire — trouver les 2 paires traversantes
+        // Les 3 partitions possibles de {0,1,2,3} en 2 paires :
+        //   P0 : {0,2} | {1,3}
+        //   P1 : {0,1} | {2,3}
+        //   P2 : {0,3} | {1,2}
+        // -----------------------------------------------------------------
+
+        // Vecteurs sortants depuis le nœud CROSSING
+        std::array<CoordinateXY, 4> vecs;
+        for (size_t i = 0; i < 4; ++i)
+            vecs[i] = outVecCross(ctx.topoGraph, node.id, adj[i]);
+
+        // Les paires de chaque partition (indices dans {0,1,2,3})
+        using Pair = std::pair<size_t, size_t>;
+        using PairOfPairs = std::pair<Pair, Pair>;
+
+        const std::array<PairOfPairs, 3> partitions = {
+            PairOfPairs{ Pair{0,2}, Pair{1,3} },
+            PairOfPairs{ Pair{0,1}, Pair{2,3} },
+            PairOfPairs{ Pair{0,3}, Pair{1,2} }
+        };
+
+        double bestScore = -1.0;
+        size_t bestP = 0;
+
+        for (size_t pi = 0; pi < 3; ++pi)
+        {
+            const auto& [pairAC, pairBD] = partitions[pi];
+            const double score =
+                angleDeg(vecs[pairAC.first], vecs[pairAC.second]) +
+                angleDeg(vecs[pairBD.first], vecs[pairBD.second]);
+            if (score > bestScore)
+            {
+                bestScore = score;
+                bestP = pi;
+            }
+        }
+
+        // Indices des branches dans les rôles A, B, C, D
+        const auto& [pairAC, pairBD] = partitions[bestP];
+        const size_t idxA = pairAC.first;
+        const size_t idxC = pairAC.second;
+        const size_t idxB = pairBD.first;
+        const size_t idxD = pairBD.second;
+
+        // -----------------------------------------------------------------
+        // Étape 3 : Détection de variante
+        // -----------------------------------------------------------------
+        bool allSwitch = true;
+        for (size_t bi = 0; bi < 4; ++bi)
+            if (ctx.classifiedNodes.getClass(frontierNodes[bi]) != NodeClass::SWITCH)
+                allSwitch = false;
+
+        std::unique_ptr<CrossBlock> cr = allSwitch
+            ? std::unique_ptr<CrossBlock>(std::make_unique<SwitchCrossBlock>())
+            : std::unique_ptr<CrossBlock>(std::make_unique<StraightCrossBlock>());
+
+        // -----------------------------------------------------------------
+        // Étape 4 : Construction du CrossBlock
+        // -----------------------------------------------------------------
+        const std::string crId = "cr/" + std::to_string(crIndex++);
+        cr->setId(crId);
+        cr->setJunctionUTM(node.posUTM);
+        cr->setJunctionWGS84(node.posWGS84);
+
+        CrossBlock* rawPtr = cr.get();
+        ctx.blocks.crossingsByNode[node.id] = rawPtr;
+
+        // Endpoints (IDs des voisins — résolus en Phase 8)
+        std::array<BlockEndpoint, 4> eps{};
+        const auto buildEp = [&](size_t bi) -> BlockEndpoint {
+            BlockEndpoint ep;
+            ep.frontierNodeId = frontierNodes[bi];
+            if (branchStraights[bi])
+                ep.neighbourId = branchStraights[bi]->getId();
+            else if (ctx.blocks.switchesByNode.count(frontierNodes[bi]))
+                ep.neighbourId = ctx.blocks.switchesByNode[frontierNodes[bi]]->getId();
+            return ep;
+            };
+        eps[0] = buildEp(idxA);
+        eps[1] = buildEp(idxB);
+        eps[2] = buildEp(idxC);
+        eps[3] = buildEp(idxD);
+
+        ctx.blocks.crossings.push_back(std::move(cr));
+        ctx.blocks.crossingEndpoints.push_back(eps);
+
+        LOG_DEBUG(logger, crId + (allSwitch ? " [TJD]" : " [FLAT]")
+            + " partition=" + std::to_string(bestP)
+            + " score=" + std::to_string(static_cast<int>(bestScore)) + "°"
+            + " A=" + eps[0].neighbourId
+            + " B=" + eps[1].neighbourId
+            + " C=" + eps[2].neighbourId
+            + " D=" + eps[3].neighbourId);
+    }
+
+    // Compteurs pour le log de synthèse
+    size_t tjdCount = 0;
+    for (const auto& cr : ctx.blocks.crossings)
+        if (cr->isTJD()) ++tjdCount;
+
+    LOG_INFO(logger, "Crossings extraits — "
+        + std::to_string(ctx.blocks.crossings.size()) + " total ("
+        + std::to_string(tjdCount) + " TJD, "
+        + std::to_string(ctx.blocks.crossings.size() - tjdCount) + " FLAT).");
+}
 
 // =============================================================================
 // Helpers
@@ -447,4 +627,30 @@ double Phase6_BlockExtractor::computeLength(const std::vector<CoordinateXY>& pts
         len += std::sqrt(dx * dx + dy * dy);
     }
     return len;
+}
+
+// =============================================================================
+// Helper local — vecteur UTM sortant depuis un nœud via une arête
+// (dupliqué depuis Phase5_SwitchClassifier pour éviter le couplage inter-phases)
+// =============================================================================
+CoordinateXY Phase6_BlockExtractor::outVecCross(const TopologyGraph& graph,
+    size_t nodeId, size_t edgeIdx)
+{
+    const TopoEdge& edge = graph.edges[edgeIdx];
+    const size_t   otherId = edge.opposite(nodeId);
+    if (otherId == SIZE_MAX) return { 0.0, 0.0 };
+    const CoordinateXY& o = graph.nodes[nodeId].posUTM;
+    const CoordinateXY& t = graph.nodes[otherId].posUTM;
+    return { t.x - o.x, t.y - o.y };
+}
+
+// Angle en degrés entre deux vecteurs UTM
+double Phase6_BlockExtractor::angleDeg(const CoordinateXY& u, const CoordinateXY& v)
+{
+    const double dot = u.x * v.x + u.y * v.y;
+    const double magU = std::sqrt(u.x * u.x + u.y * u.y);
+    const double magV = std::sqrt(v.x * v.x + v.y * v.y);
+    if (magU < 1e-9 || magV < 1e-9) return 0.0;
+    const double cosA = std::clamp(dot / (magU * magV), -1.0, 1.0);
+    return std::acos(cosA) * 180.0 / M_PI;
 }
