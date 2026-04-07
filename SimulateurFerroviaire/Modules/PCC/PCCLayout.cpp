@@ -6,6 +6,7 @@
  */
 #include "PCCLayout.h"
 #include "PCCSwitchNode.h"
+#include "PCCCrossingNode.h"
 
 #include <queue>
 #include <algorithm>
@@ -51,6 +52,7 @@ void PCCLayout::compute(PCCGraph& graph, Logger& logger)
             offsetX = maxX + 15;
         }
     }
+
     // Post-traitement : correction des branches convergentes de longueurs inégales.
     // Doit être appelé après le BFS complet — positions finales requises.
     fixCollapsedBranches(graph, logger);
@@ -111,14 +113,14 @@ int PCCLayout::runBFS(PCCGraph& graph,
 
     visited.insert(start);
     occupied.insert({ offsetX, 0 });
-    frontier.push({ start, offsetX, 0, false });
+    frontier.push({ start, offsetX, 0, false, nullptr });
 
     int processedCount = 0;
     int maxX = offsetX;
 
     while (!frontier.empty())
     {
-        auto [node, x, y, arrivedViaDeviation] = frontier.front();
+        auto [node, x, y, arrivedViaDeviation, arrivedViaEdge] = frontier.front();
         frontier.pop();
 
         node->setPosition({ x, y });
@@ -207,11 +209,17 @@ int PCCLayout::runBFS(PCCGraph& graph,
         //  DEVIATION → nœud ordinaire
         //      → (x+1, y ± côté)     idem cas standard.
         //
+        //  CROSSING
+        //      → (x+1, y)            continuité de ligne, voie traversante uniquement.
+        //
         //  Le côté (±1) provient exclusivement de
         //  PCCSwitchNode::getDeviationSide(), calculé une seule fois par
         //  PCCGraphBuilder::computeDeviationSides à partir des lat/lon.
         //  C'est la seule donnée GPS tolérée dans ce calcul.
         // ---------------------------------------------------------------
+
+        // swNode : switch courant pour les calculs de côté et d'arrivée par déviation.
+        // Déclaré UNE SEULE FOIS ici — ne pas re-déclarer dans les branches ci-dessous.
         auto* swNode = dynamic_cast<PCCSwitchNode*>(node);
         const int side = swNode ? swNode->getDeviationSide() : 1;
 
@@ -220,45 +228,85 @@ int PCCLayout::runBFS(PCCGraph& graph,
             int  nextX = x + 1;
             int  nextY = y;
             bool nextArrivedViaDev = false;
+            PCCEdge* edgeToNeighbour = nullptr;
 
-            if (neighbour.role == PCCEdgeRole::DEVIATION)
+            // Trouver l'arête vers ce voisin (pour getExitEdgeFor sur crossing)
+            for (PCCEdge* edge : node->getEdges())
             {
+                if ((edge->getFrom() == node && edge->getTo() == neighbour.node)
+                    || (edge->getTo() == node && edge->getFrom() == neighbour.node))
+                {
+                    edgeToNeighbour = edge;
+                    break;
+                }
+            }
+
+            // ---------------------------------------------------------------
+            // Cas CROSSING — nœud courant est un crossing :
+            // propager uniquement sur la voie traversante (A↔C ou B↔D).
+            // ---------------------------------------------------------------
+            if (node->getNodeType() == PCCNodeType::CROSSING)
+            {
+                const auto* cr = static_cast<const PCCCrossingNode*>(node);
+                PCCEdge* exitEdge = cr->getExitEdgeFor(arrivedViaEdge);
+
+                // N'enqueuer que le voisin sur la bonne voie traversante
+                if (!exitEdge || exitEdge->getTo() != neighbour.node)
+                    continue;
+
+                // Continuité de la voie — même Y, avancement +1
+                nextX = x + 1;
+                nextY = y;
+                nextArrivedViaDev = arrivedViaDeviation;
+            }
+            // ---------------------------------------------------------------
+            // Cas CROSSING comme rôle d'arête (voisin est un CrossBlock) :
+            // se comporte comme un STRAIGHT — même Y, avancement +1.
+            // ---------------------------------------------------------------
+            else if (neighbour.role == PCCEdgeRole::CROSSING)
+            {
+                nextX = x + 1;
+                nextY = y;
+                nextArrivedViaDev = arrivedViaDeviation;
+            }
+            // ---------------------------------------------------------------
+            // Cas DEVIATION
+            // ---------------------------------------------------------------
+            else if (neighbour.role == PCCEdgeRole::DEVIATION)
+            {
+                // Utilise dynamic_cast sur le VOISIN uniquement —
+                // swNode (nœud courant) est déjà calculé avant la boucle.
                 auto* swNeigh = dynamic_cast<PCCSwitchNode*>(neighbour.node);
-                auto* swNode = dynamic_cast<PCCSwitchNode*>(node);  // nœud courant
+
                 if (swNeigh && swNode)  // double switch : switch → switch direct
                 {
                     nextX = x;
                     nextY = y + side;
                     nextArrivedViaDev = true;
                 }
-                else  // straight→switch ou switch→straight via déviation
+                else  // branche déviée classique (switch → straight ou straight → switch)
                 {
                     nextX = x + 1;
                     nextY = y + side;
                     nextArrivedViaDev = false;
                 }
             }
+            // ---------------------------------------------------------------
+            // Cas arrivée par déviation — NORMAL est en AMONT
+            // ---------------------------------------------------------------
             else if (arrivedViaDeviation
                 && swNode
                 && neighbour.role == PCCEdgeRole::NORMAL
                 && neighbour.isForward)
             {
-                // Arrivée par déviation (double aiguille) — NORMAL est en AMONT.
-                //
                 // Quand le BFS atteint sw/B via la déviation de sw/A :
-                //   • ROOT de sw/B pointe vers l'aval (suite du réseau) → x+1, y
-                //   • NORMAL de sw/B pointe vers l'amont (dead end / sens inverse) → x-1, y
-                //
-                // On ne décale PAS Y : NORMAL reste sur le même rang que sw/B.
-                //
-                // Exemple : sw/2[32,1] atteint depuis sw/4[32,0].
-                //   ROOT  s/6 → [33, 1]  (aval, standard)   ✓
-                //   NORMAL s/4 → [31, 1] (amont, x-1)       ✓
+                //   • ROOT de sw/B pointe vers l'aval  → x+1, y
+                //   • NORMAL de sw/B pointe vers l'amont → x-1, y
                 nextX = x - 1;
                 nextY = y;
                 nextArrivedViaDev = false;
             }
-            // else : STRAIGHT / ROOT / NORMAL standard → (x+1, y)
+            // else : STRAIGHT / ROOT / NORMAL standard → (x+1, y) — déjà initialisé
 
             // Résolution de collision — topologies exceptionnelles uniquement.
             if (occupied.count({ nextX, nextY }))
@@ -278,20 +326,27 @@ int PCCLayout::runBFS(PCCGraph& graph,
                 }
             }
 
-            LOG_DEBUG(graph.getLogger(), neighbour.node->getSourceId() + " positionnée en [ " + std::to_string(nextX) + " ; " + std::to_string(nextY) + " ]");
+            LOG_DEBUG(graph.getLogger(),
+                neighbour.node->getSourceId()
+                + " positionnée en [ "
+                + std::to_string(nextX) + " ; "
+                + std::to_string(nextY) + " ]");
 
             visited.insert(neighbour.node);
             occupied.insert({ nextX, nextY });
-            frontier.push({ neighbour.node, nextX, nextY, nextArrivedViaDev });
+            frontier.push({ neighbour.node, nextX, nextY,
+                            nextArrivedViaDev, edgeToNeighbour });
         }
     }
 
-    LOG_DEBUG(graph.getLogger(), std::to_string(processedCount)
+    LOG_DEBUG(graph.getLogger(),
+        std::to_string(processedCount)
         + " nœuds positionnés depuis " + start->getSourceId()
         + " (offsetX=" + std::to_string(offsetX) + ").");
 
     return maxX;
 }
+
 
 // =============================================================================
 // Post-traitement — correction des branches convergentes de longueurs inégales
@@ -356,17 +411,12 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
             // ---------------------------------------------------------------
             // Collecte du sous-graphe aval : sw + tout ce qui est accessible
             // via son arête ROOT en avançant vers les X croissants.
-            //
-            // On ne touche PAS les nœuds du réseau de branches déviées
-            // Condition : strictement vers la droite (x > curr.x).
-            // Cela exclut les cibles de deviation au meme X (le collapse)
-            // et empeche tout retour en amont — garantit la convergence.
+            // ---------------------------------------------------------------
             std::unordered_set<PCCNode*> toShift;
             toShift.insert(sw);
 
             // ---------------------------------------------------------------
-            // Phase 1 : collecte backbone aval (x > currX) + doubles (meme X).
-            // Capture le troncon principal et les switches aval.
+            // Phase 1 : backbone aval (x > currX) + partenaires double switch
             // ---------------------------------------------------------------
             const PCCEdge* rootEdge = sw->getRootEdge();
             if (rootEdge && rootEdge->getTo())
@@ -383,7 +433,8 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
                     q.pop();
 
                     const int  currX = curr->getPosition().x;
-                    const bool currIsSwitch = (curr->getNodeType() == PCCNodeType::SWITCH);
+                    const bool currIsSwitch =
+                        (curr->getNodeType() == PCCNodeType::SWITCH);
 
                     for (PCCEdge* edge : curr->getEdges())
                     {
@@ -392,12 +443,10 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
                         if (!nb || toShift.count(nb)) continue;
 
                         const int  nbX = nb->getPosition().x;
-                        const bool nbIsSwitch = (nb->getNodeType() == PCCNodeType::SWITCH);
+                        const bool nbIsSwitch =
+                            (nb->getNodeType() == PCCNodeType::SWITCH);
 
-                        // Cas 1 : voisin strictement en aval (x croissant).
                         const bool isDownstream = (nbX > currX);
-
-                        // Cas 2 : partenaire de double aiguille (meme X, deux switches).
                         const bool isDoubleSwitchPartner =
                             (nbX == currX) && currIsSwitch && nbIsSwitch;
 
@@ -411,18 +460,7 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
             }
 
             // ---------------------------------------------------------------
-            // Phase 2 : voies deviees des switches aval (x > swX, deux sens).
-            //
-            // Un switch aval sw/C a pu etre place a x=39. Sa voie deviee
-            // s'etend de x=37 a x=40. La Phase 1 (x > currX=39) capture x=40
-            // mais rate x=37 et x=38 (a gauche du switch, meme si > swX).
-            //
-            // La Phase 2 utilise swX comme seuil global : pour chaque switch
-            // deja dans toShift, on ajoute tous ses voisins straight avec
-            // x > swX, puis on BFS leur chaine avec le meme seuil.
-            //
-            // Protection anti-regression : la voie deviee du diamond source
-            // (sw/A -> sw/B) a x <= swX et est donc exclue.
+            // Phase 2 : voies déviées des switches aval (x > swX)
             // ---------------------------------------------------------------
             bool devPhaseChanged = true;
             while (devPhaseChanged)
@@ -430,19 +468,18 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
                 devPhaseChanged = false;
                 const std::vector<PCCNode*> snapshot(toShift.begin(), toShift.end());
 
-                for (PCCNode* swNode : snapshot)
+                for (PCCNode* candidate : snapshot)
                 {
-                    if (swNode->getNodeType() != PCCNodeType::SWITCH) continue;
+                    if (candidate->getNodeType() != PCCNodeType::SWITCH) continue;
 
-                    for (PCCEdge* edge : swNode->getEdges())
+                    for (PCCEdge* edge : candidate->getEdges())
                     {
-                        PCCNode* nb = (edge->getFrom() == swNode)
+                        PCCNode* nb = (edge->getFrom() == candidate)
                             ? edge->getTo() : edge->getFrom();
                         if (!nb || toShift.count(nb)) continue;
                         if (nb->getNodeType() == PCCNodeType::SWITCH) continue;
                         if (nb->getPosition().x <= swX) continue;
 
-                        // Nouveau noeud de voie deviee — BFS du segment complet
                         std::queue<PCCNode*> devQ;
                         toShift.insert(nb);
                         devQ.push(nb);
@@ -470,20 +507,21 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
                 }
             }
 
-            // Décalage de +1 sur le sous-graphe complet (backbone + voies deviees).
-            for (PCCNode* node : toShift)
+            // Décalage de +1 sur le sous-graphe complet
+            for (PCCNode* shiftNode : toShift)
             {
-                auto pos = node->getPosition();
+                auto pos = shiftNode->getPosition();
                 pos.x += 1;
-                node->setPosition(pos);
+                shiftNode->setPosition(pos);
             }
 
-            LOG_DEBUG(logger, "fixCollapsedBranches pass=" + std::to_string(pass)
+            LOG_DEBUG(logger,
+                "fixCollapsedBranches pass=" + std::to_string(pass)
                 + " : " + sw->getSourceId()
                 + " + " + std::to_string(toShift.size() - 1)
-                + " noeuds aval decales +1"
+                + " nœuds aval décalés +1"
                 + " (swX: " + std::to_string(swX)
-                + " -> " + std::to_string(swX + 1) + ")");
+                + " → " + std::to_string(swX + 1) + ")");
 
             changed = true;
             break; // Redémarre le scan — une correction peut en révéler d'autres
@@ -491,6 +529,7 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
     }
 
     if (pass > 1)
-        LOG_DEBUG(logger, "fixCollapsedBranches terminé — "
+        LOG_DEBUG(logger,
+            "fixCollapsedBranches terminé — "
             + std::to_string(pass - 1) + " passe(s).");
 }

@@ -88,6 +88,7 @@ private:
         int      x;                   ///< Profondeur BFS (position horizontale).
         int      y;                   ///< Rang vertical (0 = backbone, ±n = branches).
         bool     arrivedViaDeviation; ///< Vrai si atteint via une arête DEVIATION.
+        PCCEdge* arrivedViaEdge;       ///< arête d'arrivée au nœud
     };
 
     /**

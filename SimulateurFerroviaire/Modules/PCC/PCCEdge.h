@@ -29,6 +29,7 @@ class PCCNode;   // Forward declaration — évite la dépendance circulaire ave
  *  - ROOT      : connexion sur la branche root d'un @ref SwitchBlock.
  *  - NORMAL    : connexion sur la branche normale d'un @ref SwitchBlock.
  *  - DEVIATION : connexion sur la branche déviée d'un @ref SwitchBlock.
+ *  - CROSSING   : connexion d'un @ref CrossBlock vers ses 4 branches (A/B/C/D).
  */
 enum class PCCEdgeRole
 {

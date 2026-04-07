@@ -36,6 +36,7 @@
   *
   *  - STRAIGHT : nœud issu d'un @ref StraightBlock.
   *  - SWITCH   : nœud issu d'un @ref SwitchBlock.
+  *  - CROSSING : nœud issu d'un @ref CrossBlock.
   */
 enum class PCCNodeType { STRAIGHT, SWITCH, CROSSING };
 

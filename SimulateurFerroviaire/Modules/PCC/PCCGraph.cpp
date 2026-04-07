@@ -46,16 +46,13 @@ PCCNode* PCCGraph::addCrossingNode(CrossBlock* source)
 
 PCCEdge* PCCGraph::addEdge(PCCNode* from, PCCNode* to, PCCEdgeRole role)
 {
-    // PCCEdge::PCCEdge lève std::invalid_argument si from ou to == nullptr
     auto edge = std::make_unique<PCCEdge>(from, to, role, m_logger);
     PCCEdge* raw = edge.get();
 
-    // Câblage sur les deux nœuds — chacun observe l'arête (non-propriétaire)
     from->addEdge(raw);
     to->addEdge(raw);
 
-    // Si from est un PCCSwitchNode, enregistrer aussi l'arête dans le slot dédié
-    // pour un accès direct O(1) depuis TCORenderer (sans parcourir getEdges())
+    // Dispatch slots switch (existant)
     if (auto* sw = dynamic_cast<PCCSwitchNode*>(from))
     {
         switch (role)
@@ -65,6 +62,13 @@ PCCEdge* PCCGraph::addEdge(PCCNode* from, PCCNode* to, PCCEdgeRole role)
         case PCCEdgeRole::DEVIATION: sw->setDeviationEdge(raw); break;
         default: break;
         }
+    }
+
+    // Dispatch slots crossing — ordre d'appel A→B→C→D garanti par buildEdges()
+    if (auto* cr = dynamic_cast<PCCCrossingNode*>(from))
+    {
+        if (role == PCCEdgeRole::CROSSING)
+            cr->assignNextEdge(raw);
     }
 
     m_edges.push_back(std::move(edge));

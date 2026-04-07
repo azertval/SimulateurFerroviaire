@@ -139,29 +139,45 @@ void PCCGraphBuilder::buildEdges(PCCGraph& graph,
         addSwitchEdge(source->getDeviationBlock(), PCCEdgeRole::DEVIATION);
     }
 
+    // -------------------------------------------------------------------------
+   // Arêtes CROSSING — 4 arêtes par CrossBlock (A, B, C, D)
+   // L'ordre A→B→C→D est IMPÉRATIF : PCCCrossingNode::assignNextEdge()
+   // assigne dans cet ordre → les slots edgeA/B/C/D doivent correspondre
+   // aux branches A/B/C/D du CrossBlock.
+   // -------------------------------------------------------------------------
     std::unordered_set<std::string> processedCrossEdges;
 
     for (const auto& crPtr : topo.crossings)
     {
-        PCCNode* crNode = graph.findNode(crPtr->getId());
+        CrossBlock* source = crPtr.get();
+
+        PCCNode* crNode = graph.findNode(source->getId());
         if (!crNode) continue;
 
-        auto addCrossEdge = [&](ShuntingElement* branch)
-            {
-                if (!branch) return;
-                PCCNode* bNode = graph.findNode(branch->getId());
-                if (!bNode) return;
-                const std::string key = makeEdgeKey(crPtr->getId(), branch->getId());
-                if (processedCrossEdges.count(key)) return;
-                processedCrossEdges.insert(key);
-                graph.addEdge(crNode, bNode, PCCEdgeRole::CROSSING);
-                ++edgeCount;
-            };
+        // Tableau des branches dans l'ordre A, B, C, D
+        const ShuntingElement* branches[4] = {
+            source->getBranchA(),
+            source->getBranchB(),
+            source->getBranchC(),
+            source->getBranchD()
+        };
 
-        addCrossEdge(crPtr->getBranchA());
-        addCrossEdge(crPtr->getBranchB());
-        addCrossEdge(crPtr->getBranchC());
-        addCrossEdge(crPtr->getBranchD());
+        for (const ShuntingElement* branch : branches)
+        {
+            if (!branch) continue;
+
+            PCCNode* bNode = graph.findNode(branch->getId());
+            if (!bNode) continue;
+
+            // Clé canonique — évite les doublons crossing↔straight/switch
+            // (le voisin peut créer une arête inverse depuis son propre parcours)
+            const std::string key = makeEdgeKey(source->getId(), branch->getId());
+            if (processedCrossEdges.count(key)) continue;
+            processedCrossEdges.insert(key);
+
+            graph.addEdge(crNode, bNode, PCCEdgeRole::CROSSING);
+            ++edgeCount;
+        }
     }
 
     // -------------------------------------------------------------------------
@@ -188,6 +204,9 @@ void PCCGraphBuilder::buildEdges(PCCGraph& graph,
 
                 // Connexion straight↔switch — déjà créée depuis le switch
                 if (toNode->getNodeType() == PCCNodeType::SWITCH) return;
+
+                // Connexion straight↔crossing — déjà créée depuis le crossing
+                if (toNode->getNodeType() == PCCNodeType::CROSSING) return;
 
                 const std::string key = makeEdgeKey(st->getId(), neighbour->getId());
                 if (processedChainEdges.count(key)) return;

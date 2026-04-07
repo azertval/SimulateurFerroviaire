@@ -20,6 +20,7 @@
 #include "framework.h"
 #include "Modules/PCC/PCCGraph.h"
 #include "Modules/PCC/PCCSwitchNode.h"
+#include "Modules/PCC/PCCCrossingNode.h"
 #include "Engine/Core/Logger/Logger.h"
 
 class TCORenderer
@@ -147,6 +148,21 @@ private:
      */
     static void drawSwitchBlock(HDC hdc, const Projection& proj,
         const PCCSwitchNode* sw, Logger& logger);
+
+    /**
+     * @brief Dessine un nœud CrossBlock (croisement plat ou TJD).
+     *
+     * StraightCrossBlock : symbole ✕ (deux diagonales).
+     * SwitchCrossBlock   : symbole ⊠ (X encadré) avec coloration des voies
+     *                      actives (isPath1Active / isPath2Active).
+     *
+     * @param hdc   Contexte de dessin GDI.
+     * @param proj  Projection courante.
+     * @param cr    Nœud crossing à dessiner.
+     * @param logger Logger.
+     */
+    static void drawCrossingBlock(HDC hdc, const Projection& proj,
+        const PCCCrossingNode* cr, Logger& logger);
 
     /**
      * @brief Retourne la couleur GDI correspondant à un état ShuntingState.

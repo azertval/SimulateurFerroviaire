@@ -17,6 +17,7 @@
 #include "Modules/PCC/PCCStraightNode.h"
 #include "Modules/PCC/PCCSwitchNode.h"
 #include "Modules/Elements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/CrossBlocks/SwitchCrossBlock.h"
 
 #include <algorithm>
 #include <limits>
@@ -199,6 +200,7 @@ void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
 {
     int straightCount = 0;
     int switchCount = 0;
+    int crossingCount = 0;
 
     for (const auto& nodePtr : graph.getNodes())
     {
@@ -224,6 +226,18 @@ void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
             drawSwitchBlock(hdc, proj, sw, logger);
             ++switchCount;
         }
+        else if (node->getNodeType() == PCCNodeType::CROSSING)
+        {
+            // static_cast sûr : getNodeType() == CROSSING garantit PCCCrossingNode
+            const auto* cr = static_cast<const PCCCrossingNode*>(node);
+
+            LOG_DEBUG(logger, "drawCrossing " + node->getSourceId()
+                + " pos=[" + std::to_string(node->getPosition().x)
+                + "," + std::to_string(node->getPosition().y) + "]");
+
+            drawCrossingBlock(hdc, proj, cr, logger);
+            ++crossingCount;
+        }
         else
         {
             LOG_DEBUG(logger, "drawStraight " + node->getSourceId()
@@ -235,9 +249,10 @@ void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
         }
     }
 
-    LOG_DEBUG(logger, "drawNodes termine — "
+    LOG_DEBUG(logger, "drawNodes — "
         + std::to_string(straightCount) + " straight(s), "
-        + std::to_string(switchCount) + " switch(es).");
+        + std::to_string(switchCount) + " switch(es), "
+        + std::to_string(crossingCount) + " crossing(s).");
 }
 
 
@@ -319,7 +334,6 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
     // Direction racine → jonction (±1)
     const int dirFromRoot = (rootBorderX < center.x) ? 1 : -1;
     const int dirToNormal = -dirFromRoot;
-    const int dirToDev = -dirFromRoot;
 
     // X de jonction = bord racine + STUB vers la jonction
     const int junctionX = rootBorderX + dirFromRoot * STUB;
@@ -458,6 +472,75 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
         }
     }
 }
+
+// =============================================================================
+// Crossing — symbole de croisement (Famille D + E)
+// =============================================================================
+void TCORenderer::drawCrossingBlock(HDC hdc, const Projection& proj,
+    const PCCCrossingNode* cr, Logger& logger)
+{
+    const POINT center = project(
+        cr->getPosition().x, cr->getPosition().y, proj);
+
+    const CrossBlock* source = cr->getCrossingSource();
+    const COLORREF stateColor = stateToColor(source->getState());
+
+    // Couleurs par voie — TJD : actif/inactif, FLAT : toujours actif
+    COLORREF color1 = stateColor;
+    COLORREF color2 = stateColor;
+    if (source->isTJD())
+    {
+        const auto* tjd = static_cast<const SwitchCrossBlock*>(source);
+        color1 = tjd->isPath1Active() ? stateColor : COLORS.branchOff;
+        color2 = tjd->isPath2Active() ? stateColor : COLORS.branchOff;
+    }
+
+    // Helper — point frontière vers un voisin (mi-chemin X, Y cible)
+    auto borderPt = [&](const PCCEdge* edge) -> POINT
+        {
+            if (!edge || !edge->getTo()) return center;
+            const POINT tgt = project(
+                edge->getTo()->getPosition().x,
+                edge->getTo()->getPosition().y, proj);
+            return { (center.x + tgt.x) / 2, tgt.y };
+        };
+
+    const POINT ptA = borderPt(cr->getEdgeA());  // Voie 1, côté gauche
+    const POINT ptC = borderPt(cr->getEdgeC());  // Voie 1, côté droit
+    const POINT ptB = borderPt(cr->getEdgeB());  // Voie 2, côté haut/bas gauche
+    const POINT ptD = borderPt(cr->getEdgeD());  // Voie 2, côté haut/bas droit
+
+    // -------------------------------------------------------------------------
+    // Voie 1 (A↔C) — ligne droite horizontale
+    // -------------------------------------------------------------------------
+    {
+        const int left = std::min(ptA.x, ptC.x) + proj.halfGap;
+        const int right = std::max(ptA.x, ptC.x) - proj.halfGap;
+        PenScope pen(hdc, color1, LINE_WIDTH_ACTIVE);
+        pen.moveTo({ left,  center.y });
+        pen.lineTo({ right, center.y });
+    }
+
+    // -------------------------------------------------------------------------
+    // Voie 2 (B↔D) — diagonale (Y différent, ±2 niveaux)
+    // La diagonale part du bord B (Y du voisin B) vers le bord D (Y du voisin D)
+    // -------------------------------------------------------------------------
+    {
+        // Direction horizontale B→D pour appliquer le halfGap correctement
+        const int dx = ptD.x - ptB.x;
+        const int gapX = (dx >= 0) ? proj.halfGap : -proj.halfGap;
+
+        PenScope pen(hdc, color2, LINE_WIDTH_ACTIVE);
+        pen.moveTo({ ptB.x + gapX,  ptB.y });
+        pen.lineTo({ ptD.x - gapX,  ptD.y });
+    }
+
+    LOG_DEBUG(logger, "drawCrossing " + source->getId()
+        + " pos=[" + std::to_string(cr->getPosition().x)
+        + "," + std::to_string(cr->getPosition().y) + "]"
+        + (source->isTJD() ? " [TJD]" : " [FLAT]"));
+}
+
 
 
 // =============================================================================

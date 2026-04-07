@@ -1,31 +1,43 @@
 /**
  * @file  PCCCrossingNode.cpp
- * @brief Implémentation du nœud PCC pour croisement.
- *
+ * @brief Implémentation du nœud PCC CrossBlock.
  * @see PCCCrossingNode
  */
 #include "PCCCrossingNode.h"
 #include <stdexcept>
 
+
 PCCCrossingNode::PCCCrossingNode(CrossBlock* source, Logger& logger)
-    : PCCNode(source ? source->getId() : "", source, logger)
+    : PCCNode(source->getId(), source, logger)
     , m_crossSource(source)
 {
     if (!source)
-    {
-        LOG_ERROR(m_logger, "source ne peut pas être nullptr.");
-        throw std::invalid_argument("PCCStraightNode — source ne peut pas être nullptr.");
-    }
-
-    LOG_DEBUG(m_logger, "PCCSwitchNode créé : " + source->getId());
+        throw std::invalid_argument("PCCCrossingNode : source nullptr");
 }
+
 
 PCCEdge* PCCCrossingNode::getExitEdgeFor(const PCCEdge* entry) const
 {
+    // Voie 1 : A ↔ C
     if (entry == m_edgeA) return m_edgeC;
     if (entry == m_edgeC) return m_edgeA;
+
+    // Voie 2 : B ↔ D
     if (entry == m_edgeB) return m_edgeD;
     if (entry == m_edgeD) return m_edgeB;
-    LOG_ERROR(m_logger, "getExitEdgeFor — arête d'entrée inconnue pour le nœud " + getSourceId());
+
     return nullptr;
+}
+
+
+void PCCCrossingNode::assignNextEdge(PCCEdge* e)
+{
+    switch (m_edgeCount++)
+    {
+    case 0: m_edgeA = e; break;
+    case 1: m_edgeB = e; break;
+    case 2: m_edgeC = e; break;
+    case 3: m_edgeD = e; break;
+    default: break;  // Plus de 4 arêtes — ne devrait pas arriver
+    }
 }

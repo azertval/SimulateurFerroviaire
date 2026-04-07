@@ -2,7 +2,6 @@
 
 #include "PCCNode.h"
 #include "Modules/Elements/ShuntingElements/CrossBlocks/CrossBlock.h"
-#include "Modules/Elements/ShuntingElements/CrossBlocks/SwitchCrossBlock.h"
 
 /**
  * @file  PCCCrossingNode.h
@@ -11,9 +10,10 @@
  * Expose quatre slots d'arêtes (A, B, C, D) pour un accès O(1)
  * depuis TCORenderer sans parcours de PCCNode::getEdges().
  *
- * @par Accès typé TJD
- * Si getCrossingSource()->isTJD(), on peut caster en SwitchCrossBlock*
- * pour accéder à isPath1/2Active().
+ * @par Navigation voie traversante
+ * getExitEdgeFor(entry) retourne l'arête opposée sur la même voie
+ * (arrivée via A → sortie via C, arrivée via B → sortie via D).
+ * Utilisé par PCCLayout::runBFS pour ne propager que sur la voie correcte.
  */
 class PCCCrossingNode final : public PCCNode
 {
@@ -21,14 +21,29 @@ public:
 
     /**
      * @brief Construit un nœud PCC depuis un CrossBlock.
+     *
+     * @param source  Pointeur non-propriétaire. Doit rester valide.
+     * @param logger  Référence au logger HMI.
+     *
      * @throws std::invalid_argument Si source est nullptr.
      */
     explicit PCCCrossingNode(CrossBlock* source, Logger& logger);
 
+    // =========================================================================
+    // Interface PCCNode
+    // =========================================================================
+
+    /**
+     * @brief Retourne PCCNodeType::CROSSING.
+     */
     [[nodiscard]] PCCNodeType getNodeType() const override
     {
         return PCCNodeType::CROSSING;
     }
+
+    // =========================================================================
+    // Accesseur typé
+    // =========================================================================
 
     /**
      * @brief Accès typé au CrossBlock source (jamais nullptr).
@@ -56,15 +71,26 @@ public:
     /**
      * @brief Retourne l'arête de sortie correspondant à une arête d'entrée.
      *
-     * Utilisé par PCCLayout::runBFS pour ne propager que sur la voie
-     * traversante correcte (A↔C ou B↔D).
+     * Voie 1 : A ↔ C   |   Voie 2 : B ↔ D
+     * Utilisé par PCCLayout::runBFS pour ne propager que sur la voie correcte.
      *
-     * @param entry  Arête d'arrivée au nœud crossing.
+     * @param entry  Arête d'arrivée au nœud crossing (depuis un voisin).
      * @return Arête de sortie sur la même voie, ou nullptr si inconnue.
      */
     [[nodiscard]] PCCEdge* getExitEdgeFor(const PCCEdge* entry) const;
 
+    // =========================================================================
+    // Compteur d'assignation — dispatch dans PCCGraph::addEdge()
+    // =========================================================================
+
+    /**
+     * @brief Assigne la prochaine arête dans l'ordre A→B→C→D.
+     * Appelé exclusivement par PCCGraph::addEdge().
+     */
+    void assignNextEdge(PCCEdge* e);
+
 private:
+
     CrossBlock* m_crossSource = nullptr;
 
     // Non-propriétaires — owned par PCCGraph::m_edges
@@ -73,6 +99,6 @@ private:
     PCCEdge* m_edgeC = nullptr;
     PCCEdge* m_edgeD = nullptr;
 
-    // Compteur d'assignation — pour le dispatch dans PCCGraph::addEdge()
+    // Compteur pour assignNextEdge() — 0→A, 1→B, 2→C, 3→D
     int m_edgeCount = 0;
 };

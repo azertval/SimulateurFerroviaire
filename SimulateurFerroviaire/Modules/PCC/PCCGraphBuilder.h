@@ -76,6 +76,10 @@ private:
      * DEVIATION. Parcourt ensuite les straights pour créer les arêtes
      * STRAIGHT entre blocs adjacents, avec dédoublonnage via une clé
      * canonique (voir @ref makeEdgeKey).
+     * 
+     * Les CrossBlock créent 4 arêtes PCCEdgeRole::CROSSING dans l'ordre A/B/C/D.
+     * Clés canoniques pour éviter les doublons (crossing↔straight/switch).
+     * Les connexions straight↔crossing ignorées ici — créées depuis le crossing.
      *
      * Les nœuds introuvables dans l'index (bloc non parsé ou connexion
      * invalide) sont ignorés silencieusement — un warning est loggé si
