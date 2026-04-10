@@ -474,3 +474,5 @@ COLORREF TCORenderer::stateToColor(ShuntingState state)
     default:                      return COLORS.free;
     }
 }
+
+//
