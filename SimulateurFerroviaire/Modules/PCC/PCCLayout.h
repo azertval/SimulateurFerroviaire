@@ -84,11 +84,11 @@ private:
      */
     struct BFSItem
     {
-        PCCNode* node;                ///< Nœud à traiter.
-        int      x;                   ///< Profondeur BFS (position horizontale).
-        int      y;                   ///< Rang vertical (0 = backbone, ±n = branches).
-        bool     arrivedViaDeviation; ///< Vrai si atteint via une arête DEVIATION.
-        PCCEdge* arrivedViaEdge;       ///< arête d'arrivée au nœud
+        PCCNode* node;                //< Nœud à traiter.
+        int      x;                   //< Profondeur BFS (position horizontale).
+        int      y;                   //< Rang vertical (0 = backbone, ±n = branches).
+        bool     arrivedViaDeviation; //< Vrai si atteint via une arête DEVIATION.
+        PCCEdge* arrivedViaEdge;      //< arête d'arrivée au nœud
     };
 
     /**
@@ -136,4 +136,45 @@ private:
      * @param logger  Référence au logger HMI.
      */
     static void fixCollapsedBranches(PCCGraph& graph, Logger& logger);
+
+    /**
+     * @brief 
+     * StraightCrossBlock :
+     *   Le X visuel est forme par 4 bras (StraightBlock) en diagonale.
+     *   Les bras sont repositionnes selon :
+     *
+     *   Cote gauche (X BFS <= crX) — tries par Y croissant :
+     *     - bras haut → [crX,   crY  ]   (slot A)
+     *     - bras bas  → [crX,   crY+1]   (slot B)
+     *
+     *   Cote droit (X BFS > crX) — tries par Y croissant :
+     *     - bras haut → [crX+1, crY  ]   (slot D)
+     *     - bras bas  → [crX+1, crY+1]   (slot C)
+     *
+     *   Centre pixel du X = mi-chemin entre project(crX,crY) et project(crX+1,crY+1).
+     *   Le crossing lui-meme reste a [crX, crY] — pivot invisible.
+     * 
+     *  SwitchCrossBlock :
+     *  TODO
+     * 
+     * @par Exemple
+     * StraightCrossBlock :
+     * A[crX, crY]  ────────      ──── D[crX+1, crY]
+     *                       ╲   /
+     *                         ╳  ← (centerPx, centerPy)
+     *                       ╱   ╲
+     * B[crX, crY+1]────────       ──── C[crX+1, crY+1]
+     * 
+     * SwitchCrossBlock :
+     * A[crX, crY]  ───────   ───  ──── D[crX+1, crY]
+     *                       ╲   ╱
+     *                         ╳  ← (centerPx, centerPy)
+     *                       ╱   ╲
+     * B[crX, crY+1]────────  ───  ──── C[crX+1, crY+1]
+     * 
+     *
+     * @param graph   Graphe à corriger. Modifié en place.
+     * @param logger  Référence au logger HMI.
+     */
+	static void fixCrossingLayout(PCCGraph& graph, Logger& logger);
 };

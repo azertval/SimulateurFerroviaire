@@ -53,9 +53,11 @@ void PCCLayout::compute(PCCGraph& graph, Logger& logger)
         }
     }
 
-    // Post-traitement : correction des branches convergentes de longueurs inégales.
-    // Doit être appelé après le BFS complet — positions finales requises.
+    // Post-traitements dans l'ordre :
+    // 1. Correction des branches convergentes (diamonds)
+    // 2. Normalisation des positions des bras de crossing
     fixCollapsedBranches(graph, logger);
+    fixCrossingLayout(graph, logger);
 
     LOG_INFO(logger, "Compute — terminé.");
 }
@@ -123,6 +125,8 @@ int PCCLayout::runBFS(PCCGraph& graph,
         auto [node, x, y, arrivedViaDeviation, arrivedViaEdge] = frontier.front();
         frontier.pop();
 
+        if (!node) continue;
+
         node->setPosition({ x, y });
         ++processedCount;
         if (x > maxX) maxX = x;
@@ -156,17 +160,7 @@ int PCCLayout::runBFS(PCCGraph& graph,
         }
 
         // ---------------------------------------------------------------
-        // Tri déterministe.
-        //
-        // Cas standard (arrivedViaDeviation == false) :
-        //   ROOT / NORMAL / STRAIGHT d'abord — la continuation backbone
-        //   occupe (x+1, y) avant les branches déviées.
-        //
-        // Cas arrivée par déviation (arrivedViaDeviation == true) :
-        //   ROOT d'abord — il est la continuation de la route déviée
-        //   et doit occuper (x+1, y) avant que NORMAL (devenu branche
-        //   secondaire) ne soit planifié.
-        //   Le tri non-DEVIATION en premier reste valide dans les deux cas.
+        // Tri déterministe — DEVIATION en dernier dans tous les cas.
         // ---------------------------------------------------------------
         std::stable_sort(neighbours.begin(), neighbours.end(),
             [](const NeighbourInfo& a, const NeighbourInfo& b)
@@ -177,49 +171,8 @@ int PCCLayout::runBFS(PCCGraph& graph,
             });
 
         // ---------------------------------------------------------------
-        // Calcul des positions — règle linéaire strictement topologique.
-        //
-        //  Cas standard (arrivedViaDeviation == false)
-        //  ─────────────────────────────────────────────────────────────
-        //  STRAIGHT / ROOT / NORMAL
-        //      → (x+1, y)            continuité de ligne, Y constant.
-        //
-        //  DEVIATION → SwitchNode    [aiguille double]
-        //      → (x, y ± côté)       même colonne X, Y décalé.
-        //      arrivedViaDeviation=true transmis au switch partenaire.
-        //
-        //  DEVIATION → nœud ordinaire  [branche déviée classique]
-        //      → (x+1, y ± côté)     colonne suivante, Y décalé.
-        //
-        //  Cas arrivée par déviation (arrivedViaDeviation == true)
-        //  ─────────────────────────────────────────────────────────────
-        //  ROOT (forward)
-        //      → (x+1, y)            ROOT est la continuation de la route
-        //                            déviée — Y constant, même logique que
-        //                            STRAIGHT en cas standard.
-        //
-        //  NORMAL (forward)
-        //      → (x-1, y)            NORMAL est en AMONT dans ce cas.
-        //                            La double aiguille est traversée de côté :
-        //                            ROOT poursuit vers l'aval, NORMAL recule.
-        //
-        //  DEVIATION → SwitchNode    [aiguille double, symétrique]
-        //      → (x, y ± côté)       idem cas standard.
-        //
-        //  DEVIATION → nœud ordinaire
-        //      → (x+1, y ± côté)     idem cas standard.
-        //
-        //  CROSSING
-        //      → (x+1, y)            continuité de ligne, voie traversante uniquement.
-        //
-        //  Le côté (±1) provient exclusivement de
-        //  PCCSwitchNode::getDeviationSide(), calculé une seule fois par
-        //  PCCGraphBuilder::computeDeviationSides à partir des lat/lon.
-        //  C'est la seule donnée GPS tolérée dans ce calcul.
+        // swNode : switch courant — déclaré une seule fois avant la boucle.
         // ---------------------------------------------------------------
-
-        // swNode : switch courant pour les calculs de côté et d'arrivée par déviation.
-        // Déclaré UNE SEULE FOIS ici — ne pas re-déclarer dans les branches ci-dessous.
         auto* swNode = dynamic_cast<PCCSwitchNode*>(node);
         const int side = swNode ? swNode->getDeviationSide() : 1;
 
@@ -230,7 +183,7 @@ int PCCLayout::runBFS(PCCGraph& graph,
             bool nextArrivedViaDev = false;
             PCCEdge* edgeToNeighbour = nullptr;
 
-            // Trouver l'arête vers ce voisin (pour getExitEdgeFor sur crossing)
+            // Recherche de l'arête vers ce voisin (pour getExitEdgeFor)
             for (PCCEdge* edge : node->getEdges())
             {
                 if ((edge->getFrom() == node && edge->getTo() == neighbour.node)
@@ -241,74 +194,68 @@ int PCCLayout::runBFS(PCCGraph& graph,
                 }
             }
 
-            // ---------------------------------------------------------------
-            // Cas CROSSING — nœud courant est un crossing :
-            // propager uniquement sur la voie traversante (A↔C ou B↔D).
-            // ---------------------------------------------------------------
+            // -----------------------------------------------------------
+            // Cas CROSSING — nœud courant est un crossing.
+            // Propagation uniquement sur la voie traversante (A<->C ou B<->D).
+            // -----------------------------------------------------------
             if (node->getNodeType() == PCCNodeType::CROSSING)
             {
                 const auto* cr = static_cast<const PCCCrossingNode*>(node);
                 PCCEdge* exitEdge = cr->getExitEdgeFor(arrivedViaEdge);
 
-                // N'enqueuer que le voisin sur la bonne voie traversante
                 if (!exitEdge || exitEdge->getTo() != neighbour.node)
                     continue;
 
-                // Continuité de la voie — même Y, avancement +1
                 nextX = x + 1;
                 nextY = y;
                 nextArrivedViaDev = arrivedViaDeviation;
             }
-            // ---------------------------------------------------------------
-            // Cas CROSSING comme rôle d'arête (voisin est un CrossBlock) :
-            // se comporte comme un STRAIGHT — même Y, avancement +1.
-            // ---------------------------------------------------------------
+            // -----------------------------------------------------------
+            // Cas CROSSING — arête entrante (bras adjacent au crossing).
+            // Traité comme STRAIGHT pendant le BFS.
+            // fixCrossingLayout repositionnera le bras ensuite.
+            // -----------------------------------------------------------
             else if (neighbour.role == PCCEdgeRole::CROSSING)
             {
                 nextX = x + 1;
                 nextY = y;
                 nextArrivedViaDev = arrivedViaDeviation;
             }
-            // ---------------------------------------------------------------
+            // -----------------------------------------------------------
             // Cas DEVIATION
-            // ---------------------------------------------------------------
+            // -----------------------------------------------------------
             else if (neighbour.role == PCCEdgeRole::DEVIATION)
             {
-                // Utilise dynamic_cast sur le VOISIN uniquement —
-                // swNode (nœud courant) est déjà calculé avant la boucle.
                 auto* swNeigh = dynamic_cast<PCCSwitchNode*>(neighbour.node);
 
-                if (swNeigh && swNode)  // double switch : switch → switch direct
+                if (swNeigh && swNode)  // double switch : meme colonne X
                 {
                     nextX = x;
                     nextY = y + side;
                     nextArrivedViaDev = true;
                 }
-                else  // branche déviée classique (switch → straight ou straight → switch)
+                else  // branche deviee classique
                 {
                     nextX = x + 1;
                     nextY = y + side;
                     nextArrivedViaDev = false;
                 }
             }
-            // ---------------------------------------------------------------
-            // Cas arrivée par déviation — NORMAL est en AMONT
-            // ---------------------------------------------------------------
+            // -----------------------------------------------------------
+            // Cas NORMAL en amont (arrivee par deviation, double switch)
+            // -----------------------------------------------------------
             else if (arrivedViaDeviation
                 && swNode
                 && neighbour.role == PCCEdgeRole::NORMAL
                 && neighbour.isForward)
             {
-                // Quand le BFS atteint sw/B via la déviation de sw/A :
-                //   • ROOT de sw/B pointe vers l'aval  → x+1, y
-                //   • NORMAL de sw/B pointe vers l'amont → x-1, y
                 nextX = x - 1;
                 nextY = y;
                 nextArrivedViaDev = false;
             }
-            // else : STRAIGHT / ROOT / NORMAL standard → (x+1, y) — déjà initialisé
+            // else : STRAIGHT / ROOT / NORMAL standard -> (x+1, y) deja initialise
 
-            // Résolution de collision — topologies exceptionnelles uniquement.
+            // Résolution de collision
             if (occupied.count({ nextX, nextY }))
             {
                 for (int delta = 1; ; ++delta)
@@ -341,7 +288,7 @@ int PCCLayout::runBFS(PCCGraph& graph,
 
     LOG_DEBUG(graph.getLogger(),
         std::to_string(processedCount)
-        + " nœuds positionnés depuis " + start->getSourceId()
+        + " noeuds positionnés depuis " + start->getSourceId()
         + " (offsetX=" + std::to_string(offsetX) + ").");
 
     return maxX;
@@ -349,22 +296,11 @@ int PCCLayout::runBFS(PCCGraph& graph,
 
 
 // =============================================================================
-// Post-traitement — correction des branches convergentes de longueurs inégales
+// Post-traitement — correction des branches convergentes de longueurs inegales
 // =============================================================================
 
 void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
 {
-    // Un switch sw/B a une branche "de longueur nulle" quand sa cible via
-    // DEVIATION (ou NORMAL) se trouve au même X que lui-même mais à un Y
-    // différent : devBorderX == center.x → aucune extension horizontale.
-    //
-    // Cause : les deux chemins (normal et dévié) depuis sw/A vers sw/B ont
-    // des longueurs différentes, et le BFS les place au même X final.
-    //
-    // Solution : décaler sw/B + tout son sous-graphe aval (via ROOT)
-    // de +1 jusqu'à ce qu'aucun switch ne soit dans cet état.
-    // On itère en cas de corrections en chaîne (plusieurs diamonds).
-
     bool changed = true;
     int  pass = 0;
 
@@ -381,8 +317,6 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
             const int swX = sw->getPosition().x;
             const int swY = sw->getPosition().y;
 
-            // Détection : une branche (DEVIATION ou NORMAL) atterrit au même X
-            // que sw mais à un Y différent → longueur nulle dans le renderer.
             bool collapsed = false;
 
             const PCCEdge* devEdge = sw->getDeviationEdge();
@@ -408,16 +342,10 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
 
             if (!collapsed) continue;
 
-            // ---------------------------------------------------------------
-            // Collecte du sous-graphe aval : sw + tout ce qui est accessible
-            // via son arête ROOT en avançant vers les X croissants.
-            // ---------------------------------------------------------------
             std::unordered_set<PCCNode*> toShift;
             toShift.insert(sw);
 
-            // ---------------------------------------------------------------
             // Phase 1 : backbone aval (x > currX) + partenaires double switch
-            // ---------------------------------------------------------------
             const PCCEdge* rootEdge = sw->getRootEdge();
             if (rootEdge && rootEdge->getTo())
             {
@@ -433,8 +361,7 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
                     q.pop();
 
                     const int  currX = curr->getPosition().x;
-                    const bool currIsSwitch =
-                        (curr->getNodeType() == PCCNodeType::SWITCH);
+                    const bool currIsSwitch = (curr->getNodeType() == PCCNodeType::SWITCH);
 
                     for (PCCEdge* edge : curr->getEdges())
                     {
@@ -443,8 +370,7 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
                         if (!nb || toShift.count(nb)) continue;
 
                         const int  nbX = nb->getPosition().x;
-                        const bool nbIsSwitch =
-                            (nb->getNodeType() == PCCNodeType::SWITCH);
+                        const bool nbIsSwitch = (nb->getNodeType() == PCCNodeType::SWITCH);
 
                         const bool isDownstream = (nbX > currX);
                         const bool isDoubleSwitchPartner =
@@ -459,9 +385,7 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
                 }
             }
 
-            // ---------------------------------------------------------------
-            // Phase 2 : voies déviées des switches aval (x > swX)
-            // ---------------------------------------------------------------
+            // Phase 2 : voies deviees des switches aval (x > swX)
             bool devPhaseChanged = true;
             while (devPhaseChanged)
             {
@@ -519,17 +443,107 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
                 "fixCollapsedBranches pass=" + std::to_string(pass)
                 + " : " + sw->getSourceId()
                 + " + " + std::to_string(toShift.size() - 1)
-                + " nœuds aval décalés +1"
+                + " noeuds aval decales +1"
                 + " (swX: " + std::to_string(swX)
-                + " → " + std::to_string(swX + 1) + ")");
+                + " -> " + std::to_string(swX + 1) + ")");
 
             changed = true;
-            break; // Redémarre le scan — une correction peut en révéler d'autres
+            break;
         }
     }
 
     if (pass > 1)
         LOG_DEBUG(logger,
-            "fixCollapsedBranches terminé — "
+            "fixCollapsedBranches termine — "
             + std::to_string(pass - 1) + " passe(s).");
+}
+
+
+// =============================================================================
+// Post-traitement — normalisation des positions des bras de CrossBlock
+//
+// Spec StraightCrossBlock :
+//   Slot A : [crX-1, crY  ]   Slot D : [crX+1, crY  ]
+//   Slot B : [crX-1, crY+voie2Offset]   Slot C : [crX+1, crY+voie2Offset]
+//
+//   Le crossing lui-meme reste a [crX, crY] — centre pivot, invisible.
+//   voie2Offset = ±1 selon le cote naturel du BFS (déterminé depuis les bras).
+// =============================================================================
+
+void PCCLayout::fixCrossingLayout(PCCGraph& graph, Logger& logger)
+{
+    for (const auto& nodePtr : graph.getNodes())
+    {
+        if (nodePtr->getNodeType() != PCCNodeType::CROSSING) continue;
+
+        auto* cr = static_cast<PCCCrossingNode*>(nodePtr.get());
+        const int crX = cr->getPosition().x;
+        const int crY = cr->getPosition().y;
+
+        // Collecte les 4 voisins depuis les slots edgeA/B/C/D
+        PCCNode* nbs[4] = {
+            cr->getEdgeA() ? cr->getEdgeA()->getTo() : nullptr,
+            cr->getEdgeB() ? cr->getEdgeB()->getTo() : nullptr,
+            cr->getEdgeC() ? cr->getEdgeC()->getTo() : nullptr,
+            cr->getEdgeD() ? cr->getEdgeD()->getTo() : nullptr
+        };
+
+        bool allValid = true;
+        for (PCCNode* nb : nbs)
+        {
+            if (!nb) { allValid = false; break; }
+        }
+        if (!allValid)
+        {
+            LOG_WARNING(logger, cr->getSourceId()
+                + " — fixCrossingLayout : slot(s) null, ignore.");
+            continue;
+        }
+
+        // Separation gauche / droite selon X BFS du bras
+        std::vector<PCCNode*> leftSide, rightSide;
+        for (PCCNode* nb : nbs)
+        {
+            if (nb->getPosition().x <= crX) leftSide.push_back(nb);
+            else                            rightSide.push_back(nb);
+        }
+
+        // Tri par Y dans chaque groupe : haut (Y min) en premier
+        auto byY = [](const PCCNode* a, const PCCNode* b)
+            {
+                return a->getPosition().y < b->getPosition().y;
+            };
+        std::sort(leftSide.begin(), leftSide.end(), byY);
+        std::sort(rightSide.begin(), rightSide.end(), byY);
+
+        // Déterminer voie2Offset depuis le Y naturel des bras inférieurs
+        // voie1 = crY (bras du dessus), voie2 = crY + offset (bras du dessous)
+        int voie2Offset = 1;  // valeur par défaut
+        if (leftSide.size() >= 2)
+            voie2Offset = leftSide[1]->getPosition().y - crY;
+        else if (rightSide.size() >= 2)
+            voie2Offset = rightSide[1]->getPosition().y - crY;
+
+        // Si offset nul (tous au même Y), utiliser -1 par défaut
+        if (voie2Offset == 0) voie2Offset = -1;
+
+        // Assignation : A[crX-1, crY]  D[crX+1, crY]
+        //               B[crX-1, crY+voie2Offset]  C[crX+1, crY+voie2Offset]
+        if (leftSide.size() >= 1) leftSide[0]->setPosition({ crX - 1, crY }); // A
+        if (leftSide.size() >= 2) leftSide[1]->setPosition({ crX - 1, crY + voie2Offset }); // B
+        if (rightSide.size() >= 1) rightSide[0]->setPosition({ crX + 1, crY }); // D
+        if (rightSide.size() >= 2) rightSide[1]->setPosition({ crX + 1, crY + voie2Offset }); // C
+
+        LOG_DEBUG(logger, cr->getSourceId()
+            + " fixCrossing cr=[" + std::to_string(crX) + "," + std::to_string(crY) + "]"
+            + " voie2Offset=" + std::to_string(voie2Offset)
+            + " A=" + (leftSide.size() >= 1 ? leftSide[0]->getSourceId() : "null")
+            + "[" + std::to_string(crX - 1) + "," + std::to_string(crY) + "]"
+            + " B=" + (leftSide.size() >= 2 ? leftSide[1]->getSourceId() : "null")
+            + "[" + std::to_string(crX - 1) + "," + std::to_string(crY + voie2Offset) + "]"
+            + " D=" + (rightSide.size() >= 1 ? rightSide[0]->getSourceId() : "null")
+            + "[" + std::to_string(crX + 1) + "," + std::to_string(crY) + "]"
+            + " C=" + (rightSide.size() >= 2 ? rightSide[1]->getSourceId() : "null")
+            + "[" + std::to_string(crX + 1) + "," + std::to_string(crY + voie2Offset) + "]");
+    }
 }
