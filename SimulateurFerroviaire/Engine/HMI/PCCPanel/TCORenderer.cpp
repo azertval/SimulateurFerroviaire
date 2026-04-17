@@ -16,7 +16,9 @@
 
 #include "Modules/PCC/PCCStraightNode.h"
 #include "Modules/PCC/PCCSwitchNode.h"
+#include "Modules/PCC/PCCCrossingNode.h"
 #include "Modules/Elements/ShuntingElements/SwitchBlock.h"
+#include "Modules/Elements/ShuntingElements/CrossBlocks/CrossBlock.h"
 #include "Modules/Elements/ShuntingElements/CrossBlocks/SwitchCrossBlock.h"
 
 #include <algorithm>
@@ -240,6 +242,12 @@ void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
         }
         else
         {
+            // Straight standard — dessiné normalement.
+            // Les bras de crossing (StraightBlock adjacents à un CrossBlock) sont
+            // dessinés ici comme des straights normaux : ils remplissent l'espace
+            // entre le crossing (qui dessine uniquement son X central) et les
+            // switches/straights adjacents. Sans eux, il y aurait un trou visuel
+            // entre le bord du crossing et le switch voisin.
             LOG_DEBUG(logger, "drawStraight " + node->getSourceId()
                 + " pos=[" + std::to_string(node->getPosition().x)
                 + "," + std::to_string(node->getPosition().y) + "]");
@@ -258,36 +266,64 @@ void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
 
 // =============================================================================
 // Straight — trait horizontal avec gap (Famille D — PenScope)
+//
+// Dessine un StraightBlock comme un trait horizontal centré sur sa position
+// logique, s'étendant jusqu'au mi-chemin de chaque voisin.
+//
+// Cas standard : le voisin doit être au même Y (voies parallèles uniquement).
+//
+// Bras de crossing (straight adjacent à un CrossBlock) :
+//   Le filtre Y est levé — le bras s'étend vers ses voisins (switch/straight)
+//   même si ceux-ci sont à un Y différent. Le voisin CROSSING lui-même est
+//   toujours ignoré (le crossing gère ses propres frontières).
+//   Cela permet aux bras de déviation (Y≠0) de faire la jonction entre le
+//   crossing central et le switch adjacent, qui est au Y principal (Y=0).
 // =============================================================================
 
 void TCORenderer::drawStraightBlock(HDC hdc, const Projection& proj,
     const PCCNode* node, Logger& logger)
 {
-    const POINT center = project(
-        node->getPosition().x, node->getPosition().y, proj);
-
+    const POINT    center = project(node->getPosition().x, node->getPosition().y, proj);
     const COLORREF color = stateToColor(node->getSource()->getState());
 
     int leftX = center.x - proj.cellWidth / 2;
     int rightX = center.x + proj.cellWidth / 2;
 
-    // Ajuste les bornes vers le mi-chemin de chaque voisin sur le même Y
+    // Détermine si ce straight est un bras de crossing (voisin CROSSING présent)
+    bool isCrossingArm = false;
     for (const PCCEdge* edge : node->getEdges())
     {
         const PCCNode* nb = (edge->getFrom() == node)
             ? edge->getTo() : edge->getFrom();
-        if (!nb || nb->getPosition().y != node->getPosition().y)
+        if (nb && nb->getNodeType() == PCCNodeType::CROSSING)
+        {
+            isCrossingArm = true;
+            break;
+        }
+    }
+
+    for (const PCCEdge* edge : node->getEdges())
+    {
+        const PCCNode* nb = (edge->getFrom() == node)
+            ? edge->getTo() : edge->getFrom();
+        if (!nb) continue;
+
+        // Le nœud CROSSING gère ses propres frontières — jamais pris en compte.
+        if (nb->getNodeType() == PCCNodeType::CROSSING) continue;
+
+        // Pour un straight standard, filtre Y : n'étend que vers les voisins coplanaires.
+        // Pour un bras de crossing, le filtre est levé : le bras doit s'étendre
+        // vers son switch/straight voisin même si celui-ci est à un Y différent.
+        if (!isCrossingArm && nb->getPosition().y != node->getPosition().y)
             continue;
 
-        const POINT nbPt = project(
-            nb->getPosition().x, nb->getPosition().y, proj);
-        const int mid = (center.x + nbPt.x) / 2;
+        const POINT nbPt = project(nb->getPosition().x, nb->getPosition().y, proj);
+        const int   mid = (center.x + nbPt.x) / 2;
 
         if (nbPt.x < center.x) leftX = std::min(leftX, mid);
         else if (nbPt.x > center.x) rightX = std::max(rightX, mid);
     }
 
-    // PenScope : creation unique pour ce straight — destructeur en fin de bloc
     PenScope pen(hdc, color, LINE_WIDTH_ACTIVE);
     pen.moveTo({ leftX + proj.halfGap, center.y });
     pen.lineTo({ rightX - proj.halfGap, center.y });
@@ -475,76 +511,140 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
 
 // =============================================================================
 // Crossing — symbole de croisement (Famille D + E)
+//
+// @par StraightCrossBlock — croisement plat
+//  Dessine deux voies se croisant en X dans la colonne [crX-1 … crX+1].
+//  Positions des ports après @ref PCCLayout::fixCrossingLayout :
+//
+//  @code
+//   A [crX-1, voisin(A).Y]   C [crX+1, voisin(C).Y]   → voie 1
+//   B [crX-1, voisin(B).Y]   D [crX+1, voisin(D).Y]   → voie 2
+//  @endcode
+//
+//  Le Y de chaque port est déterminé par fixCrossingLayout depuis le Y naturel
+//  du voisin non-crossing du bras — jamais hardcodé (crY+1 / crY-1 seraient
+//  incorrects si la topologie locale inverse la direction de la voie déviée).
+//
+//  Chaque voie : stub horizontal en entrée/sortie + segment principal (diagonal
+//  ou horizontal selon les Y relatifs des ports gauche et droit).
+//  Bords du bloc = mid-points avec les colonnes voisines (crX-1, crX+1),
+//  identique à la logique normalBorderX / devBorderX de @ref drawSwitchBlock.
+//
+//  Les bras (StraightBlock slots A/B/C/D) ne sont pas dessinés par
+//  @ref drawStraightBlock — ils sont ignorés dans @ref drawNodes.
+//
+// @par SwitchCrossBlock (TJD)
+//  Non implémenté — phase suivante.
 // =============================================================================
+
 void TCORenderer::drawCrossingBlock(HDC hdc, const Projection& proj,
     const PCCCrossingNode* cr, Logger& logger)
 {
     const CrossBlock* source = cr->getCrossingSource();
+
     if (source->isTJD())
     {
         LOG_DEBUG(logger, "drawCrossing " + source->getId() + " [TJD] — non implemente.");
         return;
     }
+
     const int crX = cr->getPosition().x;
     const int crY = cr->getPosition().y;
 
-    const PCCEdge* slots[4] = {
-        cr->getEdgeA(), cr->getEdgeB(),
-        cr->getEdgeC(), cr->getEdgeD()
-    };
-    int voie1Y = crY, voie2Y = crY;
-    bool foundSecond = false;
-    for (const PCCEdge* e : slots)
+    // Guards — tous les slots doivent être valides
+    const PCCNode* armA = cr->getEdgeA() ? cr->getEdgeA()->getTo() : nullptr;
+    const PCCNode* armB = cr->getEdgeB() ? cr->getEdgeB()->getTo() : nullptr;
+    const PCCNode* armC = cr->getEdgeC() ? cr->getEdgeC()->getTo() : nullptr;
+    const PCCNode* armD = cr->getEdgeD() ? cr->getEdgeD()->getTo() : nullptr;
+
+    if (!armA || !armB || !armC || !armD)
     {
-        if (!e || !e->getTo()) continue;
-        const int armY = e->getTo()->getPosition().y;
-        if (!foundSecond && armY != voie1Y)
-        {
-            voie2Y = armY;
-            foundSecond = true;
-            break;
-        }
+        LOG_WARNING(logger, "drawCrossing " + source->getId()
+            + " — slot(s) null, dessin ignoré.");
+        return;
     }
 
     const COLORREF color = stateToColor(source->getState());
     const int GAP = proj.halfGap;
     const int STUB = proj.stub;
 
+    // Pixels des bords gauche et droit du bloc crossing.
+    // Bord = mid-point entre le crossing (crX) et la colonne voisine (crX±1).
+    // Symétrique de la logique normalBorderX / devBorderX dans drawSwitchBlock.
     const int crPx = project(crX, crY, proj).x;
     const int leftPx = project(crX - 1, crY, proj).x;
     const int rightPx = project(crX + 1, crY, proj).x;
 
-    const int leftBorder = (crPx + leftPx) / 2;
-    const int rightBorder = (crPx + rightPx) / 2;
+    const int leftBorder = (crPx + leftPx) / 2;  // bord gauche du crossing
+    const int rightBorder = (crPx + rightPx) / 2;  // bord droit  du crossing
 
-    const int voie1Py = project(crX, voie1Y, proj).y;
-    const int voie2Py = project(crX, voie2Y, proj).y;
+    // Y pixels des 4 ports lus depuis les positions BFS naturelles des bras.
+    // Le Y de chaque bras est celui de son voisin non-crossing (switch ou straight
+    // adjacent) — déjà correct depuis runBFS, aucun hardcoding nécessaire.
+    const int pyA = project(crX, armA->getPosition().y, proj).y;
+    const int pyB = project(crX, armB->getPosition().y, proj).y;
+    const int pyC = project(crX, armC->getPosition().y, proj).y;
+    const int pyD = project(crX, armD->getPosition().y, proj).y;
 
-    // Diagonale A→C : voie1 gauche → voie2 droite
-    // stub─╲─────╱─stub
+    // -------------------------------------------------------------------------
+    // Connexions physiques d'un croisement plat (StraightCrossBlock) :
+    //
+    //   Voie 1 (A↔C) : horizontale — même Y des deux côtés (voie normale)
+    //     A [crX+1, crY]  →  C [crX-1, crY]
+    //     sw/2.normal ↔ sw/3.normal : passage en ligne droite
+    //
+    //   Voie 2 (B↔D) : diagonale — Y opposés (voie croisée)
+    //     B [crX+1, crY-devSide]  →  D [crX-1, crY+devSide]
+    //     sw/2.deviation ↔ sw/3.deviation : passage en croix
+    //
+    //   Les deux voies se croisent au centre → symbole X.
+    // -------------------------------------------------------------------------
+
+    // Helper : détermine les X de stub pour un bras donné
+    auto stubBorderX = [&](const PCCNode* arm) -> std::pair<int, int>
+        {
+            if (arm->getPosition().x > crX)
+            {
+                // Bras à droite : stub part de rightBorder vers le centre
+                return { rightBorder - GAP, rightBorder - GAP - STUB };
+            }
+            else
+            {
+                // Bras à gauche : stub part de leftBorder vers le centre
+                return { leftBorder + GAP, leftBorder + GAP + STUB };
+            }
+        };
+
+    // Voie 1 (A→C) : A côté droit, C côté gauche — horizontal
     {
+        auto [axOuter, axInner] = stubBorderX(armA);
+        auto [cxOuter, cxInner] = stubBorderX(armC);
         PenScope pen(hdc, color, LINE_WIDTH_ACTIVE);
-        pen.moveTo({ leftBorder + GAP,        voie1Py });  // début stub gauche
-        pen.lineTo({ leftBorder + GAP + STUB, voie1Py });  // fin stub gauche → diagonal
-        pen.lineTo({ rightBorder - GAP - STUB, voie2Py });  // diagonal → début stub droit
-        pen.lineTo({ rightBorder - GAP,        voie2Py });  // fin stub droit
+        pen.moveTo({ axOuter, pyA });  // début stub A (droit)
+        pen.lineTo({ axInner, pyA });  // fin stub A → segment
+        pen.lineTo({ cxInner, pyC });  // segment → début stub C
+        pen.lineTo({ cxOuter, pyC });  // fin stub C (gauche)
     }
 
-    // Diagonale B→D : voie2 gauche → voie1 droite
+    // Voie 2 (B→D) : B côté droit, D côté gauche — diagonal
     {
+        auto [bxOuter, bxInner] = stubBorderX(armB);
+        auto [dxOuter, dxInner] = stubBorderX(armD);
         PenScope pen(hdc, color, LINE_WIDTH_ACTIVE);
-        pen.moveTo({ leftBorder + GAP,        voie2Py });
-        pen.lineTo({ leftBorder + GAP + STUB, voie2Py });
-        pen.lineTo({ rightBorder - GAP - STUB, voie1Py });
-        pen.lineTo({ rightBorder - GAP,        voie1Py });
+        pen.moveTo({ bxOuter, pyB });  // début stub B (droit)
+        pen.lineTo({ bxInner, pyB });  // fin stub B → diagonale
+        pen.lineTo({ dxInner, pyD });  // diagonale → début stub D
+        pen.lineTo({ dxOuter, pyD });  // fin stub D (gauche)
     }
 
     LOG_DEBUG(logger, "drawCrossing " + source->getId()
-        + " [FLAT] leftBorder=" + std::to_string(leftBorder)
-        + " rightBorder=" + std::to_string(rightBorder)
-        + " voie1Y=" + std::to_string(voie1Y)
-        + " voie2Y=" + std::to_string(voie2Y));
+        + " [FLAT] cr=[" + std::to_string(crX) + "," + std::to_string(crY) + "]"
+        + " A=" + armA->getSourceId() + " pyA=" + std::to_string(pyA)
+        + " B=" + armB->getSourceId() + " pyB=" + std::to_string(pyB)
+        + " C=" + armC->getSourceId() + " pyC=" + std::to_string(pyC)
+        + " D=" + armD->getSourceId() + " pyD=" + std::to_string(pyD));
 }
+
 
 // =============================================================================
 // Helpers

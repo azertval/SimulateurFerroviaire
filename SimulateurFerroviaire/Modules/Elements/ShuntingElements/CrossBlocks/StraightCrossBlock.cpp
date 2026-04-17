@@ -5,3 +5,8 @@
  * @see StraightCrossBlock
  */
 #include "StraightCrossBlock.h"
+
+StraightCrossBlock::StraightCrossBlock()
+{
+	LOG_INFO(m_logger, "StraightCross created");
+}

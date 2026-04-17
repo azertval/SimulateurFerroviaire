@@ -6,6 +6,10 @@
  */
 #include "SwitchCrossBlock.h"
 
+SwitchCrossBlock::SwitchCrossBlock()
+{
+    LOG_INFO(m_logger, "SwitchCross created");
+}
 
 bool SwitchCrossBlock::isPath1Active() const
 {

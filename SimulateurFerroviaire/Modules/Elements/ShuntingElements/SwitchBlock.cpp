@@ -17,6 +17,10 @@ namespace
     constexpr double DEGREES_TO_RADIANS = 3.14159265358979323846 / 180.0;
 }
 
+SwitchBlock::SwitchBlock()
+{
+	LOG_INFO(m_logger, "Switch created");
+}
 
 // =============================================================================
 // Construction

@@ -431,7 +431,6 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
                 }
             }
 
-            // Décalage de +1 sur le sous-graphe complet
             for (PCCNode* shiftNode : toShift)
             {
                 auto pos = shiftNode->getPosition();
@@ -460,14 +459,7 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
 
 
 // =============================================================================
-// Post-traitement — normalisation des positions des bras de CrossBlock
-//
-// Spec StraightCrossBlock :
-//   Slot A : [crX-1, crY  ]   Slot D : [crX+1, crY  ]
-//   Slot B : [crX-1, crY+voie2Offset]   Slot C : [crX+1, crY+voie2Offset]
-//
-//   Le crossing lui-meme reste a [crX, crY] — centre pivot, invisible.
-//   voie2Offset = ±1 selon le cote naturel du BFS (déterminé depuis les bras).
+// Post-traitement — correction du layout des bras de CrossBlock
 // =============================================================================
 
 void PCCLayout::fixCrossingLayout(PCCGraph& graph, Logger& logger)
@@ -480,70 +472,113 @@ void PCCLayout::fixCrossingLayout(PCCGraph& graph, Logger& logger)
         const int crX = cr->getPosition().x;
         const int crY = cr->getPosition().y;
 
-        // Collecte les 4 voisins depuis les slots edgeA/B/C/D
-        PCCNode* nbs[4] = {
-            cr->getEdgeA() ? cr->getEdgeA()->getTo() : nullptr,
-            cr->getEdgeB() ? cr->getEdgeB()->getTo() : nullptr,
-            cr->getEdgeC() ? cr->getEdgeC()->getTo() : nullptr,
-            cr->getEdgeD() ? cr->getEdgeD()->getTo() : nullptr
+        const PCCEdge* slots[4] = {
+            cr->getEdgeA(), cr->getEdgeB(),
+            cr->getEdgeC(), cr->getEdgeD()
         };
 
-        bool allValid = true;
-        for (PCCNode* nb : nbs)
+        // -----------------------------------------------------------------------
+        // Étape 1 : normalise le X des bras à crX±1
+        // -----------------------------------------------------------------------
+        for (const PCCEdge* e : slots)
         {
-            if (!nb) { allValid = false; break; }
-        }
-        if (!allValid)
-        {
-            LOG_WARNING(logger, cr->getSourceId()
-                + " — fixCrossingLayout : slot(s) null, ignore.");
-            continue;
-        }
+            if (!e || !e->getTo()) continue;
+            PCCNode* arm = e->getTo();
 
-        // Separation gauche / droite selon X BFS du bras
-        std::vector<PCCNode*> leftSide, rightSide;
-        for (PCCNode* nb : nbs)
-        {
-            if (nb->getPosition().x <= crX) leftSide.push_back(nb);
-            else                            rightSide.push_back(nb);
-        }
-
-        // Tri par Y dans chaque groupe : haut (Y min) en premier
-        auto byY = [](const PCCNode* a, const PCCNode* b)
+            // Trouver le voisin non-crossing du bras
+            PCCNode* neighbour = nullptr;
+            for (const PCCEdge* ae : arm->getEdges())
             {
-                return a->getPosition().y < b->getPosition().y;
+                PCCNode* nb = (ae->getFrom() == arm)
+                    ? ae->getTo() : ae->getFrom();
+                if (nb && nb->getNodeType() != PCCNodeType::CROSSING)
+                {
+                    neighbour = nb;
+                    break;
+                }
+            }
+
+            if (!neighbour)
+            {
+                LOG_WARNING(logger, arm->getSourceId()
+                    + " — fixCrossingLayout : pas de voisin non-crossing, ignore.");
+                continue;
+            }
+
+            // X : crX±1 selon le côté du voisin — Y BFS conservé
+            const int nbX = neighbour->getPosition().x;
+            const int bfsY = arm->getPosition().y;
+            const int armX = (nbX < crX) ? crX - 1 : crX + 1;
+
+            arm->setPosition({ armX, bfsY });
+        }
+
+        // -----------------------------------------------------------------------
+        // Étape 2 : miroir Y si les deux bras de déviation sont du même côté
+        // -----------------------------------------------------------------------
+        PCCNode* devRight = nullptr;  // bras dévié à crX+1
+        PCCNode* devLeft = nullptr;  // bras dévié à crX-1
+
+        for (const PCCEdge* e : slots)
+        {
+            if (!e || !e->getTo()) continue;
+            PCCNode* arm = e->getTo();
+            if (arm->getPosition().y == crY) continue;  // bras normal, skip
+
+            if (arm->getPosition().x > crX) devRight = arm;
+            else                            devLeft = arm;
+        }
+
+        if (devRight && devLeft)
+        {
+            const int rightY = devRight->getPosition().y;
+            const int leftY = devLeft->getPosition().y;
+
+            const bool rightAbove = (rightY > crY);
+            const bool leftAbove = (leftY > crY);
+
+            if (rightAbove == leftAbove)
+            {
+                // Même côté → miroir de devRight pour former le X.
+                // devLeft conserve son Y BFS (déterminé par son switch adjacent).
+                const int mirrorY = 2 * crY - leftY;
+                devRight->setPosition({ devRight->getPosition().x, mirrorY });
+
+                LOG_DEBUG(logger, cr->getSourceId()
+                    + " fixCrossing mirrorY (same side): "
+                    + devLeft->getSourceId() + " Y=" + std::to_string(leftY)
+                    + " → " + devRight->getSourceId() + " Y=" + std::to_string(mirrorY));
+
+                // Pas de propagation aux intermédiaires : seul le bras devRight
+                // (slot direct du crossing) est repositionné. Les straights entre
+                // devRight et son switch adjacent conservent leur Y BFS naturel —
+                // drawStraightBlock (isCrossingArm=true) s'étend vers ses deux
+                // voisins (switch et crossing) quelle que soit la différence de Y.
+            }
+            else
+            {
+                // Côtés opposés → X naturel, pas de miroir
+                LOG_DEBUG(logger, cr->getSourceId()
+                    + " fixCrossing no mirror needed: "
+                    + devRight->getSourceId() + " Y=" + std::to_string(rightY)
+                    + " / " + devLeft->getSourceId() + " Y=" + std::to_string(leftY));
+            }
+        }
+
+        // Log des positions finales
+        auto pos = [](const PCCEdge* e) -> std::string {
+            if (!e || !e->getTo()) return "null";
+            const PCCNode* n = e->getTo();
+            return n->getSourceId()
+                + "[" + std::to_string(n->getPosition().x)
+                + "," + std::to_string(n->getPosition().y) + "]";
             };
-        std::sort(leftSide.begin(), leftSide.end(), byY);
-        std::sort(rightSide.begin(), rightSide.end(), byY);
-
-        // Déterminer voie2Offset depuis le Y naturel des bras inférieurs
-        // voie1 = crY (bras du dessus), voie2 = crY + offset (bras du dessous)
-        int voie2Offset = 1;  // valeur par défaut
-        if (leftSide.size() >= 2)
-            voie2Offset = leftSide[1]->getPosition().y - crY;
-        else if (rightSide.size() >= 2)
-            voie2Offset = rightSide[1]->getPosition().y - crY;
-
-        // Si offset nul (tous au même Y), utiliser -1 par défaut
-        if (voie2Offset == 0) voie2Offset = -1;
-
-        // Assignation : A[crX-1, crY]  D[crX+1, crY]
-        //               B[crX-1, crY+voie2Offset]  C[crX+1, crY+voie2Offset]
-        if (leftSide.size() >= 1) leftSide[0]->setPosition({ crX - 1, crY }); // A
-        if (leftSide.size() >= 2) leftSide[1]->setPosition({ crX - 1, crY + voie2Offset }); // B
-        if (rightSide.size() >= 1) rightSide[0]->setPosition({ crX + 1, crY }); // D
-        if (rightSide.size() >= 2) rightSide[1]->setPosition({ crX + 1, crY + voie2Offset }); // C
 
         LOG_DEBUG(logger, cr->getSourceId()
             + " fixCrossing cr=[" + std::to_string(crX) + "," + std::to_string(crY) + "]"
-            + " voie2Offset=" + std::to_string(voie2Offset)
-            + " A=" + (leftSide.size() >= 1 ? leftSide[0]->getSourceId() : "null")
-            + "[" + std::to_string(crX - 1) + "," + std::to_string(crY) + "]"
-            + " B=" + (leftSide.size() >= 2 ? leftSide[1]->getSourceId() : "null")
-            + "[" + std::to_string(crX - 1) + "," + std::to_string(crY + voie2Offset) + "]"
-            + " D=" + (rightSide.size() >= 1 ? rightSide[0]->getSourceId() : "null")
-            + "[" + std::to_string(crX + 1) + "," + std::to_string(crY) + "]"
-            + " C=" + (rightSide.size() >= 2 ? rightSide[1]->getSourceId() : "null")
-            + "[" + std::to_string(crX + 1) + "," + std::to_string(crY + voie2Offset) + "]");
+            + " A=" + pos(cr->getEdgeA())
+            + " B=" + pos(cr->getEdgeB())
+            + " C=" + pos(cr->getEdgeC())
+            + " D=" + pos(cr->getEdgeD()));
     }
 }

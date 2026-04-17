@@ -34,6 +34,11 @@ namespace
     }
 }
 
+StraightBlock::StraightBlock()
+{
+	LOG_INFO(m_logger, "Straight created");
+}
+
 
 // =============================================================================
 // Mutations — géométrie

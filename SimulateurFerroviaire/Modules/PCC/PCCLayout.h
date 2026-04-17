@@ -139,42 +139,50 @@ private:
 
     /**
      * @brief 
+     * Le BFS positionne les bras (A/B/C/D) à des X qui peuvent être trop éloignés
+     * ou trop proches du crossing. Cette fonction :
+     *
+     *   Étape 1 : normalise le X de chaque bras à crX-1 (côté gauche) ou crX+1
+     *             (côté droit) selon la position de son voisin non-crossing.
+     *             Le Y BFS est conservé — il reflète correctement le deviationSide
+     *             du switch adjacent.
+     *
+     *   Étape 2 : si les deux bras de déviation (B et D, Y≠crY) sont du MÊME côté
+     *             de crY, le crossing ne formerait que deux lignes parallèles.
+     *             Le bras droit (devRight) est alors mirroré autour de crY pour
+     *             obtenir un X visuel. Le bras gauche (devLeft) conserve son Y BFS.
+     *             La propagation propage le mirrorY aux straights intermédiaires
+     *             entre devRight et son switch adjacent.
+     * 
      * StraightCrossBlock :
      *   Le X visuel est forme par 4 bras (StraightBlock) en diagonale.
      *   Les bras sont repositionnes selon :
      *
      *   Cote gauche (X BFS <= crX) — tries par Y croissant :
      *     - bras haut → [crX,   crY  ]   (slot A)
-     *     - bras bas  → [crX,   crY+1]   (slot B)
+     *     - bras bas  → [crX,   crY+-1]   (slot B)
      *
      *   Cote droit (X BFS > crX) — tries par Y croissant :
-     *     - bras haut → [crX+1, crY  ]   (slot D)
-     *     - bras bas  → [crX+1, crY+1]   (slot C)
+     *     - bras haut → [crX+1, crY  ]   (slot C)
+     *     - bras bas  → [crX+1, crY+-1]   (slot D)
      *
-     *   Centre pixel du X = mi-chemin entre project(crX,crY) et project(crX+1,crY+1).
-     *   Le crossing lui-meme reste a [crX, crY] — pivot invisible.
      * 
-     *  SwitchCrossBlock :
-     *  TODO
+     *  @todo SwitchCrossBlock :
+     * 
      * 
      * @par Exemple
      * StraightCrossBlock :
-     * A[crX, crY]  ────────      ──── D[crX+1, crY]
-     *                       ╲   /
-     *                         ╳  ← (centerPx, centerPy)
-     *                       ╱   ╲
-     * B[crX, crY+1]────────       ──── C[crX+1, crY+1]
+     *                            ──── D[crX+1, crY+1]
+     *                          /
+     *   A[crX, crY]  ──────────────── C[crX+1, crY]
+     *                       ╱  
+     * B[crX, crY-1]────────       
      * 
-     * SwitchCrossBlock :
-     * A[crX, crY]  ───────   ───  ──── D[crX+1, crY]
-     *                       ╲   ╱
-     *                         ╳  ← (centerPx, centerPy)
-     *                       ╱   ╲
-     * B[crX, crY+1]────────  ───  ──── C[crX+1, crY+1]
-     * 
+     * @todo SwitchCrossBlock :
      *
      * @param graph   Graphe à corriger. Modifié en place.
      * @param logger  Référence au logger HMI.
      */
 	static void fixCrossingLayout(PCCGraph& graph, Logger& logger);
+
 };

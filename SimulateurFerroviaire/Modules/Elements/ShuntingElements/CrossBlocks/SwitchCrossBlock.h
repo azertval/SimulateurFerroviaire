@@ -24,7 +24,7 @@
 class SwitchCrossBlock final : public CrossBlock
 {
 public:
-    SwitchCrossBlock() = default;
+    SwitchCrossBlock();
 
     [[nodiscard]] bool isTJD() const override { return true; }
 

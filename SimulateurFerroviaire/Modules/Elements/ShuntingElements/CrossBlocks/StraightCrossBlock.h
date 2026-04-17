@@ -16,7 +16,7 @@
 class StraightCrossBlock final : public CrossBlock
 {
 public:
-    StraightCrossBlock() = default;
+    StraightCrossBlock();
 
     /**
      * @brief Retourne toujours ShuntingState::FREE.

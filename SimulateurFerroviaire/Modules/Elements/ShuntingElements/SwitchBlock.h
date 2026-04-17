@@ -45,7 +45,7 @@ public:
     // Construction
     // =========================================================================
 
-    SwitchBlock() = default;
+    SwitchBlock();
 
     /**
      * @brief Construit un SwitchBlock positionné à junctionWGS84.

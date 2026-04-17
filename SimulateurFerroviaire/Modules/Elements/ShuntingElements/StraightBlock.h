@@ -35,7 +35,7 @@ public:
      * puis renseigne la géométrie et la topologie via les setters dédiés.
      * Le constructeur paramétré v1 a été supprimé — il n'est plus appelé.
      */
-    StraightBlock() = default;
+    StraightBlock();
 
     // =========================================================================
     // Interface ShuntingElement
