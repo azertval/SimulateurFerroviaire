@@ -490,54 +490,6 @@ void PCCLayout::fixCrossingLayout(PCCGraph& graph, Logger& logger)
             const int bfsY = arm->getPosition().y;
             const int armX = (nbX < crX) ? crX - 1 : crX + 1;
 
-            // [GARDE 1] — si le bras est déjà au bon X, ne pas le bouger inutilement
-            if (arm->getPosition().x == armX)
-                continue;
-
-            // [GARDE 2] — si armX coïncide avec nbX ET nbY, le bras atterrirait
-            // exactement sur son voisin : décaler la chaîne amont d'un pas
-            if (armX == nbX && bfsY == neighbour->getPosition().y)
-            {
-                const int shiftDir = (nbX < crX) ? -1 : +1;
-
-                // BFS de la chaîne non-crossing depuis neighbour, côté éloigné du crossing
-                std::unordered_set<PCCNode*> toShift;
-                std::queue<PCCNode*> q;
-                toShift.insert(neighbour);
-                q.push(neighbour);
-
-                while (!q.empty())
-                {
-                    PCCNode* curr = q.front(); q.pop();
-                    for (PCCEdge* ae : curr->getEdges())
-                    {
-                        PCCNode* nb2 = (ae->getFrom() == curr) ? ae->getTo() : ae->getFrom();
-                        if (!nb2 || toShift.count(nb2)) continue;
-                        if (nb2->getNodeType() == PCCNodeType::CROSSING) continue;
-                        // Propager uniquement vers le côté éloigné du crossing
-                        if (shiftDir < 0 && nb2->getPosition().x <= neighbour->getPosition().x)
-                        {
-                            toShift.insert(nb2); q.push(nb2);
-                        }
-                        else if (shiftDir > 0 && nb2->getPosition().x >= neighbour->getPosition().x)
-                        {
-                            toShift.insert(nb2); q.push(nb2);
-                        }
-                    }
-                }
-
-                for (PCCNode* n : toShift)
-                {
-                    auto p = n->getPosition();
-                    p.x += shiftDir;
-                    n->setPosition(p);
-                }
-
-                LOG_DEBUG(logger, arm->getSourceId()
-                    + " fixCrossing: chaîne amont décalée de " + std::to_string(shiftDir)
-                    + " (" + std::to_string(toShift.size()) + " nœuds) pour éviter collision sur bras");
-            }
-
             arm->setPosition({ armX, bfsY });
         }
 
