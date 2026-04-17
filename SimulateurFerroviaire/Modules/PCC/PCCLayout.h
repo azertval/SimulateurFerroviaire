@@ -185,4 +185,12 @@ private:
      */
 	static void fixCrossingLayout(PCCGraph& graph, Logger& logger);
 
+    static void fixCrossingSpacing(PCCGraph& graph, Logger& logger);
+
+    /** brief 
+     * Resous les conflit persistant afin de ne pas avoir 2 block au même Y
+     * @param graph   Graphe à corriger. Modifié en place.
+	 * @param logger  Référence au logger HMI.
+    */ 
+    static void resolveCollisions(PCCGraph& graph, Logger& logger);
 };

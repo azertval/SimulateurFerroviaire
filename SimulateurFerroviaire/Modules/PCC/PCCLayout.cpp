@@ -11,6 +11,7 @@
 #include <queue>
 #include <algorithm>
 #include <set>
+#include <map>
 
 
  // =============================================================================
@@ -56,8 +57,11 @@ void PCCLayout::compute(PCCGraph& graph, Logger& logger)
     // Post-traitements dans l'ordre :
     // 1. Correction des branches convergentes (diamonds)
     // 2. Normalisation des positions des bras de crossing
+	// 3. Résolution des collisions restantes (cas complexes non traités par les deux étapes précédentes)
     fixCollapsedBranches(graph, logger);
+    fixCrossingSpacing(graph, logger);
     fixCrossingLayout(graph, logger);
+	resolveCollisions(graph, logger);
 
     LOG_INFO(logger, "Compute — terminé.");
 }
@@ -254,24 +258,7 @@ int PCCLayout::runBFS(PCCGraph& graph,
                 nextArrivedViaDev = false;
             }
             // else : STRAIGHT / ROOT / NORMAL standard -> (x+1, y) deja initialise
-
-            // Résolution de collision
-            if (occupied.count({ nextX, nextY }))
-            {
-                for (int delta = 1; ; ++delta)
-                {
-                    if (!occupied.count({ nextX, nextY + delta }))
-                    {
-                        nextY += delta;
-                        break;
-                    }
-                    if (!occupied.count({ nextX, nextY - delta }))
-                    {
-                        nextY -= delta;
-                        break;
-                    }
-                }
-            }
+           
 
             LOG_DEBUG(graph.getLogger(),
                 neighbour.node->getSourceId()
@@ -485,7 +472,6 @@ void PCCLayout::fixCrossingLayout(PCCGraph& graph, Logger& logger)
             if (!e || !e->getTo()) continue;
             PCCNode* arm = e->getTo();
 
-            // Trouver le voisin non-crossing du bras
             PCCNode* neighbour = nullptr;
             for (const PCCEdge* ae : arm->getEdges())
             {
@@ -498,17 +484,59 @@ void PCCLayout::fixCrossingLayout(PCCGraph& graph, Logger& logger)
                 }
             }
 
-            if (!neighbour)
-            {
-                LOG_WARNING(logger, arm->getSourceId()
-                    + " — fixCrossingLayout : pas de voisin non-crossing, ignore.");
-                continue;
-            }
+            if (!neighbour) { /* warning déjà là */ continue; }
 
-            // X : crX±1 selon le côté du voisin — Y BFS conservé
             const int nbX = neighbour->getPosition().x;
             const int bfsY = arm->getPosition().y;
             const int armX = (nbX < crX) ? crX - 1 : crX + 1;
+
+            // [GARDE 1] — si le bras est déjà au bon X, ne pas le bouger inutilement
+            if (arm->getPosition().x == armX)
+                continue;
+
+            // [GARDE 2] — si armX coïncide avec nbX ET nbY, le bras atterrirait
+            // exactement sur son voisin : décaler la chaîne amont d'un pas
+            if (armX == nbX && bfsY == neighbour->getPosition().y)
+            {
+                const int shiftDir = (nbX < crX) ? -1 : +1;
+
+                // BFS de la chaîne non-crossing depuis neighbour, côté éloigné du crossing
+                std::unordered_set<PCCNode*> toShift;
+                std::queue<PCCNode*> q;
+                toShift.insert(neighbour);
+                q.push(neighbour);
+
+                while (!q.empty())
+                {
+                    PCCNode* curr = q.front(); q.pop();
+                    for (PCCEdge* ae : curr->getEdges())
+                    {
+                        PCCNode* nb2 = (ae->getFrom() == curr) ? ae->getTo() : ae->getFrom();
+                        if (!nb2 || toShift.count(nb2)) continue;
+                        if (nb2->getNodeType() == PCCNodeType::CROSSING) continue;
+                        // Propager uniquement vers le côté éloigné du crossing
+                        if (shiftDir < 0 && nb2->getPosition().x <= neighbour->getPosition().x)
+                        {
+                            toShift.insert(nb2); q.push(nb2);
+                        }
+                        else if (shiftDir > 0 && nb2->getPosition().x >= neighbour->getPosition().x)
+                        {
+                            toShift.insert(nb2); q.push(nb2);
+                        }
+                    }
+                }
+
+                for (PCCNode* n : toShift)
+                {
+                    auto p = n->getPosition();
+                    p.x += shiftDir;
+                    n->setPosition(p);
+                }
+
+                LOG_DEBUG(logger, arm->getSourceId()
+                    + " fixCrossing: chaîne amont décalée de " + std::to_string(shiftDir)
+                    + " (" + std::to_string(toShift.size()) + " nœuds) pour éviter collision sur bras");
+            }
 
             arm->setPosition({ armX, bfsY });
         }
@@ -581,4 +609,188 @@ void PCCLayout::fixCrossingLayout(PCCGraph& graph, Logger& logger)
             + " C=" + pos(cr->getEdgeC())
             + " D=" + pos(cr->getEdgeD()));
     }
+}
+
+void PCCLayout::resolveCollisions(PCCGraph& graph, Logger& logger)
+{
+    bool changed = true;
+    while (changed)
+    {
+        changed = false;
+
+        // Construire la map position → nœud
+        std::map<std::pair<int, int>, PCCNode*> posMap;
+
+        for (const auto& nodePtr : graph.getNodes())
+        {
+            PCCNode* node = nodePtr.get();
+            const auto pos = std::make_pair(node->getPosition().x, node->getPosition().y);
+
+            if (posMap.count(pos))
+            {
+                // Collision : déplacer le nœud courant d'un delta en Y
+                // Priorité : garder le nœud déjà dans la map, déplacer le newcomer.
+                // On cherche le premier Y libre autour de la position.
+                PCCNode* existing = posMap[pos];
+                const int x = node->getPosition().x;
+                const int y = node->getPosition().y;
+
+                for (int delta = 1; ; ++delta)
+                {
+                    const auto above = std::make_pair(x, y + delta);
+                    const auto below = std::make_pair(x, y - delta);
+
+                    if (!posMap.count(above))
+                    {
+                        node->setPosition({ x, y + delta });
+                        LOG_DEBUG(logger, node->getSourceId()
+                            + " resolveCollisions: collision avec " + existing->getSourceId()
+                            + " en [" + std::to_string(x) + "," + std::to_string(y) + "]"
+                            + " → Y=" + std::to_string(y + delta));
+                        changed = true;
+                        break;
+                    }
+                    if (!posMap.count(below))
+                    {
+                        node->setPosition({ x, y - delta });
+                        LOG_DEBUG(logger, node->getSourceId()
+                            + " resolveCollisions: collision avec " + existing->getSourceId()
+                            + " en [" + std::to_string(x) + "," + std::to_string(y) + "]"
+                            + " → Y=" + std::to_string(y - delta));
+                        changed = true;
+                        break;
+                    }
+                }
+
+                // Restart map pour reprise propre
+                break;
+            }
+            else
+            {
+                posMap[pos] = node;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// Post-traitement — réserve les colonnes crX±1 aux bras de crossing
+//
+// Problème : après le BFS, des nœuds non-bras (switches, straights) peuvent
+// atterrir en crX±1. Le bras occupe la même colonne que son voisin → aucun
+// espace visuel pour dessiner le bras, d'où le trou au rendu.
+//
+// Fix : itérer jusqu'à stabilité. À chaque passe, tout nœud qui n'est PAS
+// un bras de crossing mais se trouve en crX±1 (colonne réservée) est décalé
+// d'un pas vers l'extérieur avec toute sa chaîne connexe.
+// =============================================================================
+
+void PCCLayout::fixCrossingSpacing(PCCGraph& graph, Logger& logger)
+{
+    bool changed = true;
+    int  pass = 0;
+
+    while (changed)
+    {
+        changed = false;
+        ++pass;
+
+        for (const auto& nodePtr : graph.getNodes())
+        {
+            if (nodePtr->getNodeType() != PCCNodeType::CROSSING) continue;
+
+            auto* cr = static_cast<PCCCrossingNode*>(nodePtr.get());
+            const int crX = cr->getPosition().x;
+
+            // ---------------------------------------------------------------
+            // Collecte des bras légitimes (slots A/B/C/D du crossing courant)
+            // ---------------------------------------------------------------
+            std::unordered_set<const PCCNode*> arms;
+            for (const PCCEdge* e : { cr->getEdgeA(), cr->getEdgeB(),
+                                      cr->getEdgeC(), cr->getEdgeD() })
+            {
+                if (e && e->getTo())
+                    arms.insert(e->getTo());
+            }
+
+            // ---------------------------------------------------------------
+            // Recherche d'un intrus dans crX±1
+            // ---------------------------------------------------------------
+            for (const auto& otherPtr : graph.getNodes())
+            {
+                PCCNode* other = otherPtr.get();
+                const int otherX = other->getPosition().x;
+
+                // Ignorer : bras légitimes, autres crossings, colonnes non réservées
+                if (arms.count(other))                              continue;
+                if (other->getNodeType() == PCCNodeType::CROSSING)  continue;
+                if (otherX != crX - 1 && otherX != crX + 1)        continue;
+
+                // Direction du décalage : s'éloigner du crossing
+                const int shiftDir = (otherX < crX) ? -1 : +1;
+
+                // -----------------------------------------------------------
+                // BFS : collecte tout le sous-graphe non-crossing du côté
+                // concerné (X >= otherX si shiftDir > 0, X <= otherX sinon)
+                // -----------------------------------------------------------
+                std::unordered_set<PCCNode*> toShift;
+                std::queue<PCCNode*>         q;
+                toShift.insert(other);
+                q.push(other);
+
+                while (!q.empty())
+                {
+                    PCCNode* curr = q.front();
+                    q.pop();
+
+                    for (PCCEdge* ae : curr->getEdges())
+                    {
+                        PCCNode* nb = (ae->getFrom() == curr)
+                            ? ae->getTo() : ae->getFrom();
+                        if (!nb || toShift.count(nb))               continue;
+                        if (nb->getNodeType() == PCCNodeType::CROSSING) continue;
+
+                        const int nbX = nb->getPosition().x;
+                        const bool inShiftZone = (shiftDir > 0)
+                            ? (nbX >= otherX)
+                            : (nbX <= otherX);
+
+                        if (inShiftZone)
+                        {
+                            toShift.insert(nb);
+                            q.push(nb);
+                        }
+                    }
+                }
+
+                // -----------------------------------------------------------
+                // Application du décalage
+                // -----------------------------------------------------------
+                for (PCCNode* n : toShift)
+                {
+                    auto pos = n->getPosition();
+                    pos.x += shiftDir;
+                    n->setPosition(pos);
+                }
+
+                LOG_DEBUG(logger,
+                    "fixCrossingSpacing pass=" + std::to_string(pass)
+                    + " : intrus " + other->getSourceId()
+                    + " en X=" + std::to_string(otherX)
+                    + " (col réservée crossing " + cr->getSourceId() + ")"
+                    + " → décalage " + std::to_string(shiftDir)
+                    + " sur " + std::to_string(toShift.size()) + " nœud(s)");
+
+                changed = true;
+                break; // Redémarre proprement (map invalidée)
+            }
+
+            if (changed) break;
+        }
+    }
+
+    if (pass > 1)
+        LOG_DEBUG(logger,
+            "fixCrossingSpacing terminé — "
+            + std::to_string(pass - 1) + " passe(s).");
 }
