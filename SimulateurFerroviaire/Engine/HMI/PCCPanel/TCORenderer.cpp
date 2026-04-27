@@ -639,7 +639,7 @@ void TCORenderer::drawTJDCrossingBlock(HDC hdc, const Projection& proj,
 
     // Voie 1 (A→C) : A gauche-haut → C droite-bas — colorée selon isPath1Active().
     {
-        const COLORREF c1 = tjd->isPath1Active()
+        const COLORREF c1 = tjd->isPathACActive()
             ? stateToColor(source->getState())
             : COLORS.branchOff;
         PenScope pen(hdc, c1, LINE_WIDTH_ACTIVE);
@@ -651,7 +651,7 @@ void TCORenderer::drawTJDCrossingBlock(HDC hdc, const Projection& proj,
 
     // Voie 2 (B→D) : B gauche-bas → D droite-haut — colorée selon isPath2Active().
     {
-        const COLORREF c2 = tjd->isPath2Active()
+        const COLORREF c2 = tjd->isPathBDActive()
             ? stateToColor(source->getState())
             : COLORS.branchOff;
         PenScope pen(hdc, c2, LINE_WIDTH_ACTIVE);
@@ -662,8 +662,8 @@ void TCORenderer::drawTJDCrossingBlock(HDC hdc, const Projection& proj,
     }
 
     LOG_DEBUG(logger, "drawTJDCrossing " + source->getId()
-        + " path1=" + (tjd->isPath1Active() ? "ON" : "off")
-        + " path2=" + (tjd->isPath2Active() ? "ON" : "off")
+        + " pathAC=" + (tjd->isPathACActive() ? "ON" : "off")
+        + " pathBD=" + (tjd->isPathBDActive() ? "ON" : "off")
         + " pyA=" + std::to_string(pyA)
         + " pyB=" + std::to_string(pyB));
 }

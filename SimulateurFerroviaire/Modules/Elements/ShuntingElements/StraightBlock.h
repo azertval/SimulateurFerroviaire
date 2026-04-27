@@ -166,6 +166,8 @@ public:
      * @param elem  Pointeur non-propriétaire. nullptr si terminus.
      */
     void setNeighbourPrev(ShuntingElement* elem) { m_neighbours.prev = elem; }
+    
+	ShuntingElement* getNeighbourPrev() const { return m_neighbours.prev; }
 
     /**
      * @brief Assigne le voisin côté extrémité B.
@@ -173,6 +175,8 @@ public:
      * @param elem  Pointeur non-propriétaire. nullptr si terminus.
      */
     void setNeighbourNext(ShuntingElement* elem) { m_neighbours.next = elem; }
+
+	ShuntingElement* getNeighbourNext() const { return m_neighbours.next; }
 
     /**
      * @brief Enregistre les pointeurs prev/next en une seule opération.

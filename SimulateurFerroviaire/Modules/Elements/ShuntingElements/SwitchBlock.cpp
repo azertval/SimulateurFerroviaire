@@ -142,6 +142,54 @@ void SwitchBlock::absorbLink(const std::string& linkId,
     }
 }
 
+void SwitchBlock::absorbTJD(const std::string& shortLinkId,
+    const std::string& sameSideLinkId,
+    const std::string& normalPartnerId,
+    const std::string& deviationPartnerId,
+    std::vector<CoordinateLatLon> shortCoordsWGS84,
+    std::vector<CoordinateXY>     shortCoordsUTM)
+{
+    // --- m_branchIds : shortLinkId → normalPartnerId + ajout de deviationPartnerId ---
+    bool replaced = false;
+    for (auto& bid : m_branchIds)
+    {
+        if (bid == shortLinkId) { bid = normalPartnerId; replaced = true; break; }
+    }
+    if (!replaced) m_branchIds.push_back(normalPartnerId);
+    m_branchIds.push_back(deviationPartnerId);
+
+    // --- Supprime le same-side-link s'il est présent ---
+    if (!sameSideLinkId.empty())
+    {
+        m_branchIds.erase(
+            std::remove(m_branchIds.begin(), m_branchIds.end(), sameSideLinkId),
+            m_branchIds.end());
+    }
+
+    // --- Tips CDC : far-end du short-link (identique sur normal et deviation) ---
+    const CoordinateLatLon tipFarWGS84 = shortCoordsWGS84.empty()
+        ? m_junctionWGS84
+        : shortCoordsWGS84.back();
+    const CoordinateXY tipFarUTM = shortCoordsUTM.empty()
+        ? m_junctionUTM
+        : shortCoordsUTM.back();
+
+    // --- Côté NORMAL (partenaire diagonale) ---
+    m_normalBranchId = normalPartnerId;
+    m_tipOnNormal = tipFarWGS84;
+    m_tipOnNormalUTM = tipFarUTM;
+    m_doubleOnNormal = normalPartnerId;
+    m_absorbedNormalCoords = shortCoordsWGS84;   // copie — partagée avec deviation
+    m_absorbedNormalCoordsUTM = shortCoordsUTM;
+
+    // --- Côté DEVIATION (partenaire same-côté à travers le TJD) ---
+    m_deviationBranchId = deviationPartnerId;
+    m_tipOnDeviation = tipFarWGS84;
+    m_tipOnDeviationUTM = tipFarUTM;
+    m_doubleOnDeviation = deviationPartnerId;
+    m_absorbedDeviationCoords = std::move(shortCoordsWGS84);
+    m_absorbedDeviationCoordsUTM = std::move(shortCoordsUTM);
+}
 
 // =============================================================================
 // Mutations — pointeurs résolus

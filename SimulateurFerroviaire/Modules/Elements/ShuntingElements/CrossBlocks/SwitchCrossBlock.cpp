@@ -1,71 +1,78 @@
 /**
  * @file  SwitchCrossBlock.cpp
- * @brief Implémentation du croisement TJD (Traversée-Jonction Double).
+ * @brief Implémentation du croisement TJD (Traversée Jonction Double).
  *
  * @see SwitchCrossBlock
  */
 #include "SwitchCrossBlock.h"
+
+namespace
+{
+    /**
+     * @brief Test générique d'activation d'une voie entre deux corners.
+     *
+     * Vérifie que les deux corners pointent leur branche active sur
+     * @p expected, et que le partenaire correspondant est bien le corner
+     * opposé (sécurité topologique).
+     *
+     * @param a         Premier corner.
+     * @param b         Second corner.
+     * @param expected  Branche attendue (NORMAL = traversante, DEVIATION = diagonale).
+     */
+    bool testPath(const SwitchBlock* a, const SwitchBlock* b, ActiveBranch expected)
+    {
+        if (!a || !b) return false;
+        if (a->getActiveBranch() != expected) return false;
+        if (b->getActiveBranch() != expected) return false;
+
+        const ShuntingElement* aDest = (expected == ActiveBranch::NORMAL)
+            ? a->getNormalBlock()
+            : a->getDeviationBlock();
+        const ShuntingElement* bDest = (expected == ActiveBranch::NORMAL)
+            ? b->getNormalBlock()
+            : b->getDeviationBlock();
+
+        return aDest == b && bDest == a;
+    }
+}
 
 SwitchCrossBlock::SwitchCrossBlock()
 {
     LOG_INFO(m_logger, "SwitchCross created");
 }
 
-bool SwitchCrossBlock::isPath1Active() const
+bool SwitchCrossBlock::isPathACActive() const
 {
-    if (!m_branchA || !m_branchC) return false;
-
-    SwitchBlock* swEntry = getLine1Entry();  // branche A
-    SwitchBlock* swExit = getLine1Exit();   // branche C
-
-    // La branche active du switch pointe-t-elle vers ce crossing ?
-    // On récupère le bloc pointé par la branche active (normal ou deviation)
-    // et on compare son adresse à this.
-    auto pointsToCrossing = [this](const SwitchBlock* sw) -> bool
-        {
-            if (!sw) return false;
-            const ShuntingElement* activeDest =
-                (sw->getActiveBranch() == ActiveBranch::NORMAL)
-                ? sw->getNormalBlock()
-                : sw->getDeviationBlock();
-            return activeDest == this;
-        };
-
-    return pointsToCrossing(swEntry) && pointsToCrossing(swExit);
+    return testPath(getCornerA(), getCornerC(), ActiveBranch::NORMAL);
 }
 
-bool SwitchCrossBlock::isPath2Active() const
+bool SwitchCrossBlock::isPathBDActive() const
 {
-    if (!m_branchB || !m_branchD) return false;
+    return testPath(getCornerB(), getCornerD(), ActiveBranch::NORMAL);
+}
 
-    SwitchBlock* swEntry = getLine2Entry();  // branche B
-    SwitchBlock* swExit = getLine2Exit();   // branche D
+bool SwitchCrossBlock::isPathADActive() const
+{
+    return testPath(getCornerA(), getCornerD(), ActiveBranch::DEVIATION);
+}
 
-    auto pointsToCrossing = [this](const SwitchBlock* sw) -> bool
-        {
-            if (!sw) return false;
-            const ShuntingElement* activeDest =
-                (sw->getActiveBranch() == ActiveBranch::NORMAL)
-                ? sw->getNormalBlock()
-                : sw->getDeviationBlock();
-            return activeDest == this;
-        };
-
-    return pointsToCrossing(swEntry) && pointsToCrossing(swExit);
+bool SwitchCrossBlock::isPathBCActive() const
+{
+    return testPath(getCornerB(), getCornerC(), ActiveBranch::DEVIATION);
 }
 
 ShuntingState SwitchCrossBlock::getState() const
 {
-    // Parcours des 4 branches — accesseurs typés, pas de cast supplémentaire
-    const SwitchBlock* lines[4] = {
-        getLine1Entry(), getLine1Exit(),
-        getLine2Entry(), getLine2Exit()
+    const SwitchBlock* corners[4] = {
+        getCornerA(), getCornerB(), getCornerC(), getCornerD()
     };
-    for (const auto* sw : lines)
+
+    for (const auto* sw : corners)
         if (sw && sw->getState() == ShuntingState::OCCUPIED)
             return ShuntingState::OCCUPIED;
 
-    if (isPath1Active() || isPath2Active())
+    if (isPathACActive() || isPathBDActive()
+        || isPathADActive() || isPathBCActive())
         return ShuntingState::FREE;
 
     return ShuntingState::INACTIVE;

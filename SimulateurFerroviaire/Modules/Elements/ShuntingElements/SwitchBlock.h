@@ -340,6 +340,29 @@ public:
         std::vector<CoordinateXY>     linkCoordsUTM);
 
     /**
+     * @brief Absorption TJD — les 2 côtés deviennent doubles simultanément.
+     *
+     * Usage : un corner switch d'un TJD (Traversée Jonction Double).
+     * Remplace @p shortLinkId par @p normalPartnerId dans m_branchIds, ajoute
+     * @p deviationPartnerId, et supprime @p sameSideLinkId s'il est présent.
+     * Les deux côtés (normal et deviation) partagent la même polyligne absorbée —
+     * la géométrie du short-link vers le crossing.
+     *
+     * @param shortLinkId         ID du StraightBlock court vers le crossing (ex. "s/18").
+     * @param sameSideLinkId      ID du lien parallèle (ex. "s/17") à éliminer, "" si aucun.
+     * @param normalPartnerId     ID du SwitchBlock partenaire côté NORMAL (diagonale TJD).
+     * @param deviationPartnerId  ID du SwitchBlock partenaire côté DEVIATION (même-côté TJD).
+     * @param shortCoordsWGS84    Polyligne WGS84 du short-link, orientée depuis cette jonction.
+     * @param shortCoordsUTM      Polyligne UTM correspondante.
+     */
+    void absorbTJD(const std::string& shortLinkId,
+        const std::string& sameSideLinkId,
+        const std::string& normalPartnerId,
+        const std::string& deviationPartnerId,
+        std::vector<CoordinateLatLon> shortCoordsWGS84,
+        std::vector<CoordinateXY>     shortCoordsUTM);
+
+    /**
      * @brief Remplace un pointeur de branche par un autre.
      *
      * Appelé par Phase7_DoubleSwitchDetector::absorbLinkSegment()
