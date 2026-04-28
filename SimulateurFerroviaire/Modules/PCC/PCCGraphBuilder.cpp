@@ -234,6 +234,14 @@ void PCCGraphBuilder::computeDeviationSides(PCCGraph& graph,
     const TopologyData& topo,
     Logger& logger)
 {
+    // Helper : retrouve un SwitchBlock dans la topologie par son ID.
+    auto findSwitchById = [&](const std::string& id) -> const SwitchBlock*
+    {
+        for (const auto& sw : topo.switches)
+            if (sw->getId() == id) return sw.get();
+        return nullptr;
+    };
+
     for (const auto& nodePtr : graph.getNodes())
     {
         if (nodePtr->getNodeType() != PCCNodeType::SWITCH) continue;
@@ -242,24 +250,56 @@ void PCCGraphBuilder::computeDeviationSides(PCCGraph& graph,
         const SwitchBlock* source = sw->getSwitchSource();
         if (!source->isOriented()) continue;
 
-        const auto& tipDevUTM = source->getTipOnDeviationUTM();
         const auto& tipRootUTM = source->getTipOnRootUTM();
-        if (!tipDevUTM.has_value() || !tipRootUTM.has_value()) continue;
+        if (!tipRootUTM.has_value()) continue;
 
         const CoordinateXY& junc = source->getJunctionUTM();
+
+        // -------------------------------------------------------------------
+        // Vecteur deviation : 2 stratégies selon le type de switch.
+        //
+        // Standard : tipDeviationUTM existe (le tip CDC de la branche déviée
+        // a été calculé par Phase 7).
+        //
+        // Corner TJD : tipDeviationUTM est absent (la voie déviée a été
+        // absorbée par Phase 7 avec le partenaire double — sw->m_doubleOnDeviation).
+        // On utilise la junctionUTM du switch partenaire comme proxy de la
+        // direction de la branche déviée.
+        // -------------------------------------------------------------------
+        double devX = 0.0;
+        double devY = 0.0;
+        bool   devValid = false;
+
+        const auto& tipDevUTM = source->getTipOnDeviationUTM();
+        if (tipDevUTM.has_value())
+        {
+            devX = tipDevUTM->x - junc.x;
+            devY = tipDevUTM->y - junc.y;
+            devValid = true;
+        }
+        else if (source->getDoubleOnDeviation().has_value())
+        {
+            // Corner TJD : utilise la junction du partenaire double-deviation
+            // comme direction de la voie déviée.
+            const std::string& partnerId = *source->getDoubleOnDeviation();
+            if (const SwitchBlock* partner = findSwitchById(partnerId))
+            {
+                const CoordinateXY& pJunc = partner->getJunctionUTM();
+                devX = pJunc.x - junc.x;
+                devY = pJunc.y - junc.y;
+                devValid = true;
+            }
+        }
+
+        if (!devValid) continue;
 
         // Vecteur jonction → tip root (direction de la voie principale)
         const double rootX = tipRootUTM->x - junc.x;
         const double rootY = tipRootUTM->y - junc.y;
 
-        // Vecteur jonction → tip deviation
-        const double devX = tipDevUTM->x - junc.x;
-        const double devY = tipDevUTM->y - junc.y;
-
         // Produit vectoriel 2D (composante Z) :
         // > 0 → déviation à gauche de root  → side = +1
         // < 0 → déviation à droite de root  → side = -1
-        // Indépendant de l'orientation absolue nord/sud de la voie.
         const double cross = rootX * devY - rootY * devX;
         const int side = (cross > 0.0) ? 1 : -1;
 
@@ -267,7 +307,8 @@ void PCCGraphBuilder::computeDeviationSides(PCCGraph& graph,
 
         LOG_DEBUG(logger, sw->getSourceId() + " deviationSide="
             + std::to_string(side)
-            + " (cross=" + std::to_string(cross) + ")");
+            + " (cross=" + std::to_string(cross) + ")"
+            + (tipDevUTM.has_value() ? "" : " [TJD-partner]"));
     }
 }
 

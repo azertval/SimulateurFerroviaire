@@ -10,13 +10,14 @@
 
 #include <queue>
 #include <algorithm>
+#include <array>
 #include <set>
 #include <map>
 
 
-// =============================================================================
-// Point d'entrée
-// =============================================================================
+ // =============================================================================
+ // Point d'entrée
+ // =============================================================================
 
 void PCCLayout::compute(PCCGraph& graph, Logger& logger)
 {
@@ -201,6 +202,12 @@ int PCCLayout::runBFS(PCCGraph& graph,
             // -----------------------------------------------------------
             // Nœud courant = CROSSING : propagation uniquement sur la voie
             // traversante (A↔C ou B↔D). Les autres arêtes sont ignorées.
+            //
+            // Note (TJD) : pas besoin de propagation diagonale ici — les
+            // 4 corners d'un TJD sont déjà reliés deux à deux par des
+            // arêtes NORMAL/DEVIATION directes (m_doubleOnNormal/Deviation
+            // post-absorption Phase 7), donc tous atteints naturellement
+            // par le BFS via les switches partenaires.
             // -----------------------------------------------------------
             if (node->getNodeType() == PCCNodeType::CROSSING)
             {
@@ -238,7 +245,28 @@ int PCCLayout::runBFS(PCCGraph& graph,
                     nextY = y + side;
                     nextArrivedViaDev = true;
                 }
-                else  // branche déviée classique
+                else if (swNeigh && !swNode)
+                {
+                    // Cas particulier : on arrive SUR un switch (swNeigh) depuis
+                    // un straight (swNode == null), via l'arête DEVIATION du
+                    // switch. Le straight est donc topologiquement la BRANCHE
+                    // déviée du switch — on est physiquement à la tip de la
+                    // déviation.
+                    //
+                    // Règle générale : la position logique d'un switch est
+                    // toujours sur l'axe de sa branche NORMALE (même Y que
+                    // normal et root). La déviation est décalée de ±side en Y
+                    // par rapport à cet axe.
+                    //
+                    // Venant de la tip de la déviation (à Y_dev = y), pour
+                    // atteindre la jonction du switch sur l'axe normal, on
+                    // annule le décalage de la déviation :
+                    //   Y_jonction = Y_dev - side_target
+                    nextX = x + 1;
+                    nextY = y - swNeigh->getDeviationSide();
+                    nextArrivedViaDev = false;
+                }
+                else  // branche déviée classique (depuis un switch vers un straight)
                 {
                     nextX = x + 1;
                     nextY = y + side;
@@ -288,7 +316,7 @@ int PCCLayout::runBFS(PCCGraph& graph,
 void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
 {
     bool changed = true;
-    int  pass    = 0;
+    int  pass = 0;
 
     while (changed)
     {
@@ -299,6 +327,22 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
         {
             if (nodePtr->getNodeType() != PCCNodeType::SWITCH) continue;
             auto* sw = static_cast<PCCSwitchNode*>(nodePtr.get());
+
+            // Skip les switches qui sont bras d'un crossing (Flat ou TJD).
+            // Leur position finale est gérée par fixCrossingLayout — détecter
+            // un "collapsed" ici provoque des shifts qui entrent en conflit
+            // avec le crossing (ex. corner TJD qui finirait sur la position
+            // du crossing lui-même).
+            bool isCrossingArm = false;
+            for (const PCCEdge* e : sw->getEdges())
+            {
+                if (e->getRole() == PCCEdgeRole::CROSSING)
+                {
+                    isCrossingArm = true;
+                    break;
+                }
+            }
+            if (isCrossingArm) continue;
 
             const int swX = sw->getPosition().x;
             const int swY = sw->getPosition().y;
@@ -346,7 +390,7 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
                     PCCNode* curr = q.front();
                     q.pop();
 
-                    const int  currX        = curr->getPosition().x;
+                    const int  currX = curr->getPosition().x;
                     const bool currIsSwitch = (curr->getNodeType() == PCCNodeType::SWITCH);
 
                     for (PCCEdge* edge : curr->getEdges())
@@ -355,10 +399,10 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
                             ? edge->getTo() : edge->getFrom();
                         if (!nb || toShift.count(nb)) continue;
 
-                        const int  nbX        = nb->getPosition().x;
+                        const int  nbX = nb->getPosition().x;
                         const bool nbIsSwitch = (nb->getNodeType() == PCCNodeType::SWITCH);
 
-                        const bool isDownstream        = (nbX > currX);
+                        const bool isDownstream = (nbX > currX);
                         const bool isDoubleSwitchPartner =
                             (nbX == currX) && currIsSwitch && nbIsSwitch;
 
@@ -430,7 +474,7 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
                 + " + " + std::to_string(toShift.size() - 1)
                 + " noeuds aval décalés +1"
                 + " (swX: " + std::to_string(swX)
-                + " -> "    + std::to_string(swX + 1) + ")");
+                + " -> " + std::to_string(swX + 1) + ")");
 
             changed = true;
             break;
@@ -451,7 +495,7 @@ void PCCLayout::fixCollapsedBranches(PCCGraph& graph, Logger& logger)
 void PCCLayout::fixCrossingSpacing(PCCGraph& graph, Logger& logger)
 {
     bool changed = true;
-    int  pass    = 0;
+    int  pass = 0;
     const int maxPass = graph.nodeCount() * 2;  // cap anti-boucle infinie
 
     while (changed && pass < maxPass)
@@ -482,9 +526,14 @@ void PCCLayout::fixCrossingSpacing(PCCGraph& graph, Logger& logger)
             auto* cr = static_cast<PCCCrossingNode*>(nodePtr.get());
             const int crX = cr->getPosition().x;
 
+            // Skip TJD : les corners d'un TJD sont déjà placés à leurs Y BFS
+            // naturels via les arêtes NORMAL/DEVIATION inter-corners (post-
+            // absorption Phase 7). fixTJDCrossingLayout les forcera ensuite
+            // à crX±1. Activer le spacing ici déclenche des boucles
+            // mutuelles entre TJD et crossings adjacents.
             const CrossBlock* source = cr->getCrossingSource();
-            if (source->isTJD())
-                continue;  // pas de spacing sur les TJD
+            if (source && source->isTJD())
+                continue;
 
             // -----------------------------------------------------------
             // Recherche d'un intrus dans crX±1.
@@ -647,7 +696,7 @@ void PCCLayout::fixFlatCrossingLayout(PCCCrossingNode* cr, Logger& logger)
 
         if (!neighbour) continue;
 
-        const int nbX  = neighbour->getPosition().x;
+        const int nbX = neighbour->getPosition().x;
         const int bfsY = arm->getPosition().y;
         const int armX = (nbX < crX) ? crX - 1 : crX + 1;
 
@@ -661,7 +710,7 @@ void PCCLayout::fixFlatCrossingLayout(PCCCrossingNode* cr, Logger& logger)
     // rapport à crY pour former un X correct.
     // -------------------------------------------------------------------------
     PCCNode* devRight = nullptr;  // bras dévié à crX+1
-    PCCNode* devLeft  = nullptr;  // bras dévié à crX-1
+    PCCNode* devLeft = nullptr;  // bras dévié à crX-1
 
     for (const PCCEdge* e : slots)
     {
@@ -670,16 +719,16 @@ void PCCLayout::fixFlatCrossingLayout(PCCCrossingNode* cr, Logger& logger)
         if (arm->getPosition().y == crY) continue;  // bras normal → skip
 
         if (arm->getPosition().x > crX) devRight = arm;
-        else                            devLeft  = arm;
+        else                            devLeft = arm;
     }
 
     if (devRight && devLeft)
     {
         const int rightY = devRight->getPosition().y;
-        const int leftY  = devLeft->getPosition().y;
+        const int leftY = devLeft->getPosition().y;
 
         const bool rightAbove = (rightY > crY);
-        const bool leftAbove  = (leftY  > crY);
+        const bool leftAbove = (leftY > crY);
 
         if (rightAbove == leftAbove)
         {
@@ -689,7 +738,7 @@ void PCCLayout::fixFlatCrossingLayout(PCCCrossingNode* cr, Logger& logger)
 
             LOG_DEBUG(logger, cr->getSourceId()
                 + " fixFlatCrossing mirrorY : "
-                + devLeft->getSourceId()  + " Y=" + std::to_string(leftY)
+                + devLeft->getSourceId() + " Y=" + std::to_string(leftY)
                 + " → " + devRight->getSourceId() + " Y=" + std::to_string(mirrorY));
 
             // Seul le bras devRight (slot direct du crossing) est repositionné.
@@ -713,7 +762,7 @@ void PCCLayout::fixFlatCrossingLayout(PCCCrossingNode* cr, Logger& logger)
         return n->getSourceId()
             + "[" + std::to_string(n->getPosition().x)
             + "," + std::to_string(n->getPosition().y) + "]";
-    };
+        };
 
     LOG_DEBUG(logger, cr->getSourceId()
         + " fixFlatCrossing cr=[" + std::to_string(crX) + "," + std::to_string(crY) + "]"
@@ -725,7 +774,22 @@ void PCCLayout::fixFlatCrossingLayout(PCCCrossingNode* cr, Logger& logger)
 
 
 // =============================================================================
-// Crossing TJD — repositionnement des bras (SwitchCrossBlock)
+// Crossing TJD — placement compact (SwitchCrossBlock)
+//
+// Spec : à la différence du Flat (qui occupe 3 cellules crX-1/crX/crX+1 avec
+// les 4 bras à crX±1), le TJD est COMPACT : les 4 corners et le crossing
+// sont **dans la même cellule X=crX**, distinguées par leur Y de voie.
+//
+//   X=crX-1     X=crX      X=crX+1
+//                 │
+//   ───── sw/16(A) ─── sw/7(C) ─────         Y=Y_AC (voie 1)
+//                 ✕                    ← cr/1 logique dans la cellule
+//   ───── sw/15(B) ─── sw/8(D) ─────         Y=Y_BD (voie 2)
+//                 │
+//
+// Note : sw/16 et sw/7 partagent la même cellule (X=crX, Y=Y_AC), comme
+// dans un double-switch standard. Le TJD est topologiquement deux paires
+// de doubles switches superposées et croisées.
 // =============================================================================
 
 void PCCLayout::fixTJDCrossingLayout(PCCCrossingNode* cr, Logger& logger)
@@ -733,70 +797,53 @@ void PCCLayout::fixTJDCrossingLayout(PCCCrossingNode* cr, Logger& logger)
     const int crX = cr->getPosition().x;
     const int crY = cr->getPosition().y;
 
-    PCCNode* nbs[4] = {
-        cr->getEdgeA() ? cr->getEdgeA()->getTo() : nullptr,
-        cr->getEdgeB() ? cr->getEdgeB()->getTo() : nullptr,
-        cr->getEdgeC() ? cr->getEdgeC()->getTo() : nullptr,
-        cr->getEdgeD() ? cr->getEdgeD()->getTo() : nullptr
-    };
+    PCCNode* nodeA = cr->getEdgeA() ? cr->getEdgeA()->getTo() : nullptr;
+    PCCNode* nodeB = cr->getEdgeB() ? cr->getEdgeB()->getTo() : nullptr;
+    PCCNode* nodeC = cr->getEdgeC() ? cr->getEdgeC()->getTo() : nullptr;
+    PCCNode* nodeD = cr->getEdgeD() ? cr->getEdgeD()->getTo() : nullptr;
 
-    // Séparation gauche/droite via le voisin extérieur (non-crossing) de chaque bras.
-    std::vector<PCCNode*> leftSide, rightSide;
-    for (PCCNode* nb : nbs)
+    if (!nodeA || !nodeB || !nodeC || !nodeD)
     {
-        // Fallback : position du bras lui-même si aucun voisin extérieur trouvé.
-        int extX = nb->getPosition().x;
-        for (const PCCEdge* ae : nb->getEdges())
-        {
-            const PCCNode* ext = (ae->getFrom() == nb)
-                ? ae->getTo() : ae->getFrom();
-            if (ext && ext->getNodeType() != PCCNodeType::CROSSING)
-            {
-                extX = ext->getPosition().x;
-                break;
-            }
-        }
-
-        if (extX <= crX) leftSide.push_back(nb);
-        else             rightSide.push_back(nb);
+        LOG_WARNING(logger, cr->getSourceId()
+            + " — fixTJDCrossing : un slot A/B/C/D est nullptr, ignoré.");
+        return;
     }
 
-    // Fallback : si la séparation échoue, utiliser les slots A/B (gauche) et
-    // C/D (droite) tels que définis par la convention CrossBlock.
-    if (leftSide.size() != 2 || rightSide.size() != 2)
-    {
-        leftSide.clear();
-        rightSide.clear();
-        if (nbs[0]) leftSide.push_back(nbs[0]);   // A
-        if (nbs[1]) leftSide.push_back(nbs[1]);   // B
-        if (nbs[2]) rightSide.push_back(nbs[2]);  // C
-        if (nbs[3]) rightSide.push_back(nbs[3]);  // D
-
-        if (leftSide.size() < 2 || rightSide.size() < 2)
+    // -------------------------------------------------------------------------
+    // Détermination des Y des deux voies. On prend les Y BFS des corners
+    // gauches (X minimum) qui ont été placés en premier par le BFS.
+    // -------------------------------------------------------------------------
+    auto pickRefY = [&](PCCNode* a, PCCNode* b) -> int
         {
-            LOG_WARNING(logger, cr->getSourceId()
-                + " — fixTJDCrossing : séparation gauche/droite incorrecte.");
-            return;
-        }
+            const int xa = a->getPosition().x;
+            const int xb = b->getPosition().x;
+            if (xa < xb) return a->getPosition().y;
+            if (xb < xa) return b->getPosition().y;
+            return a->getPosition().y;
+        };
+
+    const int yAC = pickRefY(nodeA, nodeC);  // voie 1
+    int       yBD = pickRefY(nodeB, nodeD);  // voie 2
+
+    if (yBD == yAC)
+    {
+        yBD = yAC + 1;
+        LOG_DEBUG(logger, cr->getSourceId()
+            + " fixTJDCrossing : Y_AC == Y_BD, voie 2 décalée à Y="
+            + std::to_string(yBD));
     }
 
-    auto byYAsc = [](const PCCNode* a, const PCCNode* b) {
-        return a->getPosition().y < b->getPosition().y;
-    };
-    std::sort(leftSide.begin(),  leftSide.end(),  byYAsc);
-    std::sort(rightSide.begin(), rightSide.end(), byYAsc);
-
-    // Gauche triés Y croissant : [0] = min Y = B, [1] = max Y = A.
-    const int crYB = leftSide[0]->getPosition().y;
-    const int crYA = leftSide[1]->getPosition().y;
-
-    leftSide[0]->setPosition({ crX,     crYB });  // B
-    leftSide[1]->setPosition({ crX,     crYA });  // A
-
-    // Droite — Y croisés pour former les diagonales du ✕ :
-    // C prend crYB (même Y que B), D prend crYA (même Y que A).
-    rightSide[0]->setPosition({ crX + 1, crYB });  // C
-    rightSide[1]->setPosition({ crX + 1, crYA });  // D
+    // -------------------------------------------------------------------------
+    // Place les 4 corners dans la cellule X=crX.
+    // Note : on ne touche PAS aux straights externes. Le BFS les a déjà
+    // posés à leur Y de voie naturel. Les "collisions" entre corners et
+    // crossing dans la même cellule sont gérées par resolveCollisions
+    // (qui sait qu'un TJD partage sa cellule avec ses 4 corners par design).
+    // -------------------------------------------------------------------------
+    nodeA->setPosition({ crX, yAC });
+    nodeC->setPosition({ crX, yAC });
+    nodeB->setPosition({ crX, yBD });
+    nodeD->setPosition({ crX, yBD });
 
     auto posStr = [](const PCCEdge* e) -> std::string {
         if (!e || !e->getTo()) return "null";
@@ -804,12 +851,12 @@ void PCCLayout::fixTJDCrossingLayout(PCCCrossingNode* cr, Logger& logger)
         return n->getSourceId()
             + "[" + std::to_string(n->getPosition().x)
             + "," + std::to_string(n->getPosition().y) + "]";
-    };
+        };
 
     LOG_DEBUG(logger, cr->getSourceId()
         + " fixTJDCrossing cr=[" + std::to_string(crX) + "," + std::to_string(crY) + "]"
-        + " crYA=" + std::to_string(crYA)
-        + " crYB=" + std::to_string(crYB)
+        + " yAC=" + std::to_string(yAC)
+        + " yBD=" + std::to_string(yBD)
         + " A=" + posStr(cr->getEdgeA())
         + " B=" + posStr(cr->getEdgeB())
         + " C=" + posStr(cr->getEdgeC())
@@ -827,17 +874,43 @@ void PCCLayout::resolveCollisions(PCCGraph& graph, Logger& logger)
     // Leurs positions sont fixées par fixCrossingLayout() et ne doivent
     // pas être perturbées.
     std::unordered_set<const PCCNode*> frozen;
+
+    // Ensemble des "cellules TJD" : pour chaque TJD, la cellule (X=crX) est
+    // partagée par le crossing et ses 4 corners par design — pas une vraie
+    // collision. On enregistre l'identifiant du TJD (raw pointer) comme
+    // « famille » pour chaque corner et le crossing lui-même.
+    std::unordered_map<const PCCNode*, const PCCNode*> tjdFamily;
+
     for (const auto& nodePtr : graph.getNodes())
     {
         if (nodePtr->getNodeType() != PCCNodeType::CROSSING) continue;
-        frozen.insert(nodePtr.get());
         const auto* cr = static_cast<const PCCCrossingNode*>(nodePtr.get());
+        frozen.insert(nodePtr.get());
+
+        const CrossBlock* source = cr->getCrossingSource();
+        const bool isTJD = (source && source->isTJD());
+
         for (const PCCEdge* e : { cr->getEdgeA(), cr->getEdgeB(),
                                   cr->getEdgeC(), cr->getEdgeD() })
         {
-            if (e && e->getTo()) frozen.insert(e->getTo());
+            if (e && e->getTo())
+            {
+                frozen.insert(e->getTo());
+                if (isTJD) tjdFamily[e->getTo()] = nodePtr.get();
+            }
         }
+        if (isTJD) tjdFamily[nodePtr.get()] = nodePtr.get();
     }
+
+    // Helper : 2 nœuds appartiennent au même TJD (cr+corners partagent leur cellule).
+    auto sameTJDFamily = [&](const PCCNode* a, const PCCNode* b) -> bool
+        {
+            const auto itA = tjdFamily.find(a);
+            const auto itB = tjdFamily.find(b);
+            return itA != tjdFamily.end()
+                && itB != tjdFamily.end()
+                && itA->second == itB->second;
+        };
 
     bool changed = true;
     while (changed)
@@ -857,8 +930,16 @@ void PCCLayout::resolveCollisions(PCCGraph& graph, Logger& logger)
                 const int x = node->getPosition().x;
                 const int y = node->getPosition().y;
 
+                // --- Cas TJD : cr + 4 corners partagent la cellule par design ---
+                if (sameTJDFamily(existing, node))
+                {
+                    // Pas une vraie collision — on ignore.
+                    posMap[pos] = node;  // dernier vu pour le mapping
+                    continue;
+                }
+
                 const bool existingFrozen = frozen.count(existing) > 0;
-                const bool nodeFrozen     = frozen.count(node)     > 0;
+                const bool nodeFrozen = frozen.count(node) > 0;
 
                 if (existingFrozen && nodeFrozen)
                 {
@@ -870,6 +951,43 @@ void PCCLayout::resolveCollisions(PCCGraph& graph, Logger& logger)
                 }
 
                 PCCNode* toMove = nodeFrozen ? existing : node;
+
+                // --- Cas TJD : si un nœud non-figé est dans la cellule d'un TJD,
+                // il faut le pousser EN X hors de la cellule (pas en Y), pour
+                // sortir de la cellule TJD compacte. ---
+                const bool inTJDCell = tjdFamily.count(nodeFrozen ? node : existing) > 0;
+
+                if (inTJDCell && !frozen.count(toMove))
+                {
+                    // Le nœud figé est un membre d'un TJD. Le nœud non-figé doit
+                    // sortir en X. Direction = vers l'extérieur du graphe (signe
+                    // qui éloigne de la position du to-move actuelle vs la
+                    // position du membre TJD — par défaut +1 vers la droite).
+                    const PCCNode* tjdMember = nodeFrozen ? node : existing;
+                    const int tjdX = tjdMember->getPosition().x;
+
+                    // On essaye d'abord X+1 puis X-1 et on prend le 1er libre.
+                    bool moved = false;
+                    for (int xDelta : {1, -1})
+                    {
+                        const int newX = x + xDelta;
+                        if (!posMap.count({ newX, y }))
+                        {
+                            toMove->setPosition({ newX, y });
+                            LOG_DEBUG(logger, toMove->getSourceId()
+                                + " resolveCollisions: collision avec TJD-cell de "
+                                + tjdMember->getSourceId()
+                                + " en [" + std::to_string(x) + "," + std::to_string(y) + "]"
+                                + " → X=" + std::to_string(newX));
+                            moved = true;
+                            changed = true;
+                            break;
+                        }
+                        (void)tjdX;
+                    }
+                    if (moved) break;  // restart map
+                    // Sinon : fallback sur la résolution Y standard ci-dessous.
+                }
 
                 for (int delta = 1; ; ++delta)
                 {

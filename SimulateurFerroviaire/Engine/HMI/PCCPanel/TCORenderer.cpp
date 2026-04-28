@@ -209,15 +209,6 @@ void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
             auto edgeDest = [](const PCCEdge* e) -> std::string {
                 return e && e->getTo() ? e->getTo()->getSourceId() : "null";
             };
-
-            LOG_DEBUG(logger, "drawSwitch " + node->getSourceId()
-                + " pos=[" + std::to_string(node->getPosition().x)
-                + ","      + std::to_string(node->getPosition().y) + "]"
-                + " isDoubleOnDev=" + (sw->getSwitchSource()->getDoubleOnDeviation().has_value() ? "true" : "false")
-                + " root="   + edgeDest(sw->getRootEdge())
-                + " normal=" + edgeDest(sw->getNormalEdge())
-                + " dev="    + edgeDest(sw->getDeviationEdge()));
-
             drawSwitchBlock(hdc, proj, sw, logger);
             ++switchCount;
         }
@@ -225,11 +216,6 @@ void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
         {
             // static_cast sûr : getNodeType() == CROSSING garantit PCCCrossingNode.
             const auto* cr = static_cast<const PCCCrossingNode*>(node);
-
-            LOG_DEBUG(logger, "drawCrossing " + node->getSourceId()
-                + " pos=[" + std::to_string(node->getPosition().x)
-                + ","      + std::to_string(node->getPosition().y) + "]");
-
             drawCrossingBlock(hdc, proj, cr, logger);
             ++crossingCount;
         }
@@ -240,19 +226,10 @@ void TCORenderer::drawNodes(HDC hdc, const Projection& proj,
             // dessinés ici comme des straights normaux : ils remplissent l'espace
             // entre le ✕ central et les switches/straights adjacents. Sans eux,
             // il y aurait un trou visuel entre le bord du crossing et le switch voisin.
-            LOG_DEBUG(logger, "drawStraight " + node->getSourceId()
-                + " pos=[" + std::to_string(node->getPosition().x)
-                + ","      + std::to_string(node->getPosition().y) + "]");
-
             drawStraightBlock(hdc, proj, node, logger);
             ++straightCount;
         }
     }
-
-    LOG_DEBUG(logger, "drawNodes — "
-        + std::to_string(straightCount) + " straight(s), "
-        + std::to_string(switchCount)   + " switch(es), "
-        + std::to_string(crossingCount) + " crossing(s).");
 }
 
 
@@ -315,6 +292,11 @@ void TCORenderer::drawStraightBlock(HDC hdc, const Projection& proj,
         if      (nbPt.x < center.x) leftX  = std::min(leftX,  mid);
         else if (nbPt.x > center.x) rightX = std::max(rightX, mid);
     }
+
+    LOG_DEBUG(logger, node->getSourceId()
+        + " center=(" + std::to_string(center.x) + "," + std::to_string(center.y) + ")"
+        + " leftX=" + std::to_string(leftX)
+        + " rightX=" + std::to_string(rightX));
 
     PenScope pen(hdc, color, LINE_WIDTH_ACTIVE);
     pen.moveTo({ leftX  + proj.halfGap, center.y });
@@ -384,12 +366,25 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
         && devEdge->getTo()
         && devEdge->getTo()->getNodeType() == PCCNodeType::SWITCH;
 
+    // -------------------------------------------------------------------------
+    // Détection corner TJD : un switch dont les DEUX branches (normal et
+    // deviation) pointent vers d'autres switches via les pointeurs
+    // m_doubleOnNormal et m_doubleOnDeviation. Dans ce cas, la couverture
+    // visuelle des 4 voies est déléguée à drawTJDCrossingBlock — on ne
+    // dessine ici QUE la root, pas normal ni deviation, sinon les
+    // demi-diagonales se superposent aux voies du crossing TJD.
+    // -------------------------------------------------------------------------
+    const bool isTJDCorner =
+        sw->getSwitchSource()->getDoubleOnNormal().has_value()
+        && sw->getSwitchSource()->getDoubleOnDeviation().has_value();
+
     LOG_DEBUG(logger, sw->getSourceId()
         + " junctionX=" + std::to_string(junctionX)
         + " root="   + (rootEdge ? std::to_string(rootBorderX)   : "no-edge")
         + " normal=" + (normEdge ? std::to_string(normalBorderX) : "no-edge")
         + " dev="    + (devEdge  ? std::to_string(devBorderX)    : "no-edge")
-        + " devTargetIsSwitch=" + (devTargetIsSwitch ? "true" : "false"));
+        + " devTargetIsSwitch=" + (devTargetIsSwitch ? "true" : "false")
+        + " isTJDCorner=" + (isTJDCorner ? "true" : "false"));
 
     // -------------------------------------------------------------------------
     // Branche root — toujours active (le train passe toujours par la racine,
@@ -400,6 +395,10 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
         pen.moveTo({ rootBorderX + dirFromRoot * halfGap, center.y });
         pen.lineTo({ junctionX, center.y });
     }
+
+    // Corner TJD : root seule, les voies sont dessinées par drawTJDCrossingBlock.
+    if (isTJDCorner)
+        return;
 
     // -------------------------------------------------------------------------
     // Branche normale
@@ -481,12 +480,6 @@ void TCORenderer::drawSwitchBlock(HDC hdc, const Projection& proj,
             const int   endX      = devBorderX - stubDir * halfGap;
             const POINT pStubBeg  = { endX - stubDir * STUB, devY };
             const POINT pStubEnd  = { endX,                   devY };
-
-            LOG_DEBUG(logger, sw->getSourceId()
-                + " dev-simple stubDir=" + std::to_string(stubDir)
-                + " endX="    + std::to_string(endX)
-                + " pStubBeg=" + std::to_string(pStubBeg.x)
-                + " devY="    + std::to_string(devY));
 
             pen.moveTo(pStart);
             pen.lineTo(pStubBeg);
@@ -599,7 +592,20 @@ void TCORenderer::drawFlatCrossingBlock(HDC hdc, const Projection& proj,
 
 
 // =============================================================================
-// Crossing TJD (SwitchCrossBlock) — symbole ✕ avec coloration par voie
+// Crossing TJD (SwitchCrossBlock) — rendu compact, 4 voies dans 1 cellule
+//
+// Différence majeure avec drawFlatCrossingBlock : le TJD n'occupe qu'UNE
+// SEULE cellule logique (X=crX). Les 4 corners (A/B/C/D) sont tous à
+// X=crX, distinguées par Y_AC ou Y_BD. On dessine donc directement les
+// 4 voies entre les deux bordures de la cellule (mid-points avec crX±1)
+// sans stub ni distinction gauche/droite par X — c'est par Y et par paire
+// logique (A↔C, B↔D, A↔D, B↔C) qu'on distingue les voies.
+//
+// Voies dessinées :
+//   - A↔C  horizontale Y_AC  (NORMAL  — isPathACActive)
+//   - B↔D  horizontale Y_BD  (NORMAL  — isPathBDActive)
+//   - A↔D  diagonale Y_AC↔Y_BD (DEVIATION — isPathADActive)
+//   - B↔C  diagonale Y_BD↔Y_AC (DEVIATION — isPathBCActive)
 // =============================================================================
 
 void TCORenderer::drawTJDCrossingBlock(HDC hdc, const Projection& proj,
@@ -620,52 +626,57 @@ void TCORenderer::drawTJDCrossingBlock(HDC hdc, const Projection& proj,
         return;
     }
 
-    const int crX  = cr->getPosition().x;
-    const int crY  = cr->getPosition().y;
-    const int GAP  = proj.halfGap;
-    const int STUB = proj.stub;
+    const int crX = cr->getPosition().x;
+    const int crY = cr->getPosition().y;
 
-    // Bords du bloc crossing : crX (gauche) et mid(crX, crX+1) (droit).
-    const int crPx      = project(crX,     crY, proj).x;
-    const int rightPx   = project(crX + 1, crY, proj).x;
-    const int leftBorder  = crPx;
+    // Bordures gauche/droite de la cellule du TJD : mid-points avec colonnes
+    // voisines crX-1 et crX+1.
+    const int crPx    = project(crX,     crY, proj).x;
+    const int leftPx  = project(crX - 1, crY, proj).x;
+    const int rightPx = project(crX + 1, crY, proj).x;
+    const int leftBorder  = (crPx + leftPx)  / 2;
     const int rightBorder = (crPx + rightPx) / 2;
 
-    // Y pixels des 4 ports (depuis positions post-fixCrossingLayout TJD).
-    const int pyA = project(crX, armA->getPosition().y, proj).y;  // haut gauche
-    const int pyB = project(crX, armB->getPosition().y, proj).y;  // bas  gauche
-    const int pyC = project(crX, armC->getPosition().y, proj).y;  // bas  droite (= pyB)
-    const int pyD = project(crX, armD->getPosition().y, proj).y;  // haut droite (= pyA)
+    // Y pixels des deux voies — A et C sur même Y, B et D sur même Y
+    // (post-fixTJDCrossingLayout).
+    const int pyAC = project(crX, armA->getPosition().y, proj).y;
+    const int pyBD = project(crX, armB->getPosition().y, proj).y;
 
-    // Voie 1 (A→C) : A gauche-haut → C droite-bas — colorée selon isPath1Active().
+    auto colorFor = [&](bool active) -> COLORREF
     {
-        const COLORREF c1 = tjd->isPathACActive()
-            ? stateToColor(source->getState())
-            : COLORS.branchOff;
-        PenScope pen(hdc, c1, LINE_WIDTH_ACTIVE);
-        pen.moveTo({ leftBorder  + GAP,         pyA });
-        pen.lineTo({ leftBorder  + GAP + STUB,  pyA });
-        pen.lineTo({ rightBorder - GAP - STUB,  pyC });
-        pen.lineTo({ rightBorder - GAP,         pyC });
-    }
+        return active ? stateToColor(source->getState()) : COLORS.branchOff;
+    };
 
-    // Voie 2 (B→D) : B gauche-bas → D droite-haut — colorée selon isPath2Active().
+    // Tracé d'une voie traversant la cellule de leftBorder à rightBorder.
+    // Pour les horizontales : pyL == pyR → trait droit.
+    // Pour les diagonales   : pyL != pyR → trait diagonal (un seul lineTo).
+    auto drawPath = [&](int pyL, int pyR, bool active)
     {
-        const COLORREF c2 = tjd->isPathBDActive()
-            ? stateToColor(source->getState())
-            : COLORS.branchOff;
-        PenScope pen(hdc, c2, LINE_WIDTH_ACTIVE);
-        pen.moveTo({ leftBorder  + GAP,         pyB });
-        pen.lineTo({ leftBorder  + GAP + STUB,  pyB });
-        pen.lineTo({ rightBorder - GAP - STUB,  pyD });
-        pen.lineTo({ rightBorder - GAP,         pyD });
-    }
+        PenScope pen(hdc, colorFor(active), LINE_WIDTH_ACTIVE);
+        pen.moveTo({ leftBorder,  pyL });
+        pen.lineTo({ rightBorder, pyR });
+    };
+
+    // --- Voie 1 : A↔C horizontale Y_AC (NORMAL) ---
+    drawPath(pyAC, pyAC, tjd->isPathACActive());
+
+    // --- Voie 2 : B↔D horizontale Y_BD (NORMAL) ---
+    drawPath(pyBD, pyBD, tjd->isPathBDActive());
+
+    // --- Voie 3 : A↔D diagonale Y_AC → Y_BD (DEVIATION) ---
+    drawPath(pyAC, pyBD, tjd->isPathADActive());
+
+    // --- Voie 4 : B↔C diagonale Y_BD → Y_AC (DEVIATION) ---
+    drawPath(pyBD, pyAC, tjd->isPathBCActive());
 
     LOG_DEBUG(logger, "drawTJDCrossing " + source->getId()
-        + " pathAC=" + (tjd->isPathACActive() ? "ON" : "off")
-        + " pathBD=" + (tjd->isPathBDActive() ? "ON" : "off")
-        + " pyA=" + std::to_string(pyA)
-        + " pyB=" + std::to_string(pyB));
+        + " crX=" + std::to_string(crX)
+        + " pyAC=" + std::to_string(pyAC)
+        + " pyBD=" + std::to_string(pyBD)
+        + " AC=" + (tjd->isPathACActive() ? "ON" : "off")
+        + " BD=" + (tjd->isPathBDActive() ? "ON" : "off")
+        + " AD=" + (tjd->isPathADActive() ? "ON" : "off")
+        + " BC=" + (tjd->isPathBCActive() ? "ON" : "off"));
 }
 
 
