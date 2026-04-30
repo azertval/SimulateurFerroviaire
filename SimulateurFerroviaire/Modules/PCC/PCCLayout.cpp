@@ -11,6 +11,7 @@
 #include <queue>
 #include <algorithm>
 #include <array>
+#include <limits>
 #include <set>
 #include <map>
 
@@ -247,24 +248,59 @@ int PCCLayout::runBFS(PCCGraph& graph,
                 }
                 else if (swNeigh && !swNode)
                 {
-                    // Cas particulier : on arrive SUR un switch (swNeigh) depuis
-                    // un straight (swNode == null), via l'arête DEVIATION du
-                    // switch. Le straight est donc topologiquement la BRANCHE
-                    // déviée du switch — on est physiquement à la tip de la
-                    // déviation.
+                    // On arrive sur un switch (swNeigh) depuis un straight
+                    // (node) via la branche DEVIATION du switch — le straight
+                    // est topologiquement la tip-déviation du switch.
                     //
-                    // Règle générale : la position logique d'un switch est
-                    // toujours sur l'axe de sa branche NORMALE (même Y que
-                    // normal et root). La déviation est décalée de ±side en Y
-                    // par rapport à cet axe.
+                    // Règle générale : le switch est sur l'axe root-normal
+                    // (sa voie principale GeoParser). La déviation est
+                    // décalée de ±side en Y par rapport à cet axe. Donc
+                    // depuis la tip-déviation (Y_dev), pour atteindre la
+                    // jonction du switch :
+                    //   Y_jonction = Y_dev - side(swNeigh)
                     //
-                    // Venant de la tip de la déviation (à Y_dev = y), pour
-                    // atteindre la jonction du switch sur l'axe normal, on
-                    // annule le décalage de la déviation :
-                    //   Y_jonction = Y_dev - side_target
-                    nextX = x + 1;
-                    nextY = y - swNeigh->getDeviationSide();
-                    nextArrivedViaDev = false;
+                    // ATTENTION : cette règle ne s'applique correctement que
+                    // si le straight est *réellement* la tip-déviation du
+                    // switch, pas un crossover où le straight est partagé
+                    // avec un autre switch standard. On vérifie que le
+                    // straight n'a pas un autre voisin switch standard non-
+                    // TJD (auquel cas le placement BFS standard est correct).
+                    bool isPureDeviationTip = true;
+                    for (const PCCEdge* e : node->getEdges())
+                    {
+                        const PCCNode* nb = (e->getFrom() == node)
+                            ? e->getTo() : e->getFrom();
+                        if (!nb) continue;
+                        if (nb == swNeigh) continue;
+                        if (nb->getNodeType() != PCCNodeType::SWITCH) continue;
+                        // Voisin switch additionnel — vérifie s'il est corner TJD.
+                        const auto* swOther = static_cast<const PCCSwitchNode*>(nb);
+                        const SwitchBlock* otherSrc = swOther->getSwitchSource();
+                        const bool isOtherTJDCorner = otherSrc
+                            && otherSrc->getDoubleOnNormal().has_value()
+                            && otherSrc->getDoubleOnDeviation().has_value();
+                        if (!isOtherTJDCorner)
+                        {
+                            // Crossover standard : straight partagé entre 2
+                            // switches non-TJD → règle déviation classique.
+                            isPureDeviationTip = false;
+                            break;
+                        }
+                    }
+
+                    if (isPureDeviationTip)
+                    {
+                        nextX = x + 1;
+                        nextY = y - swNeigh->getDeviationSide();
+                        nextArrivedViaDev = false;
+                    }
+                    else
+                    {
+                        // Cas crossover : pas de présomption topologique.
+                        nextX = x + 1;
+                        nextY = y + side;
+                        nextArrivedViaDev = false;
+                    }
                 }
                 else  // branche déviée classique (depuis un switch vers un straight)
                 {
@@ -555,7 +591,32 @@ void PCCLayout::fixCrossingSpacing(PCCGraph& graph, Logger& logger)
                 // -----------------------------------------------------------
                 // BFS : collecte tout le sous-graphe non-crossing du côté
                 // concerné. Arrêt aux bras légitimes d'un crossing adjacent.
+                //
+                // Borne X : pour empêcher la propagation de traverser la
+                // zone d'autres crossings (cellules réservées crX±1), on
+                // calcule la borne en fonction du shiftDir :
+                //   shift -1 : on n'inclut pas les nœuds plus à gauche que
+                //              le crossing voisin le plus proche à gauche +2
+                //              (préserve crX-1 du voisin)
+                //   shift +1 : symétrique à droite
                 // -----------------------------------------------------------
+                int boundXMin = std::numeric_limits<int>::min();
+                int boundXMax = std::numeric_limits<int>::max();
+                for (const auto& nodePtr2 : graph.getNodes())
+                {
+                    if (nodePtr2->getNodeType() != PCCNodeType::CROSSING) continue;
+                    if (nodePtr2.get() == cr) continue;
+                    const int otherCrX = nodePtr2->getPosition().x;
+                    // shift -1 (vers la gauche) : ne pas dépasser un crossing
+                    // à gauche (X plus petit que crX courant).
+                    if (shiftDir < 0 && otherCrX < crX && otherCrX + 2 > boundXMin)
+                        boundXMin = otherCrX + 2;
+                    // shift +1 (vers la droite) : ne pas dépasser un crossing
+                    // à droite (X plus grand que crX courant).
+                    if (shiftDir > 0 && otherCrX > crX && otherCrX - 2 < boundXMax)
+                        boundXMax = otherCrX - 2;
+                }
+
                 std::unordered_set<PCCNode*> toShift;
                 std::queue<PCCNode*>         q;
                 toShift.insert(other);
@@ -575,6 +636,8 @@ void PCCLayout::fixCrossingSpacing(PCCGraph& graph, Logger& logger)
                         if (allCrossingArms.count(nb))              continue;
 
                         const int nbX = nb->getPosition().x;
+                        if (nbX < boundXMin || nbX > boundXMax)     continue;
+
                         const bool inShiftZone = (shiftDir > 0)
                             ? (nbX >= otherX)
                             : (nbX <= otherX);
@@ -862,8 +925,6 @@ void PCCLayout::fixTJDCrossingLayout(PCCCrossingNode* cr, Logger& logger)
         + " C=" + posStr(cr->getEdgeC())
         + " D=" + posStr(cr->getEdgeD()));
 }
-
-
 // =============================================================================
 // Post-traitement — résolution des collisions résiduelles
 // =============================================================================

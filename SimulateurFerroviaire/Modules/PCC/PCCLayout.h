@@ -57,10 +57,10 @@
 
 class PCCCrossingNode;
 
- /**
-  * @class PCCLayout
-  * @brief Calculateur de positions logiques X/Y du @ref PCCGraph.
-  */
+/**
+ * @class PCCLayout
+ * @brief Calculateur de positions logiques X/Y du @ref PCCGraph.
+ */
 class PCCLayout
 {
 public:
@@ -113,10 +113,10 @@ private:
      * @return Le X maximal atteint.
      */
     static int runBFS(PCCGraph& graph,
-                      PCCNode* start,
-                      std::unordered_set<PCCNode*>& visited,
-                      int                           offsetX,
-                      Logger& logger);
+        PCCNode* start,
+        std::unordered_set<PCCNode*>& visited,
+        int                           offsetX,
+        Logger& logger);
 
     /**
      * @brief Corrige les branches convergentes de longueurs inégales (post-BFS).
